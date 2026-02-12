@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-02-06T17:30:23.977475+00:00",
+  "market_date": "2026-02-07",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI -1.44%, USD/KRW 1465.09. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": -1.4414385790021003,
+      "usdkrw": 1465.09301
+    },
+    "flow_summary": {
+      "note": "flows_fetch_failed: unavailable",
+      "foreign_net": 0.0,
+      "institution_net": 0.0,
+      "retail_net": 0.0
+    },
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "South Korea's Kospi leads declines in Asia, tracking Wall Street tech sell-off; Topix retreats from record - CNBC",
+      "Asia shares trade lower; Nikkei and Kospi hit as U.S. tech sell-off extends - Seeking Alpha",
+      "Asia stocks retreat from record levels amid AI disruption worries; KOSPI slips ~4% - Investing.com",
+      "Asia markets mostly fall, tracking Wall Street losses on tech rout - CNBC",
+      "Asia stocks mixed as tech rally cools on Wall St losses; KOSPI hits record high - Investing.com",
+      "South Korea's KOSPI posts sharpest rise in 3 weeks as investors buy the Trump tariff dip - Reuters",
+      "South Korean leader celebrates \u2018Kospi 5,000\u2019 moment as stock market soars - Financial Times",
+      "A Stock Market Fervor Takes Hold in South Korea - The New York Times"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ]
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "macro sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "flow sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "sector sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "risk sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    }
+  ],
+  "committee_result": {
+    "consensus": "Committee agrees on a neutral stance with selective monitoring.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: NEUTRAL.",
+        "sources": [
+          "macro",
+          "flow",
+          "sector",
+          "risk"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "NEUTRAL",
+        "minority": "None",
+        "minority_agents": [
+          "none"
+        ],
+        "why_it_matters": "No dissenting regime tags are present."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Keep watchlist tight and avoid overexposure."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Keep position sizes moderate."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid aggressive leverage."
+      }
+    ]
+  }
+}
