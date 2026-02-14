@@ -52,46 +52,107 @@ def render_report(report: Report, output_path: Path) -> None:
 def build_report_markdown(report: Report) -> str:
     """Render a minimal markdown report for human review."""
     lines = [
-        "# Daily AI Investment Committee",
+        "# 데일리 AI 투자위원회",
         "",
-        f"Date: {report.market_date}",
-        f"Generated: {report.generated_at}",
+        f"날짜: {report.market_date}",
+        f"생성 시각: {report.generated_at}",
         "",
-        "## Consensus",
-        report.committee_result.consensus,
+        "## 합의 결과",
+        _translate_sentence(report.committee_result.consensus),
         "",
-        "## Key Points",
+        "## 핵심 포인트",
     ]
     for key_point in report.committee_result.key_points:
         sources = ", ".join(key_point.sources)
-        lines.append(f"- {key_point.point} (sources: {sources})")
+        lines.append(f"- {_translate_phrase(key_point.point)} (출처: {sources})")
 
     tag_counts = {"RISK_ON": 0, "NEUTRAL": 0, "RISK_OFF": 0}
     for stance in report.stances:
         tag_counts[stance.regime_tag.value] = tag_counts.get(stance.regime_tag.value, 0) + 1
     lines.append("")
     lines.append(
-        "Regime votes: "
+        "국면 투표: "
         f"NEUTRAL={tag_counts['NEUTRAL']}, "
         f"RISK_ON={tag_counts['RISK_ON']}, "
         f"RISK_OFF={tag_counts['RISK_OFF']}"
     )
+    majority_tag = max(tag_counts, key=lambda key: tag_counts[key])
+    lines.append(f"요약: 현재 국면은 {majority_tag}로 판단됩니다.")
 
-    lines.extend(["", "## Disagreements"])
+    lines.extend(["", "## 이견"])
     for disagreement in report.committee_result.disagreements:
         agents = ", ".join(disagreement.minority_agents)
         lines.append(
-            f"- {disagreement.topic}: majority={disagreement.majority}, "
-            f"minority={disagreement.minority}, agents=[{agents}]. "
-            f"{disagreement.why_it_matters}"
+            f"- {_translate_phrase(disagreement.topic)}: 다수={disagreement.majority}, "
+            f"소수={disagreement.minority}, 에이전트=[{agents}]. "
+            f"{_translate_sentence(disagreement.why_it_matters)}"
         )
 
-    lines.extend(["", "## Ops Guidance"])
+    lines.extend(["", "## 운영 가이드"])
     for guidance in report.committee_result.ops_guidance:
-        lines.append(f"- [{guidance.level}] {guidance.text}")
+        lines.append(
+            f"- [{guidance.level}/{_translate_level(guidance.level.value)}] "
+            f"{_translate_sentence(guidance.text)}"
+        )
 
-    lines.extend(["", "## Snapshot Notes"])
-    lines.append(f"- Market: {report.snapshot.market_summary.note}")
-    lines.append(f"- Flow: {report.snapshot.flow_summary.note}")
+    lines.extend(["", "## Global Markets"])
+    m = report.snapshot.markets
+    lines.append(
+        f"KR: KOSPI {m.kr.kospi_pct:+.2f}%, KOSDAQ {m.kr.kosdaq_pct:+.2f}%"
+    )
+    lines.append(
+        f"US: S&P500 {m.us.sp500_pct:+.2f}%, NASDAQ {m.us.nasdaq_pct:+.2f}%, DOW {m.us.dow_pct:+.2f}%"
+    )
+    lines.append(f"FX: USD/KRW {m.fx.usdkrw:.2f} ({m.fx.usdkrw_pct:+.2f}%)")
+
+    lines.extend(["", "## 시장 지표"])
+    s = report.snapshot.market_summary
+    lines.append(f"- KOSPI 일일 등락: **{s.kospi_change_pct:+.2f}%**")
+    lines.append(f"- USD/KRW: **{s.usdkrw:.2f}**")
+    lines.append(f"- 요약: {s.note}")
+
+    lines.extend(["", "## 수급 (억원, 순매수)"])
+    f = report.snapshot.flow_summary
+    lines.append(f"- 외국인: **{f.foreign_net:+.0f}** / 기관: **{f.institution_net:+.0f}** / 개인: **{f.retail_net:+.0f}**")
+    lines.append(f"- 비고: {f.note}")
 
     return "\n".join(lines)
+
+
+def _translate_level(level: str) -> str:
+    """Translate ops guidance level to Korean."""
+    return {
+        "OK": "유지",
+        "CAUTION": "주의",
+        "AVOID": "회피",
+    }.get(level, level)
+
+
+def _translate_phrase(text: str) -> str:
+    """Translate common fixed phrases for readability."""
+    mapping = {
+        "Majority regime tag": "다수 국면 태그",
+        "Shared evidence focus": "공통 근거",
+        "Regime tags": "국면 태그",
+    }
+    for key, value in mapping.items():
+        if text.startswith(key):
+            return text.replace(key, value, 1)
+    return text
+
+
+def _translate_sentence(text: str) -> str:
+    """Translate known sentences or return original."""
+    mapping = {
+        "Committee agrees on a neutral stance with selective monitoring.": "위원회는 선별적 모니터링 하에 중립적 스탠스를 유지합니다.",
+        "Committee maintains a neutral posture with selective positioning.": "위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.",
+        "Committee adopts a defensive posture and reduces risk exposure.": "위원회는 방어적 입장을 채택하고 위험 노출을 줄입니다.",
+        "No dissenting regime tags are present.": "다른 국면 태그의 이견은 없습니다.",
+        "Minority risk regime can change positioning boundaries.": "소수 의견 국면은 포지션 경계에 영향을 줄 수 있습니다.",
+        "Maintain balanced exposure.": "노출을 균형 있게 유지합니다.",
+        "Keep risk limits tight.": "리스크 한도를 엄격히 유지합니다.",
+        "Avoid aggressive leverage.": "과도한 레버리지는 피합니다.",
+        "Keep watchlist tight and avoid overexposure.": "관심 종목을 좁게 유지하고 과도한 노출을 피합니다.",
+        "Keep position sizes moderate.": "포지션 규모를 보수적으로 유지합니다.",
+    }
+    return mapping.get(text, text)

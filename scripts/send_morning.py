@@ -25,7 +25,14 @@ def main() -> None:
         print("report.md not found.")
         return
 
-    text = report_path.read_text(encoding="utf-8")
+    report_text = report_path.read_text(encoding="utf-8")
+    text = "\n".join(
+        [
+            "오늘의 데일리 리포트입니다.",
+            "",
+            report_text,
+        ]
+    )
     send_report(text)
 
 

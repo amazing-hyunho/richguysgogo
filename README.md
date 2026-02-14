@@ -121,10 +121,16 @@ python scripts/send_morning.py
 
 ```
 TELEGRAM_BOT_TOKEN=...
-TELEGRAM_CHAT_ID=...
+TELEGRAM_CHAT_ID=...          # 한 명: 하나만. 여러 명/그룹: 쉼표로 구분 (예: 123,-456,789)
 ```
 
-없으면 콘솔 출력으로 대체합니다.
+없으면 콘솔 출력으로 대체합니다. 여러 사람/그룹에 보내려면 `TELEGRAM_CHAT_ID`에 chat ID를 쉼표로 나열하면 됩니다.
+
+---
+
+## 데이터 소스 (스냅샷)
+- **시장 지표**: KOSPI 등락률(Yahoo Finance), USD/KRW(무료 환율 API) 사용.
+- **수급(외국인/기관/개인)**: 현재 무료 공개 API 미연동으로 기본값 0으로 표시. 실제 수치 반영 시 `committee/tools/http_provider.py`의 `get_flows()`에 KRX·네이버 등 소스 연동 필요.
 
 ---
 

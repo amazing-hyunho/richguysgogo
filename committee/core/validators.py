@@ -31,6 +31,9 @@ ALLOWED_EVIDENCE_IDS = {
 }
 
 ALLOWED_NON_TICKER_TOKENS = {
+    # Region/market labels frequently present in headlines (not tickers).
+    "US",
+    "KR",
     "USD",
     "CPI",
     "GDP",
@@ -42,6 +45,10 @@ ALLOWED_NON_TICKER_TOKENS = {
     "FED",
     "CNBC",
     "KOSPI",
+    "KOSDAQ",
+    "SP500",
+    "NASDAQ",
+    "DOW",
     "KRW",
     "RISK_ON",
     "RISK_OFF",
@@ -201,7 +208,35 @@ def validate_pipeline(
 
     texts = _extract_text_fields(normalized_snapshot, normalized_stances, normalized_result)
     _assert_no_forbidden_phrases(texts)
-    _assert_no_unknown_tickers(texts, normalized_snapshot.watchlist)
+    # NOTE: Ticker validation is intended to prevent *generated* outputs from mentioning
+    # unknown tickers not present in the snapshot watchlist.
+    #
+    # Snapshot inputs like `news_headlines` and `sector_moves` are external text and may
+    # contain arbitrary 2–4 letter acronyms (e.g., "SK", "AI", "US") that match our ticker
+    # regex but are not tradable symbols in our watchlist. To avoid false positives that
+    # break the nightly pipeline, we only enforce the ticker whitelist on:
+    # - agent/committee generated text
+    # - snapshot summary notes (authored by our code)
+    ticker_guard_texts: List[str] = []
+    ticker_guard_texts.extend([normalized_snapshot.market_summary.note, normalized_snapshot.flow_summary.note])
+    for stance in normalized_stances:
+        ticker_guard_texts.extend(stance.core_claims)
+    ticker_guard_texts.append(normalized_result.consensus)
+    for key_point in normalized_result.key_points:
+        ticker_guard_texts.append(key_point.point)
+        ticker_guard_texts.extend(key_point.sources)
+    for disagreement in normalized_result.disagreements:
+        ticker_guard_texts.extend(
+            [
+                disagreement.topic,
+                disagreement.majority,
+                disagreement.minority,
+                disagreement.why_it_matters,
+            ]
+        )
+    for guidance in normalized_result.ops_guidance:
+        ticker_guard_texts.append(guidance.text)
+    _assert_no_unknown_tickers(ticker_guard_texts, normalized_snapshot.watchlist)
 
     if report is not None:
         validate_report(report)

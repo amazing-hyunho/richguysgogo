@@ -37,6 +37,47 @@ class FlowSummary(BaseModel):
         extra = "forbid"
 
 
+# --- Global markets: KR, US indices and FX (new top-level key, pipeline intact). ---
+
+
+class MarketsKR(BaseModel):
+    """Korean market daily percentage changes."""
+    kospi_pct: float
+    kosdaq_pct: float
+
+    class Config:
+        extra = "forbid"
+
+
+class MarketsUS(BaseModel):
+    """US market daily percentage changes."""
+    sp500_pct: float
+    nasdaq_pct: float
+    dow_pct: float
+
+    class Config:
+        extra = "forbid"
+
+
+class MarketsFX(BaseModel):
+    """FX spot and daily percentage change."""
+    usdkrw: float
+    usdkrw_pct: float
+
+    class Config:
+        extra = "forbid"
+
+
+class Markets(BaseModel):
+    """Aggregated global markets for report display."""
+    kr: MarketsKR
+    us: MarketsUS
+    fx: MarketsFX
+
+    class Config:
+        extra = "forbid"
+
+
 class Snapshot(BaseModel):
     """Single shared fact packet for the daily meeting."""
 
@@ -45,6 +86,7 @@ class Snapshot(BaseModel):
     sector_moves: SectorMoves = Field(..., description="Sector movement highlights.")
     news_headlines: NewsHeadlines = Field(..., description="News headlines.")
     watchlist: Watchlist = Field(..., description="Symbols to monitor.")
+    markets: Markets = Field(..., description="Global markets: KR/US indices and FX.")
 
     class Config:
         extra = "forbid"

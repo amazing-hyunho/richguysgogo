@@ -1,0 +1,157 @@
+{
+  "generated_at": "2026-02-14T01:23:55.480216+00:00",
+  "market_date": "2026-02-14",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI -0.28%, USD/KRW 1442.88. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": -0.27634023422029885,
+      "usdkrw": 1442.878815
+    },
+    "flow_summary": {
+      "note": "flows_fetch_failed: unavailable (\uc678\uad6d\uc778/\uae30\uad00/\uac1c\uc778 \uc21c\ub9e4\uc218\ub294 \ub370\uc774\ud130 \uc5c6\uc74c)",
+      "foreign_net": 0.0,
+      "institution_net": 0.0,
+      "retail_net": 0.0
+    },
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "Japan stocks extend post-election rally with Nikkei 225 breaching 58,000 for the first time - CNBC",
+      "Asia stocks: KOSPI hits record high, Nikkei tops historic 58,000; US jobs in focus - Investing.com",
+      "KOSPI 5500 rally drives all ages in South Korea to buy SK hynix, Samsung - CHOSUNBIZ - Chosunbiz",
+      "KOSPI surpasses 5,500 mark for 1st time in midday trading - The Korea Times",
+      "South Korea\u2019s KOSPI outpaces global peers, even as concentration tops the S&P 500 - Seeking Alpha",
+      "A Stock Market Fervor Takes Hold in South Korea - The New York Times",
+      "South Korea's KOSPI posts sharpest rise in 3 weeks as investors buy the Trump tariff dip - Reuters",
+      "South Korean leader celebrates \u2018Kospi 5,000\u2019 moment as stock market soars - Financial Times"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi_pct": -0.27634023422029885,
+        "kosdaq_pct": -1.768224793503113
+      },
+      "us": {
+        "sp500_pct": 0.0499089148012519,
+        "nasdaq_pct": -0.22339307336266215,
+        "dow_pct": 0.09898333350053046
+      },
+      "fx": {
+        "usdkrw": 1442.878815,
+        "usdkrw_pct": 0.0
+      }
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "Macro tone is balanced.",
+        "No major shocks.",
+        "Stay selective."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "Flow data unavailable.",
+        "Use neutral stance."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.flow_summary.note",
+        "snapshot.watchlist"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "Sector moves are mixed.",
+        "No clear leader.",
+        "Maintain balance."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.sector_moves",
+        "snapshot.watchlist"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "Risk signals stable.",
+        "No acute stress.",
+        "Maintain discipline."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    }
+  ],
+  "committee_result": {
+    "consensus": "Committee maintains a neutral posture with selective positioning.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: NEUTRAL.",
+        "sources": [
+          "macro",
+          "flow",
+          "sector",
+          "risk"
+        ]
+      },
+      {
+        "point": "Shared evidence focus: snapshot.market_summary.usdkrw.",
+        "sources": [
+          "macro",
+          "risk"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "NEUTRAL",
+        "minority": "None",
+        "minority_agents": [
+          "none"
+        ],
+        "why_it_matters": "No dissenting regime tags are present."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Maintain balanced exposure."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Keep risk limits tight."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid aggressive leverage."
+      }
+    ]
+  }
+}

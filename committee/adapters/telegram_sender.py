@@ -4,14 +4,18 @@ from __future__ import annotations
 
 import json
 import os
+import urllib.error
 import urllib.request
 
 
 def send_report(text: str) -> bool:
-    """Send report text to Telegram or print to console."""
+    """Send report text to Telegram or print to console.
+    TELEGRAM_CHAT_ID can be a single id or comma-separated (e.g. 123,-456,789).
+    """
     token = os.getenv("TELEGRAM_BOT_TOKEN")
-    chat_id = os.getenv("TELEGRAM_CHAT_ID")
-    if not token or not chat_id:
+    raw = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+    chat_ids = [c.strip() for c in raw.split(",") if c.strip()]
+    if not token or not chat_ids:
         print(text)
         return True
 
@@ -26,10 +30,11 @@ def send_report(text: str) -> bool:
         if not part.strip():
             continue
         prefixed = f"({index}/{total}) {part}"
-        ok = _send_message(url, chat_id, prefixed)
-        if not ok:
-            print(f"telegram_send_failed: part {index}/{total}")
-            success = False
+        for chat_id in chat_ids:
+            ok = _send_message(url, chat_id, prefixed)
+            if not ok:
+                print(f"telegram_send_failed: chat_id={chat_id} part {index}/{total}")
+                success = False
     return success
 
 
@@ -46,7 +51,12 @@ def _send_message(url: str, chat_id: str, text: str) -> bool:
     try:
         with urllib.request.urlopen(request, timeout=15) as response:  # noqa: S310 - controlled URL
             return 200 <= response.status < 300
-    except Exception:
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="ignore") if exc.fp else ""
+        print(f"telegram_http_error: {exc.code} {body}".strip())
+        return False
+    except Exception as exc:
+        print(f"telegram_send_exception: {exc}")
         return False
 
 
