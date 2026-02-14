@@ -114,6 +114,7 @@ python scripts/run_nightly.py
 ```
 python scripts/send_morning.py
 ```
+기본은 **브리프(지표 요약)만** 발송합니다. 상세 `report.md`까지 붙이려면 아래 환경 변수를 켜세요.
 
 ---
 
@@ -126,11 +127,110 @@ TELEGRAM_CHAT_ID=...          # 한 명: 하나만. 여러 명/그룹: 쉼표로
 
 없으면 콘솔 출력으로 대체합니다. 여러 사람/그룹에 보내려면 `TELEGRAM_CHAT_ID`에 chat ID를 쉼표로 나열하면 됩니다.
 
+### Windows에서 `setx`로 설정하기 (PowerShell/CMD)
+
+```powershell
+setx TELEGRAM_BOT_TOKEN "봇토큰"
+setx TELEGRAM_CHAT_ID "123456789,-987654321"   # 여러 명/그룹이면 쉼표로
+```
+
+설정 후 **새 터미널(또는 Cursor 재시작)**부터 적용됩니다.
+
+---
+
+## 환경 변수 (데이터)
+
+### FRED (월간/분기/구조 지표)
+FRED 기반 지표를 쓰려면 API 키가 필요합니다.
+
+```powershell
+setx FRED_API_KEY "32자리_키"
+```
+
+### 아침 발송에 상세 리포트 포함 (옵션)
+기본은 브리프만 보내고, 상세 `report.md`는 제외합니다. 상세까지 보내려면 실행 시 옵션을 붙이세요.
+
+```powershell
+python scripts/send_morning.py --include-report
+```
+
 ---
 
 ## 데이터 소스 (스냅샷)
 - **시장 지표**: KOSPI 등락률(Yahoo Finance), USD/KRW(무료 환율 API) 사용.
-- **수급(외국인/기관/개인)**: 현재 무료 공개 API 미연동으로 기본값 0으로 표시. 실제 수치 반영 시 `committee/tools/http_provider.py`의 `get_flows()`에 KRX·네이버 등 소스 연동 필요.
+- **수급(외국인/기관/개인)**:
+  - 스냅샷/리포트 구조는 준비되어 있으며, **데이터 소스만 교체 가능한 구조**입니다.
+  - 현재 기본값은 `unavailable`로 처리됩니다(파이프라인 안정성/속도 우선).
+  - **KRX(best-effort) 연동은 옵션**입니다. KRX 화면 식별자(`bld`)가 바뀌면 실패할 수 있어 기본 OFF입니다.
+    - 켜기: `KOREAN_FLOW_SOURCE=KRX`
+    - 끄기(기본): `KOREAN_FLOW_SOURCE=NONE`
+  - 향후 **키움 API(OpenAPI 등)** 로 교체해도 `Snapshot`/`report.md`/DB 구조는 그대로 재사용합니다.
+- **PMI(제조업)**: FRED의 ISM 시리즈가 제거되어, 현재는 ISM 공개 페이지(`go.weareism.org`)에서 최신 PMI를 best-effort로 추출합니다. 값이 비현실적(대략 30~70 범위 밖)이면 FAIL 처리합니다.
+
+---
+
+## DB (SQLite) — 저장/조회/마이그레이션
+
+### DB 파일 위치
+- `data/investment.db`
+- 파이프라인 실행 시 자동 생성/업데이트됩니다.
+
+### 자주 나는 에러
+- **`unable to open database file`**:
+  - 현재 작업 폴더가 프로젝트 루트인지 확인
+  - `data/` 폴더가 없으면 생성: `mkdir data`
+
+### sqlite3 CLI가 없을 때(Windows)
+- 꼭 설치할 필요는 없고 파이썬으로 조회 가능합니다.
+- 그래도 CLI가 필요하면:
+
+```powershell
+winget install SQLite.SQLite
+```
+
+### 테이블 목록/스키마 보기
+sqlite3가 있을 때:
+
+```powershell
+sqlite3 .\data\investment.db ".tables"
+sqlite3 .\data\investment.db "PRAGMA table_info(daily_macro);"
+```
+
+sqlite3가 없을 때(파이썬):
+
+```powershell
+python -c "import sqlite3; c=sqlite3.connect(r'.\\data\\investment.db'); print([r[0] for r in c.execute(\"select name from sqlite_master where type='table' order by name\").fetchall()]); c.close()"
+```
+
+### 주요 테이블 (요약)
+- **`market_daily`**: 글로벌 지수/FX(일간)
+- **`market_flow_daily`**: 수급(일간)
+- **`daily_macro`**: 일간 매크로(금리/스프레드/VIX/DXY/환율 + 구조 컬럼 포함)
+- **`monthly_macro`**: 월간 매크로(실업률, 물가 YoY, PMI, 임금 level/YoY)
+- **`quarterly_macro`**: 분기 매크로(실질 GDP, QoQ 연율)
+
+### 조회 예시
+
+```powershell
+sqlite3 .\data\investment.db "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate FROM daily_macro ORDER BY date DESC LIMIT 5;"
+sqlite3 .\data\investment.db "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, wage_level, wage_yoy FROM monthly_macro ORDER BY date DESC LIMIT 5;"
+sqlite3 .\data\investment.db "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date DESC LIMIT 5;"
+```
+
+### 0.0 → NULL 정리(레거시 마이그레이션)
+과거 placeholder 0.0이 들어간 경우를 NULL로 정리하는 1회 스크립트:
+
+```powershell
+python scripts/migrate_db_nulls.py
+```
+
+---
+
+## Snapshot 상태(status) 출력
+실행 스크립트가 `snapshot sources status: ...` 형태로 소스 상태를 보여줍니다.
+- **OK**: 수집 성공
+- **FAIL**: 수집 실패(값은 snapshot에서 fallback일 수 있음, DB에는 NULL 저장)
+
 
 ---
 
@@ -153,6 +253,19 @@ TELEGRAM_CHAT_ID=...          # 한 명: 하나만. 여러 명/그룹: 쉼표로
 - `tools/`에 실제 데이터 소스 추가
 - `agents/`에 실제 LLM 기반 에이전트 추가
 - `chair_stub.py`의 합의 로직 고도화 (규칙 기반 유지 가능)
+
+---
+
+## 작업 히스토리 (Changelog)
+
+### 2026-02-14 (오늘)
+- **수급 출력 구조 추가**: `report.md`에 `## 한국 수급 (KOSPI/KOSDAQ, 억원 순매수)` 섹션 출력(데이터 없으면 unavailable 표시).
+- **스냅샷 스키마 확장**: `Snapshot.korean_market_flow`(옵션) 추가로 KOSPI/KOSDAQ × 개인/외국인/기관 순매수 구조 저장 가능.
+- **수급 Provider 실험/정리**
+  - `PyKRX` 설치 이슈(Python 3.13에서 `numpy<2.0` 제약으로 빌드 실패) 확인.
+  - `KRX POST(getJsonData.cmd)` 기반 best-effort 모듈 추가: `committee/tools/krx_market_flow_provider.py`
+  - 기본 실행 속도/안정성 위해 **기본 OFF + 환경변수 토글**로 전환: `KOREAN_FLOW_SOURCE=KRX|NONE`
+- **검증 안정화**: KRX 내부 토큰(`STK/KSQ/MDC` 등)로 파이프라인이 멈추지 않도록 예외 토큰/메모 문자열 sanitize 적용.
 
 ---
 

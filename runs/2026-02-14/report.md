@@ -1,7 +1,7 @@
 # 데일리 AI 투자위원회
 
 날짜: 2026-02-14
-생성 시각: 2026-02-14T01:25:09.409402+00:00
+생성 시각: 2026-02-14T04:43:03.864263+00:00
 
 ## 합의 결과
 위원회는 선별적 모니터링 하에 중립적 스탠스를 유지합니다.
@@ -33,3 +33,14 @@ FX: USD/KRW 1442.88 (+0.00%)
 ## 수급 (억원, 순매수)
 - 외국인: **+0** / 기관: **+0** / 개인: **+0**
 - 비고: flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)
+
+## 한국 수급 (KOSPI/KOSDAQ, 억원 순매수)
+- 데이터: unavailable (PyKRX 미설치/실패/휴장일 등)
+
+## Macro (요약)
+- Daily: US10Y 4.06% / US2Y 3.59% / 2-10 0.46%p
+        DXY 96.88 / USDKRW 1443.30 / VIX 20.6
+- Monthly: Unemployment 4.30%, CPI YoY 2.83%, Core CPI YoY 2.95%, PCE YoY 2.77%, PMI n/a
+          Wage level 37.17, Wage YoY 3.71%
+- Quarterly: Real GDP 24026.83, GDP QoQ ann. 4.40%
+- Structural: Fed Funds 3.64%, Real rate 1.79%

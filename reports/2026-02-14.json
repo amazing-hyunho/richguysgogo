@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-14T01:23:55.480216+00:00",
+  "generated_at": "2026-02-14T04:40:45.400537+00:00",
   "market_date": "2026-02-14",
   "snapshot": {
     "market_summary": {
@@ -8,11 +8,12 @@
       "usdkrw": 1442.878815
     },
     "flow_summary": {
-      "note": "flows_fetch_failed: unavailable (\uc678\uad6d\uc778/\uae30\uad00/\uac1c\uc778 \uc21c\ub9e4\uc218\ub294 \ub370\uc774\ud130 \uc5c6\uc74c)",
+      "note": "flows_fetch_failed: krx_flow_unavailable: 20260205: krx_fetch_failed[stk,20260205]: dbms/mdc/stat/standard/mdcstat02401: http_status_400 (\uc678\uad6d\uc778/\uae30\uad00/\uac1c\uc778 \uc21c\ub9e4\uc218\ub294 \ub370\uc774\ud130 \uc5c6\uc74c)",
       "foreign_net": 0.0,
       "institution_net": 0.0,
       "retail_net": 0.0
     },
+    "korean_market_flow": null,
     "sector_moves": [
       "n/a",
       "n/a",
@@ -20,8 +21,8 @@
     ],
     "news_headlines": [
       "Japan stocks extend post-election rally with Nikkei 225 breaching 58,000 for the first time - CNBC",
-      "Asia stocks: KOSPI hits record high, Nikkei tops historic 58,000; US jobs in focus - Investing.com",
       "KOSPI 5500 rally drives all ages in South Korea to buy SK hynix, Samsung - CHOSUNBIZ - Chosunbiz",
+      "Asia stocks: KOSPI hits record high, Nikkei tops historic 58,000; US jobs in focus - Investing.com",
       "KOSPI surpasses 5,500 mark for 1st time in midday trading - The Korea Times",
       "South Korea\u2019s KOSPI outpaces global peers, even as concentration tops the S&P 500 - Seeking Alpha",
       "A Stock Market Fervor Takes Hold in South Korea - The New York Times",
@@ -46,6 +47,37 @@
       "fx": {
         "usdkrw": 1442.878815,
         "usdkrw_pct": 0.0
+      },
+      "volatility": {
+        "vix": 20.600000381469727
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.056000232696533,
+        "us2y": 3.5929999351501465,
+        "spread_2_10": 0.4630002975463867,
+        "vix": 20.600000381469727,
+        "dxy": 96.88200378417969,
+        "usdkrw": 1443.300048828125
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 2.8286797395498997,
+        "core_cpi_yoy": 2.9493378374616075,
+        "pce_yoy": 2.772852363262901,
+        "pmi": null,
+        "wage_growth": 37.17,
+        "wage_level": 37.17,
+        "wage_yoy": 3.7109375
+      },
+      "quarterly": {
+        "real_gdp": 24026.834,
+        "gdp_qoq_annualized": 4.4
+      },
+      "structural": {
+        "fed_funds_rate": 3.64,
+        "real_rate": 1.7860002326965332
       }
     }
   },

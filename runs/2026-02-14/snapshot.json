@@ -10,17 +10,18 @@
     "institution_net": 0.0,
     "retail_net": 0.0
   },
+  "korean_market_flow": null,
   "sector_moves": [
     "n/a",
     "n/a",
     "n/a"
   ],
   "news_headlines": [
-    "Japan stocks extend post-election rally with Nikkei 225 breaching 58,000 for the first time - CNBC",
-    "Asia stocks: KOSPI hits record high, Nikkei tops historic 58,000; US jobs in focus - Investing.com",
-    "KOSPI 5500 rally drives all ages in South Korea to buy SK hynix, Samsung - CHOSUNBIZ - Chosunbiz",
     "KOSPI surpasses 5,500 mark for 1st time in midday trading - The Korea Times",
     "South Korea\u2019s KOSPI outpaces global peers, even as concentration tops the S&P 500 - Seeking Alpha",
+    "Japan stocks extend post-election rally with Nikkei 225 breaching 58,000 for the first time - CNBC",
+    "KOSPI 5500 rally drives all ages in South Korea to buy SK hynix, Samsung - CHOSUNBIZ - Chosunbiz",
+    "Asia stocks: KOSPI hits record high, Nikkei tops historic 58,000; US jobs in focus - Investing.com",
     "A Stock Market Fervor Takes Hold in South Korea - The New York Times",
     "South Korea's KOSPI posts sharpest rise in 3 weeks as investors buy the Trump tariff dip - Reuters",
     "South Korean leader celebrates \u2018Kospi 5,000\u2019 moment as stock market soars - Financial Times"
@@ -43,6 +44,37 @@
     "fx": {
       "usdkrw": 1442.878815,
       "usdkrw_pct": 0.0
+    },
+    "volatility": {
+      "vix": 20.600000381469727
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.056000232696533,
+      "us2y": 3.5929999351501465,
+      "spread_2_10": 0.4630002975463867,
+      "vix": 20.600000381469727,
+      "dxy": 96.88200378417969,
+      "usdkrw": 1443.300048828125
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 2.8286797395498997,
+      "core_cpi_yoy": 2.9493378374616075,
+      "pce_yoy": 2.772852363262901,
+      "pmi": null,
+      "wage_growth": 37.17,
+      "wage_level": 37.17,
+      "wage_yoy": 3.7109375
+    },
+    "quarterly": {
+      "real_gdp": 24026.834,
+      "gdp_qoq_annualized": 4.4
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.7860002326965332
     }
   }
 }

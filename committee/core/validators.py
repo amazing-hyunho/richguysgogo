@@ -56,6 +56,9 @@ ALLOWED_NON_TICKER_TOKENS = {
     "OK",
     "CAUTION",
     "AVOID",
+    # KRX internal market codes (not tickers). May appear in flow error notes.
+    "STK",  # KOSPI market id in KRX payloads
+    "KSQ",  # KOSDAQ market id in KRX payloads
 }
 
 TICKER_PATTERN = re.compile(r"\b[A-Z][A-Z0-9]{1,11}\b")

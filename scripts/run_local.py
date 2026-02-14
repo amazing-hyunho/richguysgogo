@@ -27,12 +27,8 @@ def main() -> None:
     snapshot = build_snapshot(market_date)
     status = get_last_snapshot_status()
     if status:
-        print(
-            f"snapshot sources status: usdkrw={status.get('usdkrw','FAIL')}, "
-            f"kospi={status.get('kospi','FAIL')}, "
-            f"flows={status.get('flows','FAIL')}, "
-            f"headlines={status.get('headlines','FAIL')}"
-        )
+        keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
+        print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
 
     agents = [MacroStub(), FlowStub(), SectorStub(), RiskStub()]
     stances = [agent.run(snapshot) for agent in agents]

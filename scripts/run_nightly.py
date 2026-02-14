@@ -22,12 +22,8 @@ def main() -> None:
     pipeline.run(date.today(), runs_dir)
     status = get_last_snapshot_status()
     if status:
-        print(
-            f"snapshot sources status: usdkrw={status.get('usdkrw','FAIL')}, "
-            f"kospi={status.get('kospi','FAIL')}, "
-            f"flows={status.get('flows','FAIL')}, "
-            f"headlines={status.get('headlines','FAIL')}"
-        )
+        keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
+        print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
 
 
 if __name__ == "__main__":

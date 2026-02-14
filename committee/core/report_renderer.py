@@ -51,6 +51,14 @@ def render_report(report: Report, output_path: Path) -> None:
 
 def build_report_markdown(report: Report) -> str:
     """Render a minimal markdown report for human review."""
+    def _fmt(value: float | None, digits: int = 2, suffix: str = "") -> str:
+        if value is None:
+            return "n/a"
+        try:
+            return f"{float(value):.{digits}f}{suffix}"
+        except Exception:
+            return "n/a"
+
     lines = [
         "# 데일리 AI 투자위원회",
         "",
@@ -115,6 +123,55 @@ def build_report_markdown(report: Report) -> str:
     f = report.snapshot.flow_summary
     lines.append(f"- 외국인: **{f.foreign_net:+.0f}** / 기관: **{f.institution_net:+.0f}** / 개인: **{f.retail_net:+.0f}**")
     lines.append(f"- 비고: {f.note}")
+
+    # Optional: Korean market flow breakdown (KOSPI/KOSDAQ) via PyKRX.
+    lines.extend(["", "## 한국 수급 (KOSPI/KOSDAQ, 억원 순매수)"])
+    kf = report.snapshot.korean_market_flow
+    if kf is None:
+        lines.append("- 데이터: unavailable (PyKRX 미설치/실패/휴장일 등)")
+    else:
+        lines.append(f"- 기준일: {kf.date}")
+        for mk in ["KOSPI", "KOSDAQ"]:
+            inv = kf.market.get(mk)
+            if inv is None:
+                lines.append(f"- {mk}: n/a")
+                continue
+            lines.append(
+                f"- {mk}: 외국인 **{inv.foreign:+d}** / 기관 **{inv.institution:+d}** / 개인 **{inv.individual:+d}**"
+            )
+
+    # Optional macro block (daily/monthly/quarterly/structural). Missing values are shown as n/a.
+    if report.snapshot.macro is not None:
+        macro = report.snapshot.macro
+        lines.extend(["", "## Macro (요약)"])
+
+        d = macro.daily
+        lines.append(
+            f"- Daily: US10Y {_fmt(d.us10y, 2, '%')} / US2Y {_fmt(d.us2y, 2, '%')} / 2-10 {_fmt(d.spread_2_10, 2, '%p')}"
+        )
+        lines.append(
+            f"        DXY {_fmt(d.dxy, 2)} / USDKRW {_fmt(d.usdkrw, 2)} / VIX {_fmt(d.vix, 1)}"
+        )
+
+        mth = macro.monthly
+        lines.append(
+            f"- Monthly: Unemployment {_fmt(mth.unemployment_rate, 2, '%')}, "
+            f"CPI YoY {_fmt(mth.cpi_yoy, 2, '%')}, Core CPI YoY {_fmt(mth.core_cpi_yoy, 2, '%')}, "
+            f"PCE YoY {_fmt(mth.pce_yoy, 2, '%')}, PMI {_fmt(mth.pmi, 1)}"
+        )
+        lines.append(
+            f"          Wage level {_fmt(mth.wage_level, 2)}, Wage YoY {_fmt(mth.wage_yoy, 2, '%')}"
+        )
+
+        q = macro.quarterly
+        lines.append(
+            f"- Quarterly: Real GDP {_fmt(q.real_gdp, 2)}, GDP QoQ ann. {_fmt(q.gdp_qoq_annualized, 2, '%')}"
+        )
+
+        st = macro.structural
+        lines.append(
+            f"- Structural: Fed Funds {_fmt(st.fed_funds_rate, 2, '%')}, Real rate {_fmt(st.real_rate, 2, '%')}"
+        )
 
     return "\n".join(lines)
 

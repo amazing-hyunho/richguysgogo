@@ -6,6 +6,7 @@ from __future__ import annotations
 # so snapshot builder can use fallback 0.0 and record reason in status.
 
 from datetime import date, timedelta
+import os
 from typing import Dict, List, Tuple
 import xml.etree.ElementTree as ET
 
@@ -138,8 +139,48 @@ class HttpProvider(IDataProvider):
             return None, str(exc)
 
     def get_flows(self) -> Tuple[Dict | None, str | None]:
-        """Flow data not available without paid sources; return None."""
-        return None, "unavailable"
+        """Fetch Korean market flows (investor net buying).
+
+        Architecture note:
+        - This project supports swapping flow sources without changing the pipeline.
+        - Default behavior is **disabled** (return unavailable) because KRX scraping endpoints
+          are not stable and can slow down runs.
+        - Enable a specific source via env:
+            KOREAN_FLOW_SOURCE=KRX   -> use KRX (data.krx.co.kr) best-effort scraping
+            KOREAN_FLOW_SOURCE=NONE  -> disabled (default)
+
+        Returns:
+        - On success: a dict with numeric totals in "억원" (consistent with report label),
+          plus a structured breakdown under `korean_market_flow` for report rendering.
+        - On failure: (None, reason) so snapshot builder can use fallback and record status.
+        """
+        try:
+            source = os.getenv("KOREAN_FLOW_SOURCE", "NONE").strip().upper()
+            if source in ("", "NONE", "OFF", "DISABLED"):
+                return None, "unavailable"
+            if source != "KRX":
+                return None, f"unavailable(source={source})"
+
+            from committee.tools.krx_market_flow_provider import get_korean_market_flow_krx
+
+            flow = get_korean_market_flow_krx()
+            markets = (flow or {}).get("market", {})
+            kospi = markets.get("KOSPI", {})
+            kosdaq = markets.get("KOSDAQ", {})
+
+            # Totals across KOSPI + KOSDAQ (억원, 순매수)
+            foreign_total = int(kospi.get("foreign", 0)) + int(kosdaq.get("foreign", 0))
+            institution_total = int(kospi.get("institution", 0)) + int(kosdaq.get("institution", 0))
+            retail_total = int(kospi.get("individual", 0)) + int(kosdaq.get("individual", 0))
+
+            return {
+                "foreign_net": float(foreign_total),
+                "institution_net": float(institution_total),
+                "retail_net": float(retail_total),
+                "korean_market_flow": flow,
+            }, None
+        except Exception as exc:
+            return None, f"krx_flow_unavailable: {exc}"
 
     def get_headlines(self, limit: int) -> Tuple[List[str] | None, str | None]:
         """Fetch headlines from a public RSS feed."""

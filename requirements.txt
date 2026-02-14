@@ -1,3 +1,8 @@
 jsonschema>=4.22
 pydantic>=2.7
 requests>=2.32
+yfinance
+# PyKRX: requires numpy<2.0, so it cannot be installed on Python 3.13+
+# (pip falls back to building numpy from source and fails without MSVC).
+# If you want Korean flow (수급) via PyKRX, use Python 3.12 venv and install pykrx there.
+pykrx; python_version < "3.13"
