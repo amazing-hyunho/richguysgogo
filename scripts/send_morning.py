@@ -37,6 +37,7 @@ def main() -> None:
         return
 
     snapshot_path = latest_dir / "snapshot.json"
+    stances_path = latest_dir / "stances.json"
     committee_path = latest_dir / "committee_result.json"
     report_path = latest_dir / "report.md"
 
@@ -45,10 +46,16 @@ def main() -> None:
         return
 
     snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
+    stances = json.loads(stances_path.read_text(encoding="utf-8")) if stances_path.exists() else []
     committee = json.loads(committee_path.read_text(encoding="utf-8")) if committee_path.exists() else None
     report_text = report_path.read_text(encoding="utf-8") if (args.include_report and report_path.exists()) else ""
 
-    text = _build_morning_brief(snapshot=snapshot, committee=committee, report_text=report_text)
+    text = _build_morning_brief(
+        snapshot=snapshot,
+        stances=stances,
+        committee=committee,
+        report_text=report_text,
+    )
     send_report(text)
 
 
@@ -72,7 +79,7 @@ def _fmt(value, digits: int = 2, suffix: str = "") -> str:
         return "n/a"
 
 
-def _build_morning_brief(snapshot: dict, committee: dict | None, report_text: str) -> str:
+def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, report_text: str) -> str:
     """Build a readable text brief from run artifacts."""
     # Snapshot structure is stable, but indicators may be missing (NULL/None).
     markets = snapshot.get("markets", {}) or {}
@@ -148,12 +155,32 @@ def _build_morning_brief(snapshot: dict, committee: dict | None, report_text: st
                 lines.append(f"- {point}")
         lines.append("")
 
+    if stances:
+        lines.append("[AI 한줄 의견]")
+        for stance in stances:
+            agent = _agent_label(stance.get("agent_name"))
+            comment = stance.get("korean_comment")
+            if agent and comment:
+                lines.append(f"- {agent}: {comment}")
+        lines.append("")
+
     if report_text.strip():
         lines.append("-----")
         lines.append("[상세 리포트]")
         lines.append(report_text.strip())
 
     return "\n".join(lines)
+
+
+def _agent_label(agent_name: str | None) -> str:
+    """Map agent identifiers to Korean labels."""
+    mapping = {
+        "macro": "매크로",
+        "flow": "수급",
+        "sector": "섹터",
+        "risk": "리스크",
+    }
+    return mapping.get(agent_name or "", agent_name or "")
 
 
 if __name__ == "__main__":

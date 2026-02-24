@@ -85,7 +85,10 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
         return json.dumps(
             {
                 "snapshot": snapshot.model_dump(),
-                "instruction": "Generate one stance JSON for this agent.",
+                "instruction": (
+                    "Generate one stance JSON for this agent. "
+                    "Include a one-line Korean comment in korean_comment."
+                ),
                 "allowed_evidence_ids": [
                     "snapshot.market_summary.note",
                     "snapshot.market_summary.usdkrw",

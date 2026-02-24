@@ -81,6 +81,7 @@ def _extract_text_fields(snapshot: Snapshot, stances: Sequence[Stance], result: 
     texts.extend(snapshot.news_headlines)
     for stance in stances:
         texts.extend(stance.core_claims)
+        texts.append(stance.korean_comment)
     texts.append(result.consensus)
     for key_point in result.key_points:
         texts.append(key_point.point)
@@ -224,6 +225,7 @@ def validate_pipeline(
     ticker_guard_texts.extend([normalized_snapshot.market_summary.note, normalized_snapshot.flow_summary.note])
     for stance in normalized_stances:
         ticker_guard_texts.extend(stance.core_claims)
+        ticker_guard_texts.append(stance.korean_comment)
     ticker_guard_texts.append(normalized_result.consensus)
     for key_point in normalized_result.key_points:
         ticker_guard_texts.append(key_point.point)

@@ -74,6 +74,11 @@ def build_report_markdown(report: Report) -> str:
         sources = ", ".join(key_point.sources)
         lines.append(f"- {_translate_phrase(key_point.point)} (출처: {sources})")
 
+    lines.extend(["", "## AI 한줄 의견"])
+    for stance in report.stances:
+        agent_label = _agent_label(stance.agent_name.value)
+        lines.append(f"- {agent_label}: {stance.korean_comment}")
+
     tag_counts = {"RISK_ON": 0, "NEUTRAL": 0, "RISK_OFF": 0}
     for stance in report.stances:
         tag_counts[stance.regime_tag.value] = tag_counts.get(stance.regime_tag.value, 0) + 1
@@ -213,3 +218,14 @@ def _translate_sentence(text: str) -> str:
         "Keep position sizes moderate.": "포지션 규모를 보수적으로 유지합니다.",
     }
     return mapping.get(text, text)
+
+
+def _agent_label(agent_name: str) -> str:
+    """Map agent identifiers to Korean labels."""
+    mapping = {
+        "macro": "매크로",
+        "flow": "수급",
+        "sector": "섹터",
+        "risk": "리스크",
+    }
+    return mapping.get(agent_name, agent_name)

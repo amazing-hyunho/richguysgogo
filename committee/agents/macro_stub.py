@@ -20,18 +20,22 @@ class MacroStub(PreAnalysisAgent):
             regime = RegimeTag.NEUTRAL
             confidence = ConfidenceLevel.LOW
             claims = ["Macro data unavailable.", "Use neutral stance."]
+            comment = "거시 데이터가 부족해 중립을 유지합니다."
         elif "volatile" in snapshot.market_summary.note.lower():
             regime = RegimeTag.RISK_OFF
             confidence = ConfidenceLevel.MED
             claims = ["Macro tone is cautious.", "Volatility noted.", "Prefer defense."]
+            comment = "변동성 경고가 있어 방어적 접근이 필요합니다."
         else:
             regime = RegimeTag.NEUTRAL
             confidence = ConfidenceLevel.MED
             claims = ["Macro tone is balanced.", "No major shocks.", "Stay selective."]
+            comment = "거시는 균형적이며 선택적 대응이 적절합니다."
 
         return Stance(
             agent_name=AgentName.MACRO,
             core_claims=claims[:3],
+            korean_comment=comment,
             regime_tag=regime,
             evidence_ids=[
                 "snapshot.market_summary.usdkrw",
