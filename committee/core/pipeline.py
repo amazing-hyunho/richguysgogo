@@ -23,6 +23,7 @@ from committee.core.database import (
     safe_upsert_quarterly_macro,
 )
 from committee.core.storage import save_run
+from committee.core.trace_logger import TraceLogger
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.schemas.committee_result import (
     CommitteeResult,
@@ -113,8 +114,11 @@ class DailyPipeline:
 
     def run(self, market_date: date, output_dir: Path) -> Report:
         """Run the full pipeline and write the report."""
+        trace = TraceLogger(os.getenv("LLM_TRACE_PATH"))
+        print("[pipeline] stage 1/5: build snapshot")
         snapshot = build_snapshot(market_date)
         status = get_last_snapshot_status()
+        trace.log("pipeline_stage", {"stage": "snapshot_built", "market_date": market_date.isoformat(), "status": status})
         # DB persistence layer (additive): best-effort upsert.
         # Must not break the existing pipeline even if DB is unavailable/locked.
         # Data integrity: use NULL (not 0.0) for missing/unavailable/not-implemented values.
@@ -173,9 +177,15 @@ class DailyPipeline:
                 real_gdp=q.real_gdp,
                 gdp_qoq_annualized=q.gdp_qoq_annualized,
             )
+        print("[pipeline] stage 2/5: run pre-analysis")
         stances = run_pre_analysis(snapshot, self.agent_ids)
-        committee_result = run_committee(snapshot, stances)
+        trace.log("pipeline_stage", {"stage": "stances_built", "count": len(stances)})
 
+        print("[pipeline] stage 3/5: run committee")
+        committee_result = run_committee(snapshot, stances)
+        trace.log("pipeline_stage", {"stage": "committee_result_built", "consensus": committee_result.consensus})
+
+        print("[pipeline] stage 4/5: build report")
         report = build_report(
             market_date=market_date.isoformat(),
             snapshot=snapshot,
@@ -184,6 +194,8 @@ class DailyPipeline:
         )
 
         output_path = output_dir / f"{market_date.isoformat()}.json"
+        print("[pipeline] stage 5/5: persist artifacts")
         render_report(report, output_path)
-        save_run(output_dir, market_date, snapshot, stances, committee_result, report)
+        run_dir = save_run(output_dir, market_date, snapshot, stances, committee_result, report)
+        trace.log("pipeline_stage", {"stage": "artifacts_saved", "run_dir": str(run_dir), "report_json": str(output_path)})
         return report

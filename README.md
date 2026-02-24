@@ -144,6 +144,17 @@ python scripts/run_local.py
 
 야간 배치(`scripts/run_nightly.py`)도 동일한 환경 변수(`USE_LLM_AGENTS`, `AGENT_MODEL_BACKEND`, `LLM_TEMPERATURE`)를 읽어 pre-analysis 단계에 반영합니다.
 
+### 실행 중간 로그 + AI 응답 추적 로그
+`run_local.py`/`run_nightly.py` 실행 시 단계별 진행 로그를 출력합니다.
+
+또한 LLM 사용 시(또는 스텁 fallback 발생 시) 에이전트 응답을 JSONL로 누적 저장합니다.
+- 기본 경로: `runs/YYYY-MM-DD/llm_traces.jsonl`
+- 재지정: `LLM_TRACE_PATH=/custom/path/llm_traces.jsonl`
+
+로그 이벤트 예시:
+- `pipeline_stage`: 스냅샷/stance/committee/저장 단계 상태
+- `llm_agent_response`: agent/model/system_prompt/user_prompt/raw_response/parsed/fallback 여부
+
 ### API Key 등록 방법 (수정 용이)
 OpenAI 호환 설정은 환경 변수만 바꾸면 되도록 구성했습니다.
 
@@ -162,6 +173,8 @@ setx OPENAI_BASE_URL "https://api.openai.com/v1"
 - 키 로딩: `committee/tools/openai_chat.py`
 - 모델 매핑 수정: `committee/agents/model_profiles.py`
 - Agent별 system prompt 수정: `committee/agents/system_prompts.py`
+
+`get_system_prompt(agent, snapshot)`가 실행 시점 Snapshot의 지수/환율/VIX/market note/flow note/최대 20개 헤드라인을 system prompt에 포함합니다.
 
 ### Agent별 예시 System Prompt
 실제 프롬프트 원문은 `committee/agents/system_prompts.py`에 있으며, 예시는 다음과 같습니다.

@@ -3,11 +3,13 @@ from __future__ import annotations
 """LLM-backed pre-analysis agents with schema-safe fallback."""
 
 import json
+import os
 from dataclasses import dataclass
 
 from committee.agents.base import PreAnalysisAgent
 from committee.agents.model_profiles import ModelBackend, get_agent_model_map
 from committee.agents.system_prompts import get_system_prompt
+from committee.core.trace_logger import TraceLogger
 from committee.schemas.snapshot import Snapshot
 from committee.schemas.stance import AgentName, Stance
 from committee.tools.openai_chat import chat_completion, load_openai_config
@@ -35,6 +37,11 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
         if self.options.backend != ModelBackend.OPENAI:
             return self.fallback_agent.run(snapshot)
 
+        trace = TraceLogger(os.getenv("LLM_TRACE_PATH"))
+        try:
+            model = get_agent_model_map(self.options.backend)[self.agent_name]
+            config = load_openai_config()
+            system_prompt = get_system_prompt(self.agent_name, snapshot)
         try:
             model = get_agent_model_map(self.options.backend)[self.agent_name]
             config = load_openai_config()
@@ -49,6 +56,34 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
             )
             parsed = json.loads(text)
             parsed["agent_name"] = self.agent_name.value
+            stance = Stance.model_validate(parsed)
+            trace.log(
+                "llm_agent_response",
+                {
+                    "agent": self.agent_name.value,
+                    "model": model,
+                    "backend": self.options.backend.value,
+                    "system_prompt": system_prompt,
+                    "user_prompt": user_prompt,
+                    "raw_response": text,
+                    "parsed": stance.model_dump(),
+                    "fallback_used": False,
+                },
+            )
+            return stance
+        except Exception as exc:
+            fallback = self.fallback_agent.run(snapshot)
+            trace.log(
+                "llm_agent_response",
+                {
+                    "agent": self.agent_name.value,
+                    "backend": self.options.backend.value,
+                    "error": str(exc),
+                    "fallback_used": True,
+                    "fallback_stance": fallback.model_dump(),
+                },
+            )
+            return fallback
             return Stance.model_validate(parsed)
         except Exception:
             return self.fallback_agent.run(snapshot)
