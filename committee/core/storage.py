@@ -38,4 +38,4 @@ def save_run(
 def _write_json(path: Path, payload: dict | list) -> None:
     """Write JSON payload to disk."""
     with path.open("w", encoding="utf-8") as handle:
-        json.dump(payload, handle, ensure_ascii=True, indent=2)
+        json.dump(payload, handle, ensure_ascii=False, indent=2)

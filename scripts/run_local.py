@@ -19,6 +19,8 @@ from committee.agents.macro_stub import MacroStub
 from committee.agents.model_profiles import ModelBackend, get_agent_model_map, parse_backend
 from committee.agents.risk_stub import RiskStub
 from committee.agents.sector_stub import SectorStub
+from committee.agents.model_profiles import ModelBackend, get_agent_model_map, parse_backend
+from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.core.report_renderer import build_report, render_report
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.core.validators import validate_pipeline
@@ -81,7 +83,7 @@ def main() -> None:
     output_path = output_dir / f"{market_date.isoformat()}.json"
     render_report(report, output_path)
 
-    print(json.dumps(report.model_dump(), ensure_ascii=True, indent=2))
+    print(json.dumps(report.model_dump(), ensure_ascii=False, indent=2))
     print(f"Report saved to: {output_path}")
 
 
