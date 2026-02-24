@@ -128,9 +128,15 @@ python scripts/send_morning.py
 
 현재 권장 매핑:
 - macro: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-32B-Instruct`
-- flow: `gpt-4.1-mini` → 로컬 대안 `Qwen/Qwen2.5-14B-Instruct`
-- sector: `gpt-4.1-mini` → 로컬 대안 `meta-llama/Llama-3.1-8B-Instruct`
+- flow: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-14B-Instruct`
+- sector: `gpt-4.1` → 로컬 대안 `meta-llama/Llama-3.1-8B-Instruct`
 - risk: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-32B-Instruct`
+
+모델 접근 권한이 프로젝트마다 다를 수 있어 아래 우선순위로 자동 대체합니다.
+1. `OPENAI_MODEL_<AGENT>` (예: `OPENAI_MODEL_MACRO`)
+2. `OPENAI_MODEL`
+3. 에이전트 기본 프로필
+4. `OPENAI_FALLBACK_MODELS` (기본: `gpt-4.1,gpt-4.1-mini,gpt-4o,gpt-4o-mini`)
 
 ### Agent에 LLM 붙이기 (실행)
 기본값은 stub 에이전트이며, 아래 환경 변수를 켜면 LLM 기반 pre-analysis를 사용합니다.
@@ -139,6 +145,8 @@ python scripts/send_morning.py
 export USE_LLM_AGENTS=1
 export AGENT_MODEL_BACKEND=openai
 export LLM_TEMPERATURE=0.1
+# 선택: 프로젝트에 허용된 모델로 강제
+export OPENAI_MODEL=gpt-4o-mini
 python scripts/run_local.py
 ```
 
@@ -147,6 +155,8 @@ python scripts/run_local.py
 $env:USE_LLM_AGENTS = "1"
 $env:AGENT_MODEL_BACKEND = "openai"
 $env:LLM_TEMPERATURE = "0.1"
+# 선택: 프로젝트에 허용된 모델로 강제
+$env:OPENAI_MODEL = "gpt-4o-mini"
 python scripts/run_local.py
 ```
 

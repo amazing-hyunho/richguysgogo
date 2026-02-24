@@ -41,13 +41,13 @@ AGENT_MODEL_PROFILES: dict[AgentName, AgentModelProfile] = {
     ),
     AgentName.FLOW: AgentModelProfile(
         agent=AgentName.FLOW,
-        openai_model="gpt-4.1-mini",
+        openai_model="gpt-4.1",
         local_model="Qwen/Qwen2.5-14B-Instruct",
         rationale="수치/문맥 매핑 정확도와 처리비용 균형.",
     ),
     AgentName.SECTOR: AgentModelProfile(
         agent=AgentName.SECTOR,
-        openai_model="gpt-4.1-mini",
+        openai_model="gpt-4.1",
         local_model="meta-llama/Llama-3.1-8B-Instruct",
         rationale="키워드 분류 중심 업무라 경량 모델 효율이 높음.",
     ),
