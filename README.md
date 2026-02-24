@@ -118,6 +118,80 @@ python scripts/send_morning.py
 
 ---
 
+## 에이전트 모델 프로필 (GPT 기본 + 로컬 확장)
+
+각 에이전트별 추천 모델은 `committee/agents/model_profiles.py`에 고정되어 있습니다.
+기본은 GPT(OpenAI) 프로필이고, 나중에 비용 절감을 위해 로컬 무료 모델 프로필로 즉시 전환할 수 있습니다.
+
+- 기본(권장): `AGENT_MODEL_BACKEND=openai`
+- 로컬 확장: `AGENT_MODEL_BACKEND=local` (또는 `hf`, `ollama`)
+
+현재 권장 매핑:
+- macro: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-32B-Instruct`
+- flow: `gpt-4.1-mini` → 로컬 대안 `Qwen/Qwen2.5-14B-Instruct`
+- sector: `gpt-4.1-mini` → 로컬 대안 `meta-llama/Llama-3.1-8B-Instruct`
+- risk: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-32B-Instruct`
+
+### Agent에 LLM 붙이기 (실행)
+기본값은 stub 에이전트이며, 아래 환경 변수를 켜면 LLM 기반 pre-analysis를 사용합니다.
+
+```bash
+export USE_LLM_AGENTS=1
+export AGENT_MODEL_BACKEND=openai
+export LLM_TEMPERATURE=0.1
+python scripts/run_local.py
+```
+
+야간 배치(`scripts/run_nightly.py`)도 동일한 환경 변수(`USE_LLM_AGENTS`, `AGENT_MODEL_BACKEND`, `LLM_TEMPERATURE`)를 읽어 pre-analysis 단계에 반영합니다.
+
+### 실행 중간 로그 + AI 응답 추적 로그
+`run_local.py`/`run_nightly.py` 실행 시 단계별 진행 로그를 출력합니다.
+
+또한 LLM 사용 시(또는 스텁 fallback 발생 시) 에이전트 응답을 JSONL로 누적 저장합니다.
+- 기본 경로: `runs/YYYY-MM-DD/llm_traces.jsonl`
+- 재지정: `LLM_TRACE_PATH=/custom/path/llm_traces.jsonl`
+
+로그 이벤트 예시:
+- `pipeline_stage`: 스냅샷/stance/committee/저장 단계 상태
+- `llm_agent_response`: agent/model/system_prompt/user_prompt/raw_response/parsed/fallback 여부
+
+
+모델 접근권한 이슈(예: 403, Project does not have access to model)가 나면 아래처럼 후보군을 지정해 자동 fallback 할 수 있습니다.
+
+```bash
+export OPENAI_MODEL_CANDIDATES="gpt-4o-mini,gpt-4o,gpt-3.5-turbo"
+```
+
+`LLM trace`에는 모델별 실패 원인이 `errors` 배열로 함께 저장됩니다.
+### API Key 등록 방법 (수정 용이)
+OpenAI 호환 설정은 환경 변수만 바꾸면 되도록 구성했습니다.
+
+```bash
+# Linux/macOS
+export OPENAI_API_KEY="sk-..."
+export OPENAI_BASE_URL="https://api.openai.com/v1"  # 기본값
+```
+
+```powershell
+# Windows PowerShell
+setx OPENAI_API_KEY "sk-..."
+setx OPENAI_BASE_URL "https://api.openai.com/v1"
+```
+
+- 키 로딩: `committee/tools/openai_chat.py`
+- 모델 매핑 수정: `committee/agents/model_profiles.py`
+- Agent별 system prompt 수정: `committee/agents/system_prompts.py`
+
+`get_system_prompt(agent, snapshot)`가 실행 시점 Snapshot의 지수/환율/VIX/market note/flow note/최대 20개 헤드라인을 system prompt에 포함합니다.
+
+### Agent별 예시 System Prompt
+실제 프롬프트 원문은 `committee/agents/system_prompts.py`에 있으며, 예시는 다음과 같습니다.
+
+- Macro: "Be conservative, explicitly acknowledge uncertainty..."
+- Flow: "Map numeric flow context to directional interpretation with stable logic..."
+- Sector: "Perform keyword/sector signal classification..."
+- Risk: "Precision is critical: avoid false alarms and overreaction..."
+
 ## 환경 변수 (Telegram)
 
 ```

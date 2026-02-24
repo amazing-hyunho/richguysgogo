@@ -8,10 +8,9 @@ from __future__ import annotations
 from datetime import date, timedelta
 import os
 from typing import Dict, List, Tuple
-import xml.etree.ElementTree as ET
-
 import requests
 
+from committee.tools.news_digest import build_news_digest
 from committee.tools.providers import IDataProvider
 
 
@@ -183,25 +182,11 @@ class HttpProvider(IDataProvider):
             return None, f"krx_flow_unavailable: {exc}"
 
     def get_headlines(self, limit: int) -> Tuple[List[str] | None, str | None]:
-        """Fetch headlines from a public RSS feed."""
-        try:
-            response = requests.get(
-                "https://news.google.com/rss/search?q=KOSPI",
-                timeout=7,
-                headers=_default_headers(),
-            )
-            if response.status_code != 200:
-                return None, f"http_status_{response.status_code}"
-            root = ET.fromstring(response.text)
-            titles: List[str] = []
-            for item in root.findall(".//item/title"):
-                if item.text:
-                    titles.append(item.text.strip())
-            if not titles:
-                return None, "no_titles"
-            return titles[:limit], None
-        except Exception as exc:
-            return None, str(exc)
+        """Fetch headlines using RSS + article-body summarization module."""
+        titles, _digest, reason = build_news_digest(query="KOSPI", limit=limit)
+        if not titles:
+            return None, reason or "no_titles"
+        return titles[:limit], None
 
 
 def _default_headers() -> dict:
