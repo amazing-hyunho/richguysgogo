@@ -16,7 +16,6 @@ COMMON_OUTPUT_RULES = (
 )
 
 AGENT_BASE_SYSTEM_PROMPTS: dict[AgentName, str] = {
-AGENT_SYSTEM_PROMPTS: dict[AgentName, str] = {
     AgentName.MACRO: (
         "You are the MACRO pre-analysis agent for an investment committee. "
         "Be conservative, explicitly acknowledge uncertainty, and avoid overconfident claims. "
@@ -72,7 +71,3 @@ def get_system_prompt(agent_name: AgentName, snapshot: Snapshot) -> str:
 
     base_prompt = AGENT_BASE_SYSTEM_PROMPTS[agent_name]
     return base_prompt + _snapshot_context_block(snapshot)
-def get_system_prompt(agent_name: AgentName) -> str:
-    """Return per-agent system prompt."""
-
-    return AGENT_SYSTEM_PROMPTS[agent_name]

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-02-24T06:37:12.591166+00:00",
+  "generated_at": "2026-02-24T07:02:36.409361+00:00",
   "market_date": "2026-02-24",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI 1.96%, USD/KRW 1443.82. Headlines loaded. Flows unavailable.",
-      "kospi_change_pct": 1.9582316305169254,
+      "note": "KOSPI 2.11%, USD/KRW 1443.82. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": 2.113383411321269,
       "usdkrw": 1443.824633
     },
     "flow_summary": {
@@ -21,13 +21,13 @@
     ],
     "news_headlines": [
       "6000선 턱밑까지 온 코스피… 그 뒤엔 149조 ‘하락 베팅’ 그림자 - 조선일보",
-      "코스피 5840선에 사상 최고치 마감…코스닥은 하락 - 아시아경제",
-      "코스피, 외인 팔자에 하락 전환…코스닥도 약세 - MTN 머니투데이방송",
       "코스피, 장중 5900선 회복…'99만닉스' 또 최고가 - 한국경제",
       "“이러다 크게 물리는 거 아냐”…코스피 역대급 불장에도 외국인 9조 매도, 왜? - v.daum.net",
       "노무라 \"코스피, 상반기 최대 8000 간다\" - 뉴시스",
-      "\"상반기 코스피 8,000 간다\"…노무라의 파격 전망 근거는 - 연합인포맥스",
-      "\"지금이라도 들어가야 하나\"…'팔천피' 전망에 개미들 들썩 [분석+] - 한국경제"
+      "KOSPI tops the 5,900 mark intraday···a jittery rally amid ‘Trump risk’ - 경향신문",
+      "코스피 '불장'에 주요 상장사 배당 1년 만에 15.3%↑ - 연합뉴스",
+      "與, 3차 상법 처리 '드라이브'…\"주당순이익 개선\" 코스피 기대감 - 뉴스1",
+      "코스피 연일 신고가, 5846.09 마감[노컷네컷] - 노컷뉴스"
     ],
     "watchlist": [
       "SPY",
@@ -36,8 +36,8 @@
     ],
     "markets": {
       "kr": {
-        "kospi_pct": 1.9582316305169254,
-        "kosdaq_pct": 1.105042628552706
+        "kospi_pct": 2.113383411321269,
+        "kosdaq_pct": 1.1293509384554707
       },
       "us": {
         "sp500_pct": -1.0385652247284864,
@@ -58,8 +58,8 @@
         "us2y": 3.5880000591278076,
         "spread_2_10": 0.44099974632263184,
         "vix": 21.010000228881836,
-        "dxy": 97.81400299072266,
-        "usdkrw": 1441.8800048828125
+        "dxy": 97.8010025024414,
+        "usdkrw": 1442.280029296875
       },
       "monthly": {
         "unemployment_rate": 4.3,
@@ -127,17 +127,17 @@
     {
       "agent_name": "risk",
       "core_claims": [
-        "Risk signals stable.",
-        "No acute stress.",
-        "Maintain discipline."
+        "Risk signals elevated.",
+        "Headline risk rising.",
+        "Reduce exposure."
       ],
-      "regime_tag": "NEUTRAL",
+      "regime_tag": "RISK_OFF",
       "evidence_ids": [
         "snapshot.market_summary.usdkrw",
         "snapshot.market_summary.kospi_change_pct",
         "snapshot.news_headlines"
       ],
-      "confidence": "MED"
+      "confidence": "HIGH"
     }
   ],
   "committee_result": {
@@ -148,8 +148,7 @@
         "sources": [
           "macro",
           "flow",
-          "sector",
-          "risk"
+          "sector"
         ]
       },
       {
@@ -164,11 +163,11 @@
       {
         "topic": "Regime tags",
         "majority": "NEUTRAL",
-        "minority": "None",
+        "minority": "RISK_OFF",
         "minority_agents": [
-          "none"
+          "risk"
         ],
-        "why_it_matters": "No dissenting regime tags are present."
+        "why_it_matters": "Minority risk regime can change positioning boundaries."
       }
     ],
     "ops_guidance": [

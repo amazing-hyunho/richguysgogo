@@ -42,10 +42,6 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
             model = get_agent_model_map(self.options.backend)[self.agent_name]
             config = load_openai_config()
             system_prompt = get_system_prompt(self.agent_name, snapshot)
-        try:
-            model = get_agent_model_map(self.options.backend)[self.agent_name]
-            config = load_openai_config()
-            system_prompt = get_system_prompt(self.agent_name)
             user_prompt = self._build_user_prompt(snapshot)
             text = chat_completion(
                 config=config,
@@ -84,9 +80,6 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                 },
             )
             return fallback
-            return Stance.model_validate(parsed)
-        except Exception:
-            return self.fallback_agent.run(snapshot)
 
     def _build_user_prompt(self, snapshot: Snapshot) -> str:
         return json.dumps(
