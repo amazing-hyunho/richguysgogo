@@ -3,13 +3,14 @@ from __future__ import annotations
 # Stance schema for per-agent pre-analysis.
 
 from enum import Enum
-from typing import Annotated
+from typing import Annotated, Optional
 
 from pydantic import BaseModel, Field, constr
 
 
 ShortText = constr(strip_whitespace=True, min_length=1, max_length=200)
 KoreanComment = constr(strip_whitespace=True, min_length=1, max_length=120)
+RawResponse = constr(strip_whitespace=False, min_length=1, max_length=4000)
 IdToken = constr(
     strip_whitespace=True,
     min_length=1,
@@ -49,6 +50,10 @@ class Stance(BaseModel):
     agent_name: AgentName = Field(..., description="Agent identifier.")
     core_claims: CoreClaims = Field(..., description="Key claims (max 3 lines).")
     korean_comment: KoreanComment = Field(..., description="One-line Korean comment.")
+    raw_response: Optional[RawResponse] = Field(
+        default=None,
+        description="Raw LLM response text (JSON string).",
+    )
     regime_tag: RegimeTag = Field(..., description="Market regime tag.")
     evidence_ids: EvidenceIds = Field(..., description="Evidence ID list.")
     confidence: ConfidenceLevel = Field(..., description="Confidence level.")

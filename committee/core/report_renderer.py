@@ -79,6 +79,24 @@ def build_report_markdown(report: Report) -> str:
         agent_label = _agent_label(stance.agent_name.value)
         lines.append(f"- {agent_label}: {stance.korean_comment}")
 
+    lines.extend(["", "## AI 핵심 주장"])
+    for stance in report.stances:
+        agent_label = _agent_label(stance.agent_name.value)
+        lines.append(f"### {agent_label}")
+        for claim in stance.core_claims:
+            lines.append(f"- {claim}")
+
+    lines.extend(["", "## AI 원문 응답"])
+    for stance in report.stances:
+        agent_label = _agent_label(stance.agent_name.value)
+        lines.append(f"### {agent_label}")
+        if stance.raw_response:
+            lines.append("```")
+            lines.extend(stance.raw_response.splitlines())
+            lines.append("```")
+        else:
+            lines.append("(stub or raw response unavailable)")
+
     tag_counts = {"RISK_ON": 0, "NEUTRAL": 0, "RISK_OFF": 0}
     for stance in report.stances:
         tag_counts[stance.regime_tag.value] = tag_counts.get(stance.regime_tag.value, 0) + 1
@@ -108,15 +126,15 @@ def build_report_markdown(report: Report) -> str:
             f"{_translate_sentence(guidance.text)}"
         )
 
-    lines.extend(["", "## Global Markets"])
+    lines.extend(["", "## 글로벌 시장"])
     m = report.snapshot.markets
     lines.append(
-        f"KR: KOSPI {m.kr.kospi_pct:+.2f}%, KOSDAQ {m.kr.kosdaq_pct:+.2f}%"
+        f"국내: KOSPI {m.kr.kospi_pct:+.2f}%, KOSDAQ {m.kr.kosdaq_pct:+.2f}%"
     )
     lines.append(
-        f"US: S&P500 {m.us.sp500_pct:+.2f}%, NASDAQ {m.us.nasdaq_pct:+.2f}%, DOW {m.us.dow_pct:+.2f}%"
+        f"미국: S&P500 {m.us.sp500_pct:+.2f}%, NASDAQ {m.us.nasdaq_pct:+.2f}%, DOW {m.us.dow_pct:+.2f}%"
     )
-    lines.append(f"FX: USD/KRW {m.fx.usdkrw:.2f} ({m.fx.usdkrw_pct:+.2f}%)")
+    lines.append(f"환율: USD/KRW {m.fx.usdkrw:.2f} ({m.fx.usdkrw_pct:+.2f}%)")
 
     lines.extend(["", "## 시장 지표"])
     s = report.snapshot.market_summary
@@ -148,11 +166,11 @@ def build_report_markdown(report: Report) -> str:
     # Optional macro block (daily/monthly/quarterly/structural). Missing values are shown as n/a.
     if report.snapshot.macro is not None:
         macro = report.snapshot.macro
-        lines.extend(["", "## Macro (요약)"])
+        lines.extend(["", "## 매크로 (요약)"])
 
         d = macro.daily
         lines.append(
-            f"- Daily: US10Y {_fmt(d.us10y, 2, '%')} / US2Y {_fmt(d.us2y, 2, '%')} / 2-10 {_fmt(d.spread_2_10, 2, '%p')}"
+            f"- 일간: 미10년 {_fmt(d.us10y, 2, '%')} / 미2년 {_fmt(d.us2y, 2, '%')} / 2-10 {_fmt(d.spread_2_10, 2, '%p')}"
         )
         lines.append(
             f"        DXY {_fmt(d.dxy, 2)} / USDKRW {_fmt(d.usdkrw, 2)} / VIX {_fmt(d.vix, 1)}"
@@ -160,22 +178,22 @@ def build_report_markdown(report: Report) -> str:
 
         mth = macro.monthly
         lines.append(
-            f"- Monthly: Unemployment {_fmt(mth.unemployment_rate, 2, '%')}, "
+            f"- 월간: 실업률 {_fmt(mth.unemployment_rate, 2, '%')}, "
             f"CPI YoY {_fmt(mth.cpi_yoy, 2, '%')}, Core CPI YoY {_fmt(mth.core_cpi_yoy, 2, '%')}, "
             f"PCE YoY {_fmt(mth.pce_yoy, 2, '%')}, PMI {_fmt(mth.pmi, 1)}"
         )
         lines.append(
-            f"          Wage level {_fmt(mth.wage_level, 2)}, Wage YoY {_fmt(mth.wage_yoy, 2, '%')}"
+            f"          임금 레벨 {_fmt(mth.wage_level, 2)}, 임금 YoY {_fmt(mth.wage_yoy, 2, '%')}"
         )
 
         q = macro.quarterly
         lines.append(
-            f"- Quarterly: Real GDP {_fmt(q.real_gdp, 2)}, GDP QoQ ann. {_fmt(q.gdp_qoq_annualized, 2, '%')}"
+            f"- 분기: 실질 GDP {_fmt(q.real_gdp, 2)}, GDP QoQ 연율 {_fmt(q.gdp_qoq_annualized, 2, '%')}"
         )
 
         st = macro.structural
         lines.append(
-            f"- Structural: Fed Funds {_fmt(st.fed_funds_rate, 2, '%')}, Real rate {_fmt(st.real_rate, 2, '%')}"
+            f"- 구조: 기준금리 {_fmt(st.fed_funds_rate, 2, '%')}, 실질금리 {_fmt(st.real_rate, 2, '%')}"
         )
 
     return "\n".join(lines)

@@ -22,18 +22,18 @@ def main() -> None:
     - committee_result.json: consensus + key points
     - report.md: optional detailed report (off by default)
     """
-    parser = argparse.ArgumentParser(description="Send morning brief to Telegram.")
+    parser = argparse.ArgumentParser(description="아침 브리프를 텔레그램으로 전송합니다.")
     parser.add_argument(
         "--include-report",
         action="store_true",
-        help="Append detailed runs/.../report.md after the brief.",
+        help="브리프 뒤에 runs/.../report.md를 덧붙입니다.",
     )
     args = parser.parse_args()
 
     runs_dir = ROOT_DIR / "runs"
     latest_dir = _latest_run_dir(runs_dir)
     if latest_dir is None:
-        print("No runs found.")
+        print("실행 결과가 없습니다.")
         return
 
     snapshot_path = latest_dir / "snapshot.json"
@@ -42,7 +42,7 @@ def main() -> None:
     report_path = latest_dir / "report.md"
 
     if not snapshot_path.exists():
-        print("snapshot.json not found.")
+        print("snapshot.json을 찾을 수 없습니다.")
         return
 
     snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
@@ -96,58 +96,58 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
 
     lines: list[str] = []
     lines.append("오늘의 데일리 브리프")
-    lines.append(f"- run: {snapshot.get('market_summary', {}).get('note', 'n/a')}")
-    lines.append(f"- 상세리포트: {'포함' if report_text.strip() else '미포함'}")
+    lines.append(f"- 요약: {snapshot.get('market_summary', {}).get('note', 'n/a')}")
+    lines.append(f"- 상세 리포트: {'포함' if report_text.strip() else '미포함'}")
     lines.append("")
 
-    lines.append("[Global Markets]")
+    lines.append("[글로벌 시장]")
     lines.append(
-        f"- KR: KOSPI {_fmt(kr.get('kospi_pct'), 2, '%')}, KOSDAQ {_fmt(kr.get('kosdaq_pct'), 2, '%')}"
+        f"- 국내: KOSPI {_fmt(kr.get('kospi_pct'), 2, '%')}, KOSDAQ {_fmt(kr.get('kosdaq_pct'), 2, '%')}"
     )
     lines.append(
-        f"- US: S&P500 {_fmt(us.get('sp500_pct'), 2, '%')}, NASDAQ {_fmt(us.get('nasdaq_pct'), 2, '%')}, DOW {_fmt(us.get('dow_pct'), 2, '%')}"
+        f"- 미국: S&P500 {_fmt(us.get('sp500_pct'), 2, '%')}, NASDAQ {_fmt(us.get('nasdaq_pct'), 2, '%')}, DOW {_fmt(us.get('dow_pct'), 2, '%')}"
     )
     lines.append(
-        f"- FX: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (Δ {_fmt(fx.get('usdkrw_pct'), 2, '%')})"
+        f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (Δ {_fmt(fx.get('usdkrw_pct'), 2, '%')})"
     )
     lines.append(f"- VIX: {_fmt(vol.get('vix'), 1)}")
     lines.append("")
 
-    lines.append("[Daily Macro]")
+    lines.append("[일간 매크로]")
     lines.append(
-        f"- US10Y {_fmt(daily.get('us10y'), 2, '%')} / US2Y {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}"
+        f"- 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}"
     )
     lines.append(
         f"- DXY {_fmt(daily.get('dxy'), 2)} / USDKRW {_fmt(daily.get('usdkrw'), 2)} / VIX {_fmt(daily.get('vix'), 1)}"
     )
     lines.append("")
 
-    lines.append("[Monthly Macro]")
-    lines.append(f"- Unemployment {_fmt(monthly.get('unemployment_rate'), 2, '%')}")
+    lines.append("[월간 매크로]")
+    lines.append(f"- 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')}")
     lines.append(
         f"- CPI YoY {_fmt(monthly.get('cpi_yoy'), 2, '%')} / Core CPI YoY {_fmt(monthly.get('core_cpi_yoy'), 2, '%')} / PCE YoY {_fmt(monthly.get('pce_yoy'), 2, '%')}"
     )
     lines.append(f"- PMI {_fmt(monthly.get('pmi'), 1)}")
     lines.append(
-        f"- Wage level {_fmt(monthly.get('wage_level'), 2)} / Wage YoY {_fmt(monthly.get('wage_yoy'), 2, '%')}"
+        f"- 임금 레벨 {_fmt(monthly.get('wage_level'), 2)} / 임금 YoY {_fmt(monthly.get('wage_yoy'), 2, '%')}"
     )
     lines.append("")
 
-    lines.append("[Quarterly Macro]")
-    lines.append(f"- Real GDP {_fmt(quarterly.get('real_gdp'), 2)}")
-    lines.append(f"- GDP QoQ ann. {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
+    lines.append("[분기 매크로]")
+    lines.append(f"- 실질 GDP {_fmt(quarterly.get('real_gdp'), 2)}")
+    lines.append(f"- GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
     lines.append("")
 
-    lines.append("[Structural]")
-    lines.append(f"- Fed Funds {_fmt(structural.get('fed_funds_rate'), 2, '%')}")
-    lines.append(f"- Real rate {_fmt(structural.get('real_rate'), 2, '%')}")
+    lines.append("[구조 지표]")
+    lines.append(f"- 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')}")
+    lines.append(f"- 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
     lines.append("")
 
     if committee:
-        lines.append("[Committee]")
+        lines.append("[위원회]")
         consensus = committee.get("consensus")
         if consensus:
-            lines.append(f"- Consensus: {consensus}")
+            lines.append(f"- 합의: {consensus}")
         key_points = committee.get("key_points") or []
         for kp in key_points[:3]:
             point = kp.get("point")
@@ -162,6 +162,17 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
             comment = stance.get("korean_comment")
             if agent and comment:
                 lines.append(f"- {agent}: {comment}")
+        lines.append("")
+
+        lines.append("[AI 핵심 주장]")
+        for stance in stances:
+            agent = _agent_label(stance.get("agent_name"))
+            claims = stance.get("core_claims") or []
+            if not agent:
+                continue
+            lines.append(f"- {agent}:")
+            for claim in claims:
+                lines.append(f"  · {claim}")
         lines.append("")
 
     if report_text.strip():

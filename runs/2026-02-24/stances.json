@@ -2,52 +2,70 @@
   {
     "agent_name": "macro",
     "core_claims": [
-      "macro sees balanced risk.",
-      "Liquidity is stable."
+      "코스피가 강하게 상승했으나, 미국 증시는 하락세를 보임.",
+      "환율 변동성은 크지 않으나, 외국인 수급 데이터 부재로 불확실성 존재.",
+      "국내 투자심리는 긍정적이나, 단기 과열 신호도 일부 감지됨."
     ],
+    "korean_comment": "국내외 시장 방향성이 엇갈려 신중한 접근이 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 강하게 상승했으나, 미국 증시는 하락세를 보임.\",\n    \"환율 변동성은 크지 않으나, 외국인 수급 데이터 부재로 불확실성 존재.\",\n    \"국내 투자심리는 긍정적이나, 단기 과열 신호도 일부 감지됨.\"\n  ],\n  \"korean_comment\": \"국내외 시장 방향성이 엇갈려 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.market_summary.note\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
     "regime_tag": "NEUTRAL",
     "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
       "snapshot.market_summary.note",
-      "snapshot.flow_summary.note"
+      "snapshot.flow_summary.note",
+      "snapshot.news_headlines"
     ],
     "confidence": "MED"
   },
   {
     "agent_name": "flow",
     "core_claims": [
-      "flow sees balanced risk.",
-      "Liquidity is stable."
+      "코스피가 2% 이상 급등하며 강한 상승세를 보였다.",
+      "외국인 및 기관 수급 데이터는 부재하다.",
+      "미국 증시는 하락했으나 국내 시장은 독립적으로 강세를 기록했다."
     ],
-    "regime_tag": "NEUTRAL",
+    "korean_comment": "수급 데이터는 없지만 코스피 상승세가 뚜렷합니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 2% 이상 급등하며 강한 상승세를 보였다.\",\n    \"외국인 및 기관 수급 데이터는 부재하다.\",\n    \"미국 증시는 하락했으나 국내 시장은 독립적으로 강세를 기록했다.\"\n  ],\n  \"korean_comment\": \"수급 데이터는 없지만 코스피 상승세가 뚜렷합니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "RISK_ON",
     "evidence_ids": [
-      "snapshot.market_summary.note",
-      "snapshot.flow_summary.note"
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.note",
+      "snapshot.news_headlines"
     ],
     "confidence": "MED"
   },
   {
     "agent_name": "sector",
     "core_claims": [
-      "sector sees balanced risk.",
-      "Liquidity is stable."
+      "코스피가 2% 이상 급등하며 6000선 돌파를 앞두고 있습니다.",
+      "기관 중심의 추가 상승 기대감이 시장에 반영되고 있습니다.",
+      "미국 증시 약세에도 불구하고 국내 시장은 강한 상승세를 보입니다."
     ],
-    "regime_tag": "NEUTRAL",
+    "korean_comment": "코스피 강세가 두드러진 하루입니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 2% 이상 급등하며 6000선 돌파를 앞두고 있습니다.\",\n    \"기관 중심의 추가 상승 기대감이 시장에 반영되고 있습니다.\",\n    \"미국 증시 약세에도 불구하고 국내 시장은 강한 상승세를 보입니다.\"\n  ],\n  \"korean_comment\": \"코스피 강세가 두드러진 하루입니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
     "evidence_ids": [
-      "snapshot.market_summary.note",
-      "snapshot.flow_summary.note"
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.market_summary.note"
     ],
-    "confidence": "MED"
+    "confidence": "HIGH"
   },
   {
     "agent_name": "risk",
     "core_claims": [
-      "risk sees balanced risk.",
-      "Liquidity is stable."
+      "코스피가 강하게 상승 중임",
+      "외국인/기관 수급 데이터 부재",
+      "레버리지 투자 및 하락 베팅 혼재"
     ],
+    "korean_comment": "시장 강세이나 수급 불확실성이 존재합니다.",
+    "raw_response": "{\"agent_name\": \"RISK pre-analysis agent\", \"core_claims\": [\"코스피가 강하게 상승 중임\", \"외국인/기관 수급 데이터 부재\", \"레버리지 투자 및 하락 베팅 혼재\"], \"korean_comment\": \"시장 강세이나 수급 불확실성이 존재합니다.\", \"regime_tag\": \"NEUTRAL\", \"evidence_ids\": [\"snapshot.market_summary.kospi_change_pct\", \"snapshot.flow_summary.note\", \"snapshot.news_headlines\"], \"confidence\": \"MED\"}",
     "regime_tag": "NEUTRAL",
     "evidence_ids": [
-      "snapshot.market_summary.note",
-      "snapshot.flow_summary.note"
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.note",
+      "snapshot.news_headlines"
     ],
     "confidence": "MED"
   }

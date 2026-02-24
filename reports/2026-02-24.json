@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-24T07:12:23.684977+00:00",
+  "generated_at": "2026-02-24T08:23:16.420671+00:00",
   "market_date": "2026-02-24",
   "snapshot": {
     "market_summary": {
@@ -21,13 +21,13 @@
     ],
     "news_headlines": [
       "6000선 턱밑까지 온 코스피… 그 뒤엔 149조 ‘하락 베팅’ 그림자 - 조선일보",
-      "“코스피는 슬슬 불안하네요”…개미들, 덜 오른 코스닥으로 몰린다 - v.daum.net",
       "코스피 불장, 외신도 깜놀 \"개미들 레버리지 투자나선 이유는…\" - mt.co.kr",
-      "코스피, 5900선 재돌파…삼전 2%·SK하이닉스 5%↑ - 뉴시스",
-      "노무라 \"상반기 코스피 목표치 최대 8,000…그 이상도 가능\"(종합) - 연합뉴스",
+      "‘육천피’ 겨냥 속 밸류업 지수도 역대 최고치 경신…코스피 상승률보다 높았다 [투자360] - 헤럴드경제",
+      "코스피, 장중 5900선 회복…'99만닉스' 또 최고가 - 한국경제",
+      "코스피 6천피까지 단 31포인트 남았다‥'100만 닉스·20만 전자' 달성 - MBC 뉴스",
+      "코스피 5000시대, 역대급 돈잔치…배당 6조원 돌파 \"호재일까\" - 지디넷코리아",
       "노무라 \"코스피, 상반기 최대 8000 간다\" - 뉴시스",
-      "\"상반기 코스피 8,000 간다\"…노무라의 파격 전망 근거는 - 연합인포맥스",
-      "KOSPI tops the 5,900 mark intraday···a jittery rally amid ‘Trump risk’ - 경향신문"
+      "與, 3차 상법 처리 '드라이브'…\"주당순이익 개선\" 코스피 기대감 - 뉴스1"
     ],
     "watchlist": [
       "SPY",
@@ -58,8 +58,8 @@
         "us2y": 3.5880000591278076,
         "spread_2_10": 0.44099974632263184,
         "vix": 21.010000228881836,
-        "dxy": 97.8030014038086,
-        "usdkrw": 1444.2099609375
+        "dxy": 97.91000366210938,
+        "usdkrw": 1445.4200439453125
       },
       "monthly": {
         "unemployment_rate": 4.3,
@@ -85,14 +85,18 @@
     {
       "agent_name": "macro",
       "core_claims": [
-        "Macro tone is balanced.",
-        "No major shocks.",
-        "Stay selective."
+        "코스피가 강하게 상승했으나, 미국 증시는 하락세를 보임.",
+        "환율 변동성은 크지 않으나, 외국인 수급 데이터 부재로 불확실성 존재.",
+        "국내 증시의 단기 랠리 지속 여부는 추가 확인 필요."
       ],
+      "korean_comment": "국내외 시장 방향성이 엇갈려 신중한 접근이 필요합니다.",
+      "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 강하게 상승했으나, 미국 증시는 하락세를 보임.\",\n    \"환율 변동성은 크지 않으나, 외국인 수급 데이터 부재로 불확실성 존재.\",\n    \"국내 증시의 단기 랠리 지속 여부는 추가 확인 필요.\"\n  ],\n  \"korean_comment\": \"국내외 시장 방향성이 엇갈려 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.market_summary.note\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
       "regime_tag": "NEUTRAL",
       "evidence_ids": [
-        "snapshot.market_summary.usdkrw",
         "snapshot.market_summary.kospi_change_pct",
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note",
         "snapshot.news_headlines"
       ],
       "confidence": "MED"
@@ -100,71 +104,81 @@
     {
       "agent_name": "flow",
       "core_claims": [
-        "Flow data unavailable.",
-        "Use neutral stance."
+        "코스피가 2% 이상 급등하며 강한 상승세를 보였다.",
+        "외국인·기관 수급 데이터는 부재하지만 시장 심리는 긍정적이다.",
+        "미국 증시 하락에도 국내 시장은 독자적 강세를 유지했다."
       ],
-      "regime_tag": "NEUTRAL",
+      "korean_comment": "수급 데이터는 없으나 코스피 강세가 뚜렷합니다.",
+      "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 2% 이상 급등하며 강한 상승세를 보였다.\",\n    \"외국인·기관 수급 데이터는 부재하지만 시장 심리는 긍정적이다.\",\n    \"미국 증시 하락에도 국내 시장은 독자적 강세를 유지했다.\"\n  ],\n  \"korean_comment\": \"수급 데이터는 없으나 코스피 강세가 뚜렷합니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "RISK_ON",
       "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
         "snapshot.flow_summary.note",
-        "snapshot.watchlist"
+        "snapshot.news_headlines"
       ],
-      "confidence": "LOW"
+      "confidence": "MED"
     },
     {
       "agent_name": "sector",
       "core_claims": [
-        "Sector moves are mixed.",
-        "No clear leader.",
-        "Maintain balance."
+        "코스피가 2% 이상 급등하며 6000선 돌파를 앞두고 있습니다.",
+        "외신과 기관 전망도 긍정적으로, 추가 상승 기대감이 높아지고 있습니다.",
+        "다만 하락 베팅 규모도 커져 변동성 확대 가능성에 유의해야 합니다."
       ],
-      "regime_tag": "NEUTRAL",
+      "korean_comment": "코스피 강세가 두드러지나 변동성 리스크도 존재합니다.",
+      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 2% 이상 급등하며 6000선 돌파를 앞두고 있습니다.\",\n    \"외신과 기관 전망도 긍정적으로, 추가 상승 기대감이 높아지고 있습니다.\",\n    \"다만 하락 베팅 규모도 커져 변동성 확대 가능성에 유의해야 합니다.\"\n  ],\n  \"korean_comment\": \"코스피 강세가 두드러지나 변동성 리스크도 존재합니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_ON",
       "evidence_ids": [
-        "snapshot.sector_moves",
-        "snapshot.watchlist"
-      ],
-      "confidence": "LOW"
-    },
-    {
-      "agent_name": "risk",
-      "core_claims": [
-        "Risk signals elevated.",
-        "Headline risk rising.",
-        "Reduce exposure."
-      ],
-      "regime_tag": "RISK_OFF",
-      "evidence_ids": [
-        "snapshot.market_summary.usdkrw",
         "snapshot.market_summary.kospi_change_pct",
         "snapshot.news_headlines"
       ],
       "confidence": "HIGH"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "코스피가 강하게 상승 중임",
+        "외국인·기관 수급 데이터 부재",
+        "긍정적 뉴스가 다수"
+      ],
+      "korean_comment": "시장에 뚜렷한 위험 신호는 보이지 않습니다.",
+      "raw_response": "{\"agent_name\": \"RISK pre-analysis agent\", \"core_claims\": [\"코스피가 강하게 상승 중임\", \"외국인·기관 수급 데이터 부재\", \"긍정적 뉴스가 다수\"], \"korean_comment\": \"시장에 뚜렷한 위험 신호는 보이지 않습니다.\", \"regime_tag\": \"NEUTRAL\", \"evidence_ids\": [\"snapshot.market_summary.kospi_change_pct\", \"snapshot.flow_summary.note\", \"snapshot.news_headlines\"], \"confidence\": \"MED\"}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
     }
   ],
   "committee_result": {
     "consensus": "Committee maintains a neutral posture with selective positioning.",
     "key_points": [
       {
-        "point": "Majority regime tag: NEUTRAL.",
+        "point": "Majority regime tag: RISK_ON.",
         "sources": [
-          "macro",
           "flow",
           "sector"
         ]
       },
       {
-        "point": "Shared evidence focus: snapshot.market_summary.usdkrw.",
+        "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
         "sources": [
+          "flow",
           "macro",
-          "risk"
+          "risk",
+          "sector"
         ]
       }
     ],
     "disagreements": [
       {
         "topic": "Regime tags",
-        "majority": "NEUTRAL",
-        "minority": "RISK_OFF",
+        "majority": "RISK_ON",
+        "minority": "NEUTRAL",
         "minority_agents": [
+          "macro",
           "risk"
         ],
         "why_it_matters": "Minority risk regime can change positioning boundaries."

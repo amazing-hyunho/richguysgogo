@@ -9,7 +9,8 @@ from committee.schemas.stance import AgentName
 COMMON_OUTPUT_RULES = (
     "Output JSON only. No markdown. "
     "Required keys: agent_name, core_claims, korean_comment, regime_tag, evidence_ids, confidence. "
-    "core_claims must be 1~3 short lines. "
+    "All natural-language text must be in Korean. "
+    "core_claims must be 1~3 short Korean lines. "
     "korean_comment must be one short Korean line. "
     "regime_tag must be one of RISK_ON/NEUTRAL/RISK_OFF. "
     "confidence must be one of LOW/MED/HIGH. "

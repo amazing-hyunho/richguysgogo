@@ -68,6 +68,7 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                 raise RuntimeError(f"openai_model_resolution_failed: {last_error}")
 
             parsed = json.loads(response_text)
+            parsed["raw_response"] = response_text
             parsed["agent_name"] = self.agent_name.value
             stance = Stance.model_validate(parsed)
             trace.log(
@@ -121,6 +122,7 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                 "snapshot": snapshot.model_dump(),
                 "instruction": (
                     "Generate one stance JSON for this agent. "
+                    "All natural-language text must be in Korean. "
                     "Include a one-line Korean comment in korean_comment."
                 ),
                 "allowed_evidence_ids": [

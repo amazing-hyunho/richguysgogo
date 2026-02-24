@@ -49,6 +49,8 @@ ALLOWED_NON_TICKER_TOKENS = {
     "SP500",
     "NASDAQ",
     "DOW",
+    "VIX",
+    "FX",
     "KRW",
     "RISK_ON",
     "RISK_OFF",

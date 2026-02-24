@@ -1,11 +1,11 @@
 {
   "market_summary": {
-    "note": "KOSPI 0.65%, USD/KRW 1447.07. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": 0.6466362398577187,
-    "usdkrw": 1447.06912
+    "note": "KOSPI 2.11%, USD/KRW 1443.82. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": 2.113383411321269,
+    "usdkrw": 1443.824633
   },
   "flow_summary": {
-    "note": "flows_fetch_failed: unavailable (\uc678\uad6d\uc778/\uae30\uad00/\uac1c\uc778 \uc21c\ub9e4\uc218\ub294 \ub370\uc774\ud130 \uc5c6\uc74c)",
+    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
     "foreign_net": 0.0,
     "institution_net": 0.0,
     "retail_net": 0.0
@@ -17,14 +17,14 @@
     "n/a"
   ],
   "news_headlines": [
-    "How Korea\u2019s President Turned Its Market Into the World\u2019s Best Performer - Bloomberg.com",
-    "Foreign investors lock in gains as KOSPI rally continues - The Korea Times",
-    "South Korea's Kospi hits fresh high as Asian markets brush off Trump's latest tariff moves - CNBC",
-    "Korea stocks rally while K-content lags as BTS comeback fails to lift sector - CHOSUNBIZ - Chosunbiz",
-    "A Stock Market Fervor Takes Hold in South Korea - The New York Times",
-    "South Korean leader celebrates \u2018Kospi 5,000\u2019 moment as stock market soars - Financial Times",
-    "South Korea's Kospi jumps to record high as regional rally tracks Wall Street gains - CNBC",
-    "South Korea's Kospi hits fresh high for a second straight session amid regional declines - CNBC"
+    "6000선 턱밑까지 온 코스피… 그 뒤엔 149조 ‘하락 베팅’ 그림자 - 조선일보",
+    "코스피 불장, 외신도 깜놀 \"개미들 레버리지 투자나선 이유는…\" - mt.co.kr",
+    "‘육천피’ 겨냥 속 밸류업 지수도 역대 최고치 경신…코스피 상승률보다 높았다 [투자360] - 헤럴드경제",
+    "코스피, 장중 5900선 회복…'99만닉스' 또 최고가 - 한국경제",
+    "코스피 6천피까지 단 31포인트 남았다‥'100만 닉스·20만 전자' 달성 - MBC 뉴스",
+    "코스피 5000시대, 역대급 돈잔치…배당 6조원 돌파 \"호재일까\" - 지디넷코리아",
+    "노무라 \"코스피, 상반기 최대 8000 간다\" - 뉴시스",
+    "Chips, KOSPI on fire as institutions bet on more upside - 네이트"
   ],
   "watchlist": [
     "SPY",
@@ -33,16 +33,16 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": 0.6466362398577187,
-      "kosdaq_pct": -0.17417762267114384
+      "kospi_pct": 2.113383411321269,
+      "kosdaq_pct": 1.1293509384554707
     },
     "us": {
       "sp500_pct": -1.0385652247284864,
-      "nasdaq_pct": -1.1308052079987247,
+      "nasdaq_pct": -1.1308222762413136,
       "dow_pct": -1.656209796912025
     },
     "fx": {
-      "usdkrw": 1447.06912,
+      "usdkrw": 1443.824633,
       "usdkrw_pct": 0.0
     },
     "volatility": {
@@ -51,12 +51,12 @@
   },
   "macro": {
     "daily": {
-      "us10y": 4.029000282287598,
+      "us10y": 4.0289998054504395,
       "us2y": 3.5880000591278076,
-      "spread_2_10": 0.44100022315979004,
+      "spread_2_10": 0.44099974632263184,
       "vix": 21.010000228881836,
-      "dxy": 97.72000122070312,
-      "usdkrw": 1443.030029296875
+      "dxy": 97.90299987792969,
+      "usdkrw": 1445.52001953125
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -74,7 +74,7 @@
     },
     "structural": {
       "fed_funds_rate": 3.64,
-      "real_rate": 1.7690002822875979
+      "real_rate": 1.7689998054504397
     }
   }
 }
