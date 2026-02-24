@@ -1,0 +1,54 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "macro sees balanced risk.",
+      "Liquidity is stable."
+    ],
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.flow_summary.note"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "flow sees balanced risk.",
+      "Liquidity is stable."
+    ],
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.flow_summary.note"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "sector sees balanced risk.",
+      "Liquidity is stable."
+    ],
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.flow_summary.note"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "risk sees balanced risk.",
+      "Liquidity is stable."
+    ],
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.flow_summary.note"
+    ],
+    "confidence": "MED"
+  }
+]

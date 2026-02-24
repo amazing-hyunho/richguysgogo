@@ -1,0 +1,177 @@
+{
+  "generated_at": "2026-02-22T22:50:26.718896+00:00",
+  "market_date": "2026-02-23",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI 2.31%, USD/KRW 1447.95. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": 2.3123833749834866,
+      "usdkrw": 1447.954091
+    },
+    "flow_summary": {
+      "note": "flows_fetch_failed: unavailable (\uc678\uad6d\uc778/\uae30\uad00/\uac1c\uc778 \uc21c\ub9e4\uc218\ub294 \ub370\uc774\ud130 \uc5c6\uc74c)",
+      "foreign_net": 0.0,
+      "institution_net": 0.0,
+      "retail_net": 0.0
+    },
+    "korean_market_flow": null,
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "Foreign investors lock in gains as KOSPI rally continues - The Korea Times",
+      "South Korea's Kospi hits fresh high for a second straight session amid regional declines - CNBC",
+      "Should You Bet on South Korea ETFs After the Kospi Rally? - Yahoo Finance",
+      "A Stock Market Fervor Takes Hold in South Korea - The New York Times",
+      "South Korean leader celebrates \u2018Kospi 5,000\u2019 moment as stock market soars - Financial Times",
+      "Japan stocks jump over 3% to record high as Asia markets rebound - CNBC",
+      "South Korea's Kospi jumps to record high as regional rally tracks Wall Street gains - CNBC",
+      "South Korea's Kospi hits record high for second straight session as the region trades mixed - CNBC"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi_pct": 2.3123833749834866,
+        "kosdaq_pct": -0.5780910962528827
+      },
+      "us": {
+        "sp500_pct": 0.6939724763506775,
+        "nasdaq_pct": 0.8964522328127177,
+        "dow_pct": 0.4672696535852726
+      },
+      "fx": {
+        "usdkrw": 1447.954091,
+        "usdkrw_pct": 0.0
+      },
+      "volatility": {
+        "vix": 19.09000015258789
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.085999965667725,
+        "us2y": 3.5950000286102295,
+        "spread_2_10": 0.4909999370574951,
+        "vix": 19.09000015258789,
+        "dxy": 97.78900146484375,
+        "usdkrw": 1444.68994140625
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 2.8286797395498997,
+        "core_cpi_yoy": 2.9493378374616075,
+        "pce_yoy": 2.901287416285925,
+        "pmi": null,
+        "wage_growth": 37.17,
+        "wage_level": 37.17,
+        "wage_yoy": 3.7109375
+      },
+      "quarterly": {
+        "real_gdp": 24111.83,
+        "gdp_qoq_annualized": 1.4
+      },
+      "structural": {
+        "fed_funds_rate": 3.64,
+        "real_rate": 1.8059999656677248
+      }
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "macro sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "flow sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "sector sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "risk sees balanced risk.",
+        "Liquidity is stable."
+      ],
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.flow_summary.note"
+      ],
+      "confidence": "MED"
+    }
+  ],
+  "committee_result": {
+    "consensus": "Committee agrees on a neutral stance with selective monitoring.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: NEUTRAL.",
+        "sources": [
+          "macro",
+          "flow",
+          "sector",
+          "risk"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "NEUTRAL",
+        "minority": "None",
+        "minority_agents": [
+          "none"
+        ],
+        "why_it_matters": "No dissenting regime tags are present."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Keep watchlist tight and avoid overexposure."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Keep position sizes moderate."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid aggressive leverage."
+      }
+    ]
+  }
+}
