@@ -6,7 +6,14 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import List
+import os
 
+from committee.agents.flow_stub import FlowStub
+from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
+from committee.agents.macro_stub import MacroStub
+from committee.agents.model_profiles import ModelBackend, parse_backend
+from committee.agents.risk_stub import RiskStub
+from committee.agents.sector_stub import SectorStub
 from committee.core.report_renderer import Report, build_report, render_report
 from committee.core.database import (
     safe_upsert_daily_macro,
@@ -23,26 +30,35 @@ from committee.schemas.committee_result import (
     OpsGuidance,
     OpsGuidanceLevel,
 )
-from committee.schemas.stance import AgentName, ConfidenceLevel, RegimeTag, Stance
+from committee.schemas.stance import AgentName, RegimeTag, Stance
 
 
 def run_pre_analysis(snapshot: object, agent_ids: List[str]) -> List[Stance]:
-    """Generate stub stances for configured agent IDs."""
+    """Generate stances from configured agent IDs (stub or LLM)."""
+    backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))
+    use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
+    options = LLMRunOptions(backend=backend, temperature=float(os.getenv("LLM_TEMPERATURE", "0.1")))
+
     stances: List[Stance] = []
     for agent_id in agent_ids:
-        stances.append(
-            Stance(
-                agent_name=AgentName(agent_id),
-                core_claims=[
-                    f"{agent_id} sees balanced risk.",
-                    "Liquidity is stable.",
-                ],
-                regime_tag=RegimeTag.NEUTRAL,
-                evidence_ids=["snapshot.market_summary.note", "snapshot.flow_summary.note"],
-                confidence=ConfidenceLevel.MED,
-            )
-        )
+        agent_name = AgentName(agent_id)
+        agent = _build_pre_analysis_agent(agent_name, use_llm_agents=use_llm_agents, options=options)
+        stances.append(agent.run(snapshot))
     return stances
+
+
+def _build_pre_analysis_agent(agent_name: AgentName, use_llm_agents: bool, options: LLMRunOptions):
+    """Build one pre-analysis agent instance for the requested ID."""
+    fallback_map = {
+        AgentName.MACRO: MacroStub(),
+        AgentName.FLOW: FlowStub(),
+        AgentName.SECTOR: SectorStub(),
+        AgentName.RISK: RiskStub(),
+    }
+    fallback_agent = fallback_map[agent_name]
+    if use_llm_agents and options.backend == ModelBackend.OPENAI:
+        return LLMPreAnalysisAgent(agent_name=agent_name, fallback_agent=fallback_agent, options=options)
+    return fallback_agent
 
 
 def run_committee(snapshot: object, stances: List[Stance]) -> CommitteeResult:

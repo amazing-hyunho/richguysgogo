@@ -3,6 +3,7 @@ from __future__ import annotations
 # Local runner for the end-to-end MVP pipeline.
 
 import json
+import os
 import sys
 from datetime import date
 from pathlib import Path
@@ -16,9 +17,12 @@ from committee.agents.flow_stub import FlowStub
 from committee.agents.macro_stub import MacroStub
 from committee.agents.risk_stub import RiskStub
 from committee.agents.sector_stub import SectorStub
+from committee.agents.model_profiles import ModelBackend, get_agent_model_map, parse_backend
+from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.core.report_renderer import build_report, render_report
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.core.validators import validate_pipeline
+from committee.schemas.stance import AgentName
 
 
 def main() -> None:
@@ -30,7 +34,25 @@ def main() -> None:
         keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
         print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
 
-    agents = [MacroStub(), FlowStub(), SectorStub(), RiskStub()]
+    backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))
+    model_map = get_agent_model_map(backend)
+    print(
+        "agent model profile: "
+        + ", ".join([f"{agent.value}={model}" for agent, model in model_map.items()])
+    )
+
+    use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
+    if use_llm_agents and backend == ModelBackend.OPENAI:
+        options = LLMRunOptions(backend=backend, temperature=float(os.getenv("LLM_TEMPERATURE", "0.1")))
+        agents = [
+            LLMPreAnalysisAgent(agent_name=AgentName.MACRO, fallback_agent=MacroStub(), options=options),
+            LLMPreAnalysisAgent(agent_name=AgentName.FLOW, fallback_agent=FlowStub(), options=options),
+            LLMPreAnalysisAgent(agent_name=AgentName.SECTOR, fallback_agent=SectorStub(), options=options),
+            LLMPreAnalysisAgent(agent_name=AgentName.RISK, fallback_agent=RiskStub(), options=options),
+        ]
+    else:
+        agents = [MacroStub(), FlowStub(), SectorStub(), RiskStub()]
+
     stances = [agent.run(snapshot) for agent in agents]
 
     chair = ChairStub()
