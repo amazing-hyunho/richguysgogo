@@ -142,6 +142,14 @@ export LLM_TEMPERATURE=0.1
 python scripts/run_local.py
 ```
 
+```powershell
+# Windows PowerShell
+$env:USE_LLM_AGENTS = "1"
+$env:AGENT_MODEL_BACKEND = "openai"
+$env:LLM_TEMPERATURE = "0.1"
+python scripts/run_local.py
+```
+
 야간 배치(`scripts/run_nightly.py`)도 동일한 환경 변수(`USE_LLM_AGENTS`, `AGENT_MODEL_BACKEND`, `LLM_TEMPERATURE`)를 읽어 pre-analysis 단계에 반영합니다.
 
 ### 실행 중간 로그 + AI 응답 추적 로그
