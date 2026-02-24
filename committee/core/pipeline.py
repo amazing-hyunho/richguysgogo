@@ -6,7 +6,14 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 from typing import List
+import os
 
+from committee.agents.flow_stub import FlowStub
+from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
+from committee.agents.macro_stub import MacroStub
+from committee.agents.model_profiles import ModelBackend, parse_backend
+from committee.agents.risk_stub import RiskStub
+from committee.agents.sector_stub import SectorStub
 from committee.core.report_renderer import Report, build_report, render_report
 from committee.core.database import (
     safe_upsert_daily_macro,
@@ -16,6 +23,7 @@ from committee.core.database import (
     safe_upsert_quarterly_macro,
 )
 from committee.core.storage import save_run
+from committee.core.trace_logger import TraceLogger
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.schemas.committee_result import (
     CommitteeResult,
@@ -23,26 +31,35 @@ from committee.schemas.committee_result import (
     OpsGuidance,
     OpsGuidanceLevel,
 )
-from committee.schemas.stance import AgentName, ConfidenceLevel, RegimeTag, Stance
+from committee.schemas.stance import AgentName, RegimeTag, Stance
 
 
 def run_pre_analysis(snapshot: object, agent_ids: List[str]) -> List[Stance]:
-    """Generate stub stances for configured agent IDs."""
+    """Generate stances from configured agent IDs (stub or LLM)."""
+    backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))
+    use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
+    options = LLMRunOptions(backend=backend, temperature=float(os.getenv("LLM_TEMPERATURE", "0.1")))
+
     stances: List[Stance] = []
     for agent_id in agent_ids:
-        stances.append(
-            Stance(
-                agent_name=AgentName(agent_id),
-                core_claims=[
-                    f"{agent_id} sees balanced risk.",
-                    "Liquidity is stable.",
-                ],
-                regime_tag=RegimeTag.NEUTRAL,
-                evidence_ids=["snapshot.market_summary.note", "snapshot.flow_summary.note"],
-                confidence=ConfidenceLevel.MED,
-            )
-        )
+        agent_name = AgentName(agent_id)
+        agent = _build_pre_analysis_agent(agent_name, use_llm_agents=use_llm_agents, options=options)
+        stances.append(agent.run(snapshot))
     return stances
+
+
+def _build_pre_analysis_agent(agent_name: AgentName, use_llm_agents: bool, options: LLMRunOptions):
+    """Build one pre-analysis agent instance for the requested ID."""
+    fallback_map = {
+        AgentName.MACRO: MacroStub(),
+        AgentName.FLOW: FlowStub(),
+        AgentName.SECTOR: SectorStub(),
+        AgentName.RISK: RiskStub(),
+    }
+    fallback_agent = fallback_map[agent_name]
+    if use_llm_agents and options.backend == ModelBackend.OPENAI:
+        return LLMPreAnalysisAgent(agent_name=agent_name, fallback_agent=fallback_agent, options=options)
+    return fallback_agent
 
 
 def run_committee(snapshot: object, stances: List[Stance]) -> CommitteeResult:
@@ -97,8 +114,11 @@ class DailyPipeline:
 
     def run(self, market_date: date, output_dir: Path) -> Report:
         """Run the full pipeline and write the report."""
+        trace = TraceLogger(os.getenv("LLM_TRACE_PATH"))
+        print("[pipeline] stage 1/5: build snapshot")
         snapshot = build_snapshot(market_date)
         status = get_last_snapshot_status()
+        trace.log("pipeline_stage", {"stage": "snapshot_built", "market_date": market_date.isoformat(), "status": status})
         # DB persistence layer (additive): best-effort upsert.
         # Must not break the existing pipeline even if DB is unavailable/locked.
         # Data integrity: use NULL (not 0.0) for missing/unavailable/not-implemented values.
@@ -157,9 +177,15 @@ class DailyPipeline:
                 real_gdp=q.real_gdp,
                 gdp_qoq_annualized=q.gdp_qoq_annualized,
             )
+        print("[pipeline] stage 2/5: run pre-analysis")
         stances = run_pre_analysis(snapshot, self.agent_ids)
-        committee_result = run_committee(snapshot, stances)
+        trace.log("pipeline_stage", {"stage": "stances_built", "count": len(stances)})
 
+        print("[pipeline] stage 3/5: run committee")
+        committee_result = run_committee(snapshot, stances)
+        trace.log("pipeline_stage", {"stage": "committee_result_built", "consensus": committee_result.consensus})
+
+        print("[pipeline] stage 4/5: build report")
         report = build_report(
             market_date=market_date.isoformat(),
             snapshot=snapshot,
@@ -168,6 +194,8 @@ class DailyPipeline:
         )
 
         output_path = output_dir / f"{market_date.isoformat()}.json"
+        print("[pipeline] stage 5/5: persist artifacts")
         render_report(report, output_path)
-        save_run(output_dir, market_date, snapshot, stances, committee_result, report)
+        run_dir = save_run(output_dir, market_date, snapshot, stances, committee_result, report)
+        trace.log("pipeline_stage", {"stage": "artifacts_saved", "run_dir": str(run_dir), "report_json": str(output_path)})
         return report
