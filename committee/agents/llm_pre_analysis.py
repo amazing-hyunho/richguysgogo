@@ -43,25 +43,42 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
             config = load_openai_config()
             system_prompt = get_system_prompt(self.agent_name, snapshot)
             user_prompt = self._build_user_prompt(snapshot)
-            text = chat_completion(
-                config=config,
-                model=model,
-                system_prompt=system_prompt,
-                user_prompt=user_prompt,
-                temperature=self.options.temperature,
-            )
-            parsed = json.loads(text)
+            last_error: Exception | None = None
+            model_used: str | None = None
+            response_text: str | None = None
+
+            for candidate_model in self._build_model_candidates(model):
+                try:
+                    response_text = chat_completion(
+                        config=config,
+                        model=candidate_model,
+                        system_prompt=system_prompt,
+                        user_prompt=user_prompt,
+                        temperature=self.options.temperature,
+                    )
+                    model_used = candidate_model
+                    break
+                except Exception as exc:
+                    last_error = exc
+                    if self._is_model_access_error(exc):
+                        continue
+                    raise
+
+            if response_text is None:
+                raise RuntimeError(f"openai_model_resolution_failed: {last_error}")
+
+            parsed = json.loads(response_text)
             parsed["agent_name"] = self.agent_name.value
             stance = Stance.model_validate(parsed)
             trace.log(
                 "llm_agent_response",
                 {
                     "agent": self.agent_name.value,
-                    "model": model,
+                    "model": model_used,
                     "backend": self.options.backend.value,
                     "system_prompt": system_prompt,
                     "user_prompt": user_prompt,
-                    "raw_response": text,
+                    "raw_response": response_text,
                     "parsed": stance.model_dump(),
                     "fallback_used": False,
                 },
@@ -80,6 +97,23 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                 },
             )
             return fallback
+
+    def _build_model_candidates(self, default_model: str) -> list[str]:
+        candidates: list[str] = []
+
+        per_agent = os.getenv(f"OPENAI_MODEL_{self.agent_name.value.upper()}", "").strip()
+        global_default = os.getenv("OPENAI_MODEL", "").strip()
+        extra = [item.strip() for item in os.getenv("OPENAI_FALLBACK_MODELS", "gpt-4.1,gpt-4.1-mini,gpt-4o,gpt-4o-mini").split(",")]
+
+        for value in [per_agent, global_default, default_model, *extra]:
+            if value and value not in candidates:
+                candidates.append(value)
+        return candidates
+
+    @staticmethod
+    def _is_model_access_error(error: Exception) -> bool:
+        message = str(error)
+        return "openai_http_403" in message and "does not have access to model" in message
 
     def _build_user_prompt(self, snapshot: Snapshot) -> str:
         return json.dumps(
