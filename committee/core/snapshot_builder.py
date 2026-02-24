@@ -372,11 +372,11 @@ def _sanitize_ticker_like_tokens(text: str | None) -> str:
 def _safe_headlines(provider: IDataProvider) -> tuple[list[str], str | None]:
     """Fetch headlines with fallback and a reason."""
     try:
-        headlines, reason = provider.get_headlines(limit=20)
+        headlines, reason = provider.get_headlines(limit=8)
         headlines = headlines or []
         if len(headlines) < 5:
             raise ValueError(reason or "insufficient headlines")
-        return headlines[:20], None
+        return headlines[:10], None
     except Exception as exc:  # noqa: BLE001 - guardrail
         return [], str(exc) if str(exc) else "unavailable"
 

@@ -46,7 +46,7 @@ def render_report(report: Report, output_path: Path) -> None:
     """Write report JSON to disk."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with output_path.open("w", encoding="utf-8") as handle:
-        json.dump(report.model_dump(), handle, ensure_ascii=True, indent=2)
+        json.dump(report.model_dump(), handle, ensure_ascii=False, indent=2)
 
 
 def build_report_markdown(report: Report) -> str:

@@ -71,7 +71,7 @@ def main() -> None:
     output_path = output_dir / f"{market_date.isoformat()}.json"
     render_report(report, output_path)
 
-    print(json.dumps(report.model_dump(), ensure_ascii=True, indent=2))
+    print(json.dumps(report.model_dump(), ensure_ascii=False, indent=2))
     print(f"Report saved to: {output_path}")
 
 
