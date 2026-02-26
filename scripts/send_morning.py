@@ -15,13 +15,7 @@ from committee.adapters.telegram_sender import send_report
 
 
 def main() -> None:
-    """Send a readable morning brief via Telegram or console.
-
-    We keep the nightly pipeline artifacts intact and simply format them:
-    - snapshot.json: indicators (markets + macro daily/monthly/quarterly/structural)
-    - committee_result.json: consensus + key points
-    - report.md: optional detailed report (off by default)
-    """
+    """Send a readable morning brief via Telegram or console."""
     parser = argparse.ArgumentParser(description="아침 브리프를 텔레그램으로 전송합니다.")
     parser.add_argument(
         "--include-report",
@@ -50,17 +44,11 @@ def main() -> None:
     committee = json.loads(committee_path.read_text(encoding="utf-8")) if committee_path.exists() else None
     report_text = report_path.read_text(encoding="utf-8") if (args.include_report and report_path.exists()) else ""
 
-    text = _build_morning_brief(
-        snapshot=snapshot,
-        stances=stances,
-        committee=committee,
-        report_text=report_text,
-    )
+    text = _build_morning_brief(snapshot=snapshot, stances=stances, committee=committee, report_text=report_text)
     send_report(text)
 
 
 def _latest_run_dir(runs_dir: Path) -> Path | None:
-    """Return the latest run directory by name."""
     if not runs_dir.exists():
         return None
     dirs = [path for path in runs_dir.iterdir() if path.is_dir()]
@@ -70,7 +58,6 @@ def _latest_run_dir(runs_dir: Path) -> Path | None:
 
 
 def _fmt(value, digits: int = 2, suffix: str = "") -> str:
-    """Format a number or None for display."""
     if value is None:
         return "n/a"
     try:
@@ -109,6 +96,13 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     lines.append(f"- 상세 리포트: {'포함됨' if report_text.strip() else '미포함'}")
     lines.append("")
 
+    lines.append("🧭 의장 결정")
+    if committee and committee.get("consensus"):
+        lines.append(f"- 최종 합의: {_translate_sentence(committee.get('consensus'))}")
+        for g in (committee.get("ops_guidance") or [])[:3]:
+            lvl = g.get("level", "")
+            txt = _translate_sentence(g.get("text", ""))
+            lines.append(f"- [{lvl}/{_level_kr(lvl)}] {txt}")
     lines.append("🧭 위원회 결론")
     if committee and committee.get("consensus"):
         lines.append(f"- 합의: {committee.get('consensus')}")
@@ -121,6 +115,43 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
         lines.append("- 합의 결과 없음")
     lines.append("")
 
+    lines.append("🗳️ 에이전트 투표 현황")
+    vote = _vote_summary(stances)
+    lines.append(f"- 전체: RISK_ON={vote['RISK_ON']}, NEUTRAL={vote['NEUTRAL']}, RISK_OFF={vote['RISK_OFF']}")
+    for stance in stances:
+        agent = _agent_label(stance.get("agent_name"))
+        tag = stance.get("regime_tag", "N/A")
+        conf = stance.get("confidence", "N/A")
+        lines.append(f"- {agent}: {tag} ({_regime_kr(tag)}), 신뢰도 {conf}")
+    lines.append("")
+
+    lines.append("🌍 시장 체크")
+    lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
+    lines.append(f"- 미국: S&P500 {_fmt_signed(us.get('sp500_pct'), 2, '%')} / NASDAQ {_fmt_signed(us.get('nasdaq_pct'), 2, '%')} / DOW {_fmt_signed(us.get('dow_pct'), 2, '%')}")
+    lines.append(f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (일변화 {_fmt_signed(fx.get('usdkrw_pct'), 2, '%')})")
+    lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
+    lines.append("")
+
+    lines.append("🏦 매크로 체크")
+    lines.append(f"- 금리: 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}")
+    lines.append(f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 1)}")
+    lines.append(f"- 물가/경기: 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')} / CPI {_fmt(monthly.get('cpi_yoy'), 2, '%')} / PMI {_fmt(monthly.get('pmi'), 1)}")
+    lines.append(f"- 성장: GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
+    lines.append(f"- 정책: 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')} / 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
+    lines.append("")
+
+    if stances:
+        lines.append("🤖 에이전트 원문 응답")
+        for stance in stances:
+            agent = _agent_label(stance.get("agent_name"))
+            lines.append(f"[{agent}]")
+            raw = (stance.get("raw_response") or "").strip()
+            if raw:
+                lines.append(raw)
+            else:
+                for claim in (stance.get("core_claims") or []):
+                    lines.append(f"- {claim}")
+            lines.append("")
     lines.append("🌍 시장 체크")
     lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
     lines.append(
@@ -161,6 +192,17 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     return "\n".join(lines)
 
 
+def _vote_summary(stances: list[dict]) -> dict[str, int]:
+    counts = {"RISK_ON": 0, "NEUTRAL": 0, "RISK_OFF": 0}
+    for stance in stances:
+        tag = stance.get("regime_tag")
+        if tag in counts:
+            counts[tag] += 1
+    return counts
+
+
+def _format_report_for_telegram(report_text: str) -> list[str]:
+    lines = ["📝 상세 리포트 (가독성 모드)", "- report.md를 핵심 섹션 중심으로 재정렬해 제공합니다."]
 def _format_report_for_telegram(report_text: str) -> list[str]:
     """Reformat report.md to a Telegram-friendly compact view."""
     lines = ["📝 상세 리포트 (가독성 모드)", "- report.md를 핵심 섹션 중심으로 재정렬해 제공합니다."]
@@ -178,6 +220,13 @@ def _format_report_for_telegram(report_text: str) -> list[str]:
         matched_contents = [section_map[name] for name in candidates if name in section_map]
         if not matched_contents:
             continue
+        merged: list[str] = []
+        for content in matched_contents:
+            merged.extend(content)
+        lines.append("")
+        lines.append(f"[{display_name}]")
+        cleaned = _cleanup_section_lines(merged)
+        lines.extend(cleaned[:40])
 
         merged: list[str] = []
         for content in matched_contents:
@@ -211,6 +260,10 @@ def _parse_markdown_sections(report_text: str) -> dict[str, list[str]]:
 
 
 def _cleanup_section_lines(lines: list[str]) -> list[str]:
+    cleaned: list[str] = []
+    for line in lines:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("```"):
     """Remove noisy markdown markers while preserving readability."""
     cleaned: list[str] = []
     for line in lines:
@@ -223,6 +276,30 @@ def _cleanup_section_lines(lines: list[str]) -> list[str]:
     return cleaned
 
 
+def _translate_sentence(text: str) -> str:
+    mapping = {
+        "Committee agrees on a neutral stance with selective monitoring.": "위원회는 선별적 모니터링 하에 중립적 스탠스를 유지합니다.",
+        "Committee maintains a neutral posture with selective positioning.": "위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.",
+        "Committee adopts a defensive posture and reduces risk exposure.": "위원회는 방어적 입장을 채택하고 위험 노출을 줄입니다.",
+        "Committee supports risk-on positioning with disciplined risk controls.": "위원회는 엄격한 리스크 통제를 전제로 위험자산 비중 확대를 지지합니다.",
+        "Maintain balanced exposure.": "노출을 균형 있게 유지합니다.",
+        "Keep risk limits tight.": "리스크 한도를 엄격히 유지합니다.",
+        "Avoid aggressive leverage.": "과도한 레버리지는 피합니다.",
+        "Lean into confirmed momentum leaders.": "확인된 모멘텀 주도주 중심으로 대응합니다.",
+        "Size positions with volatility limits.": "변동성 한도를 기준으로 포지션 규모를 조절합니다.",
+        "Avoid chasing overstretched breakouts.": "과열된 돌파 구간 추격 매수는 피합니다.",
+        "Keep watchlist tight and avoid overexposure.": "관심 종목을 좁게 유지하고 과도한 노출을 피합니다.",
+        "Keep position sizes moderate.": "포지션 규모를 보수적으로 유지합니다.",
+    }
+    return mapping.get(text, text)
+
+
+def _level_kr(level: str) -> str:
+    return {"OK": "유지", "CAUTION": "주의", "AVOID": "회피"}.get(level, level)
+
+
+def _regime_kr(tag: str) -> str:
+    return {"RISK_ON": "위험선호", "NEUTRAL": "중립", "RISK_OFF": "위험회피"}.get(tag, tag)
 def _compress_agent_section(lines: list[str]) -> list[str]:
     """Keep AI agent section compact for Telegram consumption."""
     compressed: list[str] = []
@@ -241,12 +318,14 @@ def _compress_agent_section(lines: list[str]) -> list[str]:
 
 
 def _agent_label(agent_name: str | None) -> str:
-    """Map agent identifiers to Korean labels."""
     mapping = {
         "macro": "매크로",
         "flow": "수급",
         "sector": "섹터",
         "risk": "리스크",
+        "earnings": "이익모멘텀",
+        "breadth": "브레드스",
+        "liquidity": "유동성",
     }
     return mapping.get(agent_name or "", agent_name or "")
 

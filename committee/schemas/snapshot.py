@@ -177,6 +177,18 @@ class Macro(BaseModel):
         extra = "forbid"
 
 
+class PhaseTwoSignals(BaseModel):
+    """Derived phase-2 signals computed from already-fetched market/macro/headline inputs."""
+
+    earnings_signal_score: float = 0.0
+    breadth_signal_score: float = 0.0
+    liquidity_signal_score: float = 0.0
+    note: MediumText = "derived_from_existing_snapshot_inputs"
+
+    class Config:
+        extra = "forbid"
+
+
 class Snapshot(BaseModel):
     """Single shared fact packet for the daily meeting."""
 
@@ -191,6 +203,10 @@ class Snapshot(BaseModel):
     watchlist: Watchlist = Field(..., description="Symbols to monitor.")
     markets: Markets = Field(..., description="Global markets: KR/US indices and FX.")
     macro: Optional[Macro] = Field(default=None, description="Macro indicators (daily/monthly/quarterly/forward).")
+    phase_two_signals: Optional[PhaseTwoSignals] = Field(
+        default=None,
+        description="Derived signals for earnings/breadth/liquidity agents using existing fetched data.",
+    )
 
     class Config:
         extra = "forbid"

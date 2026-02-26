@@ -234,6 +234,16 @@ def build_snapshot_real(
         "volatility": {"vix": vix},
     }
 
+    phase_two_signals = _compute_phase_two_signals(
+        headlines=headlines,
+        markets=markets,
+        macro_daily={
+            "dxy": dxy,
+            "spread_2_10": spread_2_10,
+        },
+        macro_structural={"real_rate": real_rate},
+    )
+
     return Snapshot(
         market_summary={
             "note": market_note or "market_summary_note_unavailable",
@@ -251,6 +261,7 @@ def build_snapshot_real(
         news_headlines=headlines,
         watchlist=["SPY", "QQQ", "XLK"],
         markets=markets,
+        phase_two_signals=phase_two_signals,
         macro={
             "daily": {
                 "us10y": us10y,
@@ -282,6 +293,48 @@ def build_snapshot_real(
     )
 
 
+def _compute_phase_two_signals(
+    headlines: list[str],
+    markets: dict,
+    macro_daily: dict,
+    macro_structural: dict,
+) -> dict:
+    """Build derived earnings/breadth/liquidity signals from existing inputs only."""
+    headline_text = " ".join(headlines).lower()
+    positive = sum(token in headline_text for token in ["earnings beat", "guidance up", "estimate up", "eps beat", "upgrade"])
+    negative = sum(token in headline_text for token in ["earnings miss", "guidance cut", "estimate down", "eps miss", "downgrade"])
+    earnings_score = float(positive - negative)
+
+    kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
+    us = (markets.get("us") or {}) if isinstance(markets, dict) else {}
+    kr_avg = (float(kr.get("kospi_pct", 0.0)) + float(kr.get("kosdaq_pct", 0.0))) / 2.0
+    us_avg = (
+        float(us.get("sp500_pct", 0.0))
+        + float(us.get("nasdaq_pct", 0.0))
+        + float(us.get("dow_pct", 0.0))
+    ) / 3.0
+    breadth_score = float(kr_avg - us_avg)
+
+    dxy = macro_daily.get("dxy")
+    spread_2_10 = macro_daily.get("spread_2_10")
+    real_rate = macro_structural.get("real_rate")
+
+    liquidity_score = 0.0
+    if dxy is not None:
+        liquidity_score += (100.0 - float(dxy)) / 5.0
+    if real_rate is not None:
+        liquidity_score += (1.5 - float(real_rate))
+    if spread_2_10 is not None:
+        liquidity_score += float(spread_2_10) * 2.0
+
+    return {
+        "earnings_signal_score": round(earnings_score, 3),
+        "breadth_signal_score": round(breadth_score, 3),
+        "liquidity_signal_score": round(liquidity_score, 3),
+        "note": "derived from headlines + markets + macro.daily + macro.structural",
+    }
+
+
 def build_dummy_snapshot(market_date: date) -> Snapshot:
     """Return a deterministic snapshot without external dependencies."""
     fallback = FallbackProvider()
@@ -310,6 +363,12 @@ def build_dummy_snapshot(market_date: date) -> Snapshot:
         news_headlines=[],
         watchlist=["SPY", "QQQ", "XLK"],
         markets=markets,
+        phase_two_signals={
+            "earnings_signal_score": 0.0,
+            "breadth_signal_score": 0.0,
+            "liquidity_signal_score": 0.0,
+            "note": "dummy derived signals",
+        },
     )
 
 

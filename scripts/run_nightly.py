@@ -14,7 +14,6 @@ if str(ROOT_DIR) not in sys.path:
 from committee.agents.model_profiles import get_agent_model_map, parse_backend
 from committee.core.pipeline import DailyPipeline
 from committee.core.snapshot_builder import get_last_snapshot_status
-from committee.agents.model_profiles import get_agent_model_map, parse_backend
 
 
 def main() -> None:
@@ -31,11 +30,7 @@ def main() -> None:
     print("agent model profile: " + ", ".join([f"{agent.value}={model}" for agent, model in model_map.items()]))
 
     print("[run_nightly] step 2/4: running daily pipeline...")
-    backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))
-    model_map = get_agent_model_map(backend)
-    print("agent model profile: " + ", ".join([f"{agent.value}={model}" for agent, model in model_map.items()]))
-
-    pipeline = DailyPipeline(agent_ids=["macro", "flow", "sector", "risk"])
+    pipeline = DailyPipeline(agent_ids=["macro", "flow", "sector", "risk", "earnings", "breadth", "liquidity"])
     pipeline.run(market_date, runs_dir)
 
     print("[run_nightly] step 3/4: collecting snapshot source status...")

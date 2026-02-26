@@ -9,6 +9,9 @@ from typing import List
 import os
 
 from committee.agents.flow_stub import FlowStub
+from committee.agents.earnings_stub import EarningsStub
+from committee.agents.breadth_stub import BreadthStub
+from committee.agents.liquidity_stub import LiquidityStub
 from committee.agents.chair_stub import ChairStub
 from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.agents.macro_stub import MacroStub
@@ -51,6 +54,9 @@ def _build_pre_analysis_agent(agent_name: AgentName, use_llm_agents: bool, optio
         AgentName.FLOW: FlowStub(),
         AgentName.SECTOR: SectorStub(),
         AgentName.RISK: RiskStub(),
+        AgentName.EARNINGS: EarningsStub(),
+        AgentName.BREADTH: BreadthStub(),
+        AgentName.LIQUIDITY: LiquidityStub(),
     }
     fallback_agent = fallback_map[agent_name]
     if use_llm_agents and options.backend == ModelBackend.OPENAI:

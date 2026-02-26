@@ -216,5 +216,8 @@ def _agent_label(agent_name: str) -> str:
         "flow": "수급",
         "sector": "섹터",
         "risk": "리스크",
+        "earnings": "이익모멘텀",
+        "breadth": "브레드스",
+        "liquidity": "유동성",
     }
     return mapping.get(agent_name, agent_name)

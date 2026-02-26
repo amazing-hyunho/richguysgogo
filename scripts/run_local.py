@@ -12,15 +12,16 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
+from committee.agents.breadth_stub import BreadthStub
 from committee.agents.chair_stub import ChairStub
+from committee.agents.earnings_stub import EarningsStub
 from committee.agents.flow_stub import FlowStub
+from committee.agents.liquidity_stub import LiquidityStub
 from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.agents.macro_stub import MacroStub
 from committee.agents.model_profiles import ModelBackend, get_agent_model_map, parse_backend
 from committee.agents.risk_stub import RiskStub
 from committee.agents.sector_stub import SectorStub
-from committee.agents.model_profiles import ModelBackend, get_agent_model_map, parse_backend
-from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.core.report_renderer import build_report, render_report
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.core.validators import validate_pipeline
@@ -49,16 +50,23 @@ def main() -> None:
     )
 
     use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
+    agent_specs = [
+        (AgentName.MACRO, MacroStub()),
+        (AgentName.FLOW, FlowStub()),
+        (AgentName.SECTOR, SectorStub()),
+        (AgentName.RISK, RiskStub()),
+        (AgentName.EARNINGS, EarningsStub()),
+        (AgentName.BREADTH, BreadthStub()),
+        (AgentName.LIQUIDITY, LiquidityStub()),
+    ]
     if use_llm_agents and backend == ModelBackend.OPENAI:
         options = LLMRunOptions(backend=backend, temperature=float(os.getenv("LLM_TEMPERATURE", "0.1")))
         agents = [
-            LLMPreAnalysisAgent(agent_name=AgentName.MACRO, fallback_agent=MacroStub(), options=options),
-            LLMPreAnalysisAgent(agent_name=AgentName.FLOW, fallback_agent=FlowStub(), options=options),
-            LLMPreAnalysisAgent(agent_name=AgentName.SECTOR, fallback_agent=SectorStub(), options=options),
-            LLMPreAnalysisAgent(agent_name=AgentName.RISK, fallback_agent=RiskStub(), options=options),
+            LLMPreAnalysisAgent(agent_name=agent_name, fallback_agent=fallback, options=options)
+            for agent_name, fallback in agent_specs
         ]
     else:
-        agents = [MacroStub(), FlowStub(), SectorStub(), RiskStub()]
+        agents = [fallback for _, fallback in agent_specs]
 
     print("[run_local] step 2/6: running pre-analysis agents...")
     stances = [agent.run(snapshot) for agent in agents]

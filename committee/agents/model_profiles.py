@@ -57,6 +57,24 @@ AGENT_MODEL_PROFILES: dict[AgentName, AgentModelProfile] = {
         local_model="Qwen/Qwen2.5-32B-Instruct",
         rationale="과민탐지 억제를 위해 precision 우선 모델을 배치.",
     ),
+    AgentName.EARNINGS: AgentModelProfile(
+        agent=AgentName.EARNINGS,
+        openai_model="gpt-4.1",
+        local_model="Qwen/Qwen2.5-14B-Instruct",
+        rationale="실적/가이던스 문맥 해석과 요약 정확도에 초점.",
+    ),
+    AgentName.BREADTH: AgentModelProfile(
+        agent=AgentName.BREADTH,
+        openai_model="gpt-4.1-mini",
+        local_model="meta-llama/Llama-3.1-8B-Instruct",
+        rationale="정량 요약 비중이 높아 경량 모델로도 안정적.",
+    ),
+    AgentName.LIQUIDITY: AgentModelProfile(
+        agent=AgentName.LIQUIDITY,
+        openai_model="gpt-4.1",
+        local_model="Qwen/Qwen2.5-14B-Instruct",
+        rationale="금리/달러/유동성 해석의 일관성을 우선.",
+    ),
 }
 
 
