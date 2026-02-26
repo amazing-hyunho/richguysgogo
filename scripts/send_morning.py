@@ -77,7 +77,7 @@ def _fmt_signed(value, digits: int = 2, suffix: str = "") -> str:
 
 
 def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, report_text: str) -> str:
-    """Build a user-friendly morning brief for Telegram reading."""
+    """Build a compact and readable morning brief for Telegram."""
     markets = snapshot.get("markets", {}) or {}
     kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
     us = (markets.get("us") or {}) if isinstance(markets, dict) else {}
@@ -91,26 +91,27 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     structural = (macro.get("structural") or {}) if isinstance(macro, dict) else {}
 
     lines: list[str] = []
+    market_summary = snapshot.get("market_summary", {}) or {}
     lines.append("📌 오늘의 데일리 브리프")
-    lines.append(f"- 시장 요약: {snapshot.get('market_summary', {}).get('note', 'n/a')}")
+    lines.append(f"- 시장 요약: {market_summary.get('note', 'n/a')}")
     lines.append(f"- 상세 리포트: {'포함됨' if report_text.strip() else '미포함'}")
     lines.append("")
 
     lines.append("🧭 의장 결정")
     if committee and committee.get("consensus"):
-        lines.append(f"- 최종 합의: {_translate_sentence(committee.get('consensus'))}")
+        lines.append(f"- 최종 결론: {_translate_sentence(committee.get('consensus'))}")
+        majority_tag = _extract_majority_tag(committee)
+        if majority_tag:
+            lines.append(f"- 시장 국면 판단: {majority_tag} ({_regime_kr(majority_tag)})")
         for g in (committee.get("ops_guidance") or [])[:3]:
             lvl = g.get("level", "")
             txt = _translate_sentence(g.get("text", ""))
-            lines.append(f"- [{lvl}/{_level_kr(lvl)}] {txt}")
-    lines.append("🧭 위원회 결론")
-    if committee and committee.get("consensus"):
-        lines.append(f"- 합의: {committee.get('consensus')}")
-        key_points = committee.get("key_points") or []
-        for kp in key_points[:3]:
-            point = kp.get("point")
-            if point:
-                lines.append(f"- 핵심: {point}")
+            lines.append(f"- 실행 원칙 [{_level_kr(lvl)}]: {txt}")
+
+        key_points = [kp.get("point", "") for kp in (committee.get("key_points") or []) if kp.get("point")]
+        translated_points = [_translate_key_point(point) for point in key_points[:2]]
+        if translated_points:
+            lines.append(f"- 근거 요약: {' / '.join(translated_points)}")
     else:
         lines.append("- 합의 결과 없음")
     lines.append("")
@@ -118,6 +119,7 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     lines.append("🗳️ 에이전트 투표 현황")
     vote = _vote_summary(stances)
     lines.append(f"- 전체: RISK_ON={vote['RISK_ON']}, NEUTRAL={vote['NEUTRAL']}, RISK_OFF={vote['RISK_OFF']}")
+    lines.append("- 태그 설명: RISK_ON=위험자산 비중 확대, NEUTRAL=중립/선별 대응, RISK_OFF=방어적 운용")
     for stance in stances:
         agent = _agent_label(stance.get("agent_name"))
         tag = stance.get("regime_tag", "N/A")
@@ -128,64 +130,6 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     lines.append("🌍 시장 체크")
     lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
     lines.append(f"- 미국: S&P500 {_fmt_signed(us.get('sp500_pct'), 2, '%')} / NASDAQ {_fmt_signed(us.get('nasdaq_pct'), 2, '%')} / DOW {_fmt_signed(us.get('dow_pct'), 2, '%')}")
-    lines.append(f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (일변화 {_fmt_signed(fx.get('usdkrw_pct'), 2, '%')})")
-    lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
-    lines.append("")
-
-    lines.append("🏦 매크로 체크")
-    lines.append(f"- 금리: 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}")
-    lines.append(f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 1)}")
-    lines.append(f"- 물가/경기: 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')} / CPI {_fmt(monthly.get('cpi_yoy'), 2, '%')} / PMI {_fmt(monthly.get('pmi'), 1)}")
-    lines.append(f"- 성장: GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
-    lines.append(f"- 정책: 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')} / 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
-    lines.append("")
-
-    if stances:
-        lines.append("🤖 에이전트 원문 응답")
-        for stance in stances:
-            agent = _agent_label(stance.get("agent_name"))
-            lines.append(f"[{agent}]")
-            raw = (stance.get("raw_response") or "").strip()
-            if raw:
-                lines.append(raw)
-            else:
-                for claim in (stance.get("core_claims") or []):
-                    lines.append(f"- {claim}")
-            lines.append("")
-    lines.append("")
-
-    lines.append("🌍 시장 체크")
-    lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
-    lines.append(f"- 미국: S&P500 {_fmt_signed(us.get('sp500_pct'), 2, '%')} / NASDAQ {_fmt_signed(us.get('nasdaq_pct'), 2, '%')} / DOW {_fmt_signed(us.get('dow_pct'), 2, '%')}")
-    lines.append(f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (일변화 {_fmt_signed(fx.get('usdkrw_pct'), 2, '%')})")
-    lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
-    lines.append("")
-
-    lines.append("🏦 매크로 체크")
-    lines.append(f"- 금리: 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}")
-    lines.append(f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 1)}")
-    lines.append(f"- 물가/경기: 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')} / CPI {_fmt(monthly.get('cpi_yoy'), 2, '%')} / PMI {_fmt(monthly.get('pmi'), 1)}")
-    lines.append(f"- 성장: GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
-    lines.append(f"- 정책: 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')} / 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
-    lines.append("")
-
-    if stances:
-        lines.append("🤖 에이전트 원문 응답")
-        for stance in stances:
-            agent = _agent_label(stance.get("agent_name"))
-            lines.append(f"[{agent}]")
-            raw = (stance.get("raw_response") or "").strip()
-            if raw:
-                lines.append(raw)
-            else:
-                for claim in (stance.get("core_claims") or []):
-                    lines.append(f"- {claim}")
-            lines.append("")
-    lines.append("🌍 시장 체크")
-    lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
-    lines.append(
-        f"- 미국: S&P500 {_fmt_signed(us.get('sp500_pct'), 2, '%')} / NASDAQ {_fmt_signed(us.get('nasdaq_pct'), 2, '%')} / DOW {_fmt_signed(us.get('dow_pct'), 2, '%')}"
-    )
     lines.append(f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (일변화 {_fmt_signed(fx.get('usdkrw_pct'), 2, '%')})")
     lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
     lines.append("")
@@ -253,15 +197,6 @@ def _format_report_for_telegram(report_text: str) -> list[str]:
         lines.append("")
         lines.append(f"[{display_name}]")
         cleaned = _cleanup_section_lines(merged)
-        lines.extend(cleaned[:40])
-
-        merged: list[str] = []
-        for content in matched_contents:
-            merged.extend(content)
-
-        lines.append("")
-        lines.append(f"[{display_name}]")
-        cleaned = _cleanup_section_lines(merged)
         if display_name == "AI 에이전트 의견":
             cleaned = _compress_agent_section(cleaned)
         lines.extend(cleaned[:40])
@@ -325,7 +260,32 @@ def _level_kr(level: str) -> str:
 
 
 def _regime_kr(tag: str) -> str:
-    return {"RISK_ON": "위험선호", "NEUTRAL": "중립", "RISK_OFF": "위험회피"}.get(tag, tag)
+    return {
+        "RISK_ON": "위험선호(비중 확대)",
+        "NEUTRAL": "중립(선별 대응)",
+        "RISK_OFF": "위험회피(방어적 운용)",
+    }.get(tag, tag)
+
+
+def _translate_key_point(text: str) -> str:
+    mapping = {
+        "Majority regime tag": "다수 국면",
+        "Shared evidence focus": "공통 근거",
+    }
+    for key, value in mapping.items():
+        if text.startswith(key):
+            return text.replace(key, value, 1)
+    return text.rstrip(".")
+
+
+def _extract_majority_tag(committee: dict) -> str:
+    for kp in committee.get("key_points") or []:
+        point = kp.get("point", "")
+        if point.startswith("Majority regime tag:"):
+            return point.split(":", 1)[1].strip().rstrip(".")
+    return ""
+
+
 def _compress_agent_section(lines: list[str]) -> list[str]:
     """Keep AI agent section compact for Telegram consumption."""
     compressed: list[str] = []
