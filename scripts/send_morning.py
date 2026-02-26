@@ -119,6 +119,7 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     lines.append("🗳️ 에이전트 투표 현황")
     vote = _vote_summary(stances)
     lines.append(f"- 전체: RISK_ON={vote['RISK_ON']}, NEUTRAL={vote['NEUTRAL']}, RISK_OFF={vote['RISK_OFF']}")
+    lines.append("- 태그 설명: RISK_ON=위험자산 비중 확대, NEUTRAL=중립/선별 대응, RISK_OFF=방어적 운용")
     for stance in stances:
         agent = _agent_label(stance.get("agent_name"))
         tag = stance.get("regime_tag", "N/A")
@@ -259,6 +260,11 @@ def _level_kr(level: str) -> str:
 
 
 def _regime_kr(tag: str) -> str:
+    return {
+        "RISK_ON": "위험선호(비중 확대)",
+        "NEUTRAL": "중립(선별 대응)",
+        "RISK_OFF": "위험회피(방어적 운용)",
+    }.get(tag, tag)
     return {"RISK_ON": "위험선호", "NEUTRAL": "중립", "RISK_OFF": "위험회피"}.get(tag, tag)
 
 
