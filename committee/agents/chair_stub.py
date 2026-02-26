@@ -19,7 +19,6 @@ class ChairStub:
     def run(self, stances: List[Stance]) -> CommitteeResult:
         """Generate a consensus result from stances."""
         total = len(stances)
-        risk_off_count = sum(1 for stance in stances if stance.regime_tag == RegimeTag.RISK_OFF)
         tag_counts = {
             RegimeTag.RISK_ON: sum(1 for stance in stances if stance.regime_tag == RegimeTag.RISK_ON),
             RegimeTag.NEUTRAL: sum(1 for stance in stances if stance.regime_tag == RegimeTag.NEUTRAL),
@@ -49,7 +48,7 @@ class ChairStub:
                 OpsGuidance(level=OpsGuidanceLevel.CAUTION, text="Await minimum stance coverage."),
                 OpsGuidance(level=OpsGuidanceLevel.AVOID, text="Do not act without stances."),
             ]
-        elif risk_off_count > total / 2:
+        elif majority_tag == RegimeTag.RISK_OFF:
             consensus = "Committee adopts a defensive posture and reduces risk exposure."
             key_points = _build_key_points(stances, majority_tag)
             disagreements = _build_disagreements(stances, tag_counts, majority_tag)
@@ -57,6 +56,15 @@ class ChairStub:
                 OpsGuidance(level=OpsGuidanceLevel.OK, text="Keep exposure focused on resilience."),
                 OpsGuidance(level=OpsGuidanceLevel.CAUTION, text="Favor defensive positioning."),
                 OpsGuidance(level=OpsGuidanceLevel.AVOID, text="Avoid high-beta risk assets."),
+            ]
+        elif majority_tag == RegimeTag.RISK_ON:
+            consensus = "Committee supports risk-on positioning with disciplined risk controls."
+            key_points = _build_key_points(stances, majority_tag)
+            disagreements = _build_disagreements(stances, tag_counts, majority_tag)
+            ops_guidance = [
+                OpsGuidance(level=OpsGuidanceLevel.OK, text="Lean into confirmed momentum leaders."),
+                OpsGuidance(level=OpsGuidanceLevel.CAUTION, text="Size positions with volatility limits."),
+                OpsGuidance(level=OpsGuidanceLevel.AVOID, text="Avoid chasing overstretched breakouts."),
             ]
         else:
             consensus = "Committee maintains a neutral posture with selective positioning."
