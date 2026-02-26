@@ -152,6 +152,35 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
                 for claim in (stance.get("core_claims") or []):
                     lines.append(f"- {claim}")
             lines.append("")
+    lines.append("")
+
+    lines.append("🌍 시장 체크")
+    lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
+    lines.append(f"- 미국: S&P500 {_fmt_signed(us.get('sp500_pct'), 2, '%')} / NASDAQ {_fmt_signed(us.get('nasdaq_pct'), 2, '%')} / DOW {_fmt_signed(us.get('dow_pct'), 2, '%')}")
+    lines.append(f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (일변화 {_fmt_signed(fx.get('usdkrw_pct'), 2, '%')})")
+    lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
+    lines.append("")
+
+    lines.append("🏦 매크로 체크")
+    lines.append(f"- 금리: 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}")
+    lines.append(f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 1)}")
+    lines.append(f"- 물가/경기: 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')} / CPI {_fmt(monthly.get('cpi_yoy'), 2, '%')} / PMI {_fmt(monthly.get('pmi'), 1)}")
+    lines.append(f"- 성장: GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
+    lines.append(f"- 정책: 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')} / 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
+    lines.append("")
+
+    if stances:
+        lines.append("🤖 에이전트 원문 응답")
+        for stance in stances:
+            agent = _agent_label(stance.get("agent_name"))
+            lines.append(f"[{agent}]")
+            raw = (stance.get("raw_response") or "").strip()
+            if raw:
+                lines.append(raw)
+            else:
+                for claim in (stance.get("core_claims") or []):
+                    lines.append(f"- {claim}")
+            lines.append("")
     lines.append("🌍 시장 체크")
     lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
     lines.append(
@@ -201,8 +230,6 @@ def _vote_summary(stances: list[dict]) -> dict[str, int]:
     return counts
 
 
-def _format_report_for_telegram(report_text: str) -> list[str]:
-    lines = ["📝 상세 리포트 (가독성 모드)", "- report.md를 핵심 섹션 중심으로 재정렬해 제공합니다."]
 def _format_report_for_telegram(report_text: str) -> list[str]:
     """Reformat report.md to a Telegram-friendly compact view."""
     lines = ["📝 상세 리포트 (가독성 모드)", "- report.md를 핵심 섹션 중심으로 재정렬해 제공합니다."]
@@ -260,6 +287,10 @@ def _parse_markdown_sections(report_text: str) -> dict[str, list[str]]:
 
 
 def _cleanup_section_lines(lines: list[str]) -> list[str]:
+    """Clean markdown lines for telegram preview safely."""
+    if not lines:
+        return []
+
     cleaned: list[str] = []
     for line in lines:
         stripped = line.strip()
