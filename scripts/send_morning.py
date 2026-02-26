@@ -265,6 +265,7 @@ def _regime_kr(tag: str) -> str:
         "NEUTRAL": "중립(선별 대응)",
         "RISK_OFF": "위험회피(방어적 운용)",
     }.get(tag, tag)
+    return {"RISK_ON": "위험선호", "NEUTRAL": "중립", "RISK_OFF": "위험회피"}.get(tag, tag)
 
 
 def _translate_key_point(text: str) -> str:
