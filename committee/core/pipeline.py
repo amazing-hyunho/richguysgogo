@@ -9,6 +9,10 @@ from typing import List
 import os
 
 from committee.agents.flow_stub import FlowStub
+from committee.agents.earnings_stub import EarningsStub
+from committee.agents.breadth_stub import BreadthStub
+from committee.agents.liquidity_stub import LiquidityStub
+from committee.agents.chair_stub import ChairStub
 from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.agents.macro_stub import MacroStub
 from committee.agents.model_profiles import ModelBackend, parse_backend
@@ -25,13 +29,8 @@ from committee.core.database import (
 from committee.core.storage import save_run
 from committee.core.trace_logger import TraceLogger
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
-from committee.schemas.committee_result import (
-    CommitteeResult,
-    Disagreement,
-    OpsGuidance,
-    OpsGuidanceLevel,
-)
-from committee.schemas.stance import AgentName, RegimeTag, Stance
+from committee.schemas.committee_result import CommitteeResult
+from committee.schemas.stance import AgentName, Stance
 
 
 def run_pre_analysis(snapshot: object, agent_ids: List[str]) -> List[Stance]:
@@ -55,6 +54,9 @@ def _build_pre_analysis_agent(agent_name: AgentName, use_llm_agents: bool, optio
         AgentName.FLOW: FlowStub(),
         AgentName.SECTOR: SectorStub(),
         AgentName.RISK: RiskStub(),
+        AgentName.EARNINGS: EarningsStub(),
+        AgentName.BREADTH: BreadthStub(),
+        AgentName.LIQUIDITY: LiquidityStub(),
     }
     fallback_agent = fallback_map[agent_name]
     if use_llm_agents and options.backend == ModelBackend.OPENAI:
@@ -63,48 +65,9 @@ def _build_pre_analysis_agent(agent_name: AgentName, use_llm_agents: bool, optio
 
 
 def run_committee(snapshot: object, stances: List[Stance]) -> CommitteeResult:
-    """Generate a stub committee result from stances."""
-    key_points = _build_key_points(stances, None)
-    return CommitteeResult(
-        consensus="Committee agrees on a neutral stance with selective monitoring.",
-        key_points=key_points,
-        disagreements=[
-            Disagreement(
-                topic="Regime tags",
-                majority=RegimeTag.NEUTRAL.value,
-                minority="None",
-                minority_agents=["none"],
-                why_it_matters="No dissenting regime tags are present.",
-            )
-        ],
-        ops_guidance=[
-            OpsGuidance(level=OpsGuidanceLevel.OK, text="Keep watchlist tight and avoid overexposure."),
-            OpsGuidance(level=OpsGuidanceLevel.CAUTION, text="Keep position sizes moderate."),
-            OpsGuidance(level=OpsGuidanceLevel.AVOID, text="Avoid aggressive leverage."),
-        ],
-    )
-
-
-def _build_key_points(stances: List[Stance], majority_tag: RegimeTag | None) -> list[dict]:
-    if not stances:
-        return [{"point": "No stances provided.", "sources": ["none"]}]
-
-    tag_to_agents: dict[RegimeTag, list[str]] = {
-        RegimeTag.RISK_ON: [],
-        RegimeTag.NEUTRAL: [],
-        RegimeTag.RISK_OFF: [],
-    }
-    for stance in stances:
-        tag_to_agents[stance.regime_tag].append(stance.agent_name.value)
-
-    if majority_tag is None:
-        majority_tag = max(tag_to_agents, key=lambda tag: len(tag_to_agents[tag]))
-    return [
-        {
-            "point": f"Majority regime tag: {majority_tag.value}.",
-            "sources": tag_to_agents[majority_tag][:5] or ["unknown"],
-        }
-    ]
+    """Generate committee result from stance distribution via ChairStub."""
+    _ = snapshot  # reserved for future chair rules that inspect snapshot directly
+    return ChairStub().run(stances)
 
 
 @dataclass(frozen=True)

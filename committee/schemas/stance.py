@@ -42,6 +42,9 @@ class AgentName(str, Enum):
     FLOW = "flow"
     SECTOR = "sector"
     RISK = "risk"
+    EARNINGS = "earnings"
+    BREADTH = "breadth"
+    LIQUIDITY = "liquidity"
 
 
 class Stance(BaseModel):
