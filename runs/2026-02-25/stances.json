@@ -1,0 +1,70 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "코스피가 사상 최고치에 도달했으나 외국인 매도세가 두드러집니다.",
+      "시장에 하락 베팅과 고점 경계 심리가 확산되고 있습니다."
+    ],
+    "korean_comment": "상승세에도 불안 요인이 적지 않습니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 사상 최고치에 도달했으나 외국인 매도세가 두드러집니다.\",\n    \"시장에 하락 베팅과 고점 경계 심리가 확산되고 있습니다.\"\n  ],\n  \"korean_comment\": \"상승세에도 불안 요인이 적지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.flow_summary.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.news_headlines",
+      "snapshot.flow_summary.note"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "코스피가 6000선에 도달했으나 변동성 확대 신호가 감지됨.",
+      "외국인 대규모 매도와 하락 베팅 증가가 부담 요인임.",
+      "단기적으로 조정 가능성에 유의해야 함."
+    ],
+    "korean_comment": "상승세에도 불안 요인이 커지고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 6000선에 도달했으나 변동성 확대 신호가 감지됨.\",\n    \"외국인 대규모 매도와 하락 베팅 증가가 부담 요인임.\",\n    \"단기적으로 조정 가능성에 유의해야 함.\"\n  ],\n  \"korean_comment\": \"상승세에도 불안 요인이 커지고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.flow_summary.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.note",
+      "snapshot.news_headlines",
+      "snapshot.flow_summary.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "코스피가 사상 첫 6000선을 돌파하며 강세를 보이고 있다.",
+      "외국인과 기관의 매도세가 확대되며 고점 신호가 감지된다.",
+      "하락 베팅 규모가 커져 단기 변동성 확대 가능성이 높다."
+    ],
+    "korean_comment": "코스피 강세에도 불안 요인이 커지고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 사상 첫 6000선을 돌파하며 강세를 보이고 있다.\",\n    \"외국인과 기관의 매도세가 확대되며 고점 신호가 감지된다.\",\n    \"하락 베팅 규모가 커져 단기 변동성 확대 가능성이 높다.\"\n  ],\n  \"korean_comment\": \"코스피 강세에도 불안 요인이 커지고 있습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.news_headlines",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "코스피 6000 돌파, 사상 최고치 기록",
+      "외국인 대규모 매도세 지속",
+      "시장 과열 및 하락 베팅 증가"
+    ],
+    "korean_comment": "시장 고점 논란과 외국인 매도세가 주목됩니다.",
+    "raw_response": "{\"agent_name\": \"RISK pre-analysis agent\", \"core_claims\": [\"코스피 6000 돌파, 사상 최고치 기록\", \"외국인 대규모 매도세 지속\", \"시장 과열 및 하락 베팅 증가\"], \"korean_comment\": \"시장 고점 논란과 외국인 매도세가 주목됩니다.\", \"regime_tag\": \"RISK_ON\", \"evidence_ids\": [\"snapshot.market_summary.note\", \"snapshot.news_headlines\"], \"confidence\": \"MED\"}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  }
+]

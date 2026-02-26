@@ -1,0 +1,80 @@
+{
+  "market_summary": {
+    "note": "KOSPI 0.00%, USD/KRW 1442.40. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": 0.0,
+    "usdkrw": 1442.396605
+  },
+  "flow_summary": {
+    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+    "foreign_net": 0.0,
+    "institution_net": 0.0,
+    "retail_net": 0.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "6000선 턱밑까지 온 코스피… 그 뒤엔 149조 ‘하락 베팅’ 그림자 - 조선일보",
+    "20만전자·100만닉스 현실로…기관 싹쓸이에 코스피 최고가 마감 - mt.co.kr",
+    "“솔직히 고점 같습니다”…코스피 던지는 외국인, 이달에만 12조원 - 매일경제",
+    "“이러다 크게 물리는 거 아냐”…코스피 역대급 불장에도 외국인 9조 매도, 왜? - v.daum.net",
+    "코스피서 재미 본 외국인, 뒤쫓는 개미도 웃을까 - 데일리안",
+    "코스피 6000 돌파 - 뉴시스",
+    "[속보] 코스피 사상 첫 6000 돌파 - 한겨레",
+    "두 달도 안됐는데 벌써 187%나 올랐다고?…코스피 6000 목전, ETF 수익률 톱3 보니 - v.daum.net"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": 0.0,
+      "kosdaq_pct": 0.0
+    },
+    "us": {
+      "sp500_pct": 0.7651614086322255,
+      "nasdaq_pct": 1.0448105947935815,
+      "dow_pct": 0.7590381147059763
+    },
+    "fx": {
+      "usdkrw": 1442.396605,
+      "usdkrw_pct": 0.0
+    },
+    "volatility": {
+      "vix": 19.549999237060547
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.0329999923706055,
+      "us2y": 3.5880000591278076,
+      "spread_2_10": 0.44499993324279785,
+      "vix": 19.549999237060547,
+      "dxy": 97.88200378417969,
+      "usdkrw": 1441.47998046875
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 2.8286797395498997,
+      "core_cpi_yoy": 2.9493378374616075,
+      "pce_yoy": 2.901287416285925,
+      "pmi": null,
+      "wage_growth": 37.17,
+      "wage_level": 37.17,
+      "wage_yoy": 3.7109375
+    },
+    "quarterly": {
+      "real_gdp": 24111.83,
+      "gdp_qoq_annualized": 1.4
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.7729999923706057
+    }
+  }
+}

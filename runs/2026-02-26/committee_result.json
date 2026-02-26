@@ -1,0 +1,59 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "flow",
+        "sector",
+        "breadth",
+        "liquidity"
+      ]
+    },
+    {
+      "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
+      "sources": [
+        "breadth",
+        "earnings",
+        "flow",
+        "liquidity",
+        "macro"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "Regime tags",
+      "majority": "RISK_ON",
+      "minority": "NEUTRAL",
+      "minority_agents": [
+        "macro",
+        "earnings"
+      ],
+      "why_it_matters": "Minority risk regime can change positioning boundaries."
+    },
+    {
+      "topic": "Regime tags",
+      "majority": "RISK_ON",
+      "minority": "RISK_OFF",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "Minority risk regime can change positioning boundaries."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ]
+}

@@ -287,15 +287,10 @@ def _parse_markdown_sections(report_text: str) -> dict[str, list[str]]:
 
 
 def _cleanup_section_lines(lines: list[str]) -> list[str]:
-    """Clean markdown lines for telegram preview safely."""
+    """Remove noisy markdown markers while preserving readability."""
     if not lines:
         return []
 
-    cleaned: list[str] = []
-    for line in lines:
-        stripped = line.strip()
-        if not stripped or stripped.startswith("```"):
-    """Remove noisy markdown markers while preserving readability."""
     cleaned: list[str] = []
     for line in lines:
         stripped = line.strip()

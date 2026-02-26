@@ -1,0 +1,274 @@
+{
+  "generated_at": "2026-02-26T07:59:27.536773+00:00",
+  "market_date": "2026-02-26",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI 3.67%, USD/KRW 1427.26. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": 3.6721778816500654,
+      "usdkrw": 1427.259947
+    },
+    "flow_summary": {
+      "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+      "foreign_net": 0.0,
+      "institution_net": 0.0,
+      "retail_net": 0.0
+    },
+    "korean_market_flow": null,
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "코스피, 사상 첫 6000선 마감…시총 5000조원 돌파 - 지디넷코리아",
+      "파죽지세 코스피 6300선 첫 돌파…꺾이지 않는 삼전·하이닉스 - JTBC",
+      "\"신문 1면 보시겠습니다\"‥'코스피 6천' 들더니 [현장영상] - MBC 뉴스",
+      "주식시장은 살려냈다…분류체계 바꾸면 '코스피 10000·코스닥 3000' 간다 - 지디넷코리아",
+      "코스피 6000에 서학개미 드디어 돌아오나… 해외 주식 보관금액 감소 - 조선일보",
+      "코스피 8000 전망까지 나왔다…단, 6000피 뒤집을 4월의 경고[긴급진단] - 중앙일보",
+      "[속보] “2.1조 차익실현? 우습지”…코스피, ‘6천피’ 하루 만에 6300 돌파 마감 - 매일경제",
+      "‘Double in four months’ 200,000 Samsung·1,000,000 Nix… KOSPI 6,000 just ahead - 경향신문"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi_pct": 3.6721778816500654,
+        "kosdaq_pct": 1.9652456051544733
+      },
+      "us": {
+        "sp500_pct": 0.8136355657340022,
+        "nasdaq_pct": 1.2613909684129887,
+        "dow_pct": 0.6256259595928784
+      },
+      "fx": {
+        "usdkrw": 1427.259947,
+        "usdkrw_pct": 0.0
+      },
+      "volatility": {
+        "vix": 17.93000030517578
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.047999858856201,
+        "us2y": 3.5880000591278076,
+        "spread_2_10": 0.45999979972839355,
+        "vix": 17.93000030517578,
+        "dxy": 97.62899780273438,
+        "usdkrw": 1427.969970703125
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 2.8286797395498997,
+        "core_cpi_yoy": 2.9493378374616075,
+        "pce_yoy": 2.901287416285925,
+        "pmi": null,
+        "wage_growth": 37.17,
+        "wage_level": 37.17,
+        "wage_yoy": 3.7109375
+      },
+      "quarterly": {
+        "real_gdp": 24111.83,
+        "gdp_qoq_annualized": 1.4
+      },
+      "structural": {
+        "fed_funds_rate": 3.64,
+        "real_rate": 1.7679998588562014
+      }
+    },
+    "phase_two_signals": {
+      "earnings_signal_score": 0.0,
+      "breadth_signal_score": 1.918,
+      "liquidity_signal_score": 1.126,
+      "note": "derived from headlines + markets + macro.daily + macro.structural"
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "Macro tone is balanced.",
+        "No major shocks.",
+        "Stay selective."
+      ],
+      "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "코스피가 3.67% 급등하며 사상 최고치를 경신했습니다.",
+        "시장 뉴스와 지표 모두 강한 상승세를 반영하고 있습니다.",
+        "유동성과 시장 확산 신호도 긍정적입니다."
+      ],
+      "korean_comment": "강한 상승 모멘텀이 지속되고 있습니다.",
+      "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 3.67% 급등하며 사상 최고치를 경신했습니다.\",\n    \"시장 뉴스와 지표 모두 강한 상승세를 반영하고 있습니다.\",\n    \"유동성과 시장 확산 신호도 긍정적입니다.\"\n  ],\n  \"korean_comment\": \"강한 상승 모멘텀이 지속되고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_ON",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.phase_two_signals.liquidity_signal_score"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "코스피가 사상 최고치인 6000선을 돌파하며 강한 상승세를 보였다.",
+        "삼성전자, 하이닉스 등 대형주가 시장 랠리를 주도했다.",
+        "시장 전반에 강한 매수세가 유입된 것으로 보인다."
+      ],
+      "korean_comment": "코스피가 기록적인 상승세를 기록했습니다.",
+      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 사상 최고치인 6000선을 돌파하며 강한 상승세를 보였다.\",\n    \"삼성전자, 하이닉스 등 대형주가 시장 랠리를 주도했다.\",\n    \"시장 전반에 강한 매수세가 유입된 것으로 보인다.\"\n  ],\n  \"korean_comment\": \"코스피가 기록적인 상승세를 기록했습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_ON",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.markets.kr.kospi_pct",
+        "snapshot.phase_two_signals.breadth_signal_score"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "코스피가 3.67% 급등하며 사상 최고치 기록",
+        "시장 전반에 긍정적 분위기 확산",
+        "위험 신호는 아직 감지되지 않음"
+      ],
+      "korean_comment": "시장에 뚜렷한 위험 신호는 없습니다.",
+      "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"코스피가 3.67% 급등하며 사상 최고치 기록\",\n    \"시장 전반에 긍정적 분위기 확산\",\n    \"위험 신호는 아직 감지되지 않음\"\n  ],\n  \"korean_comment\": \"시장에 뚜렷한 위험 신호는 없습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.markets.kr.kospi_pct",
+        "snapshot.phase_two_signals.breadth_signal_score"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "earnings",
+      "core_claims": [
+        "코스피 급등은 단기 헤드라인 효과가 크다.",
+        "실적 추정치 상향 신호는 아직 뚜렷하지 않다.",
+        "지속적 실적 모멘텀 전환은 확인되지 않았다."
+      ],
+      "korean_comment": "실적 추정치 상향 조정이 동반되지 않아 추세 전환 신호는 약합니다.",
+      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"코스피 급등은 단기 헤드라인 효과가 크다.\",\n    \"실적 추정치 상향 신호는 아직 뚜렷하지 않다.\",\n    \"지속적 실적 모멘텀 전환은 확인되지 않았다.\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 조정이 동반되지 않아 추세 전환 신호는 약합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.phase_two_signals.earnings_signal_score"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "breadth",
+      "core_claims": [
+        "코스피와 코스닥 모두 강한 상승세를 보임.",
+        "시장 전반에 걸친 확산(breadth)이 매우 양호함."
+      ],
+      "korean_comment": "시장 내부 확산이 강하게 나타나고 있습니다.",
+      "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"코스피와 코스닥 모두 강한 상승세를 보임.\",\n    \"시장 전반에 걸친 확산(breadth)이 매우 양호함.\"\n  ],\n  \"korean_comment\": \"시장 내부 확산이 강하게 나타나고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_ON",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.markets.kr.kospi_pct",
+        "snapshot.markets.kr.kosdaq_pct",
+        "snapshot.phase_two_signals.breadth_signal_score"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "liquidity",
+      "core_claims": [
+        "코스피 급등에도 달러/원 환율은 변동 없음.",
+        "VIX는 18 이하로 낮은 변동성 유지.",
+        "정책 민감 유동성 지표는 위험선호에 우호적."
+      ],
+      "korean_comment": "유동성과 정책 환경이 위험선호에 긍정적으로 작용하고 있습니다.",
+      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 급등에도 달러/원 환율은 변동 없음.\",\n    \"VIX는 18 이하로 낮은 변동성 유지.\",\n    \"정책 민감 유동성 지표는 위험선호에 우호적.\"\n  ],\n  \"korean_comment\": \"유동성과 정책 환경이 위험선호에 긍정적으로 작용하고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_ON",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.market_summary.usdkrw",
+        "snapshot.markets.volatility.vix",
+        "snapshot.phase_two_signals.liquidity_signal_score"
+      ],
+      "confidence": "HIGH"
+    }
+  ],
+  "committee_result": {
+    "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: RISK_ON.",
+        "sources": [
+          "flow",
+          "sector",
+          "breadth",
+          "liquidity"
+        ]
+      },
+      {
+        "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
+        "sources": [
+          "breadth",
+          "earnings",
+          "flow",
+          "liquidity",
+          "macro"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "RISK_ON",
+        "minority": "NEUTRAL",
+        "minority_agents": [
+          "macro",
+          "earnings"
+        ],
+        "why_it_matters": "Minority risk regime can change positioning boundaries."
+      },
+      {
+        "topic": "Regime tags",
+        "majority": "RISK_ON",
+        "minority": "RISK_OFF",
+        "minority_agents": [
+          "risk"
+        ],
+        "why_it_matters": "Minority risk regime can change positioning boundaries."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Lean into confirmed momentum leaders."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Size positions with volatility limits."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid chasing overstretched breakouts."
+      }
+    ]
+  }
+}

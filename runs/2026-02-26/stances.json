@@ -1,0 +1,125 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "Macro tone is balanced.",
+      "No major shocks.",
+      "Stay selective."
+    ],
+    "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "코스피가 3.67% 급등하며 사상 최고치를 경신했습니다.",
+      "시장 뉴스와 지표 모두 강한 상승세를 반영하고 있습니다.",
+      "유동성과 시장 확산 신호도 긍정적입니다."
+    ],
+    "korean_comment": "강한 상승 모멘텀이 지속되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 3.67% 급등하며 사상 최고치를 경신했습니다.\",\n    \"시장 뉴스와 지표 모두 강한 상승세를 반영하고 있습니다.\",\n    \"유동성과 시장 확산 신호도 긍정적입니다.\"\n  ],\n  \"korean_comment\": \"강한 상승 모멘텀이 지속되고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.phase_two_signals.liquidity_signal_score"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "코스피가 사상 최고치인 6000선을 돌파하며 강한 상승세를 보였다.",
+      "삼성전자, 하이닉스 등 대형주가 시장 랠리를 주도했다.",
+      "시장 전반에 강한 매수세가 유입된 것으로 보인다."
+    ],
+    "korean_comment": "코스피가 기록적인 상승세를 기록했습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 사상 최고치인 6000선을 돌파하며 강한 상승세를 보였다.\",\n    \"삼성전자, 하이닉스 등 대형주가 시장 랠리를 주도했다.\",\n    \"시장 전반에 강한 매수세가 유입된 것으로 보인다.\"\n  ],\n  \"korean_comment\": \"코스피가 기록적인 상승세를 기록했습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.phase_two_signals.breadth_signal_score"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "코스피가 3.67% 급등하며 사상 최고치 기록",
+      "시장 전반에 긍정적 분위기 확산",
+      "위험 신호는 아직 감지되지 않음"
+    ],
+    "korean_comment": "시장에 뚜렷한 위험 신호는 없습니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"코스피가 3.67% 급등하며 사상 최고치 기록\",\n    \"시장 전반에 긍정적 분위기 확산\",\n    \"위험 신호는 아직 감지되지 않음\"\n  ],\n  \"korean_comment\": \"시장에 뚜렷한 위험 신호는 없습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.phase_two_signals.breadth_signal_score"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "코스피 급등은 단기 헤드라인 효과가 크다.",
+      "실적 추정치 상향 신호는 아직 뚜렷하지 않다.",
+      "지속적 실적 모멘텀 전환은 확인되지 않았다."
+    ],
+    "korean_comment": "실적 추정치 상향 조정이 동반되지 않아 추세 전환 신호는 약합니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"코스피 급등은 단기 헤드라인 효과가 크다.\",\n    \"실적 추정치 상향 신호는 아직 뚜렷하지 않다.\",\n    \"지속적 실적 모멘텀 전환은 확인되지 않았다.\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 조정이 동반되지 않아 추세 전환 신호는 약합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.earnings_signal_score"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "코스피와 코스닥 모두 강한 상승세를 보임.",
+      "시장 전반에 걸친 확산(breadth)이 매우 양호함."
+    ],
+    "korean_comment": "시장 내부 확산이 강하게 나타나고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"코스피와 코스닥 모두 강한 상승세를 보임.\",\n    \"시장 전반에 걸친 확산(breadth)이 매우 양호함.\"\n  ],\n  \"korean_comment\": \"시장 내부 확산이 강하게 나타나고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.markets.kr.kosdaq_pct",
+      "snapshot.phase_two_signals.breadth_signal_score"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "코스피 급등에도 달러/원 환율은 변동 없음.",
+      "VIX는 18 이하로 낮은 변동성 유지.",
+      "정책 민감 유동성 지표는 위험선호에 우호적."
+    ],
+    "korean_comment": "유동성과 정책 환경이 위험선호에 긍정적으로 작용하고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 급등에도 달러/원 환율은 변동 없음.\",\n    \"VIX는 18 이하로 낮은 변동성 유지.\",\n    \"정책 민감 유동성 지표는 위험선호에 우호적.\"\n  ],\n  \"korean_comment\": \"유동성과 정책 환경이 위험선호에 긍정적으로 작용하고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.markets.volatility.vix",
+      "snapshot.phase_two_signals.liquidity_signal_score"
+    ],
+    "confidence": "HIGH"
+  }
+]
