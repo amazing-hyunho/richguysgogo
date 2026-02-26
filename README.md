@@ -67,15 +67,16 @@ reports/        # JSON 리포트 (보조 출력)
 - **committee_result.py**: 합의 결과 구조 (consensus, key_points, disagreements, ops_guidance)
 
 ### `committee/agents/`
-- **macro_stub.py / flow_stub.py / sector_stub.py / risk_stub.py**  
-  단순 if/else 규칙으로 Stance 생성
+- **macro_stub.py / flow_stub.py / sector_stub.py / risk_stub.py / earnings_stub.py / breadth_stub.py / liquidity_stub.py**  
+  단순 if/else 규칙으로 Stance 생성 (Phase2: 이익모멘텀/브레드스/유동성 확장)
 - **chair_stub.py**  
   다수/소수 태그를 계산해 합의 결과 생성
 
 ### `committee/core/`
 - **snapshot_builder.py**  
   `build_snapshot_real()`로 실데이터 시도 → 실패 시 fallback  
-  실패 사유는 note에 기록됨
+  실패 사유는 note에 기록됨  
+  또한 Phase2에서 `phase_two_signals`(earnings/breadth/liquidity 파생 점수)를 **기존 수집 지표만으로 계산**해 Snapshot에 포함
 - **pipeline.py**  
   Snapshot → Stances → CommitteeResult → Report 생성
 - **validators.py**  
@@ -131,6 +132,9 @@ python scripts/send_morning.py
 - flow: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-14B-Instruct`
 - sector: `gpt-4.1` → 로컬 대안 `meta-llama/Llama-3.1-8B-Instruct`
 - risk: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-32B-Instruct`
+- earnings: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-14B-Instruct`
+- breadth: `gpt-4.1-mini` → 로컬 대안 `meta-llama/Llama-3.1-8B-Instruct`
+- liquidity: `gpt-4.1` → 로컬 대안 `Qwen/Qwen2.5-14B-Instruct`
 
 모델 접근 권한이 프로젝트마다 다를 수 있어 아래 우선순위로 자동 대체합니다.
 1. `OPENAI_MODEL_<AGENT>` (예: `OPENAI_MODEL_MACRO`)
@@ -408,6 +412,24 @@ python scripts/migrate_db_nulls.py
 - **역할**: 리스크 Stub 에이전트
 - **입력**: `Snapshot.news_headlines`
 - **출력**: `Stance`
+
+### `committee/agents/earnings_stub.py`
+- **역할**: 이익 모멘텀(Earnings Revision) Stub 에이전트
+- **입력**: `Snapshot.phase_two_signals.earnings_signal_score`, `Snapshot.news_headlines`
+- **출력**: `Stance`
+- **특징**: 실적/가이던스 관련 키워드를 파생 점수화한 신호를 우선 반영
+
+### `committee/agents/breadth_stub.py`
+- **역할**: 브레드스/테크니컬 Stub 에이전트
+- **입력**: `Snapshot.phase_two_signals.breadth_signal_score`, `Snapshot.markets.volatility.vix`
+- **출력**: `Stance`
+- **특징**: KR/US 지수 확산도와 변동성 레짐을 함께 평가
+
+### `committee/agents/liquidity_stub.py`
+- **역할**: 유동성/정책 Stub 에이전트
+- **입력**: `Snapshot.phase_two_signals.liquidity_signal_score`, `Snapshot.macro.daily.dxy`, `Snapshot.macro.structural.real_rate`
+- **출력**: `Stance`
+- **특징**: 달러·실질금리·장단기 스프레드 기반 유동성 환경을 점검
 
 ### `committee/agents/chair_stub.py`
 - **역할**: Chair (합의 도출)
