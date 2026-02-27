@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-02-27T08:14:36.096811+00:00",
+  "generated_at": "2026-02-27T08:35:43.636990+00:00",
   "market_date": "2026-02-27",
   "snapshot": {
     "market_summary": {
@@ -21,6 +21,7 @@
     ],
     "news_headlines": [
       "‘코스피 6000 파티′ 욕망의 감옥에서 살아남을 3가지 생존 전략 - 조선일보",
+      "“진짜 강심장이네” 코스피 3배 레버리지 사려고 줄 섰다…99%나 급등 [투자360] - v.daum.net",
       "코스피 하락 마감 - 뉴시스",
       "코스피, 강한 변동성 끝 1% 하락…외인 6.8조 순매도 - 한국경제",
       "오르는 코스피에 2조 던진 외국인…\"셀코리아 아닌 리밸런싱\" - 연합인포맥스",
@@ -28,7 +29,6 @@
       "코스피 6300 잔치 와중에…외인 13조 짐 싸서 떠났다, 왜 - 중앙일보",
       "주식시장은 살려냈다…분류체계 바꾸면 '코스피 10000·코스닥 3000' 간다 - 지디넷코리아",
       "“The KOSPI will exceed 7,000 this year···chip prices are the variable” Outlook for the local market from a sitting head of research - 경향신문",
-      "엔비디아 5%대 하락에 코스피 약세…개미들 저가매수 나서 - 동아일보",
       "코스피 ETF 투자한 李대통령, 9개월 만에 수익률 150% 돌파 - 국제신문"
     ],
     "watchlist": [
@@ -51,7 +51,7 @@
         "usdkrw_pct": 0.0
       },
       "volatility": {
-        "vix": 18.6299991607666
+        "vix": 19.15999984741211
       }
     },
     "macro": {
@@ -59,11 +59,11 @@
         "us10y": 4.017000198364258,
         "us2y": 3.5880000591278076,
         "spread_2_10": 0.4290001392364502,
-        "vix": 18.6299991607666,
-        "dxy": 97.65599822998047,
-        "usdkrw": 1438.7900390625,
+        "vix": 19.15999984741211,
+        "dxy": 97.64900207519531,
+        "usdkrw": 1439.97998046875,
         "vix3m": 20.809999465942383,
-        "vix_term_spread": 2.1800003051757812
+        "vix_term_spread": 1.6499996185302734
       },
       "monthly": {
         "unemployment_rate": 4.3,
@@ -90,7 +90,7 @@
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
       "breadth_signal_score": 0.256,
-      "liquidity_signal_score": 5.864,
+      "liquidity_signal_score": 5.07,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
     }
   },
@@ -98,49 +98,51 @@
     {
       "agent_name": "macro",
       "core_claims": [
-        "Macro tone is balanced.",
-        "No major shocks.",
-        "Stay selective."
+        "코스피가 1% 하락하며 변동성이 확대되고 있습니다.",
+        "외국인 순매도와 시장 불확실성이 부각되고 있습니다.",
+        "시장 전반에 조정 신호가 감지됩니다."
       ],
-      "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
-      "raw_response": null,
-      "regime_tag": "NEUTRAL",
+      "korean_comment": "시장 변동성이 높아 신중한 접근이 필요합니다.",
+      "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 변동성이 확대되고 있습니다.\",\n    \"외국인 순매도와 시장 불확실성이 부각되고 있습니다.\",\n    \"시장 전반에 조정 신호가 감지됩니다.\"\n  ],\n  \"korean_comment\": \"시장 변동성이 높아 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.flow_summary.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "RISK_OFF",
       "evidence_ids": [
-        "snapshot.market_summary.usdkrw",
         "snapshot.market_summary.kospi_change_pct",
-        "snapshot.news_headlines"
+        "snapshot.news_headlines",
+        "snapshot.markets.volatility.vix",
+        "snapshot.flow_summary.note"
       ],
       "confidence": "MED"
     },
     {
       "agent_name": "flow",
       "core_claims": [
-        "Flow data unavailable.",
-        "Use neutral stance."
+        "코스피가 1% 하락하며 변동성이 확대됨.",
+        "외국인 대규모 순매도와 관련 뉴스가 다수 보도됨.",
+        "시장 유동성 신호는 중립적이나 방향성은 약세임."
       ],
-      "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
-      "raw_response": null,
-      "regime_tag": "NEUTRAL",
+      "korean_comment": "외국인 매도세와 코스피 하락이 시장에 부담을 주고 있습니다.",
+      "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 변동성이 확대됨.\",\n    \"외국인 대규모 순매도와 관련 뉴스가 다수 보도됨.\",\n    \"시장 유동성 신호는 중립적이나 방향성은 약세임.\"\n  ],\n  \"korean_comment\": \"외국인 매도세와 코스피 하락이 시장에 부담을 주고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_OFF",
       "evidence_ids": [
-        "snapshot.flow_summary.note",
-        "snapshot.watchlist"
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.phase_two_signals.liquidity_signal_score"
       ],
-      "confidence": "LOW"
+      "confidence": "HIGH"
     },
     {
       "agent_name": "sector",
       "core_claims": [
         "코스피가 1% 하락하며 외국인 대규모 순매도가 확인됨.",
-        "엔비디아 등 미국 기술주 약세가 국내 시장에 부정적 영향을 줌.",
-        "변동성 확대와 외국인 이탈로 단기 조정 위험이 높아짐."
+        "시장 변동성(VIX)이 19를 기록하며 불확실성이 확대됨.",
+        "단기적으로 위험회피 심리가 강화되고 있음."
       ],
-      "korean_comment": "외국인 매도세와 글로벌 기술주 약세로 시장 경계감이 커졌습니다.",
-      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 외국인 대규모 순매도가 확인됨.\",\n    \"엔비디아 등 미국 기술주 약세가 국내 시장에 부정적 영향을 줌.\",\n    \"변동성 확대와 외국인 이탈로 단기 조정 위험이 높아짐.\"\n  ],\n  \"korean_comment\": \"외국인 매도세와 글로벌 기술주 약세로 시장 경계감이 커졌습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.us.nasdaq_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "korean_comment": "외국인 매도와 변동성 상승으로 시장이 조정 국면에 진입했습니다.",
+      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 외국인 대규모 순매도가 확인됨.\",\n    \"시장 변동성(VIX)이 19를 기록하며 불확실성이 확대됨.\",\n    \"단기적으로 위험회피 심리가 강화되고 있음.\"\n  ],\n  \"korean_comment\": \"외국인 매도와 변동성 상승으로 시장이 조정 국면에 진입했습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
       "regime_tag": "RISK_OFF",
       "evidence_ids": [
         "snapshot.market_summary.kospi_change_pct",
         "snapshot.news_headlines",
-        "snapshot.markets.us.nasdaq_pct",
         "snapshot.markets.volatility.vix"
       ],
       "confidence": "HIGH"
@@ -149,30 +151,29 @@
       "agent_name": "risk",
       "core_claims": [
         "코스피가 1% 하락하며 변동성이 확대됨",
-        "외국인 대규모 순매도 보도 등 투자심리 위축 신호",
-        "미국 기술주 약세와 연동된 국내 시장 약세"
+        "외국인 대규모 순매도 언급이 다수 헤드라인에 등장",
+        "USD/KRW 환율은 변동 없이 안정적임"
       ],
-      "korean_comment": "시장 변동성이 커지고 있으나 과도한 공포 신호는 아님.",
-      "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 변동성이 확대됨\",\n    \"외국인 대규모 순매도 보도 등 투자심리 위축 신호\",\n    \"미국 기술주 약세와 연동된 국내 시장 약세\"\n  ],\n  \"korean_comment\": \"시장 변동성이 커지고 있으나 과도한 공포 신호는 아님.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.us.nasdaq_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "korean_comment": "시장 변동성은 있으나 환율과 추가 위험 신호는 제한적입니다.",
+      "raw_response": "{\n  \"agent_name\": \"RISK pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 변동성이 확대됨\",\n    \"외국인 대규모 순매도 언급이 다수 헤드라인에 등장\",\n    \"USD/KRW 환율은 변동 없이 안정적임\"\n  ],\n  \"korean_comment\": \"시장 변동성은 있으나 환율과 추가 위험 신호는 제한적입니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.usdkrw\"\n  ],\n  \"confidence\": \"MED\"\n}",
       "regime_tag": "NEUTRAL",
       "evidence_ids": [
         "snapshot.market_summary.kospi_change_pct",
         "snapshot.news_headlines",
-        "snapshot.markets.us.nasdaq_pct",
-        "snapshot.markets.volatility.vix"
+        "snapshot.market_summary.usdkrw"
       ],
       "confidence": "MED"
     },
     {
       "agent_name": "earnings",
       "core_claims": [
-        "실적 모멘텀 둔화 신호가 뚜렷하지 않음",
-        "외국인 매도는 일시적 리밸런싱 영향",
-        "실적 추정치 하향 조정 신호는 아직 제한적"
+        "실적 모멘텀 둔화 신호가 뚜렷하다.",
+        "외국인 대규모 순매도는 실적 기대 약화와 연관.",
+        "지속적 실적 상향 조정 근거 부족하다."
       ],
-      "korean_comment": "실적 추정치 변화는 아직 뚜렷하지 않습니다.",
-      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 둔화 신호가 뚜렷하지 않음\",\n    \"외국인 매도는 일시적 리밸런싱 영향\",\n    \"실적 추정치 하향 조정 신호는 아직 제한적\"\n  ],\n  \"korean_comment\": \"실적 추정치 변화는 아직 뚜렷하지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"MED\"\n}",
-      "regime_tag": "NEUTRAL",
+      "korean_comment": "실적 추세의 단기 반등보다는 하향 위험이 크다.",
+      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 둔화 신호가 뚜렷하다.\",\n    \"외국인 대규모 순매도는 실적 기대 약화와 연관.\",\n    \"지속적 실적 상향 조정 근거 부족하다.\"\n  ],\n  \"korean_comment\": \"실적 추세의 단기 반등보다는 하향 위험이 크다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "RISK_OFF",
       "evidence_ids": [
         "snapshot.market_summary.note",
         "snapshot.news_headlines",
@@ -200,12 +201,12 @@
     {
       "agent_name": "liquidity",
       "core_claims": [
-        "코스피 1% 하락과 외국인 대규모 순매도는 유동성 경색 신호입니다.",
-        "USD/KRW 1429, 변동성(VIX) 18.6으로 환율·변동성 모두 보수적입니다.",
-        "정책 민감 유동성 환경은 위험회피(RISK_OFF)로 전환 중입니다."
+        "코스피 1% 하락과 변동성(VIX) 19 이상으로 유동성 경계 필요.",
+        "USD/KRW 1429로 환율 부담 지속, 외국인 매도세 언급 다수.",
+        "정책 민감 자금 유입 신호 미약, 위험회피 심리 우세."
       ],
-      "korean_comment": "유동성 악화와 외국인 이탈로 보수적 대응이 필요합니다.",
-      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 1% 하락과 외국인 대규모 순매도는 유동성 경색 신호입니다.\",\n    \"USD/KRW 1429, 변동성(VIX) 18.6으로 환율·변동성 모두 보수적입니다.\",\n    \"정책 민감 유동성 환경은 위험회피(RISK_OFF)로 전환 중입니다.\"\n  ],\n  \"korean_comment\": \"유동성 악화와 외국인 이탈로 보수적 대응이 필요합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "korean_comment": "유동성 및 정책 민감 자금 흐름이 위축된 모습입니다.",
+      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 1% 하락과 변동성(VIX) 19 이상으로 유동성 경계 필요.\",\n    \"USD/KRW 1429로 환율 부담 지속, 외국인 매도세 언급 다수.\",\n    \"정책 민감 자금 유입 신호 미약, 위험회피 심리 우세.\"\n  ],\n  \"korean_comment\": \"유동성 및 정책 민감 자금 흐름이 위축된 모습입니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
       "regime_tag": "RISK_OFF",
       "evidence_ids": [
         "snapshot.market_summary.kospi_change_pct",
@@ -218,37 +219,37 @@
     }
   ],
   "committee_result": {
-    "consensus": "Committee maintains a neutral posture with selective positioning.",
+    "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
     "key_points": [
       {
-        "point": "Majority regime tag: NEUTRAL.",
+        "point": "Majority regime tag: RISK_OFF.",
         "sources": [
           "macro",
           "flow",
-          "risk",
+          "sector",
           "earnings",
-          "breadth"
+          "liquidity"
         ]
       },
       {
         "point": "Shared evidence focus: snapshot.news_headlines.",
         "sources": [
           "earnings",
+          "flow",
           "liquidity",
           "macro",
-          "risk",
-          "sector"
+          "risk"
         ]
       }
     ],
     "disagreements": [
       {
         "topic": "Regime tags",
-        "majority": "NEUTRAL",
-        "minority": "RISK_OFF",
+        "majority": "RISK_OFF",
+        "minority": "NEUTRAL",
         "minority_agents": [
-          "sector",
-          "liquidity"
+          "risk",
+          "breadth"
         ],
         "why_it_matters": "Minority risk regime can change positioning boundaries."
       }
@@ -256,15 +257,15 @@
     "ops_guidance": [
       {
         "level": "OK",
-        "text": "Maintain balanced exposure."
+        "text": "Keep exposure focused on resilience."
       },
       {
         "level": "CAUTION",
-        "text": "Keep risk limits tight."
+        "text": "Favor defensive positioning."
       },
       {
         "level": "AVOID",
-        "text": "Avoid aggressive leverage."
+        "text": "Avoid high-beta risk assets."
       }
     ]
   }

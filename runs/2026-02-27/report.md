@@ -1,68 +1,69 @@
 # 데일리 AI 투자위원회 리포트
 
 - 시장 기준일: **2026-02-27**
-- 생성 시각(UTC): `2026-02-27T08:14:36.096811+00:00`
+- 생성 시각(UTC): `2026-02-27T08:35:43.636990+00:00`
 
 ## 1) 한눈에 보기
-- **위원회 합의**: 위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.
-- **국면 투표**: NEUTRAL=5, RISK_ON=0, RISK_OFF=2
-- **다수 국면**: NEUTRAL
+- **위원회 합의**: 위원회는 방어적 입장을 채택하고 위험 노출을 줄입니다.
+- **국면 투표**: NEUTRAL=2, RISK_ON=0, RISK_OFF=5
+- **다수 국면**: RISK_OFF
 
 ## 2) 운영 가이드
-- [OpsGuidanceLevel.OK/유지] 노출을 균형 있게 유지합니다.
-- [OpsGuidanceLevel.CAUTION/주의] 리스크 한도를 엄격히 유지합니다.
-- [OpsGuidanceLevel.AVOID/회피] 과도한 레버리지는 피합니다.
+- [OpsGuidanceLevel.OK/유지] Keep exposure focused on resilience.
+- [OpsGuidanceLevel.CAUTION/주의] Favor defensive positioning.
+- [OpsGuidanceLevel.AVOID/회피] Avoid high-beta risk assets.
 
 ## 3) 시장/매크로 스냅샷
 - **국내 지수**: KOSPI -1.00% / KOSDAQ +0.39%
 - **미국 지수**: S&P500 -0.54% / NASDAQ -1.18% / DOW +0.03%
-- **환율/변동성**: USD/KRW 1429.10 (+0.00%) / VIX 18.6
+- **환율/변동성**: USD/KRW 1429.10 (+0.00%) / VIX 19.2
 - **시장 요약 노트**: KOSPI -1.00%, USD/KRW 1429.10. Headlines loaded. Flows unavailable.
 - **수급 요약**: 외국인 +0억 / 기관 +0억 / 개인 +0억
-- **일간 매크로**: 미10년 4.02% / 미2년 3.59% / 2-10 0.43%p / DXY 97.66
+- **일간 매크로**: 미10년 4.02% / 미2년 3.59% / 2-10 0.43%p / DXY 97.65
 - **월간 매크로**: 실업률 4.30% / CPI YoY 2.83% / Core CPI YoY 2.95% / PMI n/a
 - **분기/구조**: GDP QoQ 연율 1.40% / 기준금리 3.64% / 실질금리 1.74%
 
 ## 4) 위원회 핵심 포인트
-- 다수 국면 태그: NEUTRAL.
-  ↳ 출처: `macro, flow, risk, earnings, breadth`
+- 다수 국면 태그: RISK_OFF.
+  ↳ 출처: `macro, flow, sector, earnings, liquidity`
 - 공통 근거: snapshot.news_headlines.
-  ↳ 출처: `earnings, liquidity, macro, risk, sector`
+  ↳ 출처: `earnings, flow, liquidity, macro, risk`
 
 ## 5) AI 에이전트 의견
 ### 매크로
-- 한줄 요약: 거시는 균형적이며 선택적 대응이 적절합니다.
-- 국면 태그: NEUTRAL / 신뢰도: MED
-- 핵심 주장: Macro tone is balanced.
-- 핵심 주장: No major shocks.
-- 핵심 주장: Stay selective.
+- 한줄 요약: 시장 변동성이 높아 신중한 접근이 필요합니다.
+- 국면 태그: RISK_OFF / 신뢰도: MED
+- 핵심 주장: 코스피가 1% 하락하며 변동성이 확대되고 있습니다.
+- 핵심 주장: 외국인 순매도와 시장 불확실성이 부각되고 있습니다.
+- 핵심 주장: 시장 전반에 조정 신호가 감지됩니다.
 
 ### 수급
-- 한줄 요약: 수급 데이터가 없어 중립을 유지합니다.
-- 국면 태그: NEUTRAL / 신뢰도: LOW
-- 핵심 주장: Flow data unavailable.
-- 핵심 주장: Use neutral stance.
+- 한줄 요약: 외국인 매도세와 코스피 하락이 시장에 부담을 주고 있습니다.
+- 국면 태그: RISK_OFF / 신뢰도: HIGH
+- 핵심 주장: 코스피가 1% 하락하며 변동성이 확대됨.
+- 핵심 주장: 외국인 대규모 순매도와 관련 뉴스가 다수 보도됨.
+- 핵심 주장: 시장 유동성 신호는 중립적이나 방향성은 약세임.
 
 ### 섹터
-- 한줄 요약: 외국인 매도세와 글로벌 기술주 약세로 시장 경계감이 커졌습니다.
+- 한줄 요약: 외국인 매도와 변동성 상승으로 시장이 조정 국면에 진입했습니다.
 - 국면 태그: RISK_OFF / 신뢰도: HIGH
 - 핵심 주장: 코스피가 1% 하락하며 외국인 대규모 순매도가 확인됨.
-- 핵심 주장: 엔비디아 등 미국 기술주 약세가 국내 시장에 부정적 영향을 줌.
-- 핵심 주장: 변동성 확대와 외국인 이탈로 단기 조정 위험이 높아짐.
+- 핵심 주장: 시장 변동성(VIX)이 19를 기록하며 불확실성이 확대됨.
+- 핵심 주장: 단기적으로 위험회피 심리가 강화되고 있음.
 
 ### 리스크
-- 한줄 요약: 시장 변동성이 커지고 있으나 과도한 공포 신호는 아님.
+- 한줄 요약: 시장 변동성은 있으나 환율과 추가 위험 신호는 제한적입니다.
 - 국면 태그: NEUTRAL / 신뢰도: MED
 - 핵심 주장: 코스피가 1% 하락하며 변동성이 확대됨
-- 핵심 주장: 외국인 대규모 순매도 보도 등 투자심리 위축 신호
-- 핵심 주장: 미국 기술주 약세와 연동된 국내 시장 약세
+- 핵심 주장: 외국인 대규모 순매도 언급이 다수 헤드라인에 등장
+- 핵심 주장: USD/KRW 환율은 변동 없이 안정적임
 
 ### 이익모멘텀
-- 한줄 요약: 실적 추정치 변화는 아직 뚜렷하지 않습니다.
-- 국면 태그: NEUTRAL / 신뢰도: MED
-- 핵심 주장: 실적 모멘텀 둔화 신호가 뚜렷하지 않음
-- 핵심 주장: 외국인 매도는 일시적 리밸런싱 영향
-- 핵심 주장: 실적 추정치 하향 조정 신호는 아직 제한적
+- 한줄 요약: 실적 추세의 단기 반등보다는 하향 위험이 크다.
+- 국면 태그: RISK_OFF / 신뢰도: MED
+- 핵심 주장: 실적 모멘텀 둔화 신호가 뚜렷하다.
+- 핵심 주장: 외국인 대규모 순매도는 실적 기대 약화와 연관.
+- 핵심 주장: 지속적 실적 상향 조정 근거 부족하다.
 
 ### 브레드스
 - 한줄 요약: 브레드스 신호가 혼재되어 중립 대응이 합리적입니다.
@@ -72,36 +73,70 @@
 - 핵심 주장: 방향 확정 전까지 균형 비중이 적절합니다.
 
 ### 유동성
-- 한줄 요약: 유동성 악화와 외국인 이탈로 보수적 대응이 필요합니다.
+- 한줄 요약: 유동성 및 정책 민감 자금 흐름이 위축된 모습입니다.
 - 국면 태그: RISK_OFF / 신뢰도: HIGH
-- 핵심 주장: 코스피 1% 하락과 외국인 대규모 순매도는 유동성 경색 신호입니다.
-- 핵심 주장: USD/KRW 1429, 변동성(VIX) 18.6으로 환율·변동성 모두 보수적입니다.
-- 핵심 주장: 정책 민감 유동성 환경은 위험회피(RISK_OFF)로 전환 중입니다.
+- 핵심 주장: 코스피 1% 하락과 변동성(VIX) 19 이상으로 유동성 경계 필요.
+- 핵심 주장: USD/KRW 1429로 환율 부담 지속, 외국인 매도세 언급 다수.
+- 핵심 주장: 정책 민감 자금 유입 신호 미약, 위험회피 심리 우세.
 
 ## 6) 이견 사항
-- 국면 태그: 다수=NEUTRAL, 소수=RISK_OFF, 에이전트=[sector, liquidity]
+- 국면 태그: 다수=RISK_OFF, 소수=NEUTRAL, 에이전트=[risk, breadth]
   - 의미: 소수 의견 국면은 포지션 경계에 영향을 줄 수 있습니다.
 
 ## 7) AI 원문 응답 (디버깅/검토용)
 ### 매크로
-(stub or raw response unavailable)
+```text
+{
+  "agent_name": "MACRO pre-analysis agent",
+  "core_claims": [
+    "코스피가 1% 하락하며 변동성이 확대되고 있습니다.",
+    "외국인 순매도와 시장 불확실성이 부각되고 있습니다.",
+    "시장 전반에 조정 신호가 감지됩니다."
+  ],
+  "korean_comment": "시장 변동성이 높아 신중한 접근이 필요합니다.",
+  "regime_tag": "RISK_OFF",
+  "evidence_ids": [
+    "snapshot.market_summary.kospi_change_pct",
+    "snapshot.news_headlines",
+    "snapshot.markets.volatility.vix",
+    "snapshot.flow_summary.note"
+  ],
+  "confidence": "MED"
+}
+```
 ### 수급
-(stub or raw response unavailable)
+```text
+{
+  "agent_name": "FLOW pre-analysis agent",
+  "core_claims": [
+    "코스피가 1% 하락하며 변동성이 확대됨.",
+    "외국인 대규모 순매도와 관련 뉴스가 다수 보도됨.",
+    "시장 유동성 신호는 중립적이나 방향성은 약세임."
+  ],
+  "korean_comment": "외국인 매도세와 코스피 하락이 시장에 부담을 주고 있습니다.",
+  "regime_tag": "RISK_OFF",
+  "evidence_ids": [
+    "snapshot.market_summary.kospi_change_pct",
+    "snapshot.news_headlines",
+    "snapshot.phase_two_signals.liquidity_signal_score"
+  ],
+  "confidence": "HIGH"
+}
+```
 ### 섹터
 ```text
 {
   "agent_name": "SECTOR",
   "core_claims": [
     "코스피가 1% 하락하며 외국인 대규모 순매도가 확인됨.",
-    "엔비디아 등 미국 기술주 약세가 국내 시장에 부정적 영향을 줌.",
-    "변동성 확대와 외국인 이탈로 단기 조정 위험이 높아짐."
+    "시장 변동성(VIX)이 19를 기록하며 불확실성이 확대됨.",
+    "단기적으로 위험회피 심리가 강화되고 있음."
   ],
-  "korean_comment": "외국인 매도세와 글로벌 기술주 약세로 시장 경계감이 커졌습니다.",
+  "korean_comment": "외국인 매도와 변동성 상승으로 시장이 조정 국면에 진입했습니다.",
   "regime_tag": "RISK_OFF",
   "evidence_ids": [
     "snapshot.market_summary.kospi_change_pct",
     "snapshot.news_headlines",
-    "snapshot.markets.us.nasdaq_pct",
     "snapshot.markets.volatility.vix"
   ],
   "confidence": "HIGH"
@@ -110,19 +145,18 @@
 ### 리스크
 ```text
 {
-  "agent_name": "RISK_pre_analysis_agent",
+  "agent_name": "RISK pre-analysis agent",
   "core_claims": [
     "코스피가 1% 하락하며 변동성이 확대됨",
-    "외국인 대규모 순매도 보도 등 투자심리 위축 신호",
-    "미국 기술주 약세와 연동된 국내 시장 약세"
+    "외국인 대규모 순매도 언급이 다수 헤드라인에 등장",
+    "USD/KRW 환율은 변동 없이 안정적임"
   ],
-  "korean_comment": "시장 변동성이 커지고 있으나 과도한 공포 신호는 아님.",
+  "korean_comment": "시장 변동성은 있으나 환율과 추가 위험 신호는 제한적입니다.",
   "regime_tag": "NEUTRAL",
   "evidence_ids": [
     "snapshot.market_summary.kospi_change_pct",
     "snapshot.news_headlines",
-    "snapshot.markets.us.nasdaq_pct",
-    "snapshot.markets.volatility.vix"
+    "snapshot.market_summary.usdkrw"
   ],
   "confidence": "MED"
 }
@@ -132,12 +166,12 @@
 {
   "agent_name": "EARNINGS-REVISION",
   "core_claims": [
-    "실적 모멘텀 둔화 신호가 뚜렷하지 않음",
-    "외국인 매도는 일시적 리밸런싱 영향",
-    "실적 추정치 하향 조정 신호는 아직 제한적"
+    "실적 모멘텀 둔화 신호가 뚜렷하다.",
+    "외국인 대규모 순매도는 실적 기대 약화와 연관.",
+    "지속적 실적 상향 조정 근거 부족하다."
   ],
-  "korean_comment": "실적 추정치 변화는 아직 뚜렷하지 않습니다.",
-  "regime_tag": "NEUTRAL",
+  "korean_comment": "실적 추세의 단기 반등보다는 하향 위험이 크다.",
+  "regime_tag": "RISK_OFF",
   "evidence_ids": [
     "snapshot.market_summary.note",
     "snapshot.news_headlines",
@@ -153,11 +187,11 @@
 {
   "agent_name": "LIQUIDITY/POLICY",
   "core_claims": [
-    "코스피 1% 하락과 외국인 대규모 순매도는 유동성 경색 신호입니다.",
-    "USD/KRW 1429, 변동성(VIX) 18.6으로 환율·변동성 모두 보수적입니다.",
-    "정책 민감 유동성 환경은 위험회피(RISK_OFF)로 전환 중입니다."
+    "코스피 1% 하락과 변동성(VIX) 19 이상으로 유동성 경계 필요.",
+    "USD/KRW 1429로 환율 부담 지속, 외국인 매도세 언급 다수.",
+    "정책 민감 자금 유입 신호 미약, 위험회피 심리 우세."
   ],
-  "korean_comment": "유동성 악화와 외국인 이탈로 보수적 대응이 필요합니다.",
+  "korean_comment": "유동성 및 정책 민감 자금 흐름이 위축된 모습입니다.",
   "regime_tag": "RISK_OFF",
   "evidence_ids": [
     "snapshot.market_summary.kospi_change_pct",
