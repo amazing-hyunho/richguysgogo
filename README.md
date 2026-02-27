@@ -127,6 +127,16 @@ python scripts/build_dashboard.py
 - 출력 파일: `docs/dashboard.html`
 - `data/investment.db` + `runs/*.json` 누적 데이터를 표/그래프로 시각화합니다.
 
+
+### 5) GitHub Actions로 자동 빌드 + Pages 배포
+`docs/dashboard.html`을 저장소에 고정해두지 않고, GitHub Actions에서 Python 빌드를 수행한 뒤 Pages로 배포할 수 있습니다.
+
+- 워크플로 파일: `.github/workflows/deploy-dashboard.yml`
+- 동작: `main` 브랜치 push 또는 수동 실행(`workflow_dispatch`)
+- 배포 산출물: `scripts/build_dashboard.py`로 생성한 `docs/dashboard.html` → `public/index.html`로 업로드 후 Pages 배포
+
+> 처음 1회는 저장소 Settings → Pages에서 **Build and deployment: GitHub Actions**를 선택하세요.
+
 ## 에이전트 모델 프로필 (GPT 기본 + 로컬 확장)
 
 각 에이전트별 추천 모델은 `committee/agents/model_profiles.py`에 고정되어 있습니다.
