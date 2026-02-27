@@ -119,6 +119,13 @@ python scripts/send_morning.py
 
 ---
 
+### 4) 누적 데이터 대시보드 생성
+```
+python scripts/build_dashboard.py
+```
+- 출력 파일: `reports/dashboard.html`
+- `data/investment.db` + `runs/*.json` 누적 데이터를 표/그래프로 시각화합니다.
+
 ## 에이전트 모델 프로필 (GPT 기본 + 로컬 확장)
 
 각 에이전트별 추천 모델은 `committee/agents/model_profiles.py`에 고정되어 있습니다.
