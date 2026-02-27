@@ -65,6 +65,34 @@ def load_latest_stances() -> dict[str, object]:
     }
 
 
+
+def load_latest_committee() -> dict[str, object]:
+    latest_path = max(RUNS_DIR.glob("*.json"), default=None)
+    if latest_path is None:
+        return {"market_date": "-", "consensus": "-", "key_points": [], "ops_guidance": []}
+
+    try:
+        payload = json.loads(latest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {"market_date": latest_path.stem, "consensus": "-", "key_points": [], "ops_guidance": []}
+
+    committee = payload.get("committee_result", {}) or {}
+    key_points = [item.get("point", "") for item in committee.get("key_points", []) if item.get("point")]
+    ops_guidance = [
+        {
+            "level": item.get("level", ""),
+            "text": item.get("text", ""),
+        }
+        for item in committee.get("ops_guidance", [])
+        if isinstance(item, dict)
+    ]
+    return {
+        "market_date": payload.get("market_date", latest_path.stem),
+        "consensus": committee.get("consensus", ""),
+        "key_points": key_points[:3],
+        "ops_guidance": ops_guidance[:3],
+    }
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     return f"""<!doctype html>
@@ -116,6 +144,13 @@ def build_dashboard_html(data: dict[str, object]) -> str:
         <h2>위원회 운영 가이던스 횟수</h2>
         <canvas id=\"guidanceChart\"></canvas>
       </div>
+    </div>
+
+    <div class=\"panel full\">
+      <h2>최근 의장 의견 <span class=\"badge\" id=\"chairDate\"></span></h2>
+      <div id=\"chairConsensus\">-</div>
+      <ul id=\"chairKeyPoints\"></ul>
+      <ul id=\"chairGuidance\"></ul>
     </div>
 
     <div class=\"panel full\">
@@ -191,6 +226,20 @@ new Chart(document.getElementById('guidanceChart'), {{
   options: {{ responsive:true, scales: {{ x: {{ stacked:true }}, y: {{ stacked:true }} }} }}
 }});
 
+
+const chair = data.latest_committee || {{}};
+const chairDate = document.getElementById('chairDate');
+const chairConsensus = document.getElementById('chairConsensus');
+const chairKeyPoints = document.getElementById('chairKeyPoints');
+const chairGuidance = document.getElementById('chairGuidance');
+
+chairDate.textContent = chair.market_date ? `(${{chair.market_date}})` : '';
+chairConsensus.textContent = chair.consensus || '-';
+chairKeyPoints.innerHTML = (chair.key_points || []).map(point => `<li>${{point}}</li>`).join('') || '<li>-</li>';
+chairGuidance.innerHTML = (chair.ops_guidance || [])
+  .map(item => `<li>[${{item.level || '-'}}] ${{item.text || '-'}}</li>`)
+  .join('') || '<li>-</li>';
+
 const table = document.getElementById('committeeTable');
 table.innerHTML = data.committee_history.slice().reverse().map(r => `
   <tr>
@@ -232,6 +281,7 @@ def main() -> None:
             "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
             "committee_history": load_committee_history(),
             "latest_stances": load_latest_stances(),
+            "latest_committee": load_latest_committee(),
         }
     finally:
         conn.close()

@@ -96,6 +96,7 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     lines.append("📌 오늘의 데일리 브리프")
     lines.append(f"- 시장 요약: {market_summary.get('note', 'n/a')}")
     lines.append(f"- 상세 리포트: {'포함됨' if report_text.strip() else '미포함'}")
+    lines.append(f"- 대시보드 링크: https://amazing-hyunho.github.io/richguysgogo/")
     lines.append("")
 
     lines.append("🧭 의장 결정")

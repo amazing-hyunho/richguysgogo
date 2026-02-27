@@ -13,6 +13,7 @@ from committee.agents.earnings_stub import EarningsStub
 from committee.agents.breadth_stub import BreadthStub
 from committee.agents.liquidity_stub import LiquidityStub
 from committee.agents.chair_stub import ChairStub
+from committee.agents.llm_chair import ChairLLMOptions, LLMChairAgent
 from committee.agents.llm_pre_analysis import LLMPreAnalysisAgent, LLMRunOptions
 from committee.agents.macro_stub import MacroStub
 from committee.agents.model_profiles import ModelBackend, parse_backend
@@ -30,10 +31,11 @@ from committee.core.storage import save_run
 from committee.core.trace_logger import TraceLogger
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.schemas.committee_result import CommitteeResult
+from committee.schemas.snapshot import Snapshot
 from committee.schemas.stance import AgentName, Stance
 
 
-def run_pre_analysis(snapshot: object, agent_ids: List[str]) -> List[Stance]:
+def run_pre_analysis(snapshot: Snapshot, agent_ids: List[str]) -> List[Stance]:
     """Generate stances from configured agent IDs (stub or LLM)."""
     backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))
     use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
@@ -64,10 +66,20 @@ def _build_pre_analysis_agent(agent_name: AgentName, use_llm_agents: bool, optio
     return fallback_agent
 
 
-def run_committee(snapshot: object, stances: List[Stance]) -> CommitteeResult:
-    """Generate committee result from stance distribution via ChairStub."""
-    _ = snapshot  # reserved for future chair rules that inspect snapshot directly
-    return ChairStub().run(stances)
+def run_committee(snapshot: Snapshot, stances: List[Stance]) -> CommitteeResult:
+    """Generate committee result from stances, with optional LLM chair."""
+    chair_stub = ChairStub()
+    use_llm_chair = os.getenv("USE_LLM_CHAIR", "0").strip() == "1"
+    if use_llm_chair:
+        chair = LLMChairAgent(
+            fallback_agent=chair_stub,
+            options=ChairLLMOptions(
+                model=os.getenv("CHAIR_OPENAI_MODEL", "gpt-4.1-mini").strip() or "gpt-4.1-mini",
+                temperature=float(os.getenv("CHAIR_LLM_TEMPERATURE", "0.1")),
+            ),
+        )
+        return chair.run(snapshot, stances)
+    return chair_stub.run(stances)
 
 
 @dataclass(frozen=True)
