@@ -89,6 +89,7 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     monthly = (macro.get("monthly") or {}) if isinstance(macro, dict) else {}
     quarterly = (macro.get("quarterly") or {}) if isinstance(macro, dict) else {}
     structural = (macro.get("structural") or {}) if isinstance(macro, dict) else {}
+    headlines = snapshot.get("news_headlines") or []
 
     lines: list[str] = []
     market_summary = snapshot.get("market_summary", {}) or {}
@@ -144,6 +145,15 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     )
     lines.append(f"- 성장: GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
     lines.append(f"- 정책: 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')} / 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
+    lines.append("")
+
+    lines.append("📰 헤드라인 기사")
+    top_headlines = _top_headlines(headlines, limit=3)
+    if top_headlines:
+        for idx, headline in enumerate(top_headlines, start=1):
+            lines.append(f"- {idx}. {headline}")
+    else:
+        lines.append("- 헤드라인 없음")
     lines.append("")
 
     if stances:
@@ -315,6 +325,77 @@ def _agent_label(agent_name: str | None) -> str:
         "liquidity": "유동성",
     }
     return mapping.get(agent_name or "", agent_name or "")
+
+
+def _top_headlines(items: list, limit: int = 3) -> list[str]:
+    """Extract top N headline strings with balanced global/domestic mix."""
+    domestic: list[str] = []
+    global_: list[str] = []
+
+    for item in items:
+        text = _headline_text(item)
+        if not text:
+            continue
+
+        if _is_domestic_headline(text):
+            domestic.append(text)
+        else:
+            global_.append(text)
+
+    if limit <= 0:
+        return []
+
+    domestic_target = limit // 2
+    global_target = limit // 2
+    if limit % 2 == 1:
+        # 홀수일 때는 국내 1개를 우선 배정해 균형을 최대한 맞춘다.
+        domestic_target += 1
+
+    selected = domestic[:domestic_target] + global_[:global_target]
+
+    if len(selected) < limit:
+        leftovers = domestic[domestic_target:] + global_[global_target:]
+        selected.extend(leftovers[: limit - len(selected)])
+
+    return selected
+
+
+def _headline_text(item: object) -> str:
+    if isinstance(item, str):
+        return item.strip()
+    if isinstance(item, dict):
+        return str(item.get("title") or item.get("headline") or "").strip()
+    return ""
+
+
+def _is_domestic_headline(text: str) -> bool:
+    lowered = text.lower()
+    domestic_keywords = [
+        "코스피",
+        "코스닥",
+        "한국",
+        "국내",
+        "원/달러",
+        "원달러",
+        "krx",
+        "금감원",
+        "한은",
+        "서울",
+        "삼성",
+        "sk",
+        "현대",
+        "네이버",
+        "카카오",
+        "지디넷코리아",
+        "연합뉴스",
+        "조선일보",
+        "중앙일보",
+        "mbc",
+        "kbs",
+        "sbs",
+        "jtbc",
+    ]
+    return any(keyword in lowered for keyword in domestic_keywords)
 
 
 if __name__ == "__main__":
