@@ -184,6 +184,19 @@ python scripts/run_local.py
 
 야간 배치(`scripts/run_nightly.py`)도 동일한 환경 변수(`USE_LLM_AGENTS`, `AGENT_MODEL_BACKEND`, `LLM_TEMPERATURE`)를 읽어 pre-analysis 단계에 반영합니다.
 
+
+의장(Chair)도 LLM으로 켤 수 있습니다(기본 OFF, 가성비 기본 모델 `gpt-4.1-mini`).
+
+```bash
+export USE_LLM_CHAIR=1
+export CHAIR_OPENAI_MODEL=gpt-4.1-mini
+export CHAIR_LLM_TEMPERATURE=0.1
+```
+
+`USE_LLM_CHAIR=1`일 때 OpenAI 호출이 실패하면 자동으로 `ChairStub` 규칙 기반 합의로 fallback 합니다.
+
+- Chair 입력값: 시장/매크로 주요 지표 + 뉴스 헤드라인 + 각 agent의 주장/코멘트/증거 ID를 함께 전달해 최종 합의를 생성합니다.
+
 ### 실행 중간 로그 + AI 응답 추적 로그
 `run_local.py`/`run_nightly.py` 실행 시 단계별 진행 로그를 출력합니다.
 

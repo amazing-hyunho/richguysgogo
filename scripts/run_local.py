@@ -14,6 +14,7 @@ if str(ROOT_DIR) not in sys.path:
 
 from committee.agents.breadth_stub import BreadthStub
 from committee.agents.chair_stub import ChairStub
+from committee.agents.llm_chair import ChairLLMOptions, LLMChairAgent
 from committee.agents.earnings_stub import EarningsStub
 from committee.agents.flow_stub import FlowStub
 from committee.agents.liquidity_stub import LiquidityStub
@@ -72,8 +73,19 @@ def main() -> None:
     stances = [agent.run(snapshot) for agent in agents]
 
     print("[run_local] step 3/6: running chair consensus...")
-    chair = ChairStub()
-    committee_result = chair.run(stances)
+    chair_stub = ChairStub()
+    use_llm_chair = os.getenv("USE_LLM_CHAIR", "0").strip() == "1"
+    if use_llm_chair:
+        chair = LLMChairAgent(
+            fallback_agent=chair_stub,
+            options=ChairLLMOptions(
+                model=os.getenv("CHAIR_OPENAI_MODEL", "gpt-4.1-mini").strip() or "gpt-4.1-mini",
+                temperature=float(os.getenv("CHAIR_LLM_TEMPERATURE", "0.1")),
+            ),
+        )
+        committee_result = chair.run(snapshot, stances)
+    else:
+        committee_result = chair_stub.run(stances)
 
     print("[run_local] step 4/6: building report object...")
     report = build_report(
