@@ -7,7 +7,7 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT_DIR / "data" / "investment.db"
 RUNS_DIR = ROOT_DIR / "runs"
-OUTPUT_PATH = ROOT_DIR / "reports" / "dashboard.html"
+OUTPUT_PATH = ROOT_DIR / "docs" / "dashboard.html"
 
 
 def fetch_rows(conn: sqlite3.Connection, query: str) -> list[dict[str, object]]:
@@ -37,6 +37,34 @@ def load_committee_history() -> list[dict[str, object]]:
     return history
 
 
+def load_latest_stances() -> dict[str, object]:
+    latest_path = max(RUNS_DIR.glob("*.json"), default=None)
+    if latest_path is None:
+        return {"market_date": "-", "stances": []}
+
+    try:
+        payload = json.loads(latest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {"market_date": latest_path.stem, "stances": []}
+
+    stances = []
+    for stance in payload.get("stances", []):
+        stances.append(
+            {
+                "agent_name": stance.get("agent_name", "-"),
+                "regime_tag": stance.get("regime_tag", "-"),
+                "confidence": stance.get("confidence", "-"),
+                "korean_comment": stance.get("korean_comment", ""),
+                "core_claims": stance.get("core_claims", []),
+            }
+        )
+
+    return {
+        "market_date": payload.get("market_date", latest_path.stem),
+        "stances": stances,
+    }
+
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     return f"""<!doctype html>
@@ -58,8 +86,11 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     .panel {{ background:#1e293b; border-radius:12px; padding:14px; }}
     .panel h2 {{ margin-top:0; font-size:16px; }}
     table {{ width:100%; border-collapse:collapse; font-size:13px; }}
-    th, td {{ border-bottom:1px solid #334155; padding:8px 6px; text-align:left; }}
+    th, td {{ border-bottom:1px solid #334155; padding:8px 6px; text-align:left; vertical-align:top; }}
     .full {{ margin-top:16px; }}
+    .badge {{ display:inline-block; margin-left:8px; font-size:12px; color:#93c5fd; }}
+    .agent-table td ul {{ margin:6px 0 0 16px; padding:0; }}
+    .agent-table td li {{ margin-bottom:2px; }}
     @media (max-width: 900px) {{ .chart-grid {{ grid-template-columns:1fr; }} }}
   </style>
 </head>
@@ -92,6 +123,14 @@ def build_dashboard_html(data: dict[str, object]) -> str:
       <table>
         <thead><tr><th>날짜</th><th>Consensus</th><th>OK</th><th>CAUTION</th><th>AVOID</th></tr></thead>
         <tbody id=\"committeeTable\"></tbody>
+      </table>
+    </div>
+
+    <div class=\"panel full\">
+      <h2>최근 에이전트 의견 <span class=\"badge\" id=\"stanceDate\"></span></h2>
+      <table class=\"agent-table\">
+        <thead><tr><th>Agent</th><th>Regime</th><th>Confidence</th><th>의견</th><th>핵심 주장</th></tr></thead>
+        <tbody id=\"stanceTable\"></tbody>
       </table>
     </div>
   </div>
@@ -162,6 +201,19 @@ table.innerHTML = data.committee_history.slice().reverse().map(r => `
     <td>${{r.avoid_count}}</td>
   </tr>
 `).join('');
+
+const stanceDate = document.getElementById('stanceDate');
+const stanceTable = document.getElementById('stanceTable');
+stanceDate.textContent = data.latest_stances.market_date ? `(${{data.latest_stances.market_date}})` : '';
+stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
+  <tr>
+    <td>${{s.agent_name}}</td>
+    <td>${{s.regime_tag}}</td>
+    <td>${{s.confidence}}</td>
+    <td>${{s.korean_comment || '-'}}</td>
+    <td><ul>${{(s.core_claims || []).map(claim => `<li>${{claim}}</li>`).join('')}}</ul></td>
+  </tr>
+`).join('');
 </script>
 </body>
 </html>
@@ -179,6 +231,7 @@ def main() -> None:
             "monthly_macro": fetch_rows(conn, "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, wage_yoy FROM monthly_macro ORDER BY date"),
             "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
             "committee_history": load_committee_history(),
+            "latest_stances": load_latest_stances(),
         }
     finally:
         conn.close()

@@ -55,6 +55,7 @@ committee/
 scripts/        # 실행 스크립트
 runs/           # 날짜별 아카이브 (YYYY-MM-DD)
 reports/        # JSON 리포트 (보조 출력)
+docs/           # GitHub Pages 대시보드 (dashboard.html)
 ```
 
 ---
@@ -123,7 +124,7 @@ python scripts/send_morning.py
 ```
 python scripts/build_dashboard.py
 ```
-- 출력 파일: `reports/dashboard.html`
+- 출력 파일: `docs/dashboard.html`
 - `data/investment.db` + `runs/*.json` 누적 데이터를 표/그래프로 시각화합니다.
 
 ## 에이전트 모델 프로필 (GPT 기본 + 로컬 확장)
