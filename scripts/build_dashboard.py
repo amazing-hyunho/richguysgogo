@@ -32,6 +32,9 @@ def load_committee_history() -> list[dict[str, object]]:
 
         committee = payload.get("committee_result", {})
         guidance = committee.get("ops_guidance", [])
+        ok_text = next((item.get("text", "") for item in guidance if item.get("level") == "OK"), "")
+        caution_text = next((item.get("text", "") for item in guidance if item.get("level") == "CAUTION"), "")
+        avoid_text = next((item.get("text", "") for item in guidance if item.get("level") == "AVOID"), "")
         history.append(
             {
                 "market_date": payload.get("market_date", path.stem),
@@ -39,6 +42,9 @@ def load_committee_history() -> list[dict[str, object]]:
                 "ok_count": sum(1 for item in guidance if item.get("level") == "OK"),
                 "caution_count": sum(1 for item in guidance if item.get("level") == "CAUTION"),
                 "avoid_count": sum(1 for item in guidance if item.get("level") == "AVOID"),
+                "ok_text": ok_text,
+                "caution_text": caution_text,
+                "avoid_text": avoid_text,
             }
         )
     return history
@@ -149,9 +155,12 @@ def build_dashboard_html(data: dict[str, object]) -> str:
         <h2>외국인 순매수 추이</h2>
         <canvas id=\"flowChart\"></canvas>
       </div>
-      <div class=\"panel\">
-        <h2>위원회 운영 가이던스 횟수</h2>
-        <canvas id="guidanceChart"></canvas>
+      <div class="panel">
+        <h2>최근 운영 가이던스 (텍스트)</h2>
+        <table>
+          <thead><tr><th>날짜</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
+          <tbody id="guidanceHistoryTable"></tbody>
+        </table>
         <div class="help-box">
           <div><strong>가이던스 3단계 의미</strong></div>
           <div>• <strong>유지(OK)</strong>: 현재 전략 유지(기존 비중 중심)</div>
@@ -169,7 +178,7 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     </div>
 
     <div class=\"panel full\">
-      <h2>최근 회의 합의 내역</h2>
+      <h2>최근 회의 합의 내역 (가이던스 내용)</h2>
       <table>
         <thead><tr><th>날짜</th><th>의장 합의</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
         <tbody id=\"committeeTable\"></tbody>
@@ -245,13 +254,19 @@ function coverage(rows, key) {{
   return `${{Math.round((valid / rows.length) * 100)}}%`;
 }}
 
+function formatMetric(value) {{
+  if (value === null || value === undefined || value === '') return '-';
+  if (typeof value === 'number' && Number.isFinite(value)) return value.toFixed(2);
+  return value;
+}}
+
 const cards = [
-  {{ label: '최근 KOSPI(%)', value: latest(data.market_daily, 'kospi_pct') }},
-  {{ label: '최근 NASDAQ(%)', value: latest(data.market_daily, 'nasdaq_pct') }},
-  {{ label: '최근 VIX', value: latest(data.daily_macro, 'vix') }},
-  {{ label: '최근 USD/KRW', value: latest(data.daily_macro, 'usdkrw') }},
-  {{ label: '최근 VIX 기간스프레드', value: latest(data.daily_macro, 'vix_term_spread') }},
-  {{ label: '최근 HY OAS', value: latest(data.daily_macro, 'hy_oas') }},
+  {{ label: '최근 KOSPI(%)', value: formatMetric(latest(data.market_daily, 'kospi_pct')) }},
+  {{ label: '최근 NASDAQ(%)', value: formatMetric(latest(data.market_daily, 'nasdaq_pct')) }},
+  {{ label: '최근 VIX', value: formatMetric(latest(data.daily_macro, 'vix')) }},
+  {{ label: '최근 USD/KRW', value: formatMetric(latest(data.daily_macro, 'usdkrw')) }},
+  {{ label: '최근 VIX 기간스프레드', value: formatMetric(latest(data.daily_macro, 'vix_term_spread')) }},
+  {{ label: '최근 HY OAS', value: formatMetric(latest(data.daily_macro, 'hy_oas')) }},
   {{ label: 'VIX 기간스프레드 적재율', value: coverage(data.daily_macro, 'vix_term_spread') }},
   {{ label: 'HY/IG OAS 적재율', value: `${{coverage(data.daily_macro, 'hy_oas')}} / ${{coverage(data.daily_macro, 'ig_oas')}}` }},
   {{ label: '누적 회의일', value: data.committee_history.length }},
@@ -286,24 +301,7 @@ new Chart(document.getElementById('flowChart'), {{
   ]}}
 }});
 
-new Chart(document.getElementById('guidanceChart'), {{
-  type:'bar',
-  data: {{ labels:data.committee_history.map(r=>r.market_date), datasets:[
-    {{ label:'유지(OK)', data:data.committee_history.map(r=>r.ok_count), backgroundColor:'#22c55e' }},
-    {{ label:'주의(CAUTION)', data:data.committee_history.map(r=>r.caution_count), backgroundColor:'#f59e0b' }},
-    {{ label:'회피(AVOID)', data:data.committee_history.map(r=>r.avoid_count), backgroundColor:'#ef4444' }},
-  ]}},
-  options: {{ responsive:true, scales: {{ x: {{ stacked:true }}, y: {{ stacked:true }} }} }}
-}});
 
-new Chart(document.getElementById('creditChart'), {{
-  type:'line',
-  data: {{ labels:data.daily_macro.map(r=>r.date), datasets:[
-    {{ label:'HY OAS', data:data.daily_macro.map(r=>r.hy_oas), borderColor:'#fb7185' }},
-    {{ label:'IG OAS', data:data.daily_macro.map(r=>r.ig_oas), borderColor:'#60a5fa' }},
-    {{ label:'VIX 기간스프레드', data:data.daily_macro.map(r=>r.vix_term_spread), borderColor:'#34d399' }},
-  ]}},
-}});
 
 const chair = data.latest_committee || {{}};
 const chairDate = document.getElementById('chairDate');
@@ -323,9 +321,19 @@ table.innerHTML = data.committee_history.slice().reverse().map(r => `
   <tr>
     <td>${{r.market_date}}</td>
     <td>${{toKoreanChairText(r.consensus)}}</td>
-    <td>${{r.ok_count}}</td>
-    <td>${{r.caution_count}}</td>
-    <td>${{r.avoid_count}}</td>
+    <td>${{toKoreanChairText(r.ok_text) || '-'}}</td>
+    <td>${{toKoreanChairText(r.caution_text) || '-'}}</td>
+    <td>${{toKoreanChairText(r.avoid_text) || '-'}}</td>
+  </tr>
+`).join('');
+
+const guidanceHistoryTable = document.getElementById('guidanceHistoryTable');
+guidanceHistoryTable.innerHTML = data.committee_history.slice().reverse().slice(0, 8).map(r => `
+  <tr>
+    <td>${{r.market_date}}</td>
+    <td>${{toKoreanChairText(r.ok_text) || '-'}}</td>
+    <td>${{toKoreanChairText(r.caution_text) || '-'}}</td>
+    <td>${{toKoreanChairText(r.avoid_text) || '-'}}</td>
   </tr>
 `).join('');
 
@@ -336,7 +344,7 @@ stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
   <tr>
     <td>${{s.agent_name}}</td>
     <td>${{formatRegimeTag(s.regime_tag)}}</td>
-    <td>${{s.confidence}}</td>
+    <td>${{formatMetric(s.confidence)}}</td>
     <td>${{s.korean_comment || '-'}}</td>
     <td><ul>${{(s.core_claims || []).map(claim => `<li>${{claim}}</li>`).join('')}}</ul></td>
   </tr>
