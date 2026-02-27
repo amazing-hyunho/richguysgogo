@@ -58,6 +58,50 @@ def fetch_google_news_items(query: str = "KOSPI", limit: int = 20, timeout: int 
     return items
 
 
+def _normalize_headline(title: str) -> str:
+    """Normalize title text so near-duplicate headlines can be removed."""
+    normalized = title or ""
+    normalized = re.sub(r"\([^)]*\)$", "", normalized).strip()
+    normalized = re.sub(r"\[[^\]]*\]", " ", normalized)
+    normalized = re.sub(r"\s+-\s+[^-]+$", "", normalized)
+    normalized = re.sub(r"[^\w\s]", " ", normalized)
+    normalized = re.sub(r"\s+", " ", normalized).strip().lower()
+    return normalized
+
+
+def _deduplicate_news_items(items: List[tuple[str, str]], limit: int) -> List[tuple[str, str]]:
+    """Drop duplicated/near-duplicated headlines while preserving original order."""
+    unique: List[tuple[str, str]] = []
+    seen: set[str] = set()
+    seen_tokens: List[set[str]] = []
+
+    for title, link in items:
+        normalized = _normalize_headline(title)
+        if not normalized or normalized in seen:
+            continue
+
+        current_tokens = set(normalized.split())
+        is_duplicate = False
+        for prior_tokens in seen_tokens:
+            if not current_tokens or not prior_tokens:
+                continue
+            overlap = len(current_tokens & prior_tokens) / max(len(current_tokens), len(prior_tokens))
+            if overlap >= 0.85:
+                is_duplicate = True
+                break
+
+        if is_duplicate:
+            continue
+
+        seen.add(normalized)
+        seen_tokens.append(current_tokens)
+        unique.append((title, link))
+        if len(unique) >= limit:
+            break
+
+    return unique
+
+
 def _strip_html_to_text(raw_html: str) -> str:
     """Extract readable plain text from HTML."""
     text = re.sub(r"<script[\s\S]*?</script>", " ", raw_html, flags=re.IGNORECASE)
@@ -102,7 +146,8 @@ def summarize_article(link: str, timeout: int = 7) -> List[str]:
 def build_news_digest(query: str = "KOSPI", limit: int = 20) -> Tuple[List[str], List[NewsDigestItem], str | None]:
     """Build title list and 3-line summaries for up to ``limit`` articles."""
     try:
-        items = fetch_google_news_items(query=query, limit=limit)
+        items = fetch_google_news_items(query=query, limit=max(limit * 2, 50))
+        items = _deduplicate_news_items(items, limit=limit)
         if not items:
             return [], [], "no_titles"
 
@@ -120,4 +165,3 @@ def build_news_digest(query: str = "KOSPI", limit: int = 20) -> Tuple[List[str],
         return titles, digest, None
     except Exception as exc:  # noqa: BLE001
         return [], [], str(exc)
-
