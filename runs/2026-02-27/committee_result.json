@@ -4,9 +4,9 @@
     {
       "point": "Majority regime tag: RISK_OFF.",
       "sources": [
-        "macro",
         "flow",
         "sector",
+        "earnings",
         "liquidity"
       ]
     },
@@ -27,8 +27,8 @@
       "majority": "RISK_OFF",
       "minority": "NEUTRAL",
       "minority_agents": [
+        "macro",
         "risk",
-        "earnings",
         "breadth"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."
