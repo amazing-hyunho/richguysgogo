@@ -140,7 +140,12 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     lines.append(
         f"- 금리: 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}"
     )
-    lines.append(f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 1)}")
+    lines.append(
+        f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 2)} / VIX3M {_fmt(daily.get('vix3m'), 2)} / 기간스프레드 {_fmt(daily.get('vix_term_spread'), 2)}"
+    )
+    lines.append(
+        f"- 크레딧: HY OAS {_fmt(structural.get('hy_oas'), 2)} / IG OAS {_fmt(structural.get('ig_oas'), 2)}"
+    )
     lines.append(
         f"- 물가/경기: 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')} / CPI {_fmt(monthly.get('cpi_yoy'), 2, '%')} / PMI {_fmt(monthly.get('pmi'), 1)}"
     )
