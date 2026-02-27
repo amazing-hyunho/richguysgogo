@@ -1,35 +1,35 @@
 {
-  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "consensus": "Committee maintains a neutral posture with selective positioning.",
   "key_points": [
     {
-      "point": "Majority regime tag: RISK_OFF.",
+      "point": "Majority regime tag: NEUTRAL.",
       "sources": [
+        "macro",
         "flow",
-        "sector",
+        "risk",
         "earnings",
-        "liquidity"
+        "breadth"
       ]
     },
     {
       "point": "Shared evidence focus: snapshot.news_headlines.",
       "sources": [
         "earnings",
-        "flow",
         "liquidity",
         "macro",
-        "risk"
+        "risk",
+        "sector"
       ]
     }
   ],
   "disagreements": [
     {
       "topic": "Regime tags",
-      "majority": "RISK_OFF",
-      "minority": "NEUTRAL",
+      "majority": "NEUTRAL",
+      "minority": "RISK_OFF",
       "minority_agents": [
-        "macro",
-        "risk",
-        "breadth"
+        "sector",
+        "liquidity"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."
     }
@@ -37,15 +37,15 @@
   "ops_guidance": [
     {
       "level": "OK",
-      "text": "Keep exposure focused on resilience."
+      "text": "Maintain balanced exposure."
     },
     {
       "level": "CAUTION",
-      "text": "Favor defensive positioning."
+      "text": "Keep risk limits tight."
     },
     {
       "level": "AVOID",
-      "text": "Avoid high-beta risk assets."
+      "text": "Avoid aggressive leverage."
     }
   ]
 }
