@@ -5,6 +5,13 @@ import sqlite3
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
+
+try:
+    from committee.core.database import init_db
+except ModuleNotFoundError:
+    import sys
+    sys.path.insert(0, str(ROOT_DIR))
+    from committee.core.database import init_db
 DB_PATH = ROOT_DIR / "data" / "investment.db"
 RUNS_DIR = ROOT_DIR / "runs"
 OUTPUT_PATH = ROOT_DIR / "docs" / "dashboard.html"
@@ -119,6 +126,8 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     .badge {{ display:inline-block; margin-left:8px; font-size:12px; color:#93c5fd; }}
     .agent-table td ul {{ margin:6px 0 0 16px; padding:0; }}
     .agent-table td li {{ margin-bottom:2px; }}
+    .help-box {{ margin-top:10px; padding:10px 12px; border-radius:10px; background:#0b1220; border:1px solid #334155; font-size:12px; line-height:1.5; color:#cbd5e1; }}
+    .help-box strong {{ color:#e2e8f0; }}
     @media (max-width: 900px) {{ .chart-grid {{ grid-template-columns:1fr; }} }}
   </style>
 </head>
@@ -142,7 +151,13 @@ def build_dashboard_html(data: dict[str, object]) -> str:
       </div>
       <div class=\"panel\">
         <h2>위원회 운영 가이던스 횟수</h2>
-        <canvas id=\"guidanceChart\"></canvas>
+        <canvas id="guidanceChart"></canvas>
+        <div class="help-box">
+          <div><strong>가이던스 3단계 의미</strong></div>
+          <div>• <strong>유지(OK)</strong>: 현재 전략 유지(기존 비중 중심)</div>
+          <div>• <strong>주의(CAUTION)</strong>: 신규 진입/추가 매수는 신중, 리스크 한도 강화</div>
+          <div>• <strong>회피(AVOID)</strong>: 해당 행동·자산은 당분간 피하기</div>
+        </div>
       </div>
     </div>
 
@@ -156,7 +171,7 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     <div class=\"panel full\">
       <h2>최근 회의 합의 내역</h2>
       <table>
-        <thead><tr><th>날짜</th><th>Consensus</th><th>OK</th><th>CAUTION</th><th>AVOID</th></tr></thead>
+        <thead><tr><th>날짜</th><th>의장 합의</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
         <tbody id=\"committeeTable\"></tbody>
       </table>
     </div>
@@ -164,7 +179,7 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     <div class=\"panel full\">
       <h2>최근 에이전트 의견 <span class=\"badge\" id=\"stanceDate\"></span></h2>
       <table class=\"agent-table\">
-        <thead><tr><th>Agent</th><th>Regime</th><th>Confidence</th><th>의견</th><th>핵심 주장</th></tr></thead>
+        <thead><tr><th>에이전트</th><th>국면 태그</th><th>신뢰도</th><th>의견</th><th>핵심 주장</th></tr></thead>
         <tbody id=\"stanceTable\"></tbody>
       </table>
     </div>
@@ -173,10 +188,61 @@ def build_dashboard_html(data: dict[str, object]) -> str:
 <script>
 const data = {data_json};
 
+const LABEL_BY_LEVEL = {{
+  OK: '유지',
+  CAUTION: '주의',
+  AVOID: '회피',
+}};
+
+const REGIME_LABELS = {{
+  RISK_ON: 'RISK_ON (비중 확대)',
+  RISK_OFF: 'RISK_OFF (비중 축소)',
+  NEUTRAL: 'NEUTRAL (중립 비중)',
+}};
+
+const CHAIR_TEXT_MAP = {{
+  'Committee agrees on a neutral stance with selective monitoring.': '위원회는 선별적 모니터링 하에 중립 스탠스를 유지합니다.',
+  'Committee maintains a neutral posture with selective positioning.': '위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.',
+  'Committee adopts a defensive posture and reduces risk exposure.': '위원회는 방어적 입장을 채택하고 위험 노출을 축소합니다.',
+  'Committee supports risk-on positioning with disciplined risk controls.': '위원회는 엄격한 리스크 통제를 전제로 위험자산 비중 확대를 지지합니다.',
+  'Majority regime tag: RISK_ON.': '다수 국면 태그: RISK_ON (비중 확대).',
+  'Majority regime tag: RISK_OFF.': '다수 국면 태그: RISK_OFF (비중 축소).',
+  'Majority regime tag: NEUTRAL.': '다수 국면 태그: NEUTRAL (중립 비중).',
+  'Shared evidence focus: snapshot.news_headlines.': '공통 근거: snapshot.news_headlines.',
+  'Shared evidence focus: snapshot.market_summary.note.': '공통 근거: snapshot.market_summary.note.',
+  'Maintain balanced exposure.': '균형 비중을 유지합니다.',
+  'Keep risk limits tight.': '리스크 한도를 엄격히 유지합니다.',
+  'Avoid aggressive leverage.': '과도한 레버리지는 피합니다.',
+  'Lean into confirmed momentum leaders.': '검증된 모멘텀 주도주 중심으로 대응합니다.',
+  'Size positions with volatility limits.': '변동성 한도 내에서 포지션 규모를 조절합니다.',
+  'Avoid chasing overstretched breakouts.': '과열된 돌파 구간 추격 매수는 피합니다.',
+  'Keep exposure focused on resilience.': '방어력이 높은 자산 중심으로 노출을 유지합니다.',
+  'Favor defensive positioning.': '방어적인 포지셔닝을 우선합니다.',
+  'Avoid high-beta risk assets.': '고베타 위험자산은 피합니다.',
+}};
+
+function formatRegimeTag(tag) {{
+  return REGIME_LABELS[tag] || tag || '-';
+}}
+
+function toKoreanChairText(text) {{
+  return CHAIR_TEXT_MAP[text] || text || '-';
+}}
+
+function formatGuidanceLevel(level) {{
+  return LABEL_BY_LEVEL[level] ? `${{level}} · ${{LABEL_BY_LEVEL[level]}}` : (level || '-');
+}}
+
 function latest(rows, key) {{
   if (!rows.length) return '-';
   const value = rows[rows.length - 1][key];
   return value ?? '-';
+}}
+
+function coverage(rows, key) {{
+  if (!rows.length) return '-';
+  const valid = rows.filter(r => r[key] !== null && r[key] !== undefined).length;
+  return `${{Math.round((valid / rows.length) * 100)}}%`;
 }}
 
 const cards = [
@@ -184,6 +250,10 @@ const cards = [
   {{ label: '최근 NASDAQ(%)', value: latest(data.market_daily, 'nasdaq_pct') }},
   {{ label: '최근 VIX', value: latest(data.daily_macro, 'vix') }},
   {{ label: '최근 USD/KRW', value: latest(data.daily_macro, 'usdkrw') }},
+  {{ label: '최근 VIX 기간스프레드', value: latest(data.daily_macro, 'vix_term_spread') }},
+  {{ label: '최근 HY OAS', value: latest(data.daily_macro, 'hy_oas') }},
+  {{ label: 'VIX 기간스프레드 적재율', value: coverage(data.daily_macro, 'vix_term_spread') }},
+  {{ label: 'HY/IG OAS 적재율', value: `${{coverage(data.daily_macro, 'hy_oas')}} / ${{coverage(data.daily_macro, 'ig_oas')}}` }},
   {{ label: '누적 회의일', value: data.committee_history.length }},
 ];
 
@@ -219,13 +289,21 @@ new Chart(document.getElementById('flowChart'), {{
 new Chart(document.getElementById('guidanceChart'), {{
   type:'bar',
   data: {{ labels:data.committee_history.map(r=>r.market_date), datasets:[
-    {{ label:'OK', data:data.committee_history.map(r=>r.ok_count), backgroundColor:'#22c55e' }},
-    {{ label:'CAUTION', data:data.committee_history.map(r=>r.caution_count), backgroundColor:'#f59e0b' }},
-    {{ label:'AVOID', data:data.committee_history.map(r=>r.avoid_count), backgroundColor:'#ef4444' }},
+    {{ label:'유지(OK)', data:data.committee_history.map(r=>r.ok_count), backgroundColor:'#22c55e' }},
+    {{ label:'주의(CAUTION)', data:data.committee_history.map(r=>r.caution_count), backgroundColor:'#f59e0b' }},
+    {{ label:'회피(AVOID)', data:data.committee_history.map(r=>r.avoid_count), backgroundColor:'#ef4444' }},
   ]}},
   options: {{ responsive:true, scales: {{ x: {{ stacked:true }}, y: {{ stacked:true }} }} }}
 }});
 
+new Chart(document.getElementById('creditChart'), {{
+  type:'line',
+  data: {{ labels:data.daily_macro.map(r=>r.date), datasets:[
+    {{ label:'HY OAS', data:data.daily_macro.map(r=>r.hy_oas), borderColor:'#fb7185' }},
+    {{ label:'IG OAS', data:data.daily_macro.map(r=>r.ig_oas), borderColor:'#60a5fa' }},
+    {{ label:'VIX 기간스프레드', data:data.daily_macro.map(r=>r.vix_term_spread), borderColor:'#34d399' }},
+  ]}},
+}});
 
 const chair = data.latest_committee || {{}};
 const chairDate = document.getElementById('chairDate');
@@ -234,17 +312,17 @@ const chairKeyPoints = document.getElementById('chairKeyPoints');
 const chairGuidance = document.getElementById('chairGuidance');
 
 chairDate.textContent = chair.market_date ? `(${{chair.market_date}})` : '';
-chairConsensus.textContent = chair.consensus || '-';
-chairKeyPoints.innerHTML = (chair.key_points || []).map(point => `<li>${{point}}</li>`).join('') || '<li>-</li>';
+chairConsensus.textContent = toKoreanChairText(chair.consensus);
+chairKeyPoints.innerHTML = (chair.key_points || []).map(point => `<li>${{toKoreanChairText(point)}}</li>`).join('') || '<li>-</li>';
 chairGuidance.innerHTML = (chair.ops_guidance || [])
-  .map(item => `<li>[${{item.level || '-'}}] ${{item.text || '-'}}</li>`)
+  .map(item => `<li>[${{formatGuidanceLevel(item.level)}}] ${{toKoreanChairText(item.text)}}</li>`)
   .join('') || '<li>-</li>';
 
 const table = document.getElementById('committeeTable');
 table.innerHTML = data.committee_history.slice().reverse().map(r => `
   <tr>
     <td>${{r.market_date}}</td>
-    <td>${{r.consensus}}</td>
+    <td>${{toKoreanChairText(r.consensus)}}</td>
     <td>${{r.ok_count}}</td>
     <td>${{r.caution_count}}</td>
     <td>${{r.avoid_count}}</td>
@@ -257,7 +335,7 @@ stanceDate.textContent = data.latest_stances.market_date ? `(${{data.latest_stan
 stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
   <tr>
     <td>${{s.agent_name}}</td>
-    <td>${{s.regime_tag}}</td>
+    <td>${{formatRegimeTag(s.regime_tag)}}</td>
     <td>${{s.confidence}}</td>
     <td>${{s.korean_comment || '-'}}</td>
     <td><ul>${{(s.core_claims || []).map(claim => `<li>${{claim}}</li>`).join('')}}</ul></td>
@@ -271,12 +349,13 @@ stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
 
 def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    init_db(DB_PATH)
     conn = sqlite3.connect(DB_PATH)
     try:
         dashboard_data = {
             "market_daily": fetch_rows(conn, "SELECT date, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct FROM market_daily ORDER BY date"),
             "market_flow_daily": fetch_rows(conn, "SELECT date, foreign_net, foreign_20d, foreign_60d FROM market_flow_daily ORDER BY date"),
-            "daily_macro": fetch_rows(conn, "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw FROM daily_macro ORDER BY date"),
+            "daily_macro": fetch_rows(conn, "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, vix3m, vix_term_spread, hy_oas, ig_oas, fed_balance_sheet FROM daily_macro ORDER BY date"),
             "monthly_macro": fetch_rows(conn, "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, wage_yoy FROM monthly_macro ORDER BY date"),
             "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
             "committee_history": load_committee_history(),

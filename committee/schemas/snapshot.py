@@ -119,6 +119,8 @@ class MacroDaily(BaseModel):
     vix: Optional[float] = None
     dxy: Optional[float] = None
     usdkrw: Optional[float] = None
+    vix3m: Optional[float] = None
+    vix_term_spread: Optional[float] = None
 
     class Config:
         extra = "forbid"
@@ -159,6 +161,9 @@ class MacroStructural(BaseModel):
     """
     fed_funds_rate: Optional[float] = None
     real_rate: Optional[float] = None
+    hy_oas: Optional[float] = None
+    ig_oas: Optional[float] = None
+    fed_balance_sheet: Optional[float] = None
 
     class Config:
         extra = "forbid"

@@ -136,6 +136,11 @@ class DailyPipeline:
                 usdkrw=d.usdkrw,
                 fed_funds_rate=s.fed_funds_rate,
                 real_rate=s.real_rate,
+                vix3m=d.vix3m,
+                vix_term_spread=d.vix_term_spread,
+                hy_oas=s.hy_oas,
+                ig_oas=s.ig_oas,
+                fed_balance_sheet=s.fed_balance_sheet,
             )
             safe_upsert_monthly_macro(
                 date=market_date.isoformat(),

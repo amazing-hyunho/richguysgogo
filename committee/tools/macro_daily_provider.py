@@ -93,3 +93,17 @@ def fetch_usdkrw() -> float | None:
             return v
     return None
 
+
+
+def fetch_vix3m() -> float | None:
+    """VIX 3M index level from Yahoo (^VIX3M)."""
+    return _fetch_latest_close("^VIX3M")
+
+
+def fetch_vix_term_spread() -> float | None:
+    """VIX term spread (VIX3M - VIX), best-effort."""
+    vix = fetch_vix()
+    vix3m = fetch_vix3m()
+    if vix is None or vix3m is None:
+        return None
+    return vix3m - vix

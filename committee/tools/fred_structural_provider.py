@@ -26,3 +26,18 @@ def fetch_breakeven_10y() -> float | None:
     """Fetch latest 10Y breakeven inflation rate (FRED: T10YIE)."""
     return fetch_fred_latest("T10YIE")
 
+
+
+def fetch_hy_oas() -> float | None:
+    """Fetch High Yield OAS (FRED: BAMLH0A0HYM2)."""
+    return fetch_fred_latest("BAMLH0A0HYM2")
+
+
+def fetch_ig_oas() -> float | None:
+    """Fetch Investment Grade OAS (FRED: BAMLC0A0CM)."""
+    return fetch_fred_latest("BAMLC0A0CM")
+
+
+def fetch_fed_balance_sheet() -> float | None:
+    """Fetch Fed total assets (FRED: WALCL)."""
+    return fetch_fred_latest("WALCL")
