@@ -1,0 +1,121 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "Macro tone is balanced.",
+      "No major shocks.",
+      "Stay selective."
+    ],
+    "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "Flow data unavailable.",
+      "Use neutral stance."
+    ],
+    "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.flow_summary.note",
+      "snapshot.watchlist"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "코스피가 최근 고점 논란과 외국인 대규모 순매도로 조정 국면에 진입했습니다.",
+      "엔비디아 급락 등 대외 악재가 투자심리 위축에 영향을 주고 있습니다.",
+      "단기적으로 변동성 확대와 조정 위험이 높아진 상황입니다."
+    ],
+    "korean_comment": "외국인 매도세와 대외 변수로 시장 불확실성이 커졌습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 최근 고점 논란과 외국인 대규모 순매도로 조정 국면에 진입했습니다.\",\n    \"엔비디아 급락 등 대외 악재가 투자심리 위축에 영향을 주고 있습니다.\",\n    \"단기적으로 변동성 확대와 조정 위험이 높아진 상황입니다.\"\n  ],\n  \"korean_comment\": \"외국인 매도세와 대외 변수로 시장 불확실성이 커졌습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.us.nasdaq_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.markets.us.nasdaq_pct",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "코스피가 소폭 하락했으나 변동성은 제한적입니다.",
+      "외국인 매도세가 있지만 리밸런싱 성격이 강합니다.",
+      "시장 전반에 극단적 위험 신호는 없습니다."
+    ],
+    "korean_comment": "시장에 뚜렷한 위험 신호는 아직 감지되지 않습니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 소폭 하락했으나 변동성은 제한적입니다.\",\n    \"외국인 매도세가 있지만 리밸런싱 성격이 강합니다.\",\n    \"시장 전반에 극단적 위험 신호는 없습니다.\"\n  ],\n  \"korean_comment\": \"시장에 뚜렷한 위험 신호는 아직 감지되지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "실적 모멘텀 둔화 신호가 뚜렷하지 않음",
+      "외국인 매도세는 일시적 리밸런싱 가능성",
+      "지속적 실적 하향 조정 신호는 부족"
+    ],
+    "korean_comment": "실적 추정치 변화는 아직 뚜렷하지 않습니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 둔화 신호가 뚜렷하지 않음\",\n    \"외국인 매도세는 일시적 리밸런싱 가능성\",\n    \"지속적 실적 하향 조정 신호는 부족\"\n  ],\n  \"korean_comment\": \"실적 추정치 변화는 아직 뚜렷하지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.market_summary.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.earnings_signal_score",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "추세 확산과 역추세 신호가 공존합니다.",
+      "기술적 우위가 명확하지 않습니다.",
+      "방향 확정 전까지 균형 비중이 적절합니다."
+    ],
+    "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "달러/원 환율이 고정되어 있으나 외국인 대규모 순매도와 변동성 상승이 확인됨.",
+      "VIX가 18 이상으로 상승하며 위험회피 심리가 강화되고 있음.",
+      "정책금리와 실질금리 모두 높아 유동성 환경이 보수적임."
+    ],
+    "korean_comment": "유동성 및 정책 환경이 위험회피로 기울고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"달러/원 환율이 고정되어 있으나 외국인 대규모 순매도와 변동성 상승이 확인됨.\",\n    \"VIX가 18 이상으로 상승하며 위험회피 심리가 강화되고 있음.\",\n    \"정책금리와 실질금리 모두 높아 유동성 환경이 보수적임.\"\n  ],\n  \"korean_comment\": \"유동성 및 정책 환경이 위험회피로 기울고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.macro.structural.real_rate\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix",
+      "snapshot.macro.structural.real_rate"
+    ],
+    "confidence": "HIGH"
+  }
+]

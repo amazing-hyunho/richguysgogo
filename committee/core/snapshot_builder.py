@@ -360,7 +360,7 @@ def build_dummy_snapshot(market_date: date) -> Snapshot:
             "retail_net": 0.0,
         },
         sector_moves=["n/a", "n/a", "n/a"],
-        news_headlines=[],
+        news_headlines=["headline_unavailable"],
         watchlist=["SPY", "QQQ", "XLK"],
         markets=markets,
         phase_two_signals={
@@ -431,13 +431,24 @@ def _sanitize_ticker_like_tokens(text: str | None) -> str:
 def _safe_headlines(provider: IDataProvider) -> tuple[list[str], str | None]:
     """Fetch headlines with fallback and a reason."""
     try:
-        headlines, reason = provider.get_headlines(limit=50)
+        headlines, reason = provider.get_headlines(limit=10)
         headlines = headlines or []
-        if len(headlines) < 5:
+        cleaned: list[str] = []
+        for h in headlines:
+            if not h:
+                continue
+            s = str(h).strip()
+            if not s:
+                continue
+            cleaned.append(s[:200])
+            if len(cleaned) >= 10:
+                break
+        if len(cleaned) < 1:
             raise ValueError(reason or "insufficient headlines")
-        return headlines[:50], None
+        return cleaned, None
     except Exception as exc:  # noqa: BLE001 - guardrail
-        return [], str(exc) if str(exc) else "unavailable"
+        # Snapshot schema requires at least 1 headline.
+        return ["headline_unavailable"], str(exc) if str(exc) else "unavailable"
 
 
 _LAST_STATUS: dict[str, str] = {}

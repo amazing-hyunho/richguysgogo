@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee maintains a neutral posture with selective positioning.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: NEUTRAL.",
+      "sources": [
+        "macro",
+        "flow",
+        "risk",
+        "earnings",
+        "breadth"
+      ]
+    },
+    {
+      "point": "Shared evidence focus: snapshot.news_headlines.",
+      "sources": [
+        "earnings",
+        "liquidity",
+        "macro",
+        "risk",
+        "sector"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "Regime tags",
+      "majority": "NEUTRAL",
+      "minority": "RISK_OFF",
+      "minority_agents": [
+        "sector",
+        "liquidity"
+      ],
+      "why_it_matters": "Minority risk regime can change positioning boundaries."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Maintain balanced exposure."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Keep risk limits tight."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid aggressive leverage."
+    }
+  ]
+}
