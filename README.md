@@ -349,6 +349,7 @@ python scripts/migrate_db_nulls.py
 실행 스크립트가 `snapshot sources status: ...` 형태로 소스 상태를 보여줍니다.
 - **OK**: 수집 성공
 - **FAIL**: 수집 실패(값은 snapshot에서 fallback일 수 있음, DB에는 NULL 저장)
+- 신규 매크로 상태 키: `vix3m`, `vix_term_spread`, `hy_oas`, `ig_oas`, `fed_balance_sheet`
 
 
 ---
@@ -580,3 +581,20 @@ key_points: [{ point: "...", sources: ["macro","risk"] }]
 disagreements: [{ topic: "Regime tags", majority: "NEUTRAL", minority: "None", ... }]
 ops_guidance: [{ level: "OK", text: "..." }, { level: "CAUTION", ... }, { level: "AVOID", ... }]
 ```
+
+## 신규 매크로 지표 백필(순차 진행 2단계)
+
+신규 컬럼(`vix3m`, `vix_term_spread`, `hy_oas`, `ig_oas`, `fed_balance_sheet`)은
+스키마 반영 후 과거 일자에 대해 백필이 필요할 수 있습니다.
+
+```bash
+# 쓰기 없이 대상/값 확인
+python scripts/backfill_macro_indicators.py --dry-run --limit 5
+
+# 실제 반영
+python scripts/backfill_macro_indicators.py
+```
+
+참고:
+- FRED 지표(HY/IG OAS, WALCL)는 `FRED_API_KEY`가 필요합니다.
+- 백필 스크립트는 `daily_macro`의 신규 5개 컬럼만 UPDATE합니다.

@@ -36,7 +36,7 @@ def main() -> None:
     print("[run_nightly] step 3/4: collecting snapshot source status...")
     status = get_last_snapshot_status()
     if status:
-        keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
+        keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "vix3m", "vix_term_spread", "hy_oas", "ig_oas", "fed_balance_sheet", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
         print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
 
     print("[run_nightly] step 4/4: done")

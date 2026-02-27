@@ -135,11 +135,21 @@ function latest(rows, key) {
   return value ?? '-';
 }
 
+function coverage(rows, key) {
+  if (!rows.length) return '-';
+  const valid = rows.filter(r => r[key] !== null && r[key] !== undefined).length;
+  return `${Math.round((valid / rows.length) * 100)}%`;
+}
+
 const cards = [
   { label: '최근 KOSPI(%)', value: latest(data.market_daily, 'kospi_pct') },
   { label: '최근 NASDAQ(%)', value: latest(data.market_daily, 'nasdaq_pct') },
   { label: '최근 VIX', value: latest(data.daily_macro, 'vix') },
   { label: '최근 USD/KRW', value: latest(data.daily_macro, 'usdkrw') },
+  { label: '최근 VIX 기간스프레드', value: latest(data.daily_macro, 'vix_term_spread') },
+  { label: '최근 HY OAS', value: latest(data.daily_macro, 'hy_oas') },
+  { label: 'VIX 기간스프레드 적재율', value: coverage(data.daily_macro, 'vix_term_spread') },
+  { label: 'HY/IG OAS 적재율', value: `${coverage(data.daily_macro, 'hy_oas')} / ${coverage(data.daily_macro, 'ig_oas')}` },
   { label: '누적 회의일', value: data.committee_history.length },
 ];
 
@@ -182,6 +192,14 @@ new Chart(document.getElementById('guidanceChart'), {
   options: { responsive:true, scales: { x: { stacked:true }, y: { stacked:true } } }
 });
 
+new Chart(document.getElementById('creditChart'), {
+  type:'line',
+  data: { labels:data.daily_macro.map(r=>r.date), datasets:[
+    { label:'HY OAS', data:data.daily_macro.map(r=>r.hy_oas), borderColor:'#fb7185' },
+    { label:'IG OAS', data:data.daily_macro.map(r=>r.ig_oas), borderColor:'#60a5fa' },
+    { label:'VIX 기간스프레드', data:data.daily_macro.map(r=>r.vix_term_spread), borderColor:'#34d399' },
+  ]},
+});
 
 const chair = data.latest_committee || {};
 const chairDate = document.getElementById('chairDate');

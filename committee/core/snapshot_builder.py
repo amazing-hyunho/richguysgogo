@@ -14,7 +14,15 @@ from committee.schemas.snapshot import Snapshot
 from committee.tools.fallback_provider import FallbackProvider
 from committee.tools.http_provider import HttpProvider
 from committee.tools.providers import IDataProvider
-from committee.tools.macro_daily_provider import fetch_dxy, fetch_us10y, fetch_us2y, fetch_usdkrw, fetch_vix
+from committee.tools.macro_daily_provider import (
+    fetch_dxy,
+    fetch_us10y,
+    fetch_us2y,
+    fetch_usdkrw,
+    fetch_vix,
+    fetch_vix3m,
+    fetch_vix_term_spread,
+)
 from committee.tools.fred_monthly_provider import (
     fetch_cpi_yoy,
     fetch_core_cpi_yoy,
@@ -27,7 +35,13 @@ from committee.tools.fred_monthly_provider import (
     pmi_series_ids_tried,
 )
 from committee.tools.fred_quarterly_provider import fetch_gdp_growth, fetch_real_gdp
-from committee.tools.fred_structural_provider import fetch_breakeven_10y, fetch_fed_funds_rate
+from committee.tools.fred_structural_provider import (
+    fetch_breakeven_10y,
+    fetch_fed_balance_sheet,
+    fetch_fed_funds_rate,
+    fetch_hy_oas,
+    fetch_ig_oas,
+)
 
 
 def build_snapshot(market_date: date) -> Snapshot:
@@ -54,6 +68,8 @@ def build_snapshot_real(
         "vix": "FAIL",
         "dxy": "FAIL",
         "usdkrw_macro": "FAIL",
+        "vix3m": "FAIL",
+        "vix_term_spread": "FAIL",
         # Phase 2: monthly macro (FRED).
         "unemployment_rate": "FAIL",
         "cpi_yoy": "FAIL",
@@ -68,6 +84,9 @@ def build_snapshot_real(
         "fed_funds_rate": "FAIL",
         "breakeven_10y": "FAIL",
         "real_rate": "FAIL",
+        "hy_oas": "FAIL",
+        "ig_oas": "FAIL",
+        "fed_balance_sheet": "FAIL",
     }
 
     usdkrw, usdkrw_reason = _safe_value(provider.get_usdkrw, fallback.get_usdkrw)
@@ -88,6 +107,8 @@ def build_snapshot_real(
     vix_value = fetch_vix()
     dxy = fetch_dxy()
     usdkrw_macro = fetch_usdkrw()
+    vix3m = fetch_vix3m()
+    vix_term_spread = fetch_vix_term_spread()
 
     # Spread calculation: only when both yields are available.
     spread_2_10 = (us10y - us2y) if (us10y is not None and us2y is not None) else None
@@ -111,6 +132,9 @@ def build_snapshot_real(
     fed_funds_rate = fetch_fed_funds_rate()
     breakeven_10y = fetch_breakeven_10y()
     real_rate = (us10y - breakeven_10y) if (us10y is not None and breakeven_10y is not None) else None
+    hy_oas = fetch_hy_oas()
+    ig_oas = fetch_ig_oas()
+    fed_balance_sheet = fetch_fed_balance_sheet()
 
     if usdkrw_reason is None:
         status["usdkrw"] = "OK"
@@ -166,6 +190,8 @@ def build_snapshot_real(
     status["dxy"] = "OK" if dxy is not None else "FAIL"
     status["usdkrw_macro"] = "OK" if usdkrw_macro is not None else "FAIL"
     status["spread_2_10"] = "OK" if spread_2_10 is not None else "FAIL"
+    status["vix3m"] = "OK" if vix3m is not None else "FAIL"
+    status["vix_term_spread"] = "OK" if vix_term_spread is not None else "FAIL"
 
     # Phase 2 monthly status tracking (FAIL when missing/unavailable).
     status["unemployment_rate"] = "OK" if unemployment_rate is not None else "FAIL"
@@ -188,6 +214,9 @@ def build_snapshot_real(
     status["fed_funds_rate"] = "OK" if fed_funds_rate is not None else "FAIL"
     status["breakeven_10y"] = "OK" if breakeven_10y is not None else "FAIL"
     status["real_rate"] = "OK" if real_rate is not None else "FAIL"
+    status["hy_oas"] = "OK" if hy_oas is not None else "FAIL"
+    status["ig_oas"] = "OK" if ig_oas is not None else "FAIL"
+    status["fed_balance_sheet"] = "OK" if fed_balance_sheet is not None else "FAIL"
     _set_last_status(status)
 
     if usdkrw != 0.0 or kospi_change_pct != 0.0:
@@ -240,8 +269,14 @@ def build_snapshot_real(
         macro_daily={
             "dxy": dxy,
             "spread_2_10": spread_2_10,
+            "vix_term_spread": vix_term_spread,
         },
-        macro_structural={"real_rate": real_rate},
+        macro_structural={
+            "real_rate": real_rate,
+            "hy_oas": hy_oas,
+            "ig_oas": ig_oas,
+            "fed_balance_sheet": fed_balance_sheet,
+        },
     )
 
     return Snapshot(
@@ -270,6 +305,8 @@ def build_snapshot_real(
                 "vix": float(vix_value) if vix_value is not None else None,
                 "dxy": dxy,
                 "usdkrw": usdkrw_macro,
+                "vix3m": vix3m,
+                "vix_term_spread": vix_term_spread,
             },
             "monthly": {
                 "unemployment_rate": unemployment_rate,
@@ -288,6 +325,9 @@ def build_snapshot_real(
             "structural": {
                 "fed_funds_rate": fed_funds_rate,
                 "real_rate": real_rate,
+                "hy_oas": hy_oas,
+                "ig_oas": ig_oas,
+                "fed_balance_sheet": fed_balance_sheet,
             },
         },
     )
@@ -317,7 +357,11 @@ def _compute_phase_two_signals(
 
     dxy = macro_daily.get("dxy")
     spread_2_10 = macro_daily.get("spread_2_10")
+    vix_term_spread = macro_daily.get("vix_term_spread")
     real_rate = macro_structural.get("real_rate")
+    hy_oas = macro_structural.get("hy_oas")
+    ig_oas = macro_structural.get("ig_oas")
+    fed_balance_sheet = macro_structural.get("fed_balance_sheet")
 
     liquidity_score = 0.0
     if dxy is not None:
@@ -326,6 +370,17 @@ def _compute_phase_two_signals(
         liquidity_score += (1.5 - float(real_rate))
     if spread_2_10 is not None:
         liquidity_score += float(spread_2_10) * 2.0
+    if vix_term_spread is not None:
+        # Positive term spread (contango) generally implies calmer risk conditions.
+        liquidity_score += float(vix_term_spread) * 1.5
+    if hy_oas is not None:
+        # Lower HY spread indicates easier credit/liquidity conditions.
+        liquidity_score += (4.0 - float(hy_oas))
+    if ig_oas is not None:
+        liquidity_score += (1.5 - float(ig_oas)) * 0.8
+    if fed_balance_sheet is not None:
+        # WALCL is published in millions of dollars; normalize around 7T baseline.
+        liquidity_score += ((float(fed_balance_sheet) - 7_000_000.0) / 1_000_000.0) * 0.3
 
     return {
         "earnings_signal_score": round(earnings_score, 3),

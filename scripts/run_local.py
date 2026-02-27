@@ -39,7 +39,7 @@ def main() -> None:
     snapshot = build_snapshot(market_date)
     status = get_last_snapshot_status()
     if status:
-        keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
+        keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "vix3m", "vix_term_spread", "hy_oas", "ig_oas", "fed_balance_sheet", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
         print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
 
     backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))
