@@ -1,0 +1,125 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "코스피가 1% 하락하며 단기 조정 신호가 나타났습니다.",
+      "중동 리스크와 변동성(VIX 21.44) 상승이 위험회피 심리를 자극하고 있습니다."
+    ],
+    "korean_comment": "시장 변동성이 높아 신중한 접근이 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 단기 조정 신호가 나타났습니다.\",\n    \"중동 리스크와 변동성(VIX 21.44) 상승이 위험회피 심리를 자극하고 있습니다.\"\n  ],\n  \"korean_comment\": \"시장 변동성이 높아 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "코스피가 1% 하락하며 약세를 보이고 있습니다.",
+      "시장 변동성(VIX)이 21 이상으로 높아진 상태입니다.",
+      "유동성 신호는 강하지만 Breadth 신호는 부정적입니다."
+    ],
+    "korean_comment": "시장 불확실성이 커진 상황입니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 약세를 보이고 있습니다.\",\n    \"시장 변동성(VIX)이 21 이상으로 높아진 상태입니다.\",\n    \"유동성 신호는 강하지만 Breadth 신호는 부정적입니다.\"\n  ],\n  \"korean_comment\": \"시장 불확실성이 커진 상황입니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.markets.volatility.vix",
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.phase_two_signals.liquidity_signal_score"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "코스피가 1% 하락하며 단기 조정 신호가 나타남.",
+      "거래대금은 사상 최대치로 유동성은 여전히 풍부함.",
+      "중동 리스크 등 대외 불확실성으로 변동성 확대 예상."
+    ],
+    "korean_comment": "코스피는 조정 중이나 유동성은 강함을 보입니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 단기 조정 신호가 나타남.\",\n    \"거래대금은 사상 최대치로 유동성은 여전히 풍부함.\",\n    \"중동 리스크 등 대외 불확실성으로 변동성 확대 예상.\"\n  ],\n  \"korean_comment\": \"코스피는 조정 중이나 유동성은 강함을 보입니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.liquidity_signal_score",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "코스피가 1% 하락하며 단기 조정세를 보임",
+      "중동 리스크 등 대외 불확실성 부각",
+      "거래대금은 사상 최대치로 유동성은 풍부"
+    ],
+    "korean_comment": "단기 변동성 확대와 대외 리스크에 주의가 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 단기 조정세를 보임\",\n    \"중동 리스크 등 대외 불확실성 부각\",\n    \"거래대금은 사상 최대치로 유동성은 풍부\"\n  ],\n  \"korean_comment\": \"단기 변동성 확대와 대외 리스크에 주의가 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "코스피 하락과 변동성 확대는 실적 모멘텀 둔화 신호.",
+      "거래대금 급증은 단기 이슈, 실적 추정치 상향 근거 부족.",
+      "실적 추정치 및 가이던스 방향성은 중립~약세."
+    ],
+    "korean_comment": "실적 모멘텀의 뚜렷한 개선 신호는 아직 없습니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"코스피 하락과 변동성 확대는 실적 모멘텀 둔화 신호.\",\n    \"거래대금 급증은 단기 이슈, 실적 추정치 상향 근거 부족.\",\n    \"실적 추정치 및 가이던스 방향성은 중립~약세.\"\n  ],\n  \"korean_comment\": \"실적 모멘텀의 뚜렷한 개선 신호는 아직 없습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.note",
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.earnings_signal_score",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "추세 확산과 역추세 신호가 공존합니다.",
+      "기술적 우위가 명확하지 않습니다.",
+      "방향 확정 전까지 균형 비중이 적절합니다."
+    ],
+    "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "KOSPI가 1% 하락하며 위험회피 심리가 강화됨.",
+      "USD/KRW 환율이 1442원으로 고정되어 달러 강세 압력 지속.",
+      "VIX 21.44로 변동성 확대, 정책 민감 유동성 위축 신호."
+    ],
+    "korean_comment": "유동성 및 정책 환경이 위험회피(Risk-off)로 전환되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"KOSPI가 1% 하락하며 위험회피 심리가 강화됨.\",\n    \"USD/KRW 환율이 1442원으로 고정되어 달러 강세 압력 지속.\",\n    \"VIX 21.44로 변동성 확대, 정책 민감 유동성 위축 신호.\"\n  ],\n  \"korean_comment\": \"유동성 및 정책 환경이 위험회피(Risk-off)로 전환되고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "HIGH"
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "flow",
+        "sector",
+        "earnings",
+        "breadth",
+        "liquidity"
+      ]
+    },
+    {
+      "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
+      "sources": [
+        "breadth",
+        "earnings",
+        "flow",
+        "liquidity",
+        "macro"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "Regime tags",
+      "majority": "RISK_OFF",
+      "minority": "NEUTRAL",
+      "minority_agents": [
+        "macro",
+        "risk"
+      ],
+      "why_it_matters": "Minority risk regime can change positioning boundaries."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ]
+}

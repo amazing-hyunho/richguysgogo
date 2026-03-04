@@ -1,0 +1,281 @@
+{
+  "generated_at": "2026-03-01T22:51:04.936508+00:00",
+  "market_date": "2026-03-02",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI -1.00%, USD/KRW 1441.08. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": -1.0010691871955486,
+      "usdkrw": 1441.078843
+    },
+    "flow_summary": {
+      "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+      "foreign_net": 0.0,
+      "institution_net": 0.0,
+      "retail_net": 0.0
+    },
+    "korean_market_flow": null,
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "미국의 이란 공격…글로벌 시장 충격에 ‘코스피’ 변동성도 커지나 - v.daum.net",
+      "美·이란 충돌 속 코스피 향방은…최고치 행진 또 이어갈까 [주간전망] - 한국경제",
+      "전쟁 악재 덮친 코스피에…월가는 “닷컴버블급 광기” 경고까지 - 매일경제",
+      "코스피 ETF 투자한 李대통령, 9개월 만에 수익률 150% 돌파 - 국제신문",
+      "코스피 일평균 거래대금 역대 최대…30조 원 돌파 - 문화일보",
+      "‘7000피’냐, 조정장이냐…갈림길 선 코스피 - sedaily.com",
+      "[Briefing] 크립토와 코스닥이 미친듯이 오를 것이다 / 비트코인, 이더리움 상승전환 기준 / 코스피 피날레, 코스닥 랠리 등 - 네이버 프리미엄콘텐츠",
+      "[마켓 ING]6200선 올라선 코스피, 시험대 오른 상승 지속성 - 아시아경제",
+      "“코스피 6000 시대”…빚내서 투자하는 ‘빚투’ 32조 돌파, 사상 최고 - 헤럴드경제",
+      "코스피 6000시대 '빚투'도 급증…신용거래잔고 32조 돌파 - v.daum.net"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi_pct": -1.0010691871955486,
+        "kosdaq_pct": 0.3896818404810278
+      },
+      "us": {
+        "sp500_pct": -0.4339352811031182,
+        "nasdaq_pct": -0.9186398424208307,
+        "dow_pct": -1.053102579389897
+      },
+      "fx": {
+        "usdkrw": 1441.078843,
+        "usdkrw_pct": 0.0
+      },
+      "volatility": {
+        "vix": 19.860000610351562
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 3.9619998931884766,
+        "us2y": 3.578000068664551,
+        "spread_2_10": 0.3839998245239258,
+        "vix": 19.860000610351562,
+        "dxy": 97.64600372314453,
+        "usdkrw": 1440.0899658203125,
+        "vix3m": 21.559999465942383,
+        "vix_term_spread": 1.6999988555908203
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 2.8286797395498997,
+        "core_cpi_yoy": 2.9493378374616075,
+        "pce_yoy": 2.901287416285925,
+        "pmi": null,
+        "wage_growth": 37.17,
+        "wage_level": 37.17,
+        "wage_yoy": 3.7109375
+      },
+      "quarterly": {
+        "real_gdp": 24111.83,
+        "gdp_qoq_annualized": 1.4
+      },
+      "structural": {
+        "fed_funds_rate": 3.64,
+        "real_rate": 1.7119998931884766,
+        "hy_oas": 2.98,
+        "ig_oas": 0.82,
+        "fed_balance_sheet": 6613797.0
+      }
+    },
+    "phase_two_signals": {
+      "earnings_signal_score": 0.0,
+      "breadth_signal_score": 0.496,
+      "liquidity_signal_score": 5.025,
+      "note": "derived from headlines + markets + macro.daily + macro.structural"
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "Macro tone is balanced.",
+        "No major shocks.",
+        "Stay selective."
+      ],
+      "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "Flow data unavailable.",
+        "Use neutral stance."
+      ],
+      "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.flow_summary.note",
+        "snapshot.watchlist"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "미국-이란 충돌로 코스피 변동성이 확대되고 있다.",
+        "코스피는 단기적으로 조정 국면에 진입할 가능성이 높다.",
+        "신용거래잔고 증가 등 과열 신호가 감지된다."
+      ],
+      "korean_comment": "지정학적 리스크와 과열 신호로 단기 조정 우려가 커지고 있습니다.",
+      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"미국-이란 충돌로 코스피 변동성이 확대되고 있다.\",\n    \"코스피는 단기적으로 조정 국면에 진입할 가능성이 높다.\",\n    \"신용거래잔고 증가 등 과열 신호가 감지된다.\"\n  ],\n  \"korean_comment\": \"지정학적 리스크와 과열 신호로 단기 조정 우려가 커지고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.markets.kr.kospi_pct",
+        "snapshot.markets.volatility.vix"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "코스피가 1% 하락하며 변동성이 확대되고 있음",
+        "미국-이란 충돌 등 지정학적 리스크가 부각됨",
+        "시장 심리가 단기적으로 위축될 가능성 있음"
+      ],
+      "korean_comment": "지정학적 이슈와 코스피 하락으로 단기 경계 필요합니다.",
+      "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 변동성이 확대되고 있음\",\n    \"미국-이란 충돌 등 지정학적 리스크가 부각됨\",\n    \"시장 심리가 단기적으로 위축될 가능성 있음\"\n  ],\n  \"korean_comment\": \"지정학적 이슈와 코스피 하락으로 단기 경계 필요합니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.us.dow_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "RISK_ON",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.markets.us.dow_pct",
+        "snapshot.markets.volatility.vix"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "earnings",
+      "core_claims": [
+        "실적 모멘텀 둔화 신호가 뚜렷하다.",
+        "전쟁 이슈로 단기 변동성 확대, 실적 추정치 하향 압력.",
+        "지속적 실적 상향 전환 신호는 부족하다."
+      ],
+      "korean_comment": "실적 추정치 상향 모멘텀은 약화된 상황입니다.",
+      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 둔화 신호가 뚜렷하다.\",\n    \"전쟁 이슈로 단기 변동성 확대, 실적 추정치 하향 압력.\",\n    \"지속적 실적 상향 전환 신호는 부족하다.\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 모멘텀은 약화된 상황입니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.market_summary.note",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.phase_two_signals.earnings_signal_score"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "breadth",
+      "core_claims": [
+        "추세 확산과 역추세 신호가 공존합니다.",
+        "기술적 우위가 명확하지 않습니다.",
+        "방향 확정 전까지 균형 비중이 적절합니다."
+      ],
+      "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.markets.volatility.vix",
+        "snapshot.market_summary.note"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "liquidity",
+      "core_claims": [
+        "KOSPI가 1% 하락하며 위험회피 심리가 강화됨.",
+        "USD/KRW 1441원, 변동성(VIX) 19.86으로 환율 및 변동성 모두 경계 구간.",
+        "정책 민감 유동성 신호도 보수적으로 해석 필요."
+      ],
+      "korean_comment": "유동성과 정책 환경이 위험회피 쪽으로 기울고 있습니다.",
+      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"KOSPI가 1% 하락하며 위험회피 심리가 강화됨.\",\n    \"USD/KRW 1441원, 변동성(VIX) 19.86으로 환율 및 변동성 모두 경계 구간.\",\n    \"정책 민감 유동성 신호도 보수적으로 해석 필요.\"\n  ],\n  \"korean_comment\": \"유동성과 정책 환경이 위험회피 쪽으로 기울고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.market_summary.usdkrw",
+        "snapshot.markets.volatility.vix",
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "HIGH"
+    }
+  ],
+  "committee_result": {
+    "consensus": "Committee maintains a neutral posture with selective positioning.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: NEUTRAL.",
+        "sources": [
+          "macro",
+          "flow",
+          "breadth"
+        ]
+      },
+      {
+        "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
+        "sources": [
+          "earnings",
+          "liquidity",
+          "macro",
+          "risk",
+          "sector"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "NEUTRAL",
+        "minority": "RISK_ON",
+        "minority_agents": [
+          "risk"
+        ],
+        "why_it_matters": "Minority risk regime can change positioning boundaries."
+      },
+      {
+        "topic": "Regime tags",
+        "majority": "NEUTRAL",
+        "minority": "RISK_OFF",
+        "minority_agents": [
+          "sector",
+          "earnings",
+          "liquidity"
+        ],
+        "why_it_matters": "Minority risk regime can change positioning boundaries."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Maintain balanced exposure."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Keep risk limits tight."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid aggressive leverage."
+      }
+    ]
+  }
+}

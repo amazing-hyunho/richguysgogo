@@ -1,0 +1,122 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "Macro tone is balanced.",
+      "No major shocks.",
+      "Stay selective."
+    ],
+    "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "Flow data unavailable.",
+      "Use neutral stance."
+    ],
+    "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.flow_summary.note",
+      "snapshot.watchlist"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "코스피가 1% 하락하며 외국인 대규모 매도세가 확인됨.",
+      "시장 변동성(VIX) 상승과 외국인 이탈로 단기 조정 위험이 커짐.",
+      "환율(USD/KRW) 고정에도 불구하고 투자심리 위축이 뚜렷함."
+    ],
+    "korean_comment": "외국인 매도세와 변동성 상승으로 단기 위험이 확대되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 1% 하락하며 외국인 대규모 매도세가 확인됨.\",\n    \"시장 변동성(VIX) 상승과 외국인 이탈로 단기 조정 위험이 커짐.\",\n    \"환율(USD/KRW) 고정에도 불구하고 투자심리 위축이 뚜렷함.\"\n  ],\n  \"korean_comment\": \"외국인 매도세와 변동성 상승으로 단기 위험이 확대되고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.market_summary.usdkrw\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.usdkrw"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "Risk signals stable.",
+      "No acute stress.",
+      "Maintain discipline."
+    ],
+    "korean_comment": "급격한 리스크는 없어 규율을 유지하세요.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "코스피 하락과 외국인 대규모 매도는 실적 모멘텀 둔화 우려를 반영.",
+      "실적 추정치 상향 뉴스 부재, 단기 반등은 지속성 약함.",
+      "지속적인 실적 상향 신호 없이 단기 변동성 확대."
+    ],
+    "korean_comment": "실적 추정치 상향 조정 신호가 부족해 주의가 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"코스피 하락과 외국인 대규모 매도는 실적 모멘텀 둔화 우려를 반영.\",\n    \"실적 추정치 상향 뉴스 부재, 단기 반등은 지속성 약함.\",\n    \"지속적인 실적 상향 신호 없이 단기 변동성 확대.\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 조정 신호가 부족해 주의가 필요합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.earnings_signal_score"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "추세 확산과 역추세 신호가 공존합니다.",
+      "기술적 우위가 명확하지 않습니다.",
+      "방향 확정 전까지 균형 비중이 적절합니다."
+    ],
+    "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "코스피 급락과 외국인 대규모 매도세로 유동성 경색 신호.",
+      "USD/KRW 1429.10 고정, 변동성(VIX) 19.86로 위험회피 심리 강화.",
+      "정책 민감 자금 유입 부진, 위험선호 약화."
+    ],
+    "korean_comment": "유동성 악화와 변동성 상승으로 보수적 접근이 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 급락과 외국인 대규모 매도세로 유동성 경색 신호.\",\n    \"USD/KRW 1429.10 고정, 변동성(VIX) 19.86로 위험회피 심리 강화.\",\n    \"정책 민감 자금 유입 부진, 위험선호 약화.\"\n  ],\n  \"korean_comment\": \"유동성 악화와 변동성 상승으로 보수적 접근이 필요합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix",
+      "snapshot.phase_two_signals.liquidity_signal_score"
+    ],
+    "confidence": "HIGH"
+  }
+]
