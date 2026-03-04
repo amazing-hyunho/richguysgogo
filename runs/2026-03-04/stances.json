@@ -2,32 +2,17 @@
   {
     "agent_name": "macro",
     "core_claims": [
-      "Macro tone is balanced.",
-      "No major shocks.",
-      "Stay selective."
+      "코스피와 코스닥이 급락하며 시장 전반에 극심한 위험회피 심리가 나타남.",
+      "중동 지정학적 리스크와 함께 변동성(VIX) 상승이 확인됨.",
+      "외국인·기관 수급 데이터 부재로 추가 하락 가능성에 대한 불확실성 존재."
     ],
-    "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
-    "raw_response": null,
-    "regime_tag": "NEUTRAL",
-    "evidence_ids": [
-      "snapshot.market_summary.usdkrw",
-      "snapshot.market_summary.kospi_change_pct",
-      "snapshot.news_headlines"
-    ],
-    "confidence": "MED"
-  },
-  {
-    "agent_name": "flow",
-    "core_claims": [
-      "코스피가 7% 이상 급락하며 극단적 약세를 보이고 있습니다.",
-      "시장 변동성(VIX)도 23 이상으로 높아 위험 회피 심리가 강합니다.",
-      "수급 데이터 부재로 추가 하락 위험을 배제할 수 없습니다."
-    ],
-    "korean_comment": "시장 전반에 강한 위험 회피 분위기가 감지됩니다.",
-    "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피가 7% 이상 급락하며 극단적 약세를 보이고 있습니다.\",\n    \"시장 변동성(VIX)도 23 이상으로 높아 위험 회피 심리가 강합니다.\",\n    \"수급 데이터 부재로 추가 하락 위험을 배제할 수 없습니다.\"\n  ],\n  \"korean_comment\": \"시장 전반에 강한 위험 회피 분위기가 감지됩니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.flow_summary.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "시장 변동성이 매우 높아 신중한 접근이 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피와 코스닥이 급락하며 시장 전반에 극심한 위험회피 심리가 나타남.\",\n    \"중동 지정학적 리스크와 함께 변동성(VIX) 상승이 확인됨.\",\n    \"외국인·기관 수급 데이터 부재로 추가 하락 가능성에 대한 불확실성 존재.\"\n  ],\n  \"korean_comment\": \"시장 변동성이 매우 높아 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.flow_summary.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
       "snapshot.market_summary.kospi_change_pct",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.markets.kr.kosdaq_pct",
       "snapshot.news_headlines",
       "snapshot.markets.volatility.vix",
       "snapshot.flow_summary.note"
@@ -35,19 +20,42 @@
     "confidence": "HIGH"
   },
   {
+    "agent_name": "flow",
+    "core_claims": [
+      "코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동되었습니다.",
+      "환율은 1477원으로 급등세를 보이고 있습니다.",
+      "시장 전반에 극심한 위험 회피 심리가 나타나고 있습니다."
+    ],
+    "korean_comment": "시장에 극단적인 위험 회피가 관찰됩니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동되었습니다.\",\n    \"환율은 1477원으로 급등세를 보이고 있습니다.\",\n    \"시장 전반에 극심한 위험 회피 심리가 나타나고 있습니다.\"\n  ],\n  \"korean_comment\": \"시장에 극단적인 위험 회피가 관찰됩니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.news_headlines",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.markets.kr.kosdaq_pct",
+      "snapshot.markets.volatility.vix"
+    ],
+    "confidence": "HIGH"
+  },
+  {
     "agent_name": "sector",
     "core_claims": [
-      "코스피가 7% 이상 급락하며 극심한 위험 회피 심리가 나타남.",
-      "유가 상승과 지정학적 리스크로 낙관론이 크게 약화됨.",
-      "시장 변동성(VIX)도 높아져 추가 하락 위험이 큼."
+      "코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동되었습니다.",
+      "중동 지정학적 리스크로 인해 시장 전반에 극심한 매도세가 나타났습니다.",
+      "환율도 급등하며 투자심리가 크게 위축되었습니다."
     ],
-    "korean_comment": "한국 증시는 극단적 위험 회피 국면에 진입했습니다.",
-    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피가 7% 이상 급락하며 극심한 위험 회피 심리가 나타남.\",\n    \"유가 상승과 지정학적 리스크로 낙관론이 크게 약화됨.\",\n    \"시장 변동성(VIX)도 높아져 추가 하락 위험이 큼.\"\n  ],\n  \"korean_comment\": \"한국 증시는 극단적 위험 회피 국면에 진입했습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "시장 전반에 극단적인 위험 회피 심리가 확산되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동되었습니다.\",\n    \"중동 지정학적 리스크로 인해 시장 전반에 극심한 매도세가 나타났습니다.\",\n    \"환율도 급등하며 투자심리가 크게 위축되었습니다.\"\n  ],\n  \"korean_comment\": \"시장 전반에 극단적인 위험 회피 심리가 확산되고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
       "snapshot.market_summary.note",
+      "snapshot.market_summary.usdkrw",
       "snapshot.market_summary.kospi_change_pct",
       "snapshot.news_headlines",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.markets.kr.kosdaq_pct",
       "snapshot.markets.volatility.vix",
       "snapshot.phase_two_signals.breadth_signal_score"
     ],
@@ -56,32 +64,32 @@
   {
     "agent_name": "risk",
     "core_claims": [
-      "Risk signals stable.",
-      "No acute stress.",
-      "Maintain discipline."
+      "코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동됨",
+      "중동 지정학적 리스크로 인한 급격한 투자심리 악화",
+      "시장 변동성(VIX)도 23 이상으로 급등"
     ],
-    "korean_comment": "급격한 리스크는 없어 규율을 유지하세요.",
-    "raw_response": null,
-    "regime_tag": "NEUTRAL",
+    "korean_comment": "시장에 극심한 위험 신호가 나타나고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK pre-analysis agent\",\n  \"core_claims\": [\n    \"코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동됨\",\n    \"중동 지정학적 리스크로 인한 급격한 투자심리 악화\",\n    \"시장 변동성(VIX)도 23 이상으로 급등\"\n  ],\n  \"korean_comment\": \"시장에 극심한 위험 신호가 나타나고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
     "evidence_ids": [
-      "snapshot.market_summary.usdkrw",
       "snapshot.market_summary.kospi_change_pct",
-      "snapshot.news_headlines"
+      "snapshot.news_headlines",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.markets.kr.kosdaq_pct",
+      "snapshot.markets.volatility.vix"
     ],
-    "confidence": "MED"
+    "confidence": "HIGH"
   },
   {
     "agent_name": "earnings",
     "core_claims": [
-      "코스피 급락은 단기 충격으로, 실적 추정치 하향 압력 커짐.",
-      "지속적 실적 모멘텀 약화 가능성 높음.",
-      "가이던스 하향 조정 우려 확대."
+      "실적 추정치 하향 압력이 매우 강해질 전망입니다.",
+      "단기 충격이 아닌 구조적 실적 모멘텀 약화 신호입니다."
     ],
-    "korean_comment": "실적 전망이 빠르게 악화되는 구간입니다.",
-    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"코스피 급락은 단기 충격으로, 실적 추정치 하향 압력 커짐.\",\n    \"지속적 실적 모멘텀 약화 가능성 높음.\",\n    \"가이던스 하향 조정 우려 확대.\"\n  ],\n  \"korean_comment\": \"실적 전망이 빠르게 악화되는 구간입니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "실적 모멘텀의 급격한 악화가 불가피해 보입니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 추정치 하향 압력이 매우 강해질 전망입니다.\",\n    \"단기 충격이 아닌 구조적 실적 모멘텀 약화 신호입니다.\"\n  ],\n  \"korean_comment\": \"실적 모멘텀의 급격한 악화가 불가피해 보입니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.earnings_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
-      "snapshot.market_summary.note",
       "snapshot.market_summary.kospi_change_pct",
       "snapshot.news_headlines",
       "snapshot.phase_two_signals.earnings_signal_score"
@@ -91,37 +99,36 @@
   {
     "agent_name": "breadth",
     "core_claims": [
-      "코스피와 코스닥 모두 극단적 하락세를 보임.",
-      "시장 전반에 걸친 확산 약화와 기술적 붕괴 신호.",
-      "시장 내부 확산지표가 매우 부정적임."
+      "지수 확산이 약화되어 추세 신뢰도가 낮습니다.",
+      "변동성 레짐이 위험자산에 불리한 구간입니다.",
+      "손절·비중관리 규칙을 강화할 필요가 있습니다."
     ],
-    "korean_comment": "시장 전반에 걸친 매도세가 뚜렷하게 나타납니다.",
-    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"코스피와 코스닥 모두 극단적 하락세를 보임.\",\n    \"시장 전반에 걸친 확산 약화와 기술적 붕괴 신호.\",\n    \"시장 내부 확산지표가 매우 부정적임.\"\n  ],\n  \"korean_comment\": \"시장 전반에 걸친 매도세가 뚜렷하게 나타납니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.",
+    "raw_response": null,
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
-      "snapshot.market_summary.kospi_change_pct",
-      "snapshot.markets.kr.kospi_pct",
-      "snapshot.markets.kr.kosdaq_pct",
       "snapshot.phase_two_signals.breadth_signal_score",
-      "snapshot.news_headlines"
+      "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.note"
     ],
-    "confidence": "HIGH"
+    "confidence": "MED"
   },
   {
     "agent_name": "liquidity",
     "core_claims": [
-      "코스피 7% 급락과 변동성(VIX) 급등으로 유동성 경색 신호.",
-      "USD/KRW 1459로 환율 불안정성 지속.",
-      "정책 민감 자산 전반에 위험회피 심리 강화."
+      "코스피 급락과 변동성 급등으로 유동성 경색 신호.",
+      "USD/KRW 고정, 외환시장 불안 지속.",
+      "정책 민감 자산 전반에 위험회피 심화."
     ],
-    "korean_comment": "유동성 악화와 환율 불안이 위험회피를 자극하고 있습니다.",
-    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 7% 급락과 변동성(VIX) 급등으로 유동성 경색 신호.\",\n    \"USD/KRW 1459로 환율 불안정성 지속.\",\n    \"정책 민감 자산 전반에 위험회피 심리 강화.\"\n  ],\n  \"korean_comment\": \"유동성 악화와 환율 불안이 위험회피를 자극하고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "유동성 악화와 정책 불확실성으로 위험회피 국면입니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"코스피 급락과 변동성 급등으로 유동성 경색 신호.\",\n    \"USD/KRW 고정, 외환시장 불안 지속.\",\n    \"정책 민감 자산 전반에 위험회피 심화.\"\n  ],\n  \"korean_comment\": \"유동성 악화와 정책 불확실성으로 위험회피 국면입니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
       "snapshot.market_summary.kospi_change_pct",
       "snapshot.market_summary.usdkrw",
       "snapshot.markets.volatility.vix",
-      "snapshot.news_headlines"
+      "snapshot.news_headlines",
+      "snapshot.phase_two_signals.breadth_signal_score"
     ],
     "confidence": "HIGH"
   }

@@ -4,21 +4,28 @@
     {
       "point": "Majority regime tag: RISK_OFF.",
       "sources": [
+        "macro",
         "flow",
         "sector",
         "earnings",
-        "breadth",
-        "liquidity"
+        "breadth"
       ]
     },
     {
       "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
       "sources": [
-        "breadth",
         "earnings",
         "flow",
         "liquidity",
-        "macro"
+        "macro",
+        "risk"
+      ]
+    },
+    {
+      "point": "Shared claim: 코스피와 코스닥이 8% 이상 급락하며 서킷브레이커가 발동되었습니다.",
+      "sources": [
+        "flow",
+        "sector"
       ]
     }
   ],
@@ -26,9 +33,8 @@
     {
       "topic": "Regime tags",
       "majority": "RISK_OFF",
-      "minority": "NEUTRAL",
+      "minority": "RISK_ON",
       "minority_agents": [
-        "macro",
         "risk"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."
