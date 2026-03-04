@@ -1,0 +1,93 @@
+{
+  "market_summary": {
+    "note": "KOSPI -12.06%, USD/KRW 1477.31. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": -12.0576821523016,
+    "usdkrw": 1477.311478
+  },
+  "flow_summary": {
+    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+    "foreign_net": 0.0,
+    "institution_net": 0.0,
+    "retail_net": 0.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "코스피·코스닥 한때 ‘8% 폭락’ 서킷브레이커 발동 - 한겨레",
+    "코스피 -12.06% 역대 최대 하락...9·11 테러 때보다 더 떨어졌다 - 중앙일보",
+    "[오늘의 증시]중동 리스크 완화…코스피, 투매 진정 속 반등 시도 - 뉴시스",
+    "[News Today] KOSPI plummets on Middle East crisis - KBS 뉴스",
+    "Iran-sparked ‘stray bullet’ hits KOSPI head-on - 경향신문",
+    "[외국인 셀] 외인 vs 개인 2차전…이번엔 코스피 급락 왜 - 연합인포맥스",
+    "흔들리는 코스피...외국인, 다 떠난다 - 스트레이트뉴스",
+    "폭락 뒤에야 등장한 ‘예언자’… 코스피 거품 논쟁, 다시 불붙었다 - v.daum.net",
+    "코스피 이틀 연속 급락에 확산하는 공포…개미들 매수세 약화 - 연합뉴스",
+    "코스피 이틀간 1150P 빠져… 버티던 개미들 “무서워 팔겠다” - 동아일보"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": -12.0576821523016,
+      "kosdaq_pct": -13.998413954964562
+    },
+    "us": {
+      "sp500_pct": 0.7756049264286315,
+      "nasdaq_pct": 1.2914639271477883,
+      "dow_pct": 0.4909987456030669
+    },
+    "fx": {
+      "usdkrw": 1477.311478,
+      "usdkrw_pct": 0.0
+    },
+    "volatility": {
+      "vix": 21.149999618530273
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.079999923706055,
+      "us2y": 3.5950000286102295,
+      "spread_2_10": 0.4849998950958252,
+      "vix": 21.149999618530273,
+      "dxy": 98.80799865722656,
+      "usdkrw": 1461.760009765625,
+      "vix3m": 22.290000915527344,
+      "vix_term_spread": 1.1400012969970703
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 2.8286797395498997,
+      "core_cpi_yoy": 2.9493378374616075,
+      "pce_yoy": 2.901287416285925,
+      "pmi": null,
+      "wage_growth": 37.17,
+      "wage_level": 37.17,
+      "wage_yoy": 3.7109375
+    },
+    "quarterly": {
+      "real_gdp": 24111.83,
+      "gdp_qoq_annualized": 1.4
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.7899999237060547,
+      "hy_oas": 3.08,
+      "ig_oas": 0.84,
+      "fed_balance_sheet": 6613797.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -13.881,
+    "liquidity_signal_score": 3.961,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  }
+}
