@@ -147,6 +147,8 @@ def build_snapshot_real(
     if flows_reason is None:
         status["flows"] = "OK"
     else:
+        if str(flows_reason).startswith("unavailable"):
+            status["flows"] = "OFF"
         # IMPORTANT: Avoid leaking KRX internal identifiers (e.g., "MDC", "STK", "KSQ")
         # into notes because the ticker-guard validator treats ALLCAPS tokens as tickers.
         notes.append(f"flows_fetch_failed: {_sanitize_ticker_like_tokens(flows_reason)}")

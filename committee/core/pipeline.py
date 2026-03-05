@@ -20,13 +20,7 @@ from committee.agents.model_profiles import ModelBackend, parse_backend
 from committee.agents.risk_stub import RiskStub
 from committee.agents.sector_stub import SectorStub
 from committee.core.report_renderer import Report, build_report, render_report
-from committee.core.database import (
-    safe_upsert_daily_macro,
-    safe_upsert_market_daily,
-    safe_upsert_market_flow_daily,
-    safe_upsert_monthly_macro,
-    safe_upsert_quarterly_macro,
-)
+from committee.core.market_collector import persist_snapshot_metrics
 from committee.core.storage import save_run
 from committee.core.trace_logger import TraceLogger
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
@@ -94,69 +88,7 @@ class DailyPipeline:
         snapshot = build_snapshot(market_date)
         status = get_last_snapshot_status()
         trace.log("pipeline_stage", {"stage": "snapshot_built", "market_date": market_date.isoformat(), "status": status})
-        # DB persistence layer (additive): best-effort upsert.
-        # Must not break the existing pipeline even if DB is unavailable/locked.
-        # Data integrity: use NULL (not 0.0) for missing/unavailable/not-implemented values.
-        usdkrw_pct_db = snapshot.markets.fx.usdkrw_pct if status.get("usdkrw_pct") == "OK" else None
-        # Not implemented yet: explicitly store NULL rather than 0.0 placeholders.
-        us10y_db = None
-        vix_db = snapshot.markets.volatility.vix if status.get("vix") == "OK" else None
-        safe_upsert_market_daily(
-            date=market_date.isoformat(),
-            kospi_pct=snapshot.markets.kr.kospi_pct,
-            kosdaq_pct=snapshot.markets.kr.kosdaq_pct,
-            sp500_pct=snapshot.markets.us.sp500_pct,
-            nasdaq_pct=snapshot.markets.us.nasdaq_pct,
-            dow_pct=snapshot.markets.us.dow_pct,
-            usdkrw=snapshot.markets.fx.usdkrw,
-            usdkrw_pct=usdkrw_pct_db,
-            us10y=us10y_db,
-            vix=vix_db,
-        )
-        foreign_net_db = snapshot.flow_summary.foreign_net if status.get("flows") == "OK" else None
-        safe_upsert_market_flow_daily(
-            date=market_date.isoformat(),
-            foreign_net=foreign_net_db,
-        )
-
-        # Macro engine persistence (additive). Values are Optional in snapshot.macro and map to NULL in DB.
-        if snapshot.macro is not None:
-            d = snapshot.macro.daily
-            m = snapshot.macro.monthly
-            q = snapshot.macro.quarterly
-            s = snapshot.macro.structural
-
-            safe_upsert_daily_macro(
-                date=market_date.isoformat(),
-                us10y=d.us10y,
-                us2y=d.us2y,
-                spread_2_10=d.spread_2_10,
-                vix=d.vix,
-                dxy=d.dxy,
-                usdkrw=d.usdkrw,
-                fed_funds_rate=s.fed_funds_rate,
-                real_rate=s.real_rate,
-                vix3m=d.vix3m,
-                vix_term_spread=d.vix_term_spread,
-                hy_oas=s.hy_oas,
-                ig_oas=s.ig_oas,
-                fed_balance_sheet=s.fed_balance_sheet,
-            )
-            safe_upsert_monthly_macro(
-                date=market_date.isoformat(),
-                unemployment_rate=m.unemployment_rate,
-                cpi_yoy=m.cpi_yoy,
-                core_cpi_yoy=m.core_cpi_yoy,
-                pce_yoy=m.pce_yoy,
-                pmi=m.pmi,
-                wage_level=m.wage_level,
-                wage_yoy=m.wage_yoy,
-            )
-            safe_upsert_quarterly_macro(
-                date=market_date.isoformat(),
-                real_gdp=q.real_gdp,
-                gdp_qoq_annualized=q.gdp_qoq_annualized,
-            )
+        persist_snapshot_metrics(snapshot=snapshot, market_date=market_date, status=status)
         print("[pipeline] stage 2/5: run pre-analysis")
         stances = run_pre_analysis(snapshot, self.agent_ids)
         trace.log("pipeline_stage", {"stage": "stances_built", "count": len(stances)})

@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
+import sqlite3
 import sys
 from pathlib import Path
 
@@ -44,14 +46,30 @@ def main() -> None:
     committee = json.loads(committee_path.read_text(encoding="utf-8")) if committee_path.exists() else None
     report_text = report_path.read_text(encoding="utf-8") if (args.include_report and report_path.exists()) else ""
 
-    text = _build_morning_brief(snapshot=snapshot, stances=stances, committee=committee, report_text=report_text)
+    db_metrics = _load_latest_db_metrics(ROOT_DIR / "data" / "investment.db")
+    news_digest = _load_latest_news_digest(ROOT_DIR / "runs" / "news" / "latest_news_digest.json")
+    text = _build_morning_brief(
+        snapshot=snapshot,
+        stances=stances,
+        committee=committee,
+        report_text=report_text,
+        db_metrics=db_metrics,
+        news_digest=news_digest,
+    )
     send_report(text)
 
 
 def _latest_run_dir(runs_dir: Path) -> Path | None:
     if not runs_dir.exists():
         return None
-    dirs = [path for path in runs_dir.iterdir() if path.is_dir()]
+    date_dir_pattern = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+    dirs = [
+        path
+        for path in runs_dir.iterdir()
+        if path.is_dir()
+        and date_dir_pattern.match(path.name)
+        and (path / "snapshot.json").exists()
+    ]
     if not dirs:
         return None
     return sorted(dirs, key=lambda path: path.name)[-1]
@@ -76,7 +94,14 @@ def _fmt_signed(value, digits: int = 2, suffix: str = "") -> str:
         return "n/a"
 
 
-def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, report_text: str) -> str:
+def _build_morning_brief(
+    snapshot: dict,
+    stances: list,
+    committee: dict | None,
+    report_text: str,
+    db_metrics: dict | None,
+    news_digest: dict | None,
+) -> str:
     """Build a compact and readable morning brief for Telegram."""
     markets = snapshot.get("markets", {}) or {}
     kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
@@ -91,10 +116,30 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     structural = (macro.get("structural") or {}) if isinstance(macro, dict) else {}
     headlines = snapshot.get("news_headlines") or []
 
+    if db_metrics:
+        kr = _merge_non_null(kr, db_metrics.get("kr", {}))
+        us = _merge_non_null(us, db_metrics.get("us", {}))
+        fx = _merge_non_null(fx, db_metrics.get("fx", {}))
+        vol = _merge_non_null(vol, db_metrics.get("volatility", {}))
+        daily = _merge_non_null(daily, db_metrics.get("daily", {}))
+        monthly = _merge_non_null(monthly, db_metrics.get("monthly", {}))
+        quarterly = _merge_non_null(quarterly, db_metrics.get("quarterly", {}))
+        structural = _merge_non_null(structural, db_metrics.get("structural", {}))
+
+    digest_headlines = _digest_headlines(news_digest, limit=3)
+    if digest_headlines:
+        headlines = digest_headlines
+
     lines: list[str] = []
     market_summary = snapshot.get("market_summary", {}) or {}
+    summary_note = str(market_summary.get("note", "n/a"))
+    if kr.get("kospi_pct") is not None and fx.get("usdkrw") is not None:
+        summary_note = (
+            f"KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')}, "
+            f"USD/KRW {_fmt(fx.get('usdkrw'), 2)}."
+        )
     lines.append("📌 오늘의 데일리 브리프")
-    lines.append(f"- 시장 요약: {market_summary.get('note', 'n/a')}")
+    lines.append(f"- 시장 요약: {summary_note}")
     lines.append(f"- 상세 리포트: {'포함됨' if report_text.strip() else '미포함'}")
     lines.append(f"- 대시보드 링크: https://amazing-hyunho.github.io/richguysgogo/")
     lines.append("")
@@ -161,6 +206,20 @@ def _build_morning_brief(snapshot: dict, stances: list, committee: dict | None, 
     else:
         lines.append("- 헤드라인 없음")
     lines.append("")
+
+    if news_digest and isinstance(news_digest.get("top_articles"), list):
+        lines.append("🧩 뉴스 주제 Top5")
+        for item in news_digest.get("top_articles", [])[:5]:
+            if not isinstance(item, dict):
+                continue
+            topic = str(item.get("topic", "-"))
+            count = item.get("count", "-")
+            title = str(item.get("title", "-"))
+            lines.append(f"- [{topic}] {count}건: {title}")
+            link = str(item.get("link", "")).strip()
+            if link:
+                lines.append(f"  링크: {link}")
+        lines.append("")
 
     if stances:
         lines.append("🤖 AI 에이전트 한줄 코멘트")
@@ -372,6 +431,138 @@ def _headline_text(item: object) -> str:
     if isinstance(item, dict):
         return str(item.get("title") or item.get("headline") or "").strip()
     return ""
+
+
+def _merge_non_null(base: dict, overlay: dict) -> dict:
+    """Merge dicts while keeping only non-None overlay values."""
+    result = dict(base or {})
+    for key, value in (overlay or {}).items():
+        if value is not None:
+            result[key] = value
+    return result
+
+
+def _digest_headlines(news_digest: dict | None, limit: int = 3) -> list[str]:
+    if not isinstance(news_digest, dict):
+        return []
+    top_articles = news_digest.get("top_articles", [])
+    if not isinstance(top_articles, list):
+        return []
+    out: list[str] = []
+    for item in top_articles:
+        if not isinstance(item, dict):
+            continue
+        topic = str(item.get("topic", "")).strip()
+        title = str(item.get("title", "")).strip()
+        if not title:
+            continue
+        out.append(f"[{topic}] {title}" if topic else title)
+        if len(out) >= max(limit, 1):
+            break
+    return out
+
+
+def _load_latest_news_digest(path: Path) -> dict | None:
+    try:
+        if not path.exists():
+            return None
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def _load_latest_db_metrics(db_path: Path) -> dict | None:
+    if not db_path.exists():
+        return None
+    try:
+        conn = sqlite3.connect(str(db_path))
+        conn.row_factory = sqlite3.Row
+        try:
+            market = conn.execute(
+                """
+                SELECT kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct, usdkrw, usdkrw_pct, vix
+                FROM market_daily
+                ORDER BY date DESC
+                LIMIT 1
+                """
+            ).fetchone()
+            prev_market = conn.execute(
+                """
+                SELECT kospi_pct, kosdaq_pct
+                FROM market_daily
+                WHERE kospi_pct IS NOT NULL AND kosdaq_pct IS NOT NULL
+                ORDER BY date DESC
+                LIMIT 2
+                """
+            ).fetchall()
+            daily = conn.execute(
+                """
+                SELECT us10y, us2y, spread_2_10, vix, dxy, usdkrw, vix3m, vix_term_spread,
+                       hy_oas, ig_oas, fed_funds_rate, real_rate
+                FROM daily_macro
+                ORDER BY date DESC
+                LIMIT 1
+                """
+            ).fetchone()
+            monthly = conn.execute(
+                """
+                SELECT unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi
+                FROM monthly_macro
+                ORDER BY date DESC
+                LIMIT 1
+                """
+            ).fetchone()
+            quarterly = conn.execute(
+                """
+                SELECT gdp_qoq_annualized
+                FROM quarterly_macro
+                ORDER BY date DESC
+                LIMIT 1
+                """
+            ).fetchone()
+            latest_kospi = market["kospi_pct"] if market else None
+            latest_kosdaq = market["kosdaq_pct"] if market else None
+            # If latest KR indices are fallback zeros, use previous non-zero row for briefing.
+            if (
+                latest_kospi == 0.0
+                and latest_kosdaq == 0.0
+                and prev_market
+                and len(prev_market) >= 2
+            ):
+                latest_kospi = prev_market[1]["kospi_pct"]
+                latest_kosdaq = prev_market[1]["kosdaq_pct"]
+
+            return {
+                "kr": {
+                    "kospi_pct": latest_kospi,
+                    "kosdaq_pct": latest_kosdaq,
+                },
+                "us": {
+                    "sp500_pct": market["sp500_pct"] if market else None,
+                    "nasdaq_pct": market["nasdaq_pct"] if market else None,
+                    "dow_pct": market["dow_pct"] if market else None,
+                },
+                "fx": {
+                    "usdkrw": market["usdkrw"] if market else None,
+                    "usdkrw_pct": market["usdkrw_pct"] if market else None,
+                },
+                "volatility": {
+                    "vix": market["vix"] if market else None,
+                },
+                "daily": dict(daily) if daily else {},
+                "monthly": dict(monthly) if monthly else {},
+                "quarterly": dict(quarterly) if quarterly else {},
+                "structural": {
+                    "hy_oas": daily["hy_oas"] if daily and "hy_oas" in daily.keys() else None,
+                    "ig_oas": daily["ig_oas"] if daily and "ig_oas" in daily.keys() else None,
+                    "fed_funds_rate": daily["fed_funds_rate"] if daily and "fed_funds_rate" in daily.keys() else None,
+                    "real_rate": daily["real_rate"] if daily and "real_rate" in daily.keys() else None,
+                },
+            }
+        finally:
+            conn.close()
+    except Exception:
+        return None
 
 
 def _is_domestic_headline(text: str) -> bool:

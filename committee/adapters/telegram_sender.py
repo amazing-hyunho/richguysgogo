@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import urllib.error
 import urllib.request
 
@@ -16,7 +17,7 @@ def send_report(text: str) -> bool:
     raw = os.getenv("TELEGRAM_CHAT_ID", "").strip()
     chat_ids = [c.strip() for c in raw.split(",") if c.strip()]
     if not token or not chat_ids:
-        print(text)
+        _safe_console_print(text)
         return True
 
     url = f"https://api.telegram.org/bot{token}/sendMessage"
@@ -86,3 +87,12 @@ def _split_message(text: str, max_length: int) -> list[str]:
             parts.append(part)
 
     return parts
+
+
+def _safe_console_print(text: str) -> None:
+    """Print with encoding fallback for Windows cp949 terminals."""
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        encoding = sys.stdout.encoding or "utf-8"
+        sys.stdout.buffer.write((text + "\n").encode(encoding, errors="replace"))

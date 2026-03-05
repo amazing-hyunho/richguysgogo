@@ -5,6 +5,7 @@ import json
 import subprocess
 import sys
 from dataclasses import asdict
+from datetime import date
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -12,6 +13,8 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 from committee.tools.news_digest import build_topic_digest, recommended_topic_queries
+from committee.core.market_collector import persist_snapshot_metrics
+from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 
 
 def _save_digest(payload: dict[str, object]) -> None:
@@ -37,11 +40,40 @@ def _build_dashboard() -> None:
     print(result.stdout.strip())
 
 
-def _auto_commit(include_dashboard: bool) -> bool:
+def _collect_indicators(market_date: date) -> None:
+    print("[news_hourly] indicator collection: start")
+    snapshot = build_snapshot(market_date)
+    status = get_last_snapshot_status()
+    persist_snapshot_metrics(snapshot=snapshot, market_date=market_date, status=status)
+    keys = [
+        "usdkrw",
+        "usdkrw_pct",
+        "us10y",
+        "vix",
+        "vix3m",
+        "vix_term_spread",
+        "hy_oas",
+        "ig_oas",
+        "fed_balance_sheet",
+        "kospi",
+        "kosdaq",
+        "sp500",
+        "nasdaq",
+        "dow",
+        "flows",
+        "headlines",
+    ]
+    print("snapshot sources status: " + ", ".join([f"{k}={status.get(k, 'FAIL')}" for k in keys]))
+    print("[news_hourly] indicator collection: done")
+
+
+def _auto_commit(include_dashboard: bool, include_indicator_db: bool) -> bool:
     targets = [
         "runs/news/latest_news_digest.json",
         "runs/news/history.jsonl",
     ]
+    if include_indicator_db:
+        targets.append("data/investment.db")
     if include_dashboard:
         targets.append("docs/dashboard.html")
 
@@ -82,7 +114,23 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="경제 뉴스 1시간 주기 수집/요약 실행")
     parser.add_argument("--target-total", type=int, default=300, help="중복 제거 후 목표 수집 기사 수")
     parser.add_argument("--top-n", type=int, default=5, help="저장할 상위 주제 개수")
-    parser.add_argument("--build-dashboard", action="store_true", help="실행 후 대시보드 재생성")
+    parser.add_argument(
+        "--market-date",
+        default=date.today().isoformat(),
+        help="지표 수집 기준일 (YYYY-MM-DD). 기본값은 오늘 날짜",
+    )
+    parser.add_argument(
+        "--collect-indicators",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="뉴스 실행 시 지표 수집/DB upsert도 함께 수행 (기본: 켬)",
+    )
+    parser.add_argument(
+        "--build-dashboard",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="실행 후 대시보드 재생성 (기본: 켬)",
+    )
     parser.add_argument(
         "--auto-commit",
         action=argparse.BooleanOptionalAction,
@@ -97,6 +145,9 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    if args.collect_indicators:
+        _collect_indicators(market_date=date.fromisoformat(args.market_date))
+
     digest, reason = build_topic_digest(target_total=args.target_total, top_n=args.top_n)
     if digest is None:
         raise RuntimeError(f"news_topic_digest_failed: {reason}")
@@ -109,7 +160,10 @@ def main() -> None:
         _build_dashboard()
 
     if args.auto_commit:
-        committed = _auto_commit(include_dashboard=args.build_dashboard)
+        committed = _auto_commit(
+            include_dashboard=args.build_dashboard,
+            include_indicator_db=args.collect_indicators,
+        )
         if committed and args.auto_push:
             _auto_push()
 

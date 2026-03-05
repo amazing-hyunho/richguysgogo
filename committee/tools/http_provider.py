@@ -58,23 +58,7 @@ class HttpProvider(IDataProvider):
     def get_kospi_change_pct(self) -> Tuple[float | None, str | None]:
         """Fetch KOSPI change percent using a public chart endpoint."""
         try:
-            response = requests.get(
-                "https://query1.finance.yahoo.com/v8/finance/chart/%5EKS11?interval=1d&range=2d",
-                timeout=7,
-                headers=_default_headers(),
-            )
-            if response.status_code != 200:
-                return None, f"http_status_{response.status_code}"
-            payload = response.json()
-            result = payload.get("chart", {}).get("result", [])
-            if not result:
-                return None, "no_result"
-            closes = result[0].get("indicators", {}).get("quote", [])[0].get("close", [])
-            closes = [value for value in closes if value is not None]
-            if len(closes) < 2:
-                return None, "insufficient_closes"
-            prev_close, latest_close = closes[-2], closes[-1]
-            return ((latest_close - prev_close) / prev_close) * 100.0, None
+            return _yahoo_daily_pct_chart("%5EKS11")
         except Exception as exc:
             return None, str(exc)
 
@@ -112,27 +96,41 @@ class HttpProvider(IDataProvider):
 
     def get_usdkrw_pct(self) -> Tuple[float | None, str | None]:
         """USD/KRW daily percentage change: (today - yesterday) / yesterday * 100.
-        Data source: current from get_usdkrw-style APIs; previous day from
-        fawazahmed0 date path. Fallback 0.0 used if previous-day fetch fails.
+        Data source priority:
+        1) Yahoo Finance FX chart (`KRW=X`) over recent 7d
+        2) fawazahmed0 dated JSON path backtracking up to 7 days
         """
         try:
+            try:
+                yahoo_pct, _ = _yahoo_daily_pct_chart("KRW=X")
+                return yahoo_pct, None
+            except Exception:
+                pass
+
             today_rate, _ = self.get_usdkrw()
             if today_rate is None:
                 return None, "usdkrw_current_unavailable"
-            yesterday = (date.today() - timedelta(days=1)).isoformat()
-            # fawazahmed0: .../YYYY-MM-DD/currencies/usd/krw.json
-            url = (
-                "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@1/"
-                f"{yesterday}/currencies/usd/krw.json"
-            )
-            resp = requests.get(url, timeout=7, headers=_default_headers())
-            if resp.status_code != 200:
-                return None, f"usdkrw_prev_http_{resp.status_code}"
-            payload = resp.json()
-            prev = _extract_json_value(payload, ("krw",))
-            if prev is None:
-                return None, "usdkrw_prev_key_missing"
-            prev_f = float(prev)
+            prev_f = None
+            last_reason = "usdkrw_prev_unavailable"
+            for days_back in range(1, 8):
+                day = (date.today() - timedelta(days=days_back)).isoformat()
+                url = (
+                    "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@1/"
+                    f"{day}/currencies/usd/krw.json"
+                )
+                resp = requests.get(url, timeout=7, headers=_default_headers())
+                if resp.status_code != 200:
+                    last_reason = f"usdkrw_prev_http_{resp.status_code}"
+                    continue
+                payload = resp.json()
+                prev = _extract_json_value(payload, ("krw",))
+                if prev is None:
+                    last_reason = "usdkrw_prev_key_missing"
+                    continue
+                prev_f = float(prev)
+                break
+            if prev_f is None:
+                return None, last_reason
             if prev_f <= 0:
                 return None, "usdkrw_prev_invalid"
             return ((float(today_rate) - prev_f) / prev_f) * 100.0, None
@@ -210,8 +208,27 @@ def _yahoo_daily_pct_chart(symbol: str) -> Tuple[float, None]:
     Data source: query1.finance.yahoo.com v8/finance/chart. Raises on failure
     so caller can catch and return (None, reason); fallback 0.0 is applied by snapshot builder.
     """
+    intraday = requests.get(
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1m&range=1d",
+        timeout=7,
+        headers=_default_headers(),
+    )
+    if intraday.status_code == 200:
+        payload = intraday.json()
+        result = payload.get("chart", {}).get("result", [])
+        if result:
+            meta = result[0].get("meta", {}) or {}
+            regular = meta.get("regularMarketPrice")
+            prev_close = meta.get("chartPreviousClose")
+            if regular is not None and prev_close is not None:
+                regular_f = float(regular)
+                prev_f = float(prev_close)
+                if prev_f > 0:
+                    pct = ((regular_f - prev_f) / prev_f) * 100.0
+                    return (pct, None)
+
     response = requests.get(
-        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=2d",
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=7d",
         timeout=7,
         headers=_default_headers(),
     )
