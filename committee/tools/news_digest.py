@@ -12,6 +12,7 @@ import xml.etree.ElementTree as ET
 from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime, timezone
+from math import log1p
 from typing import Dict, List, Tuple
 from urllib.parse import quote
 
@@ -54,6 +55,48 @@ class NewsTopicDigest:
     total_collected: int
     topic_counts: List[tuple[str, int]]
     top_articles: List[TopicDigestArticle]
+
+
+SOURCE_WEIGHT_BY_KEYWORD: Dict[str, float] = {
+    "reuters": 1.6,
+    "bloomberg": 1.5,
+    "wsj": 1.4,
+    "ft": 1.4,
+    "연합뉴스": 1.3,
+    "매일경제": 1.2,
+    "한국경제": 1.2,
+    "서울경제": 1.1,
+    "조선일보": 1.0,
+    "중앙일보": 1.0,
+    "동아일보": 1.0,
+    "뉴시스": 0.9,
+    "머니투데이": 0.9,
+    "이데일리": 0.9,
+}
+
+IMPACT_KEYWORDS: Dict[str, float] = {
+    "fomc": 1.6,
+    "연준": 1.6,
+    "금리": 1.3,
+    "기준금리": 1.4,
+    "국채": 1.2,
+    "cpi": 1.3,
+    "pce": 1.3,
+    "인플레이션": 1.2,
+    "gdp": 1.2,
+    "실업률": 1.2,
+    "중동": 1.1,
+    "전쟁": 1.4,
+    "제재": 1.2,
+    "관세": 1.1,
+    "환율": 1.2,
+    "달러": 1.1,
+    "vix": 1.1,
+    "신용 스프레드": 1.2,
+    "반도체": 1.0,
+    "ai": 0.9,
+    "엔비디아": 0.9,
+}
 
 
 def recommended_topic_queries() -> Dict[str, List[str]]:
@@ -267,14 +310,18 @@ def build_topic_digest(
     if not deduped:
         return None, "no_deduped_news"
 
-    counter = Counter(topic for _, _, topic in deduped)
-    top_topics = counter.most_common(top_n)
+    topic_counter = Counter(topic for _, _, topic in deduped)
+    scored_pool = _score_news_pool(deduped)
+    topic_scores = _topic_quality_scores(scored_pool)
+    ranked_topics = sorted(topic_scores.items(), key=lambda item: item[1], reverse=True)
+    top_topics = [(topic, topic_counter.get(topic, 0)) for topic, _ in ranked_topics[:top_n]]
+
     top_articles: List[TopicDigestArticle] = []
     for topic, count in top_topics:
-        candidate = next(((title, link) for title, link, t in deduped if t == topic), None)
-        if candidate is None:
+        topic_candidates = [item for item in scored_pool if item[2] == topic]
+        if not topic_candidates:
             continue
-        title, link = candidate
+        title, link, _, _ = sorted(topic_candidates, key=lambda item: item[3], reverse=True)[0]
         top_articles.append(
             TopicDigestArticle(
                 topic=topic,
@@ -292,3 +339,66 @@ def build_topic_digest(
         top_articles=top_articles,
     )
     return digest, None
+
+
+def _score_news_pool(pool: List[tuple[str, str, str]]) -> List[tuple[str, str, str, float]]:
+    """Score articles by source quality, impact keywords, and outlet diversity."""
+    outlet_counter = Counter(_extract_outlet(title, link) for title, link, _ in pool)
+    scored: List[tuple[str, str, str, float]] = []
+    for title, link, topic in pool:
+        outlet = _extract_outlet(title, link)
+        source_score = _source_score(outlet)
+        impact_score = _impact_score(title)
+        duplicate_penalty = max(0, outlet_counter[outlet] - 1) * 0.08
+        score = 1.0 + source_score + impact_score - duplicate_penalty
+        scored.append((title, link, topic, round(score, 4)))
+    return scored
+
+
+def _topic_quality_scores(scored_pool: List[tuple[str, str, str, float]]) -> Dict[str, float]:
+    """Aggregate topic quality score from article scores and breadth."""
+    topic_to_scores: Dict[str, List[float]] = {}
+    for _, _, topic, score in scored_pool:
+        topic_to_scores.setdefault(topic, []).append(score)
+
+    quality: Dict[str, float] = {}
+    for topic, scores in topic_to_scores.items():
+        scores_desc = sorted(scores, reverse=True)
+        top_mean = sum(scores_desc[:3]) / max(1, min(3, len(scores_desc)))
+        breadth_bonus = log1p(len(scores_desc)) * 0.25
+        quality[topic] = round(top_mean + breadth_bonus, 4)
+    return quality
+
+
+def _extract_outlet(title: str, link: str) -> str:
+    """Extract outlet name from title suffix or fallback to URL domain."""
+    if " - " in title:
+        tail = title.rsplit(" - ", 1)[-1].strip().lower()
+        if tail:
+            return tail
+    m = re.search(r"https?://([^/]+)/?", link or "", flags=re.IGNORECASE)
+    if m:
+        return m.group(1).lower()
+    return "unknown"
+
+
+def _source_score(outlet: str) -> float:
+    """Return outlet reliability weight."""
+    if not outlet:
+        return 0.0
+    score = 0.0
+    for keyword, weight in SOURCE_WEIGHT_BY_KEYWORD.items():
+        if keyword in outlet:
+            score = max(score, weight)
+    return score
+
+
+def _impact_score(title: str) -> float:
+    """Return macro/market impact score from headline keywords."""
+    text = (title or "").lower()
+    score = 0.0
+    for keyword, weight in IMPACT_KEYWORDS.items():
+        if keyword in text:
+            score += weight
+    # Cap to avoid one headline with many overlapping keywords dominating.
+    return min(score, 3.0)
