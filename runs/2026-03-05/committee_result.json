@@ -7,13 +7,13 @@
         "macro",
         "flow",
         "sector",
-        "risk",
-        "earnings"
+        "risk"
       ]
     },
     {
-      "point": "Shared evidence focus: snapshot.news_headlines.",
+      "point": "Shared evidence focus: snapshot.market_summary.kospi_change_pct.",
       "sources": [
+        "breadth",
         "earnings",
         "liquidity",
         "macro",
@@ -27,6 +27,7 @@
       "majority": "NEUTRAL",
       "minority": "RISK_OFF",
       "minority_agents": [
+        "earnings",
         "breadth",
         "liquidity"
       ],

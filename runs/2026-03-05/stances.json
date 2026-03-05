@@ -67,49 +67,51 @@
   {
     "agent_name": "earnings",
     "core_claims": [
-      "실적 모멘텀 변화 신호가 부족합니다.",
-      "주요 지수 상승에도 실적 추정치 상향 근거가 약합니다."
+      "KOSPI 급락은 실적 모멘텀 약화 신호로 해석됨.",
+      "실적 추정치 상향 근거 부족, 단기 반등 기대 어려움.",
+      "미국 시장 강세와 달리 국내 실적 전망은 부정적."
     ],
-    "korean_comment": "실적 추정치 변화가 뚜렷하지 않습니다.",
-    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 변화 신호가 부족합니다.\",\n    \"주요 지수 상승에도 실적 추정치 상향 근거가 약합니다.\"\n  ],\n  \"korean_comment\": \"실적 추정치 변화가 뚜렷하지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
-    "regime_tag": "NEUTRAL",
+    "korean_comment": "실적 모멘텀 둔화로 추가 하락 위험이 높아졌습니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"KOSPI 급락은 실적 모멘텀 약화 신호로 해석됨.\",\n    \"실적 추정치 상향 근거 부족, 단기 반등 기대 어려움.\",\n    \"미국 시장 강세와 달리 국내 실적 전망은 부정적.\"\n  ],\n  \"korean_comment\": \"실적 모멘텀 둔화로 추가 하락 위험이 높아졌습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.note\",\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
     "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.note",
       "snapshot.phase_two_signals.earnings_signal_score",
-      "snapshot.news_headlines",
-      "snapshot.market_summary.note"
+      "snapshot.news_headlines"
     ],
-    "confidence": "MED"
+    "confidence": "HIGH"
   },
   {
     "agent_name": "breadth",
     "core_claims": [
-      "시장 내부 확산이 약화되고 있습니다.",
-      "KOSPI와 KOSDAQ 모두 방향성 없이 정체되어 있습니다."
+      "KOSPI와 KOSDAQ 모두 급락하며 시장 내 확산 약화가 뚜렷합니다.",
+      "breadth 신호가 매우 부진하여 단기 반등 신호는 없습니다."
     ],
-    "korean_comment": "시장 전반에 뚜렷한 확산 신호가 부족합니다.",
-    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"시장 내부 확산이 약화되고 있습니다.\",\n    \"KOSPI와 KOSDAQ 모두 방향성 없이 정체되어 있습니다.\"\n  ],\n  \"korean_comment\": \"시장 전반에 뚜렷한 확산 신호가 부족합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.market_summary.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "시장 전반에 걸친 하락세가 뚜렷합니다.",
+    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ 모두 급락하며 시장 내 확산 약화가 뚜렷합니다.\",\n    \"breadth 신호가 매우 부진하여 단기 반등 신호는 없습니다.\"\n  ],\n  \"korean_comment\": \"시장 전반에 걸친 하락세가 뚜렷합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
-      "snapshot.phase_two_signals.breadth_signal_score",
-      "snapshot.markets.kr.kospi_pct",
+      "snapshot.market_summary.kospi_change_pct",
       "snapshot.markets.kr.kosdaq_pct",
-      "snapshot.market_summary.note"
+      "snapshot.phase_two_signals.breadth_signal_score"
     ],
     "confidence": "HIGH"
   },
   {
     "agent_name": "liquidity",
     "core_claims": [
-      "달러/원 환율이 1464원으로 고정되어 변동성 높음.",
-      "VIX 21 이상으로 시장 변동성 확대 신호.",
-      "연준 금리인하 중단 뉴스로 정책 불확실성 증가."
+      "KOSPI 급락과 변동성(VIX) 상승으로 유동성 경색 신호.",
+      "달러/원 환율은 소폭 하락했으나, 정책 불확실성 지속.",
+      "연준 금리인하 중단 뉴스로 정책 민감 자산에 부정적."
     ],
-    "korean_comment": "정책 불확실성과 변동성 확대로 유동성 환경이 악화되고 있습니다.",
-    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"달러/원 환율이 1464원으로 고정되어 변동성 높음.\",\n    \"VIX 21 이상으로 시장 변동성 확대 신호.\",\n    \"연준 금리인하 중단 뉴스로 정책 불확실성 증가.\"\n  ],\n  \"korean_comment\": \"정책 불확실성과 변동성 확대로 유동성 환경이 악화되고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "korean_comment": "유동성 및 정책 환경이 위험회피(RISK_OFF)로 전환되었습니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"KOSPI 급락과 변동성(VIX) 상승으로 유동성 경색 신호.\",\n    \"달러/원 환율은 소폭 하락했으나, 정책 불확실성 지속.\",\n    \"연준 금리인하 중단 뉴스로 정책 민감 자산에 부정적.\"\n  ],\n  \"korean_comment\": \"유동성 및 정책 환경이 위험회피(RISK_OFF)로 전환되었습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
     "regime_tag": "RISK_OFF",
     "evidence_ids": [
-      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
       "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.usdkrw",
       "snapshot.news_headlines",
       "snapshot.phase_two_signals.liquidity_signal_score"
     ],
