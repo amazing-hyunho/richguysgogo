@@ -113,7 +113,7 @@ python scripts/run_nightly.py
 - 결과 저장 경로: `runs/YYYY-MM-DD/`
 - 옵션:
   - `--build-dashboard`: 실행 후 `docs/dashboard.html` 재생성
-  - `--auto-commit` / `--no-auto-commit`: 해당 실행 산출물 자동 커밋 (기본: 켬)
+  - `--auto-commit` / `--no-auto-commit`: 해당 실행 산출물 + `data/investment.db` 자동 커밋 (기본: 켬)
   - `--auto-push` / `--no-auto-push`: 자동 커밋 후 `git push origin HEAD` (기본: 켬)
 
 예시:

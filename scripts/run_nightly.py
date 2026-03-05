@@ -3,6 +3,7 @@ from __future__ import annotations
 # Nightly runner for daily committee processing.
 
 import os
+import sqlite3
 import subprocess
 import sys
 from datetime import date
@@ -29,9 +30,11 @@ def _build_dashboard() -> None:
 
 def _auto_commit(market_date: date, include_dashboard: bool) -> bool:
     date_s = market_date.isoformat()
+    _checkpoint_db()
     targets = [
         f"runs/{date_s}.json",
         f"runs/{date_s}",
+        "data/investment.db",
     ]
     if include_dashboard:
         targets.append("docs/dashboard.html")
@@ -57,6 +60,18 @@ def _auto_commit(market_date: date, include_dashboard: bool) -> bool:
     if commit_result.stdout.strip():
         print(commit_result.stdout.strip())
     return True
+
+
+def _checkpoint_db() -> None:
+    """Flush SQLite WAL into main DB file before git add."""
+    db_path = ROOT_DIR / "data" / "investment.db"
+    if not db_path.exists():
+        return
+    conn = sqlite3.connect(str(db_path))
+    try:
+        conn.execute("PRAGMA wal_checkpoint(FULL);")
+    finally:
+        conn.close()
 
 
 def _auto_push() -> None:

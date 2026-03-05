@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sqlite3
 import subprocess
 import sys
 from dataclasses import asdict
@@ -73,6 +74,7 @@ def _auto_commit(include_dashboard: bool, include_indicator_db: bool) -> bool:
         "runs/news/history.jsonl",
     ]
     if include_indicator_db:
+        _checkpoint_db()
         targets.append("data/investment.db")
     if include_dashboard:
         targets.append("docs/dashboard.html")
@@ -97,6 +99,18 @@ def _auto_commit(include_dashboard: bool, include_indicator_db: bool) -> bool:
         raise RuntimeError(commit_result.stderr.strip() or "git_commit_failed")
     print(commit_result.stdout.strip() or "[news_hourly] auto-commit complete")
     return True
+
+
+def _checkpoint_db() -> None:
+    """Flush SQLite WAL into main DB file before git add."""
+    db_path = ROOT_DIR / "data" / "investment.db"
+    if not db_path.exists():
+        return
+    conn = sqlite3.connect(str(db_path))
+    try:
+        conn.execute("PRAGMA wal_checkpoint(FULL);")
+    finally:
+        conn.close()
 
 
 def _auto_push() -> None:
