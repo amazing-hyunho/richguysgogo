@@ -4,7 +4,6 @@
     {
       "point": "Majority regime tag: RISK_OFF.",
       "sources": [
-        "macro",
         "flow",
         "sector",
         "breadth",
@@ -19,6 +18,13 @@
         "flow",
         "liquidity",
         "macro"
+      ]
+    },
+    {
+      "point": "Shared claim: 코스피가 -12%로 역대 최대 폭락을 기록했습니다.",
+      "sources": [
+        "risk",
+        "sector"
       ]
     }
   ],
@@ -37,6 +43,7 @@
       "majority": "RISK_OFF",
       "minority": "NEUTRAL",
       "minority_agents": [
+        "macro",
         "earnings"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."

@@ -27,7 +27,7 @@ def _build_dashboard() -> None:
         print(result.stdout.strip())
 
 
-def _auto_commit(market_date: date, include_dashboard: bool) -> None:
+def _auto_commit(market_date: date, include_dashboard: bool) -> bool:
     date_s = market_date.isoformat()
     targets = [
         f"runs/{date_s}.json",
@@ -45,7 +45,7 @@ def _auto_commit(market_date: date, include_dashboard: bool) -> None:
     diff_result = subprocess.run(diff_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
     if diff_result.returncode == 0:
         print("[run_nightly] no staged changes, skip commit")
-        return
+        return False
     if diff_result.returncode not in (0, 1):
         raise RuntimeError(diff_result.stderr.strip() or "git_diff_cached_failed")
 
@@ -56,13 +56,36 @@ def _auto_commit(market_date: date, include_dashboard: bool) -> None:
         raise RuntimeError(commit_result.stderr.strip() or "git_commit_failed")
     if commit_result.stdout.strip():
         print(commit_result.stdout.strip())
+    return True
+
+
+def _auto_push() -> None:
+    push_command = ["git", "push", "origin", "HEAD"]
+    push_result = subprocess.run(push_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if push_result.returncode != 0:
+        raise RuntimeError(push_result.stderr.strip() or "git_push_failed")
+    if push_result.stdout.strip():
+        print(push_result.stdout.strip())
+    if push_result.stderr.strip():
+        print(push_result.stderr.strip())
 
 
 def main() -> None:
     """Run nightly pipeline and store run artifacts."""
     parser = argparse.ArgumentParser(description="야간 파이프라인 실행")
     parser.add_argument("--build-dashboard", action="store_true", help="실행 후 대시보드 재생성")
-    parser.add_argument("--auto-commit", action="store_true", help="산출물 변경 시 자동 git commit")
+    parser.add_argument(
+        "--auto-commit",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="산출물 변경 시 자동 git commit (기본: 켬)",
+    )
+    parser.add_argument(
+        "--auto-push",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="자동 커밋 후 git push origin HEAD (기본: 켬)",
+    )
     args = parser.parse_args()
 
     runs_dir = ROOT_DIR / "runs"
@@ -93,8 +116,12 @@ def main() -> None:
 
     if args.auto_commit:
         print("[run_nightly] auto-commit: start")
-        _auto_commit(market_date=market_date, include_dashboard=args.build_dashboard)
+        committed = _auto_commit(market_date=market_date, include_dashboard=args.build_dashboard)
         print("[run_nightly] auto-commit: done")
+        if committed and args.auto_push:
+            print("[run_nightly] auto-push: start")
+            _auto_push()
+            print("[run_nightly] auto-push: done")
 
     print("[run_nightly] step 4/4: done")
 

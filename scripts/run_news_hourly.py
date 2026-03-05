@@ -37,7 +37,7 @@ def _build_dashboard() -> None:
     print(result.stdout.strip())
 
 
-def _auto_commit(include_dashboard: bool) -> None:
+def _auto_commit(include_dashboard: bool) -> bool:
     targets = [
         "runs/news/latest_news_digest.json",
         "runs/news/history.jsonl",
@@ -54,7 +54,7 @@ def _auto_commit(include_dashboard: bool) -> None:
     diff_result = subprocess.run(diff_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
     if diff_result.returncode == 0:
         print("[news_hourly] no staged changes, skip commit")
-        return
+        return False
     if diff_result.returncode not in (0, 1):
         raise RuntimeError(diff_result.stderr.strip() or "git_diff_cached_failed")
 
@@ -64,6 +64,18 @@ def _auto_commit(include_dashboard: bool) -> None:
     if commit_result.returncode != 0:
         raise RuntimeError(commit_result.stderr.strip() or "git_commit_failed")
     print(commit_result.stdout.strip() or "[news_hourly] auto-commit complete")
+    return True
+
+
+def _auto_push() -> None:
+    push_command = ["git", "push", "origin", "HEAD"]
+    push_result = subprocess.run(push_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if push_result.returncode != 0:
+        raise RuntimeError(push_result.stderr.strip() or "git_push_failed")
+    if push_result.stdout.strip():
+        print(push_result.stdout.strip())
+    if push_result.stderr.strip():
+        print(push_result.stderr.strip())
 
 
 def main() -> None:
@@ -71,7 +83,18 @@ def main() -> None:
     parser.add_argument("--target-total", type=int, default=300, help="중복 제거 후 목표 수집 기사 수")
     parser.add_argument("--top-n", type=int, default=5, help="저장할 상위 주제 개수")
     parser.add_argument("--build-dashboard", action="store_true", help="실행 후 대시보드 재생성")
-    parser.add_argument("--auto-commit", action="store_true", help="산출물 변경 시 자동 git commit")
+    parser.add_argument(
+        "--auto-commit",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="산출물 변경 시 자동 git commit (기본: 켬)",
+    )
+    parser.add_argument(
+        "--auto-push",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="자동 커밋 후 git push origin HEAD (기본: 켬)",
+    )
     args = parser.parse_args()
 
     digest, reason = build_topic_digest(target_total=args.target_total, top_n=args.top_n)
@@ -86,7 +109,9 @@ def main() -> None:
         _build_dashboard()
 
     if args.auto_commit:
-        _auto_commit(include_dashboard=args.build_dashboard)
+        committed = _auto_commit(include_dashboard=args.build_dashboard)
+        if committed and args.auto_push:
+            _auto_push()
 
     print(
         "[news_hourly] done: "
