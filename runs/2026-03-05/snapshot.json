@@ -1,8 +1,8 @@
 {
   "market_summary": {
-    "note": "KOSPI -12.06%, USD/KRW 1477.31. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": -12.0576821523016,
-    "usdkrw": 1477.311478
+    "note": "KOSPI 0.00%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": 0.0,
+    "usdkrw": 1464.350327
   },
   "flow_summary": {
     "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
@@ -17,16 +17,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "폭락 뒤에야 등장한 ‘예언자’… 코스피 거품 논쟁, 다시 불붙었다 - v.daum.net",
-    "[속보] 코스피·코스닥 서킷브레이커 발동…20분간 거래 중단 - 중앙일보",
-    "코스피 -12.06% 역대 최대 하락...9·11 테러 때보다 더 떨어졌다 - 중앙일보",
-    "[주식] '전쟁이 야속하더라' 코스피·코스닥 10%↓, 바이오도 줄줄이 ↓ - 히트뉴스",
-    "코스피 ‘역대 최대’ 폭락 -12.06%…9·11 테러보다 큰 충격파 - 한겨레",
-    "[News Today] KOSPI plummets on Middle East crisis - KBS 뉴스",
-    "Margin Loans Surpass 32 Trillion Won as KOSPI Plunge Raises Fears of Forced Sell-Offs - 알파경제",
-    "코스피 하루에 7% 넘게 빠졌다…시총 377조원 증발 ‘역대 최대’ - 동아일보",
-    "코스피 이틀째 급락…공포지수 사상 처음 80선 넘어 개미들 패닉(종합) - 연합뉴스",
-    "18% 급락한 코스피, 美 증시 전이 가능성 낮아 - v.daum.net"
+    "[미국지수] [영상] “미국 S&P500, 150년간 연 9%씩 우상향한 유일한 자산” - 주간동아",
+    "[환율/달러] [뉴욕환시] 달러 사흘만에↓…미-이란 접촉설 속 유가 급등 진정 | - 연합인포맥스",
+    "[금리/연준] 미국 국채값 와르르 급락 \"이란 전쟁 패닉\" ...연준 FOMC 금리인하 \"중단\" - 글로벌이코노믹",
+    "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스",
+    "[경기/성장] 제2 이라크戰 악몽…세계경제 덮친 'S공포' - 마켓인"
   ],
   "watchlist": [
     "SPY",
@@ -35,8 +30,8 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": -12.0576821523016,
-      "kosdaq_pct": -13.998413954964562
+      "kospi_pct": 0.0,
+      "kosdaq_pct": 0.0
     },
     "us": {
       "sp500_pct": 0.7756049264286315,
@@ -44,7 +39,7 @@
       "dow_pct": 0.4909987456030669
     },
     "fx": {
-      "usdkrw": 1477.311478,
+      "usdkrw": 1464.350327,
       "usdkrw_pct": 0.0
     },
     "volatility": {
@@ -57,8 +52,8 @@
       "us2y": 3.5950000286102295,
       "spread_2_10": 0.4849998950958252,
       "vix": 21.149999618530273,
-      "dxy": 98.7750015258789,
-      "usdkrw": 1461.760009765625,
+      "dxy": 98.6969985961914,
+      "usdkrw": 1457.3299560546875,
       "vix3m": 22.290000915527344,
       "vix_term_spread": 1.1400012969970703
     },
@@ -86,8 +81,8 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": -13.881,
-    "liquidity_signal_score": 3.967,
+    "breadth_signal_score": -0.853,
+    "liquidity_signal_score": 3.983,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   }
 }

@@ -1,13 +1,14 @@
 {
-  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "consensus": "Committee maintains a neutral posture with selective positioning.",
   "key_points": [
     {
-      "point": "Majority regime tag: RISK_OFF.",
+      "point": "Majority regime tag: NEUTRAL.",
       "sources": [
+        "macro",
         "flow",
         "sector",
-        "breadth",
-        "liquidity"
+        "risk",
+        "earnings"
       ]
     },
     {
@@ -15,36 +16,19 @@
       "sources": [
         "breadth",
         "earnings",
-        "flow",
-        "liquidity",
-        "macro"
-      ]
-    },
-    {
-      "point": "Shared claim: 코스피가 -12%로 역대 최대 폭락을 기록했습니다.",
-      "sources": [
-        "risk",
-        "sector"
+        "macro",
+        "risk"
       ]
     }
   ],
   "disagreements": [
     {
       "topic": "Regime tags",
-      "majority": "RISK_OFF",
-      "minority": "RISK_ON",
+      "majority": "NEUTRAL",
+      "minority": "RISK_OFF",
       "minority_agents": [
-        "risk"
-      ],
-      "why_it_matters": "Minority risk regime can change positioning boundaries."
-    },
-    {
-      "topic": "Regime tags",
-      "majority": "RISK_OFF",
-      "minority": "NEUTRAL",
-      "minority_agents": [
-        "macro",
-        "earnings"
+        "breadth",
+        "liquidity"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."
     }
@@ -52,15 +36,15 @@
   "ops_guidance": [
     {
       "level": "OK",
-      "text": "Keep exposure focused on resilience."
+      "text": "Maintain balanced exposure."
     },
     {
       "level": "CAUTION",
-      "text": "Favor defensive positioning."
+      "text": "Keep risk limits tight."
     },
     {
       "level": "AVOID",
-      "text": "Avoid high-beta risk assets."
+      "text": "Avoid aggressive leverage."
     }
   ]
 }
