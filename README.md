@@ -111,6 +111,14 @@ python scripts/run_local.py
 python scripts/run_nightly.py
 ```
 - 결과 저장 경로: `runs/YYYY-MM-DD/`
+- 옵션:
+  - `--build-dashboard`: 실행 후 `docs/dashboard.html` 재생성
+  - `--auto-commit`: 해당 실행 산출물(`runs/YYYY-MM-DD`, `runs/YYYY-MM-DD.json`, 선택적으로 `docs/dashboard.html`) 자동 커밋
+
+예시:
+```
+python scripts/run_nightly.py --build-dashboard --auto-commit
+```
 
 ### 3) 아침 발송 (텔레그램 또는 콘솔)
 ```
@@ -137,6 +145,38 @@ python scripts/build_dashboard.py
 ```
 - 출력 파일: `docs/dashboard.html`
 - `data/investment.db` + `runs/*.json` 누적 데이터를 표/그래프로 시각화합니다.
+- 추가로 `runs/news/latest_news_digest.json`이 있으면 뉴스 주제 Top5(요약+링크) 패널이 함께 렌더링됩니다.
+
+### 4-1) 경제 뉴스 시간별 크롤링 + 주제 Top5 요약 저장
+```
+python scripts/run_news_hourly.py --target-total 300 --top-n 5 --build-dashboard
+```
+- 권장 키워드(코스피/코스닥/S&P500/환율/연준/인플레이션/테마 등)로 기사 수집 후 중복 제거하여 최대 300개를 모읍니다.
+- 주제별 기사 수를 카운팅해 상위 5개 주제를 뽑고, 각 주제 대표 기사의 요약 3줄 + 링크를 저장합니다.
+- 저장 경로:
+  - 최신본: `runs/news/latest_news_digest.json`
+  - 이력: `runs/news/history.jsonl`
+
+### 4-2) 뉴스 크롤링 시 자동 커밋
+```
+python scripts/run_news_hourly.py --target-total 300 --top-n 5 --build-dashboard --auto-commit
+```
+- 변경 파일(`runs/news/latest_news_digest.json`, `runs/news/history.jsonl`, `docs/dashboard.html`)만 자동 `git add` 후 커밋합니다.
+- 변경이 없으면 커밋을 건너뜁니다.
+- 원격 push는 자동으로 하지 않습니다.
+
+### 4-3) Windows 작업 스케줄러(1시간 주기) 등록 예시
+PowerShell에서 아래를 1회 실행하면 매시간 0분에 작업이 실행됩니다.
+
+```powershell
+$project = "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트"
+$python = "python"
+$action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -Command `"cd '$project'; $python scripts/run_news_hourly.py --target-total 300 --top-n 5 --build-dashboard --auto-commit`""
+$trigger = New-ScheduledTaskTrigger -Daily -At "00:00"
+$trigger.RepetitionInterval = (New-TimeSpan -Hours 1)
+$trigger.RepetitionDuration = (New-TimeSpan -Days 3650)
+Register-ScheduledTask -TaskName "AIInvestment-NewsHourly" -Action $action -Trigger $trigger -Description "경제 뉴스 시간별 크롤링/대시보드/자동커밋"
+```
 
 
 ### 5) GitHub Actions로 자동 빌드 + Pages 배포

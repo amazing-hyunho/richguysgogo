@@ -6,7 +6,9 @@ from __future__ import annotations
 # so snapshot builder can use fallback 0.0 and record reason in status.
 
 from datetime import date, timedelta
+import json
 import os
+from pathlib import Path
 from typing import Dict, List, Tuple
 import requests
 
@@ -182,7 +184,16 @@ class HttpProvider(IDataProvider):
             return None, f"krx_flow_unavailable: {exc}"
 
     def get_headlines(self, limit: int) -> Tuple[List[str] | None, str | None]:
-        """Fetch headlines using RSS + article-body summarization module."""
+        """Fetch headlines for agents.
+
+        Priority:
+        1) Latest hourly topic digest (`runs/news/latest_news_digest.json`) if available
+        2) Fallback to live RSS (`build_news_digest`)
+        """
+        digest_headlines = _load_latest_topic_digest_headlines(limit=limit)
+        if digest_headlines:
+            return digest_headlines, None
+
         titles, _digest, reason = build_news_digest(query="KOSPI", limit=limit)
         if not titles:
             return None, reason or "no_titles"
@@ -227,3 +238,34 @@ def _extract_json_value(payload: dict, path: tuple) -> float | None:
             return None
         current = current[key]
     return current
+
+
+def _load_latest_topic_digest_headlines(limit: int) -> List[str]:
+    """Load top article titles from hourly topic digest if present."""
+    try:
+        root = Path(__file__).resolve().parents[2]
+        digest_path = root / "runs" / "news" / "latest_news_digest.json"
+        if not digest_path.exists():
+            return []
+        payload = json.loads(digest_path.read_text(encoding="utf-8"))
+        top_articles = payload.get("top_articles", [])
+        if not isinstance(top_articles, list):
+            return []
+
+        headlines: List[str] = []
+        for article in top_articles:
+            if not isinstance(article, dict):
+                continue
+            topic = str(article.get("topic", "")).strip()
+            title = str(article.get("title", "")).strip()
+            if not title:
+                continue
+            if topic:
+                headlines.append(f"[{topic}] {title}"[:200])
+            else:
+                headlines.append(title[:200])
+            if len(headlines) >= max(limit, 1):
+                break
+        return headlines
+    except Exception:
+        return []

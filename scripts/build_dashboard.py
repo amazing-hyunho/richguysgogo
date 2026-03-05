@@ -106,6 +106,26 @@ def load_latest_committee() -> dict[str, object]:
         "ops_guidance": ops_guidance[:3],
     }
 
+
+def load_latest_news_digest() -> dict[str, object]:
+    digest_path = RUNS_DIR / "news" / "latest_news_digest.json"
+    if not digest_path.exists():
+        return {
+            "crawled_at": "-",
+            "total_collected": 0,
+            "topic_counts": [],
+            "top_articles": [],
+        }
+    try:
+        return json.loads(digest_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {
+            "crawled_at": "-",
+            "total_collected": 0,
+            "topic_counts": [],
+            "top_articles": [],
+        }
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     return f"""<!doctype html>
@@ -134,6 +154,9 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     .agent-table td li {{ margin-bottom:2px; }}
     .help-box {{ margin-top:10px; padding:10px 12px; border-radius:10px; background:#0b1220; border:1px solid #334155; font-size:12px; line-height:1.5; color:#cbd5e1; }}
     .help-box strong {{ color:#e2e8f0; }}
+    .news-meta {{ font-size:12px; color:#94a3b8; margin-bottom:8px; }}
+    .news-summary {{ margin:6px 0 0 16px; }}
+    .news-summary li {{ margin-bottom:4px; }}
     @media (max-width: 900px) {{ .chart-grid {{ grid-template-columns:1fr; }} }}
   </style>
 </head>
@@ -190,6 +213,15 @@ def build_dashboard_html(data: dict[str, object]) -> str:
       <table class=\"agent-table\">
         <thead><tr><th>에이전트</th><th>국면 태그</th><th>신뢰도</th><th>의견</th><th>핵심 주장</th></tr></thead>
         <tbody id=\"stanceTable\"></tbody>
+      </table>
+    </div>
+
+    <div class=\"panel full\">
+      <h2>뉴스 주제 Top5 (요약 + 링크)</h2>
+      <div class=\"news-meta\" id=\"newsDigestMeta\"></div>
+      <table>
+        <thead><tr><th>주제</th><th>기사 수</th><th>대표 기사</th><th>요약(3줄)</th><th>링크</th></tr></thead>
+        <tbody id=\"newsDigestTable\"></tbody>
       </table>
     </div>
   </div>
@@ -349,6 +381,32 @@ stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
     <td><ul>${{(s.core_claims || []).map(claim => `<li>${{claim}}</li>`).join('')}}</ul></td>
   </tr>
 `).join('');
+
+const newsDigest = data.latest_news_digest || {{}};
+const newsMeta = document.getElementById('newsDigestMeta');
+const newsTable = document.getElementById('newsDigestTable');
+const crawledAt = newsDigest.crawled_at || '-';
+const totalCollected = newsDigest.total_collected || 0;
+newsMeta.textContent = `최근 크롤링: ${{crawledAt}} / 수집 기사 수: ${{totalCollected}}건`;
+
+const topArticles = newsDigest.top_articles || [];
+if (!topArticles.length) {{
+  newsTable.innerHTML = '<tr><td colspan="5">저장된 뉴스 요약이 없습니다.</td></tr>';
+}} else {{
+  newsTable.innerHTML = topArticles.map(item => {{
+    const lines = (item.summary_lines || []).map(line => `<li>${{line}}</li>`).join('');
+    const safeLink = item.link || '#';
+    return `
+      <tr>
+        <td>${{item.topic || '-'}}</td>
+        <td>${{item.count ?? '-'}}</td>
+        <td>${{item.title || '-'}}</td>
+        <td><ul class="news-summary">${{lines}}</ul></td>
+        <td><a href="${{safeLink}}" target="_blank" rel="noopener noreferrer">원문</a></td>
+      </tr>
+    `;
+  }}).join('');
+}}
 </script>
 </body>
 </html>
@@ -369,6 +427,7 @@ def main() -> None:
             "committee_history": load_committee_history(),
             "latest_stances": load_latest_stances(),
             "latest_committee": load_latest_committee(),
+            "latest_news_digest": load_latest_news_digest(),
         }
     finally:
         conn.close()

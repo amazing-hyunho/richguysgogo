@@ -3,9 +3,11 @@ from __future__ import annotations
 # Nightly runner for daily committee processing.
 
 import os
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
+import argparse
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
@@ -16,8 +18,53 @@ from committee.core.pipeline import DailyPipeline
 from committee.core.snapshot_builder import get_last_snapshot_status
 
 
+def _build_dashboard() -> None:
+    command = [sys.executable, str(ROOT_DIR / "scripts" / "build_dashboard.py")]
+    result = subprocess.run(command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or "dashboard_build_failed")
+    if result.stdout.strip():
+        print(result.stdout.strip())
+
+
+def _auto_commit(market_date: date, include_dashboard: bool) -> None:
+    date_s = market_date.isoformat()
+    targets = [
+        f"runs/{date_s}.json",
+        f"runs/{date_s}",
+    ]
+    if include_dashboard:
+        targets.append("docs/dashboard.html")
+
+    add_command = ["git", "add", *targets]
+    add_result = subprocess.run(add_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if add_result.returncode != 0:
+        raise RuntimeError(add_result.stderr.strip() or "git_add_failed")
+
+    diff_command = ["git", "diff", "--cached", "--quiet"]
+    diff_result = subprocess.run(diff_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if diff_result.returncode == 0:
+        print("[run_nightly] no staged changes, skip commit")
+        return
+    if diff_result.returncode not in (0, 1):
+        raise RuntimeError(diff_result.stderr.strip() or "git_diff_cached_failed")
+
+    msg = f"chore(nightly): update pipeline artifacts for {date_s}"
+    commit_command = ["git", "commit", "-m", msg]
+    commit_result = subprocess.run(commit_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if commit_result.returncode != 0:
+        raise RuntimeError(commit_result.stderr.strip() or "git_commit_failed")
+    if commit_result.stdout.strip():
+        print(commit_result.stdout.strip())
+
+
 def main() -> None:
     """Run nightly pipeline and store run artifacts."""
+    parser = argparse.ArgumentParser(description="야간 파이프라인 실행")
+    parser.add_argument("--build-dashboard", action="store_true", help="실행 후 대시보드 재생성")
+    parser.add_argument("--auto-commit", action="store_true", help="산출물 변경 시 자동 git commit")
+    args = parser.parse_args()
+
     runs_dir = ROOT_DIR / "runs"
     market_date = date.today()
     trace_path = runs_dir / market_date.isoformat() / "llm_traces.jsonl"
@@ -38,6 +85,16 @@ def main() -> None:
     if status:
         keys = ["usdkrw", "usdkrw_pct", "us10y", "vix", "vix3m", "vix_term_spread", "hy_oas", "ig_oas", "fed_balance_sheet", "kospi", "kosdaq", "sp500", "nasdaq", "dow", "flows", "headlines"]
         print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
+
+    if args.build_dashboard:
+        print("[run_nightly] dashboard build: start")
+        _build_dashboard()
+        print("[run_nightly] dashboard build: done")
+
+    if args.auto_commit:
+        print("[run_nightly] auto-commit: start")
+        _auto_commit(market_date=market_date, include_dashboard=args.build_dashboard)
+        print("[run_nightly] auto-commit: done")
 
     print("[run_nightly] step 4/4: done")
 
