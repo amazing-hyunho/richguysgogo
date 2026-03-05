@@ -1,7 +1,7 @@
 {
   "market_summary": {
-    "note": "KOSPI 9.06%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": 9.057747656835907,
+    "note": "KOSPI 10.36%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": 10.35566619679045,
     "usdkrw": 1464.350327
   },
   "flow_summary": {
@@ -17,11 +17,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "[미국지수] [영상] “미국 S&P500, 150년간 연 9%씩 우상향한 유일한 자산” - 주간동아",
+    "[미국지수] 미국증시 S&P500 '반등'..모더나 · COIN · 샌디스크 '껑충' - 초이스경제",
     "[반도체/AI] \"中 반도체 빼라\" 美정부 퇴출 공식화에…삼성·SK '환호' - 한국경제",
-    "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스",
+    "[환율/달러] [뉴욕환시] 달러 사흘만에↓…미-이란 접촉설 속 유가 급등 진정 | - 연합인포맥스",
     "[금리/연준] 미국 국채값 와르르 급락 \"이란 전쟁 패닉\" ...연준 FOMC 금리인하 \"중단\" - 글로벌이코노믹",
-    "[경기/성장] 제2 이라크戰 악몽…세계경제 덮친 'S공포' - 마켓인"
+    "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스"
   ],
   "watchlist": [
     "SPY",
@@ -30,8 +30,8 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": 9.057747656835907,
-      "kosdaq_pct": 10.801888720820903
+      "kospi_pct": 10.35566619679045,
+      "kosdaq_pct": 13.350844200972963
     },
     "us": {
       "sp500_pct": 0.7756031939536089,
@@ -40,7 +40,7 @@
     },
     "fx": {
       "usdkrw": 1464.350327,
-      "usdkrw_pct": 0.030784807355519746
+      "usdkrw_pct": 0.06977889667250314
     },
     "volatility": {
       "vix": 21.149999618530273
@@ -52,8 +52,8 @@
       "us2y": 3.5950000286102295,
       "spread_2_10": 0.4849998950958252,
       "vix": 21.149999618530273,
-      "dxy": 98.81600189208984,
-      "usdkrw": 1462.2099609375,
+      "dxy": 98.83300018310547,
+      "usdkrw": 1462.5699462890625,
       "vix3m": 22.290000915527344,
       "vix_term_spread": 1.1400012969970703
     },
@@ -81,8 +81,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": 9.077,
-    "liquidity_signal_score": 3.959,
+    "breadth_signal_score": 11.001,
+    "liquidity_signal_score": 3.956,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 14,
+    "kospi_5d_cum_pct": -1.619,
+    "kospi_20d_cum_pct": 4.201,
+    "kosdaq_5d_cum_pct": 4.24,
+    "kospi_abs_move_5d_avg": 4.466,
+    "usdkrw_5d_change_pct": 1.684,
+    "vix_5d_avg": 21.176,
+    "reversal_signal": true,
+    "note": "rolling_14d: kospi20d=+4.20%, vol20d=3.92, reversal=true"
   }
 }

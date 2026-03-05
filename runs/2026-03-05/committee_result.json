@@ -5,19 +5,17 @@
       "point": "Majority regime tag: NEUTRAL.",
       "sources": [
         "macro",
+        "flow",
         "sector",
-        "risk",
-        "earnings"
+        "risk"
       ]
     },
     {
       "point": "Shared evidence focus: snapshot.news_headlines.",
       "sources": [
         "earnings",
-        "liquidity",
         "macro",
-        "risk",
-        "sector"
+        "risk"
       ]
     }
   ],
@@ -27,16 +25,8 @@
       "majority": "NEUTRAL",
       "minority": "RISK_ON",
       "minority_agents": [
-        "flow",
-        "breadth"
-      ],
-      "why_it_matters": "Minority risk regime can change positioning boundaries."
-    },
-    {
-      "topic": "Regime tags",
-      "majority": "NEUTRAL",
-      "minority": "RISK_OFF",
-      "minority_agents": [
+        "earnings",
+        "breadth",
         "liquidity"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."

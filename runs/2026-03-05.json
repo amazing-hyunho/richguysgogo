@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-05T02:20:30.263396+00:00",
+  "generated_at": "2026-03-05T02:59:07.343145+00:00",
   "market_date": "2026-03-05",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI 9.06%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
-      "kospi_change_pct": 9.057747656835907,
+      "note": "KOSPI 10.36%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": 10.35566619679045,
       "usdkrw": 1464.350327
     },
     "flow_summary": {
@@ -20,11 +20,11 @@
       "n/a"
     ],
     "news_headlines": [
-      "[미국지수] [영상] “미국 S&P500, 150년간 연 9%씩 우상향한 유일한 자산” - 주간동아",
+      "[미국지수] 미국증시 S&P500 '반등'..모더나 · COIN · 샌디스크 '껑충' - 초이스경제",
       "[반도체/AI] \"中 반도체 빼라\" 美정부 퇴출 공식화에…삼성·SK '환호' - 한국경제",
-      "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스",
+      "[환율/달러] [뉴욕환시] 달러 사흘만에↓…미-이란 접촉설 속 유가 급등 진정 | - 연합인포맥스",
       "[금리/연준] 미국 국채값 와르르 급락 \"이란 전쟁 패닉\" ...연준 FOMC 금리인하 \"중단\" - 글로벌이코노믹",
-      "[경기/성장] 제2 이라크戰 악몽…세계경제 덮친 'S공포' - 마켓인"
+      "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스"
     ],
     "watchlist": [
       "SPY",
@@ -33,8 +33,8 @@
     ],
     "markets": {
       "kr": {
-        "kospi_pct": 9.057747656835907,
-        "kosdaq_pct": 10.801888720820903
+        "kospi_pct": 10.35566619679045,
+        "kosdaq_pct": 13.350844200972963
       },
       "us": {
         "sp500_pct": 0.7756031939536089,
@@ -43,7 +43,7 @@
       },
       "fx": {
         "usdkrw": 1464.350327,
-        "usdkrw_pct": 0.030784807355519746
+        "usdkrw_pct": 0.06977889667250314
       },
       "volatility": {
         "vix": 21.149999618530273
@@ -55,8 +55,8 @@
         "us2y": 3.5950000286102295,
         "spread_2_10": 0.4849998950958252,
         "vix": 21.149999618530273,
-        "dxy": 98.81600189208984,
-        "usdkrw": 1462.2099609375,
+        "dxy": 98.83300018310547,
+        "usdkrw": 1462.5699462890625,
         "vix3m": 22.290000915527344,
         "vix_term_spread": 1.1400012969970703
       },
@@ -84,26 +84,37 @@
     },
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
-      "breadth_signal_score": 9.077,
-      "liquidity_signal_score": 3.959,
+      "breadth_signal_score": 11.001,
+      "liquidity_signal_score": 3.956,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
+    },
+    "cumulative_context": {
+      "lookback_days": 20,
+      "sample_count": 14,
+      "kospi_5d_cum_pct": -1.619,
+      "kospi_20d_cum_pct": 4.201,
+      "kosdaq_5d_cum_pct": 4.24,
+      "kospi_abs_move_5d_avg": 4.466,
+      "usdkrw_5d_change_pct": 1.684,
+      "vix_5d_avg": 21.176,
+      "reversal_signal": true,
+      "note": "rolling_14d: kospi20d=+4.20%, vol20d=3.92, reversal=true"
     }
   },
   "stances": [
     {
       "agent_name": "macro",
       "core_claims": [
-        "KOSPI와 KOSDAQ이 단기적으로 강한 상승세를 보였습니다.",
-        "미국 금리 불확실성과 지정학적 리스크가 여전히 존재합니다.",
-        "환율과 변동성 지표는 경계감을 시사합니다."
+        "Macro tone is balanced.",
+        "No major shocks.",
+        "Stay selective."
       ],
-      "korean_comment": "국내 증시 강세에도 불확실성이 높아 신중한 접근이 필요합니다.",
-      "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ이 단기적으로 강한 상승세를 보였습니다.\",\n    \"미국 금리 불확실성과 지정학적 리스크가 여전히 존재합니다.\",\n    \"환율과 변동성 지표는 경계감을 시사합니다.\"\n  ],\n  \"korean_comment\": \"국내 증시 강세에도 불확실성이 높아 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+      "raw_response": null,
       "regime_tag": "NEUTRAL",
       "evidence_ids": [
-        "snapshot.market_summary.kospi_change_pct",
         "snapshot.market_summary.usdkrw",
-        "snapshot.markets.volatility.vix",
+        "snapshot.market_summary.kospi_change_pct",
         "snapshot.news_headlines"
       ],
       "confidence": "MED"
@@ -111,40 +122,33 @@
     {
       "agent_name": "flow",
       "core_claims": [
-        "KOSPI와 KOSDAQ이 큰 폭으로 상승했습니다.",
-        "시장 유동성과 시장 Breadth 지표가 강세를 보입니다.",
-        "수급 데이터는 부재하지만 전반적으로 위험 선호 분위기입니다."
+        "Flow data unavailable.",
+        "Use neutral stance."
       ],
-      "korean_comment": "국내 증시가 강하게 상승하고 있습니다.",
-      "raw_response": "{\n  \"agent_name\": \"FLOW pre-analysis agent\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ이 큰 폭으로 상승했습니다.\",\n    \"시장 유동성과 시장 Breadth 지표가 강세를 보입니다.\",\n    \"수급 데이터는 부재하지만 전반적으로 위험 선호 분위기입니다.\"\n  ],\n  \"korean_comment\": \"국내 증시가 강하게 상승하고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\",\n    \"snapshot.flow_summary.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
-      "regime_tag": "RISK_ON",
+      "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
       "evidence_ids": [
-        "snapshot.market_summary.kospi_change_pct",
-        "snapshot.markets.kr.kospi_pct",
-        "snapshot.markets.kr.kosdaq_pct",
-        "snapshot.phase_two_signals.breadth_signal_score",
-        "snapshot.phase_two_signals.liquidity_signal_score",
-        "snapshot.flow_summary.note"
+        "snapshot.flow_summary.note",
+        "snapshot.watchlist"
       ],
-      "confidence": "HIGH"
+      "confidence": "LOW"
     },
     {
       "agent_name": "sector",
       "core_claims": [
-        "KOSPI와 KOSDAQ이 큰 폭으로 상승하며 국내 증시 강세가 뚜렷합니다.",
-        "미국 반도체 규제 강화로 삼성, SK 등 국내 반도체 업종에 긍정적 모멘텀이 형성되고 있습니다.",
-        "글로벌 지정학적 리스크와 금리 불확실성은 여전히 경계 요인입니다."
+        "Sector moves are mixed.",
+        "No clear leader.",
+        "Maintain balance."
       ],
-      "korean_comment": "국내 증시 강세와 반도체 업종 모멘텀이 부각됩니다.",
-      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ이 큰 폭으로 상승하며 국내 증시 강세가 뚜렷합니다.\",\n    \"미국 반도체 규제 강화로 삼성, SK 등 국내 반도체 업종에 긍정적 모멘텀이 형성되고 있습니다.\",\n    \"글로벌 지정학적 리스크와 금리 불확실성은 여전히 경계 요인입니다.\"\n  ],\n  \"korean_comment\": \"국내 증시 강세와 반도체 업종 모멘텀이 부각됩니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "korean_comment": "섹터 주도주가 불명확해 균형 유지가 낫습니다.",
+      "raw_response": null,
       "regime_tag": "NEUTRAL",
       "evidence_ids": [
-        "snapshot.market_summary.kospi_change_pct",
-        "snapshot.markets.kr.kosdaq_pct",
-        "snapshot.news_headlines",
-        "snapshot.markets.volatility.vix"
+        "snapshot.sector_moves",
+        "snapshot.watchlist"
       ],
-      "confidence": "HIGH"
+      "confidence": "LOW"
     },
     {
       "agent_name": "risk",
@@ -166,12 +170,13 @@
     {
       "agent_name": "earnings",
       "core_claims": [
-        "실적 모멘텀 신호는 부재하며, 추정치 상향 조정도 뚜렷하지 않음.",
-        "헤드라인 이슈는 단기적 영향에 그치고, 실적 추세 변화는 확인되지 않음."
+        "실적/가이던스 상향 관련 단서가 우세합니다.",
+        "이익 추정치 개선 기대가 유지됩니다.",
+        "주가 상승의 펀더멘털 정당화 가능성이 있습니다."
       ],
-      "korean_comment": "실적 추정치 변화가 없어 관망이 필요합니다.",
-      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 신호는 부재하며, 추정치 상향 조정도 뚜렷하지 않음.\",\n    \"헤드라인 이슈는 단기적 영향에 그치고, 실적 추세 변화는 확인되지 않음.\"\n  ],\n  \"korean_comment\": \"실적 추정치 변화가 없어 관망이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
-      "regime_tag": "NEUTRAL",
+      "korean_comment": "이익 모멘텀이 견조해 위험자산 선호를 지지합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_ON",
       "evidence_ids": [
         "snapshot.phase_two_signals.earnings_signal_score",
         "snapshot.news_headlines",
@@ -182,35 +187,36 @@
     {
       "agent_name": "breadth",
       "core_claims": [
-        "KOSPI와 KOSDAQ 모두 강한 상승세를 보임.",
-        "시장 전반에 걸친 확산(breadth) 신호가 매우 긍정적임."
+        "국내 지수 확산 강도가 미국 대비 우위입니다.",
+        "시장 내부체력(브레드스)이 개선되는 구간입니다.",
+        "추세 추종 전략의 효율이 높아질 수 있습니다."
       ],
-      "korean_comment": "시장 내부 확산이 뚜렷하게 개선되었습니다.",
-      "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ 모두 강한 상승세를 보임.\",\n    \"시장 전반에 걸친 확산(breadth) 신호가 매우 긍정적임.\"\n  ],\n  \"korean_comment\": \"시장 내부 확산이 뚜렷하게 개선되었습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "korean_comment": "브레드스가 개선되어 기술적 추세는 우호적입니다.",
+      "raw_response": null,
       "regime_tag": "RISK_ON",
       "evidence_ids": [
-        "snapshot.markets.kr.kospi_pct",
-        "snapshot.markets.kr.kosdaq_pct",
-        "snapshot.phase_two_signals.breadth_signal_score"
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.markets.volatility.vix",
+        "snapshot.market_summary.note"
       ],
-      "confidence": "HIGH"
+      "confidence": "MED"
     },
     {
       "agent_name": "liquidity",
       "core_claims": [
-        "USD/KRW 환율이 1464로 높고 변동성(VIX)도 21 이상으로 상승했습니다.",
-        "정책 불확실성과 금리 인하 중단 우려로 유동성 환경이 보수적입니다."
+        "달러 압력이 완화되고 금리 부담이 제한적입니다.",
+        "유동성 환경이 위험자산 회복에 우호적입니다.",
+        "정책 충격 가능성이 낮아 비중 확대 여지가 있습니다."
       ],
-      "korean_comment": "환율과 변동성 모두 위험회피 신호를 보이고 있습니다.",
-      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"USD/KRW 환율이 1464로 높고 변동성(VIX)도 21 이상으로 상승했습니다.\",\n    \"정책 불확실성과 금리 인하 중단 우려로 유동성 환경이 보수적입니다.\"\n  ],\n  \"korean_comment\": \"환율과 변동성 모두 위험회피 신호를 보이고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
-      "regime_tag": "RISK_OFF",
+      "korean_comment": "유동성/정책 환경이 우호적이라 리스크온을 지지합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_ON",
       "evidence_ids": [
-        "snapshot.market_summary.usdkrw",
-        "snapshot.markets.volatility.vix",
-        "snapshot.news_headlines",
-        "snapshot.phase_two_signals.liquidity_signal_score"
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.macro.daily.dxy",
+        "snapshot.macro.structural.real_rate"
       ],
-      "confidence": "HIGH"
+      "confidence": "MED"
     }
   ],
   "committee_result": {
@@ -220,19 +226,17 @@
         "point": "Majority regime tag: NEUTRAL.",
         "sources": [
           "macro",
+          "flow",
           "sector",
-          "risk",
-          "earnings"
+          "risk"
         ]
       },
       {
         "point": "Shared evidence focus: snapshot.news_headlines.",
         "sources": [
           "earnings",
-          "liquidity",
           "macro",
-          "risk",
-          "sector"
+          "risk"
         ]
       }
     ],
@@ -242,16 +246,8 @@
         "majority": "NEUTRAL",
         "minority": "RISK_ON",
         "minority_agents": [
-          "flow",
-          "breadth"
-        ],
-        "why_it_matters": "Minority risk regime can change positioning boundaries."
-      },
-      {
-        "topic": "Regime tags",
-        "majority": "NEUTRAL",
-        "minority": "RISK_OFF",
-        "minority_agents": [
+          "earnings",
+          "breadth",
           "liquidity"
         ],
         "why_it_matters": "Minority risk regime can change positioning boundaries."
