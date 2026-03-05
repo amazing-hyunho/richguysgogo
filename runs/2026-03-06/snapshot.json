@@ -1,0 +1,100 @@
+{
+  "market_summary": {
+    "note": "KOSPI 9.63%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": 9.627096282742448,
+    "usdkrw": 1464.350327
+  },
+  "flow_summary": {
+    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+    "foreign_net": 0.0,
+    "institution_net": 0.0,
+    "retail_net": 0.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] [이윤수의 이코노믹스] 장기금리가 시장금리 좌우…기준금리 동결 착시서 벗어나야 - 중앙일보",
+    "[환율/달러] 중동 경유 막히자 ‘유럽여행’도 혼란…유가·환율 쌍폭탄 - 동아일보",
+    "[인플레이션] 연준이 물가지표 척도로 CPI보다 PCE를 선호하는 이유 - CME Group",
+    "[변동성/리스크] [중동전쟁 1주일] 시장 변동성 여전…장기화땐 고유가·고물가·고금리 3高 쇼크 우려 - 아주경제",
+    "[반도체/AI] 젠슨 황 “엔비디아의 오픈AI 1000억달러 투자 철회” - 매일경제"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": 9.627096282742448,
+      "kosdaq_pct": -1.8713193284697165
+    },
+    "us": {
+      "sp500_pct": -0.5646699177523832,
+      "nasdaq_pct": -0.2564859850389442,
+      "dow_pct": -1.6099292133409195
+    },
+    "fx": {
+      "usdkrw": 1464.350327,
+      "usdkrw_pct": 1.273122810858137
+    },
+    "volatility": {
+      "vix": 23.75
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.145999908447266,
+      "us2y": 3.5880000591278076,
+      "spread_2_10": 0.557999849319458,
+      "vix": 23.75,
+      "dxy": 99.052001953125,
+      "usdkrw": 1480.3699951171875,
+      "vix3m": 23.860000610351562,
+      "vix_term_spread": 0.1100006103515625
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 2.8286797395498997,
+      "core_cpi_yoy": 2.9493378374616075,
+      "pce_yoy": 2.901287416285925,
+      "pmi": null,
+      "wage_growth": 37.17,
+      "wage_level": 37.17,
+      "wage_yoy": 3.7109375
+    },
+    "quarterly": {
+      "real_gdp": 24111.83,
+      "gdp_qoq_annualized": 1.4
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.8359999084472656,
+      "hy_oas": 2.97,
+      "ig_oas": 0.82,
+      "fed_balance_sheet": 6628894.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 4.688,
+    "liquidity_signal_score": 2.597,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 15,
+    "kospi_5d_cum_pct": 8.281,
+    "kospi_20d_cum_pct": 13.099,
+    "kosdaq_5d_cum_pct": -13.243,
+    "kospi_abs_move_5d_avg": 6.045,
+    "usdkrw_5d_change_pct": 1.615,
+    "vix_5d_avg": 21.954,
+    "reversal_signal": false,
+    "note": "rolling_15d: kospi20d=+13.10%, vol20d=4.34, reversal=false"
+  }
+}
