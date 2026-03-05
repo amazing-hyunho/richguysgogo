@@ -27,7 +27,22 @@
     .news-meta { font-size:12px; color:#94a3b8; margin-bottom:8px; }
     .news-summary { margin:6px 0 0 16px; }
     .news-summary li { margin-bottom:4px; }
-    @media (max-width: 900px) { .chart-grid { grid-template-columns:1fr; } }
+    .tabs { display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px; }
+    .tab-btn {
+      background:#0b1220; color:#cbd5e1; border:1px solid #334155; border-radius:999px;
+      padding:8px 12px; cursor:pointer; white-space:nowrap; font-size:13px;
+    }
+    .tab-btn.active { background:#1d4ed8; border-color:#1d4ed8; color:#fff; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+    @media (max-width: 900px) {
+      .chart-grid { grid-template-columns:1fr; }
+      .container { padding: 14px; }
+      .card .value { font-size:20px; }
+      table { font-size:12px; }
+      .panel { padding:10px; }
+      .tab-btn { font-size:12px; padding:7px 10px; }
+    }
   </style>
 </head>
 <body>
@@ -35,64 +50,84 @@
     <h1>📊 AI 투자위원회 누적 데이터 대시보드</h1>
     <div class="cards" id="summary-cards"></div>
 
-    <div class="chart-grid">
-      <div class="panel">
-        <h2>주요 지수 일간 변화율 (%)</h2>
-        <canvas id="marketChart"></canvas>
+    <div class="tabs" id="tabs">
+      <button class="tab-btn active" data-tab="overview">개요</button>
+      <button class="tab-btn" data-tab="markets">시장</button>
+      <button class="tab-btn" data-tab="committee">위원회</button>
+      <button class="tab-btn" data-tab="agents">에이전트</button>
+      <button class="tab-btn" data-tab="news">뉴스</button>
+    </div>
+
+    <div class="tab-panel active" data-tab-panel="overview">
+      <div class="chart-grid">
+        <div class="panel">
+          <h2>주요 지수 일간 변화율 (%)</h2>
+          <canvas id="marketChart"></canvas>
+        </div>
+        <div class="panel">
+          <h2>거시 지표 (VIX / USDKRW)</h2>
+          <canvas id="macroChart"></canvas>
+        </div>
       </div>
-      <div class="panel">
-        <h2>거시 지표 (VIX / USDKRW)</h2>
-        <canvas id="macroChart"></canvas>
+      <div class="panel full">
+        <h2>최근 의장 의견 <span class="badge" id="chairDate"></span></h2>
+        <div id="chairConsensus">-</div>
+        <ul id="chairKeyPoints"></ul>
+        <ul id="chairGuidance"></ul>
       </div>
-      <div class="panel">
-        <h2>외국인 순매수 추이</h2>
-        <canvas id="flowChart"></canvas>
-      </div>
-      <div class="panel">
-        <h2>최근 운영 가이던스 (텍스트)</h2>
-        <table>
-          <thead><tr><th>날짜</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
-          <tbody id="guidanceHistoryTable"></tbody>
-        </table>
-        <div class="help-box">
-          <div><strong>가이던스 3단계 의미</strong></div>
-          <div>• <strong>유지(OK)</strong>: 현재 전략 유지(기존 비중 중심)</div>
-          <div>• <strong>주의(CAUTION)</strong>: 신규 진입/추가 매수는 신중, 리스크 한도 강화</div>
-          <div>• <strong>회피(AVOID)</strong>: 해당 행동·자산은 당분간 피하기</div>
+    </div>
+
+    <div class="tab-panel" data-tab-panel="markets">
+      <div class="chart-grid">
+        <div class="panel">
+          <h2>외국인 순매수 추이</h2>
+          <canvas id="flowChart"></canvas>
+        </div>
+        <div class="panel">
+          <h2>최근 운영 가이던스 (텍스트)</h2>
+          <table>
+            <thead><tr><th>날짜</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
+            <tbody id="guidanceHistoryTable"></tbody>
+          </table>
+          <div class="help-box">
+            <div><strong>가이던스 3단계 의미</strong></div>
+            <div>• <strong>유지(OK)</strong>: 현재 전략 유지(기존 비중 중심)</div>
+            <div>• <strong>주의(CAUTION)</strong>: 신규 진입/추가 매수는 신중, 리스크 한도 강화</div>
+            <div>• <strong>회피(AVOID)</strong>: 해당 행동·자산은 당분간 피하기</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="panel full">
-      <h2>최근 의장 의견 <span class="badge" id="chairDate"></span></h2>
-      <div id="chairConsensus">-</div>
-      <ul id="chairKeyPoints"></ul>
-      <ul id="chairGuidance"></ul>
+    <div class="tab-panel" data-tab-panel="committee">
+      <div class="panel full">
+        <h2>최근 회의 합의 내역 (가이던스 내용)</h2>
+        <table>
+          <thead><tr><th>날짜</th><th>의장 합의</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
+          <tbody id="committeeTable"></tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="panel full">
-      <h2>최근 회의 합의 내역 (가이던스 내용)</h2>
-      <table>
-        <thead><tr><th>날짜</th><th>의장 합의</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
-        <tbody id="committeeTable"></tbody>
-      </table>
+    <div class="tab-panel" data-tab-panel="agents">
+      <div class="panel full">
+        <h2>최근 에이전트 의견 <span class="badge" id="stanceDate"></span></h2>
+        <table class="agent-table">
+          <thead><tr><th>에이전트</th><th>국면 태그</th><th>신뢰도</th><th>의견</th><th>핵심 주장</th></tr></thead>
+          <tbody id="stanceTable"></tbody>
+        </table>
+      </div>
     </div>
 
-    <div class="panel full">
-      <h2>최근 에이전트 의견 <span class="badge" id="stanceDate"></span></h2>
-      <table class="agent-table">
-        <thead><tr><th>에이전트</th><th>국면 태그</th><th>신뢰도</th><th>의견</th><th>핵심 주장</th></tr></thead>
-        <tbody id="stanceTable"></tbody>
-      </table>
-    </div>
-
-    <div class="panel full">
-      <h2>뉴스 주제 Top5 (요약 + 링크)</h2>
-      <div class="news-meta" id="newsDigestMeta"></div>
-      <table>
-        <thead><tr><th>주제</th><th>기사 수</th><th>대표 기사</th><th>요약(3줄)</th><th>링크</th></tr></thead>
-        <tbody id="newsDigestTable"></tbody>
-      </table>
+    <div class="tab-panel" data-tab-panel="news">
+      <div class="panel full">
+        <h2>뉴스 주제 Top5 (요약 + 링크)</h2>
+        <div class="news-meta" id="newsDigestMeta"></div>
+        <table>
+          <thead><tr><th>주제</th><th>기사 수</th><th>대표 기사</th><th>요약(3줄)</th><th>링크</th></tr></thead>
+          <tbody id="newsDigestTable"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -277,6 +312,16 @@ if (!topArticles.length) {
     `;
   }).join('');
 }
+
+const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
+const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
+function activateTab(tabId) {
+  tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
+  tabPanels.forEach(panel => panel.classList.toggle('active', panel.dataset.tabPanel === tabId));
+}
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+});
 </script>
 </body>
 </html>

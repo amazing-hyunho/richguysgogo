@@ -69,6 +69,23 @@ def _snapshot_context_block(snapshot: Snapshot) -> str:
     m = snapshot.markets
     top_headlines = snapshot.news_headlines[:20]
     headline_lines = "\n".join([f"- {item}" for item in top_headlines]) if top_headlines else "- (none)"
+    cc = snapshot.cumulative_context
+
+    cumulative_block = ""
+    if cc is not None:
+        cumulative_block = (
+            "\nCumulative Context (use this to avoid one-day noise):\n"
+            f"- lookback_days: {cc.lookback_days}\n"
+            f"- sample_count: {cc.sample_count}\n"
+            f"- KOSPI 5d cumulative: {cc.kospi_5d_cum_pct:+.2f}%\n"
+            f"- KOSPI 20d cumulative: {cc.kospi_20d_cum_pct:+.2f}%\n"
+            f"- KOSDAQ 5d cumulative: {cc.kosdaq_5d_cum_pct:+.2f}%\n"
+            f"- KOSPI 5d abs move avg: {cc.kospi_abs_move_5d_avg:.2f}\n"
+            f"- USD/KRW 5d change: {cc.usdkrw_5d_change_pct:+.2f}%\n"
+            f"- VIX 5d average: {cc.vix_5d_avg:.2f}\n"
+            f"- Reversal signal: {cc.reversal_signal}\n"
+            f"- Cumulative note: {cc.note}\n"
+        )
 
     return (
         "\n\nMarket Context (use this as primary evidence):\n"
@@ -81,6 +98,7 @@ def _snapshot_context_block(snapshot: Snapshot) -> str:
         f"- VIX: {m.volatility.vix:.2f}\n"
         f"- Market note: {snapshot.market_summary.note}\n"
         f"- Flow note: {snapshot.flow_summary.note}\n"
+        f"{cumulative_block}"
         "\nNews Headlines (up to 20):\n"
         f"{headline_lines}\n"
     )

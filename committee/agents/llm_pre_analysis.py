@@ -123,7 +123,8 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                 "instruction": (
                     "Generate one stance JSON for this agent. "
                     "All natural-language text must be in Korean. "
-                    "Include a one-line Korean comment in korean_comment."
+                    "Include a one-line Korean comment in korean_comment. "
+                    "Do not rely only on one-day moves; use cumulative_context for multi-day judgement."
                 ),
                 "allowed_evidence_ids": [
                     "snapshot.market_summary.note",
@@ -144,6 +145,13 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                     "snapshot.phase_two_signals.earnings_signal_score",
                     "snapshot.phase_two_signals.breadth_signal_score",
                     "snapshot.phase_two_signals.liquidity_signal_score",
+                    "snapshot.cumulative_context.kospi_5d_cum_pct",
+                    "snapshot.cumulative_context.kospi_20d_cum_pct",
+                    "snapshot.cumulative_context.kospi_abs_move_5d_avg",
+                    "snapshot.cumulative_context.usdkrw_5d_change_pct",
+                    "snapshot.cumulative_context.vix_5d_avg",
+                    "snapshot.cumulative_context.reversal_signal",
+                    "snapshot.cumulative_context.note",
                 ],
             },
             ensure_ascii=False,

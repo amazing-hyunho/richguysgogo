@@ -194,6 +194,24 @@ class PhaseTwoSignals(BaseModel):
         extra = "forbid"
 
 
+class CumulativeContext(BaseModel):
+    """Rolling market context to avoid one-day overreaction."""
+
+    lookback_days: int = 20
+    sample_count: int = 0
+    kospi_5d_cum_pct: float = 0.0
+    kospi_20d_cum_pct: float = 0.0
+    kosdaq_5d_cum_pct: float = 0.0
+    kospi_abs_move_5d_avg: float = 0.0
+    usdkrw_5d_change_pct: float = 0.0
+    vix_5d_avg: float = 0.0
+    reversal_signal: bool = False
+    note: MediumText = "rolling_context_unavailable"
+
+    class Config:
+        extra = "forbid"
+
+
 class Snapshot(BaseModel):
     """Single shared fact packet for the daily meeting."""
 
@@ -211,6 +229,10 @@ class Snapshot(BaseModel):
     phase_two_signals: Optional[PhaseTwoSignals] = Field(
         default=None,
         description="Derived signals for earnings/breadth/liquidity agents using existing fetched data.",
+    )
+    cumulative_context: Optional[CumulativeContext] = Field(
+        default=None,
+        description="Rolling context computed from recent runs for multi-day regime judgement.",
     )
 
     class Config:

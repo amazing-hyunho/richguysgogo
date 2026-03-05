@@ -102,7 +102,7 @@ def _build_morning_brief(
     db_metrics: dict | None,
     news_digest: dict | None,
 ) -> str:
-    """Build a compact and readable morning brief for Telegram."""
+    """Build a concise morning brief for Telegram."""
     markets = snapshot.get("markets", {}) or {}
     kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
     us = (markets.get("us") or {}) if isinstance(markets, dict) else {}
@@ -111,10 +111,9 @@ def _build_morning_brief(
 
     macro = snapshot.get("macro") or {}
     daily = (macro.get("daily") or {}) if isinstance(macro, dict) else {}
-    monthly = (macro.get("monthly") or {}) if isinstance(macro, dict) else {}
-    quarterly = (macro.get("quarterly") or {}) if isinstance(macro, dict) else {}
     structural = (macro.get("structural") or {}) if isinstance(macro, dict) else {}
     headlines = snapshot.get("news_headlines") or []
+    cumulative = snapshot.get("cumulative_context") or {}
 
     if db_metrics:
         kr = _merge_non_null(kr, db_metrics.get("kr", {}))
@@ -122,8 +121,6 @@ def _build_morning_brief(
         fx = _merge_non_null(fx, db_metrics.get("fx", {}))
         vol = _merge_non_null(vol, db_metrics.get("volatility", {}))
         daily = _merge_non_null(daily, db_metrics.get("daily", {}))
-        monthly = _merge_non_null(monthly, db_metrics.get("monthly", {}))
-        quarterly = _merge_non_null(quarterly, db_metrics.get("quarterly", {}))
         structural = _merge_non_null(structural, db_metrics.get("structural", {}))
 
     digest_headlines = _digest_headlines(news_digest, limit=3)
@@ -138,10 +135,9 @@ def _build_morning_brief(
             f"KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')}, "
             f"USD/KRW {_fmt(fx.get('usdkrw'), 2)}."
         )
-    lines.append("📌 오늘의 데일리 브리프")
-    lines.append(f"- 시장 요약: {summary_note}")
-    lines.append(f"- 상세 리포트: {'포함됨' if report_text.strip() else '미포함'}")
-    lines.append(f"- 대시보드 링크: https://amazing-hyunho.github.io/richguysgogo/")
+    lines.append("📌 오늘 브리프 핵심")
+    lines.append(f"- 요약: {summary_note}")
+    lines.append("- 대시보드: https://amazing-hyunho.github.io/richguysgogo/")
     lines.append("")
 
     lines.append("🧭 의장 결정")
@@ -150,7 +146,7 @@ def _build_morning_brief(
         majority_tag = _extract_majority_tag(committee)
         if majority_tag:
             lines.append(f"- 시장 국면 판단: {majority_tag} ({_regime_kr(majority_tag)})")
-        for g in (committee.get("ops_guidance") or [])[:3]:
+        for g in (committee.get("ops_guidance") or [])[:2]:
             lvl = g.get("level", "")
             txt = _translate_sentence(g.get("text", ""))
             lines.append(f"- 실행 원칙 [{_level_kr(lvl)}]: {txt}")
@@ -166,12 +162,15 @@ def _build_morning_brief(
     lines.append("🗳️ 에이전트 투표 현황")
     vote = _vote_summary(stances)
     lines.append(f"- 전체: RISK_ON={vote['RISK_ON']}, NEUTRAL={vote['NEUTRAL']}, RISK_OFF={vote['RISK_OFF']}")
-    lines.append("- 태그 설명: RISK_ON=위험자산 비중 확대, NEUTRAL=중립/선별 대응, RISK_OFF=방어적 운용")
-    for stance in stances:
+    lines.append("- 태그 설명: RISK_ON=확대, NEUTRAL=중립, RISK_OFF=방어")
+    focus_stances = [s for s in stances if s.get("regime_tag") in {"RISK_ON", "RISK_OFF"}]
+    for stance in focus_stances[:4]:
         agent = _agent_label(stance.get("agent_name"))
         tag = stance.get("regime_tag", "N/A")
         conf = stance.get("confidence", "N/A")
         lines.append(f"- {agent}: {tag} ({_regime_kr(tag)}), 신뢰도 {conf}")
+    if not focus_stances:
+        lines.append("- 특이 신호 없음: 극단 의견(RISK_ON/RISK_OFF) 부재")
     lines.append("")
 
     lines.append("🌍 시장 체크")
@@ -181,21 +180,29 @@ def _build_morning_brief(
     lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
     lines.append("")
 
-    lines.append("🏦 매크로 체크")
+    if isinstance(cumulative, dict) and cumulative:
+        lines.append("🧱 누적 레짐 컨텍스트")
+        lines.append(
+            "- 5일/20일 누적: "
+            f"KOSPI {_fmt_signed(cumulative.get('kospi_5d_cum_pct'), 2, '%')} / "
+            f"{_fmt_signed(cumulative.get('kospi_20d_cum_pct'), 2, '%')}"
+        )
+        lines.append(
+            "- 변동성/환율 누적: "
+            f"|KOSPI| 5일 평균 {_fmt(cumulative.get('kospi_abs_move_5d_avg'), 2)} / "
+            f"USDKRW 5일 {_fmt_signed(cumulative.get('usdkrw_5d_change_pct'), 2, '%')} / "
+            f"VIX 5일 평균 {_fmt(cumulative.get('vix_5d_avg'), 2)}"
+        )
+        lines.append(f"- 급반전 신호: {'감지' if cumulative.get('reversal_signal') else '없음'}")
+        lines.append("")
+
+    lines.append("🏦 매크로 핵심")
     lines.append(
-        f"- 금리: 미10년 {_fmt(daily.get('us10y'), 2, '%')} / 미2년 {_fmt(daily.get('us2y'), 2, '%')} / 2-10 {_fmt(daily.get('spread_2_10'), 2, '%p')}"
+        f"- 금리/달러: 미10년 {_fmt(daily.get('us10y'), 2, '%')}, DXY {_fmt(daily.get('dxy'), 2)}, USD/KRW {_fmt(fx.get('usdkrw'), 2)}"
     )
     lines.append(
-        f"- 달러/변동성: DXY {_fmt(daily.get('dxy'), 2)} / VIX {_fmt(daily.get('vix'), 2)} / VIX3M {_fmt(daily.get('vix3m'), 2)} / 기간스프레드 {_fmt(daily.get('vix_term_spread'), 2)}"
+        f"- 변동성/신용: VIX {_fmt(vol.get('vix'), 2)}, HY {_fmt(structural.get('hy_oas'), 2)}, IG {_fmt(structural.get('ig_oas'), 2)}"
     )
-    lines.append(
-        f"- 크레딧: HY OAS {_fmt(structural.get('hy_oas'), 2)} / IG OAS {_fmt(structural.get('ig_oas'), 2)}"
-    )
-    lines.append(
-        f"- 물가/경기: 실업률 {_fmt(monthly.get('unemployment_rate'), 2, '%')} / CPI {_fmt(monthly.get('cpi_yoy'), 2, '%')} / PMI {_fmt(monthly.get('pmi'), 1)}"
-    )
-    lines.append(f"- 성장: GDP QoQ 연율 {_fmt(quarterly.get('gdp_qoq_annualized'), 2, '%')}")
-    lines.append(f"- 정책: 기준금리 {_fmt(structural.get('fed_funds_rate'), 2, '%')} / 실질금리 {_fmt(structural.get('real_rate'), 2, '%')}")
     lines.append("")
 
     lines.append("📰 헤드라인 기사")
@@ -208,17 +215,14 @@ def _build_morning_brief(
     lines.append("")
 
     if news_digest and isinstance(news_digest.get("top_articles"), list):
-        lines.append("🧩 뉴스 주제 Top5")
-        for item in news_digest.get("top_articles", [])[:5]:
+        lines.append("🧩 뉴스 주제 Top3")
+        for item in news_digest.get("top_articles", [])[:3]:
             if not isinstance(item, dict):
                 continue
             topic = str(item.get("topic", "-"))
             count = item.get("count", "-")
             title = str(item.get("title", "-"))
             lines.append(f"- [{topic}] {count}건: {title}")
-            link = str(item.get("link", "")).strip()
-            if link:
-                lines.append(f"  링크: {link}")
         lines.append("")
 
     if stances:

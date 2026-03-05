@@ -52,6 +52,7 @@ class LLMChairAgent:
             "You are the CHAIR of an investment committee. "
             "Synthesize agent stances into one pragmatic consensus. "
             "Use both market indicators and agent opinions as evidence. "
+            "Do not overfit to one-day moves; prioritize cumulative context when available. "
             "Output JSON only. No markdown. "
             "All natural-language text must be in Korean. "
             "Required keys: consensus, key_points, disagreements, ops_guidance. "
@@ -69,6 +70,9 @@ class LLMChairAgent:
         indicator_context = {
             "market_summary": snapshot.market_summary.note,
             "flow_summary": snapshot.flow_summary.note,
+            "cumulative_context": (
+                snapshot.cumulative_context.model_dump() if snapshot.cumulative_context else None
+            ),
             "indices": {
                 "kospi_pct": m.kr.kospi_pct,
                 "kosdaq_pct": m.kr.kosdaq_pct,

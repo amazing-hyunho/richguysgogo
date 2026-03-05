@@ -7,8 +7,11 @@ from __future__ import annotations
 # Fallback values (0.0) are used because downstream (report, agents) expect numeric fields;
 # missing data is indicated via notes/status rather than omitting the key.
 from datetime import date
+import json
 import os
+from pathlib import Path
 import re
+from statistics import mean, pstdev
 
 from committee.schemas.snapshot import Snapshot
 from committee.tools.fallback_provider import FallbackProvider
@@ -280,6 +283,11 @@ def build_snapshot_real(
             "fed_balance_sheet": fed_balance_sheet,
         },
     )
+    cumulative_context = _compute_cumulative_context(
+        market_date=market_date,
+        markets=markets,
+        lookback_days=20,
+    )
 
     return Snapshot(
         market_summary={
@@ -299,6 +307,7 @@ def build_snapshot_real(
         watchlist=["SPY", "QQQ", "XLK"],
         markets=markets,
         phase_two_signals=phase_two_signals,
+        cumulative_context=cumulative_context,
         macro={
             "daily": {
                 "us10y": us10y,
@@ -390,6 +399,123 @@ def _compute_phase_two_signals(
         "liquidity_signal_score": round(liquidity_score, 3),
         "note": "derived from headlines + markets + macro.daily + macro.structural",
     }
+
+
+def _compute_cumulative_context(market_date: date, markets: dict, lookback_days: int = 20) -> dict:
+    """Build rolling context from prior run snapshots + current market row."""
+    rows = _load_recent_market_rows(market_date=market_date, max_rows=max(lookback_days * 2, 40))
+    current_row = _market_row_from_live(markets=markets, market_date=market_date)
+    rows = [*rows, current_row]
+
+    last_5 = rows[-5:]
+    last_20 = rows[-lookback_days:]
+
+    kospi_5d_cum_pct = round(sum(row["kospi_pct"] for row in last_5), 3)
+    kospi_20d_cum_pct = round(sum(row["kospi_pct"] for row in last_20), 3)
+    kosdaq_5d_cum_pct = round(sum(row["kosdaq_pct"] for row in last_5), 3)
+    kospi_abs_move_5d_avg = round(mean(abs(row["kospi_pct"]) for row in last_5), 3) if last_5 else 0.0
+    vix_5d_avg = round(mean(row["vix"] for row in last_5), 3) if last_5 else 0.0
+    usdkrw_5d_change_pct = round(_pct_change(last_5, key="usdkrw"), 3) if len(last_5) >= 2 else 0.0
+
+    reversal_signal = False
+    if len(rows) >= 2:
+        prev = rows[-2]["kospi_pct"]
+        today = rows[-1]["kospi_pct"]
+        reversal_signal = prev <= -7.0 and today >= 5.0
+
+    kospi_20d_volatility = round(pstdev([row["kospi_pct"] for row in last_20]), 3) if len(last_20) >= 2 else 0.0
+    note = (
+        f"rolling_{len(last_20)}d: kospi20d={kospi_20d_cum_pct:+.2f}%, "
+        f"vol20d={kospi_20d_volatility:.2f}, reversal={str(reversal_signal).lower()}"
+    )
+
+    return {
+        "lookback_days": lookback_days,
+        "sample_count": len(last_20),
+        "kospi_5d_cum_pct": kospi_5d_cum_pct,
+        "kospi_20d_cum_pct": kospi_20d_cum_pct,
+        "kosdaq_5d_cum_pct": kosdaq_5d_cum_pct,
+        "kospi_abs_move_5d_avg": kospi_abs_move_5d_avg,
+        "usdkrw_5d_change_pct": usdkrw_5d_change_pct,
+        "vix_5d_avg": vix_5d_avg,
+        "reversal_signal": reversal_signal,
+        "note": note[:500],
+    }
+
+
+def _repo_root() -> Path:
+    """Resolve repository root from this module location."""
+    return Path(__file__).resolve().parents[2]
+
+
+def _runs_base_dir() -> Path:
+    """Resolve runs base directory from env or repository default."""
+    configured = os.getenv("RUNS_BASE_DIR", "runs").strip()
+    path = Path(configured)
+    if not path.is_absolute():
+        path = _repo_root() / path
+    return path
+
+
+def _load_recent_market_rows(market_date: date, max_rows: int) -> list[dict]:
+    """Load historical market rows from prior run snapshots."""
+    base = _runs_base_dir()
+    if not base.exists():
+        return []
+
+    rows: list[dict] = []
+    market_date_str = market_date.isoformat()
+    for run_dir in sorted(base.iterdir()):
+        if not run_dir.is_dir():
+            continue
+        date_key = run_dir.name
+        if date_key >= market_date_str:
+            continue
+        snapshot_path = run_dir / "snapshot.json"
+        if not snapshot_path.exists():
+            continue
+        try:
+            payload = json.loads(snapshot_path.read_text(encoding="utf-8"))
+            markets = payload.get("markets") or {}
+            kr = markets.get("kr") or {}
+            fx = markets.get("fx") or {}
+            vol = markets.get("volatility") or {}
+            rows.append(
+                {
+                    "date": date_key,
+                    "kospi_pct": float(kr.get("kospi_pct", 0.0)),
+                    "kosdaq_pct": float(kr.get("kosdaq_pct", 0.0)),
+                    "usdkrw": float(fx.get("usdkrw", 0.0)),
+                    "vix": float(vol.get("vix", 0.0)),
+                }
+            )
+        except Exception:
+            continue
+
+    return rows[-max_rows:]
+
+
+def _market_row_from_live(markets: dict, market_date: date) -> dict:
+    """Convert current live market dict to a normalized row."""
+    kr = markets.get("kr") or {}
+    fx = markets.get("fx") or {}
+    vol = markets.get("volatility") or {}
+    return {
+        "date": market_date.isoformat(),
+        "kospi_pct": float(kr.get("kospi_pct", 0.0)),
+        "kosdaq_pct": float(kr.get("kosdaq_pct", 0.0)),
+        "usdkrw": float(fx.get("usdkrw", 0.0)),
+        "vix": float(vol.get("vix", 0.0)),
+    }
+
+
+def _pct_change(rows: list[dict], key: str) -> float:
+    """Calculate percent change between first and last row value."""
+    first = float(rows[0].get(key, 0.0))
+    last = float(rows[-1].get(key, 0.0))
+    if first == 0.0:
+        return 0.0
+    return ((last - first) / abs(first)) * 100.0
 
 
 def build_dummy_snapshot(market_date: date) -> Snapshot:

@@ -24,6 +24,7 @@ from committee.agents.model_profiles import ModelBackend, get_agent_model_map, p
 from committee.agents.risk_stub import RiskStub
 from committee.agents.sector_stub import SectorStub
 from committee.core.report_renderer import build_report, render_report
+from committee.core.regime_tuner import tune_committee_result
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 from committee.core.validators import validate_pipeline
 from committee.schemas.stance import AgentName
@@ -86,6 +87,7 @@ def main() -> None:
         committee_result = chair.run(snapshot, stances)
     else:
         committee_result = chair_stub.run(stances)
+    committee_result = tune_committee_result(snapshot, stances, committee_result)
 
     print("[run_local] step 4/6: building report object...")
     report = build_report(

@@ -20,6 +20,7 @@ from committee.agents.model_profiles import ModelBackend, parse_backend
 from committee.agents.risk_stub import RiskStub
 from committee.agents.sector_stub import SectorStub
 from committee.core.report_renderer import Report, build_report, render_report
+from committee.core.regime_tuner import tune_committee_result
 from committee.core.market_collector import persist_snapshot_metrics
 from committee.core.storage import save_run
 from committee.core.trace_logger import TraceLogger
@@ -72,8 +73,10 @@ def run_committee(snapshot: Snapshot, stances: List[Stance]) -> CommitteeResult:
                 temperature=float(os.getenv("CHAIR_LLM_TEMPERATURE", "0.1")),
             ),
         )
-        return chair.run(snapshot, stances)
-    return chair_stub.run(stances)
+        raw_result = chair.run(snapshot, stances)
+        return tune_committee_result(snapshot, stances, raw_result)
+    raw_result = chair_stub.run(stances)
+    return tune_committee_result(snapshot, stances, raw_result)
 
 
 @dataclass(frozen=True)
