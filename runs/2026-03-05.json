@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-03-05T03:16:55.139664+00:00",
+  "generated_at": "2026-03-05T08:04:29.101633+00:00",
   "market_date": "2026-03-05",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI 9.97%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
-      "kospi_change_pct": 9.969294439623523,
+      "note": "KOSPI 9.63%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": 9.627096282742448,
       "usdkrw": 1464.350327
     },
     "flow_summary": {
@@ -20,11 +20,11 @@
       "n/a"
     ],
     "news_headlines": [
-      "[미국지수] 미국증시 S&P500 '반등'..모더나 · COIN · 샌디스크 '껑충' - 초이스경제",
-      "[반도체/AI] \"中 반도체 빼라\" 美정부 퇴출 공식화에…삼성·SK '환호' - 한국경제",
-      "[환율/달러] [뉴욕환시] 달러 사흘만에↓…미-이란 접촉설 속 유가 급등 진정 | - 연합인포맥스",
-      "[금리/연준] 미국 국채값 와르르 급락 \"이란 전쟁 패닉\" ...연준 FOMC 금리인하 \"중단\" - 글로벌이코노믹",
-      "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스"
+      "[금리/연준] ‘금리 인상’도 언급…FOMC 의사록서 분열 드러낸 연준 - 조선일보",
+      "[환율/달러] 중동 전쟁 충격에 원/달러 환율 장중 1,480원 육박 - 연합뉴스",
+      "[인플레이션] 연준이 물가지표 척도로 CPI보다 PCE를 선호하는 이유 - CME Group",
+      "[반도체/AI] 젠슨 황 “엔비디아의 오픈AI 1000억달러 투자 철회” - 매일경제",
+      "[변동성/리스크] 국채 부진 속 회사채 활황…신용 스프레드 4년來 최저 - sedaily.com"
     ],
     "watchlist": [
       "SPY",
@@ -33,8 +33,8 @@
     ],
     "markets": {
       "kr": {
-        "kospi_pct": 9.969294439623523,
-        "kosdaq_pct": 13.678917460447234
+        "kospi_pct": 9.627096282742448,
+        "kosdaq_pct": -1.8713193284697165
       },
       "us": {
         "sp500_pct": 0.7756031939536089,
@@ -43,7 +43,7 @@
       },
       "fx": {
         "usdkrw": 1464.350327,
-        "usdkrw_pct": 0.18607705779334688
+        "usdkrw_pct": 0.30921628721541033
       },
       "volatility": {
         "vix": 21.149999618530273
@@ -55,8 +55,8 @@
         "us2y": 3.5950000286102295,
         "spread_2_10": 0.4849998950958252,
         "vix": 21.149999618530273,
-        "dxy": 98.86299896240234,
-        "usdkrw": 1464.47998046875,
+        "dxy": 99.02899932861328,
+        "usdkrw": 1466.280029296875,
         "vix3m": 22.290000915527344,
         "vix_term_spread": 1.1400012969970703
       },
@@ -84,21 +84,21 @@
     },
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
-      "breadth_signal_score": 10.971,
-      "liquidity_signal_score": 3.95,
+      "breadth_signal_score": 3.025,
+      "liquidity_signal_score": 3.916,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
     },
     "cumulative_context": {
       "lookback_days": 20,
       "sample_count": 14,
-      "kospi_5d_cum_pct": -2.005,
-      "kospi_20d_cum_pct": 3.815,
-      "kosdaq_5d_cum_pct": 4.568,
-      "kospi_abs_move_5d_avg": 4.389,
+      "kospi_5d_cum_pct": -2.347,
+      "kospi_20d_cum_pct": 3.472,
+      "kosdaq_5d_cum_pct": -10.982,
+      "kospi_abs_move_5d_avg": 4.32,
       "usdkrw_5d_change_pct": 1.684,
       "vix_5d_avg": 21.176,
       "reversal_signal": true,
-      "note": "rolling_14d: kospi20d=+3.81%, vol20d=3.85, reversal=true"
+      "note": "rolling_14d: kospi20d=+3.47%, vol20d=3.79, reversal=true"
     }
   },
   "stances": [
