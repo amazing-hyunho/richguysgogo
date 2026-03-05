@@ -1,7 +1,7 @@
 {
   "market_summary": {
-    "note": "KOSPI -4.03%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": -4.030625286212113,
+    "note": "KOSPI 9.06%, USD/KRW 1464.35. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": 9.057747656835907,
     "usdkrw": 1464.350327
   },
   "flow_summary": {
@@ -17,11 +17,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "[반도체/AI] \"中 반도체 빼라\" 美정부 퇴출 공식화에…삼성·SK '환호' - 한국경제",
     "[미국지수] [영상] “미국 S&P500, 150년간 연 9%씩 우상향한 유일한 자산” - 주간동아",
+    "[반도체/AI] \"中 반도체 빼라\" 美정부 퇴출 공식화에…삼성·SK '환호' - 한국경제",
     "[인플레이션] 유로존 2월 CPI 예비치 1.9% 상승…전망치 상회 - 연합인포맥스",
-    "[환율/달러] [뉴욕환시] 달러 사흘만에↓…미-이란 접촉설 속 유가 급등 진정 | - 연합인포맥스",
-    "[금리/연준] 미국 국채값 와르르 급락 \"이란 전쟁 패닉\" ...연준 FOMC 금리인하 \"중단\" - 글로벌이코노믹"
+    "[금리/연준] 미국 국채값 와르르 급락 \"이란 전쟁 패닉\" ...연준 FOMC 금리인하 \"중단\" - 글로벌이코노믹",
+    "[경기/성장] 제2 이라크戰 악몽…세계경제 덮친 'S공포' - 마켓인"
   ],
   "watchlist": [
     "SPY",
@@ -30,17 +30,17 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": -4.030625286212113,
-      "kosdaq_pct": -4.613693635154706
+      "kospi_pct": 9.057747656835907,
+      "kosdaq_pct": 10.801888720820903
     },
     "us": {
-      "sp500_pct": 0.7756049264286315,
-      "nasdaq_pct": 1.2914639271477883,
-      "dow_pct": 0.4909987456030669
+      "sp500_pct": 0.7756031939536089,
+      "nasdaq_pct": 1.2914553030905007,
+      "dow_pct": 0.49099745223167707
     },
     "fx": {
       "usdkrw": 1464.350327,
-      "usdkrw_pct": -1.3532703794100553
+      "usdkrw_pct": 0.030784807355519746
     },
     "volatility": {
       "vix": 21.149999618530273
@@ -52,8 +52,8 @@
       "us2y": 3.5950000286102295,
       "spread_2_10": 0.4849998950958252,
       "vix": 21.149999618530273,
-      "dxy": 98.81300354003906,
-      "usdkrw": 1463.280029296875,
+      "dxy": 98.81600189208984,
+      "usdkrw": 1462.2099609375,
       "vix3m": 22.290000915527344,
       "vix_term_spread": 1.1400012969970703
     },
@@ -81,8 +81,8 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": -5.175,
-    "liquidity_signal_score": 3.96,
+    "breadth_signal_score": 9.077,
+    "liquidity_signal_score": 3.959,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   }
 }
