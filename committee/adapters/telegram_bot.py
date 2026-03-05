@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import os
 import re
 import time
 from pathlib import Path
@@ -79,25 +78,31 @@ def answer_for_message(text: str) -> str:
     if not stripped:
         return "질문을 입력해 주세요."
 
-    if stripped.startswith("/strategy"):
-        return _handle_strategy_command(stripped)
-
     context = _load_latest_context()
+    if stripped.startswith("/strategy"):
+        return _handle_strategy_command(stripped, context)
+
     return _build_answer_from_context(stripped, context)
 
 
-def _handle_strategy_command(command: str) -> str:
+def _handle_strategy_command(command: str, context: dict) -> str:
     if command == "/strategy show":
         try:
             version, strategy = load_latest_strategy()
         except Exception as exc:  # noqa: BLE001
             return f"전략 조회 실패(안전 fallback): {exc}"
-        if not strategy:
-            return "저장된 전략이 없습니다. 예: /strategy set RISK=CAUTION"
-        lines = [f"전략 버전 v{version}"]
-        for key in sorted(strategy.keys()):
-            lines.append(f"- {key}={strategy[key]}")
-        return "\n".join(lines)
+
+        if strategy:
+            return _format_strategy(strategy=strategy, header=f"전략 버전 v{version}")
+
+        baseline = _derive_strategy_baseline(context)
+        if baseline:
+            return _format_strategy(
+                strategy=baseline,
+                header="저장된 전략이 아직 없습니다. 최신 위원회 결과 기반 기본 전략입니다.",
+                footer="원하면 /strategy set KEY=VALUE 로 확정 저장하세요.",
+            )
+        return "저장된 전략이 아직 없습니다. 예: /strategy set RISK=CAUTION"
 
     if command.startswith("/strategy set"):
         payload = command.replace("/strategy set", "", 1).strip()
@@ -108,10 +113,7 @@ def _handle_strategy_command(command: str) -> str:
             version, strategy = update_strategy(parsed, source="telegram")
         except Exception as exc:  # noqa: BLE001
             return f"전략 저장 실패(안전 fallback): {exc}"
-        lines = [f"전략 저장 완료 v{version}"]
-        for key in sorted(strategy.keys()):
-            lines.append(f"- {key}={strategy[key]}")
-        return "\n".join(lines)
+        return _format_strategy(strategy=strategy, header=f"전략 저장 완료 v{version}")
 
     return "지원 커맨드: /strategy set KEY=VALUE, /strategy show"
 
@@ -128,6 +130,43 @@ def _parse_strategy_changes(payload: str) -> dict[str, str]:
             continue
         changes[k] = v
     return changes
+
+
+def _format_strategy(strategy: dict[str, str], header: str, footer: str = "") -> str:
+    lines = [header]
+    for key in sorted(strategy.keys()):
+        lines.append(f"- {key}={strategy[key]}")
+    if footer:
+        lines.append(footer)
+    return "\n".join(lines)
+
+
+def _derive_strategy_baseline(context: dict) -> dict[str, str]:
+    committee = context.get("committee") if isinstance(context, dict) else {}
+    if not isinstance(committee, dict):
+        return {}
+
+    strategy: dict[str, str] = {}
+    guidance = committee.get("ops_guidance")
+    if isinstance(guidance, list):
+        levels = [str(item.get("level", "")).upper() for item in guidance if isinstance(item, dict)]
+        if "AVOID" in levels:
+            strategy["RISK"] = "DEFENSIVE"
+        elif "CAUTION" in levels:
+            strategy["RISK"] = "CAUTION"
+        elif "OK" in levels:
+            strategy["RISK"] = "OK"
+
+    consensus = str(committee.get("consensus", "")).lower()
+    if "defensive" in consensus or "risk exposure" in consensus:
+        strategy.setdefault("BIAS", "RISK_OFF")
+    elif "neutral" in consensus:
+        strategy.setdefault("BIAS", "NEUTRAL")
+
+    run_name = str(context.get("run", "")).strip()
+    if run_name and run_name != "n/a":
+        strategy["SOURCE_RUN"] = run_name
+    return strategy
 
 
 def _load_latest_context() -> dict:
@@ -170,7 +209,11 @@ def _build_answer_from_context(question: str, context: dict) -> str:
             if strategy:
                 lines.append(f"현재 전략(v{version}): " + ", ".join([f"{k}={v}" for k, v in sorted(strategy.items())]))
             else:
-                lines.append("현재 저장된 전략 없음 (/strategy set 으로 등록 가능)")
+                baseline = _derive_strategy_baseline(context)
+                if baseline:
+                    lines.append("저장 전략 없음. 기본 전략: " + ", ".join([f"{k}={v}" for k, v in sorted(baseline.items())]))
+                else:
+                    lines.append("현재 저장된 전략 없음 (/strategy set 으로 등록 가능)")
         except Exception:
             lines.append("현재 전략 조회 실패 (fallback)")
 

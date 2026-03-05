@@ -126,7 +126,7 @@ python scripts/run_bot.py
 - `TELEGRAM_CHAT_ID`가 설정되면 해당 chat id 목록만 응답하고, 비어 있으면 들어오는 모든 chat에 응답합니다.
 - 지원 커맨드:
   - `/strategy set RISK=CAUTION` (복수 키 가능: `/strategy set RISK=CAUTION HEDGE=ON`)
-  - `/strategy show`
+  - `/strategy show` (저장된 전략이 없으면 최신 committee 결과 기반 기본 전략 안내)
 - 전략 변경 이력은 `data/investment.db`의 `strategy_history` 테이블에 버전으로 저장됩니다.
 
 ---
