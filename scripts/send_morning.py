@@ -116,7 +116,7 @@ def _build_morning_brief(
     cumulative = snapshot.get("cumulative_context") or {}
 
     if db_metrics:
-        kr = _merge_non_null(kr, db_metrics.get("kr", {}))
+        kr = _merge_kr_with_fallback(kr, db_metrics.get("kr", {}))
         us = _merge_non_null(us, db_metrics.get("us", {}))
         fx = _merge_non_null(fx, db_metrics.get("fx", {}))
         vol = _merge_non_null(vol, db_metrics.get("volatility", {}))
@@ -443,6 +443,25 @@ def _merge_non_null(base: dict, overlay: dict) -> dict:
     for key, value in (overlay or {}).items():
         if value is not None:
             result[key] = value
+    return result
+
+
+def _merge_kr_with_fallback(snapshot_kr: dict, db_kr: dict) -> dict:
+    """Prefer snapshot KR values; use DB only for missing/zero fallback."""
+    result = dict(snapshot_kr or {})
+    for key in ("kospi_pct", "kosdaq_pct"):
+        snap_v = result.get(key)
+        db_v = (db_kr or {}).get(key)
+        if snap_v is None and db_v is not None:
+            result[key] = db_v
+            continue
+        try:
+            snap_f = float(snap_v)
+            if snap_f == 0.0 and db_v is not None and abs(float(db_v)) >= 0.05:
+                result[key] = db_v
+        except Exception:
+            if db_v is not None:
+                result[key] = db_v
     return result
 
 

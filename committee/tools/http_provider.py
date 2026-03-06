@@ -56,22 +56,28 @@ class HttpProvider(IDataProvider):
         return None, last_reason
 
     def get_kospi_change_pct(self) -> Tuple[float | None, str | None]:
-        """Fetch KOSPI change percent using a public chart endpoint."""
+        """Fetch KOSPI daily change % using Naver index API (Yahoo fallback)."""
         try:
-            return _yahoo_daily_pct_chart("%5EKS11")
+            return _naver_index_daily_pct("KOSPI")
         except Exception as exc:
-            return None, str(exc)
+            try:
+                return _yahoo_daily_pct_chart("%5EKS11")
+            except Exception:
+                return None, str(exc)
 
     # --- Global markets: KOSDAQ, US indices, USD/KRW pct (same fallback policy). ---
     # Data source: Yahoo Finance chart API (interval=1d, range=2d) for daily pct.
     # If fetch fails we return (None, reason); snapshot builder uses 0.0 and notes reason.
 
     def get_kosdaq_change_pct(self) -> Tuple[float | None, str | None]:
-        """Fetch KOSDAQ daily change % from Yahoo Finance (^KQ11)."""
+        """Fetch KOSDAQ daily change % using Naver index API (Yahoo fallback)."""
         try:
-            return _yahoo_daily_pct_chart("%5EKQ11")
+            return _naver_index_daily_pct("KOSDAQ")
         except Exception as exc:
-            return None, str(exc)
+            try:
+                return _yahoo_daily_pct_chart("%5EKQ11")
+            except Exception:
+                return None, str(exc)
 
     def get_sp500_change_pct(self) -> Tuple[float | None, str | None]:
         """Fetch S&P 500 daily change % from Yahoo Finance (^GSPC)."""
@@ -245,6 +251,48 @@ def _yahoo_daily_pct_chart(symbol: str) -> Tuple[float, None]:
     prev_close, latest_close = closes[-2], closes[-1]
     pct = ((latest_close - prev_close) / prev_close) * 100.0
     return (pct, None)
+
+
+def _naver_index_daily_pct(index_code: str) -> Tuple[float, None]:
+    """Compute daily pct change for KR indices from Naver mobile API.
+
+    Endpoint example:
+    - https://m.stock.naver.com/api/index/KOSPI/price?pageSize=2&page=1
+    """
+    code = (index_code or "").strip().upper()
+    if code not in {"KOSPI", "KOSDAQ"}:
+        raise RuntimeError(f"unsupported_index_code[{code}]")
+
+    url = f"https://m.stock.naver.com/api/index/{code}/price?pageSize=2&page=1"
+    response = requests.get(url, timeout=7, headers={"User-Agent": "Mozilla/5.0"})
+    if response.status_code != 200:
+        raise RuntimeError(f"naver_http_status_{response.status_code}")
+    try:
+        payload = response.json()
+    except Exception as exc:
+        raise RuntimeError(f"naver_json_parse_error: {exc}") from exc
+    if not isinstance(payload, list) or not payload:
+        raise RuntimeError("naver_empty_payload")
+
+    latest = payload[0] or {}
+    ratio_raw = str(latest.get("fluctuationsRatio", "")).replace(",", "").strip()
+    if ratio_raw:
+        try:
+            return float(ratio_raw), None
+        except Exception:
+            pass
+
+    close_raw = str(latest.get("closePrice", "")).replace(",", "").strip()
+    delta_raw = str(latest.get("compareToPreviousClosePrice", "")).replace(",", "").strip()
+    if not close_raw or not delta_raw:
+        raise RuntimeError("naver_missing_price_fields")
+    close = float(close_raw)
+    delta = float(delta_raw)
+    prev_close = close - delta
+    if prev_close == 0:
+        raise RuntimeError("naver_prev_close_zero")
+    pct = (delta / prev_close) * 100.0
+    return pct, None
 
 
 def _extract_json_value(payload: dict, path: tuple) -> float | None:
