@@ -67,19 +67,19 @@
   {
     "agent_name": "earnings",
     "core_claims": [
-      "실적/가이던스 상향 관련 단서가 우세합니다.",
-      "이익 추정치 개선 기대가 유지됩니다.",
-      "주가 상승의 펀더멘털 정당화 가능성이 있습니다."
+      "실적 추정치 방향성이 뚜렷하지 않습니다.",
+      "상향/하향 신호가 혼재되어 있습니다.",
+      "확증 신호 전까지 중립 대응이 적절합니다."
     ],
-    "korean_comment": "이익 모멘텀이 견조해 위험자산 선호를 지지합니다.",
+    "korean_comment": "이익 모멘텀 신호가 혼재되어 중립을 유지합니다.",
     "raw_response": null,
-    "regime_tag": "RISK_ON",
+    "regime_tag": "NEUTRAL",
     "evidence_ids": [
       "snapshot.phase_two_signals.earnings_signal_score",
       "snapshot.news_headlines",
       "snapshot.market_summary.note"
     ],
-    "confidence": "MED"
+    "confidence": "LOW"
   },
   {
     "agent_name": "breadth",

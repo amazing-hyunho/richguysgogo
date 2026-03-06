@@ -1,13 +1,14 @@
 {
-  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "consensus": "Committee maintains a neutral posture with selective positioning.",
   "key_points": [
     {
-      "point": "Majority regime tag: RISK_ON.",
+      "point": "Majority regime tag: NEUTRAL.",
       "sources": [
         "macro",
         "flow",
         "sector",
-        "risk"
+        "risk",
+        "earnings"
       ]
     },
     {
@@ -17,12 +18,6 @@
         "macro",
         "risk"
       ]
-    },
-    {
-      "point": "Stability guardrail applied from confidence-weighted votes and cumulative context.",
-      "sources": [
-        "regime_tuner"
-      ]
     }
   ],
   "disagreements": [
@@ -31,7 +26,6 @@
       "majority": "NEUTRAL",
       "minority": "RISK_ON",
       "minority_agents": [
-        "earnings",
         "breadth",
         "liquidity"
       ],
@@ -41,15 +35,15 @@
   "ops_guidance": [
     {
       "level": "OK",
-      "text": "Lean into confirmed momentum leaders."
+      "text": "Maintain balanced exposure."
     },
     {
       "level": "CAUTION",
-      "text": "Size positions with volatility limits."
+      "text": "Keep risk limits tight."
     },
     {
       "level": "AVOID",
-      "text": "Avoid chasing overstretched breakouts."
+      "text": "Avoid aggressive leverage."
     }
   ]
 }
