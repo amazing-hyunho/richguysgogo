@@ -1,0 +1,270 @@
+{
+  "generated_at": "2026-03-07T22:50:55.395534+00:00",
+  "market_date": "2026-03-08",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI 0.02%, USD/KRW 1483.74. Headlines loaded. Flows unavailable.",
+      "kospi_change_pct": 0.02,
+      "usdkrw": 1483.739519
+    },
+    "flow_summary": {
+      "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+      "foreign_net": 0.0,
+      "institution_net": 0.0,
+      "retail_net": 0.0
+    },
+    "korean_market_flow": null,
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "[금리/연준] 美연준, 올해 마지막 FOMC서 금리 0.25%P↓…내년 전망은 안갯속(종합2보) - 연합뉴스",
+      "[변동성/리스크] [중동전쟁 1주일] 시장 변동성 여전…장기화땐 고유가·고물가·고금리 3高 쇼크 우려 - 아주경제",
+      "[인플레이션] 연준이 물가지표 척도로 CPI보다 PCE를 선호하는 이유 - CME Group",
+      "[환율/달러] 중동 사태 진정 기대에···원·달러 환율, 8.1원 내린 1468.1원 마감 - 서울파이낸스",
+      "[반도체/AI] 젠슨 황 “엔비디아의 오픈AI 1000억달러 투자 철회” - 매일경제"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi_pct": 0.02,
+        "kosdaq_pct": 3.43
+      },
+      "us": {
+        "sp500_pct": -1.327680431463195,
+        "nasdaq_pct": -1.5882290313950715,
+        "dow_pct": -0.9450369243999551
+      },
+      "fx": {
+        "usdkrw": 1483.739519,
+        "usdkrw_pct": 0.150638016171634
+      },
+      "volatility": {
+        "vix": 29.489999771118164
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.132999897003174,
+        "us2y": 3.569999933242798,
+        "spread_2_10": 0.562999963760376,
+        "vix": 29.489999771118164,
+        "dxy": 98.98999786376953,
+        "usdkrw": 1482.5999755859375,
+        "vix3m": 27.559999465942383,
+        "vix_term_spread": -1.9300003051757812
+      },
+      "monthly": {
+        "unemployment_rate": 4.4,
+        "cpi_yoy": 2.8286797395498997,
+        "core_cpi_yoy": 2.9493378374616075,
+        "pce_yoy": 2.901287416285925,
+        "pmi": null,
+        "wage_growth": 37.32,
+        "wage_level": 37.32,
+        "wage_yoy": 3.8397328881469184
+      },
+      "quarterly": {
+        "real_gdp": 24111.83,
+        "gdp_qoq_annualized": 1.4
+      },
+      "structural": {
+        "fed_funds_rate": 3.64,
+        "real_rate": 1.7829998970031737,
+        "hy_oas": 3.0,
+        "ig_oas": 0.82,
+        "fed_balance_sheet": 6628894.0
+      }
+    },
+    "phase_two_signals": {
+      "earnings_signal_score": 0.0,
+      "breadth_signal_score": 3.012,
+      "liquidity_signal_score": -0.417,
+      "note": "derived from headlines + markets + macro.daily + macro.structural"
+    },
+    "cumulative_context": {
+      "lookback_days": 20,
+      "sample_count": 17,
+      "kospi_5d_cum_pct": 0.716,
+      "kospi_20d_cum_pct": 3.532,
+      "kosdaq_5d_cum_pct": -1.861,
+      "kospi_abs_move_5d_avg": 3.732,
+      "usdkrw_5d_change_pct": 0.435,
+      "vix_5d_avg": 25.49,
+      "reversal_signal": false,
+      "note": "rolling_17d: kospi20d=+3.53%, vol20d=3.44, reversal=false"
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "Macro tone is balanced.",
+        "No major shocks.",
+        "Stay selective."
+      ],
+      "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "Flow data unavailable.",
+        "Use neutral stance."
+      ],
+      "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.flow_summary.note",
+        "snapshot.watchlist"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "Sector moves are mixed.",
+        "No clear leader.",
+        "Maintain balance."
+      ],
+      "korean_comment": "섹터 주도주가 불명확해 균형 유지가 낫습니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.sector_moves",
+        "snapshot.watchlist"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "Risk signals stable.",
+        "No acute stress.",
+        "Maintain discipline."
+      ],
+      "korean_comment": "급격한 리스크는 없어 규율을 유지하세요.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "earnings",
+      "core_claims": [
+        "실적 추정치 방향성이 뚜렷하지 않습니다.",
+        "상향/하향 신호가 혼재되어 있습니다.",
+        "확증 신호 전까지 중립 대응이 적절합니다."
+      ],
+      "korean_comment": "이익 모멘텀 신호가 혼재되어 중립을 유지합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.news_headlines",
+        "snapshot.market_summary.note"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "breadth",
+      "core_claims": [
+        "추세 확산과 역추세 신호가 공존합니다.",
+        "기술적 우위가 명확하지 않습니다.",
+        "방향 확정 전까지 균형 비중이 적절합니다."
+      ],
+      "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.markets.volatility.vix",
+        "snapshot.market_summary.note"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "liquidity",
+      "core_claims": [
+        "유동성 지표가 방향성 없이 혼재되어 있습니다.",
+        "정책 민감도는 높지만 확증 신호는 부족합니다.",
+        "과도한 베팅보다 리스크 균형이 유효합니다."
+      ],
+      "korean_comment": "유동성 신호가 혼재되어 중립적 비중 관리가 적절합니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.macro.daily.dxy",
+        "snapshot.macro.structural.real_rate"
+      ],
+      "confidence": "LOW"
+    }
+  ],
+  "committee_result": {
+    "consensus": "Committee maintains a neutral posture with selective positioning.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: NEUTRAL.",
+        "sources": [
+          "macro",
+          "flow",
+          "sector",
+          "risk",
+          "earnings"
+        ]
+      },
+      {
+        "point": "Shared evidence focus: snapshot.news_headlines.",
+        "sources": [
+          "earnings",
+          "macro",
+          "risk"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "NEUTRAL",
+        "minority": "None",
+        "minority_agents": [
+          "none"
+        ],
+        "why_it_matters": "No dissenting regime tags are present."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Maintain balanced exposure."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Keep risk limits tight."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid aggressive leverage."
+      }
+    ]
+  }
+}
