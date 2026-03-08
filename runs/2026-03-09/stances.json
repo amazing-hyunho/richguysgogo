@@ -1,0 +1,118 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "Macro tone is balanced.",
+      "No major shocks.",
+      "Stay selective."
+    ],
+    "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "Flow data unavailable.",
+      "Use neutral stance."
+    ],
+    "korean_comment": "수급 데이터가 없어 중립을 유지합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.flow_summary.note",
+      "snapshot.watchlist"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "Sector moves are mixed.",
+      "No clear leader.",
+      "Maintain balance."
+    ],
+    "korean_comment": "섹터 주도주가 불명확해 균형 유지가 낫습니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.sector_moves",
+      "snapshot.watchlist"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "Risk signals stable.",
+      "No acute stress.",
+      "Maintain discipline."
+    ],
+    "korean_comment": "급격한 리스크는 없어 규율을 유지하세요.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "실적 추정치 방향성이 뚜렷하지 않습니다.",
+      "상향/하향 신호가 혼재되어 있습니다.",
+      "확증 신호 전까지 중립 대응이 적절합니다."
+    ],
+    "korean_comment": "이익 모멘텀 신호가 혼재되어 중립을 유지합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.earnings_signal_score",
+      "snapshot.news_headlines",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "추세 확산과 역추세 신호가 공존합니다.",
+      "기술적 우위가 명확하지 않습니다.",
+      "방향 확정 전까지 균형 비중이 적절합니다."
+    ],
+    "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.markets.volatility.vix",
+      "snapshot.market_summary.note"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "유동성 지표가 방향성 없이 혼재되어 있습니다.",
+      "정책 민감도는 높지만 확증 신호는 부족합니다.",
+      "과도한 베팅보다 리스크 균형이 유효합니다."
+    ],
+    "korean_comment": "유동성 신호가 혼재되어 중립적 비중 관리가 적절합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.liquidity_signal_score",
+      "snapshot.macro.daily.dxy",
+      "snapshot.macro.structural.real_rate"
+    ],
+    "confidence": "LOW"
+  }
+]
