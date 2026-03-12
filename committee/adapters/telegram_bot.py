@@ -7,6 +7,7 @@ from pathlib import Path
 
 import requests
 
+from committee.core.database import get_last_n_market_flow
 from committee.core.strategy_store import load_latest_strategy, update_strategy
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
@@ -81,8 +82,50 @@ def answer_for_message(text: str) -> str:
     context = _load_latest_context()
     if stripped.startswith("/strategy"):
         return _handle_strategy_command(stripped, context)
+    if stripped.startswith("/flow"):
+        return _handle_flow_command(stripped)
+    if _is_foreign_flow_trend_question(stripped):
+        return _format_foreign_flow_trend()
 
     return _build_answer_from_context(stripped, context)
+
+
+def _handle_flow_command(command: str) -> str:
+    if command in {"/flow", "/flow trend"}:
+        return _format_foreign_flow_trend()
+    return "지원 커맨드: /flow trend"
+
+
+def _is_foreign_flow_trend_question(text: str) -> bool:
+    normalized = text.replace(" ", "")
+    keywords = ("외국인", "순매수", "추이")
+    return all(keyword in normalized for keyword in keywords)
+
+
+def _format_foreign_flow_trend(limit: int = 10) -> str:
+    try:
+        rows = get_last_n_market_flow(limit)
+    except Exception as exc:  # noqa: BLE001
+        return f"외국인 순매수 추이 조회 실패(안전 fallback): {exc}"
+
+    valid_rows = [row for row in rows if row.get("foreign_net") is not None]
+    if not valid_rows:
+        return "외국인 순매수 추이 데이터가 아직 없습니다. (market_flow_daily 비어있음)"
+
+    ordered = list(reversed(valid_rows))
+    latest = ordered[-1]
+    latest_value = float(latest.get("foreign_net", 0.0))
+
+    lines = [
+        f"외국인 순매수 추이 (최근 {len(ordered)}영업일, 단위: 억원)",
+        f"최신: {latest.get('date', 'n/a')} {latest_value:+,.0f}억",
+    ]
+
+    for row in ordered:
+        value = float(row.get("foreign_net", 0.0))
+        lines.append(f"- {row.get('date', 'n/a')}: {value:+,.0f}억")
+
+    return "\n".join(lines)
 
 
 def _handle_strategy_command(command: str, context: dict) -> str:
