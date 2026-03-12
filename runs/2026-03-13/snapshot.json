@@ -1,0 +1,100 @@
+{
+  "market_summary": {
+    "note": "KOSPI -0.48%, USD/KRW 1475.66. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": -0.48,
+    "usdkrw": 1475.661968
+  },
+  "flow_summary": {
+    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
+    "foreign_net": 0.0,
+    "institution_net": 0.0,
+    "retail_net": 0.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] [경제프리즘] 미국채 금리를 보면 전쟁의 향방 보인다 - 매일경제TV",
+    "[인플레이션] AI 호황에 IT 물가 급등, 전쟁에 국제 유가 급등...“올해 글로벌 인플레이션 위험 커졌다” - 조선일보",
+    "[반도체/AI] 중동 리스크에도 AI 메모리 수요 견조⋯ “반도체 업황 이상 무” - 브릿지경제",
+    "[변동성/리스크] [미·이란 전쟁 2주] 금융시장 대혼돈…코스피 10%대 급등락·환율 널뛰어 - 연합뉴스",
+    "[환율/달러] [금값 시세] 금·은 동반 하락…달러 강세와 국채금리 상승에 눌렸다 - 핀포인트뉴스"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": -0.48,
+      "kosdaq_pct": 1.02
+    },
+    "us": {
+      "sp500_pct": -1.5227722187785988,
+      "nasdaq_pct": -1.7791538921563852,
+      "dow_pct": -1.559389648539442
+    },
+    "fx": {
+      "usdkrw": 1475.661968,
+      "usdkrw_pct": 0.6435650257561201
+    },
+    "volatility": {
+      "vix": 27.290000915527344
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.2729997634887695,
+      "us2y": 3.6050000190734863,
+      "spread_2_10": 0.6679997444152832,
+      "vix": 27.290000915527344,
+      "dxy": 99.74400329589844,
+      "usdkrw": 1488.780029296875,
+      "vix3m": 26.950000762939453,
+      "vix_term_spread": -0.3400001525878906
+    },
+    "monthly": {
+      "unemployment_rate": 4.4,
+      "cpi_yoy": 2.6645890876940914,
+      "core_cpi_yoy": 2.7335062438778035,
+      "pce_yoy": 2.901287416285925,
+      "pmi": null,
+      "wage_growth": 37.32,
+      "wage_level": 37.32,
+      "wage_yoy": 3.8397328881469184
+    },
+    "quarterly": {
+      "real_gdp": 24111.83,
+      "gdp_qoq_annualized": 1.4
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.8929997634887696,
+      "hy_oas": 3.09,
+      "ig_oas": 0.88,
+      "fed_balance_sheet": 6646344.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 1.89,
+    "liquidity_signal_score": 1.784,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 0.33,
+    "kospi_20d_cum_pct": 3.862,
+    "kosdaq_5d_cum_pct": 3.05,
+    "kospi_abs_move_5d_avg": 2.642,
+    "usdkrw_5d_change_pct": -0.52,
+    "vix_5d_avg": 26.288,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+3.86%, vol20d=3.65, reversal=false"
+  }
+}
