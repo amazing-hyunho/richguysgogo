@@ -146,46 +146,32 @@ class HttpProvider(IDataProvider):
     def get_flows(self) -> Tuple[Dict | None, str | None]:
         """Fetch Korean market flows (investor net buying).
 
-        Architecture note:
-        - This project supports swapping flow sources without changing the pipeline.
-        - Default behavior is **disabled** (return unavailable) because KRX scraping endpoints
-          are not stable and can slow down runs.
-        - Enable a specific source via env:
-            KOREAN_FLOW_SOURCE=KRX   -> use KRX (data.krx.co.kr) best-effort scraping
-            KOREAN_FLOW_SOURCE=NONE  -> disabled (default)
-
-        Returns:
-        - On success: a dict with numeric totals in "억원" (consistent with report label),
-          plus a structured breakdown under `korean_market_flow` for report rendering.
-        - On failure: (None, reason) so snapshot builder can use fallback and record status.
+        Source policy:
+        - KOREAN_FLOW_SOURCE=AUTO (default): try KRX first, then Naver crawl fallback
+        - KOREAN_FLOW_SOURCE=KRX: KRX only
+        - KOREAN_FLOW_SOURCE=NAVER: Naver only
+        - KOREAN_FLOW_SOURCE=NONE/OFF: disabled
         """
-        try:
-            source = os.getenv("KOREAN_FLOW_SOURCE", "NONE").strip().upper()
-            if source in ("", "NONE", "OFF", "DISABLED"):
-                return None, "unavailable"
-            if source != "KRX":
-                return None, f"unavailable(source={source})"
+        source = os.getenv("KOREAN_FLOW_SOURCE", "AUTO").strip().upper()
+        if source in ("", "NONE", "OFF", "DISABLED"):
+            return None, "unavailable"
 
-            from committee.tools.krx_market_flow_provider import get_korean_market_flow_krx
+        if source == "KRX":
+            return _fetch_flows_from_krx()
+        if source == "NAVER":
+            return _fetch_flows_from_naver()
+        if source != "AUTO":
+            return None, f"unavailable(source={source})"
 
-            flow = get_korean_market_flow_krx()
-            markets = (flow or {}).get("market", {})
-            kospi = markets.get("KOSPI", {})
-            kosdaq = markets.get("KOSDAQ", {})
+        # AUTO: best effort with fallback order.
+        krx_data, krx_reason = _fetch_flows_from_krx()
+        if krx_data is not None:
+            return krx_data, None
 
-            # Totals across KOSPI + KOSDAQ (억원, 순매수)
-            foreign_total = int(kospi.get("foreign", 0)) + int(kosdaq.get("foreign", 0))
-            institution_total = int(kospi.get("institution", 0)) + int(kosdaq.get("institution", 0))
-            retail_total = int(kospi.get("individual", 0)) + int(kosdaq.get("individual", 0))
-
-            return {
-                "foreign_net": float(foreign_total),
-                "institution_net": float(institution_total),
-                "retail_net": float(retail_total),
-                "korean_market_flow": flow,
-            }, None
-        except Exception as exc:
-            return None, f"krx_flow_unavailable: {exc}"
+        naver_data, naver_reason = _fetch_flows_from_naver()
+        if naver_data is not None:
+            return naver_data, None
+        return None, f"krx_then_naver_unavailable: {krx_reason}; {naver_reason}"
 
     def get_headlines(self, limit: int) -> Tuple[List[str] | None, str | None]:
         """Fetch headlines for agents.
@@ -303,6 +289,47 @@ def _extract_json_value(payload: dict, path: tuple) -> float | None:
             return None
         current = current[key]
     return current
+
+
+def _fetch_flows_from_krx() -> Tuple[Dict | None, str | None]:
+    """Load flows from KRX provider and normalize output shape."""
+    try:
+        from committee.tools.krx_market_flow_provider import get_korean_market_flow_krx
+
+        flow = get_korean_market_flow_krx()
+        return _build_flow_result(flow), None
+    except Exception as exc:
+        return None, f"krx_flow_unavailable: {exc}"
+
+
+def _fetch_flows_from_naver() -> Tuple[Dict | None, str | None]:
+    """Load flows from Naver crawl provider and normalize output shape."""
+    try:
+        from committee.tools.naver_market_flow_provider import get_korean_market_flow_naver
+
+        flow = get_korean_market_flow_naver()
+        return _build_flow_result(flow), None
+    except Exception as exc:
+        return None, f"naver_flow_unavailable: {exc}"
+
+
+def _build_flow_result(flow: Dict) -> Dict:
+    """Build aggregated totals and attach breakdown payload."""
+    markets = (flow or {}).get("market", {})
+    kospi = markets.get("KOSPI", {})
+    kosdaq = markets.get("KOSDAQ", {})
+
+    # Totals across KOSPI + KOSDAQ (억원, 순매수)
+    foreign_total = int(kospi.get("foreign", 0)) + int(kosdaq.get("foreign", 0))
+    institution_total = int(kospi.get("institution", 0)) + int(kosdaq.get("institution", 0))
+    retail_total = int(kospi.get("individual", 0)) + int(kosdaq.get("individual", 0))
+
+    return {
+        "foreign_net": float(foreign_total),
+        "institution_net": float(institution_total),
+        "retail_net": float(retail_total),
+        "korean_market_flow": flow,
+    }
 
 
 def _load_latest_topic_digest_headlines(limit: int) -> List[str]:
