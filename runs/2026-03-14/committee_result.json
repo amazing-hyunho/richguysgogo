@@ -1,0 +1,56 @@
+{
+  "consensus": "Committee maintains a neutral posture with selective positioning.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: NEUTRAL.",
+      "sources": [
+        "macro",
+        "flow",
+        "risk",
+        "earnings",
+        "breadth"
+      ]
+    },
+    {
+      "point": "Shared evidence focus: snapshot.flow_summary.foreign_net.",
+      "sources": [
+        "breadth",
+        "earnings",
+        "flow",
+        "liquidity",
+        "macro"
+      ]
+    },
+    {
+      "point": "Stability guardrail applied from confidence-weighted votes and cumulative context.",
+      "sources": [
+        "regime_tuner"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "Regime tags",
+      "majority": "RISK_OFF",
+      "minority": "NEUTRAL",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "Minority risk regime can change positioning boundaries."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Maintain balanced exposure."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Keep risk limits tight."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid aggressive leverage."
+    }
+  ]
+}
