@@ -4,7 +4,7 @@
     "core_claims": [
       "Macro tone is balanced.",
       "No major shocks.",
-      "Stay selective."
+      "Flows are mixed."
     ],
     "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
     "raw_response": null,
@@ -12,7 +12,8 @@
     "evidence_ids": [
       "snapshot.market_summary.usdkrw",
       "snapshot.market_summary.kospi_change_pct",
-      "snapshot.news_headlines"
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
     ],
     "confidence": "MED"
   },
@@ -26,8 +27,9 @@
     "raw_response": null,
     "regime_tag": "NEUTRAL",
     "evidence_ids": [
-      "snapshot.flow_summary.note",
-      "snapshot.watchlist"
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.flow_summary.retail_net"
     ],
     "confidence": "LOW"
   },
@@ -43,7 +45,8 @@
     "regime_tag": "NEUTRAL",
     "evidence_ids": [
       "snapshot.sector_moves",
-      "snapshot.watchlist"
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
     ],
     "confidence": "LOW"
   },
@@ -60,7 +63,8 @@
     "evidence_ids": [
       "snapshot.market_summary.usdkrw",
       "snapshot.market_summary.kospi_change_pct",
-      "snapshot.news_headlines"
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
     ],
     "confidence": "MED"
   },
@@ -76,8 +80,9 @@
     "regime_tag": "NEUTRAL",
     "evidence_ids": [
       "snapshot.phase_two_signals.earnings_signal_score",
-      "snapshot.news_headlines",
-      "snapshot.market_summary.note"
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.news_headlines"
     ],
     "confidence": "LOW"
   },
@@ -94,7 +99,8 @@
     "evidence_ids": [
       "snapshot.phase_two_signals.breadth_signal_score",
       "snapshot.markets.volatility.vix",
-      "snapshot.market_summary.note"
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
     ],
     "confidence": "LOW"
   },
@@ -111,7 +117,8 @@
     "evidence_ids": [
       "snapshot.phase_two_signals.liquidity_signal_score",
       "snapshot.macro.daily.dxy",
-      "snapshot.macro.structural.real_rate"
+      "snapshot.macro.structural.real_rate",
+      "snapshot.flow_summary.foreign_net"
     ],
     "confidence": "MED"
   }

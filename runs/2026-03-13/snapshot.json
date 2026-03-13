@@ -1,7 +1,7 @@
 {
   "market_summary": {
-    "note": "KOSPI -1.31%, USD/KRW 1484.65. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": -1.31,
+    "note": "KOSPI -1.52%, USD/KRW 1484.65. Headlines loaded. Flows unavailable.",
+    "kospi_change_pct": -1.52,
     "usdkrw": 1484.646873
   },
   "flow_summary": {
@@ -30,8 +30,8 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": -1.31,
-      "kosdaq_pct": 0.45
+      "kospi_pct": -1.52,
+      "kosdaq_pct": 0.2
     },
     "us": {
       "sp500_pct": -1.5227722187785988,
@@ -40,7 +40,7 @@
     },
     "fx": {
       "usdkrw": 1484.646873,
-      "usdkrw_pct": 0.040301454882530424
+      "usdkrw_pct": 0.05642203683552426
     },
     "volatility": {
       "vix": 27.290000915527344
@@ -52,8 +52,8 @@
       "us2y": 3.6050000190734863,
       "spread_2_10": 0.6679997444152832,
       "vix": 27.290000915527344,
-      "dxy": 99.73200225830078,
-      "usdkrw": 1489.3800048828125,
+      "dxy": 99.73600006103516,
+      "usdkrw": 1489.6199951171875,
       "vix3m": 26.950000762939453,
       "vix_term_spread": -0.3400001525878906
     },
@@ -81,20 +81,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": 1.19,
-    "liquidity_signal_score": 1.787,
+    "breadth_signal_score": 0.96,
+    "liquidity_signal_score": 1.786,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
     "lookback_days": 20,
     "sample_count": 20,
-    "kospi_5d_cum_pct": -0.5,
-    "kospi_20d_cum_pct": 3.032,
-    "kosdaq_5d_cum_pct": 2.48,
-    "kospi_abs_move_5d_avg": 2.808,
+    "kospi_5d_cum_pct": -0.71,
+    "kospi_20d_cum_pct": 2.822,
+    "kosdaq_5d_cum_pct": 2.23,
+    "kospi_abs_move_5d_avg": 2.85,
     "usdkrw_5d_change_pct": 0.086,
     "vix_5d_avg": 26.288,
     "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=+3.03%, vol20d=3.67, reversal=false"
+    "note": "rolling_20d: kospi20d=+2.82%, vol20d=3.67, reversal=false"
   }
 }

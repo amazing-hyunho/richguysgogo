@@ -1,7 +1,7 @@
 # 데일리 AI 투자위원회 리포트
 
 - 시장 기준일: **2026-03-13**
-- 생성 시각(UTC): `2026-03-13T03:13:50.913716+00:00`
+- 생성 시각(UTC): `2026-03-13T03:23:31.713049+00:00`
 
 ## 1) 한눈에 보기
 - **위원회 합의**: 위원회는 엄격한 리스크 통제를 전제로 위험자산 비중 확대를 지지합니다.
@@ -14,20 +14,20 @@
 - [OpsGuidanceLevel.AVOID/회피] 과열된 돌파 구간 추격 매수는 피합니다.
 
 ## 3) 시장/매크로 스냅샷
-- **국내 지수**: KOSPI -1.31% / KOSDAQ +0.45%
+- **국내 지수**: KOSPI -1.52% / KOSDAQ +0.20%
 - **미국 지수**: S&P500 -1.52% / NASDAQ -1.78% / DOW -1.56%
-- **환율/변동성**: USD/KRW 1484.65 (+0.04%) / VIX 27.3
-- **시장 요약 노트**: KOSPI -1.31%, USD/KRW 1484.65. Headlines loaded. Flows unavailable.
+- **환율/변동성**: USD/KRW 1484.65 (+0.06%) / VIX 27.3
+- **시장 요약 노트**: KOSPI -1.52%, USD/KRW 1484.65. Headlines loaded. Flows unavailable.
 - **수급 요약**: 외국인 +0억 / 기관 +0억 / 개인 +0억
-- **일간 매크로**: 미10년 4.27% / 미2년 3.61% / 2-10 0.67%p / DXY 99.73
+- **일간 매크로**: 미10년 4.27% / 미2년 3.61% / 2-10 0.67%p / DXY 99.74
 - **월간 매크로**: 실업률 4.40% / CPI YoY 2.66% / Core CPI YoY 2.73% / PMI n/a
 - **분기/구조**: GDP QoQ 연율 1.40% / 기준금리 3.64% / 실질금리 1.89%
 
 ## 4) 위원회 핵심 포인트
 - 다수 국면 태그: RISK_ON.
   ↳ 출처: `macro, flow, sector, risk, earnings`
-- 공통 근거: snapshot.news_headlines.
-  ↳ 출처: `earnings, macro, risk`
+- 공통 근거: snapshot.flow_summary.foreign_net.
+  ↳ 출처: `breadth, earnings, flow, liquidity, macro`
 - Stability guardrail applied from confidence-weighted votes and cumulative context.
   ↳ 출처: `regime_tuner`
 
@@ -37,7 +37,7 @@
 - 국면 태그: NEUTRAL / 신뢰도: MED
 - 핵심 주장: Macro tone is balanced.
 - 핵심 주장: No major shocks.
-- 핵심 주장: Stay selective.
+- 핵심 주장: Flows are mixed.
 
 ### 수급
 - 한줄 요약: 수급 데이터가 없어 중립을 유지합니다.
