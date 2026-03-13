@@ -17,8 +17,9 @@ class EarningsStub(PreAnalysisAgent):
             if snapshot.phase_two_signals is not None
             else 0.0
         )
+        pro_total = snapshot.flow_summary.foreign_net + snapshot.flow_summary.institution_net
 
-        if derived_score <= -1.0:
+        if derived_score <= -1.0 or pro_total <= -300:
             regime = RegimeTag.RISK_OFF
             confidence = ConfidenceLevel.MED
             claims = [
@@ -27,7 +28,7 @@ class EarningsStub(PreAnalysisAgent):
                 "밸류에이션 리레이팅 압력이 발생할 수 있습니다.",
             ]
             comment = "이익 모멘텀이 약해져 방어적 접근이 유리합니다."
-        elif derived_score >= 1.0 or snapshot.markets.kr.kospi_pct >= 1.0:
+        elif derived_score >= 1.0 or (snapshot.markets.kr.kospi_pct >= 1.0 and pro_total >= 0):
             regime = RegimeTag.RISK_ON
             confidence = ConfidenceLevel.MED
             claims = [
@@ -53,8 +54,9 @@ class EarningsStub(PreAnalysisAgent):
             regime_tag=regime,
             evidence_ids=[
                 "snapshot.phase_two_signals.earnings_signal_score",
+                "snapshot.flow_summary.foreign_net",
+                "snapshot.flow_summary.institution_net",
                 "snapshot.news_headlines",
-                "snapshot.market_summary.note",
             ],
             confidence=confidence,
         )

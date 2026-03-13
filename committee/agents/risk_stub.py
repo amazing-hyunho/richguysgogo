@@ -12,7 +12,11 @@ class RiskStub(PreAnalysisAgent):
     def run(self, snapshot: Snapshot) -> Stance:
         """Return a stance based on news headline text."""
         headline_text = " ".join(snapshot.news_headlines).lower()
-        if "risk" in headline_text or "downgrade" in headline_text:
+        flow_stress = (
+            snapshot.flow_summary.foreign_net + snapshot.flow_summary.institution_net <= -300
+            and snapshot.flow_summary.retail_net >= 0
+        )
+        if "risk" in headline_text or "downgrade" in headline_text or flow_stress:
             regime = RegimeTag.RISK_OFF
             confidence = ConfidenceLevel.HIGH
             claims = ["Risk signals elevated.", "Headline risk rising.", "Reduce exposure."]
@@ -31,7 +35,8 @@ class RiskStub(PreAnalysisAgent):
             evidence_ids=[
                 "snapshot.market_summary.usdkrw",
                 "snapshot.market_summary.kospi_change_pct",
-                "snapshot.news_headlines",
+                "snapshot.flow_summary.foreign_net",
+                "snapshot.flow_summary.institution_net",
             ],
             confidence=confidence,
         )

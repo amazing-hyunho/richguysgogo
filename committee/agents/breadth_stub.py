@@ -18,8 +18,9 @@ class BreadthStub(PreAnalysisAgent):
             else (snapshot.markets.kr.kospi_pct + snapshot.markets.kr.kosdaq_pct) / 2.0
         )
         vix = snapshot.markets.volatility.vix
+        pro_total = snapshot.flow_summary.foreign_net + snapshot.flow_summary.institution_net
 
-        if spread >= 1.2 and vix < 25:
+        if spread >= 1.2 and vix < 25 and pro_total >= 0:
             regime = RegimeTag.RISK_ON
             confidence = ConfidenceLevel.MED
             claims = [
@@ -28,7 +29,7 @@ class BreadthStub(PreAnalysisAgent):
                 "추세 추종 전략의 효율이 높아질 수 있습니다.",
             ]
             comment = "브레드스가 개선되어 기술적 추세는 우호적입니다."
-        elif spread <= -1.2 or vix >= 30:
+        elif spread <= -1.2 or vix >= 30 or pro_total <= -300:
             regime = RegimeTag.RISK_OFF
             confidence = ConfidenceLevel.MED
             claims = [
@@ -55,7 +56,8 @@ class BreadthStub(PreAnalysisAgent):
             evidence_ids=[
                 "snapshot.phase_two_signals.breadth_signal_score",
                 "snapshot.markets.volatility.vix",
-                "snapshot.market_summary.note",
+                "snapshot.flow_summary.foreign_net",
+                "snapshot.flow_summary.institution_net",
             ],
             confidence=confidence,
         )

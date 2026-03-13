@@ -21,13 +21,14 @@ class LiquidityStub(PreAnalysisAgent):
             if snapshot.phase_two_signals is not None
             else 0.0
         )
+        pro_total = snapshot.flow_summary.foreign_net + snapshot.flow_summary.institution_net
 
-        risk_off_signal = derived_score <= -0.8 or (
+        risk_off_signal = derived_score <= -0.8 or pro_total <= -300 or (
             (dxy is not None and dxy >= 105)
             or (real_rate is not None and real_rate >= 2.2)
             or (spread_2_10 is not None and spread_2_10 < -0.2)
         )
-        risk_on_signal = derived_score >= 0.8 or (
+        risk_on_signal = (derived_score >= 0.8 and pro_total >= 0) or (
             (dxy is not None and dxy <= 100)
             and (real_rate is None or real_rate <= 1.5)
             and (spread_2_10 is None or spread_2_10 >= 0)
@@ -70,6 +71,7 @@ class LiquidityStub(PreAnalysisAgent):
                 "snapshot.phase_two_signals.liquidity_signal_score",
                 "snapshot.macro.daily.dxy",
                 "snapshot.macro.structural.real_rate",
+                "snapshot.flow_summary.foreign_net",
             ],
             confidence=confidence,
         )

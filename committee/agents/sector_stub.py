@@ -12,7 +12,8 @@ class SectorStub(PreAnalysisAgent):
     def run(self, snapshot: Snapshot) -> Stance:
         """Return a stance based on sector movement text."""
         sector_text = " ".join(snapshot.sector_moves).lower()
-        if "tech" in sector_text and "firm" in sector_text:
+        pro_total = snapshot.flow_summary.foreign_net + snapshot.flow_summary.institution_net
+        if "tech" in sector_text and "firm" in sector_text and pro_total >= 0:
             regime = RegimeTag.RISK_ON
             confidence = ConfidenceLevel.MED
             claims = ["Growth sectors show strength.", "Tech tone is firm.", "Risk appetite improving."]
@@ -28,6 +29,10 @@ class SectorStub(PreAnalysisAgent):
             core_claims=claims[:3],
             korean_comment=comment,
             regime_tag=regime,
-            evidence_ids=["snapshot.sector_moves", "snapshot.watchlist"],
+            evidence_ids=[
+                "snapshot.sector_moves",
+                "snapshot.flow_summary.foreign_net",
+                "snapshot.flow_summary.institution_net",
+            ],
             confidence=confidence,
         )

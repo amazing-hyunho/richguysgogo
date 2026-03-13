@@ -94,12 +94,17 @@ def init_db(db_path: Path | None = None) -> None:
             CREATE TABLE IF NOT EXISTS market_flow_daily (
                 date TEXT PRIMARY KEY,
                 foreign_net REAL,
+                institution_net REAL,
+                retail_net REAL,
                 foreign_20d REAL,
                 foreign_60d REAL,
                 created_at TEXT
             );
             """
         )
+        # Safe schema migrations for investor flow breakdown columns.
+        _ensure_column_exists(conn, table="market_flow_daily", column="institution_net", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_flow_daily", column="retail_net", column_ddl="REAL")
 
         # stock_daily: stock-level features (composite primary key: date + ticker).
         conn.execute(
@@ -391,6 +396,8 @@ def upsert_market_flow_daily(
     *,
     date: str,
     foreign_net: float | None,
+    institution_net: float | None = None,
+    retail_net: float | None = None,
     foreign_20d: float | None = None,
     foreign_60d: float | None = None,
     db_path: Path | None = None,
@@ -406,12 +413,14 @@ def upsert_market_flow_daily(
         conn.execute(
             """
             INSERT INTO market_flow_daily (
-                date, foreign_net, foreign_20d, foreign_60d, created_at
+                date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d, created_at
             ) VALUES (
-                :date, :foreign_net, :foreign_20d, :foreign_60d, :created_at
+                :date, :foreign_net, :institution_net, :retail_net, :foreign_20d, :foreign_60d, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
                 foreign_net=excluded.foreign_net,
+                institution_net=excluded.institution_net,
+                retail_net=excluded.retail_net,
                 foreign_20d=excluded.foreign_20d,
                 foreign_60d=excluded.foreign_60d,
                 created_at=excluded.created_at;
@@ -420,6 +429,8 @@ def upsert_market_flow_daily(
                 "date": date,
                 # NULL-based missing data: if flows fetch failed/unavailable, store NULL.
                 "foreign_net": None if foreign_net is None else float(foreign_net),
+                "institution_net": None if institution_net is None else float(institution_net),
+                "retail_net": None if retail_net is None else float(retail_net),
                 "foreign_20d": None if foreign_20d is None else float(foreign_20d),
                 "foreign_60d": None if foreign_60d is None else float(foreign_60d),
                 "created_at": created_at,
@@ -629,7 +640,7 @@ def upsert_market_forward(
 
 # --- Rolling calculation helpers (no LLM dependency) ---
 
-_ALLOWED_FLOW_COLUMNS = {"foreign_net", "foreign_20d", "foreign_60d"}
+_ALLOWED_FLOW_COLUMNS = {"foreign_net", "institution_net", "retail_net", "foreign_20d", "foreign_60d"}
 
 
 def get_last_n_market_flow(n: int, db_path: Path | None = None) -> List[Dict[str, Any]]:
@@ -638,7 +649,7 @@ def get_last_n_market_flow(n: int, db_path: Path | None = None) -> List[Dict[str
     with connect(db_path) as conn:
         rows = conn.execute(
             """
-            SELECT date, foreign_net, foreign_20d, foreign_60d, created_at
+            SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d, created_at
             FROM market_flow_daily
             ORDER BY date DESC
             LIMIT :n;
@@ -826,8 +837,8 @@ def migrate_placeholders_to_null(db_path: Path | None = None) -> dict[str, int]:
     - Only touches columns explicitly called out for NULL-based design:
       - market_daily: usdkrw_pct, us10y, vix
       - market_flow_daily: foreign_net, foreign_20d, foreign_60d
-    - For flows, only nullifies rows where the *whole trio* is effectively placeholder
-      (0.0/0.0/0.0 or 0.0 with rollings 0.0/NULL), which strongly indicates "no data".
+    - For flows, only nullifies rows where the investor trio is effectively placeholder
+      (0.0/0.0/0.0 with rollings 0.0/NULL), which strongly indicates "no data".
     """
     init_db(db_path)
     counts: dict[str, int] = {}
@@ -844,13 +855,15 @@ def migrate_placeholders_to_null(db_path: Path | None = None) -> dict[str, int]:
         cur = conn.execute(
             """
             UPDATE market_flow_daily
-            SET foreign_net=NULL, foreign_20d=NULL, foreign_60d=NULL
+            SET foreign_net=NULL, institution_net=NULL, retail_net=NULL, foreign_20d=NULL, foreign_60d=NULL
             WHERE foreign_net=0.0
+              AND (institution_net IS NULL OR institution_net=0.0)
+              AND (retail_net IS NULL OR retail_net=0.0)
               AND (foreign_20d IS NULL OR foreign_20d=0.0)
               AND (foreign_60d IS NULL OR foreign_60d=0.0);
             """
         )
-        counts["market_flow_daily.foreign_*"] = int(cur.rowcount or 0)
+        counts["market_flow_daily.investor_*"] = int(cur.rowcount or 0)
     return counts
 
 

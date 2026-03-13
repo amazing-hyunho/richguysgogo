@@ -70,6 +70,14 @@ class LLMChairAgent:
         indicator_context = {
             "market_summary": snapshot.market_summary.note,
             "flow_summary": snapshot.flow_summary.note,
+            "flow_totals_eok": {
+                "foreign_net": snapshot.flow_summary.foreign_net,
+                "institution_net": snapshot.flow_summary.institution_net,
+                "retail_net": snapshot.flow_summary.retail_net,
+            },
+            "korean_market_flow": (
+                snapshot.korean_market_flow.model_dump() if snapshot.korean_market_flow else None
+            ),
             "cumulative_context": (
                 snapshot.cumulative_context.model_dump() if snapshot.cumulative_context else None
             ),

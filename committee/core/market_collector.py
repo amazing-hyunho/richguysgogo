@@ -40,9 +40,13 @@ def persist_snapshot_metrics(
         vix=vix_db,
     )
     foreign_net_db = snapshot.flow_summary.foreign_net if status.get("flows") == "OK" else None
+    institution_net_db = snapshot.flow_summary.institution_net if status.get("flows") == "OK" else None
+    retail_net_db = snapshot.flow_summary.retail_net if status.get("flows") == "OK" else None
     safe_upsert_market_flow_daily(
         date=market_date.isoformat(),
         foreign_net=foreign_net_db,
+        institution_net=institution_net_db,
+        retail_net=retail_net_db,
     )
 
     if snapshot.macro is None:

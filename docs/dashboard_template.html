@@ -80,7 +80,7 @@
     <div class="tab-panel" data-tab-panel="markets">
       <div class="chart-grid">
         <div class="panel">
-          <h2>외국인 순매수 추이</h2>
+          <h2>투자자별 순매수 추이 (억원)</h2>
           <canvas id="flowChart"></canvas>
         </div>
         <div class="panel">
@@ -200,6 +200,9 @@ function formatMetric(value) {
 const cards = [
   { label: '최근 KOSPI(%)', value: formatMetric(latest(data.market_daily, 'kospi_pct')) },
   { label: '최근 NASDAQ(%)', value: formatMetric(latest(data.market_daily, 'nasdaq_pct')) },
+  { label: '최근 외국인 순매수(억)', value: formatMetric(latest(data.market_flow_daily, 'foreign_net')) },
+  { label: '최근 기관 순매수(억)', value: formatMetric(latest(data.market_flow_daily, 'institution_net')) },
+  { label: '최근 개인 순매수(억)', value: formatMetric(latest(data.market_flow_daily, 'retail_net')) },
   { label: '최근 VIX', value: formatMetric(latest(data.daily_macro, 'vix')) },
   { label: '최근 USD/KRW', value: formatMetric(latest(data.daily_macro, 'usdkrw')) },
   { label: '최근 VIX 기간스프레드', value: formatMetric(latest(data.daily_macro, 'vix_term_spread')) },
@@ -234,7 +237,9 @@ new Chart(document.getElementById('macroChart'), {
 new Chart(document.getElementById('flowChart'), {
   type:'bar',
   data: { labels:data.market_flow_daily.map(r=>r.date), datasets:[
-    { label:'Foreign Net', data:data.market_flow_daily.map(r=>r.foreign_net), backgroundColor:'#c084fc' }
+    { label:'외국인', data:data.market_flow_daily.map(r=>r.foreign_net), backgroundColor:'#c084fc' },
+    { label:'기관', data:data.market_flow_daily.map(r=>r.institution_net), backgroundColor:'#22d3ee' },
+    { label:'개인', data:data.market_flow_daily.map(r=>r.retail_net), backgroundColor:'#f59e0b' }
   ]}
 });
 
