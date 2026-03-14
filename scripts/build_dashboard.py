@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from datetime import date
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -94,14 +95,14 @@ def load_latest_stances() -> dict[str, object]:
 
 
 def load_latest_debate_minutes() -> dict[str, object]:
-    latest_path = max(RUNS_DIR.glob("*.json"), default=None)
-    if latest_path is None:
+    today_path = RUNS_DIR / f"{date.today().isoformat()}.json"
+    if not today_path.exists():
         return {"market_date": "-", "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
 
     try:
-        payload = json.loads(latest_path.read_text(encoding="utf-8"))
+        payload = json.loads(today_path.read_text(encoding="utf-8"))
     except Exception:
-        return {"market_date": latest_path.stem, "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
+        return {"market_date": today_path.stem, "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
 
     debate = payload.get("debate_round") or {}
     minutes = []
@@ -117,7 +118,7 @@ def load_latest_debate_minutes() -> dict[str, object]:
         )
 
     return {
-        "market_date": payload.get("market_date", latest_path.stem),
+        "market_date": payload.get("market_date", today_path.stem),
         "enabled": bool(debate),
         "round_index": debate.get("round_index"),
         "facilitator_note": debate.get("facilitator_note", ""),
