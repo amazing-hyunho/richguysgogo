@@ -10,6 +10,7 @@ from typing import List
 from pydantic import BaseModel, Field
 
 from committee.schemas.committee_result import CommitteeResult
+from committee.schemas.debate import DebateRound
 from committee.schemas.snapshot import Snapshot
 from committee.schemas.stance import Stance
 
@@ -20,6 +21,7 @@ class Report(BaseModel):
     market_date: str = Field(..., description="Market date (YYYY-MM-DD).")
     snapshot: Snapshot
     stances: List[Stance]
+    debate_round: DebateRound | None = None
     committee_result: CommitteeResult
 
     class Config:
@@ -31,6 +33,7 @@ def build_report(
     snapshot: Snapshot,
     stances: List[Stance],
     committee_result: CommitteeResult,
+    debate_round: DebateRound | None = None,
 ) -> Report:
     """Build a report from pipeline artifacts."""
     return Report(
@@ -38,6 +41,7 @@ def build_report(
         market_date=market_date,
         snapshot=snapshot,
         stances=stances,
+        debate_round=debate_round,
         committee_result=committee_result,
     )
 
@@ -141,7 +145,20 @@ def build_report_markdown(report: Report) -> str:
             lines.append(f"- 핵심 주장: {claim}")
         lines.append("")
 
-    lines.extend(["## 6) 이견 사항"])
+    lines.extend(["## 6) 에이전트 회의록(1라운드)"])
+    if report.debate_round is None:
+        lines.append("- 비활성화됨 (USE_AGENT_DEBATE=1 설정 시 활성화)")
+    else:
+        lines.append(f"- 라운드: {report.debate_round.round_index}")
+        lines.append(f"- 진행 메모: {report.debate_round.facilitator_note}")
+        for minute in report.debate_round.minutes:
+            lines.append(
+                f"- [{minute.speaker_label}] {minute.summary}"
+            )
+            lines.append(f"  - 참조 근거: {', '.join(minute.references)}")
+        lines.append(f"- 라운드 결론: {report.debate_round.round_conclusion}")
+
+    lines.extend(["", "## 7) 이견 사항"])
     if not report.committee_result.disagreements:
         lines.append("- 이견 없음")
     else:
@@ -152,7 +169,7 @@ def build_report_markdown(report: Report) -> str:
             )
             lines.append(f"  - 의미: {_translate_sentence(disagreement.why_it_matters)}")
 
-    lines.extend(["", "## 7) AI 원문 응답 (디버깅/검토용)"])
+    lines.extend(["", "## 8) AI 원문 응답 (디버깅/검토용)"])
     for stance in report.stances:
         agent_label = _agent_label(stance.agent_name.value)
         lines.append(f"### {agent_label}")
@@ -210,14 +227,14 @@ def _translate_sentence(text: str) -> str:
 
 
 def _agent_label(agent_name: str) -> str:
-    """Map agent identifiers to Korean labels."""
+    """Map agent identifiers to 담당자 labels."""
     mapping = {
-        "macro": "매크로",
-        "flow": "수급",
-        "sector": "섹터",
-        "risk": "리스크",
-        "earnings": "이익모멘텀",
-        "breadth": "브레드스",
-        "liquidity": "유동성",
+        "macro": "매크로 담당자",
+        "flow": "수급 담당자",
+        "sector": "섹터 담당자",
+        "risk": "리스크 담당자",
+        "earnings": "이익모멘텀 담당자",
+        "breadth": "브레드스 담당자",
+        "liquidity": "유동성 담당자",
     }
     return mapping.get(agent_name, agent_name)
