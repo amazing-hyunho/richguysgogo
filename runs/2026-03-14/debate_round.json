@@ -1,0 +1,89 @@
+{
+  "round_index": 1,
+  "facilitator_note": "각 담당자가 핵심 근거를 교차 점검하고 단기 노이즈 과잉해석을 경계하는 데 합의했습니다.",
+  "minutes": [
+    {
+      "speaker": "macro",
+      "speaker_label": "매크로 담당자",
+      "summary": "매크로 담당자는 '변동성 경고가 있어 방어적 접근이 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "flow",
+      "speaker_label": "수급 담당자",
+      "summary": "수급 담당자는 '수급 역풍이 커져 방어적 대응이 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.flow_summary.retail_net"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "sector",
+      "speaker_label": "섹터 담당자",
+      "summary": "섹터 담당자는 '섹터 주도주가 불명확해 균형 유지가 낫습니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.sector_moves",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "NEUTRAL"
+    },
+    {
+      "speaker": "risk",
+      "speaker_label": "리스크 담당자",
+      "summary": "리스크 담당자는 '리스크 신호가 높아 노출 축소가 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "earnings",
+      "speaker_label": "이익모멘텀 담당자",
+      "summary": "이익모멘텀 담당자는 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.news_headlines"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "breadth",
+      "speaker_label": "브레드스 담당자",
+      "summary": "브레드스 담당자는 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.markets.volatility.vix",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "liquidity",
+      "speaker_label": "유동성 담당자",
+      "summary": "유동성 담당자는 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.",
+      "references": [
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.macro.daily.dxy",
+        "snapshot.macro.structural.real_rate",
+        "snapshot.flow_summary.foreign_net"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    }
+  ],
+  "round_conclusion": "1라운드 회의록 기준으로 근거 정합성 점검을 마쳤고 최종 합의는 의장이 종합합니다."
+}
