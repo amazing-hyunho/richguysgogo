@@ -1,7 +1,7 @@
 # 데일리 AI 투자위원회 리포트
 
 - 시장 기준일: **2026-03-14**
-- 생성 시각(UTC): `2026-03-14T08:21:11.133728+00:00`
+- 생성 시각(UTC): `2026-03-14T08:32:34.269418+00:00`
 
 ## 1) 한눈에 보기
 - **위원회 합의**: 위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.
@@ -9,9 +9,9 @@
 - **다수 국면**: RISK_OFF
 
 ## 2) 운영 가이드
-- [OpsGuidanceLevel.OK/유지] 노출을 균형 있게 유지합니다.
-- [OpsGuidanceLevel.CAUTION/주의] 리스크 한도를 엄격히 유지합니다.
-- [OpsGuidanceLevel.AVOID/회피] 과도한 레버리지는 피합니다.
+- [OK/유지] 노출을 균형 있게 유지합니다.
+- [CAUTION/주의] 리스크 한도를 엄격히 유지합니다.
+- [AVOID/회피] 과도한 레버리지는 피합니다.
 
 ## 3) 시장/매크로 스냅샷
 - **국내 지수**: KOSPI -1.72% / KOSDAQ +0.40%
@@ -83,22 +83,23 @@
 
 ## 6) 에이전트 회의록(1라운드)
 - 라운드: 1
-- 진행 메모: 각 담당자가 핵심 근거를 교차 점검하고 단기 노이즈 과잉해석을 경계하는 데 합의했습니다.
-- [매크로 담당자] 매크로 담당자는 '변동성 경고가 있어 방어적 접근이 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- 지표 활용 체크: 7/7명이 수치형 지표 근거를 인용했습니다.
+- 진행 메모: 오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.
+- [매크로 담당자] 저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1496.54, kospi_change_pct=-1.72%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [수급 담당자] 수급 담당자는 '수급 역풍이 커져 방어적 대응이 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- [수급 담당자] 저는 수급 담당자 입장에서 '수급 역풍이 커져 방어적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-15331억, institution_net=-7908억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.flow_summary.retail_net
-- [섹터 담당자] 섹터 담당자는 '섹터 주도주가 불명확해 균형 유지가 낫습니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- [섹터 담당자] 저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-15331억, institution_net=-7908억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.sector_moves, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [리스크 담당자] 리스크 담당자는 '리스크 신호가 높아 노출 축소가 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- [리스크 담당자] 저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1496.54, kospi_change_pct=-1.72%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [이익모멘텀 담당자] 이익모멘텀 담당자는 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- [이익모멘텀 담당자] 저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-15331억, institution_net=-7908억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.earnings_signal_score, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.news_headlines
-- [브레드스 담당자] 브레드스 담당자는 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- [브레드스 담당자] 저는 브레드스 담당자 입장에서 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 vix=27.2, foreign_net=-15331억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.breadth_signal_score, snapshot.markets.volatility.vix, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [유동성 담당자] 유동성 담당자는 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.'를 유지하며 공통 근거(snapshot.flow_summary.foreign_net) 재확인을 요청했습니다.
+- [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.' 의견을 유지합니다. 근거 숫자는 dxy=100.50, real_rate=1.92%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.liquidity_signal_score, snapshot.macro.daily.dxy, snapshot.macro.structural.real_rate, snapshot.flow_summary.foreign_net
-- 라운드 결론: 1라운드 회의록 기준으로 근거 정합성 점검을 마쳤고 최종 합의는 의장이 종합합니다.
+- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI -1.72%, USD/KRW 1496.54(+0.59%), VIX 27.2, 외국인 -15331억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다.
 
 ## 7) 이견 사항
 - 국면 태그: 다수=RISK_OFF, 소수=NEUTRAL, 에이전트=[sector]

@@ -149,7 +149,15 @@ def build_report_markdown(report: Report) -> str:
     if report.debate_round is None:
         lines.append("- 비활성화됨 (USE_AGENT_DEBATE=1 설정 시 활성화)")
     else:
+        metric_minutes = sum(
+            1
+            for minute in report.debate_round.minutes
+            if any(_has_numeric_payload(ref) for ref in minute.references)
+        )
         lines.append(f"- 라운드: {report.debate_round.round_index}")
+        lines.append(
+            f"- 지표 활용 체크: {metric_minutes}/{len(report.debate_round.minutes)}명이 수치형 지표 근거를 인용했습니다."
+        )
         lines.append(f"- 진행 메모: {report.debate_round.facilitator_note}")
         for minute in report.debate_round.minutes:
             lines.append(
@@ -238,3 +246,14 @@ def _agent_label(agent_name: str) -> str:
         "liquidity": "유동성 담당자",
     }
     return mapping.get(agent_name, agent_name)
+
+
+def _has_numeric_payload(reference: str) -> bool:
+    numeric_reference_prefixes = (
+        "snapshot.flow_summary.",
+        "snapshot.market_summary.",
+        "snapshot.markets.",
+        "snapshot.macro.",
+        "snapshot.phase_two_signals.",
+    )
+    return reference.startswith(numeric_reference_prefixes)
