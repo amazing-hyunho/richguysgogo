@@ -39,7 +39,7 @@ Chair가 규칙 기반으로 합의를 도출한 결과입니다.
 - ops_guidance: OK/CAUTION/AVOID 3단계
 
 ### 3-1) Debate (옵션)
-- `USE_AGENT_DEBATE=1`일 때, 에이전트 간 1라운드 상호검토를 수행합니다.
+- `USE_AGENT_DEBATE=1` 환경 변수를 설정했을 때, 에이전트 간 1라운드 상호검토를 수행합니다.
 - 각 에이전트 발언은 회의록(`speaker_label`, `summary`, `references`) 형식으로 저장됩니다.
 - `RISK_ON/RISK_OFF/NEUTRAL` 태그는 내부 필드(`internal_regime_tag`)로만 유지하고, 회의록 화면에는 노출하지 않습니다.
 - 결과는 `runs/YYYY-MM-DD/debate_round.json`으로 저장됩니다.
