@@ -16,6 +16,7 @@
 ```
 Snapshot 생성
   -> Pre-Analysis (에이전트 Stance)
+    -> Debate 1라운드 (옵션)
     -> Chair 합의 (CommitteeResult)
       -> Report 생성/저장
 ```
@@ -36,6 +37,12 @@ Chair가 규칙 기반으로 합의를 도출한 결과입니다.
 - key_points: 근거 출처 포함
 - disagreements: minority 정보 포함
 - ops_guidance: OK/CAUTION/AVOID 3단계
+
+### 3-1) Debate (옵션)
+- `USE_AGENT_DEBATE=1` 환경 변수를 설정했을 때, 에이전트 간 1라운드 상호검토를 수행합니다.
+- 각 에이전트 발언은 회의록(`speaker_label`, `summary`, `references`) 형식으로 저장됩니다.
+- `RISK_ON/RISK_OFF/NEUTRAL` 태그는 내부 필드(`internal_regime_tag`)로만 유지하고, 회의록 화면에는 노출하지 않습니다.
+- 결과는 `runs/YYYY-MM-DD/debate_round.json`으로 저장됩니다.
 
 ### 4) Report
 Snapshot + Stance + CommitteeResult를 묶은 최종 리포트입니다.
@@ -79,7 +86,7 @@ docs/           # GitHub Pages 대시보드 (dashboard.html)
   실패 사유는 note에 기록됨  
   또한 Phase2에서 `phase_two_signals`(earnings/breadth/liquidity 파생 점수)를 **기존 수집 지표만으로 계산**해 Snapshot에 포함
 - **pipeline.py**  
-  Snapshot → Stances → CommitteeResult → Report 생성
+  Snapshot → Stances → (옵션) Debate → CommitteeResult → Report 생성
 - **validators.py**  
   스키마/길이 제한/금지 문구/티커 검증 등 안전장치
 - **report_renderer.py**  

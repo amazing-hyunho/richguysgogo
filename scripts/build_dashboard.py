@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import sqlite3
+from datetime import date
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -16,6 +17,20 @@ DB_PATH = ROOT_DIR / "data" / "investment.db"
 RUNS_DIR = ROOT_DIR / "runs"
 OUTPUT_PATH = ROOT_DIR / "docs" / "dashboard.html"
 TEMPLATE_PATH = ROOT_DIR / "docs" / "dashboard_template.html"
+
+AGENT_OWNER_LABELS = {
+    "macro": "매크로 담당자",
+    "flow": "수급 담당자",
+    "sector": "섹터 담당자",
+    "risk": "리스크 담당자",
+    "earnings": "이익모멘텀 담당자",
+    "breadth": "브레드스 담당자",
+    "liquidity": "유동성 담당자",
+}
+
+
+def map_agent_owner(agent_name: str) -> str:
+    return AGENT_OWNER_LABELS.get(agent_name, f"{agent_name} 담당자")
 
 
 def fetch_rows(conn: sqlite3.Connection, query: str) -> list[dict[str, object]]:
@@ -66,7 +81,7 @@ def load_latest_stances() -> dict[str, object]:
         stances.append(
             {
                 "agent_name": stance.get("agent_name", "-"),
-                "regime_tag": stance.get("regime_tag", "-"),
+                "agent_owner": map_agent_owner(stance.get("agent_name", "")),
                 "confidence": stance.get("confidence", "-"),
                 "korean_comment": stance.get("korean_comment", ""),
                 "core_claims": stance.get("core_claims", []),
@@ -76,6 +91,39 @@ def load_latest_stances() -> dict[str, object]:
     return {
         "market_date": payload.get("market_date", latest_path.stem),
         "stances": stances,
+    }
+
+
+def load_latest_debate_minutes() -> dict[str, object]:
+    today_path = RUNS_DIR / f"{date.today().isoformat()}.json"
+    if not today_path.exists():
+        return {"market_date": "-", "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
+
+    try:
+        payload = json.loads(today_path.read_text(encoding="utf-8"))
+    except Exception:
+        return {"market_date": today_path.stem, "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
+
+    debate = payload.get("debate_round") or {}
+    minutes = []
+    for minute in debate.get("minutes", []):
+        speaker = minute.get("speaker", "")
+        minutes.append(
+            {
+                "speaker": speaker,
+                "speaker_label": minute.get("speaker_label") or map_agent_owner(speaker),
+                "summary": minute.get("summary", ""),
+                "references": minute.get("references", []),
+            }
+        )
+
+    return {
+        "market_date": payload.get("market_date", today_path.stem),
+        "enabled": bool(debate),
+        "round_index": debate.get("round_index"),
+        "facilitator_note": debate.get("facilitator_note", ""),
+        "round_conclusion": debate.get("round_conclusion", ""),
+        "minutes": minutes,
     }
 
 
@@ -152,6 +200,7 @@ def main() -> None:
             "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
             "committee_history": load_committee_history(),
             "latest_stances": load_latest_stances(),
+            "latest_debate_minutes": load_latest_debate_minutes(),
             "latest_committee": load_latest_committee(),
             "latest_news_digest": load_latest_news_digest(),
         }

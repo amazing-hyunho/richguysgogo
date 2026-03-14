@@ -7,6 +7,7 @@ from dataclasses import dataclass
 
 from committee.agents.chair_stub import ChairStub
 from committee.schemas.committee_result import CommitteeResult
+from committee.schemas.debate import DebateRound
 from committee.schemas.snapshot import Snapshot
 from committee.schemas.stance import Stance
 from committee.tools.openai_chat import chat_completion, load_openai_config
@@ -27,13 +28,13 @@ class LLMChairAgent:
         self.fallback_agent = fallback_agent
         self.options = options
 
-    def run(self, snapshot: Snapshot, stances: list[Stance]) -> CommitteeResult:
+    def run(self, snapshot: Snapshot, stances: list[Stance], debate_round: DebateRound | None = None) -> CommitteeResult:
         """Return a strict CommitteeResult with safe fallback on any error."""
 
         try:
             config = load_openai_config()
             system_prompt = self._system_prompt()
-            user_prompt = self._user_prompt(snapshot=snapshot, stances=stances)
+            user_prompt = self._user_prompt(snapshot=snapshot, stances=stances, debate_round=debate_round)
             raw = chat_completion(
                 config=config,
                 model=self.options.model,
@@ -64,7 +65,7 @@ class LLMChairAgent:
         )
 
     @staticmethod
-    def _user_prompt(snapshot: Snapshot, stances: list[Stance]) -> str:
+    def _user_prompt(snapshot: Snapshot, stances: list[Stance], debate_round: DebateRound | None = None) -> str:
         m = snapshot.markets
         macro = snapshot.macro
         indicator_context = {
@@ -113,6 +114,7 @@ class LLMChairAgent:
         payload = {
             "indicator_context": indicator_context,
             "agent_opinions": agent_opinions,
+            "debate_round": debate_round.model_dump() if debate_round is not None else None,
             "raw_snapshot": snapshot.model_dump(),
         }
         return json.dumps(payload, ensure_ascii=False)

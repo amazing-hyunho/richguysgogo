@@ -107,13 +107,22 @@
           <tbody id="committeeTable"></tbody>
         </table>
       </div>
+      <div class="panel full">
+        <h2>오늘의 에이전트 회의록 <span class="badge" id="minutesDate"></span></h2>
+        <div id="minutesFacilitatorNote">-</div>
+        <table>
+          <thead><tr><th>담당자</th><th>발언 요약</th><th>참조 근거</th></tr></thead>
+          <tbody id="minutesTable"></tbody>
+        </table>
+        <div class="help-box" id="minutesConclusion">-</div>
+      </div>
     </div>
 
     <div class="tab-panel" data-tab-panel="agents">
       <div class="panel full">
         <h2>최근 에이전트 의견 <span class="badge" id="stanceDate"></span></h2>
         <table class="agent-table">
-          <thead><tr><th>에이전트</th><th>국면 태그</th><th>신뢰도</th><th>의견</th><th>핵심 주장</th></tr></thead>
+          <thead><tr><th>담당자</th><th>신뢰도</th><th>의견</th><th>핵심 주장</th></tr></thead>
           <tbody id="stanceTable"></tbody>
         </table>
       </div>
@@ -140,12 +149,6 @@ const LABEL_BY_LEVEL = {
   AVOID: '회피',
 };
 
-const REGIME_LABELS = {
-  RISK_ON: 'RISK_ON (비중 확대)',
-  RISK_OFF: 'RISK_OFF (비중 축소)',
-  NEUTRAL: 'NEUTRAL (중립 비중)',
-};
-
 const CHAIR_TEXT_MAP = {
   'Committee agrees on a neutral stance with selective monitoring.': '위원회는 선별적 모니터링 하에 중립 스탠스를 유지합니다.',
   'Committee maintains a neutral posture with selective positioning.': '위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.',
@@ -166,10 +169,6 @@ const CHAIR_TEXT_MAP = {
   'Favor defensive positioning.': '방어적인 포지셔닝을 우선합니다.',
   'Avoid high-beta risk assets.': '고베타 위험자산은 피합니다.',
 };
-
-function formatRegimeTag(tag) {
-  return REGIME_LABELS[tag] || tag || '-';
-}
 
 function toKoreanChairText(text) {
   return CHAIR_TEXT_MAP[text] || text || '-';
@@ -282,13 +281,35 @@ const stanceTable = document.getElementById('stanceTable');
 stanceDate.textContent = data.latest_stances.market_date ? `(${data.latest_stances.market_date})` : '';
 stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
   <tr>
-    <td>${s.agent_name}</td>
-    <td>${formatRegimeTag(s.regime_tag)}</td>
+    <td>${s.agent_owner || s.agent_name}</td>
     <td>${formatMetric(s.confidence)}</td>
     <td>${s.korean_comment || '-'}</td>
     <td><ul>${(s.core_claims || []).map(claim => `<li>${claim}</li>`).join('')}</ul></td>
   </tr>
 `).join('');
+
+const debate = data.latest_debate_minutes || {};
+const minutesDate = document.getElementById('minutesDate');
+const minutesFacilitatorNote = document.getElementById('minutesFacilitatorNote');
+const minutesTable = document.getElementById('minutesTable');
+const minutesConclusion = document.getElementById('minutesConclusion');
+
+minutesDate.textContent = debate.market_date ? `(${debate.market_date})` : '';
+if (!debate.enabled) {
+  minutesFacilitatorNote.textContent = '오늘 날짜 기준 회의록이 없습니다. (USE_AGENT_DEBATE=1 설정 시 생성)';
+  minutesTable.innerHTML = '<tr><td colspan="3">오늘의 회의록이 아직 저장되지 않았습니다.</td></tr>';
+  minutesConclusion.textContent = '-';
+} else {
+  minutesFacilitatorNote.textContent = debate.facilitator_note || '-';
+  minutesTable.innerHTML = (debate.minutes || []).map(m => `
+    <tr>
+      <td>${m.speaker_label || '-'}</td>
+      <td>${m.summary || '-'}</td>
+      <td>${(m.references || []).join(', ') || '-'}</td>
+    </tr>
+  `).join('') || '<tr><td colspan="3">회의록 발언이 없습니다.</td></tr>';
+  minutesConclusion.textContent = debate.round_conclusion || '-';
+}
 
 const newsDigest = data.latest_news_digest || {};
 const newsMeta = document.getElementById('newsDigestMeta');
