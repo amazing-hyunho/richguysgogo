@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-13T22:51:20.480263+00:00",
+  "generated_at": "2026-03-14T07:51:21.496901+00:00",
   "market_date": "2026-03-14",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI -1.72%, USD/KRW 1484.65. Headlines loaded. Flows loaded.",
+      "note": "KOSPI -1.72%, USD/KRW 1496.54. Headlines loaded. Flows loaded.",
       "kospi_change_pct": -1.72,
-      "usdkrw": 1484.646873
+      "usdkrw": 1496.539707
     },
     "flow_summary": {
       "note": "외국인 -15331억, 기관 -7908억, 개인 +23187억 | KOSPI(외 -14502, 기관 -10434, 개인 +24512) KOSDAQ(외 -829, 기관 +2526, 개인 -1325)",
@@ -35,10 +35,10 @@
     ],
     "news_headlines": [
       "[금리/연준] [경제프리즘] 미국채 금리를 보면 전쟁의 향방 보인다 - 매일경제",
-      "[인플레이션] 뉴욕증시, 호르무즈·GDP·PCE 삼중고…하락 마감 - 연합뉴스",
+      "[변동성/리스크] 중동 전쟁 장기화 되나…시장 공포지수 최고조 - 매일경제TV",
+      "[인플레이션] AI 호황에 IT 물가 급등, 전쟁에 국제 유가 급등...“올해 글로벌 인플레이션 위험 커졌다” - 조선일보",
       "[반도체/AI] 메모리 반도체에도 전쟁 불똥… D램값 보름새 30% 급등 - 동아일보",
-      "[환율/달러] 원/달러 환율 다시 1,490원대…유가 급등에 이틀째 올라 - 연합뉴스",
-      "[경기/성장] [고병욱의 경제동향] 중동 전쟁, 유가, 환율 그리고 스타트업 - 라이센스뉴스"
+      "[경기/성장] 국제 유가 사흘 연속 급등...GDP·PCE 충격 겹쳐 美증시는 하락 [데일리국제금융] - 서울경제신문"
     ],
     "watchlist": [
       "SPY",
@@ -56,7 +56,7 @@
         "dow_pct": -0.2557529963355154
       },
       "fx": {
-        "usdkrw": 1484.646873,
+        "usdkrw": 1496.539707,
         "usdkrw_pct": 0.5877295503701017
       },
       "volatility": {
@@ -69,7 +69,7 @@
         "us2y": 3.6029999256134033,
         "spread_2_10": 0.681999921798706,
         "vix": 27.190000534057617,
-        "dxy": 100.3280029296875,
+        "dxy": 100.49500274658203,
         "usdkrw": 1497.530029296875,
         "vix3m": 27.280000686645508,
         "vix_term_spread": 0.09000015258789062
@@ -99,7 +99,7 @@
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
       "breadth_signal_score": -0.064,
-      "liquidity_signal_score": 2.204,
+      "liquidity_signal_score": 2.171,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
     },
     "cumulative_context": {
@@ -109,7 +109,7 @@
       "kospi_20d_cum_pct": 1.259,
       "kosdaq_5d_cum_pct": -1.08,
       "kospi_abs_move_5d_avg": 3.214,
-      "usdkrw_5d_change_pct": 0.057,
+      "usdkrw_5d_change_pct": 0.858,
       "vix_5d_avg": 25.828,
       "reversal_signal": false,
       "note": "rolling_20d: kospi20d=+1.26%, vol20d=3.70, reversal=false"
@@ -241,6 +241,7 @@
       "confidence": "MED"
     }
   ],
+  "debate_round": null,
   "committee_result": {
     "consensus": "Committee maintains a neutral posture with selective positioning.",
     "key_points": [
