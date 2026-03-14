@@ -10,9 +10,11 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 from committee.adapters.telegram_bot import TelegramQABot
+from committee.core.env_loader import load_project_env
 
 
 def main() -> None:
+    load_project_env(ROOT_DIR)
     parser = argparse.ArgumentParser(description="텔레그램 Q&A 봇 폴링 실행")
     parser.add_argument("--timeout", type=int, default=25, help="getUpdates long polling timeout(초)")
     args = parser.parse_args()

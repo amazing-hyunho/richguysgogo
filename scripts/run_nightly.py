@@ -15,6 +15,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 from committee.agents.model_profiles import get_agent_model_map, parse_backend
+from committee.core.env_loader import load_project_env
 from committee.core.pipeline import DailyPipeline
 from committee.core.snapshot_builder import get_last_snapshot_status
 
@@ -87,6 +88,7 @@ def _auto_push() -> None:
 
 def main() -> None:
     """Run nightly pipeline and store run artifacts."""
+    load_project_env(ROOT_DIR)
     parser = argparse.ArgumentParser(description="야간 파이프라인 실행")
     parser.add_argument("--build-dashboard", action="store_true", help="실행 후 대시보드 재생성")
     parser.add_argument(

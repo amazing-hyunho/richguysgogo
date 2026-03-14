@@ -15,6 +15,7 @@ if str(ROOT_DIR) not in sys.path:
 from committee.agents.breadth_stub import BreadthStub
 from committee.agents.chair_stub import ChairStub
 from committee.agents.llm_chair import ChairLLMOptions, LLMChairAgent
+from committee.core.env_loader import load_project_env
 from committee.agents.earnings_stub import EarningsStub
 from committee.agents.flow_stub import FlowStub
 from committee.agents.liquidity_stub import LiquidityStub
@@ -32,6 +33,7 @@ from committee.schemas.stance import AgentName
 
 def main() -> None:
     """Run the local pipeline and output a report."""
+    load_project_env(ROOT_DIR)
     market_date = date.today()
     trace_path = ROOT_DIR / "runs" / market_date.isoformat() / "llm_traces.jsonl"
     os.environ.setdefault("LLM_TRACE_PATH", str(trace_path))
