@@ -161,18 +161,22 @@ def load_latest_news_digest() -> dict[str, object]:
     if not digest_path.exists():
         return {
             "crawled_at": "-",
+            "news_date": "-",
             "total_collected": 0,
             "topic_counts": [],
             "top_articles": [],
+            "sector_hot_topics": [],
         }
     try:
         return json.loads(digest_path.read_text(encoding="utf-8"))
     except Exception:
         return {
             "crawled_at": "-",
+            "news_date": "-",
             "total_collected": 0,
             "topic_counts": [],
             "top_articles": [],
+            "sector_hot_topics": [],
         }
 
 def build_dashboard_html(data: dict[str, object]) -> str:
