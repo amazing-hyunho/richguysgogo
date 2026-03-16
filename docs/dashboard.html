@@ -27,6 +27,11 @@
     .news-meta { font-size:12px; color:#94a3b8; margin-bottom:8px; }
     .news-summary { margin:6px 0 0 16px; }
     .news-summary li { margin-bottom:4px; }
+    .sector-hot-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-bottom:14px; }
+    .sector-hot-card { background:#0b1220; border:1px solid #334155; border-radius:10px; padding:10px; }
+    .sector-hot-card h3 { margin:0 0 8px 0; font-size:14px; }
+    .sector-hot-card ul { margin:0; padding-left:16px; }
+    .sector-hot-card li { margin-bottom:4px; font-size:12px; }
     .tabs { display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px; }
     .tab-btn {
       background:#0b1220; color:#cbd5e1; border:1px solid #334155; border-radius:999px;
@@ -130,8 +135,10 @@
 
     <div class="tab-panel" data-tab-panel="news">
       <div class="panel full">
-        <h2>뉴스 주제 Top5 (요약 + 링크)</h2>
+        <h2>당일뉴스 섹터별 핫토픽</h2>
         <div class="news-meta" id="newsDigestMeta"></div>
+        <div class="sector-hot-grid" id="sectorHotTopics"></div>
+        <h2>뉴스 주제 Top5 (요약 + 링크)</h2>
         <table>
           <thead><tr><th>주제</th><th>기사 수</th><th>대표 기사</th><th>요약(3줄)</th><th>링크</th></tr></thead>
           <tbody id="newsDigestTable"></tbody>
@@ -314,9 +321,27 @@ if (!debate.enabled) {
 const newsDigest = data.latest_news_digest || {};
 const newsMeta = document.getElementById('newsDigestMeta');
 const newsTable = document.getElementById('newsDigestTable');
+const sectorHotTopics = document.getElementById('sectorHotTopics');
 const crawledAt = newsDigest.crawled_at || '-';
+const newsDate = newsDigest.news_date || '-';
 const totalCollected = newsDigest.total_collected || 0;
-newsMeta.textContent = `최근 크롤링: ${crawledAt} / 수집 기사 수: ${totalCollected}건`;
+newsMeta.textContent = `당일 뉴스 기준일: ${newsDate} / 최근 크롤링: ${crawledAt} / 수집 기사 수: ${totalCollected}건`;
+
+const sectorRows = newsDigest.sector_hot_topics || [];
+if (!sectorRows.length) {
+  sectorHotTopics.innerHTML = '<div class="sector-hot-card">당일 섹터별 핫토픽 데이터가 없습니다.</div>';
+} else {
+  sectorHotTopics.innerHTML = sectorRows.map(row => {
+    const topics = (row.topics || []).map(topic => {
+      const safeTitle = topic.title || topic.topic || '-';
+      if (topic.link) {
+        return `<li>[${topic.topic}] ${topic.count}건 · <a href="${topic.link}" target="_blank" rel="noopener noreferrer">${safeTitle}</a></li>`;
+      }
+      return `<li>[${topic.topic}] ${topic.count}건 · ${safeTitle}</li>`;
+    }).join('');
+    return `<div class="sector-hot-card"><h3>${row.sector} (${row.total_count}건)</h3><ul>${topics || '<li>-</li>'}</ul></div>`;
+  }).join('');
+}
 
 const topArticles = newsDigest.top_articles || [];
 if (!topArticles.length) {
