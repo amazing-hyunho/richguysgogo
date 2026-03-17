@@ -11,7 +11,7 @@ import re
 import xml.etree.ElementTree as ET
 from collections import Counter
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from math import log1p
 from typing import Dict, List, Tuple
 from urllib.parse import quote
@@ -52,9 +52,11 @@ class NewsTopicDigest:
     """Aggregated topic digest result for dashboard/reporting."""
 
     crawled_at: str
+    news_date: str
     total_collected: int
     topic_counts: List[tuple[str, int]]
     top_articles: List[TopicDigestArticle]
+    sector_hot_topics: List[dict[str, object]]
 
 
 SOURCE_WEIGHT_BY_KEYWORD: Dict[str, float] = {
@@ -99,6 +101,23 @@ IMPACT_KEYWORDS: Dict[str, float] = {
 }
 
 
+TOPIC_TO_SECTOR: Dict[str, str] = {
+    "국내지수": "지수/시장",
+    "미국지수": "지수/시장",
+    "환율/달러": "매크로",
+    "금리/연준": "매크로",
+    "인플레이션": "매크로",
+    "경기/성장": "매크로",
+    "변동성/리스크": "리스크",
+    "반도체/AI": "IT/반도체",
+    "2차전지/전기차": "2차전지/자동차",
+    "바이오/헬스케어": "헬스케어",
+    "에너지/원자재": "에너지/소재",
+    "중국/신흥국": "글로벌",
+    "정책/테마": "정책/테마",
+}
+
+
 def recommended_topic_queries() -> Dict[str, List[str]]:
     """Recommended economy/market keywords grouped by topic."""
     return {
@@ -118,10 +137,14 @@ def recommended_topic_queries() -> Dict[str, List[str]]:
     }
 
 
-def fetch_google_news_items(query: str = "KOSPI", limit: int = 20, timeout: int = 7) -> List[tuple[str, str]]:
+def fetch_google_news_items(
+    query: str = "KOSPI",
+    limit: int = 20,
+    timeout: int = 7,
+) -> List[tuple[str, str, datetime | None]]:
     """Fetch news titles + links from Google News RSS.
 
-    Returns a list of (title, link) up to ``limit``.
+    Returns a list of (title, link, published_at_utc) up to ``limit``.
     """
     q = quote(query)
     url = f"https://news.google.com/rss/search?q={q}"
@@ -130,17 +153,42 @@ def fetch_google_news_items(query: str = "KOSPI", limit: int = 20, timeout: int 
         raise RuntimeError(f"http_status_{response.status_code}")
 
     root = ET.fromstring(response.text)
-    items: List[tuple[str, str]] = []
+    items: List[tuple[str, str, datetime | None]] = []
     for item in root.findall(".//item"):
         title_el = item.find("title")
         link_el = item.find("link")
+        pub_date_el = item.find("pubDate")
         title = (title_el.text or "").strip() if title_el is not None else ""
         link = (link_el.text or "").strip() if link_el is not None else ""
+        pub_date_raw = (pub_date_el.text or "").strip() if pub_date_el is not None else ""
+        published_at = _parse_rss_pub_date(pub_date_raw)
         if title:
-            items.append((title, link))
+            items.append((title, link, published_at))
         if len(items) >= limit:
             break
     return items
+
+
+def _parse_rss_pub_date(pub_date: str) -> datetime | None:
+    if not pub_date:
+        return None
+    try:
+        dt = datetime.strptime(pub_date, "%a, %d %b %Y %H:%M:%S %Z")
+    except ValueError:
+        try:
+            dt = datetime.strptime(pub_date, "%a, %d %b %Y %H:%M:%S %z")
+        except ValueError:
+            return None
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
+def _is_same_day_in_kst(dt: datetime | None, now_utc: datetime) -> bool:
+    if dt is None:
+        return False
+    kst = timezone(timedelta(hours=9))
+    return dt.astimezone(kst).date() == now_utc.astimezone(kst).date()
 
 
 def _normalize_headline(title: str) -> str:
@@ -246,8 +294,8 @@ def summarize_article(link: str, timeout: int = 7, title: str | None = None) -> 
 def build_news_digest(query: str = "KOSPI", limit: int = 20) -> Tuple[List[str], List[NewsDigestItem], str | None]:
     """Build title list and 3-line summaries for up to ``limit`` articles."""
     try:
-        items = fetch_google_news_items(query=query, limit=max(limit * 2, 50))
-        items = _deduplicate_news_items(items, limit=limit)
+        fetched = fetch_google_news_items(query=query, limit=max(limit * 2, 50))
+        items = _deduplicate_news_items([(title, link) for title, link, _ in fetched], limit=limit)
         if not items:
             return [], [], "no_titles"
 
@@ -284,15 +332,22 @@ def build_topic_digest(
     per_query_limit = max(10, (target_total // max(query_count, 1)) + 3)
 
     pool: List[tuple[str, str, str]] = []
+    fallback_pool: List[tuple[str, str, str]] = []
+    now_utc = datetime.now(timezone.utc)
     for topic, queries in topic_queries.items():
         for query in queries:
             try:
                 items = fetch_google_news_items(query=query, limit=per_query_limit, timeout=timeout)
             except Exception:
                 continue
-            for title, link in items:
+            for title, link, published_at in items:
+                fallback_pool.append((title, link, topic))
+                if not _is_same_day_in_kst(published_at, now_utc):
+                    continue
                 pool.append((title, link, topic))
 
+    if not pool:
+        pool = fallback_pool
     if not pool:
         return None, "no_news_pool"
 
@@ -334,11 +389,47 @@ def build_topic_digest(
 
     digest = NewsTopicDigest(
         crawled_at=datetime.now(timezone.utc).isoformat(),
+        news_date=datetime.now(timezone.utc).astimezone(timezone(timedelta(hours=9))).date().isoformat(),
         total_collected=len(deduped),
         topic_counts=top_topics,
         top_articles=top_articles,
+        sector_hot_topics=_build_sector_hot_topics(top_topics, top_articles),
     )
     return digest, None
+
+
+def _build_sector_hot_topics(
+    top_topics: List[tuple[str, int]],
+    top_articles: List[TopicDigestArticle],
+) -> List[dict[str, object]]:
+    article_by_topic = {item.topic: item for item in top_articles}
+    sector_map: Dict[str, List[dict[str, object]]] = {}
+    for topic, count in top_topics:
+        sector = TOPIC_TO_SECTOR.get(topic, "기타")
+        article = article_by_topic.get(topic)
+        sector_map.setdefault(sector, []).append(
+            {
+                "topic": topic,
+                "count": count,
+                "title": article.title if article else "",
+                "link": article.link if article else "",
+            }
+        )
+
+    ranked: List[dict[str, object]] = []
+    for sector, topics in sorted(
+        sector_map.items(),
+        key=lambda item: sum(int(t.get("count", 0)) for t in item[1]),
+        reverse=True,
+    ):
+        ranked.append(
+            {
+                "sector": sector,
+                "total_count": sum(int(t.get("count", 0)) for t in topics),
+                "topics": sorted(topics, key=lambda item: int(item.get("count", 0)), reverse=True),
+            }
+        )
+    return ranked
 
 
 def _score_news_pool(pool: List[tuple[str, str, str]]) -> List[tuple[str, str, str, float]]:
