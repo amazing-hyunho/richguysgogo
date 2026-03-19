@@ -1,27 +1,27 @@
 {
   "market_summary": {
-    "note": "KOSPI 5.04%, USD/KRW 1487.64. Headlines loaded. Flows loaded.",
-    "kospi_change_pct": 5.04,
-    "usdkrw": 1487.64229
+    "note": "KOSPI -1.52%, USD/KRW 1497.96. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -1.52,
+    "usdkrw": 1497.959631
   },
   "flow_summary": {
-    "note": "외국인 +13726억, 기관 +30840억, 개인 -42645억 | KOSPI(외 +8802, 기관 +31093, 개인 -38717) KOSDAQ(외 +4924, 기관 -253, 개인 -3928)",
-    "foreign_net": 13726.0,
-    "institution_net": 30840.0,
-    "retail_net": -42645.0
+    "note": "외국인 -14987억, 기관 -3694억, 개인 +18323억 | KOSPI(외 -13335, 기관 -2306, 개인 +15068) KOSDAQ(외 -1652, 기관 -1388, 개인 +3255)",
+    "foreign_net": -14987.0,
+    "institution_net": -3694.0,
+    "retail_net": 18323.0
   },
   "korean_market_flow": {
     "date": "2026-03-19",
     "market": {
       "KOSPI": {
-        "individual": -38717,
-        "foreign": 8802,
-        "institution": 31093
+        "individual": 15068,
+        "foreign": -13335,
+        "institution": -2306
       },
       "KOSDAQ": {
-        "individual": -3928,
-        "foreign": 4924,
-        "institution": -253
+        "individual": 3255,
+        "foreign": -1652,
+        "institution": -1388
       }
     }
   },
@@ -31,11 +31,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "[인플레이션] 연준 파월 \"관세 이어 에너지 충격까지…인플레이션 우려\"(종합) - 연합뉴스",
-    "[금리/연준] 연준, 이란 전쟁 불확실성 우려…기준 금리 동결 - 동아일보",
-    "[경기/성장] [신문은 선생님] [생활 속 경제] 1973년 중동전쟁 ‘악몽’ 피하려면 … 의존도 낮출 에너지 정책 시급하죠 - 조선일보",
+    "[금리/연준] 美 연준 ‘속도 조절’에 한은도 동결 기류…기준금리 2.50% 유지 무게 - 서울경제TV",
+    "[인플레이션] [속보] 연준, 올해 美 PCE물가 2.7%상승 전망…작년 12월 대비 0.3%P↑ - 연합뉴스",
+    "[환율/달러] 이란 전쟁 격화에 환율 1,500원대 출발…코스피도 후퇴 - 연합뉴스",
     "[미국지수] 연준 '금리동결'...장중, 미국증시 하락 vs 미국국채금리 상승 - 초이스경제",
-    "[에너지/원자재] “기준금리 안내려?” 다우 1.6% 급락…유가 4% 급등 - 문화일보"
+    "[정책/테마] 연준 파월 \"관세 이어 에너지 충격까지‥인플레이션 우려\" - MBC 뉴스"
   ],
   "watchlist": [
     "SPY",
@@ -44,8 +44,8 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": 5.04,
-      "kosdaq_pct": 2.41
+      "kospi_pct": -1.52,
+      "kosdaq_pct": -1.12
     },
     "us": {
       "sp500_pct": -1.3607619909798756,
@@ -53,8 +53,8 @@
       "dow_pct": -1.63451099157624
     },
     "fx": {
-      "usdkrw": 1487.64229,
-      "usdkrw_pct": 1.429244647906289
+      "usdkrw": 1497.959631,
+      "usdkrw_pct": -0.6439376355352797
     },
     "volatility": {
       "vix": 25.09000015258789
@@ -66,8 +66,8 @@
       "us2y": 3.609999895095825,
       "spread_2_10": 0.6489999294281006,
       "vix": 25.09000015258789,
-      "dxy": 100.23400115966797,
-      "usdkrw": 1506.6300048828125,
+      "dxy": 100.03199768066406,
+      "usdkrw": 1498.3800048828125,
       "vix3m": 26.559999465942383,
       "vix_term_spread": 1.4699993133544922
     },
@@ -95,20 +95,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": 5.208,
-    "liquidity_signal_score": 4.235,
+    "breadth_signal_score": 0.163,
+    "liquidity_signal_score": 4.276,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
     "lookback_days": 20,
     "sample_count": 20,
-    "kospi_5d_cum_pct": 1.51,
-    "kospi_20d_cum_pct": -3.609,
-    "kosdaq_5d_cum_pct": 3.49,
-    "kospi_abs_move_5d_avg": 2.366,
-    "usdkrw_5d_change_pct": -0.595,
+    "kospi_5d_cum_pct": -5.05,
+    "kospi_20d_cum_pct": -10.169,
+    "kosdaq_5d_cum_pct": -0.04,
+    "kospi_abs_move_5d_avg": 1.662,
+    "usdkrw_5d_change_pct": 0.095,
     "vix_5d_avg": 25.808,
     "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=-3.61%, vol20d=3.76, reversal=false"
+    "note": "rolling_20d: kospi20d=-10.17%, vol20d=3.58, reversal=false"
   }
 }
