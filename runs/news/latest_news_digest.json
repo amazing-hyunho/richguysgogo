@@ -1,23 +1,23 @@
 {
-  "crawled_at": "2026-03-21T00:42:18.448288+00:00",
+  "crawled_at": "2026-03-21T01:42:25.316165+00:00",
   "news_date": "2026-03-21",
-  "total_collected": 47,
+  "total_collected": 52,
   "topic_counts": [
     [
       "금리/연준",
       5
     ],
     [
+      "환율/달러",
+      7
+    ],
+    [
       "인플레이션",
       1
     ],
     [
-      "환율/달러",
-      6
-    ],
-    [
       "반도체/AI",
-      9
+      10
     ],
     [
       "경기/성장",
@@ -37,6 +37,17 @@
       ]
     },
     {
+      "topic": "환율/달러",
+      "count": 7,
+      "title": "이란 전쟁 충격…'달러 강세' 베팅, S&P500 목표치 하향 - edaily.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNMkE2MVZ3djN5b1YxNFBzdHFSRXZrOTNyNmRhVXMxaDFBbXMtRGlyR1AwRURNNk5UMXpZRm5pNGlnRU8zY0M5NDJ2SW81VE0xWm9ibVBodXlfNmZ3NmJGZ0JTOFExYXZNVDA0SWlJMUctaEgzd3hJMlQ4ZVQ3Sl82RQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 이란 전쟁 충격…'달러 강세' 베팅, S&P500 목표치 하향 - edaily.co.kr",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "인플레이션",
       "count": 1,
       "title": "영국 국채 금리, 2008년 금융위기 후 최고…인플레이션 공포 직격탄 - 네이트",
@@ -48,19 +59,8 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 6,
-      "title": "[외환] 달러인덱스 99선… \"금리 인하 실종\" 전 세계 매파 반격 - 블록미디어",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9TdkZDTGdKMjlhV3RjR3lBUXFJekh6UndWRWtDZC1McW1PVU12emtvbDVjcGpfWnJKcF93NkF0clVCU1NXVGE3Qm9xSVNNMW50blYwTjRPY1Q?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [외환] 달러인덱스 99선… \"금리 인하 실종\" 전 세계 매파 반격 - 블록미디어",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "반도체/AI",
-      "count": 9,
+      "count": 10,
       "title": "엔비디아와 맞손 로슈, 글로벌 제약업계 최대 규모 AI공장 출범[제약·바이오 해외토픽] - 팜이데일리",
       "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE94eGJqLUgzd1BnVUt4OS1LVFpSTTlUSkJUV0xDVUswVTY4WXpjT1dEdk9yUC10S2J5Ml9DaFJnbXplQW9acmtqcFBGR21XSUlmb0tvWlBSeDQzeThLZW1RSzYta29MeHdXTDNXMy1n?oc=5",
       "summary_lines": [
@@ -84,13 +84,13 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 16,
+      "total_count": 17,
       "topics": [
         {
           "topic": "환율/달러",
-          "count": 6,
-          "title": "[외환] 달러인덱스 99선… \"금리 인하 실종\" 전 세계 매파 반격 - 블록미디어",
-          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9TdkZDTGdKMjlhV3RjR3lBUXFJekh6UndWRWtDZC1McW1PVU12emtvbDVjcGpfWnJKcF93NkF0clVCU1NXVGE3Qm9xSVNNMW50blYwTjRPY1Q?oc=5"
+          "count": 7,
+          "title": "이란 전쟁 충격…'달러 강세' 베팅, S&P500 목표치 하향 - edaily.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNMkE2MVZ3djN5b1YxNFBzdHFSRXZrOTNyNmRhVXMxaDFBbXMtRGlyR1AwRURNNk5UMXpZRm5pNGlnRU8zY0M5NDJ2SW81VE0xWm9ibVBodXlfNmZ3NmJGZ0JTOFExYXZNVDA0SWlJMUctaEgzd3hJMlQ4ZVQ3Sl82RQ?oc=5"
         },
         {
           "topic": "금리/연준",
@@ -114,11 +114,11 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 9,
+      "total_count": 10,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 9,
+          "count": 10,
           "title": "엔비디아와 맞손 로슈, 글로벌 제약업계 최대 규모 AI공장 출범[제약·바이오 해외토픽] - 팜이데일리",
           "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE94eGJqLUgzd1BnVUt4OS1LVFpSTTlUSkJUV0xDVUswVTY4WXpjT1dEdk9yUC10S2J5Ml9DaFJnbXplQW9acmtqcFBGR21XSUlmb0tvWlBSeDQzeThLZW1RSzYta29MeHdXTDNXMy1n?oc=5"
         }
