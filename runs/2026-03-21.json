@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-20T22:51:24.589006+00:00",
+  "generated_at": "2026-03-21T08:18:18.170496+00:00",
   "market_date": "2026-03-21",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI 0.31%, USD/KRW 1493.87. Headlines loaded. Flows loaded.",
+      "note": "KOSPI 0.31%, USD/KRW 1501.08. Headlines loaded. Flows loaded.",
       "kospi_change_pct": 0.31,
-      "usdkrw": 1493.868581
+      "usdkrw": 1501.075332
     },
     "flow_summary": {
       "note": "외국인 -10055억, 기관 -11202억, 개인 +21167억 | KOSPI(외 -12402, 기관 -10260, 개인 +22338) KOSDAQ(외 +2347, 기관 -942, 개인 -1171)",
@@ -34,11 +34,11 @@
       "n/a"
     ],
     "news_headlines": [
-      "[금리/연준] [딜로이트 글로벌 경제 리뷰] 연준 금리인하 전망 후퇴,\"전쟁, 인플레 압력과 극단적 불확실성\" - 파이낸셜포스트",
+      "[금리/연준] 美Fed 기준금리 전망, 연말까지 인하→인상 뒤집혀 - 한국경제",
+      "[환율/달러] 원·달러 환율 1500원대 재진입…“금리인하 기대 소멸·중동 긴장 고조” - 이코노미스트",
       "[인플레이션] 영국 국채 금리, 2008년 금융위기 후 최고…인플레이션 공포 직격탄 - 네이트",
       "[반도체/AI] 엔비디아와 맞손 로슈, 글로벌 제약업계 최대 규모 AI공장 출범[제약·바이오 해외토픽] - 팜이데일리",
-      "[경기/성장] [AI로 읽는 경제] 전쟁 경제의 귀환 - ⑤ 전쟁 경제가 시험하는 정부 재정 - 뉴스핌",
-      "[정책/테마] ‘관세왕 포즈’ 트럼프 금화 나온다 - 조선일보"
+      "[미국지수] 미국 뉴욕증시 하락 마감…금리 상승·중동 리스크 충격 - topstarnews.net"
     ],
     "watchlist": [
       "SPY",
@@ -56,7 +56,7 @@
         "dow_pct": -0.9646810192555927
       },
       "fx": {
-        "usdkrw": 1493.868581,
+        "usdkrw": 1501.075332,
         "usdkrw_pct": 0.6972651414270411
       },
       "volatility": {
@@ -109,7 +109,7 @@
       "kospi_20d_cum_pct": -10.587,
       "kosdaq_5d_cum_pct": -1.05,
       "kospi_abs_move_5d_avg": 1.582,
-      "usdkrw_5d_change_pct": -0.092,
+      "usdkrw_5d_change_pct": 0.39,
       "vix_5d_avg": 25.1,
       "reversal_signal": false,
       "note": "rolling_20d: kospi20d=-10.59%, vol20d=3.61, reversal=false"
@@ -248,7 +248,7 @@
       {
         "speaker": "macro",
         "speaker_label": "매크로 담당자",
-        "summary": "저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1493.87, kospi_change_pct=+0.31%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1501.08, kospi_change_pct=+0.31%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.market_summary.usdkrw",
           "snapshot.market_summary.kospi_change_pct",
@@ -282,7 +282,7 @@
       {
         "speaker": "risk",
         "speaker_label": "리스크 담당자",
-        "summary": "저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1493.87, kospi_change_pct=+0.31%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1501.08, kospi_change_pct=+0.31%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.market_summary.usdkrw",
           "snapshot.market_summary.kospi_change_pct",
@@ -328,7 +328,7 @@
         "internal_regime_tag": "RISK_OFF"
       }
     ],
-    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI +0.31%, USD/KRW 1493.87(+0.70%), VIX 26.8, 외국인 -10055억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다."
+    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI +0.31%, USD/KRW 1501.08(+0.70%), VIX 26.8, 외국인 -10055억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다."
   },
   "committee_result": {
     "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
