@@ -6,59 +6,112 @@
   <title>AI 투자위원회 데이터 대시보드</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background:#0f172a; color:#e2e8f0; }
-    .container { max-width: 1200px; margin: 0 auto; padding: 24px; }
-    h1 { margin: 0 0 20px 0; }
+    :root {
+      --bg: #0f172a;
+      --panel: #1e293b;
+      --panel-soft: #0b1220;
+      --line: #334155;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --blue: #38bdf8;
+      --green: #34d399;
+      --amber: #f59e0b;
+      --red: #f87171;
+      --purple: #c084fc;
+    }
+    * { box-sizing:border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background:var(--bg); color:var(--text); }
+    .container { max-width: 1280px; margin: 0 auto; padding: 24px; }
+    h1 { margin: 0 0 8px 0; }
+    p { line-height: 1.5; }
+    .page-desc { color: var(--muted); margin: 0 0 20px 0; }
     .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
-    .card { background:#1e293b; border-radius:12px; padding:14px; }
-    .card .label { font-size:12px; color:#94a3b8; }
+    .card, .panel { background:var(--panel); border-radius:16px; border:1px solid rgba(148,163,184,0.12); }
+    .card { padding:14px; }
+    .card .label { font-size:12px; color:var(--muted); }
     .card .value { margin-top:6px; font-size:24px; font-weight:700; }
-    .chart-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .panel { background:#1e293b; border-radius:12px; padding:14px; }
-    .panel h2 { margin-top:0; font-size:16px; }
-    table { width:100%; border-collapse:collapse; font-size:13px; }
-    th, td { border-bottom:1px solid #334155; padding:8px 6px; text-align:left; vertical-align:top; }
+    .chart-grid, .meeting-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .panel { padding:16px; }
+    .panel h2, .panel h3 { margin-top:0; }
     .full { margin-top:16px; }
     .badge { display:inline-block; margin-left:8px; font-size:12px; color:#93c5fd; }
-    .agent-table td ul { margin:6px 0 0 16px; padding:0; }
-    .agent-table td li { margin-bottom:2px; }
-    .help-box { margin-top:10px; padding:10px 12px; border-radius:10px; background:#0b1220; border:1px solid #334155; font-size:12px; line-height:1.5; color:#cbd5e1; }
-    .help-box strong { color:#e2e8f0; }
-    .news-meta { font-size:12px; color:#94a3b8; margin-bottom:8px; }
-    .news-summary { margin:6px 0 0 16px; }
-    .news-summary li { margin-bottom:4px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th, td { border-bottom:1px solid var(--line); padding:8px 6px; text-align:left; vertical-align:top; }
+    .agent-table td ul, .news-summary { margin:6px 0 0 16px; padding:0; }
+    .agent-table td li, .news-summary li { margin-bottom:4px; }
+    .help-box, .meeting-note, .handoff-box, .bubble-ref, .timeline-card { background:var(--panel-soft); border:1px solid var(--line); border-radius:12px; }
+    .help-box, .meeting-note, .handoff-box { padding:12px; color:#cbd5e1; font-size:12px; }
+    .news-meta { font-size:12px; color:var(--muted); margin-bottom:8px; }
     .sector-hot-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px; margin-bottom:14px; }
-    .sector-hot-card { background:#0b1220; border:1px solid #334155; border-radius:10px; padding:10px; }
+    .sector-hot-card { background:var(--panel-soft); border:1px solid var(--line); border-radius:10px; padding:10px; }
     .sector-hot-card h3 { margin:0 0 8px 0; font-size:14px; }
     .sector-hot-card ul { margin:0; padding-left:16px; }
     .sector-hot-card li { margin-bottom:4px; font-size:12px; }
     .tabs { display:flex; gap:8px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px; }
-    .tab-btn {
-      background:#0b1220; color:#cbd5e1; border:1px solid #334155; border-radius:999px;
-      padding:8px 12px; cursor:pointer; white-space:nowrap; font-size:13px;
-    }
+    .tab-btn { background:var(--panel-soft); color:#cbd5e1; border:1px solid var(--line); border-radius:999px; padding:8px 12px; cursor:pointer; white-space:nowrap; font-size:13px; }
     .tab-btn.active { background:#1d4ed8; border-color:#1d4ed8; color:#fff; }
     .tab-panel { display:none; }
     .tab-panel.active { display:block; }
-    @media (max-width: 900px) {
-      .chart-grid { grid-template-columns:1fr; }
-      .container { padding: 14px; }
+
+    .meeting-hero { display:flex; flex-direction:column; gap:12px; }
+    .meeting-stage { display:flex; flex-wrap:wrap; gap:8px; }
+    .stage-pill { padding:8px 12px; border-radius:999px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.3); color:#dbeafe; font-size:12px; }
+    .handoff-box strong { color:#fff; }
+    .meeting-layout { display:grid; grid-template-columns:1.3fr 0.9fr; gap:16px; margin-top:16px; }
+    .chat-board { display:flex; flex-direction:column; gap:14px; }
+    .bubble-row { display:flex; gap:10px; align-items:flex-start; }
+    .bubble-row.right { justify-content:flex-end; }
+    .speaker-chip { min-width:92px; max-width:92px; text-align:center; font-size:12px; color:var(--muted); padding-top:8px; }
+    .bubble { max-width:calc(100% - 108px); background:#162033; border:1px solid #253347; border-radius:18px; padding:14px; position:relative; }
+    .bubble-row.right .bubble { background:#132a22; border-color:#1f4d3b; }
+    .bubble-title { font-size:13px; font-weight:700; margin-bottom:6px; color:#fff; }
+    .bubble-summary { font-size:14px; line-height:1.6; color:#dbe4f0; }
+    .bubble-ref { margin-top:10px; padding:10px 12px; font-size:12px; color:#cbd5e1; }
+    .bubble-ref ul { margin:6px 0 0 16px; padding:0; }
+    .bubble-ref li { margin-bottom:4px; }
+    .bubble-order { display:inline-flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:999px; margin-right:8px; font-size:12px; background:rgba(148,163,184,0.16); color:#fff; }
+    .facilitator-banner { padding:14px; border-radius:14px; background:linear-gradient(135deg, rgba(29,78,216,0.24), rgba(56,189,248,0.08)); border:1px solid rgba(59,130,246,0.35); }
+    .facilitator-banner .label { font-size:12px; color:#bfdbfe; margin-bottom:6px; }
+    .decision-card { padding:16px; border-radius:14px; background:rgba(248,250,252,0.04); border:1px solid var(--line); }
+    .decision-card h3 { margin-bottom:8px; }
+    .guidance-list, .decision-points { margin:8px 0 0 18px; padding:0; }
+    .guidance-list li, .decision-points li { margin-bottom:6px; }
+    .timeline-list { display:flex; flex-direction:column; gap:12px; }
+    .timeline-card { padding:14px; }
+    .timeline-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .timeline-date { font-size:13px; font-weight:700; color:#fff; }
+    .timeline-summary { color:#dbe4f0; font-size:13px; margin-top:8px; }
+    .timeline-points { margin:8px 0 0 16px; padding:0; font-size:12px; color:#cbd5e1; }
+    .timeline-points li { margin-bottom:4px; }
+    .empty-state { color:var(--muted); font-size:13px; }
+
+    @media (max-width: 980px) {
+      .chart-grid, .meeting-grid, .meeting-layout { grid-template-columns:1fr; }
+      .bubble { max-width:100%; }
+      .speaker-chip { min-width:74px; max-width:74px; }
+    }
+    @media (max-width: 720px) {
+      .container { padding:14px; }
       .card .value { font-size:20px; }
       table { font-size:12px; }
-      .panel { padding:10px; }
+      .panel { padding:12px; }
       .tab-btn { font-size:12px; padding:7px 10px; }
+      .bubble-row { flex-direction:column; }
+      .bubble-row.right { align-items:stretch; }
+      .speaker-chip { min-width:unset; max-width:none; text-align:left; padding-top:0; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>📊 AI 투자위원회 누적 데이터 대시보드</h1>
+    <p class="page-desc">에이전트들이 실제 회의하듯 발언을 이어가고, 전일 결론을 다음 회의가 바로 이어받아 판단할 수 있도록 회의록 중심 UI로 재구성했습니다.</p>
     <div class="cards" id="summary-cards"></div>
 
     <div class="tabs" id="tabs">
       <button class="tab-btn active" data-tab="overview">개요</button>
       <button class="tab-btn" data-tab="markets">시장</button>
-      <button class="tab-btn" data-tab="committee">위원회</button>
+      <button class="tab-btn" data-tab="committee">회의</button>
       <button class="tab-btn" data-tab="agents">에이전트</button>
       <button class="tab-btn" data-tab="news">뉴스</button>
     </div>
@@ -74,11 +127,27 @@
           <canvas id="macroChart"></canvas>
         </div>
       </div>
-      <div class="panel full">
-        <h2>최근 의장 의견 <span class="badge" id="chairDate"></span></h2>
-        <div id="chairConsensus">-</div>
-        <ul id="chairKeyPoints"></ul>
-        <ul id="chairGuidance"></ul>
+      <div class="meeting-grid full">
+        <div class="panel meeting-hero">
+          <h2>오늘 회의 진행 순서 <span class="badge" id="chairDate"></span></h2>
+          <div class="meeting-stage" id="meetingStage"></div>
+          <div class="handoff-box" id="handoffMessage"></div>
+          <div class="facilitator-banner">
+            <div class="label">오늘 의장 메모</div>
+            <div id="chairConsensus">-</div>
+            <ul id="chairKeyPoints" class="decision-points"></ul>
+          </div>
+        </div>
+        <div class="panel">
+          <h2>최종 운영 가이던스</h2>
+          <ul id="chairGuidance" class="guidance-list"></ul>
+          <div class="help-box" style="margin-top:12px;">
+            <div><strong>가이던스 3단계 의미</strong></div>
+            <div>• <strong>유지(OK)</strong>: 현재 전략 유지(기존 비중 중심)</div>
+            <div>• <strong>주의(CAUTION)</strong>: 신규 진입/추가 매수는 신중, 리스크 한도 강화</div>
+            <div>• <strong>회피(AVOID)</strong>: 해당 행동·자산은 당분간 피하기</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -94,32 +163,32 @@
             <thead><tr><th>날짜</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
             <tbody id="guidanceHistoryTable"></tbody>
           </table>
-          <div class="help-box">
-            <div><strong>가이던스 3단계 의미</strong></div>
-            <div>• <strong>유지(OK)</strong>: 현재 전략 유지(기존 비중 중심)</div>
-            <div>• <strong>주의(CAUTION)</strong>: 신규 진입/추가 매수는 신중, 리스크 한도 강화</div>
-            <div>• <strong>회피(AVOID)</strong>: 해당 행동·자산은 당분간 피하기</div>
-          </div>
         </div>
       </div>
     </div>
 
     <div class="tab-panel" data-tab-panel="committee">
+      <div class="meeting-layout">
+        <div class="panel">
+          <h2>에이전트 회의 대화록 <span class="badge" id="minutesDate"></span></h2>
+          <div id="minutesFacilitatorNote" class="meeting-note">-</div>
+          <div id="chatBoard" class="chat-board"></div>
+          <div id="minutesConclusion" class="decision-card full">-</div>
+        </div>
+        <div class="panel">
+          <h2>다음 회의를 위한 인수인계</h2>
+          <div id="handoffCurrent" class="handoff-box"></div>
+          <div id="handoffPrevious" class="handoff-box" style="margin-top:12px;"></div>
+          <h3 style="margin-top:16px;">최근 회의 타임라인</h3>
+          <div id="meetingTimeline" class="timeline-list"></div>
+        </div>
+      </div>
       <div class="panel full">
         <h2>최근 회의 합의 내역 (가이던스 내용)</h2>
         <table>
           <thead><tr><th>날짜</th><th>의장 합의</th><th>유지(OK)</th><th>주의(CAUTION)</th><th>회피(AVOID)</th></tr></thead>
           <tbody id="committeeTable"></tbody>
         </table>
-      </div>
-      <div class="panel full">
-        <h2>오늘의 에이전트 회의록 <span class="badge" id="minutesDate"></span></h2>
-        <div id="minutesFacilitatorNote">-</div>
-        <table>
-          <thead><tr><th>담당자</th><th>발언 요약</th><th>참조 근거</th></tr></thead>
-          <tbody id="minutesTable"></tbody>
-        </table>
-        <div class="help-box" id="minutesConclusion">-</div>
       </div>
     </div>
 
@@ -150,12 +219,7 @@
 <script>
 const data = __DASHBOARD_DATA__;
 
-const LABEL_BY_LEVEL = {
-  OK: '유지',
-  CAUTION: '주의',
-  AVOID: '회피',
-};
-
+const LABEL_BY_LEVEL = { OK: '유지', CAUTION: '주의', AVOID: '회피' };
 const CHAIR_TEXT_MAP = {
   'Committee agrees on a neutral stance with selective monitoring.': '위원회는 선별적 모니터링 하에 중립 스탠스를 유지합니다.',
   'Committee maintains a neutral posture with selective positioning.': '위원회는 선별적 포지셔닝을 전제로 중립적 입장을 유지합니다.',
@@ -166,6 +230,7 @@ const CHAIR_TEXT_MAP = {
   'Majority regime tag: NEUTRAL.': '다수 국면 태그: NEUTRAL (중립 비중).',
   'Shared evidence focus: snapshot.news_headlines.': '공통 근거: snapshot.news_headlines.',
   'Shared evidence focus: snapshot.market_summary.note.': '공통 근거: snapshot.market_summary.note.',
+  'Shared evidence focus: snapshot.flow_summary.foreign_net.': '공통 근거: snapshot.flow_summary.foreign_net.',
   'Maintain balanced exposure.': '균형 비중을 유지합니다.',
   'Keep risk limits tight.': '리스크 한도를 엄격히 유지합니다.',
   'Avoid aggressive leverage.': '과도한 레버리지는 피합니다.',
@@ -177,30 +242,26 @@ const CHAIR_TEXT_MAP = {
   'Avoid high-beta risk assets.': '고베타 위험자산은 피합니다.',
 };
 
-function toKoreanChairText(text) {
-  return CHAIR_TEXT_MAP[text] || text || '-';
-}
-
-function formatGuidanceLevel(level) {
-  return LABEL_BY_LEVEL[level] ? `${level} · ${LABEL_BY_LEVEL[level]}` : (level || '-');
-}
-
-function latest(rows, key) {
-  if (!rows.length) return '-';
-  const value = rows[rows.length - 1][key];
-  return value ?? '-';
-}
-
+function toKoreanChairText(text) { return CHAIR_TEXT_MAP[text] || text || '-'; }
+function formatGuidanceLevel(level) { return LABEL_BY_LEVEL[level] ? `${level} · ${LABEL_BY_LEVEL[level]}` : (level || '-'); }
+function latest(rows, key) { return rows.length ? (rows[rows.length - 1][key] ?? '-') : '-'; }
 function coverage(rows, key) {
   if (!rows.length) return '-';
   const valid = rows.filter(r => r[key] !== null && r[key] !== undefined).length;
   return `${Math.round((valid / rows.length) * 100)}%`;
 }
-
 function formatMetric(value) {
   if (value === null || value === undefined || value === '') return '-';
   if (typeof value === 'number' && Number.isFinite(value)) return value.toFixed(2);
   return value;
+}
+function escapeHtml(value) {
+  return String(value ?? '-')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
 }
 
 const cards = [
@@ -217,20 +278,16 @@ const cards = [
   { label: 'HY/IG OAS 적재율', value: `${coverage(data.daily_macro, 'hy_oas')} / ${coverage(data.daily_macro, 'ig_oas')}` },
   { label: '누적 회의일', value: data.committee_history.length },
 ];
+document.getElementById('summary-cards').innerHTML = cards.map(c => `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>`).join('');
 
-const cardWrap = document.getElementById('summary-cards');
-cardWrap.innerHTML = cards.map(c => `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>`).join('');
-
-const marketLabels = data.market_daily.map(r => r.date);
 new Chart(document.getElementById('marketChart'), {
   type: 'line',
-  data: { labels: marketLabels, datasets: [
+  data: { labels: data.market_daily.map(r => r.date), datasets: [
     { label:'KOSPI', data:data.market_daily.map(r=>r.kospi_pct), borderColor:'#22d3ee' },
     { label:'KOSDAQ', data:data.market_daily.map(r=>r.kosdaq_pct), borderColor:'#f97316' },
     { label:'S&P500', data:data.market_daily.map(r=>r.sp500_pct), borderColor:'#a3e635' },
   ]},
 });
-
 new Chart(document.getElementById('macroChart'), {
   type:'line',
   data: { labels:data.daily_macro.map(r=>r.date), datasets:[
@@ -239,7 +296,6 @@ new Chart(document.getElementById('macroChart'), {
   ]},
   options: { scales: { y: { position:'left' }, y1: { position:'right', grid: { drawOnChartArea:false } } } }
 });
-
 new Chart(document.getElementById('flowChart'), {
   type:'bar',
   data: { labels:data.market_flow_daily.map(r=>r.date), datasets:[
@@ -250,126 +306,126 @@ new Chart(document.getElementById('flowChart'), {
 });
 
 const chair = data.latest_committee || {};
-const chairDate = document.getElementById('chairDate');
-const chairConsensus = document.getElementById('chairConsensus');
-const chairKeyPoints = document.getElementById('chairKeyPoints');
-const chairGuidance = document.getElementById('chairGuidance');
+document.getElementById('chairDate').textContent = chair.market_date ? `(${chair.market_date})` : '';
+document.getElementById('chairConsensus').textContent = toKoreanChairText(chair.consensus);
+document.getElementById('chairKeyPoints').innerHTML = (chair.key_points || []).map(point => `<li>${toKoreanChairText(point)}</li>`).join('') || '<li>-</li>';
+document.getElementById('chairGuidance').innerHTML = (chair.ops_guidance || []).map(item => `<li>[${formatGuidanceLevel(item.level)}] ${toKoreanChairText(item.text)}</li>`).join('') || '<li>-</li>';
 
-chairDate.textContent = chair.market_date ? `(${chair.market_date})` : '';
-chairConsensus.textContent = toKoreanChairText(chair.consensus);
-chairKeyPoints.innerHTML = (chair.key_points || []).map(point => `<li>${toKoreanChairText(point)}</li>`).join('') || '<li>-</li>';
-chairGuidance.innerHTML = (chair.ops_guidance || [])
-  .map(item => `<li>[${formatGuidanceLevel(item.level)}] ${toKoreanChairText(item.text)}</li>`)
-  .join('') || '<li>-</li>';
+document.getElementById('meetingStage').innerHTML = (data.meeting_handoff?.agent_speaking_order || []).map((agent, index) => `<div class="stage-pill">${index + 1}. ${escapeHtml(agent)}</div>`).join('');
+document.getElementById('handoffMessage').innerHTML = `<strong>회의 설계 의도</strong><br>${escapeHtml(data.meeting_handoff?.handoff_message || '-')}`;
 
-const table = document.getElementById('committeeTable');
-table.innerHTML = data.committee_history.slice().reverse().map(r => `
+document.getElementById('committeeTable').innerHTML = data.committee_history.slice().reverse().map(r => `
   <tr>
-    <td>${r.market_date}</td>
-    <td>${toKoreanChairText(r.consensus)}</td>
-    <td>${toKoreanChairText(r.ok_text) || '-'}</td>
-    <td>${toKoreanChairText(r.caution_text) || '-'}</td>
-    <td>${toKoreanChairText(r.avoid_text) || '-'}</td>
+    <td>${escapeHtml(r.market_date)}</td>
+    <td>${escapeHtml(toKoreanChairText(r.consensus))}</td>
+    <td>${escapeHtml(toKoreanChairText(r.ok_text) || '-')}</td>
+    <td>${escapeHtml(toKoreanChairText(r.caution_text) || '-')}</td>
+    <td>${escapeHtml(toKoreanChairText(r.avoid_text) || '-')}</td>
   </tr>
 `).join('');
 
-const guidanceHistoryTable = document.getElementById('guidanceHistoryTable');
-guidanceHistoryTable.innerHTML = data.committee_history.slice().reverse().slice(0, 8).map(r => `
+document.getElementById('guidanceHistoryTable').innerHTML = data.committee_history.slice().reverse().slice(0, 8).map(r => `
   <tr>
-    <td>${r.market_date}</td>
-    <td>${toKoreanChairText(r.ok_text) || '-'}</td>
-    <td>${toKoreanChairText(r.caution_text) || '-'}</td>
-    <td>${toKoreanChairText(r.avoid_text) || '-'}</td>
+    <td>${escapeHtml(r.market_date)}</td>
+    <td>${escapeHtml(toKoreanChairText(r.ok_text) || '-')}</td>
+    <td>${escapeHtml(toKoreanChairText(r.caution_text) || '-')}</td>
+    <td>${escapeHtml(toKoreanChairText(r.avoid_text) || '-')}</td>
   </tr>
 `).join('');
 
-const stanceDate = document.getElementById('stanceDate');
-const stanceTable = document.getElementById('stanceTable');
-stanceDate.textContent = data.latest_stances.market_date ? `(${data.latest_stances.market_date})` : '';
-stanceTable.innerHTML = (data.latest_stances.stances || []).map(s => `
+const latestStances = data.latest_stances || {};
+document.getElementById('stanceDate').textContent = latestStances.market_date ? `(${latestStances.market_date})` : '';
+document.getElementById('stanceTable').innerHTML = (latestStances.stances || []).map(s => `
   <tr>
-    <td>${s.agent_owner || s.agent_name}</td>
-    <td>${formatMetric(s.confidence)}</td>
-    <td>${s.korean_comment || '-'}</td>
-    <td><ul>${(s.core_claims || []).map(claim => `<li>${claim}</li>`).join('')}</ul></td>
+    <td>${escapeHtml(s.agent_owner || s.agent_name)}</td>
+    <td>${escapeHtml(formatMetric(s.confidence))}</td>
+    <td>${escapeHtml(s.korean_comment || '-')}</td>
+    <td><ul>${(s.core_claims || []).map(claim => `<li>${escapeHtml(claim)}</li>`).join('')}</ul></td>
   </tr>
 `).join('');
 
 const debate = data.latest_debate_minutes || {};
-const minutesDate = document.getElementById('minutesDate');
-const minutesFacilitatorNote = document.getElementById('minutesFacilitatorNote');
-const minutesTable = document.getElementById('minutesTable');
-const minutesConclusion = document.getElementById('minutesConclusion');
-
-minutesDate.textContent = debate.market_date ? `(${debate.market_date})` : '';
+document.getElementById('minutesDate').textContent = debate.market_date ? `(${debate.market_date})` : '';
 if (!debate.enabled) {
-  minutesFacilitatorNote.textContent = '오늘 날짜 기준 회의록이 없습니다. (USE_AGENT_DEBATE=1 설정 시 생성)';
-  minutesTable.innerHTML = '<tr><td colspan="3">오늘의 회의록이 아직 저장되지 않았습니다.</td></tr>';
-  minutesConclusion.textContent = '-';
+  document.getElementById('minutesFacilitatorNote').textContent = '오늘 날짜 기준 회의록이 없습니다. (USE_AGENT_DEBATE=1 설정 시 생성)';
+  document.getElementById('chatBoard').innerHTML = '<div class="empty-state">오늘의 회의록이 아직 저장되지 않았습니다.</div>';
+  document.getElementById('minutesConclusion').textContent = '-';
 } else {
-  minutesFacilitatorNote.textContent = debate.facilitator_note || '-';
-  minutesTable.innerHTML = (debate.minutes || []).map(m => `
-    <tr>
-      <td>${m.speaker_label || '-'}</td>
-      <td>${m.summary || '-'}</td>
-      <td>${(m.references || []).join(', ') || '-'}</td>
-    </tr>
-  `).join('') || '<tr><td colspan="3">회의록 발언이 없습니다.</td></tr>';
-  minutesConclusion.textContent = debate.round_conclusion || '-';
-}
-
-const newsDigest = data.latest_news_digest || {};
-const newsMeta = document.getElementById('newsDigestMeta');
-const newsTable = document.getElementById('newsDigestTable');
-const sectorHotTopics = document.getElementById('sectorHotTopics');
-const crawledAt = newsDigest.crawled_at || '-';
-const newsDate = newsDigest.news_date || '-';
-const totalCollected = newsDigest.total_collected || 0;
-newsMeta.textContent = `당일 뉴스 기준일: ${newsDate} / 최근 크롤링: ${crawledAt} / 수집 기사 수: ${totalCollected}건`;
-
-const sectorRows = newsDigest.sector_hot_topics || [];
-if (!sectorRows.length) {
-  sectorHotTopics.innerHTML = '<div class="sector-hot-card">당일 섹터별 핫토픽 데이터가 없습니다.</div>';
-} else {
-  sectorHotTopics.innerHTML = sectorRows.map(row => {
-    const topics = (row.topics || []).map(topic => {
-      const safeTitle = topic.title || topic.topic || '-';
-      if (topic.link) {
-        return `<li>[${topic.topic}] ${topic.count}건 · <a href="${topic.link}" target="_blank" rel="noopener noreferrer">${safeTitle}</a></li>`;
-      }
-      return `<li>[${topic.topic}] ${topic.count}건 · ${safeTitle}</li>`;
-    }).join('');
-    return `<div class="sector-hot-card"><h3>${row.sector} (${row.total_count}건)</h3><ul>${topics || '<li>-</li>'}</ul></div>`;
-  }).join('');
-}
-
-const topArticles = newsDigest.top_articles || [];
-if (!topArticles.length) {
-  newsTable.innerHTML = '<tr><td colspan="5">저장된 뉴스 요약이 없습니다.</td></tr>';
-} else {
-  newsTable.innerHTML = topArticles.map(item => {
-    const lines = (item.summary_lines || []).map(line => `<li>${line}</li>`).join('');
-    const safeLink = item.link || '#';
+  document.getElementById('minutesFacilitatorNote').innerHTML = `<strong>퍼실리테이터 메모</strong><br>${escapeHtml(debate.facilitator_note || '-')}`;
+  document.getElementById('chatBoard').innerHTML = (debate.minutes || []).map((m, index) => {
+    const isRight = index % 2 === 1;
     return `
-      <tr>
-        <td>${item.topic || '-'}</td>
-        <td>${item.count ?? '-'}</td>
-        <td>${item.title || '-'}</td>
-        <td><ul class="news-summary">${lines}</ul></td>
-        <td><a href="${safeLink}" target="_blank" rel="noopener noreferrer">원문</a></td>
-      </tr>
+      <div class="bubble-row ${isRight ? 'right' : ''}">
+        <div class="speaker-chip">${escapeHtml(m.speaker_label || m.speaker || '-')}</div>
+        <div class="bubble">
+          <div class="bubble-title"><span class="bubble-order">${index + 1}</span>${escapeHtml(m.speaker || '-')} 발언</div>
+          <div class="bubble-summary">${escapeHtml(m.summary || '-')}</div>
+          <div class="bubble-ref"><strong>참조 근거</strong><ul>${(m.references || []).map(ref => `<li>${escapeHtml(ref)}</li>`).join('') || '<li>-</li>'}</ul></div>
+        </div>
+      </div>
     `;
   }).join('');
+  document.getElementById('minutesConclusion').innerHTML = `
+    <h3>의장 최종 정리</h3>
+    <div>${escapeHtml(debate.round_conclusion || '-')}</div>
+  `;
 }
 
-const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
-const tabPanels = Array.from(document.querySelectorAll('.tab-panel'));
-function activateTab(tabId) {
-  tabButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.tab === tabId));
-  tabPanels.forEach(panel => panel.classList.toggle('active', panel.dataset.tabPanel === tabId));
+function renderHandoffSession(targetId, title, session) {
+  const element = document.getElementById(targetId);
+  if (!session) {
+    element.innerHTML = `<strong>${title}</strong><br>연결할 이전 회의 데이터가 없습니다.`;
+    return;
+  }
+  element.innerHTML = `
+    <strong>${title} · ${escapeHtml(session.market_date)}</strong><br>
+    ${escapeHtml(toKoreanChairText(session.consensus || session.round_conclusion || '-'))}
+    <ul class="decision-points">${(session.key_points || []).map(point => `<li>${escapeHtml(toKoreanChairText(point))}</li>`).join('') || '<li>-</li>'}</ul>
+  `;
 }
-tabButtons.forEach(btn => {
-  btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+renderHandoffSession('handoffCurrent', '오늘 회의 결론', data.meeting_handoff?.current_session);
+renderHandoffSession('handoffPrevious', '전일 이어받을 판단', data.meeting_handoff?.previous_session);
+
+document.getElementById('meetingTimeline').innerHTML = (data.recent_meeting_timeline || []).map(session => `
+  <div class="timeline-card">
+    <div class="timeline-head">
+      <div class="timeline-date">${escapeHtml(session.market_date)}</div>
+      <div class="badge">${(session.minutes || []).length}개 발언</div>
+    </div>
+    <div class="timeline-summary">${escapeHtml(session.round_conclusion || toKoreanChairText(session.consensus) || '-')}</div>
+    <ul class="timeline-points">
+      ${(session.ops_guidance || []).map(item => `<li>[${escapeHtml(formatGuidanceLevel(item.level))}] ${escapeHtml(toKoreanChairText(item.text))}</li>`).join('') || '<li>가이던스 없음</li>'}
+    </ul>
+  </div>
+`).join('') || '<div class="empty-state">최근 회의 타임라인이 없습니다.</div>';
+
+const digest = data.latest_news_digest || {};
+document.getElementById('newsDigestMeta').textContent = `기준일 ${digest.news_date || '-'} · 수집 ${digest.total_collected || 0}건 · 생성 ${digest.crawled_at || '-'}`;
+document.getElementById('sectorHotTopics').innerHTML = (digest.sector_hot_topics || []).map(item => `
+  <div class="sector-hot-card">
+    <h3>${escapeHtml(item.sector)} · ${escapeHtml(item.total_count)}건</h3>
+    <ul>
+      ${(item.topics || []).map(topic => `<li>${escapeHtml(topic.topic)} (${escapeHtml(topic.count)}건)</li>`).join('') || '<li>-</li>'}
+    </ul>
+  </div>
+`).join('') || '<div class="empty-state">섹터 핫토픽이 없습니다.</div>';
+
+document.getElementById('newsDigestTable').innerHTML = (digest.top_articles || []).map(article => `
+  <tr>
+    <td>${escapeHtml(article.topic)}</td>
+    <td>${escapeHtml(article.count)}</td>
+    <td>${escapeHtml(article.title)}</td>
+    <td><ul class="news-summary">${(article.summary_lines || []).map(line => `<li>${escapeHtml(line)}</li>`).join('')}</ul></td>
+    <td>${article.link ? `<a href="${escapeHtml(article.link)}" target="_blank" rel="noopener noreferrer">원문</a>` : '-'}</td>
+  </tr>
+`).join('');
+
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    document.querySelectorAll('.tab-btn').forEach(node => node.classList.toggle('active', node === btn));
+    document.querySelectorAll('.tab-panel').forEach(panel => panel.classList.toggle('active', panel.dataset.tabPanel === target));
+  });
 });
 </script>
 </body>
