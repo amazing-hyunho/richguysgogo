@@ -28,6 +28,9 @@ AGENT_OWNER_LABELS = {
     "liquidity": "유동성 담당자",
 }
 
+AGENT_SPEAKING_ORDER = ["risk", "macro", "flow", "earnings", "liquidity", "sector", "breadth"]
+AGENT_SPEAKING_ORDER_INDEX = {name: idx for idx, name in enumerate(AGENT_SPEAKING_ORDER)}
+
 
 def map_agent_owner(agent_name: str) -> str:
     return AGENT_OWNER_LABELS.get(agent_name, f"{agent_name} 담당자")
@@ -38,12 +41,45 @@ def fetch_rows(conn: sqlite3.Connection, query: str) -> list[dict[str, object]]:
     return [dict(row) for row in conn.execute(query).fetchall()]
 
 
+def list_run_paths() -> list[Path]:
+    return sorted(
+        path for path in RUNS_DIR.glob("*.json")
+        if path.is_file() and path.stem[:4].isdigit()
+    )
+
+
+def load_run_payload(path: Path) -> dict[str, object] | None:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+
+
+def normalize_minute(minute: dict[str, object]) -> dict[str, object]:
+    speaker = str(minute.get("speaker", ""))
+    return {
+        "speaker": speaker,
+        "speaker_label": minute.get("speaker_label") or map_agent_owner(speaker),
+        "summary": minute.get("summary", ""),
+        "references": minute.get("references", []),
+    }
+
+
+def sort_minutes(minutes: list[dict[str, object]]) -> list[dict[str, object]]:
+    return sorted(
+        minutes,
+        key=lambda item: (
+            AGENT_SPEAKING_ORDER_INDEX.get(str(item.get("speaker", "")), len(AGENT_SPEAKING_ORDER)),
+            str(item.get("speaker_label", "")),
+        ),
+    )
+
+
 def load_committee_history() -> list[dict[str, object]]:
     history: list[dict[str, object]] = []
-    for path in sorted(RUNS_DIR.glob("*.json")):
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except Exception:
+    for path in list_run_paths():
+        payload = load_run_payload(path)
+        if not payload:
             continue
 
         committee = payload.get("committee_result", {})
@@ -66,14 +102,14 @@ def load_committee_history() -> list[dict[str, object]]:
     return history
 
 
+
 def load_latest_stances() -> dict[str, object]:
-    latest_path = max(RUNS_DIR.glob("*.json"), default=None)
+    latest_path = max(list_run_paths(), default=None)
     if latest_path is None:
         return {"market_date": "-", "stances": []}
 
-    try:
-        payload = json.loads(latest_path.read_text(encoding="utf-8"))
-    except Exception:
+    payload = load_run_payload(latest_path)
+    if not payload:
         return {"market_date": latest_path.stem, "stances": []}
 
     stances = []
@@ -88,10 +124,12 @@ def load_latest_stances() -> dict[str, object]:
             }
         )
 
+    stances.sort(key=lambda item: AGENT_SPEAKING_ORDER_INDEX.get(item["agent_name"], len(AGENT_SPEAKING_ORDER)))
     return {
         "market_date": payload.get("market_date", latest_path.stem),
         "stances": stances,
     }
+
 
 
 def load_latest_debate_minutes() -> dict[str, object]:
@@ -99,24 +137,12 @@ def load_latest_debate_minutes() -> dict[str, object]:
     if not today_path.exists():
         return {"market_date": "-", "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
 
-    try:
-        payload = json.loads(today_path.read_text(encoding="utf-8"))
-    except Exception:
+    payload = load_run_payload(today_path)
+    if not payload:
         return {"market_date": today_path.stem, "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
 
     debate = payload.get("debate_round") or {}
-    minutes = []
-    for minute in debate.get("minutes", []):
-        speaker = minute.get("speaker", "")
-        minutes.append(
-            {
-                "speaker": speaker,
-                "speaker_label": minute.get("speaker_label") or map_agent_owner(speaker),
-                "summary": minute.get("summary", ""),
-                "references": minute.get("references", []),
-            }
-        )
-
+    minutes = sort_minutes([normalize_minute(minute) for minute in debate.get("minutes", [])])
     return {
         "market_date": payload.get("market_date", today_path.stem),
         "enabled": bool(debate),
@@ -128,14 +154,60 @@ def load_latest_debate_minutes() -> dict[str, object]:
 
 
 
+def load_recent_meeting_timeline(limit: int = 7) -> list[dict[str, object]]:
+    timeline: list[dict[str, object]] = []
+    for path in reversed(list_run_paths()):
+        payload = load_run_payload(path)
+        if not payload:
+            continue
+
+        debate = payload.get("debate_round") or {}
+        committee = payload.get("committee_result") or {}
+        key_points = [item.get("point", "") for item in committee.get("key_points", []) if isinstance(item, dict) and item.get("point")]
+        ops_guidance = [
+            {"level": item.get("level", ""), "text": item.get("text", "")}
+            for item in committee.get("ops_guidance", [])
+            if isinstance(item, dict)
+        ]
+        timeline.append(
+            {
+                "market_date": payload.get("market_date", path.stem),
+                "facilitator_note": debate.get("facilitator_note", ""),
+                "round_conclusion": debate.get("round_conclusion", ""),
+                "consensus": committee.get("consensus", ""),
+                "key_points": key_points[:3],
+                "ops_guidance": ops_guidance[:3],
+                "minutes": sort_minutes([normalize_minute(minute) for minute in debate.get("minutes", [])]),
+            }
+        )
+        if len(timeline) >= limit:
+            break
+    return timeline
+
+
+
+def load_handoff_context() -> dict[str, object]:
+    timeline = load_recent_meeting_timeline(limit=2)
+    current_session = timeline[0] if timeline else None
+    previous_session = timeline[1] if len(timeline) > 1 else None
+    return {
+        "current_session": current_session,
+        "previous_session": previous_session,
+        "agent_speaking_order": AGENT_SPEAKING_ORDER,
+        "handoff_message": (
+            "전일 결론과 오늘 근거를 같은 화면에서 비교해 다음 회의가 전일 판단을 이어서 업데이트할 수 있게 구성했습니다."
+        ),
+    }
+
+
+
 def load_latest_committee() -> dict[str, object]:
-    latest_path = max(RUNS_DIR.glob("*.json"), default=None)
+    latest_path = max(list_run_paths(), default=None)
     if latest_path is None:
         return {"market_date": "-", "consensus": "-", "key_points": [], "ops_guidance": []}
 
-    try:
-        payload = json.loads(latest_path.read_text(encoding="utf-8"))
-    except Exception:
+    payload = load_run_payload(latest_path)
+    if not payload:
         return {"market_date": latest_path.stem, "consensus": "-", "key_points": [], "ops_guidance": []}
 
     committee = payload.get("committee_result", {}) or {}
@@ -154,6 +226,7 @@ def load_latest_committee() -> dict[str, object]:
         "key_points": key_points[:3],
         "ops_guidance": ops_guidance[:3],
     }
+
 
 
 def load_latest_news_digest() -> dict[str, object]:
@@ -179,6 +252,7 @@ def load_latest_news_digest() -> dict[str, object]:
             "sector_hot_topics": [],
         }
 
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
@@ -186,6 +260,7 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     if placeholder not in template:
         raise ValueError(f"dashboard_template_missing_placeholder: {placeholder}")
     return template.replace(placeholder, data_json, 1)
+
 
 
 def main() -> None:
@@ -205,6 +280,8 @@ def main() -> None:
             "committee_history": load_committee_history(),
             "latest_stances": load_latest_stances(),
             "latest_debate_minutes": load_latest_debate_minutes(),
+            "recent_meeting_timeline": load_recent_meeting_timeline(),
+            "meeting_handoff": load_handoff_context(),
             "latest_committee": load_latest_committee(),
             "latest_news_digest": load_latest_news_digest(),
         }
