@@ -1,0 +1,114 @@
+{
+  "market_summary": {
+    "note": "KOSPI -6.49%, USD/KRW 1501.22. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -6.49,
+    "usdkrw": 1501.222192
+  },
+  "flow_summary": {
+    "note": "외국인 -39343억, 기관 -40171억, 개인 +74676억 | KOSPI(외 -36751, 기관 -38173, 개인 +70029) KOSDAQ(외 -2592, 기관 -1998, 개인 +4647)",
+    "foreign_net": -39343.0,
+    "institution_net": -40171.0,
+    "retail_net": 74676.0
+  },
+  "korean_market_flow": {
+    "date": "2026-03-24",
+    "market": {
+      "KOSPI": {
+        "individual": 70029,
+        "foreign": -36751,
+        "institution": -38173
+      },
+      "KOSDAQ": {
+        "individual": 4647,
+        "foreign": -2592,
+        "institution": -1998
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[환율/달러] 1500원 넘어간 환율에…은행 달러예금 5조 '썰물' - 뉴시스",
+    "[정책/테마] 바크, 연 2800만 달러 비용 절감 단행..관세 환급 1500만 달러 기대 - 매일경제 마켓",
+    "[금리/연준] 美 연준 차기 의장 인준 지연 속 ‘난감한 교체기’…워시, 금리인하 시험대 - 글로벌이코노믹",
+    "[에너지/원자재] [원자재 시황] 국제유가 급락세...채권시장 경색 우려 - 한국경제TV",
+    "[반도체/AI] 美, ‘팍스 실리카’ 펀드 출범… “호르무즈 같은 상황, 반도체에선 안 돼” - 조선일보"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": -6.49,
+      "kosdaq_pct": -5.56
+    },
+    "us": {
+      "sp500_pct": 1.1453197427795128,
+      "nasdaq_pct": 1.381903065423698,
+      "dow_pct": 1.3844559603681381
+    },
+    "fx": {
+      "usdkrw": 1501.222192,
+      "usdkrw_pct": -1.2313683273193632
+    },
+    "volatility": {
+      "vix": 26.149999618530273
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.334000110626221,
+      "us2y": 3.611999988555908,
+      "spread_2_10": 0.7220001220703125,
+      "vix": 26.149999618530273,
+      "dxy": 99.14700317382812,
+      "usdkrw": 1486.300048828125,
+      "vix3m": 26.100000381469727,
+      "vix_term_spread": -0.049999237060546875
+    },
+    "monthly": {
+      "unemployment_rate": 4.4,
+      "cpi_yoy": 2.6645890876940914,
+      "core_cpi_yoy": 2.7335062438778035,
+      "pce_yoy": 2.8321519411244056,
+      "pmi": null,
+      "wage_growth": 37.32,
+      "wage_level": 37.32,
+      "wage_yoy": 3.8397328881469184
+    },
+    "quarterly": {
+      "real_gdp": 24065.956,
+      "gdp_qoq_annualized": 0.7
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 2.0040001106262206,
+      "hy_oas": 3.24,
+      "ig_oas": 0.88,
+      "fed_balance_sheet": 6655939.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -7.329,
+    "liquidity_signal_score": 2.188,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -8.8,
+    "kospi_20d_cum_pct": -16.076,
+    "kosdaq_5d_cum_pct": -7.01,
+    "kospi_abs_move_5d_avg": 2.536,
+    "usdkrw_5d_change_pct": 0.675,
+    "vix_5d_avg": 24.892,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-16.08%, vol20d=3.84, reversal=false"
+  }
+}
