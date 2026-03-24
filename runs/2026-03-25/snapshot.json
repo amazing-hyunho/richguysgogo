@@ -1,0 +1,114 @@
+{
+  "market_summary": {
+    "note": "KOSPI 2.74%, USD/KRW 1488.08. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 2.74,
+    "usdkrw": 1488.075435
+  },
+  "flow_summary": {
+    "note": "외국인 -18130억, 기관 +9841억, 개인 +5157억 | KOSPI(외 -19863, 기관 +9683, 개인 +7270) KOSDAQ(외 +1733, 기관 +158, 개인 -2113)",
+    "foreign_net": -18130.0,
+    "institution_net": 9841.0,
+    "retail_net": 5157.0
+  },
+  "korean_market_flow": {
+    "date": "2026-03-25",
+    "market": {
+      "KOSPI": {
+        "individual": 7270,
+        "foreign": -19863,
+        "institution": 9683
+      },
+      "KOSDAQ": {
+        "individual": -2113,
+        "foreign": 1733,
+        "institution": 158
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[반도체/AI] 중동 전쟁에도 꿋꿋한 AI 투자… 생산시설 늘리는 삼전닉스 - mt.co.kr",
+    "[금리/연준] [속보] 연준 FOMC 금리인상 급선회... 뉴욕증시 비트코인 국제유가 \"이란전쟁 협상 결렬\" - 글로벌이코노믹",
+    "[미국지수] 이란 전쟁·사모 크레딧 리스크에도…바클레이즈 \"S&P500 전망 7600으로 상향\" - edaily.co.kr",
+    "[환율/달러] [외환] 달러 인덱스 99선 육박…중동 긴장·금리 상승 안전자산 쏠림 - 블록미디어",
+    "[에너지/원자재] 국제 유가, 하루 만에 100달러 위로...“신속한 전쟁 종결 기대 줄어” - 조선일보"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": 2.74,
+      "kosdaq_pct": 2.24
+    },
+    "us": {
+      "sp500_pct": -0.37425923111989223,
+      "nasdaq_pct": -0.8423339025897125,
+      "dow_pct": -0.18267213781370276
+    },
+    "fx": {
+      "usdkrw": 1488.075435,
+      "usdkrw_pct": 0.8100652627329585
+    },
+    "volatility": {
+      "vix": 26.950000762939453
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.3919997215271,
+      "us2y": 3.620000123977661,
+      "spread_2_10": 0.7719995975494385,
+      "vix": 26.950000762939453,
+      "dxy": 99.18299865722656,
+      "usdkrw": 1498.3399658203125,
+      "vix3m": 26.559999465942383,
+      "vix_term_spread": -0.3900012969970703
+    },
+    "monthly": {
+      "unemployment_rate": 4.4,
+      "cpi_yoy": 2.6645890876940914,
+      "core_cpi_yoy": 2.7335062438778035,
+      "pce_yoy": 2.8321519411244056,
+      "pmi": null,
+      "wage_growth": 37.32,
+      "wage_level": 37.32,
+      "wage_yoy": 3.8397328881469184
+    },
+    "quarterly": {
+      "real_gdp": 24065.956,
+      "gdp_qoq_annualized": 0.7
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 2.0619997215270995,
+      "hy_oas": 3.19,
+      "ig_oas": 0.88,
+      "fed_balance_sheet": 6655939.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 2.956,
+    "liquidity_signal_score": 1.763,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -7.69,
+    "kospi_20d_cum_pct": -12.335,
+    "kosdaq_5d_cum_pct": -4.65,
+    "kospi_abs_move_5d_avg": 2.758,
+    "usdkrw_5d_change_pct": -0.66,
+    "vix_5d_avg": 25.806,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-12.34%, vol20d=3.91, reversal=false"
+  }
+}
