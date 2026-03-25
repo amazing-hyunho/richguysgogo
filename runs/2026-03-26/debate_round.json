@@ -1,0 +1,89 @@
+{
+  "round_index": 1,
+  "facilitator_note": "오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
+  "minutes": [
+    {
+      "speaker": "macro",
+      "speaker_label": "매크로 담당자",
+      "summary": "저는 매크로 담당자 입장에서 '거시는 균형적이며 선택적 대응이 적절합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1497.97, kospi_change_pct=+1.59%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "NEUTRAL"
+    },
+    {
+      "speaker": "flow",
+      "speaker_label": "수급 담당자",
+      "summary": "저는 수급 담당자 입장에서 '수급 흐름이 우호적이라 위험 선호가 높아 보입니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-9163억, institution_net=+23454억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.flow_summary.retail_net"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "sector",
+      "speaker_label": "섹터 담당자",
+      "summary": "저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-9163억, institution_net=+23454억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.sector_moves",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "NEUTRAL"
+    },
+    {
+      "speaker": "risk",
+      "speaker_label": "리스크 담당자",
+      "summary": "저는 리스크 담당자 입장에서 '급격한 리스크는 없어 규율을 유지하세요.' 의견을 유지합니다. 근거 숫자는 usdkrw=1497.97, kospi_change_pct=+1.59%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "NEUTRAL"
+    },
+    {
+      "speaker": "earnings",
+      "speaker_label": "이익모멘텀 담당자",
+      "summary": "저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 견조해 위험자산 선호를 지지합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-9163억, institution_net=+23454억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.news_headlines"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "breadth",
+      "speaker_label": "브레드스 담당자",
+      "summary": "저는 브레드스 담당자 입장에서 '브레드스 신호가 혼재되어 중립 대응이 합리적입니다.' 의견을 유지합니다. 근거 숫자는 vix=25.3, foreign_net=-9163억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.markets.volatility.vix",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "internal_regime_tag": "NEUTRAL"
+    },
+    {
+      "speaker": "liquidity",
+      "speaker_label": "유동성 담당자",
+      "summary": "저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=99.64, real_rate=2.02%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.macro.daily.dxy",
+        "snapshot.macro.structural.real_rate",
+        "snapshot.flow_summary.foreign_net"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    }
+  ],
+  "round_conclusion": "의장 정리: 오늘 다수 의견은 중립입니다. 근거는 KOSPI +1.59%, USD/KRW 1497.97(+0.20%), VIX 25.3, 외국인 -9163억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 중립 비중을 유지하면서 확인된 시그널에서만 선별 대응합니다."
+}
