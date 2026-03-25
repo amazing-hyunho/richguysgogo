@@ -1,27 +1,27 @@
 {
   "market_summary": {
-    "note": "KOSPI 2.74%, USD/KRW 1488.08. Headlines loaded. Flows loaded.",
-    "kospi_change_pct": 2.74,
-    "usdkrw": 1488.075435
+    "note": "KOSPI 1.96%, USD/KRW 1497.97. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 1.96,
+    "usdkrw": 1497.971258
   },
   "flow_summary": {
-    "note": "외국인 -18130억, 기관 +9841억, 개인 +5157억 | KOSPI(외 -19863, 기관 +9683, 개인 +7270) KOSDAQ(외 +1733, 기관 +158, 개인 -2113)",
-    "foreign_net": -18130.0,
-    "institution_net": 9841.0,
-    "retail_net": 5157.0
+    "note": "외국인 +2394억, 기관 +16627억, 개인 -20262억 | KOSPI(외 +500, 기관 +16829, 개인 -18733) KOSDAQ(외 +1894, 기관 -202, 개인 -1529)",
+    "foreign_net": 2394.0,
+    "institution_net": 16627.0,
+    "retail_net": -20262.0
   },
   "korean_market_flow": {
     "date": "2026-03-25",
     "market": {
       "KOSPI": {
-        "individual": 7270,
-        "foreign": -19863,
-        "institution": 9683
+        "individual": -18733,
+        "foreign": 500,
+        "institution": 16829
       },
       "KOSDAQ": {
-        "individual": -2113,
-        "foreign": 1733,
-        "institution": 158
+        "individual": -1529,
+        "foreign": 1894,
+        "institution": -202
       }
     }
   },
@@ -31,11 +31,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "[반도체/AI] 중동 전쟁에도 꿋꿋한 AI 투자… 생산시설 늘리는 삼전닉스 - mt.co.kr",
-    "[금리/연준] [속보] 연준 FOMC 금리인상 급선회... 뉴욕증시 비트코인 국제유가 \"이란전쟁 협상 결렬\" - 글로벌이코노믹",
-    "[미국지수] 이란 전쟁·사모 크레딧 리스크에도…바클레이즈 \"S&P500 전망 7600으로 상향\" - edaily.co.kr",
-    "[환율/달러] [외환] 달러 인덱스 99선 육박…중동 긴장·금리 상승 안전자산 쏠림 - 블록미디어",
-    "[에너지/원자재] 국제 유가, 하루 만에 100달러 위로...“신속한 전쟁 종결 기대 줄어” - 조선일보"
+    "[환율/달러] 원/달러 환율 이틀째 하락…장 초반 1,493.2원 - 연합뉴스 한민족센터",
+    "[경기/성장] \"이란 전쟁 경제 충격, 트럼프 관세 압도…끝나도 저유가 난망\" - 연합뉴스",
+    "[미국지수] 중동 정세의 불확실성과 금리 인상 압력 속에 미국 증시는 하락했다. - Vietnam.vn",
+    "[에너지/원자재] 국제 유가, 하루 만에 100달러 위로...“신속한 전쟁 종결 기대 줄어” - 조선일보",
+    "[반도체/AI] 중동 전쟁에도 꿋꿋한 AI 투자… 생산시설 늘리는 삼전닉스 - mt.co.kr"
   ],
   "watchlist": [
     "SPY",
@@ -44,8 +44,8 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": 2.74,
-      "kosdaq_pct": 2.24
+      "kospi_pct": 1.96,
+      "kosdaq_pct": 2.32
     },
     "us": {
       "sp500_pct": -0.37425923111989223,
@@ -53,8 +53,8 @@
       "dow_pct": -0.18267213781370276
     },
     "fx": {
-      "usdkrw": 1488.075435,
-      "usdkrw_pct": 0.8100652627329585
+      "usdkrw": 1497.971258,
+      "usdkrw_pct": -0.09739566655993412
     },
     "volatility": {
       "vix": 26.950000762939453
@@ -66,8 +66,8 @@
       "us2y": 3.620000123977661,
       "spread_2_10": 0.7719995975494385,
       "vix": 26.950000762939453,
-      "dxy": 99.18299865722656,
-      "usdkrw": 1498.3399658203125,
+      "dxy": 99.27799987792969,
+      "usdkrw": 1497.47998046875,
       "vix3m": 26.559999465942383,
       "vix_term_spread": -0.3900012969970703
     },
@@ -95,20 +95,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": 2.956,
-    "liquidity_signal_score": 1.763,
+    "breadth_signal_score": 2.606,
+    "liquidity_signal_score": 1.744,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
     "lookback_days": 20,
     "sample_count": 20,
-    "kospi_5d_cum_pct": -7.69,
-    "kospi_20d_cum_pct": -12.335,
-    "kosdaq_5d_cum_pct": -4.65,
-    "kospi_abs_move_5d_avg": 2.758,
-    "usdkrw_5d_change_pct": -0.66,
+    "kospi_5d_cum_pct": -8.47,
+    "kospi_20d_cum_pct": -13.115,
+    "kosdaq_5d_cum_pct": -4.57,
+    "kospi_abs_move_5d_avg": 2.602,
+    "usdkrw_5d_change_pct": 0.001,
     "vix_5d_avg": 25.806,
     "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=-12.34%, vol20d=3.91, reversal=false"
+    "note": "rolling_20d: kospi20d=-13.12%, vol20d=3.88, reversal=false"
   }
 }

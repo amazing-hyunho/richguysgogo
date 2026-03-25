@@ -1,13 +1,12 @@
 {
-  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
   "key_points": [
     {
-      "point": "Majority regime tag: RISK_OFF.",
+      "point": "Majority regime tag: RISK_ON.",
       "sources": [
         "macro",
-        "flow",
+        "sector",
         "risk",
-        "earnings",
         "breadth"
       ]
     },
@@ -20,15 +19,23 @@
         "liquidity",
         "macro"
       ]
+    },
+    {
+      "point": "Stability guardrail applied from confidence-weighted votes and cumulative context.",
+      "sources": [
+        "regime_tuner"
+      ]
     }
   ],
   "disagreements": [
     {
       "topic": "Regime tags",
-      "majority": "RISK_OFF",
-      "minority": "NEUTRAL",
+      "majority": "NEUTRAL",
+      "minority": "RISK_ON",
       "minority_agents": [
-        "sector"
+        "flow",
+        "earnings",
+        "liquidity"
       ],
       "why_it_matters": "Minority risk regime can change positioning boundaries."
     }
@@ -36,15 +43,15 @@
   "ops_guidance": [
     {
       "level": "OK",
-      "text": "Keep exposure focused on resilience."
+      "text": "Lean into confirmed momentum leaders."
     },
     {
       "level": "CAUTION",
-      "text": "Favor defensive positioning."
+      "text": "Size positions with volatility limits."
     },
     {
       "level": "AVOID",
-      "text": "Avoid high-beta risk assets."
+      "text": "Avoid chasing overstretched breakouts."
     }
   ]
 }
