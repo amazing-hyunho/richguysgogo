@@ -1,30 +1,30 @@
 {
-  "generated_at": "2026-03-26T22:51:45.134142+00:00",
+  "generated_at": "2026-03-27T02:54:41.174246+00:00",
   "market_date": "2026-03-27",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI -3.22%, USD/KRW 0.00. Headlines loaded. Flows loaded.",
-      "kospi_change_pct": -3.22,
-      "usdkrw": 0.0
+      "note": "KOSPI -2.47%, USD/KRW 1506.83. Headlines loaded. Flows loaded.",
+      "kospi_change_pct": -2.47,
+      "usdkrw": 1506.82883
     },
     "flow_summary": {
-      "note": "외국인 -32333억, 기관 -4336억, 개인 +35444억 | KOSPI(외 -29370, 기관 -2999, 개인 +30598) KOSDAQ(외 -2963, 기관 -1337, 개인 +4846)",
-      "foreign_net": -32333.0,
-      "institution_net": -4336.0,
-      "retail_net": 35444.0
+      "note": "외국인 -24290억, 기관 -301억, 개인 +22564억 | KOSPI(외 -23420, 기관 +209, 개인 +21255) KOSDAQ(외 -870, 기관 -510, 개인 +1309)",
+      "foreign_net": -24290.0,
+      "institution_net": -301.0,
+      "retail_net": 22564.0
     },
     "korean_market_flow": {
       "date": "2026-03-27",
       "market": {
         "KOSPI": {
-          "individual": 30598,
-          "foreign": -29370,
-          "institution": -2999
+          "individual": 21255,
+          "foreign": -23420,
+          "institution": 209
         },
         "KOSDAQ": {
-          "individual": 4846,
-          "foreign": -2963,
-          "institution": -1337
+          "individual": 1309,
+          "foreign": -870,
+          "institution": -510
         }
       }
     },
@@ -34,11 +34,11 @@
       "n/a"
     ],
     "news_headlines": [
-      "[인플레이션] 연준 쿡 총재, 이란 전쟁으로 인플레이션 위험 증가 By Investing.com - Investing.com 한국어",
-      "[금리/연준] UBS \"연준 금리 인하, 9월로 지연 전망\" - 블루밍비트",
-      "[환율/달러] [채권/외환] 유가 급등에 美 국채금리 상승·달러 강세…\"전쟁 불확실성, 시장 압박\" - 네이트",
-      "[미국지수] 뉴욕증시, 중동 협상기대감 후퇴에 하락…나스닥 2.4% 급락 조정 진입? [월가월부] - 매일경제",
-      "[반도체/AI] SK하닉 새 의장에 고승범 선임…반도체 투톱은 왜 금융 관료를 모실까 [갭 월드] - 서울경제신문"
+      "[금리/연준] 물가 인상보다 급한 건 성장…멕시코, 기준금리 0.25%p 인하 - 연합뉴스",
+      "[환율/달러] 원/달러 환율 : 1,510.6원(▲2.6원) - 매일경제 마켓",
+      "[반도체/AI] 반도체에 불똥튀나…중동전쟁 장기화 때 헬륨 공급 차질 - 연합뉴스",
+      "[인플레이션] 기름값 4달러 뚫렸다... 美 CPI 4%대 재진입, 한국 유가도 비상 [미국 인플레이션 경고] - 글로벌이코노믹",
+      "[정책/테마] 산업부, 중동전쟁 위기 대응 위해 민관 협력채널 가동 - 전기신문"
     ],
     "watchlist": [
       "SPY",
@@ -47,8 +47,8 @@
     ],
     "markets": {
       "kr": {
-        "kospi_pct": -3.22,
-        "kosdaq_pct": -1.98
+        "kospi_pct": -2.47,
+        "kosdaq_pct": -0.97
       },
       "us": {
         "sp500_pct": -1.740621065246739,
@@ -56,8 +56,8 @@
         "dow_pct": -1.0109523063897479
       },
       "fx": {
-        "usdkrw": 0.0,
-        "usdkrw_pct": 0.47402199675109313
+        "usdkrw": 1506.82883,
+        "usdkrw_pct": -0.22952820676113384
       },
       "volatility": {
         "vix": 27.440000534057617
@@ -69,8 +69,8 @@
         "us2y": 3.620000123977661,
         "spread_2_10": 0.7959997653961182,
         "vix": 27.440000534057617,
-        "dxy": 99.86499786376953,
-        "usdkrw": 1509.1600341796875,
+        "dxy": 99.8280029296875,
+        "usdkrw": 1504.2900390625,
         "vix3m": 27.15999984741211,
         "vix_term_spread": -0.2800006866455078
       },
@@ -98,21 +98,21 @@
     },
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
-      "breadth_signal_score": -0.89,
-      "liquidity_signal_score": 1.854,
+      "breadth_signal_score": -0.01,
+      "liquidity_signal_score": 1.862,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
     },
     "cumulative_context": {
       "lookback_days": 20,
       "sample_count": 20,
-      "kospi_5d_cum_pct": -5.85,
-      "kospi_20d_cum_pct": -4.773,
-      "kosdaq_5d_cum_pct": -0.24,
-      "kospi_abs_move_5d_avg": 2.714,
-      "usdkrw_5d_change_pct": -100.0,
+      "kospi_5d_cum_pct": -5.1,
+      "kospi_20d_cum_pct": -4.023,
+      "kosdaq_5d_cum_pct": 0.77,
+      "kospi_abs_move_5d_avg": 2.564,
+      "usdkrw_5d_change_pct": 0.383,
       "vix_5d_avg": 26.53,
       "reversal_signal": false,
-      "note": "rolling_20d: kospi20d=-4.77%, vol20d=3.47, reversal=false"
+      "note": "rolling_20d: kospi20d=-4.02%, vol20d=3.44, reversal=false"
     }
   },
   "stances": [
@@ -248,7 +248,7 @@
       {
         "speaker": "macro",
         "speaker_label": "매크로 담당자",
-        "summary": "저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=0.00, kospi_change_pct=-3.22%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1506.83, kospi_change_pct=-2.47%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.market_summary.usdkrw",
           "snapshot.market_summary.kospi_change_pct",
@@ -260,7 +260,7 @@
       {
         "speaker": "flow",
         "speaker_label": "수급 담당자",
-        "summary": "저는 수급 담당자 입장에서 '수급 역풍이 커져 방어적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-32333억, institution_net=-4336억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 수급 담당자 입장에서 '수급 역풍이 커져 방어적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-24290억, institution_net=-301억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.flow_summary.foreign_net",
           "snapshot.flow_summary.institution_net",
@@ -271,7 +271,7 @@
       {
         "speaker": "sector",
         "speaker_label": "섹터 담당자",
-        "summary": "저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-32333억, institution_net=-4336억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-24290억, institution_net=-301억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.sector_moves",
           "snapshot.flow_summary.foreign_net",
@@ -282,7 +282,7 @@
       {
         "speaker": "risk",
         "speaker_label": "리스크 담당자",
-        "summary": "저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=0.00, kospi_change_pct=-3.22%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1506.83, kospi_change_pct=-2.47%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.market_summary.usdkrw",
           "snapshot.market_summary.kospi_change_pct",
@@ -294,7 +294,7 @@
       {
         "speaker": "earnings",
         "speaker_label": "이익모멘텀 담당자",
-        "summary": "저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-32333억, institution_net=-4336억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-24290억, institution_net=-301억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.phase_two_signals.earnings_signal_score",
           "snapshot.flow_summary.foreign_net",
@@ -306,7 +306,7 @@
       {
         "speaker": "breadth",
         "speaker_label": "브레드스 담당자",
-        "summary": "저는 브레드스 담당자 입장에서 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 vix=27.4, foreign_net=-32333억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 브레드스 담당자 입장에서 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 vix=27.4, foreign_net=-24290억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.phase_two_signals.breadth_signal_score",
           "snapshot.markets.volatility.vix",
@@ -318,7 +318,7 @@
       {
         "speaker": "liquidity",
         "speaker_label": "유동성 담당자",
-        "summary": "저는 유동성 담당자 입장에서 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.' 의견을 유지합니다. 근거 숫자는 dxy=99.86, real_rate=2.08%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 유동성 담당자 입장에서 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.' 의견을 유지합니다. 근거 숫자는 dxy=99.83, real_rate=2.08%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.phase_two_signals.liquidity_signal_score",
           "snapshot.macro.daily.dxy",
@@ -328,7 +328,7 @@
         "internal_regime_tag": "RISK_OFF"
       }
     ],
-    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI -3.22%, USD/KRW 0.00(+0.47%), VIX 27.4, 외국인 -32333억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다."
+    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI -2.47%, USD/KRW 1506.83(-0.23%), VIX 27.4, 외국인 -24290억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다."
   },
   "committee_result": {
     "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
