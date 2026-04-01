@@ -1,18 +1,18 @@
 {
-  "crawled_at": "2026-04-01T16:42:50.456239+00:00",
+  "crawled_at": "2026-04-01T17:42:47.258175+00:00",
   "news_date": "2026-04-02",
-  "total_collected": 5,
+  "total_collected": 4,
   "topic_counts": [
     [
       "반도체/AI",
-      2
-    ],
-    [
-      "국내지수",
       1
     ],
     [
-      "미국지수",
+      "환율/달러",
+      1
+    ],
+    [
+      "국내지수",
       1
     ],
     [
@@ -23,11 +23,22 @@
   "top_articles": [
     {
       "topic": "반도체/AI",
-      "count": 2,
+      "count": 1,
       "title": "엔비디아, 美 AI반도체 설계업체에 3조원 투자 - 동아일보",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE83Q1poTU95Qks5YmxOaU1nNHluYmVzeU5Xb2E2NnR3NmMyMFRsalNzMmZqSy1JLXZiWTF4YUJkZmhxM3podWVUQlVNSkpnWWRuS2Eyb2RKU3FzajNiVVBobk82a296enQyYkhfRm5aT0g3VTR2UHfSAWZBVV95cUxPbk8wdDZoREVUMTNLV0RFQWNsREFNTTlyOWk4ekZUSkgzTmNDYWlpOC1zeUpSUEN5YXhWRnA5alU4cjVldTdmUlkxWVAtR2ZuMUtWcWkzRmpLb05fcnQ0b0VnZjRXeXc?oc=5",
       "summary_lines": [
         "핵심 이슈: 엔비디아, 美 AI반도체 설계업체에 3조원 투자 - 동아일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "“IMF 때와 다르다”… 환율 숫자보다 달러 곳간 보는 한은 - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9fUENaLTNfMnFGX2kzaTBQejd4WUtNMEF2c2xhOFNkZlQ0cENKWU1Gdmo1ZTBpZDhyS1hjQkNjNzJ0Q1QxOG9BTzNZa3liNk0?oc=5",
+      "summary_lines": [
+        "핵심 이슈: “IMF 때와 다르다”… 환율 숫자보다 달러 곳간 보는 한은 - v.daum.net",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -39,17 +50,6 @@
       "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5UYkUzb2NudWJlMVdZckhJeVVyRjV5OGJwTTlLUmYzQnlIU2R6V0YyZ3RqT091dGlFMkRoODc5T0wxR216dVM4N3NvcV9FR3phV0HSAVNBVV95cUxQbERMSzFhcmF0R2pVSFhXdF80Vkh2NUViM01Bblhyd18wbTFMSmV1MXhXbTVjNlp2Um1aT3MtUlRHTlIzSnlWeUJJbXBhLVViN3pWcw?oc=5",
       "summary_lines": [
         "핵심 이슈: [사설] 시총 1위 종목이 블로거 글에 하한가, 부끄러운 코스닥 민낯 - 서울경제신문",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "미국지수",
-      "count": 1,
-      "title": "이란 긴장 완화 기대감, 미국 증시 상승…한국 경제는? - 브랜드경제신문",
-      "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFA3Zl9kcFczcU44WHpDeFFzdkZ0bDl0cGw5WlVjS29oZ21qZUdGMEtxcWNiM1g3Q3lBTl96cmlWNnV6SzBMc3AyV2UyUzQ?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 이란 긴장 완화 기대감, 미국 증시 상승…한국 경제는? - 브랜드경제신문",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -69,31 +69,37 @@
   "sector_hot_topics": [
     {
       "sector": "IT/반도체",
-      "total_count": 2,
+      "total_count": 1,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 2,
+          "count": 1,
           "title": "엔비디아, 美 AI반도체 설계업체에 3조원 투자 - 동아일보",
           "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE83Q1poTU95Qks5YmxOaU1nNHluYmVzeU5Xb2E2NnR3NmMyMFRsalNzMmZqSy1JLXZiWTF4YUJkZmhxM3podWVUQlVNSkpnWWRuS2Eyb2RKU3FzajNiVVBobk82a296enQyYkhfRm5aT0g3VTR2UHfSAWZBVV95cUxPbk8wdDZoREVUMTNLV0RFQWNsREFNTTlyOWk4ekZUSkgzTmNDYWlpOC1zeUpSUEN5YXhWRnA5alU4cjVldTdmUlkxWVAtR2ZuMUtWcWkzRmpLb05fcnQ0b0VnZjRXeXc?oc=5"
         }
       ]
     },
     {
+      "sector": "매크로",
+      "total_count": 1,
+      "topics": [
+        {
+          "topic": "환율/달러",
+          "count": 1,
+          "title": "“IMF 때와 다르다”… 환율 숫자보다 달러 곳간 보는 한은 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9fUENaLTNfMnFGX2kzaTBQejd4WUtNMEF2c2xhOFNkZlQ0cENKWU1Gdmo1ZTBpZDhyS1hjQkNjNzJ0Q1QxOG9BTzNZa3liNk0?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "지수/시장",
-      "total_count": 2,
+      "total_count": 1,
       "topics": [
         {
           "topic": "국내지수",
           "count": 1,
           "title": "[사설] 시총 1위 종목이 블로거 글에 하한가, 부끄러운 코스닥 민낯 - 서울경제신문",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5UYkUzb2NudWJlMVdZckhJeVVyRjV5OGJwTTlLUmYzQnlIU2R6V0YyZ3RqT091dGlFMkRoODc5T0wxR216dVM4N3NvcV9FR3phV0HSAVNBVV95cUxQbERMSzFhcmF0R2pVSFhXdF80Vkh2NUViM01Bblhyd18wbTFMSmV1MXhXbTVjNlp2Um1aT3MtUlRHTlIzSnlWeUJJbXBhLVViN3pWcw?oc=5"
-        },
-        {
-          "topic": "미국지수",
-          "count": 1,
-          "title": "이란 긴장 완화 기대감, 미국 증시 상승…한국 경제는? - 브랜드경제신문",
-          "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFA3Zl9kcFczcU44WHpDeFFzdkZ0bDl0cGw5WlVjS29oZ21qZUdGMEtxcWNiM1g3Q3lBTl96cmlWNnV6SzBMc3AyV2UyUzQ?oc=5"
         }
       ]
     },
