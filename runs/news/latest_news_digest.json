@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-04-04T17:42:49.277953+00:00",
+  "crawled_at": "2026-04-04T18:42:57.517103+00:00",
   "news_date": "2026-04-05",
-  "total_collected": 4,
+  "total_collected": 5,
   "topic_counts": [
+    [
+      "인플레이션",
+      1
+    ],
     [
       "경기/성장",
       1
@@ -17,6 +21,17 @@
     ]
   ],
   "top_articles": [
+    {
+      "topic": "인플레이션",
+      "count": 1,
+      "title": "[주간 월가 레이더] '전쟁 인플레'의 첫 성적표⋯운명의 CPI 주간 - 포커스온경제",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9FYkZHZlA2VlZSbUVKcV9pQ0hyNGgzMzBxZWg2VUxmSVVab2tha2NHeU45UUtZdzUzbnhGZ2pTOUVNWS0xZF9NaDRCNDZ6SFJQVUhOSDdDdzM3M3poZXc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [주간 월가 레이더] '전쟁 인플레'의 첫 성적표⋯운명의 CPI 주간 - 포커스온경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "경기/성장",
       "count": 1,
@@ -53,6 +68,24 @@
   ],
   "sector_hot_topics": [
     {
+      "sector": "매크로",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "인플레이션",
+          "count": 1,
+          "title": "[주간 월가 레이더] '전쟁 인플레'의 첫 성적표⋯운명의 CPI 주간 - 포커스온경제",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9FYkZHZlA2VlZSbUVKcV9pQ0hyNGgzMzBxZWg2VUxmSVVab2tha2NHeU45UUtZdzUzbnhGZ2pTOUVNWS0xZF9NaDRCNDZ6SFJQVUhOSDdDdzM3M3poZXc?oc=5"
+        },
+        {
+          "topic": "경기/성장",
+          "count": 1,
+          "title": "중동 전쟁, 에너지 위기와 한국 경제 - sisadays.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1kNmFnenU5QUppd2h6ZUV3bzREZTFVeU9VdTBNRjlfcEo5cWl1RE1IeDA0Rm5id0psVXhVbF9QZkFQSlJNNXJzd0tfLXhSMGs?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "IT/반도체",
       "total_count": 2,
       "topics": [
@@ -61,18 +94,6 @@
           "count": 2,
           "title": "성남산업진흥원, ICT 융합 협의회 가동…반도체·AI 경쟁력 강화 - 전자신문",
           "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9TLU51NXhGQ1RXeVc3cDFSU2xUOFdka2hSMVkzc1JNdHBIZ1lTRlBFZmZBTEdlT1B4LXBya0pMdC1mV1MtbmhzZE5VWEJBdw?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "매크로",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "경기/성장",
-          "count": 1,
-          "title": "중동 전쟁, 에너지 위기와 한국 경제 - sisadays.co.kr",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1kNmFnenU5QUppd2h6ZUV3bzREZTFVeU9VdTBNRjlfcEo5cWl1RE1IeDA0Rm5id0psVXhVbF9QZkFQSlJNNXJzd0tfLXhSMGs?oc=5"
         }
       ]
     },
