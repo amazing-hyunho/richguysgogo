@@ -1,0 +1,122 @@
+# 데일리 AI 투자위원회 리포트
+
+- 시장 기준일: **2026-04-08**
+- 생성 시각(UTC): `2026-04-07T22:51:13.171550+00:00`
+
+## 1) 한눈에 보기
+- **위원회 합의**: 위원회는 엄격한 리스크 통제를 전제로 위험자산 비중 확대를 지지합니다.
+- **국면 투표**: NEUTRAL=5, RISK_ON=2, RISK_OFF=0
+- **다수 국면**: NEUTRAL
+
+## 2) 운영 가이드
+- [OpsGuidanceLevel.OK/유지] 확인된 모멘텀 주도주 중심으로 대응합니다.
+- [OpsGuidanceLevel.CAUTION/주의] 변동성 한도를 기준으로 포지션 규모를 조절합니다.
+- [OpsGuidanceLevel.AVOID/회피] 과열된 돌파 구간 추격 매수는 피합니다.
+
+## 3) 시장/매크로 스냅샷
+- **국내 지수**: KOSPI +0.82% / KOSDAQ -1.02%
+- **미국 지수**: S&P500 +0.08% / NASDAQ +0.10% / DOW -0.18%
+- **환율/변동성**: USD/KRW 1507.42 (-0.49%) / VIX 25.8
+- **시장 요약 노트**: KOSPI 0.82%, USD/KRW 1507.42. Headlines loaded. Flows loaded.
+- **수급 요약**: 외국인 +5502억 / 기관 -5201억 / 개인 -3751억
+- **일간 매크로**: 미10년 4.34% / 미2년 3.62% / 2-10 0.73%p / DXY 99.52
+- **월간 매크로**: 실업률 4.30% / CPI YoY 2.66% / Core CPI YoY n/a / PMI n/a
+- **분기/구조**: GDP QoQ 연율 0.70% / 기준금리 3.64% / 실질금리 1.97%
+
+## 4) 위원회 핵심 포인트
+- 다수 국면 태그: RISK_ON.
+  ↳ 출처: `macro, sector, risk, earnings, breadth`
+- 공통 근거: snapshot.flow_summary.foreign_net.
+  ↳ 출처: `breadth, earnings, flow, liquidity, macro`
+- Stability guardrail applied from confidence-weighted votes and cumulative context.
+  ↳ 출처: `regime_tuner`
+
+## 5) AI 에이전트 의견
+### 매크로 담당자
+- 한줄 요약: 거시는 균형적이며 선택적 대응이 적절합니다.
+- 국면 태그: NEUTRAL / 신뢰도: MED
+- 핵심 주장: Macro tone is balanced.
+- 핵심 주장: No major shocks.
+- 핵심 주장: Flows are mixed.
+
+### 수급 담당자
+- 한줄 요약: 수급 흐름이 우호적이라 위험 선호가 높아 보입니다.
+- 국면 태그: RISK_ON / 신뢰도: HIGH
+- 핵심 주장: 외국인+기관 순매수가 강합니다.
+- 핵심 주장: 프로 수급이 방향성을 지지합니다.
+- 핵심 주장: 위험자산 선호가 강화됩니다.
+
+### 섹터 담당자
+- 한줄 요약: 섹터 주도주가 불명확해 균형 유지가 낫습니다.
+- 국면 태그: NEUTRAL / 신뢰도: LOW
+- 핵심 주장: Sector moves are mixed.
+- 핵심 주장: No clear leader.
+- 핵심 주장: Maintain balance.
+
+### 리스크 담당자
+- 한줄 요약: 급격한 리스크는 없어 규율을 유지하세요.
+- 국면 태그: NEUTRAL / 신뢰도: MED
+- 핵심 주장: Risk signals stable.
+- 핵심 주장: No acute stress.
+- 핵심 주장: Maintain discipline.
+
+### 이익모멘텀 담당자
+- 한줄 요약: 이익 모멘텀 신호가 혼재되어 중립을 유지합니다.
+- 국면 태그: NEUTRAL / 신뢰도: LOW
+- 핵심 주장: 실적 추정치 방향성이 뚜렷하지 않습니다.
+- 핵심 주장: 상향/하향 신호가 혼재되어 있습니다.
+- 핵심 주장: 확증 신호 전까지 중립 대응이 적절합니다.
+
+### 브레드스 담당자
+- 한줄 요약: 브레드스 신호가 혼재되어 중립 대응이 합리적입니다.
+- 국면 태그: NEUTRAL / 신뢰도: LOW
+- 핵심 주장: 추세 확산과 역추세 신호가 공존합니다.
+- 핵심 주장: 기술적 우위가 명확하지 않습니다.
+- 핵심 주장: 방향 확정 전까지 균형 비중이 적절합니다.
+
+### 유동성 담당자
+- 한줄 요약: 유동성/정책 환경이 우호적이라 리스크온을 지지합니다.
+- 국면 태그: RISK_ON / 신뢰도: MED
+- 핵심 주장: 달러 압력이 완화되고 금리 부담이 제한적입니다.
+- 핵심 주장: 유동성 환경이 위험자산 회복에 우호적입니다.
+- 핵심 주장: 정책 충격 가능성이 낮아 비중 확대 여지가 있습니다.
+
+## 6) 에이전트 회의록(1라운드)
+- 라운드: 1
+- 지표 활용 체크: 7/7명이 수치형 지표 근거를 인용했습니다.
+- 진행 메모: 오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.
+- [매크로 담당자] 저는 매크로 담당자 입장에서 '거시는 균형적이며 선택적 대응이 적절합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1507.42, kospi_change_pct=+0.82%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
+- [수급 담당자] 저는 수급 담당자 입장에서 '수급 흐름이 우호적이라 위험 선호가 높아 보입니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+5502억, institution_net=-5201억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.flow_summary.retail_net
+- [섹터 담당자] 저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+5502억, institution_net=-5201억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.sector_moves, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
+- [리스크 담당자] 저는 리스크 담당자 입장에서 '급격한 리스크는 없어 규율을 유지하세요.' 의견을 유지합니다. 근거 숫자는 usdkrw=1507.42, kospi_change_pct=+0.82%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
+- [이익모멘텀 담당자] 저는 이익모멘텀 담당자 입장에서 '이익 모멘텀 신호가 혼재되어 중립을 유지합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+5502억, institution_net=-5201억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.phase_two_signals.earnings_signal_score, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.news_headlines
+- [브레드스 담당자] 저는 브레드스 담당자 입장에서 '브레드스 신호가 혼재되어 중립 대응이 합리적입니다.' 의견을 유지합니다. 근거 숫자는 vix=25.8, foreign_net=+5502억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.phase_two_signals.breadth_signal_score, snapshot.markets.volatility.vix, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
+- [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=99.52, real_rate=1.97%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+  - 참조 근거: snapshot.phase_two_signals.liquidity_signal_score, snapshot.macro.daily.dxy, snapshot.macro.structural.real_rate, snapshot.flow_summary.foreign_net
+- 라운드 결론: 의장 정리: 오늘 다수 의견은 중립입니다. 근거는 KOSPI +0.82%, USD/KRW 1507.42(-0.49%), VIX 25.8, 외국인 +5502억이고, 뉴스는 방향성이 엇갈려 단정하기 어렵습니다. 따라서 중립 비중을 유지하면서 확인된 시그널에서만 선별 대응합니다.
+
+## 7) 이견 사항
+- 국면 태그: 다수=NEUTRAL, 소수=RISK_ON, 에이전트=[flow, liquidity]
+  - 의미: 소수 의견 국면은 포지션 경계에 영향을 줄 수 있습니다.
+
+## 8) AI 원문 응답 (디버깅/검토용)
+### 매크로 담당자
+(stub or raw response unavailable)
+### 수급 담당자
+(stub or raw response unavailable)
+### 섹터 담당자
+(stub or raw response unavailable)
+### 리스크 담당자
+(stub or raw response unavailable)
+### 이익모멘텀 담당자
+(stub or raw response unavailable)
+### 브레드스 담당자
+(stub or raw response unavailable)
+### 유동성 담당자
+(stub or raw response unavailable)

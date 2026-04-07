@@ -1,0 +1,114 @@
+{
+  "market_summary": {
+    "note": "KOSPI 0.82%, USD/KRW 1507.42. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 0.82,
+    "usdkrw": 1507.422447
+  },
+  "flow_summary": {
+    "note": "외국인 +5502억, 기관 -5201억, 개인 -3751억 | KOSPI(외 +3704, 기관 -4001, 개인 -3429) KOSDAQ(외 +1798, 기관 -1200, 개인 -322)",
+    "foreign_net": 5502.0,
+    "institution_net": -5201.0,
+    "retail_net": -3751.0
+  },
+  "korean_market_flow": {
+    "date": "2026-04-08",
+    "market": {
+      "KOSPI": {
+        "individual": -3429,
+        "foreign": 3704,
+        "institution": -4001
+      },
+      "KOSDAQ": {
+        "individual": -322,
+        "foreign": 1798,
+        "institution": -1200
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[반도체/AI] 중국 'AI 반도체 독립' 선언… 엔비디아 CUDA 장벽 넘는 '제3의 길' 가동 - 글로벌이코노믹",
+    "[환율/달러] 달러-원, '트럼프 데드라인' 앞두고 낙폭 축소…1,501.00원 마감 - 연합뉴스",
+    "[중국/신흥국] “중국에 팔면 돼ㅎ” 이란, 美제재 속 번 수백억달러 - 문화일보",
+    "[인플레이션] 달라스 연준: 호르무즈 해협 장기 폐쇄 시 유가 167달러, 인플레이션 4% 돌파 가능 By Investing.com - Investing.com 한국어",
+    "[바이오/헬스케어] AI 접목 바이오 급성장…2035년 34조 시장 열린다 - 연합뉴스"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi_pct": 0.82,
+      "kosdaq_pct": -1.02
+    },
+    "us": {
+      "sp500_pct": 0.07592451711554042,
+      "nasdaq_pct": 0.09779809711961514,
+      "dow_pct": -0.1830302542024926
+    },
+    "fx": {
+      "usdkrw": 1507.422447,
+      "usdkrw_pct": -0.4885226994027772
+    },
+    "volatility": {
+      "vix": 25.780000686645508
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.3429999351501465,
+      "us2y": 3.6150002479553223,
+      "spread_2_10": 0.7279996871948242,
+      "vix": 25.780000686645508,
+      "dxy": 99.51699829101562,
+      "usdkrw": 1501.260009765625,
+      "vix3m": 25.56999969482422,
+      "vix_term_spread": -0.21000099182128906
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 2.6645890876940914,
+      "core_cpi_yoy": null,
+      "pce_yoy": 2.8321519411244056,
+      "pmi": null,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567
+    },
+    "quarterly": {
+      "real_gdp": 24065.956,
+      "gdp_qoq_annualized": 0.7
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.9729999351501464,
+      "hy_oas": 3.05,
+      "ig_oas": 0.85,
+      "fed_balance_sheet": 6675344.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -0.097,
+    "liquidity_signal_score": 2.137,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 10.4,
+    "kospi_20d_cum_pct": -1.78,
+    "kosdaq_5d_cum_pct": -0.46,
+    "kospi_abs_move_5d_avg": 2.08,
+    "usdkrw_5d_change_pct": -0.339,
+    "vix_5d_avg": 24.312,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-1.78%, vol20d=3.25, reversal=false"
+  }
+}
