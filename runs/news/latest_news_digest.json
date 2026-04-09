@@ -1,23 +1,23 @@
 {
-  "crawled_at": "2026-04-09T03:42:32.184292+00:00",
+  "crawled_at": "2026-04-09T04:42:36.805420+00:00",
   "news_date": "2026-04-09",
-  "total_collected": 163,
+  "total_collected": 166,
   "topic_counts": [
     [
       "금리/연준",
       23
     ],
     [
-      "환율/달러",
-      14
+      "인플레이션",
+      7
     ],
     [
-      "반도체/AI",
+      "환율/달러",
       13
     ],
     [
-      "국내지수",
-      23
+      "반도체/AI",
+      14
     ],
     [
       "에너지/원자재",
@@ -37,8 +37,19 @@
       ]
     },
     {
+      "topic": "인플레이션",
+      "count": 7,
+      "title": "3월 FOMC, 올해 금리 인하 예상…전쟁발 인플레는 변수 - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBaMDFGQ0JYUE9XU1JKZWM5Y2ZsYV9oS3FpUTJObTVGeWJuMEhyRGZ0M0V1NWgzMnUweTAyUXM5RmVPekcwU2N1VDBXal9qMEVsci05ZUFWbVFwR1o5dWFuQdIBeEFVX3lxTE1UM1NSOUZUSEJDZTIwLURvblVBU3BucjJlbWdPWjhQVEphYWtSa25XU2RyZVJMcEY2Y0U3M2hTclVhX3ZlQmFDSU1ZTjZYaEZaS2NGRXFpTHZtNnJTaWl3OVUzTE1qTTVIWWcxTm9QN3Bhemhjc1U0Sg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 3월 FOMC, 올해 금리 인하 예상…전쟁발 인플레는 변수 - 뉴시스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "환율/달러",
-      "count": 14,
+      "count": 13,
       "title": "원/달러 환율 \"이란 전쟁 휴전 불확실성에 소폭 상승 전망\" - 서울와이어",
       "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBhRFhMTFV3UTdvT3BlRFNNLTRiMVNreEFXVmRYdDB6Q1pwSWhxNGFSYnk0WUw2aXJLTHJEbDdScUhBaTZ2M2xmdlhGZmxTTVZ5REpSOC1JUG1hRi1YSEdQLUN2YVFreGxUV2ZvYQ?oc=5",
       "summary_lines": [
@@ -49,22 +60,11 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 13,
+      "count": 14,
       "title": "엔비디아 이어 브로드컴 반도체 고객사에 '돈줄' 대나, \"AI 버블 위험 키운다\" - 비즈니스포스트",
       "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBicHVSRk5HUTFsTU1ITTQweloyLXlWVXlNQ05YbWRRcE1sakJnNHNTXzNKeGZoY3g2cExhdTZEamtQMmc1M05JWXFQczQzMUN6X0V6d0tzUU5OdkVjbEtuRTNrbVZBRHJmbXpscmMxcDhTaXc?oc=5",
       "summary_lines": [
         "핵심 이슈: 엔비디아 이어 브로드컴 반도체 고객사에 '돈줄' 대나, \"AI 버블 위험 키운다\" - 비즈니스포스트",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "국내지수",
-      "count": 23,
-      "title": "중동 휴전에 ‘안도 랠리’…코스피 5872·환율 1470원대 - 한겨레",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1CU3dnajFpRkJhM1lseGZXU0tFRDJYZkc4QVJuUlV5a0JvazdoM3NmSVRSNE9hTjRwdS04dElJN3FPMU1DejF5R05tVDlEcmR5YlJCS0tQLTdEaUlvSzdOdTRrb0Z4UkE?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 중동 휴전에 ‘안도 랠리’…코스피 5872·환율 1470원대 - 한겨레",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,7 +84,7 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 37,
+      "total_count": 43,
       "topics": [
         {
           "topic": "금리/연준",
@@ -94,21 +94,15 @@
         },
         {
           "topic": "환율/달러",
-          "count": 14,
+          "count": 13,
           "title": "원/달러 환율 \"이란 전쟁 휴전 불확실성에 소폭 상승 전망\" - 서울와이어",
           "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBhRFhMTFV3UTdvT3BlRFNNLTRiMVNreEFXVmRYdDB6Q1pwSWhxNGFSYnk0WUw2aXJLTHJEbDdScUhBaTZ2M2xmdlhGZmxTTVZ5REpSOC1JUG1hRi1YSEdQLUN2YVFreGxUV2ZvYQ?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 23,
-      "topics": [
+        },
         {
-          "topic": "국내지수",
-          "count": 23,
-          "title": "중동 휴전에 ‘안도 랠리’…코스피 5872·환율 1470원대 - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1CU3dnajFpRkJhM1lseGZXU0tFRDJYZkc4QVJuUlV5a0JvazdoM3NmSVRSNE9hTjRwdS04dElJN3FPMU1DejF5R05tVDlEcmR5YlJCS0tQLTdEaUlvSzdOdTRrb0Z4UkE?oc=5"
+          "topic": "인플레이션",
+          "count": 7,
+          "title": "3월 FOMC, 올해 금리 인하 예상…전쟁발 인플레는 변수 - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBaMDFGQ0JYUE9XU1JKZWM5Y2ZsYV9oS3FpUTJObTVGeWJuMEhyRGZ0M0V1NWgzMnUweTAyUXM5RmVPekcwU2N1VDBXal9qMEVsci05ZUFWbVFwR1o5dWFuQdIBeEFVX3lxTE1UM1NSOUZUSEJDZTIwLURvblVBU3BucjJlbWdPWjhQVEphYWtSa25XU2RyZVJMcEY2Y0U3M2hTclVhX3ZlQmFDSU1ZTjZYaEZaS2NGRXFpTHZtNnJTaWl3OVUzTE1qTTVIWWcxTm9QN3Bhemhjc1U0Sg?oc=5"
         }
       ]
     },
@@ -126,11 +120,11 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 13,
+      "total_count": 14,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 13,
+          "count": 14,
           "title": "엔비디아 이어 브로드컴 반도체 고객사에 '돈줄' 대나, \"AI 버블 위험 키운다\" - 비즈니스포스트",
           "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBicHVSRk5HUTFsTU1ITTQweloyLXlWVXlNQ05YbWRRcE1sakJnNHNTXzNKeGZoY3g2cExhdTZEamtQMmc1M05JWXFQczQzMUN6X0V6d0tzUU5OdkVjbEtuRTNrbVZBRHJmbXpscmMxcDhTaXc?oc=5"
         }
