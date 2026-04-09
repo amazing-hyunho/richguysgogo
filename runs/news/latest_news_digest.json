@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-04-09T18:42:27.450539+00:00",
+  "crawled_at": "2026-04-09T19:42:22.951066+00:00",
   "news_date": "2026-04-10",
-  "total_collected": 18,
+  "total_collected": 19,
   "topic_counts": [
+    [
+      "정책/테마",
+      1
+    ],
     [
       "금리/연준",
       1
@@ -12,12 +16,8 @@
       4
     ],
     [
-      "반도체/AI",
-      1
-    ],
-    [
       "경기/성장",
-      3
+      2
     ],
     [
       "환율/달러",
@@ -25,6 +25,17 @@
     ]
   ],
   "top_articles": [
+    {
+      "topic": "정책/테마",
+      "count": 1,
+      "title": "매출은 펩시, 마진은 코카콜라… 관세 전쟁 속 ‘현금 왕’은 누구 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOZkprTm5FaWFjMFdwTEI1M05IOUlTY1lhRWVFWXZILUUwcEd1dVotNEtyaDRDc1ZWT3d4d1VIOFNtTWh3eTE4MjBnaHl1UXQ1VG5OZTAtbHpHQzgzSGdhaW1PZTNQd2pEbE5IMUxqOEZpUTVvV09BeWZjZU45TVpQVw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 매출은 펩시, 마진은 코카콜라… 관세 전쟁 속 ‘현금 왕’은 누구 - 조선일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "금리/연준",
       "count": 1,
@@ -48,19 +59,8 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 1,
-      "title": "‘21만 전자·100만 닉스' 탈환...반도체 수퍼 사이클 언제까지 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNcEo4WGt4bzJEWTlaM3o0OVRtZFJrRlRlLTRuSVdHLW9ObkwzMkdmMlk0MDlRZ2wyS29LQ1lxX0VLVVJSaUZNUWtrdkxLOE5YaUs1cGZuUkJoS3N1ZTVic2oyeEVYb1puMlJBLVRTNFpqNC0taWEyeE53aVM3X2dCRkEtWdIBlwFBVV95cUxOMEFUS2VGRXNhb0ZfWWJlTy04YXFZMnRYRWNKZzJ3VDJneGF5ZmlYS2s3VlQyb0VEQmtQNWVVdkFKRDhmd1J5azRKcVYteGp2bHA5TkNyc0MyaW01a3ZwOWFtZnFpU1NUQy1HeEhNeWducXNObHhBa0NBR1pSU2hwaVE4akN1MElWVkdmRGhEd2ZvUFBRQ1Fv?oc=5",
-      "summary_lines": [
-        "핵심 이슈: ‘21만 전자·100만 닉스' 탈환...반도체 수퍼 사이클 언제까지 - 조선일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "경기/성장",
-      "count": 3,
+      "count": 2,
       "title": "미국 뉴욕증시, 2월 PCE·4분기 GDP 발표...다우 나스닥 하락 - gukjenews.com",
       "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE92WkpaWVlrVWlGUXdKNzFqVzZvZ0NKYzZUQ2RvVFFKMDd2cmNScHhvQzBkaWdWaTRiYklsUXRJOV9NY3YyeTQ4OTFzeWNCQ2prTEtSYVdsSV8xNnk3R0NJQ21aazNTekN6alhNaldR?oc=5",
       "summary_lines": [
@@ -84,7 +84,7 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 10,
+      "total_count": 9,
       "topics": [
         {
           "topic": "인플레이션",
@@ -94,7 +94,7 @@
         },
         {
           "topic": "경기/성장",
-          "count": 3,
+          "count": 2,
           "title": "미국 뉴욕증시, 2월 PCE·4분기 GDP 발표...다우 나스닥 하락 - gukjenews.com",
           "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE92WkpaWVlrVWlGUXdKNzFqVzZvZ0NKYzZUQ2RvVFFKMDd2cmNScHhvQzBkaWdWaTRiYklsUXRJOV9NY3YyeTQ4OTFzeWNCQ2prTEtSYVdsSV8xNnk3R0NJQ21aazNTekN6alhNaldR?oc=5"
         },
@@ -113,14 +113,14 @@
       ]
     },
     {
-      "sector": "IT/반도체",
+      "sector": "정책/테마",
       "total_count": 1,
       "topics": [
         {
-          "topic": "반도체/AI",
+          "topic": "정책/테마",
           "count": 1,
-          "title": "‘21만 전자·100만 닉스' 탈환...반도체 수퍼 사이클 언제까지 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNcEo4WGt4bzJEWTlaM3o0OVRtZFJrRlRlLTRuSVdHLW9ObkwzMkdmMlk0MDlRZ2wyS29LQ1lxX0VLVVJSaUZNUWtrdkxLOE5YaUs1cGZuUkJoS3N1ZTVic2oyeEVYb1puMlJBLVRTNFpqNC0taWEyeE53aVM3X2dCRkEtWdIBlwFBVV95cUxOMEFUS2VGRXNhb0ZfWWJlTy04YXFZMnRYRWNKZzJ3VDJneGF5ZmlYS2s3VlQyb0VEQmtQNWVVdkFKRDhmd1J5azRKcVYteGp2bHA5TkNyc0MyaW01a3ZwOWFtZnFpU1NUQy1HeEhNeWducXNObHhBa0NBR1pSU2hwaVE4akN1MElWVkdmRGhEd2ZvUFBRQ1Fv?oc=5"
+          "title": "매출은 펩시, 마진은 코카콜라… 관세 전쟁 속 ‘현금 왕’은 누구 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOZkprTm5FaWFjMFdwTEI1M05IOUlTY1lhRWVFWXZILUUwcEd1dVotNEtyaDRDc1ZWT3d4d1VIOFNtTWh3eTE4MjBnaHl1UXQ1VG5OZTAtbHpHQzgzSGdhaW1PZTNQd2pEbE5IMUxqOEZpUTVvV09BeWZjZU45TVpQVw?oc=5"
         }
       ]
     }
