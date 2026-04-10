@@ -104,7 +104,7 @@ flowchart TB
     end
 
     subgraph TOOLS[committee/tools]
-      PROVIDERS[providers.py (IDataProvider)]
+      PROVIDERS["providers.py (IDataProvider)"]
       HTTP[http_provider.py]
       FALLBACK[fallback_provider.py]
       NEWSDIGEST[news_digest.py]
