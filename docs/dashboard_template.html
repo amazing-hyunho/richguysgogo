@@ -25,7 +25,13 @@
     h1 { margin: 0 0 8px 0; }
     p { line-height: 1.5; }
     .page-desc { color: var(--muted); margin: 0 0 20px 0; }
-    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-bottom:20px; }
+    .cards { display:grid; grid-template-columns:1fr; gap:12px; margin-bottom:20px; }
+    .market-overview-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .market-overview { background:var(--panel); border-radius:16px; border:1px solid rgba(148,163,184,0.12); padding:14px; }
+    .market-overview h3 { margin:0 0 4px 0; font-size:16px; }
+    .market-overview .meta { font-size:12px; color:var(--muted); margin-bottom:10px; }
+    .market-overview ul { margin:0; padding-left:18px; }
+    .market-overview li { margin-bottom:6px; color:#dbe4f0; font-size:13px; }
     .card, .panel { background:var(--panel); border-radius:16px; border:1px solid rgba(148,163,184,0.12); }
     .card { padding:14px; }
     .card .label { font-size:12px; color:var(--muted); }
@@ -86,7 +92,7 @@
     .empty-state { color:var(--muted); font-size:13px; }
 
     @media (max-width: 980px) {
-      .chart-grid, .meeting-grid, .meeting-layout { grid-template-columns:1fr; }
+      .chart-grid, .meeting-grid, .meeting-layout, .market-overview-grid { grid-template-columns:1fr; }
       .bubble { max-width:100%; }
       .speaker-chip { min-width:74px; max-width:74px; }
     }
@@ -255,6 +261,19 @@ function formatMetric(value) {
   if (typeof value === 'number' && Number.isFinite(value)) return value.toFixed(2);
   return value;
 }
+function formatNumberWithComma(value, digits = 0) {
+  if (value === null || value === undefined || value === '') return '-';
+  if (typeof value !== 'number' || !Number.isFinite(value)) return value;
+  return new Intl.NumberFormat('ko-KR', {
+    minimumFractionDigits: digits,
+    maximumFractionDigits: digits,
+  }).format(value);
+}
+function formatPercent(value) {
+  if (value === null || value === undefined || value === '') return '-';
+  if (typeof value !== 'number' || !Number.isFinite(value)) return value;
+  return `${value.toFixed(2)}%`;
+}
 function escapeHtml(value) {
   return String(value ?? '-')
     .replaceAll('&', '&amp;')
@@ -264,21 +283,41 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
-const cards = [
-  { label: '최근 KOSPI(%)', value: formatMetric(latest(data.market_daily, 'kospi_pct')) },
-  { label: '최근 NASDAQ(%)', value: formatMetric(latest(data.market_daily, 'nasdaq_pct')) },
-  { label: '최근 외국인 순매수(억)', value: formatMetric(latest(data.market_flow_daily, 'foreign_net')) },
-  { label: '최근 기관 순매수(억)', value: formatMetric(latest(data.market_flow_daily, 'institution_net')) },
-  { label: '최근 개인 순매수(억)', value: formatMetric(latest(data.market_flow_daily, 'retail_net')) },
-  { label: '최근 VIX', value: formatMetric(latest(data.daily_macro, 'vix')) },
-  { label: '최근 USD/KRW', value: formatMetric(latest(data.daily_macro, 'usdkrw')) },
-  { label: '최근 VIX 기간스프레드', value: formatMetric(latest(data.daily_macro, 'vix_term_spread')) },
-  { label: '최근 HY OAS', value: formatMetric(latest(data.daily_macro, 'hy_oas')) },
-  { label: 'VIX 기간스프레드 적재율', value: coverage(data.daily_macro, 'vix_term_spread') },
-  { label: 'HY/IG OAS 적재율', value: `${coverage(data.daily_macro, 'hy_oas')} / ${coverage(data.daily_macro, 'ig_oas')}` },
-  { label: '누적 회의일', value: data.committee_history.length },
+const latestMarketDate = latest(data.market_daily, 'date');
+const latestKoreaMacroDate = latest(data.daily_macro, 'date');
+const latestFlowDate = latest(data.market_flow_daily, 'date');
+const domesticOverview = [
+  `코스피 지표 변화(전일비): ${formatPercent(latest(data.market_daily, 'kospi_pct'))}`,
+  `코스닥 지표 변화(전일비): ${formatPercent(latest(data.market_daily, 'kosdaq_pct'))}`,
+  `외국인 순매수(억원, KOSPI): ${formatNumberWithComma(latest(data.market_flow_daily, 'foreign_net'))}`,
+  `기관 순매수(억원, KOSPI): ${formatNumberWithComma(latest(data.market_flow_daily, 'institution_net'))}`,
+  `개인 순매수(억원, KOSPI): ${formatNumberWithComma(latest(data.market_flow_daily, 'retail_net'))}`,
 ];
-document.getElementById('summary-cards').innerHTML = cards.map(c => `<div class="card"><div class="label">${c.label}</div><div class="value">${c.value}</div></div>`).join('');
+const usOverview = [
+  `나스닥 지표 변화(전일비): ${formatPercent(latest(data.market_daily, 'nasdaq_pct'))}`,
+  `S&P500 지표 변화(전일비): ${formatPercent(latest(data.market_daily, 'sp500_pct'))}`,
+  `다우 지표 변화(전일비): ${formatPercent(latest(data.market_daily, 'dow_pct'))}`,
+  `VIX 지수: ${formatNumberWithComma(latest(data.daily_macro, 'vix'), 2)}`,
+  `USD/KRW: ${formatNumberWithComma(latest(data.daily_macro, 'usdkrw'), 2)}`,
+];
+document.getElementById('summary-cards').innerHTML = `
+  <div class="market-overview-grid">
+    <section class="market-overview">
+      <h3>국내 지표</h3>
+      <div class="meta">(${escapeHtml(latestFlowDate || latestKoreaMacroDate || latestMarketDate || '-')}) 종가 기준</div>
+      <ul>${domesticOverview.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+    </section>
+    <section class="market-overview">
+      <h3>미국 지표</h3>
+      <div class="meta">(${escapeHtml(latestMarketDate || '-')}) 종가 기준 | 익일 장마감 반영 KST</div>
+      <ul>${usOverview.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+    </section>
+  </div>
+  <div class="card">
+    <div class="label">누적 회의일</div>
+    <div class="value">${formatNumberWithComma(data.committee_history.length)}</div>
+  </div>
+`;
 
 new Chart(document.getElementById('marketChart'), {
   type: 'line',
