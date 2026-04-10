@@ -18,20 +18,40 @@ class IDataProvider(ABC):
         """Return KOSPI daily change percent and failure reason."""
 
     @abstractmethod
+    def get_kospi_level(self) -> Tuple[float | None, str | None]:
+        """Return KOSPI latest index level and failure reason."""
+
+    @abstractmethod
     def get_kosdaq_change_pct(self) -> Tuple[float | None, str | None]:
         """Return KOSDAQ daily change percent and failure reason."""
+
+    @abstractmethod
+    def get_kosdaq_level(self) -> Tuple[float | None, str | None]:
+        """Return KOSDAQ latest index level and failure reason."""
 
     @abstractmethod
     def get_sp500_change_pct(self) -> Tuple[float | None, str | None]:
         """Return S&P 500 daily change percent and failure reason."""
 
     @abstractmethod
+    def get_sp500_level(self) -> Tuple[float | None, str | None]:
+        """Return S&P 500 latest index level and failure reason."""
+
+    @abstractmethod
     def get_nasdaq_change_pct(self) -> Tuple[float | None, str | None]:
         """Return NASDAQ daily change percent and failure reason."""
 
     @abstractmethod
+    def get_nasdaq_level(self) -> Tuple[float | None, str | None]:
+        """Return NASDAQ latest index level and failure reason."""
+
+    @abstractmethod
     def get_dow_change_pct(self) -> Tuple[float | None, str | None]:
         """Return DOW daily change percent and failure reason."""
+
+    @abstractmethod
+    def get_dow_level(self) -> Tuple[float | None, str | None]:
+        """Return DOW latest index level and failure reason."""
 
     @abstractmethod
     def get_usdkrw_pct(self) -> Tuple[float | None, str | None]:

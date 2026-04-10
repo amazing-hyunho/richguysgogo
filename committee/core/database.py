@@ -78,6 +78,11 @@ def init_db(db_path: Path | None = None) -> None:
                 sp500_pct REAL,
                 nasdaq_pct REAL,
                 dow_pct REAL,
+                kospi REAL,
+                kosdaq REAL,
+                sp500 REAL,
+                nasdaq REAL,
+                dow REAL,
                 usdkrw REAL,
                 usdkrw_pct REAL,
                 us10y REAL,
@@ -86,6 +91,11 @@ def init_db(db_path: Path | None = None) -> None:
             );
             """
         )
+        _ensure_column_exists(conn, table="market_daily", column="kospi", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_daily", column="kosdaq", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_daily", column="sp500", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_daily", column="nasdaq", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_daily", column="dow", column_ddl="REAL")
 
         # market_flow_daily: market-level flow series (one row per day).
         # Rolling sums (20d/60d) are stored to avoid recomputation in downstream jobs.
@@ -341,6 +351,11 @@ def upsert_market_daily(
     dow_pct: float | None,
     usdkrw: float | None,
     usdkrw_pct: float | None,
+    kospi: float | None = None,
+    kosdaq: float | None = None,
+    sp500: float | None = None,
+    nasdaq: float | None = None,
+    dow: float | None = None,
     us10y: float | None = None,
     vix: float | None = None,
     db_path: Path | None = None,
@@ -358,9 +373,11 @@ def upsert_market_daily(
             """
             INSERT INTO market_daily (
                 date, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct,
+                kospi, kosdaq, sp500, nasdaq, dow,
                 usdkrw, usdkrw_pct, us10y, vix, created_at
             ) VALUES (
                 :date, :kospi_pct, :kosdaq_pct, :sp500_pct, :nasdaq_pct, :dow_pct,
+                :kospi, :kosdaq, :sp500, :nasdaq, :dow,
                 :usdkrw, :usdkrw_pct, :us10y, :vix, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
@@ -369,6 +386,11 @@ def upsert_market_daily(
                 sp500_pct=excluded.sp500_pct,
                 nasdaq_pct=excluded.nasdaq_pct,
                 dow_pct=excluded.dow_pct,
+                kospi=excluded.kospi,
+                kosdaq=excluded.kosdaq,
+                sp500=excluded.sp500,
+                nasdaq=excluded.nasdaq,
+                dow=excluded.dow,
                 usdkrw=excluded.usdkrw,
                 usdkrw_pct=excluded.usdkrw_pct,
                 us10y=excluded.us10y,
@@ -382,6 +404,11 @@ def upsert_market_daily(
                 "sp500_pct": None if sp500_pct is None else float(sp500_pct),
                 "nasdaq_pct": None if nasdaq_pct is None else float(nasdaq_pct),
                 "dow_pct": None if dow_pct is None else float(dow_pct),
+                "kospi": None if kospi is None else float(kospi),
+                "kosdaq": None if kosdaq is None else float(kosdaq),
+                "sp500": None if sp500 is None else float(sp500),
+                "nasdaq": None if nasdaq is None else float(nasdaq),
+                "dow": None if dow is None else float(dow),
                 "usdkrw": None if usdkrw is None else float(usdkrw),
                 # NULL-based missing data: never coerce placeholders like 0.0 here.
                 "usdkrw_pct": None if usdkrw_pct is None else float(usdkrw_pct),

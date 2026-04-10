@@ -253,6 +253,55 @@ def load_latest_news_digest() -> dict[str, object]:
         }
 
 
+def load_latest_korean_market_flow_breakdown() -> dict[str, object]:
+    """Load latest KOSPI/KOSDAQ investor flow breakdown from run snapshot."""
+    latest_path = max(list_run_paths(), default=None)
+    if latest_path is None:
+        return {"market_date": "-", "market": {}}
+    payload = load_run_payload(latest_path) or {}
+    snapshot = payload.get("snapshot") or {}
+    flow = snapshot.get("korean_market_flow") or {}
+    market = flow.get("market") if isinstance(flow, dict) else {}
+    return {
+        "market_date": payload.get("market_date", latest_path.stem),
+        "market": market if isinstance(market, dict) else {},
+    }
+
+
+def load_korean_market_flow_compare() -> dict[str, object]:
+    """Load current/previous Korean market flow snapshots for day-over-day comparison."""
+    run_paths = list_run_paths()
+    if not run_paths:
+        return {"current_date": "-", "previous_date": "-", "current": {}, "previous": {}}
+
+    snapshots: list[tuple[str, dict[str, object]]] = []
+    for path in reversed(run_paths):
+        payload = load_run_payload(path) or {}
+        snapshot = payload.get("snapshot") or {}
+        flow = snapshot.get("korean_market_flow") or {}
+        market = flow.get("market") if isinstance(flow, dict) else {}
+        if isinstance(market, dict) and market:
+            snapshots.append((str(payload.get("market_date", path.stem)), market))
+        if len(snapshots) >= 2:
+            break
+
+    if not snapshots:
+        return {"current_date": "-", "previous_date": "-", "current": {}, "previous": {}}
+    if len(snapshots) == 1:
+        return {
+            "current_date": snapshots[0][0],
+            "previous_date": "-",
+            "current": snapshots[0][1],
+            "previous": {},
+        }
+    return {
+        "current_date": snapshots[0][0],
+        "previous_date": snapshots[1][0],
+        "current": snapshots[0][1],
+        "previous": snapshots[1][1],
+    }
+
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
@@ -269,7 +318,10 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     try:
         dashboard_data = {
-            "market_daily": fetch_rows(conn, "SELECT date, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct FROM market_daily ORDER BY date"),
+            "market_daily": fetch_rows(
+                conn,
+                "SELECT date, kospi, kosdaq, sp500, nasdaq, dow, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct, usdkrw FROM market_daily ORDER BY date",
+            ),
             "market_flow_daily": fetch_rows(
                 conn,
                 "SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d FROM market_flow_daily ORDER BY date",
@@ -284,6 +336,8 @@ def main() -> None:
             "meeting_handoff": load_handoff_context(),
             "latest_committee": load_latest_committee(),
             "latest_news_digest": load_latest_news_digest(),
+            "latest_korean_market_flow": load_latest_korean_market_flow_breakdown(),
+            "korean_market_flow_compare": load_korean_market_flow_compare(),
         }
     finally:
         conn.close()

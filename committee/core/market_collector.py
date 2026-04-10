@@ -23,6 +23,11 @@ def persist_snapshot_metrics(
     sp500_pct_db = snapshot.markets.us.sp500_pct if status.get("sp500") == "OK" else None
     nasdaq_pct_db = snapshot.markets.us.nasdaq_pct if status.get("nasdaq") == "OK" else None
     dow_pct_db = snapshot.markets.us.dow_pct if status.get("dow") == "OK" else None
+    kospi_db = snapshot.markets.kr.kospi if status.get("kospi") == "OK" else None
+    kosdaq_db = snapshot.markets.kr.kosdaq if status.get("kosdaq") == "OK" else None
+    sp500_db = snapshot.markets.us.sp500 if status.get("sp500") == "OK" else None
+    nasdaq_db = snapshot.markets.us.nasdaq if status.get("nasdaq") == "OK" else None
+    dow_db = snapshot.markets.us.dow if status.get("dow") == "OK" else None
     usdkrw_db = snapshot.markets.fx.usdkrw if status.get("usdkrw") == "OK" else None
     usdkrw_pct_db = snapshot.markets.fx.usdkrw_pct if status.get("usdkrw_pct") == "OK" else None
     us10y_db = None  # Not implemented in top-level markets payload yet.
@@ -34,6 +39,11 @@ def persist_snapshot_metrics(
         sp500_pct=sp500_pct_db,
         nasdaq_pct=nasdaq_pct_db,
         dow_pct=dow_pct_db,
+        kospi=kospi_db,
+        kosdaq=kosdaq_db,
+        sp500=sp500_db,
+        nasdaq=nasdaq_db,
+        dow=dow_db,
         usdkrw=usdkrw_db,
         usdkrw_pct=usdkrw_pct_db,
         us10y=us10y_db,

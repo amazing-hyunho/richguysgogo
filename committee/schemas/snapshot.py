@@ -66,6 +66,8 @@ class KoreanMarketFlow(BaseModel):
 
 class MarketsKR(BaseModel):
     """Korean market daily percentage changes."""
+    kospi: Optional[float] = None
+    kosdaq: Optional[float] = None
     kospi_pct: float
     kosdaq_pct: float
 
@@ -75,6 +77,9 @@ class MarketsKR(BaseModel):
 
 class MarketsUS(BaseModel):
     """US market daily percentage changes."""
+    sp500: Optional[float] = None
+    nasdaq: Optional[float] = None
+    dow: Optional[float] = None
     sp500_pct: float
     nasdaq_pct: float
     dow_pct: float

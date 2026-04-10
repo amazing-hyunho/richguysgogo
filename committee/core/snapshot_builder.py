@@ -103,6 +103,11 @@ def build_snapshot_real(
     nasdaq_pct, nasdaq_reason = _safe_value(provider.get_nasdaq_change_pct, fallback.get_nasdaq_change_pct)
     dow_pct, dow_reason = _safe_value(provider.get_dow_change_pct, fallback.get_dow_change_pct)
     usdkrw_pct, usdkrw_pct_reason = _safe_value(provider.get_usdkrw_pct, fallback.get_usdkrw_pct)
+    kospi_level, _ = _safe_optional_value(provider.get_kospi_level)
+    kosdaq_level, _ = _safe_optional_value(provider.get_kosdaq_level)
+    sp500_level, _ = _safe_optional_value(provider.get_sp500_level)
+    nasdaq_level, _ = _safe_optional_value(provider.get_nasdaq_level)
+    dow_level, _ = _safe_optional_value(provider.get_dow_level)
 
     # Phase 1: daily macro (yfinance only). Missing values are None -> DB NULL.
     us10y = fetch_us10y()
@@ -262,8 +267,20 @@ def build_snapshot_real(
 
     # Build top-level "markets" (KR/US indices + FX); failed fetches already 0.0 via fallback.
     markets = {
-        "kr": {"kospi_pct": kospi_change_pct, "kosdaq_pct": kosdaq_pct},
-        "us": {"sp500_pct": sp500_pct, "nasdaq_pct": nasdaq_pct, "dow_pct": dow_pct},
+        "kr": {
+            "kospi": kospi_level,
+            "kosdaq": kosdaq_level,
+            "kospi_pct": kospi_change_pct,
+            "kosdaq_pct": kosdaq_pct,
+        },
+        "us": {
+            "sp500": sp500_level,
+            "nasdaq": nasdaq_level,
+            "dow": dow_level,
+            "sp500_pct": sp500_pct,
+            "nasdaq_pct": nasdaq_pct,
+            "dow_pct": dow_pct,
+        },
         "fx": {"usdkrw": usdkrw, "usdkrw_pct": usdkrw_pct},
         "volatility": {"vix": vix},
     }
@@ -573,6 +590,17 @@ def _safe_value(fetcher, fallback_fetcher) -> tuple[float, str | None]:
     except Exception as exc:  # noqa: BLE001 - guardrail
         fallback_value, fallback_reason = fallback_fetcher()
         return float(fallback_value or 0.0), str(exc) if str(exc) else (fallback_reason or "unavailable")
+
+
+def _safe_optional_value(fetcher) -> tuple[float | None, str | None]:
+    """Fetch an optional numeric value; return None on failure."""
+    try:
+        value, reason = fetcher()
+        if value is None:
+            return None, reason or "unavailable"
+        return float(value), None
+    except Exception as exc:  # noqa: BLE001 - guardrail
+        return None, str(exc) if str(exc) else "unavailable"
 
 
 def _safe_flows(provider: IDataProvider, fallback: IDataProvider) -> tuple[dict, str | None]:

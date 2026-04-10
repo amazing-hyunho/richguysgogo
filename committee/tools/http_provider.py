@@ -65,6 +65,16 @@ class HttpProvider(IDataProvider):
             except Exception:
                 return None, str(exc)
 
+    def get_kospi_level(self) -> Tuple[float | None, str | None]:
+        """Fetch KOSPI latest index level."""
+        try:
+            return _naver_index_close("KOSPI")
+        except Exception as exc:
+            try:
+                return _yahoo_latest_level("%5EKS11")
+            except Exception:
+                return None, str(exc)
+
     # --- Global markets: KOSDAQ, US indices, USD/KRW pct (same fallback policy). ---
     # Data source: Yahoo Finance chart API (interval=1d, range=2d) for daily pct.
     # If fetch fails we return (None, reason); snapshot builder uses 0.0 and notes reason.
@@ -79,10 +89,27 @@ class HttpProvider(IDataProvider):
             except Exception:
                 return None, str(exc)
 
+    def get_kosdaq_level(self) -> Tuple[float | None, str | None]:
+        """Fetch KOSDAQ latest index level."""
+        try:
+            return _naver_index_close("KOSDAQ")
+        except Exception as exc:
+            try:
+                return _yahoo_latest_level("%5EKQ11")
+            except Exception:
+                return None, str(exc)
+
     def get_sp500_change_pct(self) -> Tuple[float | None, str | None]:
         """Fetch S&P 500 daily change % from Yahoo Finance (^GSPC)."""
         try:
             return _yahoo_daily_pct_chart("%5EGSPC")
+        except Exception as exc:
+            return None, str(exc)
+
+    def get_sp500_level(self) -> Tuple[float | None, str | None]:
+        """Fetch S&P 500 latest index level."""
+        try:
+            return _yahoo_latest_level("%5EGSPC")
         except Exception as exc:
             return None, str(exc)
 
@@ -93,10 +120,24 @@ class HttpProvider(IDataProvider):
         except Exception as exc:
             return None, str(exc)
 
+    def get_nasdaq_level(self) -> Tuple[float | None, str | None]:
+        """Fetch NASDAQ latest index level."""
+        try:
+            return _yahoo_latest_level("%5EIXIC")
+        except Exception as exc:
+            return None, str(exc)
+
     def get_dow_change_pct(self) -> Tuple[float | None, str | None]:
         """Fetch DOW daily change % from Yahoo Finance (^DJI)."""
         try:
             return _yahoo_daily_pct_chart("%5EDJI")
+        except Exception as exc:
+            return None, str(exc)
+
+    def get_dow_level(self) -> Tuple[float | None, str | None]:
+        """Fetch DOW latest index level."""
+        try:
+            return _yahoo_latest_level("%5EDJI")
         except Exception as exc:
             return None, str(exc)
 
@@ -239,6 +280,40 @@ def _yahoo_daily_pct_chart(symbol: str) -> Tuple[float, None]:
     return (pct, None)
 
 
+def _yahoo_latest_level(symbol: str) -> Tuple[float, None]:
+    """Fetch latest market level from Yahoo Finance chart endpoint."""
+    intraday = requests.get(
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1m&range=1d",
+        timeout=7,
+        headers=_default_headers(),
+    )
+    if intraday.status_code == 200:
+        payload = intraday.json()
+        result = payload.get("chart", {}).get("result", [])
+        if result:
+            meta = result[0].get("meta", {}) or {}
+            regular = meta.get("regularMarketPrice")
+            if regular is not None:
+                return float(regular), None
+
+    response = requests.get(
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}?interval=1d&range=7d",
+        timeout=7,
+        headers=_default_headers(),
+    )
+    if response.status_code != 200:
+        raise RuntimeError(f"http_status_{response.status_code}")
+    payload = response.json()
+    result = payload.get("chart", {}).get("result", [])
+    if not result:
+        raise RuntimeError("no_result")
+    closes = result[0].get("indicators", {}).get("quote", [])[0].get("close", [])
+    closes = [v for v in closes if v is not None]
+    if not closes:
+        raise RuntimeError("no_close_values")
+    return float(closes[-1]), None
+
+
 def _naver_index_daily_pct(index_code: str) -> Tuple[float, None]:
     """Compute daily pct change for KR indices from Naver mobile API.
 
@@ -279,6 +354,26 @@ def _naver_index_daily_pct(index_code: str) -> Tuple[float, None]:
         raise RuntimeError("naver_prev_close_zero")
     pct = (delta / prev_close) * 100.0
     return pct, None
+
+
+def _naver_index_close(index_code: str) -> Tuple[float, None]:
+    """Fetch latest close level for KOSPI/KOSDAQ from Naver API."""
+    code = (index_code or "").strip().upper()
+    if code not in {"KOSPI", "KOSDAQ"}:
+        raise RuntimeError(f"unsupported_index_code[{code}]")
+
+    url = f"https://m.stock.naver.com/api/index/{code}/price?pageSize=1&page=1"
+    response = requests.get(url, timeout=7, headers={"User-Agent": "Mozilla/5.0"})
+    if response.status_code != 200:
+        raise RuntimeError(f"naver_http_status_{response.status_code}")
+    payload = response.json()
+    if not isinstance(payload, list) or not payload:
+        raise RuntimeError("naver_empty_payload")
+    latest = payload[0] or {}
+    close_raw = str(latest.get("closePrice", "")).replace(",", "").strip()
+    if not close_raw:
+        raise RuntimeError("naver_missing_close")
+    return float(close_raw), None
 
 
 def _extract_json_value(payload: dict, path: tuple) -> float | None:
