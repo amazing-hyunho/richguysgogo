@@ -37,11 +37,9 @@
     .market-tile .chg.up { color:var(--green); }
     .market-tile .chg.down { color:var(--red); }
     .market-tile .chg.flat { color:#cbd5e1; }
-    .mini-flow-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
-    .mini-flow-card { background:var(--panel-soft); border:1px solid var(--line); border-radius:12px; padding:10px; }
-    .mini-flow-card h4 { margin:0 0 8px 0; font-size:13px; }
-    .mini-flow-row { display:flex; justify-content:space-between; gap:8px; margin-bottom:4px; font-size:12px; color:#dbe4f0; }
-    .mini-flow-row .val { font-weight:600; }
+    .flow-mini { margin-top:8px; padding-top:8px; border-top:1px dashed var(--line); }
+    .flow-mini-row { display:flex; justify-content:space-between; gap:8px; margin-bottom:3px; font-size:11px; color:#cbd5e1; }
+    .flow-mini-row .val { font-weight:600; color:#e2e8f0; }
     .card, .panel { background:var(--panel); border-radius:16px; border:1px solid rgba(148,163,184,0.12); }
     .card { padding:14px; }
     .card .label { font-size:12px; color:var(--muted); }
@@ -105,7 +103,7 @@
       .market-split-grid { grid-template-columns:1fr; }
     }
     @media (max-width: 980px) {
-      .chart-grid, .meeting-grid, .meeting-layout, .mini-flow-grid { grid-template-columns:1fr; }
+      .chart-grid, .meeting-grid, .meeting-layout { grid-template-columns:1fr; }
       .bubble { max-width:100%; }
       .speaker-chip { min-width:74px; max-width:74px; }
     }
@@ -333,8 +331,18 @@ const formatFlowSigned = (v) => {
   return `${sign}${formatNumberWithComma(n)}억`;
 };
 const domesticTiles = [
-  { name: 'KOSPI', price: latestMarket.kospi, pct: latestMarket.kospi_pct },
-  { name: 'KOSDAQ', price: latestMarket.kosdaq, pct: latestMarket.kosdaq_pct },
+  {
+    name: 'KOSPI',
+    price: latestMarket.kospi,
+    pct: latestMarket.kospi_pct,
+    flow: latestKrFlow?.KOSPI || null,
+  },
+  {
+    name: 'KOSDAQ',
+    price: latestMarket.kosdaq,
+    pct: latestMarket.kosdaq_pct,
+    flow: latestKrFlow?.KOSDAQ || null,
+  },
   { name: 'USD/KRW', price: latestMarket.usdkrw, pct: null },
 ];
 const globalTiles = [
@@ -354,6 +362,15 @@ document.getElementById('summary-cards').innerHTML = `
               <div class="name">${escapeHtml(item.name)}</div>
               <div class="price">${escapeHtml(formatNumberWithComma(item.price, item.name === 'USD/KRW' ? 2 : 0))}</div>
               <div class="chg ${percentClass(item.pct)}" style="color:${changeColorByMagnitude(item.pct)}">${item.pct === null ? '-' : escapeHtml(formatSignedPercent(item.pct))}</div>
+              ${
+                item.flow
+                  ? `<div class="flow-mini">
+                      <div class="flow-mini-row"><span>외국인</span><span class="val">${escapeHtml(formatFlowSigned(item.flow.foreign))}</span></div>
+                      <div class="flow-mini-row"><span>기관</span><span class="val">${escapeHtml(formatFlowSigned(item.flow.institution))}</span></div>
+                      <div class="flow-mini-row"><span>개인</span><span class="val">${escapeHtml(formatFlowSigned(item.flow.individual))}</span></div>
+                    </div>`
+                  : ''
+              }
             </div>
           `).join('')}
         </div>
@@ -369,20 +386,6 @@ document.getElementById('summary-cards').innerHTML = `
             </div>
           `).join('')}
         </div>
-      </div>
-    </div>
-    <div class="mini-flow-grid">
-      <div class="mini-flow-card">
-        <h4>KOSPI 수급</h4>
-        <div class="mini-flow-row"><span>외국인</span><span class="val">${escapeHtml(formatFlowSigned(latestKrFlow?.KOSPI?.foreign))}</span></div>
-        <div class="mini-flow-row"><span>기관</span><span class="val">${escapeHtml(formatFlowSigned(latestKrFlow?.KOSPI?.institution))}</span></div>
-        <div class="mini-flow-row"><span>개인</span><span class="val">${escapeHtml(formatFlowSigned(latestKrFlow?.KOSPI?.individual))}</span></div>
-      </div>
-      <div class="mini-flow-card">
-        <h4>KOSDAQ 수급</h4>
-        <div class="mini-flow-row"><span>외국인</span><span class="val">${escapeHtml(formatFlowSigned(latestKrFlow?.KOSDAQ?.foreign))}</span></div>
-        <div class="mini-flow-row"><span>기관</span><span class="val">${escapeHtml(formatFlowSigned(latestKrFlow?.KOSDAQ?.institution))}</span></div>
-        <div class="mini-flow-row"><span>개인</span><span class="val">${escapeHtml(formatFlowSigned(latestKrFlow?.KOSDAQ?.individual))}</span></div>
       </div>
     </div>
   </div>
