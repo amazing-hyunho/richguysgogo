@@ -76,17 +76,17 @@ docs/           # GitHub Pages 대시보드 (dashboard.html)
 ```mermaid
 flowchart TB
   subgraph EXT[External Sources / Interfaces]
-    APIs[공개 API\n(FRED/KRX/시장지표/뉴스)]
+    APIs["공개 API<br/>(FRED/KRX/시장지표/뉴스)"]
     TG[Telegram User]
     GH[GitHub Actions / Pages]
   end
 
   subgraph APP[Daily AI Investment Committee]
-    NIGHT[scripts/run_nightly.py\n(일 배치 오케스트레이션)]
-    LOCAL[scripts/run_local.py\n(로컬 실행)]
-    BOT[scripts/run_bot.py\n(Q&A 인바운드)]
-    NEWS[scripts/run_news_hourly.py\n(시간별 뉴스 수집)]
-    DASH[scripts/build_dashboard.py\n(대시보드 생성)]
+    NIGHT["scripts/run_nightly.py<br/>(일 배치 오케스트레이션)"]
+    LOCAL["scripts/run_local.py<br/>(로컬 실행)"]
+    BOT["scripts/run_bot.py<br/>(Q&A 인바운드)"]
+    NEWS["scripts/run_news_hourly.py<br/>(시간별 뉴스 수집)"]
+    DASH["scripts/build_dashboard.py<br/>(대시보드 생성)"]
 
     subgraph CORE[committee/core]
       PIPE[pipeline.py]
@@ -113,8 +113,8 @@ flowchart TB
 
   subgraph DATA[Data / Artifacts]
     DB[(data/investment.db)]
-    RUNS[runs/YYYY-MM-DD/\n snapshot.json\n stances.json\n debate_round.json\n committee_result.json\n report.md]
-    NEWSRUNS[runs/news/\n latest_news_digest.json\n history.jsonl]
+    RUNS["runs/YYYY-MM-DD/<br/>snapshot.json<br/>stances.json<br/>debate_round.json<br/>committee_result.json<br/>report.md"]
+    NEWSRUNS["runs/news/<br/>latest_news_digest.json<br/>history.jsonl"]
     DOCS[docs/dashboard.html]
   end
 
