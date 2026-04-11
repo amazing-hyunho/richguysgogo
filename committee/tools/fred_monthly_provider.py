@@ -14,94 +14,15 @@ Why FRED
 FRED provides stable, official macro time series (unemployment, CPI, PCE, PMI, wages).
 """
 
-import os
 import re
 
 import requests
-
-
-FRED_BASE = "https://api.stlouisfed.org/fred/series/observations"
-_WARNED_NO_KEY = False
-_WARNED_BAD_KEY_FORMAT = False
-_WARNED_MISSING_SERIES: set[str] = set()
-
-
-def _fred_key() -> str | None:
-    raw = os.getenv("FRED_API_KEY")
-    if not raw:
-        return None
-    # Be forgiving: users sometimes paste keys with quotes/whitespace.
-    key = raw.strip().strip('"').strip("'").strip()
-    global _WARNED_BAD_KEY_FORMAT  # noqa: PLW0603
-    if not _WARNED_BAD_KEY_FORMAT and not re.fullmatch(r"[a-z0-9]{32}", key):
-        _WARNED_BAD_KEY_FORMAT = True
-        # Don't print the key; only warn about format.
-        print("fred_api_key_suspicious_format (expected 32 lowercase alnum)")
-    return key
-
-
-def _warn_no_key_once() -> None:
-    global _WARNED_NO_KEY  # noqa: PLW0603
-    if _WARNED_NO_KEY:
-        return
-    _WARNED_NO_KEY = True
-    print("fred_api_key_missing")
+from committee.tools.fred_common import fetch_fred_last_n_values
 
 
 def _fetch_last_n_values(series_id: str, n: int) -> list[float] | None:
-    """Fetch last N numeric values (descending), filtering missing '.' values."""
-    api_key = _fred_key()
-    if not api_key:
-        _warn_no_key_once()
-        return None
-    try:
-        resp = requests.get(
-            FRED_BASE,
-            params={
-                "series_id": series_id,
-                "api_key": api_key,
-                "file_type": "json",
-                "sort_order": "desc",
-                "limit": int(n) * 2,  # buffer for missing values
-            },
-            timeout=10,
-        )
-        if resp.status_code != 200:
-            # Print server error message (without leaking api_key).
-            msg = ""
-            try:
-                payload = resp.json()
-                msg = str(payload.get("error_message") or "").strip()
-            except Exception:
-                msg = (resp.text or "").strip()
-            if msg:
-                # Avoid spamming known-removed series (e.g., ISM series removed from FRED).
-                if "series does not exist" in msg.lower():
-                    if series_id not in _WARNED_MISSING_SERIES:
-                        _WARNED_MISSING_SERIES.add(series_id)
-                        print(f"fred_http_error[{series_id}]: {resp.status_code} {msg}")
-                else:
-                    print(f"fred_http_error[{series_id}]: {resp.status_code} {msg}")
-            else:
-                print(f"fred_http_error[{series_id}]: {resp.status_code}")
-            return None
-        payload = resp.json()
-        obs = payload.get("observations", [])
-        values: list[float] = []
-        for item in obs:
-            raw = item.get("value")
-            if raw in (None, ".", ""):
-                continue
-            try:
-                values.append(float(raw))
-            except Exception:
-                continue
-            if len(values) >= n:
-                break
-        return values if len(values) >= n else None
-    except Exception as exc:  # noqa: BLE001
-        print(f"fred_fetch_failed[{series_id}]: {exc}")
-        return None
+    """Fetch last N numeric values with retry and cached last-good fallback."""
+    return fetch_fred_last_n_values(series_id, n)
 
 
 def _fetch_latest(series_id: str) -> float | None:

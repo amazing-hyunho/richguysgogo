@@ -76,7 +76,7 @@
     .tf-row button { font: inherit; cursor: pointer; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: #cbd5e1; font-size: 12px; font-weight: 600; }
     .tf-row button.tf-active { border-color: rgba(56, 189, 248, 0.55); background: rgba(56, 189, 248, 0.12); color: #7dd3fc; }
     .tf-row button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-    #market-trend-chart { width: 100%; min-height: 140px; }
+    #market-trend-chart { width: 100%; min-height: 248px; }
     #market-trend-chart svg { display: block; width: 100%; height: auto; }
     .market-trend-legend { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 10px; font-size: 12px; color: #cbd5e1; }
     .market-trend-legend .leg-item { display: inline-flex; align-items: center; gap: 6px; }
@@ -256,12 +256,12 @@
         </div>
       </div>
       <div id="market-trend-chart-block" class="market-trend-chart-block" aria-label="지수 추세">
-        <h4 class="mtc-title">핵심 추세: KOSPI · 나스닥</h4>
-        <p class="mtc-sub">일별 지수 레벨 (KOSPI / NASDAQ)</p>
+        <h4 class="mtc-title">핵심 추세: KOSPI · 나스닥 (일별 지수)</h4>
+        <p class="mtc-sub">거래일 기준 일별 지수 레벨을 모드에 맞게 묶습니다. 일별(1주)=최근 7거래일 그대로, 주별(1달)=최근 30거래일을 약 5거래일마다 대표값, 월별(1년)=최근 365거래일을 월(YYYY-MM)별 말일에 가장 가까운 행으로 요약.</p>
         <div class="tf-row" role="group" aria-label="차트 기간">
-          <button type="button" id="tf-1m">1M</button>
-          <button type="button" id="tf-3m" class="tf-active">3M</button>
-          <button type="button" id="tf-6m">6M</button>
+          <button type="button" id="tf-1m">일별(1주)</button>
+          <button type="button" id="tf-3m" class="tf-active">주별(1달)</button>
+          <button type="button" id="tf-6m">월별(1년)</button>
         </div>
         <div id="market-trend-chart"></div>
       </div>
@@ -948,42 +948,78 @@ function renderRecentChangePanel() {
     </div>`;
 }
 
-function buildMarketTrendSeries(tfDays) {
-  const rows = safeArr(data.market_daily);
-  const want = typeof tfDays === 'number' && tfDays > 0 ? tfDays : 66;
-  const tail = want > 0 ? rows.slice(-want) : [];
-  const slice = tail.filter(r => {
+function marketTrendValidRows(rows) {
+  return safeArr(rows).filter(r => {
     if (!r) return false;
     const k = r.kospi;
     const n = r.nasdaq;
     return (typeof k === 'number' && Number.isFinite(k)) || (typeof n === 'number' && Number.isFinite(n));
   });
+}
+
+function marketTrendSampleWeekly(rows) {
+  const chunk = 5;
+  const out = [];
+  for (let start = 0; start < rows.length; start += chunk) {
+    const block = rows.slice(start, start + chunk);
+    if (block.length) out.push(block[block.length - 1]);
+  }
+  return out;
+}
+
+function marketTrendSampleMonthly(rows) {
+  const byMonth = new Map();
+  rows.forEach(r => {
+    if (!r || r.date == null) return;
+    const d = String(r.date);
+    const ym = d.length >= 7 ? d.slice(0, 7) : d;
+    const prev = byMonth.get(ym);
+    if (!prev || String(prev.date || '') < d) byMonth.set(ym, r);
+  });
+  return Array.from(byMonth.entries())
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .map(e => e[1]);
+}
+
+function buildMarketTrendSeries(modeKey) {
+  const rows = safeArr(data.market_daily);
+  const modes = { d1w: true, w1m: true, m1y: true };
+  const key = modes[modeKey] ? modeKey : 'w1m';
+  const valid = marketTrendValidRows(rows);
+  let slice = [];
+  if (key === 'd1w') {
+    slice = valid.slice(-7);
+  } else if (key === 'w1m') {
+    slice = marketTrendSampleWeekly(valid.slice(-30));
+  } else {
+    slice = marketTrendSampleMonthly(valid.slice(-365));
+  }
   const len = slice.length;
   if (len < 2) {
-    return { slice, lines: [], empty: true };
+    return { slice, lines: [], empty: true, yMin: 0, yMax: 1 };
   }
   const allLevels = [];
   slice.forEach(r => {
     if (!r) return;
-    ['kospi', 'nasdaq'].forEach(key => {
-      const v = r[key];
+    ['kospi', 'nasdaq'].forEach(f => {
+      const v = r[f];
       if (typeof v === 'number' && Number.isFinite(v)) allLevels.push(v);
     });
   });
   if (allLevels.length < 2) {
-    return { slice, lines: [], empty: true };
+    return { slice, lines: [], empty: true, yMin: 0, yMax: 1 };
   }
   const gMin = Math.min(...allLevels);
   const gMax = Math.max(...allLevels);
   const rng = gMax - gMin || 1;
-  const pad = rng * 0.06 || 1;
+  const pad = rng * 0.08 || 1;
   const yMin = gMin - pad;
   const yMax = gMax + pad;
   const yR = yMax - yMin || 1;
-  function buildIndexLine(key, label, color) {
+  function buildIndexLine(fld, label, color) {
     const rawPts = [];
     for (let i = 0; i < len; i++) {
-      const v = slice[i] && slice[i][key];
+      const v = slice[i] && slice[i][fld];
       if (typeof v === 'number' && Number.isFinite(v)) rawPts.push({ i, raw: v });
     }
     if (rawPts.length < 2) return null;
@@ -995,34 +1031,38 @@ function buildMarketTrendSeries(tfDays) {
     const first = rawPts[0].raw;
     const last = rawPts[rawPts.length - 1].raw;
     const periodChgPct = first !== 0 ? ((last - first) / first) * 100 : null;
-    return { key, label, color, pts, first, last, periodChgPct };
+    return { key: fld, label, color, pts, first, last, periodChgPct };
   }
   const lines = [
     buildIndexLine('kospi', 'KOSPI', '#38bdf8'),
     buildIndexLine('nasdaq', 'NASDAQ', '#c4b5fd'),
   ].filter(Boolean);
   if (!lines.length) {
-    return { slice, lines: [], empty: true };
+    return { slice, lines: [], empty: true, yMin, yMax };
   }
-  return { slice, lines, empty: false };
+  return { slice, lines, empty: false, yMin, yMax };
 }
 
-function renderMarketTrendChart(tfDays) {
+function renderMarketTrendChart(modeKey) {
   const host = document.getElementById('market-trend-chart');
   if (!host) return;
-  const model = buildMarketTrendSeries(tfDays);
+  const model = buildMarketTrendSeries(modeKey);
   if (model.empty || !model.lines.length) {
     host.innerHTML = '<span class="empty-state">차트 데이터 부족</span>';
     return;
   }
   const w = 640;
-  const h = 200;
-  const padL = 10;
-  const padR = 10;
-  const padT = 14;
-  const padB = 10;
+  const h = 248;
+  const padL = 56;
+  const padR = 16;
+  const padT = 18;
+  const padB = 58;
   const innerW = w - padL - padR;
   const innerH = h - padT - padB;
+  const yMin = model.yMin;
+  const yMax = model.yMax;
+  const yR = yMax - yMin || 1;
+  const yMid = (yMin + yMax) / 2;
   const idxMax = Math.max(1, model.slice.length - 1);
   function xAt(i) {
     return padL + (i / idxMax) * innerW;
@@ -1030,10 +1070,39 @@ function renderMarketTrendChart(tfDays) {
   function yAt(yNorm) {
     return padT + (1 - yNorm) * innerH;
   }
+  function yNormAtValue(v) {
+    return (v - yMin) / yR;
+  }
+  const axisStroke = '#64748b';
+  const tickFill = '#cbd5e1';
+  const titleFill = '#e2e8f0';
+  const x0 = padL;
+  const x1 = padL + innerW;
+  const y0 = padT;
+  const y1 = padT + innerH;
+  const yTicks = [yMax, yMid, yMin];
+  const yLbls = yTicks.map(v => formatNumberWithComma(v, v >= 1000 ? 0 : 2));
+  const xi0 = 0;
+  const xi1 = Math.floor(idxMax / 2);
+  const xi2 = idxMax;
+  const d0 = model.slice[xi0] && model.slice[xi0].date != null ? String(model.slice[xi0].date).slice(0, 10) : '—';
+  const d1 = model.slice[xi1] && model.slice[xi1].date != null ? String(model.slice[xi1].date).slice(0, 10) : '—';
+  const d2 = model.slice[xi2] && model.slice[xi2].date != null ? String(model.slice[xi2].date).slice(0, 10) : '—';
   const polylines = model.lines.map(L => {
     const ptsStr = L.pts.map(p => `${xAt(p.i).toFixed(1)},${yAt(p.yNorm).toFixed(1)}`).join(' ');
     return `<polyline fill="none" stroke="${L.color}" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round" points="${ptsStr}"/>`;
   }).join('');
+  const yTickSvg = yTicks.map((v, t) => {
+    const yn = yNormAtValue(v);
+    const py = yAt(yn);
+    return `<line x1="${x0}" y1="${py.toFixed(1)}" x2="${x0 - 5}" y2="${py.toFixed(1)}" stroke="${axisStroke}" stroke-width="1"/><text x="${x0 - 8}" y="${py.toFixed(1)}" fill="${tickFill}" font-size="10" text-anchor="end" dominant-baseline="middle">${escapeHtml(yLbls[t])}</text>`;
+  }).join('');
+  const xTickXs = [xAt(xi0), xAt(xi1), xAt(xi2)];
+  const xDates = [d0, d1, d2];
+  const xTickSvg = xTickXs.map((xx, t) => {
+    return `<line x1="${xx.toFixed(1)}" y1="${y1}" x2="${xx.toFixed(1)}" y2="${y1 + 5}" stroke="${axisStroke}" stroke-width="1"/><text x="${xx.toFixed(1)}" y="${y1 + 18}" fill="${tickFill}" font-size="10" text-anchor="middle" dominant-baseline="middle">${escapeHtml(xDates[t])}</text>`;
+  }).join('');
+  const axes = `<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="${axisStroke}" stroke-width="1.25"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y1}" stroke="${axisStroke}" stroke-width="1.25"/>${yTickSvg}${xTickSvg}<text x="${(padL + x1) / 2}" y="${h - 6}" fill="${titleFill}" font-size="11" text-anchor="middle" dominant-baseline="middle">${escapeHtml('기간')}</text><text x="12" y="${(y0 + y1) / 2}" fill="${titleFill}" font-size="11" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 12 ${(y0 + y1) / 2})">${escapeHtml('지수 레벨')}</text>`;
   const legend = model.lines.map(L => {
     const pct = L.periodChgPct;
     const digits = L.key === 'nasdaq' ? 2 : 0;
@@ -1047,14 +1116,14 @@ function renderMarketTrendChart(tfDays) {
     }
     return `<span class="leg-item"><span class="leg-swatch" style="background:${L.color}"></span><span>${escapeHtml(L.label)}</span> <span class="${escapeHtml(legCls)}">(${escapeHtml(legTxt)})</span></span>`;
   }).join('');
-  host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="일별 지수 레벨">${polylines}</svg><div class="market-trend-legend">${legend}</div>`;
+  host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="248" preserveAspectRatio="xMidYMid meet" role="img" aria-label="일별 지수 레벨 추세">${axes}${polylines}</svg><div class="market-trend-legend">${legend}</div>`;
 }
 
 function setupMarketTrendToggles() {
   const block = document.getElementById('market-trend-chart-block');
   if (!block || block.dataset.tfWired === '1') return;
   block.dataset.tfWired = '1';
-  const map = { 'tf-1m': 22, 'tf-3m': 66, 'tf-6m': 132 };
+  const map = { 'tf-1m': 'd1w', 'tf-3m': 'w1m', 'tf-6m': 'm1y' };
   Object.keys(map).forEach(id => {
     const btn = document.getElementById(id);
     if (!btn) return;
@@ -1747,7 +1816,7 @@ function buildStockRows() {
     ].map(indexCardHtml).join('');
   }
 
-  renderMarketTrendChart(66);
+  renderMarketTrendChart('w1m');
   setupMarketTrendToggles();
   renderForeignFlowBlock();
 

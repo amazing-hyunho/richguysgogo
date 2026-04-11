@@ -41,7 +41,11 @@ def fetch_korea_export_yoy(market_date: date, timeout_sec: int = 7) -> float | N
             item_code = _resolve_export_item_code(key_q, timeout_sec=timeout_sec)
         except Exception as exc:
             print(f"korea_export_yoy: item_list_failed ({exc})")
-            return None
+            item_code = None
+    if item_code is None:
+        item_code = _resolve_export_item_code_via_statistic_search(
+            base, market_date, timeout_sec=timeout_sec
+        )
     if not item_code:
         print("korea_export_yoy: no matching item code for 901Y011")
         return None
@@ -102,7 +106,7 @@ def _resolve_export_item_code(api_key_quoted: str, *, timeout_sec: int) -> str |
     path = _STAT_CODE
     items = _statistic_item_list_all_rows(base, path, timeout_sec=timeout_sec, chunk_size=500)
     if not items:
-        raise RuntimeError("empty StatisticItemList")
+        return None
 
     for needle in _NAME_PRIORITY:
         matches = [
@@ -127,6 +131,65 @@ def _resolve_export_item_code(api_key_quoted: str, *, timeout_sec: int) -> str |
     all_codes = [_item_code(it) for it in items if _item_code(it)]
     if all_codes:
         return sorted(set(all_codes))[0]
+    return None
+
+
+def _stat_search_row_name1(row: dict[str, Any]) -> str:
+    return str(row.get("ITEM_NAME1") or "")
+
+
+def _stat_search_row_item_name(row: dict[str, Any]) -> str:
+    return str(row.get("ITEM_NAME1") or row.get("ITEM_NAME") or "")
+
+
+def _stat_search_row_item_code1(row: dict[str, Any]) -> str:
+    return str(row.get("ITEM_CODE1") or "").strip()
+
+
+def _resolve_export_item_code_via_statistic_search(
+    statistic_search_base: str,
+    market_date: date,
+    *,
+    timeout_sec: int,
+) -> str | None:
+    """Resolve export item code from StatisticSearch when StatisticItemList is empty or unusable.
+
+    Queries 901Y011/M over the last 24 months without ITEM_CODE1 in the path, then picks
+    ITEM_CODE1 using the same name priority as the item list, with a deterministic 수출 fallback.
+    """
+    end_anchor = date(market_date.year, market_date.month, 1)
+    start_y, start_m = _add_months(end_anchor.year, end_anchor.month, -23)
+    start_ym = f"{start_y:04d}{start_m:02d}"
+    end_ym = f"{market_date.year:04d}{market_date.month:02d}"
+    path = f"{_STAT_CODE}/{_CYCLE}/{start_ym}/{end_ym}"
+    try:
+        payload = _statistic_search_last_page(
+            statistic_search_base, path, timeout_sec=timeout_sec, page_size=500
+        )
+    except Exception:
+        return None
+    rows = _extract_statistic_search_rows(payload)
+    if not rows:
+        return None
+
+    for needle in _NAME_PRIORITY:
+        codes = [
+            c
+            for r in rows
+            if (c := _stat_search_row_item_code1(r)) and needle in _stat_search_row_name1(r)
+        ]
+        if codes:
+            return sorted(set(codes))[0]
+
+    stable = sorted(
+        rows,
+        key=lambda r: (_stat_search_row_item_code1(r), str(r.get("TIME") or "").strip()),
+    )
+    for r in stable:
+        if "수출" in _stat_search_row_item_name(r):
+            c = _stat_search_row_item_code1(r)
+            if c:
+                return c
     return None
 
 
