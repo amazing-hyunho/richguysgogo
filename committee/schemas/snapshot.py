@@ -146,6 +146,7 @@ class MacroMonthly(BaseModel):
     wage_growth: Optional[float] = None  # backward compatible alias of wage_level
     wage_level: Optional[float] = None
     wage_yoy: Optional[float] = None
+    export_yoy: Optional[float] = None
 
     class Config:
         extra = "forbid"

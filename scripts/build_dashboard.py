@@ -373,7 +373,7 @@ def main() -> None:
             "monthly_macro": fetch_rows(
                 conn,
                 "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, "
-                "retail_sales_mom, nfp_change, wage_level, wage_yoy FROM monthly_macro ORDER BY date",
+                "retail_sales_mom, nfp_change, wage_level, wage_yoy, export_yoy FROM monthly_macro ORDER BY date",
             ),
             "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
             "committee_history": load_committee_history(),

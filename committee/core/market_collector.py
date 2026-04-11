@@ -107,6 +107,7 @@ def persist_snapshot_metrics(
         nfp_change=m.nfp_change,
         wage_level=m.wage_level,
         wage_yoy=m.wage_yoy,
+        export_yoy=m.export_yoy,
     )
     safe_upsert_quarterly_macro(
         date=market_date.isoformat(),

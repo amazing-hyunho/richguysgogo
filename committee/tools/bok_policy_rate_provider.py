@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import date, timedelta
+from datetime import date
 import os
 from dataclasses import dataclass
 from typing import Any
@@ -28,12 +28,12 @@ def check_bok_base_rate(market_date: date, timeout_sec: int = 7) -> BOKBaseRateR
     if not api_key:
         return BOKBaseRateResult(value=None, status="missing_key", message="ECOS_API_KEY_not_set")
 
-    # Daily 722Y001/0101000 = 한국은행 기준금리 (monthly M also works; D aligns with ECOS same-day updates).
+    # Use monthly series for stability: 722Y001/M/0101000 = 한국은행 기준금리.
     key_q = quote(api_key, safe="")
-    start_d = (market_date - timedelta(days=400)).strftime("%Y%m%d")
-    end_d = market_date.strftime("%Y%m%d")
+    end_m = market_date.strftime("%Y%m")
+    start_m = _add_months(market_date.replace(day=1), -120).strftime("%Y%m")
     base = f"https://ecos.bok.or.kr/api/StatisticSearch/{key_q}/json/kr"
-    path = f"722Y001/D/{start_d}/{end_d}/0101000"
+    path = f"722Y001/M/{start_m}/{end_m}/0101000"
     try:
         payload = _statistic_search_last_page(base, path, timeout_sec=timeout_sec, page_size=500)
     except Exception as exc:
@@ -50,7 +50,8 @@ def check_bok_base_rate(market_date: date, timeout_sec: int = 7) -> BOKBaseRateR
     latest_row = max(rows, key=_time_sort_key)
     value = _to_float(latest_row.get("DATA_VALUE"))
     if value is not None:
-        return BOKBaseRateResult(value=value, status="ok", message="ok")
+        latest_time = str(latest_row.get("TIME") or "")
+        return BOKBaseRateResult(value=value, status="ok", message=f"ok:{latest_time}")
     return BOKBaseRateResult(value=None, status="parse_failed", message="no_numeric_data_value")
 
 
@@ -73,12 +74,26 @@ def _to_float(value: Any) -> float | None:
         return None
 
 
+def _add_months(anchor: date, delta: int) -> date:
+    y, m = anchor.year, anchor.month + delta
+    while m > 12:
+        m -= 12
+        y += 1
+    while m < 1:
+        m += 12
+        y -= 1
+    return date(y, m, anchor.day)
+
+
 def _filter_base_rate_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """Keep only BOK base-rate item rows (defensive filtering)."""
     out: list[dict[str, Any]] = []
     for row in rows:
         item_code = str(row.get("ITEM_CODE1") or "").strip()
         if item_code != "0101000":
+            continue
+        item_name = str(row.get("ITEM_NAME1") or "")
+        if item_name and "기준금리" not in item_name:
             continue
         out.append(row)
     return out

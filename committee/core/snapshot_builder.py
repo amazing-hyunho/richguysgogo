@@ -47,6 +47,7 @@ from committee.tools.fred_structural_provider import (
     fetch_hy_oas,
     fetch_ig_oas,
 )
+from committee.tools.bok_trade_provider import fetch_korea_export_yoy
 
 
 def build_snapshot(market_date: date) -> Snapshot:
@@ -84,6 +85,7 @@ def build_snapshot_real(
         "retail_sales_mom": "FAIL",
         "nfp_change": "FAIL",
         "wage_growth": "FAIL",
+        "export_yoy": "FAIL",
         # Phase 3 quarterly macro.
         "real_gdp": "FAIL",
         "gdp_qoq_annualized": "FAIL",
@@ -137,6 +139,7 @@ def build_snapshot_real(
     wage_yoy = fetch_wage_yoy()
     # Backward compatibility: keep wage_growth populated with the level series.
     wage_growth = wage_level
+    export_yoy = fetch_korea_export_yoy(market_date)
 
     # Phase 3 quarterly macro (FRED).
     real_gdp = fetch_real_gdp()
@@ -220,6 +223,7 @@ def build_snapshot_real(
     status["wage_growth"] = "OK" if wage_growth is not None else "FAIL"
     status["wage_level"] = "OK" if wage_level is not None else "FAIL"
     status["wage_yoy"] = "OK" if wage_yoy is not None else "FAIL"
+    status["export_yoy"] = "OK" if export_yoy is not None else "FAIL"
     if pmi is None:
         # Document which sources were attempted so failures are traceable.
         notes.append(f"pmi_fetch_failed: tried={','.join(pmi_series_ids_tried())}")
@@ -355,6 +359,7 @@ def build_snapshot_real(
                 "wage_growth": wage_growth,
                 "wage_level": wage_level,
                 "wage_yoy": wage_yoy,
+                "export_yoy": export_yoy,
             },
             "quarterly": {
                 "real_gdp": real_gdp,

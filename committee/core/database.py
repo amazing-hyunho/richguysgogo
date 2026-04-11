@@ -198,6 +198,7 @@ def init_db(db_path: Path | None = None) -> None:
                 nfp_change REAL,
                 wage_level REAL,
                 wage_yoy REAL,
+                export_yoy REAL,
                 created_at TEXT
             );
             """
@@ -214,6 +215,7 @@ def init_db(db_path: Path | None = None) -> None:
             "nfp_change",
             "wage_level",
             "wage_yoy",
+            "export_yoy",
         ]:
             _ensure_column_exists(conn, table="monthly_macro", column=col, column_ddl="REAL")
 
@@ -323,6 +325,7 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
                 nfp_change REAL,
                 wage_level REAL,
                 wage_yoy REAL,
+                export_yoy REAL,
                 created_at TEXT
             );
             """
@@ -341,6 +344,7 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
                 nfp_change,
                 wage_level,
                 wage_yoy,
+                export_yoy,
                 created_at
             )
             SELECT
@@ -354,6 +358,7 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
                 {sel("nfp_change")},
                 {wage_level_expr},
                 {wage_yoy_expr},
+                {sel("export_yoy")},
                 {sel("created_at")}
             FROM monthly_macro;
             """
@@ -582,6 +587,7 @@ def upsert_monthly_macro(
     nfp_change: float | None = None,
     wage_level: float | None = None,
     wage_yoy: float | None = None,
+    export_yoy: float | None = None,
     db_path: Path | None = None,
 ) -> None:
     """Upsert one row into `monthly_macro` (NULL-based missing data)."""
@@ -593,11 +599,11 @@ def upsert_monthly_macro(
             INSERT INTO monthly_macro (
                 date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi,
                 retail_sales_mom, nfp_change,
-                wage_level, wage_yoy, created_at
+                wage_level, wage_yoy, export_yoy, created_at
             ) VALUES (
                 :date, :unemployment_rate, :cpi_yoy, :core_cpi_yoy, :pce_yoy, :pmi,
                 :retail_sales_mom, :nfp_change,
-                :wage_level, :wage_yoy, :created_at
+                :wage_level, :wage_yoy, :export_yoy, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
                 unemployment_rate=excluded.unemployment_rate,
@@ -609,6 +615,7 @@ def upsert_monthly_macro(
                 nfp_change=excluded.nfp_change,
                 wage_level=excluded.wage_level,
                 wage_yoy=excluded.wage_yoy,
+                export_yoy=excluded.export_yoy,
                 created_at=excluded.created_at;
             """,
             {
@@ -622,6 +629,7 @@ def upsert_monthly_macro(
                 "nfp_change": None if nfp_change is None else float(nfp_change),
                 "wage_level": None if wage_level is None else float(wage_level),
                 "wage_yoy": None if wage_yoy is None else float(wage_yoy),
+                "export_yoy": None if export_yoy is None else float(export_yoy),
                 "created_at": created_at,
             },
         )

@@ -90,7 +90,12 @@ def main() -> None:
     """Run nightly pipeline and store run artifacts."""
     load_project_env(ROOT_DIR)
     parser = argparse.ArgumentParser(description="야간 파이프라인 실행")
-    parser.add_argument("--build-dashboard", action="store_true", help="실행 후 대시보드 재생성")
+    parser.add_argument(
+        "--build-dashboard",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="실행 후 대시보드 재생성 (기본: 켬)",
+    )
     parser.add_argument(
         "--auto-commit",
         action=argparse.BooleanOptionalAction,
