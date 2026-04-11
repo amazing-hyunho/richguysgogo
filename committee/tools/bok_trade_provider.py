@@ -9,7 +9,15 @@ import requests
 
 _STAT_CODE = "901Y011"
 _CYCLE = "M"
-_NAME_PRIORITY = ("국별수출관세청", "수출총액", "총수출")
+_NAME_PRIORITY = (
+    "국별수출관세청",
+    "수출총액",
+    "총수출",
+    "수출",
+    "통관수출",
+    "수출금액",
+)
+_EXPORT_UNIT_HINTS = ("달러", "백만", "금액")
 
 
 def fetch_korea_export_yoy(market_date: date, timeout_sec: int = 7) -> float | None:
@@ -104,6 +112,21 @@ def _resolve_export_item_code(api_key_quoted: str, *, timeout_sec: int) -> str |
         ]
         if matches:
             return sorted(set(matches))[0]
+
+    export_named = [it for it in items if "수출" in _item_name(it) and _item_code(it)]
+    if export_named:
+        hinted = [
+            it
+            for it in export_named
+            if any(h in (_item_unit(it) + _item_name(it)) for h in _EXPORT_UNIT_HINTS)
+        ]
+        pool = hinted if hinted else export_named
+        codes = [_item_code(it) for it in pool]
+        return sorted(set(codes))[0]
+
+    all_codes = [_item_code(it) for it in items if _item_code(it)]
+    if all_codes:
+        return sorted(set(all_codes))[0]
     return None
 
 
@@ -113,6 +136,10 @@ def _item_name(item: dict[str, Any]) -> str:
 
 def _item_code(item: dict[str, Any]) -> str:
     return str(item.get("ITEM_CODE1") or item.get("ITEM_CODE") or "").strip()
+
+
+def _item_unit(item: dict[str, Any]) -> str:
+    return str(item.get("UNIT_NAME") or item.get("UNIT") or "")
 
 
 def _add_months(year: int, month: int, delta: int) -> tuple[int, int]:

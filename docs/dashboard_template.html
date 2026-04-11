@@ -381,6 +381,23 @@ function lastRow(rows) {
   const r = safeArr(rows);
   return r.length ? r[r.length - 1] : null;
 }
+function latestNonNull(rows, key) {
+  const r = safeArr(rows);
+  for (let i = r.length - 1; i >= 0; i--) {
+    const v = r[i][key];
+    if (typeof v === 'number' && Number.isFinite(v)) return { value: v, row: r[i] };
+  }
+  return null;
+}
+function previousNonNullBefore(rows, key, beforeIndex) {
+  const r = safeArr(rows);
+  if (typeof beforeIndex !== 'number' || beforeIndex <= 0) return null;
+  for (let i = beforeIndex - 1; i >= 0; i--) {
+    const v = r[i][key];
+    if (typeof v === 'number' && Number.isFinite(v)) return v;
+  }
+  return null;
+}
 
 function formatMetric(value) {
   if (value === null || value === undefined || value === '') return '-';
@@ -472,6 +489,9 @@ function buildMacroMetricCards() {
   const fed = pol.overseas_base_rate;
   const fedDelta = { text: '(일별 시계열 없음)', cls: '' };
   const fedTag = { tag: '해석: 정책 금리', cls: 'neu' };
+  const krBase = pol.domestic_base_rate;
+  const krBaseDelta = { text: '(일별 시계열 없음)', cls: '' };
+  const krBaseTag = { tag: '해석: 정책 금리', cls: 'neu' };
 
   function card(name, valStr, delta, interp) {
     return `
@@ -525,24 +545,32 @@ function buildMacroMetricCards() {
   );
   const fxTag = rateDeltaTag(fxd.text, true);
 
-  const ex = mLast && mLast.export_yoy;
-  const exp = mPrev && mPrev.export_yoy;
-  const exd = numDelta(
-    typeof ex === 'number' ? ex : NaN,
-    typeof exp === 'number' ? exp : NaN,
-    '직전 공시 대비'
-  );
-  const exTag = rateDeltaTag(exd.text, false);
+  const exLatest = latestNonNull(monthly, 'export_yoy');
+  let exCardVal;
+  let exd;
+  let exTag;
+  if (exLatest) {
+    const exIdx = monthly.lastIndexOf(exLatest.row);
+    const exp = previousNonNullBefore(monthly, 'export_yoy', exIdx);
+    exCardVal = `${formatMetric(exLatest.value)}%`;
+    exd = numDelta(exLatest.value, exp, '직전 공시 대비');
+    exTag = rateDeltaTag(exd.text, false);
+  } else {
+    exCardVal = '-';
+    exd = { text: '데이터 없음', cls: '' };
+    exTag = { tag: '해석: 데이터 없음', cls: 'neu' };
+  }
 
   let html = '';
   html += card('Fed 금리 (정책)', formatRatePercent(fed), fedDelta, fedTag);
+  html += card('한국 기준금리 (정책)', formatRatePercent(krBase), krBaseDelta, krBaseTag);
   html += card('CPI YoY', formatMetric(cpiCurr) === '-' ? '-' : `${formatMetric(cpiCurr)}%`, cpiD, cpiTag);
   html += card('PCE YoY', formatMetric(pceCurr) === '-' ? '-' : `${formatMetric(pceCurr)}%`, pceD, pceTag);
   html += card('US 10Y', formatMetric(y10) === '-' ? '-' : `${formatMetric(y10)}%`, y10d, y10Tag);
   html += card('DXY', formatMetric(dxy), dxyd, dxyTag);
   html += card('USD/KRW (매크로 일별)', formatNumberWithComma(fx, 2), fxd, fxTag);
-  html += card('유가 (WTI)', '데이터 없음', { text: '스냅샷 미포함', cls: '' }, { tag: '해석: 추후 연동', cls: 'neu' });
-  html += card('한국 수출 YoY', formatMetric(ex) === '-' ? '-' : `${formatMetric(ex)}%`, exd, exTag);
+  html += card('유가 (WTI)', '미연동', { text: '수집 파이프라인 없음', cls: '' }, { tag: '해석: 추후 연동', cls: 'neu' });
+  html += card('한국 수출 YoY', exCardVal, exd, exTag);
   return html;
 }
 
@@ -773,9 +801,14 @@ function buildStockRows() {
 
   document.getElementById('exec-cio').textContent = toKoreanChairText(chair.consensus) || '-';
 
-  const mLast = lastRow(safeArr(data.monthly_macro));
+  const monthlyArr = safeArr(data.monthly_macro);
+  const mLast = lastRow(monthlyArr);
+  const exForMeta = latestNonNull(monthlyArr, 'export_yoy');
+  const exportAsOf = exForMeta && exForMeta.row
+    ? (exForMeta.row.date || exForMeta.row.time || exForMeta.row.as_of || '-')
+    : '-';
   document.getElementById('macro-dates').textContent =
-    `일별 ${dm.date || '-'} · 월별 ${mLast && mLast.date ? mLast.date : '-'}`;
+    `일별 ${dm.date || '-'} · 월별 ${mLast && mLast.date ? mLast.date : '-'} · 수출 기준 ${exportAsOf}`;
 
   document.getElementById('macro-metric-cards').innerHTML = buildMacroMetricCards();
 
