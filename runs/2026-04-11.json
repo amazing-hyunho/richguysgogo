@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-11T02:00:32.839841+00:00",
+  "generated_at": "2026-04-11T02:52:21.668125+00:00",
   "market_date": "2026-04-11",
   "snapshot": {
     "market_summary": {
@@ -34,11 +34,11 @@
       "n/a"
     ],
     "news_headlines": [
-      "[인플레이션] 전쟁발 물가 우려에 美 미시간대 소비자심리 사상 최저 - 연합뉴스",
+      "[인플레이션] 미·이란 협상 대기 속 인플레이션 우려…뉴욕증시 혼조 마감 - 연합뉴스",
       "[금리/연준] 백악관 해싯 \"호르무즈 재개방되면 연준 금리인하 가능\" - 연합인포맥스",
       "[반도체/AI] 엔비디아 맞선 구글·브로드컴 동맹 강화…K반도체 협상력 강화 전망 - 뉴시스",
-      "[경기/성장] GDP 말고 'GDI' 뜬다…AI 강국 가르는 새 경제 지표 - 디지털투데이",
-      "[미국지수] 미국·이란 협상 앞두고…뉴욕 증시 혼조 마감 - 연합뉴스 한민족센터"
+      "[미국지수] 미국·이란 협상 앞두고…뉴욕 증시 혼조 마감 - 연합뉴스 한민족센터",
+      "[경기/성장] GDP 말고 'GDI' 뜬다…AI 강국 가르는 새 경제 지표 - 디지털투데이"
     ],
     "watchlist": [
       "SPY",
@@ -84,12 +84,12 @@
         "unemployment_rate": 4.3,
         "cpi_yoy": 3.3202055812236786,
         "core_cpi_yoy": 2.6730984898529986,
-        "pce_yoy": null,
+        "pce_yoy": 2.801756656951593,
         "pmi": null,
-        "retail_sales_mom": null,
-        "nfp_change": null,
-        "wage_growth": null,
-        "wage_level": null,
+        "retail_sales_mom": 0.600990523942202,
+        "nfp_change": 178.0,
+        "wage_growth": 37.38,
+        "wage_level": 37.38,
         "wage_yoy": 3.517031293270567,
         "export_yoy": null
       },
@@ -98,17 +98,17 @@
         "gdp_qoq_annualized": 0.5
       },
       "structural": {
-        "fed_funds_rate": null,
+        "fed_funds_rate": 3.64,
         "real_rate": 1.956999912261963,
-        "hy_oas": null,
-        "ig_oas": 0.83,
-        "fed_balance_sheet": 6693871.0
+        "hy_oas": 2.9,
+        "ig_oas": null,
+        "fed_balance_sheet": null
       }
     },
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
       "breadth_signal_score": 1.627,
-      "liquidity_signal_score": 5.641,
+      "liquidity_signal_score": 6.296,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
     },
     "cumulative_context": {
@@ -337,7 +337,7 @@
         "internal_regime_tag": "RISK_ON"
       }
     ],
-    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +1.40%, USD/KRW 1482.80(+0.74%), VIX 19.2, 외국인 +10622억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다."
+    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +1.40%, USD/KRW 1482.80(+0.74%), VIX 19.2, 외국인 +10622억이고, 뉴스는 방향성이 엇갈려 단정하기 어렵습니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다."
   },
   "committee_result": {
     "consensus": "Committee supports risk-on positioning with disciplined risk controls.",

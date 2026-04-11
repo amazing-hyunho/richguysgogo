@@ -1,7 +1,7 @@
 # 데일리 AI 투자위원회 리포트
 
 - 시장 기준일: **2026-04-11**
-- 생성 시각(UTC): `2026-04-11T02:00:32.839841+00:00`
+- 생성 시각(UTC): `2026-04-11T02:52:21.668125+00:00`
 
 ## 1) 한눈에 보기
 - **위원회 합의**: 위원회는 엄격한 리스크 통제를 전제로 위험자산 비중 확대를 지지합니다.
@@ -21,7 +21,7 @@
 - **수급 요약**: 외국인 +10622억 / 기관 -1100억 / 개인 -13104억
 - **일간 매크로**: 미10년 4.32% / 미2년 3.59% / 2-10 0.72%p / DXY 98.70
 - **월간 매크로**: 실업률 4.30% / CPI YoY 3.32% / Core CPI YoY 2.67% / PMI n/a
-- **분기/구조**: GDP QoQ 연율 0.50% / 기준금리 n/a / 실질금리 1.96%
+- **분기/구조**: GDP QoQ 연율 0.50% / 기준금리 3.64% / 실질금리 1.96%
 
 ## 4) 위원회 핵심 포인트
 - 다수 국면 태그: RISK_ON.
@@ -97,7 +97,7 @@
   - 참조 근거: snapshot.phase_two_signals.breadth_signal_score, snapshot.markets.volatility.vix, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
 - [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=98.70, real_rate=1.96%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.liquidity_signal_score, snapshot.macro.daily.dxy, snapshot.macro.structural.real_rate, snapshot.flow_summary.foreign_net
-- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +1.40%, USD/KRW 1482.80(+0.74%), VIX 19.2, 외국인 +10622억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다.
+- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +1.40%, USD/KRW 1482.80(+0.74%), VIX 19.2, 외국인 +10622억이고, 뉴스는 방향성이 엇갈려 단정하기 어렵습니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다.
 
 ## 7) 이견 사항
 - 국면 태그: 다수=RISK_ON, 소수=NEUTRAL, 에이전트=[macro, sector, risk]
