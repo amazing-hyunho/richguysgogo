@@ -116,6 +116,7 @@ def init_db(db_path: Path | None = None) -> None:
         _ensure_column_exists(conn, table="market_flow_daily", column="institution_net", column_ddl="REAL")
         _ensure_column_exists(conn, table="market_flow_daily", column="retail_net", column_ddl="REAL")
 
+
         # stock_daily: stock-level features (composite primary key: date + ticker).
         conn.execute(
             """
@@ -809,6 +810,8 @@ def safe_upsert_monthly_macro(**kwargs: Any) -> None:
         upsert_monthly_macro(**kwargs)
     except Exception as exc:  # noqa: BLE001
         _log_db_error("upsert_monthly_macro", exc)
+
+
 
 
 def get_sp500_forward_eps_on_or_before(

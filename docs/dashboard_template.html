@@ -29,6 +29,7 @@
     .market-split-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .market-section { background:var(--panel-soft); border:1px solid var(--line); border-radius:12px; padding:10px; }
     .market-section h4 { margin:0 0 8px 0; font-size:13px; color:#dbe4f0; }
+    .market-section .sub-meta { margin:0 0 10px 0; font-size:11px; color:var(--muted); word-break:break-word; overflow-wrap:anywhere; }
     .market-tiles { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:10px; min-width:0; }
     .market-tile { background:var(--panel); border-radius:14px; border:1px solid rgba(148,163,184,0.18); padding:12px; }
     .market-tile .name { font-size:12px; color:var(--muted); margin-bottom:6px; }
@@ -292,6 +293,11 @@ function formatSignedPercent(value) {
   if (typeof value !== 'number' || !Number.isFinite(value)) return value;
   return `${value > 0 ? '+' : ''}${value.toFixed(2)}%`;
 }
+function formatRatePercent(value) {
+  if (value === null || value === undefined || value === '') return '-';
+  if (typeof value !== 'number' || !Number.isFinite(value)) return '-';
+  return `${value.toFixed(2)}%`;
+}
 function percentClass(value) {
   if (typeof value !== 'number' || !Number.isFinite(value)) return 'flat';
   if (value > 0) return 'up';
@@ -325,6 +331,7 @@ function escapeHtml(value) {
 const latestMarketDate = latest(data.market_daily, 'date');
 const latestMarket = data.market_daily.length ? data.market_daily[data.market_daily.length - 1] : {};
 const latestKrFlow = (data.korean_market_flow_compare?.current) || data.latest_korean_market_flow?.market || {};
+const latestPolicyRates = data.latest_policy_rates || {};
 const formatFlowSigned = (v) => {
   if (v === null || v === undefined || v === '') return '-';
   const n = Number(v);
@@ -358,6 +365,10 @@ document.getElementById('summary-cards').innerHTML = `
     <div class="market-split-grid">
       <div class="market-section">
         <h4>국내 지표</h4>
+        <div class="sub-meta">
+          기준금리: ${escapeHtml(formatRatePercent(latestPolicyRates.domestic_base_rate))}
+          · 환율 Daily: ${escapeHtml(formatSignedPercent(latestMarket.usdkrw_pct))}
+        </div>
         <div class="market-tiles">
           ${domesticTiles.map(item => `
             <div class="market-tile">
@@ -379,6 +390,9 @@ document.getElementById('summary-cards').innerHTML = `
       </div>
       <div class="market-section">
         <h4>해외 지표</h4>
+        <div class="sub-meta">
+          기준금리(Fed): ${escapeHtml(formatRatePercent(latestPolicyRates.overseas_base_rate))}
+        </div>
         <div class="market-tiles">
           ${globalTiles.map(item => `
             <div class="market-tile">

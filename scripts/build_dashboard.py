@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sqlite3
 from datetime import date
 from pathlib import Path
@@ -302,6 +303,41 @@ def load_korean_market_flow_compare() -> dict[str, object]:
     }
 
 
+def load_latest_policy_rates() -> dict[str, object]:
+    """Load overseas/domestic policy rates for dashboard summary."""
+    latest_path = max(list_run_paths(), default=None)
+    if latest_path is None:
+        return {"market_date": "-", "domestic_base_rate": None, "overseas_base_rate": None}
+
+    payload = load_run_payload(latest_path) or {}
+    snapshot = payload.get("snapshot") or {}
+    macro = snapshot.get("macro") or {}
+    structural = macro.get("structural") if isinstance(macro, dict) else {}
+    overseas_base_rate = None
+    if isinstance(structural, dict):
+        fed = structural.get("fed_funds_rate")
+        if isinstance(fed, (int, float)):
+            overseas_base_rate = float(fed)
+
+    domestic_base_rate = None
+    headlines = snapshot.get("news_headlines") if isinstance(snapshot, dict) else None
+    if isinstance(headlines, list):
+        for item in headlines:
+            text = str(item)
+            if "기준금리" not in text:
+                continue
+            match = re.search(r"(\d+(?:\.\d+)?)\s*%", text)
+            if match:
+                domestic_base_rate = float(match.group(1))
+                break
+
+    return {
+        "market_date": payload.get("market_date", latest_path.stem),
+        "domestic_base_rate": domestic_base_rate,
+        "overseas_base_rate": overseas_base_rate,
+    }
+
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
@@ -320,7 +356,7 @@ def main() -> None:
         dashboard_data = {
             "market_daily": fetch_rows(
                 conn,
-                "SELECT date, kospi, kosdaq, sp500, nasdaq, dow, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct, usdkrw FROM market_daily ORDER BY date",
+                "SELECT date, kospi, kosdaq, sp500, nasdaq, dow, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct, usdkrw, usdkrw_pct FROM market_daily ORDER BY date",
             ),
             "market_flow_daily": fetch_rows(
                 conn,
@@ -338,6 +374,7 @@ def main() -> None:
             "latest_news_digest": load_latest_news_digest(),
             "latest_korean_market_flow": load_latest_korean_market_flow_breakdown(),
             "korean_market_flow_compare": load_korean_market_flow_compare(),
+            "latest_policy_rates": load_latest_policy_rates(),
         }
     finally:
         conn.close()
