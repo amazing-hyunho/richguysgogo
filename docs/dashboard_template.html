@@ -56,6 +56,21 @@
     .foreign-flow-chart-wrap { width: 100%; max-width: 360px; margin: 8px 0; }
     .foreign-flow-visibility .flow-meta { font-size: 12px; color: #cbd5e1; line-height: 1.45; margin-top: 8px; }
     .foreign-flow-visibility #foreign-flow-interpretation { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+    .foreign-flow-emphasis { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 12px 0 10px 0; padding: 12px; background: rgba(15, 23, 42, 0.65); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 10px; }
+    @media (min-width: 520px) { .foreign-flow-emphasis { grid-template-columns: 1fr 1fr; } }
+    .foreign-flow-emphasis .flow-emph-row { min-width: 0; }
+    .foreign-flow-emphasis .flow-emph-label { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    .foreign-flow-emphasis .flow-value { font-size: clamp(15px, 3.5vw, 18px); font-weight: 700; word-break: break-word; }
+    .foreign-flow-emphasis .flow-value.up { color: var(--green); }
+    .foreign-flow-emphasis .flow-value.down { color: var(--red); }
+    .foreign-flow-emphasis .flow-value.flat { color: #cbd5e1; }
+    .equity-split-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 4px; }
+    @media (min-width: 640px) { .equity-split-grid { grid-template-columns: 1fr 1fr; } }
+    .equity-split-col { min-width: 0; border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 12px; padding: 12px; background: rgba(15, 23, 42, 0.35); }
+    .equity-split-h { font-size: 12px; font-weight: 700; color: #e2e8f0; margin: 0 0 10px 0; letter-spacing: 0.02em; }
+    .state-card .health-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+    .state-card .health-derived { font-size: 12px; color: #94a3b8; line-height: 1.45; margin-top: 8px; }
+    .agent-card .equity-agent-action { margin-top: 8px; padding-top: 8px; border-top: 1px solid rgba(51, 65, 85, 0.7); font-size: 12px; font-weight: 700; color: #fcd34d; line-height: 1.4; }
     .agent-card .agent-bullets { margin: 0; padding-left: 16px; font-size: 12px; line-height: 1.45; color: #cbd5e1; }
     .agent-card .agent-bullets li { margin-bottom: 4px; }
     .tag-row { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -189,9 +204,28 @@
         <h2 id="heading-equity">3. Equity Market</h2>
         <span class="section-meta" id="equity-date"></span>
       </div>
-      <div class="index-grid" id="equity-index-cards"></div>
+      <div class="equity-split-grid" id="equity-split-grid">
+        <div class="equity-split-col" aria-label="한국 지수">
+          <div class="equity-split-h">한국 (KR)</div>
+          <div class="index-grid" id="equity-kr-index-cards"></div>
+        </div>
+        <div class="equity-split-col" aria-label="미국 지수">
+          <div class="equity-split-h">미국 (US)</div>
+          <div class="index-grid" id="equity-us-index-cards"></div>
+        </div>
+      </div>
       <div class="foreign-flow-visibility" id="foreign-flow-visibility" aria-label="외국인 순매수 누적">
         <h4>한국 시장 외국인 순매수 가시화</h4>
+        <div class="foreign-flow-emphasis" aria-label="외국인 순매수 강조">
+          <div class="flow-emph-row">
+            <span class="flow-emph-label">최신 일별 외국인 순매수</span>
+            <span id="foreign-flow-latest" class="flow-value flat">-</span>
+          </div>
+          <div class="flow-emph-row">
+            <span class="flow-emph-label">최근 5거래일 누적 순매수</span>
+            <span id="foreign-flow-5d-cum" class="flow-value flat">-</span>
+          </div>
+        </div>
         <div class="foreign-flow-chart-wrap" id="foreign-flow-chart-wrap"></div>
         <div class="flow-meta" id="foreign-flow-5d-trend">-</div>
         <div id="foreign-flow-interpretation">-</div>
@@ -199,7 +233,7 @@
       <div class="flow-board" id="equity-flow-board"></div>
       <div class="state-grid" id="equity-state-cards"></div>
       <div class="agent-grid" id="equity-agent-cards"></div>
-      <div class="synth-line" id="equity-synth"><strong>시장 종합:</strong> -</div>
+      <div class="synth-line" id="equity-synth"><strong>시장 결론:</strong> -</div>
     </section>
 
     <section class="section" id="section-sector" aria-labelledby="heading-sector">
@@ -541,6 +575,21 @@ function stanceBulletsFromStance(stance, maxN) {
   });
   return out.slice(0, maxN);
 }
+function clipEquitySummaryLine(text, maxLen) {
+  const t = String(text || '').trim();
+  if (!t) return '';
+  const n = typeof maxLen === 'number' && maxLen > 8 ? maxLen : 140;
+  return t.length > n ? t.slice(0, n - 1) + '\u2026' : t;
+}
+function renderEquityAgentSummaryCard(title, bullets, actionLine) {
+  const raw = safeArr(bullets).map(b => String(b || '').trim()).filter(Boolean);
+  const bs = raw.slice(0, 2).map(b => clipEquitySummaryLine(b, 140));
+  const lis = (bs.length ? bs : ['데이터·에이전트 코멘트 부족']).map(b => `<li>${escapeHtml(b)}</li>`).join('');
+  const act = actionLine && String(actionLine).trim()
+    ? `<div class="equity-agent-action">${escapeHtml(String(actionLine).trim())}</div>`
+    : '';
+  return `<div class="agent-card"><div class="title">${escapeHtml(title)}</div><ul class="agent-bullets">${lis}</ul>${act}</div>`;
+}
 function renderAgentCard(title, stance) {
   if (!stance) {
     return `<div class="agent-card"><div class="title">${escapeHtml(title)}</div><div class="sub">의견 없음</div><ul class="agent-bullets"><li>-</li></ul></div>`;
@@ -670,7 +719,12 @@ function foreignFlow5dTrendText(rows) {
   const pos = nums.filter(v => v > 0).length;
   const neg = nums.filter(v => v < 0).length;
   const dir = sum > 0 ? '순매수 합계 우위' : sum < 0 ? '순매도 합계 우위' : '순입출 균형';
-  return `최근 5거래일 누적 약 ${formatNumberWithComma(sum, 0)}억 · ${dir} (매수우위 ${pos}일 / 매도우위 ${neg}일)`;
+  const trendLead = sum > 0
+    ? '단기 추세: 순매수 쪽으로 기울어진 흐름'
+    : sum < 0
+    ? '단기 추세: 순매도 쪽으로 기울어진 흐름'
+    : '단기 추세: 누적 기준 중립에 가까움';
+  return `${trendLead} · 누적 약 ${formatNumberWithComma(sum, 0)}억 (${dir}, 매수우위 ${pos}일 / 매도우위 ${neg}일)`;
 }
 function foreignFlowInterpretation(sum5d) {
   if (sum5d == null || !Number.isFinite(sum5d)) return '해석: 데이터 없음';
@@ -683,14 +737,32 @@ function renderForeignFlowBlock() {
   const wrap = document.getElementById('foreign-flow-chart-wrap');
   const t5 = document.getElementById('foreign-flow-5d-trend');
   const interpEl = document.getElementById('foreign-flow-interpretation');
+  const elLatest = document.getElementById('foreign-flow-latest');
+  const el5d = document.getElementById('foreign-flow-5d-cum');
   if (!wrap || !t5 || !interpEl) return;
   const series = foreignFlowCumulativeSlice(rows, 30);
   wrap.innerHTML = svgCumulativeLine(series);
   t5.textContent = foreignFlow5dTrendText(rows);
-  const last5 = rows.slice(-5);
-  const nums = last5.map(r => r && r.foreign_net).filter(v => typeof v === 'number' && Number.isFinite(v));
-  const sum5 = nums.length ? nums.reduce((a, b) => a + b, 0) : null;
-  interpEl.textContent = foreignFlowInterpretation(sum5);
+  const { latestNet, sum5 } = foreignFlowLatestAndSum5(rows);
+  function applyForeignFlowValue(el, n) {
+    if (!el) return;
+    if (n == null || !Number.isFinite(n)) {
+      el.textContent = '-';
+      el.className = 'flow-value flat';
+      return;
+    }
+    const sign = n > 0 ? '+' : '';
+    el.textContent = `${sign}${formatNumberWithComma(n, 0)}억`;
+    el.className = `flow-value ${percentClass(n)}`;
+  }
+  applyForeignFlowValue(elLatest, latestNet);
+  applyForeignFlowValue(el5d, sum5);
+  let interp = foreignFlowInterpretation(sum5);
+  if (latestNet != null && Number.isFinite(latestNet)) {
+    const dayBias = latestNet > 0 ? '순매수' : latestNet < 0 ? '순매도' : '중립';
+    interp += ` 최근 거래일 흐름은 ${dayBias} 쪽에 무게가 실린 날로 읽힙니다 (숫자만이 아니라 방향성·연속성을 함께 봅니다).`;
+  }
+  interpEl.textContent = interp;
 }
 
 function coarseScore(n) {
@@ -936,6 +1008,98 @@ function stockClassifyRisk(vix, mode) {
     if (vix <= 16) return 'Low';
   }
   return 'Medium';
+}
+function foreignFlowLatestAndSum5(rows) {
+  const r = safeArr(rows);
+  const last = r.length ? r[r.length - 1] : null;
+  const latestNet = last && typeof last.foreign_net === 'number' && Number.isFinite(last.foreign_net)
+    ? last.foreign_net
+    : null;
+  const last5 = r.slice(-5);
+  const nums = last5.map(row => row && row.foreign_net).filter(v => typeof v === 'number' && Number.isFinite(v));
+  const sum5 = nums.length ? nums.reduce((a, b) => a + b, 0) : null;
+  return { latestNet, sum5 };
+}
+function breadthProxyLineForHealth(md) {
+  const kp = md && typeof md.kospi_pct === 'number' && Number.isFinite(md.kospi_pct) ? md.kospi_pct : null;
+  const kd = md && typeof md.kosdaq_pct === 'number' && Number.isFinite(md.kosdaq_pct) ? md.kosdaq_pct : null;
+  if (kp == null && kd == null) return '상승·하락 종목 비중 프록시: 일별 KOSPI/KOSDAQ 데이터 없음';
+  const diff = kp != null && kd != null ? Math.abs(kp - kd) : null;
+  if (kp != null && kd != null && kp > 0 && kd > 0 && (diff == null || diff < 0.35)) {
+    return `등락 프록시: KOSPI·KOSDAQ 동반 상승(${formatSignedPercent(kp)} / ${formatSignedPercent(kd)}) — 광범위 참여 신호`;
+  }
+  if (kp != null && kd != null && kp < 0 && kd < 0 && (diff == null || diff < 0.35)) {
+    return '등락 프록시: 동반 약세 — 하락 확산(브레드스 악화 가능)';
+  }
+  if (kp != null && kd != null && diff != null && diff >= 0.5) {
+    return `등락 프록시: KOSPI ${formatSignedPercent(kp)} vs KOSDAQ ${formatSignedPercent(kd)} — 소수 주도·편중 가능`;
+  }
+  return `등락 프록시: KOSPI ${formatSignedPercent(kp)} / KOSDAQ ${formatSignedPercent(kd)} — 혼조·선별 장세`;
+}
+function vixDerivedLineForHealth(vix) {
+  if (vix == null || !Number.isFinite(vix)) return 'VIX 데이터 없음 — 옵션·공포 지표 확인 필요';
+  if (vix >= 22) return `VIX ${formatMetric(vix)} — 고변동성, 갭·스프레드 리스크 우려`;
+  if (vix <= 16) return `VIX ${formatMetric(vix)} — 상대적 안도, 추격 과열은 경계`;
+  return `VIX ${formatMetric(vix)} — 중간대, 이벤트 전후 변동성 점검`;
+}
+function leadershipProxyForHealth(md, leadTopic) {
+  const sp = md && typeof md.sp500_pct === 'number' && Number.isFinite(md.sp500_pct) ? md.sp500_pct : null;
+  const nq = md && typeof md.nasdaq_pct === 'number' && Number.isFinite(md.nasdaq_pct) ? md.nasdaq_pct : null;
+  let us = '';
+  if (sp != null && nq != null) {
+    const gap = sp - nq;
+    if (gap > 0.25) us = `美 대형주 프록시: S&P ${formatSignedPercent(sp)} > 나스닥 ${formatSignedPercent(nq)} — 대형·코어 상대 우위`;
+    else if (gap < -0.25) us = `美 성장 프록시: 나스닥 ${formatSignedPercent(nq)} > S&P ${formatSignedPercent(sp)} — 테크·성장 주도`;
+    else us = `美 지수 동조(${formatSignedPercent(sp)} / ${formatSignedPercent(nq)}) — 넓은 리더십 신호`;
+  } else {
+    us = '美 지수 등락 프록시: 데이터 부족';
+  }
+  const topic = leadTopic
+    ? ` · 뉴스 주도 테마: ${clipEquitySummaryLine(String(leadTopic), 44)}`
+    : ' · 뉴스 테마: 부족';
+  return us + topic;
+}
+function pickEquityFlowAction(mode, latestNet, sum5) {
+  if (mode && mode.cls === 'risk-off') return '행동: 방어 비중';
+  if (latestNet != null && latestNet < 0 && sum5 != null && sum5 < 0) return '행동: 유출 지속 시 관망';
+  if (sum5 != null && sum5 > 0) return '행동: 눌림 분할';
+  return '행동: 수급 확인 후 분할';
+}
+function pickEquityEarnAction(stEarn) {
+  const blob = [stEarn && stEarn.korean_comment, ...safeArr(stEarn && stEarn.core_claims).map(c => String(c))].filter(Boolean).join(' ');
+  if (/하향|악화|쇼크|\bmiss\b|컷|경고/i.test(blob)) return '행동: 가이던스 경계';
+  if (/상향|호전|서프|beat|개선/i.test(blob)) return '행동: 실적 모멘텀 활용';
+  const c = stEarn && stEarn.confidence;
+  if (typeof c === 'number' && c >= 0.55) return '행동: 어닝 레벨 추적';
+  return '행동: 컨센서스 변화 모니터';
+}
+function pickEquityHealthAction(vix, mode) {
+  if (vix != null && vix >= 22) return '행동: 방어 비중';
+  if (mode && mode.cls === 'risk-on' && vix != null && vix <= 18) return '행동: 변동성 한도 내 분할';
+  return '행동: VIX·지수 동조 점검';
+}
+function pickEquitySectorAction(topName) {
+  if (topName && String(topName).trim() && topName !== '기타') return '행동: 선도 섹터 추적';
+  return '행동: 섹터 로테이션 관망';
+}
+function buildEquityMarketConclusionBullets(md, dm, mode, latestNet, sum5) {
+  const vix = dm && typeof dm.vix === 'number' && Number.isFinite(dm.vix) ? dm.vix : null;
+  const mp = stockMajorIndexPct(md);
+  const kospiPct = stockKospiPct(md);
+  const trend = stockClassifyTrend(mode, mp, kospiPct);
+  const risk = stockClassifyRisk(vix, mode);
+  let trendKo = '추세: 지수·국면 기준 혼조 (프록시)';
+  if (trend === 'Uptrend') trendKo = '추세: 주요 지수 기준 상방 시도 (프록시)';
+  else if (trend === 'Downtrend') trendKo = '추세: 주요 지수 기준 하방 압력 (프록시)';
+  let riskKo = '리스크: 중간 — 이벤트·수급 확인';
+  if (risk === 'High') riskKo = '리스크: 높음 — 변동성·합의 국면 부담';
+  else if (risk === 'Low') riskKo = '리스크: 상대적으로 낮음 — 단, 과열 구간 경계';
+  let behave = '제안: 급매수 지양, 구간 관망 후 선별 대응';
+  if ((mode && mode.cls === 'risk-off') || risk === 'High') behave = '제안: 방어 비중·현금 비중 유지';
+  else if (risk === 'Low' && mode && mode.cls === 'risk-on' && trend === 'Uptrend') behave = '제안: 눌림 구간 분할 매수 검토';
+  else if (sum5 != null && sum5 < 0 && latestNet != null && latestNet < 0) behave = '제안: 외국인 유출이 이어지면 관망·방어 쪽';
+  else if (trend === 'Sideways' && risk === 'Medium') behave = '제안: 추세 확인 전 대기·소액 분할';
+  return [trendKo, riskKo, behave].map(s => clipEquitySummaryLine(s, 160));
 }
 function stockEarningsMomentumMeta(article, stEarn) {
   const topicBlob = `${article && article.topic != null ? article.topic : ''} ${article && article.title != null ? article.title : ''}`;
@@ -1188,18 +1352,31 @@ function buildStockRows() {
   ].filter(Boolean);
   document.getElementById('macro-synth').innerHTML = renderSynthBulletsHtml('매크로 종합:', macroSynthLines, 2);
 
-  document.getElementById('equity-index-cards').innerHTML = [
-    { label: 'KOSPI', px: md.kospi, ch: md.kospi_pct },
-    { label: 'KOSDAQ', px: md.kosdaq, ch: md.kosdaq_pct },
-    { label: 'S&P 500', px: md.sp500, ch: md.sp500_pct },
-    { label: 'NASDAQ', px: md.nasdaq, ch: md.nasdaq_pct },
-  ].map(x => `
+  const sectorRanked = computeSectorRanking();
+
+  function indexCardHtml(x) {
+    const digits = x.label.indexOf('NASDAQ') !== -1 ? 2 : 0;
+    return `
     <div class="index-card">
       <div class="nm">${escapeHtml(x.label)}</div>
-      <div class="px">${escapeHtml(formatNumberWithComma(x.px, x.label.indexOf('NASDAQ') !== -1 ? 2 : 0))}</div>
+      <div class="px">${escapeHtml(formatNumberWithComma(x.px, digits))}</div>
       <div class="ch ${percentClass(x.ch)}">${escapeHtml(formatSignedPercentArrow(x.ch))}</div>
-    </div>
-  `).join('');
+    </div>`;
+  }
+  const krIdx = document.getElementById('equity-kr-index-cards');
+  const usIdx = document.getElementById('equity-us-index-cards');
+  if (krIdx) {
+    krIdx.innerHTML = [
+      { label: 'KOSPI', px: md.kospi, ch: md.kospi_pct },
+      { label: 'KOSDAQ', px: md.kosdaq, ch: md.kosdaq_pct },
+    ].map(indexCardHtml).join('');
+  }
+  if (usIdx) {
+    usIdx.innerHTML = [
+      { label: 'S&P 500', px: md.sp500, ch: md.sp500_pct },
+      { label: 'NASDAQ', px: md.nasdaq, ch: md.nasdaq_pct },
+    ].map(indexCardHtml).join('');
+  }
 
   renderForeignFlowBlock();
 
@@ -1223,37 +1400,70 @@ function buildStockRows() {
     flowBlock(`KR 수급 · KOSDAQ (${compare.current_date || mdDate})`, 'KOSDAQ');
 
   const breadth = stanceByAgent('breadth');
-  const breadthText = breadth
+  const breadthAgentLine = breadth
     ? `${firstSentence(breadth.korean_comment) || '-'}`
     : '브레드스 에이전트 의견 없음';
   const hot0 = safeArr(digest.sector_hot_topics)[0];
   const leadTopic = hot0 && safeArr(hot0.topics)[0] && hot0.topics[0].topic;
+  const vixNum = dm && typeof dm.vix === 'number' && Number.isFinite(dm.vix) ? dm.vix : null;
+  const breadthDerived = breadthProxyLineForHealth(md);
+  const vixDerived = vixDerivedLineForHealth(vixNum);
+  const leadDerived = leadershipProxyForHealth(md, leadTopic);
   document.getElementById('equity-state-cards').innerHTML = `
-    <div class="state-card"><div class="sn">내부 상태 · 브레드스</div><div class="sv">${escapeHtml(breadthText)}</div></div>
-    <div class="state-card"><div class="sn">변동성 · VIX</div><div class="sv">${escapeHtml(formatMetric(dm.vix))}</div></div>
-    <div class="state-card"><div class="sn">리더십 (뉴스 토픽)</div><div class="sv">${escapeHtml(leadTopic || '뉴스 토픽 부족')}</div></div>
+    <div class="state-card">
+      <div class="sn">시장 건강 · 참여도 (브레드스)</div>
+      <div class="health-label">상승 vs 하락 종목 비중 (KOSPI·KOSDAQ 프록시)</div>
+      <div class="sv">${escapeHtml(breadthAgentLine)}</div>
+      <div class="health-derived">${escapeHtml(breadthDerived)}</div>
+    </div>
+    <div class="state-card">
+      <div class="sn">시장 건강 · 변동성 (VIX)</div>
+      <div class="health-label">공포·옵션 내재 변동성 지표</div>
+      <div class="sv">${escapeHtml(formatMetric(dm.vix))}</div>
+      <div class="health-derived">${escapeHtml(vixDerived)}</div>
+    </div>
+    <div class="state-card">
+      <div class="sn">시장 건강 · 리더십 (대형 vs 광범위)</div>
+      <div class="health-label">美 S&amp;P vs 나스닥 + 뉴스 테마</div>
+      <div class="sv">${escapeHtml(leadTopic || '뉴스 토픽 부족')}</div>
+      <div class="health-derived">${escapeHtml(leadDerived)}</div>
+    </div>
   `;
 
+  const stFlow = stanceByAgent('flow');
+  const stEarn = stanceByAgent('earnings');
+  const stBreadth = stanceByAgent('breadth');
+  const stSector = stanceByAgent('sector');
+  const flowRows = safeArr(data.market_flow_daily);
+  const { latestNet: eqLatestForeign, sum5: eqSum5Foreign } = foreignFlowLatestAndSum5(flowRows);
+  const topSectorName = sectorRanked && sectorRanked.length ? sectorRanked[0].name : '';
+
+  const flowBullets = stanceBulletsFromStance(stFlow, 2);
+  const earnBullets = stanceBulletsFromStance(stEarn, 2);
+  const healthBullets = [
+    clipEquitySummaryLine(breadthDerived, 120),
+    clipEquitySummaryLine(vixDerived, 120),
+  ].filter(Boolean);
+  const breadthExtra = stBreadth ? firstSentence(stBreadth.korean_comment) : '';
+  if (breadthExtra && healthBullets.length < 2) healthBullets.push(clipEquitySummaryLine(breadthExtra, 120));
+  const sectorBullets = [
+    firstSentence(stSector && stSector.korean_comment),
+    topSectorName ? `선도 섹터(추정): ${topSectorName}` : '',
+  ].filter(Boolean);
+
   document.getElementById('equity-agent-cards').innerHTML = [
-    renderAgentCard('수급', stanceByAgent('flow')),
-    renderAgentCard('실적·모멘텀', stanceByAgent('earnings')),
-    renderAgentCard('브레드스', stanceByAgent('breadth')),
-    renderAgentCard('섹터', stanceByAgent('sector')),
+    renderEquityAgentSummaryCard('Flow', flowBullets, pickEquityFlowAction(mode, eqLatestForeign, eqSum5Foreign)),
+    renderEquityAgentSummaryCard('Earnings momentum', earnBullets, pickEquityEarnAction(stEarn)),
+    renderEquityAgentSummaryCard('Market health', healthBullets.slice(0, 2), pickEquityHealthAction(vixNum, mode)),
+    renderEquityAgentSummaryCard('Sector leadership', sectorBullets.slice(0, 2), pickEquitySectorAction(topSectorName)),
   ].join('');
 
-  const stFlow = stanceByAgent('flow');
-  const stSector = stanceByAgent('sector');
-  const eqSynthLines = [
-    firstSentence(stFlow && stFlow.korean_comment),
-    firstSentence(stSector && stSector.korean_comment),
-    `VIX ${formatMetric(dm.vix)}`,
-  ].filter(Boolean);
-  document.getElementById('equity-synth').innerHTML = renderSynthBulletsHtml('시장 종합:', eqSynthLines, 2);
+  const eqConclusion = buildEquityMarketConclusionBullets(md, dm, mode, eqLatestForeign, eqSum5Foreign);
+  document.getElementById('equity-synth').innerHTML = renderSynthBulletsHtml('시장 결론:', eqConclusion, 3);
 
   document.getElementById('sector-digest-meta').textContent =
     `뉴스일 ${digest.news_date || '-'} · 수집 ${digest.total_collected || 0}건`;
 
-  const sectorRanked = computeSectorRanking();
   renderSectorTopHighlights(sectorRanked);
   renderSectorSummaries(sectorRanked);
   const sectorBoard = document.getElementById('sector-scoreboard');
