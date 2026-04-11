@@ -347,6 +347,17 @@
       box-shadow: inset 3px 0 0 0 rgba(52, 211, 153, 0.65);
     }
     #section-sector .table-wrap table { min-width: 640px; }
+    #stock-buy-now-summary.stock-buy-now-summary {
+      margin: 0 0 12px 0;
+      padding: 10px 12px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #dbe4f0;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    #section-stock .table-wrap table { min-width: 640px; }
   </style>
 </head>
 <body>
@@ -442,16 +453,18 @@
         <h2 id="heading-stock">5. Stock Decision</h2>
         <span class="section-meta">뉴스·토픽·시장 국면 기반 후보 (참고용)</span>
       </div>
+      <div id="stock-buy-now-summary" class="stock-buy-now-summary" role="status"></div>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
               <th>종목/테마</th>
-              <th>추세</th>
-              <th>위치</th>
-              <th>수급</th>
-              <th>모멘텀</th>
-              <th>결론</th>
+              <th>Trend</th>
+              <th>Position</th>
+              <th>Flow</th>
+              <th>Momentum</th>
+              <th>Risk</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody id="stock-candidate-table"></tbody>
@@ -945,90 +958,241 @@ function extractNamesFromText(text) {
   return mix.join(', ') || '(토픽·기사에서 유추 불가)';
 }
 
+function stockMajorIndexPct(mkt) {
+  const m = mkt || {};
+  if (typeof m.sp500_pct === 'number' && Number.isFinite(m.sp500_pct)) return m.sp500_pct;
+  if (typeof m.kospi_pct === 'number' && Number.isFinite(m.kospi_pct)) return m.kospi_pct;
+  return null;
+}
+
+function stockKospiPct(mkt) {
+  const m = mkt || {};
+  return typeof m.kospi_pct === 'number' && Number.isFinite(m.kospi_pct) ? m.kospi_pct : null;
+}
+
+function stockClassifyTrend(mode, majorPct, kospiPct) {
+  const riskOn = mode && mode.cls === 'risk-on';
+  const riskOff = mode && mode.cls === 'risk-off';
+  if (majorPct != null && majorPct <= -0.5) return 'Downtrend';
+  if (majorPct != null && majorPct >= 0.5) return 'Uptrend';
+  if (riskOff && kospiPct != null && kospiPct < 0) return 'Downtrend';
+  if (riskOn && kospiPct != null && kospiPct > 0) return 'Uptrend';
+  return 'Sideways';
+}
+
+function stockClassifyPosition(trend, majorPct) {
+  if (trend === 'Uptrend' && majorPct != null && majorPct >= 0.5) return 'Near high';
+  if (trend === 'Downtrend' && majorPct != null && majorPct <= -0.5) return 'Bottom';
+  return 'Pullback';
+}
+
+function stockFlowIn(foreignNet, kospiForeign) {
+  return (foreignNet != null && foreignNet > 0) || (kospiForeign != null && kospiForeign > 0);
+}
+
+function stockResolveFlowIn(foreignNet, kospiForeign, stFlow) {
+  if (foreignNet != null || kospiForeign != null) return stockFlowIn(foreignNet, kospiForeign);
+  const blob = [
+    stFlow && stFlow.korean_comment,
+    ...safeArr(stFlow && stFlow.core_claims).map(c => String(c)),
+  ].filter(Boolean).join(' ');
+  if (!blob.trim()) return false;
+  const inH = /순매수|유입|매수\s*우위|긍정|inflow|net\s*buy|buying\s*pressure/i.test(blob);
+  const outH = /순매도|유출|매도\s*우위|부정|outflow|net\s*sell|selling\s*pressure/i.test(blob);
+  if (inH && !outH) return true;
+  if (outH && !inH) return false;
+  return false;
+}
+
+function stockFormatFlow(flowIn, foreignNet, kospiForeign) {
+  const bits = [];
+  if (foreignNet != null && Number.isFinite(foreignNet)) {
+    bits.push(`mkt ${foreignNet > 0 ? '+' : ''}${formatNumberWithComma(foreignNet, 0)}억`);
+  }
+  if (kospiForeign != null && Number.isFinite(kospiForeign)) {
+    bits.push(`KOSPI ${kospiForeign > 0 ? '+' : ''}${formatNumberWithComma(kospiForeign, 0)}억`);
+  }
+  const ctx = bits.length ? ` (${bits.join(', ')})` : '';
+  return (flowIn ? 'inflow' : 'outflow') + ctx;
+}
+
+function stockClassifyRisk(vix, mode) {
+  if (mode && mode.cls === 'risk-off') return 'High';
+  if (typeof vix === 'number' && Number.isFinite(vix)) {
+    if (vix >= 22) return 'High';
+    if (vix <= 16) return 'Low';
+  }
+  return 'Medium';
+}
+
+function stockEarningsMomentumMeta(article, stEarn) {
+  const topicBlob = `${article && article.topic != null ? article.topic : ''} ${article && article.title != null ? article.title : ''}`;
+  const earnKw = /earnings|실적|어닝|revision|상향|컨센서스|eps|guidance|서프라이즈/i.test(topicBlob);
+  const blobEarn = [
+    stEarn && stEarn.korean_comment,
+    ...safeArr(stEarn && stEarn.core_claims).map(c => String(c)),
+  ].filter(Boolean).join(' ');
+  const conf = stEarn && typeof stEarn.confidence === 'number' && Number.isFinite(stEarn.confidence)
+    ? stEarn.confidence
+    : null;
+  const agentBear = /악화|하향|쇼크|\bmiss\b|부정|경고|하락|가이던스\s*컷/i.test(blobEarn);
+  const agentBull = /호전|개선|긍정|상향|서프라이즈|서프|beat|업사이드|positive/i.test(blobEarn);
+  const confSuggestsPositive = conf != null && conf >= 0.55 && !agentBear;
+  const agentPos = agentBull || confSuggestsPositive;
+  const momentumIsEarnings = earnKw || agentPos;
+  return { earnKw, agentPos, momentumIsEarnings, blobEarn };
+}
+
+function stockPositiveMomentum(momentumIsEarnings, article, meta, stEarn) {
+  if (momentumIsEarnings) {
+    return !!(meta && (meta.agentPos || meta.earnKw
+      || /서프라이즈|beat|상향|개선|호전|긍정|서프|positive/i.test(meta.blobEarn || '')));
+  }
+  const blob = `${article && article.topic != null ? article.topic : ''} ${article && article.title != null ? article.title : ''}`;
+  return /호재|상승|개선|긍정|반등|상향|강세|surge|rally/i.test(blob);
+}
+
+function stockMomentumLabel(momentumIsEarnings, article, meta) {
+  const line = article && safeArr(article.summary_lines)[0];
+  const tail = line ? String(line).trim().slice(0, 48) : '';
+  if (momentumIsEarnings) {
+    const hint = meta && meta.earnKw ? 'revision/earnings topic' : 'agent tilt';
+    return tail ? `earnings · ${hint} · ${tail}` : `earnings · ${hint}`;
+  }
+  return tail ? `news trigger · ${tail}` : 'news trigger';
+}
+
+function stockClassifyAction(trend, position, flowIn, risk, positiveMom) {
+  const riskHigh = risk === 'High';
+  if (trend === 'Downtrend' || (!flowIn && riskHigh)) return { action: 'Avoid', actionCls: 'action-excl' };
+  if (
+    trend === 'Uptrend'
+    && position === 'Pullback'
+    && flowIn
+    && (risk === 'Low' || risk === 'Medium')
+    && positiveMom
+  ) {
+    return { action: 'Buy', actionCls: 'action-buy' };
+  }
+  return { action: 'Wait', actionCls: 'action-wait' };
+}
+
+function buildStockBuyNowSummary(rowObjs) {
+  const rows = safeArr(rowObjs);
+  const n = rows.length;
+  if (!n) {
+    return 'Can I buy this now? Not yet; Wait for better pullbacks. · Mixed risk/flow.';
+  }
+  const counts = { Buy: 0, Wait: 0, Avoid: 0 };
+  let riskHigh = 0;
+  let riskMed = 0;
+  let riskLow = 0;
+  let flowInN = 0;
+  let flowOutN = 0;
+  rows.forEach(r => {
+    counts[r.action] = (counts[r.action] || 0) + 1;
+    if (r.risk === 'High') riskHigh += 1;
+    else if (r.risk === 'Medium') riskMed += 1;
+    else riskLow += 1;
+    if (r.flowIn) flowInN += 1;
+    else flowOutN += 1;
+  });
+  const half = n / 2;
+  let head;
+  if (counts.Buy > half) head = 'Can I buy this now? Yes, selective Buy setups exist.';
+  else if (counts.Avoid > half) head = 'Can I buy this now? No, risk is elevated; prefer Avoid.';
+  else head = 'Can I buy this now? Not yet; Wait for better pullbacks.';
+  const flowDom = flowOutN > flowInN ? 'outflow' : flowInN > flowOutN ? 'inflow' : 'tie';
+  let tail;
+  if (riskHigh >= riskMed && riskHigh >= riskLow && riskHigh > 0) tail = 'Risk skews High.';
+  else if (flowDom === 'outflow') tail = 'Flow skews outflow.';
+  else if (flowDom === 'inflow') tail = 'Flow skews inflow.';
+  else tail = 'Mixed risk/flow.';
+  return `${head} · ${tail}`;
+}
+
 function buildStockRows() {
   const mode = inferMarketMode();
   const digest = data.latest_news_digest || {};
   const articles = safeArr(digest.top_articles);
   const mkt = lastRow(safeArr(data.market_daily)) || {};
-  const flowRow = lastRow(safeArr(data.market_flow_daily));
-  const foreign = flowRow && flowRow.foreign_net;
-  const krFlow = (data.korean_market_flow_compare && data.korean_market_flow_compare.current) || (data.latest_korean_market_flow && data.latest_korean_market_flow.market) || {};
+  const flowRow = lastRow(safeArr(data.market_flow_daily)) || {};
+  const foreignRaw = flowRow.foreign_net;
+  const foreignNet = typeof foreignRaw === 'number' && Number.isFinite(foreignRaw) ? foreignRaw : null;
+  const krFlow = (data.korean_market_flow_compare && data.korean_market_flow_compare.current)
+    || (data.latest_korean_market_flow && data.latest_korean_market_flow.market)
+    || {};
+  const kf = krFlow.KOSPI || krFlow.kospi;
+  const kospiForeign = kf && typeof kf.foreign === 'number' && Number.isFinite(kf.foreign) ? kf.foreign : null;
 
-  const trendHint = typeof mkt.kospi_pct === 'number'
-    ? (mkt.kospi_pct >= 0 ? '단기 양호' : '단기 약화')
-    : '-';
-  const flowHint = typeof foreign === 'number'
-    ? (foreign > 0 ? '외국인 순매수' : '외국인 순매도')
-    : '-';
+  const vix = latest(safeArr(data.daily_macro), 'vix');
+  const stEarn = stanceByAgent('earnings');
+  const stFlow = stanceByAgent('flow');
+  const mp = stockMajorIndexPct(mkt);
+  const kospiPct = stockKospiPct(mkt);
+  const trend = stockClassifyTrend(mode, mp, kospiPct);
+  const position = stockClassifyPosition(trend, mp);
+  const flowIn = stockResolveFlowIn(foreignNet, kospiForeign, stFlow);
+  let flowLabel = stockFormatFlow(flowIn, foreignNet, kospiForeign);
+  if (foreignNet == null && kospiForeign == null && stFlow) {
+    flowLabel += ' (flow agent)';
+  }
+  const risk = stockClassifyRisk(vix, mode);
 
   const rows = [];
   const used = new Set();
+
+  function pushRow(theme, article) {
+    const meta = stockEarningsMomentumMeta(article, stEarn);
+    const mom = stockMomentumLabel(meta.momentumIsEarnings, article, meta);
+    const positiveMom = stockPositiveMomentum(meta.momentumIsEarnings, article, meta, stEarn);
+    const act = stockClassifyAction(trend, position, flowIn, risk, positiveMom);
+    rows.push({
+      theme,
+      trend,
+      position,
+      flow: flowLabel,
+      flowIn,
+      momentum: mom,
+      risk,
+      action: act.action,
+      actionCls: act.actionCls,
+    });
+  }
 
   articles.slice(0, 12).forEach(a => {
     const theme = a.topic || a.title || '테마 미상';
     if (used.has(theme)) return;
     used.add(theme);
-
-    let position = '중간 구간 (추정)';
-    const sp = mkt.sp500_pct;
-    const vix = latest(safeArr(data.daily_macro), 'vix');
-    if (typeof sp === 'number' && sp > 0.5 && mode.cls === 'risk-on') position = '상단 부근·주의 (추정)';
-    else if (typeof sp === 'number' && sp < -0.5) position = '하단·반등 감시 (추정)';
-    if (typeof vix === 'number' && vix > 22) position += ' · 변동성 확대';
-
-    const kf = krFlow.KOSPI || krFlow.kospi;
-    let supply = flowHint;
-    if (kf && typeof kf.foreign === 'number') {
-      supply = `코스피 외국인 ${kf.foreign > 0 ? '+' : ''}${formatNumberWithComma(kf.foreign)}억`;
-    }
-
-    const mom = safeArr(a.summary_lines)[0] || '뉴스 모멘텀 (요약 참고)';
-    let action = '관망';
-    let actionCls = 'action-watch';
-    if (mode.cls === 'risk-on' && typeof mkt.kospi_pct === 'number' && mkt.kospi_pct >= 0 && /반도체|AI|2차전지/i.test(theme)) {
-      action = '매수 가능';
-      actionCls = 'action-buy';
-    } else if (mode.cls === 'risk-off' || (typeof vix === 'number' && vix > 24)) {
-      action = '제외';
-      actionCls = 'action-excl';
-    } else if (typeof mkt.kospi_pct === 'number' && mkt.kospi_pct < 0) {
-      action = '눌림 대기';
-      actionCls = 'action-wait';
-    }
-
-    rows.push({
-      theme,
-      trend: trendHint,
-      position,
-      supply,
-      mom: String(mom).slice(0, 80),
-      action,
-      actionCls,
-    });
+    pushRow(theme, a);
   });
 
   if (rows.length < 4) {
-    rows.push({
-      theme: '시장 베타 (KOSPI)',
-      trend: trendHint,
-      position: '지수 기준 (추정)',
-      supply: flowHint,
-      mom: '지수·수급만 반영',
-      action: mode.cls === 'risk-off' ? '관망' : '눌림 대기',
-      actionCls: mode.cls === 'risk-off' ? 'action-watch' : 'action-wait',
-    });
+    const betaArticle = {
+      topic: '시장 베타 (KOSPI)',
+      title: '',
+      summary_lines: [`KOSPI ${formatSignedPercent(kospiPct)} · flow ${flowIn ? 'inflow' : 'outflow'}`],
+    };
+    pushRow('시장 베타 (KOSPI)', betaArticle);
   }
 
-  return rows.slice(0, 10).map(r => `
+  const slice = rows.slice(0, 10);
+  const summary = buildStockBuyNowSummary(slice);
+  const tableHtml = slice.length
+    ? slice.map(r => `
     <tr>
       <td>${escapeHtml(r.theme)}</td>
       <td>${escapeHtml(r.trend)}</td>
       <td>${escapeHtml(r.position)}</td>
-      <td>${escapeHtml(r.supply)}</td>
-      <td>${escapeHtml(r.mom)}</td>
-      <td><span class="action-tag ${r.actionCls}">${escapeHtml(r.action)}</span></td>
+      <td>${escapeHtml(r.flow)}</td>
+      <td>${escapeHtml(r.momentum)}</td>
+      <td>${escapeHtml(r.risk)}</td>
+      <td><span class="action-tag ${escapeHtml(r.actionCls)}">${escapeHtml(r.action)}</span></td>
     </tr>
-  `).join('');
+  `).join('')
+    : '<tr><td colspan="7">뉴스 후보가 부족합니다. 뉴스 다이제스트를 확인하세요.</td></tr>';
+
+  return { tableHtml, summary };
 }
 
 (function renderAll() {
@@ -1201,7 +1365,10 @@ function buildStockRows() {
     }).join('');
   }
 
-  document.getElementById('stock-candidate-table').innerHTML = buildStockRows();
+  const stockOut = buildStockRows();
+  document.getElementById('stock-candidate-table').innerHTML = stockOut.tableHtml;
+  const stockBuyNow = document.getElementById('stock-buy-now-summary');
+  if (stockBuyNow) stockBuyNow.textContent = stockOut.summary;
 })();
 </script>
 </body>
