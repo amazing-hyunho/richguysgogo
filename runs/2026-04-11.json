@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-11T03:03:35.209576+00:00",
+  "generated_at": "2026-04-11T03:12:19.648098+00:00",
   "market_date": "2026-04-11",
   "snapshot": {
     "market_summary": {
@@ -74,7 +74,7 @@
         "us2y": 3.5929999351501465,
         "spread_2_10": 0.7239999771118164,
         "vix": 19.229999542236328,
-        "dxy": 98.697998046875,
+        "dxy": 98.6500015258789,
         "usdkrw": 1485.4100341796875,
         "vix3m": 21.860000610351562,
         "vix_term_spread": 2.6300010681152344,
@@ -108,7 +108,7 @@
     "phase_two_signals": {
       "earnings_signal_score": 0.0,
       "breadth_signal_score": 1.627,
-      "liquidity_signal_score": 6.741,
+      "liquidity_signal_score": 6.75,
       "note": "derived from headlines + markets + macro.daily + macro.structural"
     },
     "cumulative_context": {
@@ -327,7 +327,7 @@
       {
         "speaker": "liquidity",
         "speaker_label": "유동성 담당자",
-        "summary": "저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=98.70, real_rate=1.96%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "summary": "저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=98.65, real_rate=1.96%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
         "references": [
           "snapshot.phase_two_signals.liquidity_signal_score",
           "snapshot.macro.daily.dxy",
