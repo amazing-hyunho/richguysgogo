@@ -951,51 +951,50 @@ function renderRecentChangePanel() {
 function buildMarketTrendSeries(tfDays) {
   const rows = safeArr(data.market_daily);
   const want = typeof tfDays === 'number' && tfDays > 0 ? tfDays : 66;
-  const n = Math.min(want, rows.length);
-  const slice = n > 0 ? rows.slice(-n) : [];
-  const lineDefs = [
-    { key: 'kospi', label: 'KOSPI', color: '#38bdf8' },
-    { key: 'nasdaq', label: 'NASDAQ', color: '#c4b5fd' },
-    { key: 'usdkrw', label: 'USD/KRW', color: '#fbbf24', optional: true },
-  ];
-  const lines = [];
+  const tail = want > 0 ? rows.slice(-want) : [];
+  const slice = tail.filter(r => {
+    if (!r) return false;
+    const k = r.kospi;
+    const n = r.nasdaq;
+    return (typeof k === 'number' && Number.isFinite(k)) || (typeof n === 'number' && Number.isFinite(n));
+  });
   const len = slice.length;
-  lineDefs.forEach(def => {
-    let base = null;
-    const pts = [];
-    for (let i = 0; i < len; i++) {
-      const v = slice[i] && slice[i][def.key];
-      if (typeof v !== 'number' || !Number.isFinite(v)) continue;
-      if (base == null) base = v;
-      pts.push({ i, raw: v });
-    }
-    if (pts.length < 2) return;
-    const lastNorm = pts[pts.length - 1].norm;
-    const periodChg = lastNorm - 100;
-    lines.push({
-      key: def.key,
-      label: def.label,
-      color: def.color,
-      optional: !!def.optional,
-      pts,
-      periodChg,
-    });
-  });
-  const filtered = lines.filter(L => !L.optional || L.pts.length >= 2);
-  let minY = Infinity;
-  let maxY = -Infinity;
-  filtered.forEach(L => {
-    L.pts.forEach(p => {
-      if (p.norm < minY) minY = p.norm;
-      if (p.norm > maxY) maxY = p.norm;
-    });
-  });
-  if (!Number.isFinite(minY) || !Number.isFinite(maxY) || !filtered.length) {
-    return { slice, lines: [], minY: 98, maxY: 102, empty: true };
+  if (len < 2) {
+    return { slice, lines: [], empty: true };
   }
-  const span = maxY - minY || 1;
-  const pad = Math.max(span * 0.08, 0.5);
-  return { slice, lines: filtered, minY: minY - pad, maxY: maxY + pad, empty: false };
+  function buildIndexLine(key, label, color) {
+    const rawPts = [];
+    for (let i = 0; i < len; i++) {
+      const v = slice[i] && slice[i][key];
+      if (typeof v === 'number' && Number.isFinite(v)) rawPts.push({ i, raw: v });
+    }
+    if (rawPts.length < 2) return null;
+    const vals = rawPts.map(p => p.raw);
+    const minV = Math.min(...vals);
+    const maxV = Math.max(...vals);
+    const rng = maxV - minV || 1;
+    const pad = rng * 0.06 || 1;
+    const yMin = minV - pad;
+    const yMax = maxV + pad;
+    const yR = yMax - yMin || 1;
+    const pts = rawPts.map(p => ({
+      i: p.i,
+      raw: p.raw,
+      yNorm: (p.raw - yMin) / yR,
+    }));
+    const first = rawPts[0].raw;
+    const last = rawPts[rawPts.length - 1].raw;
+    const periodChgPct = first !== 0 ? ((last - first) / first) * 100 : null;
+    return { key, label, color, pts, first, last, periodChgPct };
+  }
+  const lines = [
+    buildIndexLine('kospi', 'KOSPI', '#38bdf8'),
+    buildIndexLine('nasdaq', 'NASDAQ', '#c4b5fd'),
+  ].filter(Boolean);
+  if (!lines.length) {
+    return { slice, lines: [], empty: true };
+  }
+  return { slice, lines, empty: false };
 }
 
 function renderMarketTrendChart(tfDays) {
@@ -1014,26 +1013,31 @@ function renderMarketTrendChart(tfDays) {
   const padB = 10;
   const innerW = w - padL - padR;
   const innerH = h - padT - padB;
-  const yMin = model.minY;
-  const yMax = model.maxY;
-  const yR = yMax - yMin || 1;
   const idxMax = Math.max(1, model.slice.length - 1);
   function xAt(i) {
     return padL + (i / idxMax) * innerW;
   }
-  function yAt(norm) {
-    return padT + (1 - (norm - yMin) / yR) * innerH;
+  function yAt(yNorm) {
+    return padT + (1 - yNorm) * innerH;
   }
   const polylines = model.lines.map(L => {
-    const ptsStr = L.pts.map(p => `${xAt(p.i).toFixed(1)},${yAt(p.norm).toFixed(1)}`).join(' ');
+    const ptsStr = L.pts.map(p => `${xAt(p.i).toFixed(1)},${yAt(p.yNorm).toFixed(1)}`).join(' ');
     return `<polyline fill="none" stroke="${L.color}" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round" points="${ptsStr}"/>`;
   }).join('');
   const legend = model.lines.map(L => {
-    const c = classBySign(L.periodChg);
-    const signStr = `${L.periodChg > 0 ? '+' : ''}${formatMetric(L.periodChg)}%`;
-    return `<span class="leg-item"><span class="leg-swatch" style="background:${L.color}"></span><span>${escapeHtml(L.label)}</span> <span class="${escapeHtml(c)}">(${escapeHtml(signStr)})</span></span>`;
+    const pct = L.periodChgPct;
+    const digits = L.key === 'nasdaq' ? 2 : 0;
+    let legCls = 'neu';
+    let legTxt;
+    if (typeof pct === 'number' && Number.isFinite(pct)) {
+      legCls = classBySign(pct);
+      legTxt = `${pct > 0 ? '+' : ''}${formatMetric(pct)}% · ${formatNumberWithComma(L.first, digits)}→${formatNumberWithComma(L.last, digits)}`;
+    } else {
+      legTxt = `${formatNumberWithComma(L.last, digits)}`;
+    }
+    return `<span class="leg-item"><span class="leg-swatch" style="background:${L.color}"></span><span>${escapeHtml(L.label)}</span> <span class="${escapeHtml(legCls)}">(${escapeHtml(legTxt)})</span></span>`;
   }).join('');
-  host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="정규화 지수 추세">${polylines}</svg><div class="market-trend-legend">${legend}</div>`;
+  host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="200" preserveAspectRatio="xMidYMid meet" role="img" aria-label="일별 지수 레벨">${polylines}</svg><div class="market-trend-legend">${legend}</div>`;
 }
 
 function setupMarketTrendToggles() {
@@ -1346,6 +1350,73 @@ function leadershipProxyForHealth(md, leadTopic) {
     ? ` · 뉴스 주도 테마: ${clipEquitySummaryLine(String(leadTopic), 44)}`
     : ' · 뉴스 테마: 부족';
   return us + topic;
+}
+function breadthHealthStatus(md) {
+  const kp = md && typeof md.kospi_pct === 'number' && Number.isFinite(md.kospi_pct) ? md.kospi_pct : null;
+  const kd = md && typeof md.kosdaq_pct === 'number' && Number.isFinite(md.kosdaq_pct) ? md.kosdaq_pct : null;
+  if (kp == null && kd == null) {
+    return { status: '데이터 부족', reason: 'KOSPI/KOSDAQ 일간 변동률 없음', cls: 'neu' };
+  }
+  const diff = kp != null && kd != null ? Math.abs(kp - kd) : null;
+  if (kp != null && kd != null && kp > 0 && kd > 0 && (diff == null || diff < 0.35)) {
+    return { status: '확산 양호', reason: '코스피·코스닥 동반 상승', cls: 'pos' };
+  }
+  if (kp != null && kd != null && kp < 0 && kd < 0 && (diff == null || diff < 0.35)) {
+    return { status: '확산 약화', reason: '동반 약세·하락 확산', cls: 'neg' };
+  }
+  if (kp != null && kd != null && diff != null && diff >= 0.5) {
+    return { status: '확산 중립', reason: '지수 간 격차·편중 가능', cls: 'neu' };
+  }
+  return { status: '확산 중립', reason: '혼조·선별 장세', cls: 'neu' };
+}
+function volatilityHealthStatus(vix) {
+  if (vix == null || !Number.isFinite(vix)) {
+    return { status: '-', reason: 'VIX 데이터 없음', cls: 'neu' };
+  }
+  if (vix >= 22) return { status: '위험', reason: `VIX ${formatMetric(vix)} — 고변동성`, cls: 'neg' };
+  if (vix <= 16) return { status: '안정', reason: `VIX ${formatMetric(vix)} — 상대적 완화`, cls: 'pos' };
+  return { status: '경계', reason: `VIX ${formatMetric(vix)} — 이벤트 전후 점검`, cls: 'neu' };
+}
+function leadershipHealthStatus(md, leadTopic) {
+  const kp = md && typeof md.kospi_pct === 'number' && Number.isFinite(md.kospi_pct) ? md.kospi_pct : null;
+  const kd = md && typeof md.kosdaq_pct === 'number' && Number.isFinite(md.kosdaq_pct) ? md.kosdaq_pct : null;
+  const sp = md && typeof md.sp500_pct === 'number' && Number.isFinite(md.sp500_pct) ? md.sp500_pct : null;
+  const nq = md && typeof md.nasdaq_pct === 'number' && Number.isFinite(md.nasdaq_pct) ? md.nasdaq_pct : null;
+  const usLarge = sp != null && nq != null && (sp - nq) > 0.25;
+  const krLarge = kp != null && kd != null && (kp - kd) > 0.5;
+  if (usLarge || krLarge) {
+    const bits = [];
+    if (usLarge) bits.push('美 S&P>나스닥');
+    if (krLarge) bits.push('KR 코스피>코스닥');
+    return { status: '대형주 주도', reason: bits.join(' · '), cls: 'neu' };
+  }
+  const usAlign = sp != null && nq != null && Math.abs(sp - nq) <= 0.25;
+  const krAlign = kp != null && kd != null && Math.abs(kp - kd) <= 0.35;
+  if ((usAlign && krAlign) || (usAlign && kp == null && kd == null) || (krAlign && sp == null && nq == null)) {
+    let reason = '지수 등락이 동조에 가까움';
+    if (leadTopic) reason += ` · ${clipEquitySummaryLine(String(leadTopic), 28)}`;
+    return { status: '확산', reason, cls: 'pos' };
+  }
+  if (sp == null && nq == null && kp == null && kd == null) {
+    return {
+      status: '-',
+      reason: leadTopic ? clipEquitySummaryLine(String(leadTopic), 48) : '지수 등락 데이터 부족',
+      cls: 'neu',
+    };
+  }
+  return { status: '취약', reason: '스타일·지역 간 흐름 엇갈림', cls: 'neg' };
+}
+function healthStateCardHtml(title, subtitle, statusObj) {
+  const sc = statusObj.cls === 'pos' ? 'status-pos' : statusObj.cls === 'neg' ? 'status-neg' : 'status-neu';
+  return `
+    <div class="state-card">
+      <div class="sn">${escapeHtml(title)}</div>
+      <div class="health-label">${escapeHtml(subtitle)}</div>
+      <div class="sv ${sc}">
+        <span class="status-line">${escapeHtml(statusObj.status)}</span>
+        <span class="reason-line">${escapeHtml(statusObj.reason)}</span>
+      </div>
+    </div>`;
 }
 function pickEquityFlowAction(mode, latestNet, sum5) {
   if (mode && mode.cls === 'risk-off') return '행동: 방어 비중';
@@ -1690,35 +1761,16 @@ function buildStockRows() {
     flowBlock(`KR 수급 · KOSDAQ (${compare.current_date || mdDate})`, 'KOSDAQ');
 
   const breadth = stanceByAgent('breadth');
-  const breadthAgentLine = breadth
-    ? `${firstSentence(breadth.korean_comment) || '-'}`
-    : '브레드스 에이전트 의견 없음';
   const hot0 = safeArr(digest.sector_hot_topics)[0];
   const leadTopic = hot0 && safeArr(hot0.topics)[0] && hot0.topics[0].topic;
   const vixNum = dm && typeof dm.vix === 'number' && Number.isFinite(dm.vix) ? dm.vix : null;
-  const breadthDerived = breadthProxyLineForHealth(md);
-  const vixDerived = vixDerivedLineForHealth(vixNum);
-  const leadDerived = leadershipProxyForHealth(md, leadTopic);
-  document.getElementById('equity-state-cards').innerHTML = `
-    <div class="state-card">
-      <div class="sn">시장 건강 · 참여도 (브레드스)</div>
-      <div class="health-label">상승 vs 하락 종목 비중 (KOSPI·KOSDAQ 프록시)</div>
-      <div class="sv">${escapeHtml(breadthAgentLine)}</div>
-      <div class="health-derived">${escapeHtml(breadthDerived)}</div>
-    </div>
-    <div class="state-card">
-      <div class="sn">시장 건강 · 변동성 (VIX)</div>
-      <div class="health-label">공포·옵션 내재 변동성 지표</div>
-      <div class="sv">${escapeHtml(formatMetric(dm.vix))}</div>
-      <div class="health-derived">${escapeHtml(vixDerived)}</div>
-    </div>
-    <div class="state-card">
-      <div class="sn">시장 건강 · 리더십 (대형 vs 광범위)</div>
-      <div class="health-label">美 S&amp;P vs 나스닥 + 뉴스 테마</div>
-      <div class="sv">${escapeHtml(leadTopic || '뉴스 토픽 부족')}</div>
-      <div class="health-derived">${escapeHtml(leadDerived)}</div>
-    </div>
-  `;
+  const breadthStat = breadthHealthStatus(md);
+  const volStat = volatilityHealthStatus(vixNum);
+  const leadStat = leadershipHealthStatus(md, leadTopic);
+  document.getElementById('equity-state-cards').innerHTML =
+    healthStateCardHtml('참여도 (브레드스)', 'KOSPI·KOSDAQ 일간 등락 프록시', breadthStat) +
+    healthStateCardHtml('변동성 (VIX)', '공포·옵션 지표', volStat) +
+    healthStateCardHtml('리더십', 'S&P vs 나스닥 · 코스피 vs 코스닥', leadStat);
 
   const stFlow = stanceByAgent('flow');
   const stEarn = stanceByAgent('earnings');
@@ -1731,11 +1783,11 @@ function buildStockRows() {
   const flowBullets = stanceBulletsFromStance(stFlow, 2);
   const earnBullets = stanceBulletsFromStance(stEarn, 2);
   const healthBullets = [
-    clipEquitySummaryLine(breadthDerived, 120),
-    clipEquitySummaryLine(vixDerived, 120),
+    `${breadthStat.status} — ${breadthStat.reason}`,
+    volStat.status === '-' ? `VIX — ${volStat.reason}` : `${volStat.status} — ${volStat.reason}`,
   ].filter(Boolean);
   const breadthExtra = stBreadth ? firstSentence(stBreadth.korean_comment) : '';
-  if (breadthExtra && healthBullets.length < 2) healthBullets.push(clipEquitySummaryLine(breadthExtra, 120));
+  if (breadthExtra && healthBullets.length < 2) healthBullets.push(clipEquitySummaryLine(breadthExtra, 100));
   const sectorBullets = [
     firstSentence(stSector && stSector.korean_comment),
     topSectorName ? `선도 섹터(추정): ${topSectorName}` : '',

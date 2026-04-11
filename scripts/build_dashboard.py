@@ -345,13 +345,46 @@ def load_latest_policy_rates() -> dict[str, object]:
     }
 
 
+def _inject_dashboard_json(template: str, data_json: str) -> str:
+    """Replace __DASHBOARD_DATA__ or a baked-in ``const _dash = {...};`` assignment."""
+    placeholder = "__DASHBOARD_DATA__"
+    if placeholder in template:
+        return template.replace(placeholder, data_json, 1)
+    marker = "const _dash = "
+    start = template.find(marker)
+    if start == -1:
+        raise ValueError("dashboard_template_missing_data: no __DASHBOARD_DATA__ and no const _dash anchor")
+    i = start + len(marker)
+    while i < len(template) and template[i] in " \t":
+        i += 1
+    if i >= len(template) or template[i] != "{":
+        raise ValueError("dashboard_template_missing_data: const _dash is not a JSON object")
+    depth = 0
+    j = i
+    while j < len(template):
+        c = template[j]
+        if c == "{":
+            depth += 1
+        elif c == "}":
+            depth -= 1
+            if depth == 0:
+                j += 1
+                break
+        j += 1
+    else:
+        raise ValueError("dashboard_template_missing_data: unclosed JSON object for const _dash")
+    if j >= len(template) or template[j] != ";":
+        raise ValueError("dashboard_template_missing_data: expected ';' after const _dash object")
+    rest = template[j + 1 :]
+    if not rest.startswith("\nconst data = _dash"):
+        raise ValueError("dashboard_template_missing_data: unexpected structure after const _dash")
+    return template[: start + len(marker)] + data_json + template[j:]
+
+
 def build_dashboard_html(data: dict[str, object]) -> str:
     data_json = json.dumps(data, ensure_ascii=False)
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
-    placeholder = "__DASHBOARD_DATA__"
-    if placeholder not in template:
-        raise ValueError(f"dashboard_template_missing_placeholder: {placeholder}")
-    return template.replace(placeholder, data_json, 1)
+    return _inject_dashboard_json(template, data_json)
 
 
 
@@ -369,7 +402,12 @@ def main() -> None:
                 conn,
                 "SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d FROM market_flow_daily ORDER BY date",
             ),
-            "daily_macro": fetch_rows(conn, "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet FROM daily_macro ORDER BY date"),
+            "daily_macro": fetch_rows(
+                conn,
+                "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, "
+                "vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet "
+                "FROM daily_macro ORDER BY date",
+            ),
             "monthly_macro": fetch_rows(
                 conn,
                 "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, "
