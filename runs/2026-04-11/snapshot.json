@@ -74,18 +74,19 @@
       "dxy": 98.697998046875,
       "usdkrw": 1485.4100341796875,
       "vix3m": 21.860000610351562,
-      "vix_term_spread": 2.6300010681152344
+      "vix_term_spread": 2.6300010681152344,
+      "oil_wti": 95.62999725341797
     },
     "monthly": {
       "unemployment_rate": 4.3,
       "cpi_yoy": 3.3202055812236786,
       "core_cpi_yoy": 2.6730984898529986,
-      "pce_yoy": 2.801756656951593,
+      "pce_yoy": null,
       "pmi": null,
-      "retail_sales_mom": 0.600990523942202,
-      "nfp_change": 178.0,
-      "wage_growth": 37.38,
-      "wage_level": 37.38,
+      "retail_sales_mom": null,
+      "nfp_change": null,
+      "wage_growth": null,
+      "wage_level": null,
       "wage_yoy": 3.517031293270567,
       "export_yoy": null
     },
@@ -94,9 +95,9 @@
       "gdp_qoq_annualized": 0.5
     },
     "structural": {
-      "fed_funds_rate": 3.64,
+      "fed_funds_rate": null,
       "real_rate": 1.956999912261963,
-      "hy_oas": 2.9,
+      "hy_oas": null,
       "ig_oas": 0.83,
       "fed_balance_sheet": 6693871.0
     }
@@ -104,7 +105,7 @@
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
     "breadth_signal_score": 1.627,
-    "liquidity_signal_score": 6.741,
+    "liquidity_signal_score": 5.641,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
