@@ -109,6 +109,10 @@ def main() -> None:
     market_date = date.today()
     trace_path = runs_dir / market_date.isoformat() / "llm_traces.jsonl"
     os.environ.setdefault("LLM_TRACE_PATH", str(trace_path))
+    if os.getenv("ECOS_API_KEY", "").strip():
+        print("[run_nightly] ecos key check: OK")
+    else:
+        print("[run_nightly] ecos key check: MISSING (set ECOS_API_KEY for domestic base rate)")
 
     print("[run_nightly] step 1/4: resolving model profile...")
     backend = parse_backend(os.getenv("AGENT_MODEL_BACKEND", "openai"))

@@ -352,7 +352,7 @@ const domesticTiles = [
     pct: latestMarket.kosdaq_pct,
     flow: latestKrFlow?.KOSDAQ || null,
   },
-  { name: 'USD/KRW', price: latestMarket.usdkrw, pct: null },
+  { name: 'USD/KRW', price: latestMarket.usdkrw, pct: latestMarket.usdkrw_pct },
 ];
 const globalTiles = [
   { name: 'NASDAQ', price: latestMarket.nasdaq, pct: latestMarket.nasdaq_pct },
