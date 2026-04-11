@@ -113,6 +113,18 @@
     .tag.neu { border-color: rgba(148, 163, 184, 0.4); color: #94a3b8; }
     .news-mini { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
     .news-item { background: var(--panel); border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.12); padding: 12px; font-size: 13px; line-height: 1.45; min-width: 0; }
+    .news-item .news-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 12px;
+      color: #7dd3fc;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(125, 211, 252, 0.4);
+    }
+    .news-item .news-link:hover {
+      color: #bae6fd;
+      border-bottom-color: rgba(186, 230, 253, 0.8);
+    }
     .news-item .impact { font-size: 11px; margin-top: 6px; color: var(--amber); }
     .agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 14px; }
     .agent-card { background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
@@ -951,10 +963,51 @@ function renderRecentChangePanel() {
 function marketTrendValidRows(rows) {
   return safeArr(rows).filter(r => {
     if (!r) return false;
-    const k = r.kospi;
-    const n = r.nasdaq;
+    const k = r._mt_kospi;
+    const n = r._mt_nasdaq;
     return (typeof k === 'number' && Number.isFinite(k)) || (typeof n === 'number' && Number.isFinite(n));
   });
+}
+
+function marketTrendReconstructLevels(rows, levelKey, pctKey) {
+  const src = safeArr(rows);
+  const n = src.length;
+  if (!n) return [];
+  const out = new Array(n).fill(null);
+  const levelAt = i => {
+    const v = src[i] && src[i][levelKey];
+    return (typeof v === 'number' && Number.isFinite(v)) ? v : null;
+  };
+  const pctAt = i => {
+    const v = src[i] && src[i][pctKey];
+    return (typeof v === 'number' && Number.isFinite(v)) ? v : null;
+  };
+  let anchor = -1;
+  for (let i = n - 1; i >= 0; i--) {
+    if (levelAt(i) != null) { anchor = i; break; }
+  }
+  if (anchor < 0) return out;
+  out[anchor] = levelAt(anchor);
+
+  for (let i = anchor + 1; i < n; i++) {
+    const lv = levelAt(i);
+    if (lv != null) { out[i] = lv; continue; }
+    const prev = out[i - 1];
+    const pct = pctAt(i);
+    if (prev == null || pct == null) continue;
+    out[i] = prev * (1 + (pct / 100));
+  }
+  for (let i = anchor - 1; i >= 0; i--) {
+    const lv = levelAt(i);
+    if (lv != null) { out[i] = lv; continue; }
+    const next = out[i + 1];
+    const pctNext = pctAt(i + 1);
+    if (next == null || pctNext == null) continue;
+    const denom = (1 + (pctNext / 100));
+    if (denom === 0) continue;
+    out[i] = next / denom;
+  }
+  return out;
 }
 
 function marketTrendSampleWeekly(rows) {
@@ -982,7 +1035,15 @@ function marketTrendSampleMonthly(rows) {
 }
 
 function buildMarketTrendSeries(modeKey) {
-  const rows = safeArr(data.market_daily);
+  const rawRows = safeArr(data.market_daily);
+  const kospiRecon = marketTrendReconstructLevels(rawRows, 'kospi', 'kospi_pct');
+  const nasdaqRecon = marketTrendReconstructLevels(rawRows, 'nasdaq', 'nasdaq_pct');
+  const rows = rawRows.map((r, i) => {
+    const rr = r || {};
+    const k = (typeof rr.kospi === 'number' && Number.isFinite(rr.kospi)) ? rr.kospi : kospiRecon[i];
+    const n = (typeof rr.nasdaq === 'number' && Number.isFinite(rr.nasdaq)) ? rr.nasdaq : nasdaqRecon[i];
+    return { ...rr, _mt_kospi: k, _mt_nasdaq: n };
+  });
   const modes = { d1w: true, w1m: true, m1y: true };
   const key = modes[modeKey] ? modeKey : 'w1m';
   const valid = marketTrendValidRows(rows);
@@ -1001,7 +1062,7 @@ function buildMarketTrendSeries(modeKey) {
   const allLevels = [];
   slice.forEach(r => {
     if (!r) return;
-    ['kospi', 'nasdaq'].forEach(f => {
+    ['_mt_kospi', '_mt_nasdaq'].forEach(f => {
       const v = r[f];
       if (typeof v === 'number' && Number.isFinite(v)) allLevels.push(v);
     });
@@ -1016,7 +1077,7 @@ function buildMarketTrendSeries(modeKey) {
   const yMin = gMin - pad;
   const yMax = gMax + pad;
   const yR = yMax - yMin || 1;
-  function buildIndexLine(fld, label, color) {
+  function buildIndexLine(fld, key, label, color) {
     const rawPts = [];
     for (let i = 0; i < len; i++) {
       const v = slice[i] && slice[i][fld];
@@ -1031,11 +1092,11 @@ function buildMarketTrendSeries(modeKey) {
     const first = rawPts[0].raw;
     const last = rawPts[rawPts.length - 1].raw;
     const periodChgPct = first !== 0 ? ((last - first) / first) * 100 : null;
-    return { key: fld, label, color, pts, first, last, periodChgPct };
+    return { key, label, color, pts, first, last, periodChgPct };
   }
   const lines = [
-    buildIndexLine('kospi', 'KOSPI', '#38bdf8'),
-    buildIndexLine('nasdaq', 'NASDAQ', '#c4b5fd'),
+    buildIndexLine('_mt_kospi', 'kospi', 'KOSPI', '#38bdf8'),
+    buildIndexLine('_mt_nasdaq', 'nasdaq', 'NASDAQ', '#c4b5fd'),
   ].filter(Boolean);
   if (!lines.length) {
     return { slice, lines: [], empty: true, yMin, yMax };
@@ -1768,12 +1829,18 @@ function buildStockRows() {
   if (!topArts.length) {
     newsEl.innerHTML = '<div class="empty-state">매크로 관련 기사가 없습니다.</div>';
   } else {
-    newsEl.innerHTML = topArts.map(a => `
+    newsEl.innerHTML = topArts.map(a => {
+      const link = typeof a.link === 'string' ? a.link.trim() : '';
+      const safeLink = /^https?:\/\//i.test(link) ? link : '';
+      const anchor = safeLink ? `<a class="news-link" href="${escapeHtml(safeLink)}" target="_blank" rel="noopener noreferrer">원문 보기</a>` : '';
+      return `
       <div class="news-item">
         <div><strong>${escapeHtml(a.topic || '-')}</strong> · ${escapeHtml(a.title || '-')}</div>
         <div class="impact">${escapeHtml(newsImpactTag(a.topic, a.title))}</div>
+        ${anchor}
       </div>
-    `).join('');
+    `;
+    }).join('');
   }
 
   document.getElementById('macro-agent-cards').innerHTML = [

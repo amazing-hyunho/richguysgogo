@@ -6,6 +6,7 @@ import os
 import sqlite3
 import subprocess
 import sys
+import time
 from datetime import date
 from pathlib import Path
 import argparse
@@ -75,15 +76,37 @@ def _checkpoint_db() -> None:
         conn.close()
 
 
-def _auto_push() -> None:
+def _auto_push() -> bool:
     push_command = ["git", "push", "origin", "HEAD"]
-    push_result = subprocess.run(push_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
-    if push_result.returncode != 0:
-        raise RuntimeError(push_result.stderr.strip() or "git_push_failed")
-    if push_result.stdout.strip():
-        print(push_result.stdout.strip())
-    if push_result.stderr.strip():
-        print(push_result.stderr.strip())
+    backoff_s = (1.5, 3.0)
+    for attempt in range(3):
+        push_result = subprocess.run(push_command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+        if push_result.returncode == 0:
+            if push_result.stdout.strip():
+                print(push_result.stdout.strip())
+            if push_result.stderr.strip():
+                print(push_result.stderr.strip())
+            return True
+        err = push_result.stderr.strip() or "git_push_failed"
+        transient_tokens = (
+            "Could not resolve host",
+            "Failed to connect",
+            "timed out",
+            "TLS",
+            "network",
+        )
+        err_lower = err.lower()
+        is_transient = any(token.lower() in err_lower for token in transient_tokens)
+        if is_transient and attempt < 2:
+            wait_sec = backoff_s[attempt]
+            print(
+                f"[run_nightly] auto-push: retry after {wait_sec:.1f}s "
+                f"(attempt {attempt + 1}/3): {err}"
+            )
+            time.sleep(wait_sec)
+            continue
+        print(f"[run_nightly] auto-push skipped: {err}")
+        return False
 
 
 def main() -> None:
@@ -164,8 +187,11 @@ def main() -> None:
         print("[run_nightly] auto-commit: done")
         if committed and args.auto_push:
             print("[run_nightly] auto-push: start")
-            _auto_push()
-            print("[run_nightly] auto-push: done")
+            pushed = _auto_push()
+            if pushed:
+                print("[run_nightly] auto-push: done")
+            else:
+                print("[run_nightly] auto-push: skipped")
 
     print("[run_nightly] step 4/4: done")
 
