@@ -1,8 +1,8 @@
 {
   "market_summary": {
-    "note": "KOSPI 1.40%, USD/KRW 1476.98. Headlines loaded. Flows loaded.",
+    "note": "KOSPI 1.40%, USD/KRW 1482.80. Headlines loaded. Flows loaded.",
     "kospi_change_pct": 1.4,
-    "usdkrw": 1476.982511
+    "usdkrw": 1482.800503
   },
   "flow_summary": {
     "note": "외국인 +10622억, 기관 -1100억, 개인 -13104억 | KOSPI(외 +10641, 기관 -2031, 개인 -12280) KOSDAQ(외 -19, 기관 +931, 개인 -824)",
@@ -33,9 +33,9 @@
   "news_headlines": [
     "[금리/연준] 백악관 해싯 \"호르무즈 재개방되면 연준 금리인하 가능\" - 연합인포맥스",
     "[인플레이션] 전쟁발 물가 우려에 美 미시간대 소비자심리 사상 최저 - 연합뉴스",
-    "[미국지수] 美증시, 물가 상승 압박에 소폭 하락…\"금리 하락 가능성 내려가\" - 데일리안",
-    "[경기/성장] 전쟁이 물가를 다시 흔들었다... 미국발 충격, 세계 경제로 확산 - 글로벌이코노믹",
-    "[반도체/AI] 엔비디아 2.55% 상승, 반도체지수 2.31%↑ 사상 최고(상보) - 뉴스1"
+    "[미국지수] 미국·이란 협상 앞두고…뉴욕 증시 혼조 마감 - 연합뉴스 한민족센터",
+    "[반도체/AI] 반도체 세수 125조 전망…국채 부담 완화·증시 밸류 높인다 - v.daum.net",
+    "[정책/테마] 콜롬비아·에콰도르 갈등 격화…100% 관세에 콜롬비아도 맞불 관세 - 연합뉴스"
   ],
   "watchlist": [
     "SPY",
@@ -58,7 +58,7 @@
       "dow_pct": -0.5587330707386889
     },
     "fx": {
-      "usdkrw": 1476.982511,
+      "usdkrw": 1482.800503,
       "usdkrw_pct": 0.737862234067812
     },
     "volatility": {
@@ -92,7 +92,7 @@
     },
     "structural": {
       "fed_funds_rate": 3.64,
-      "real_rate": 1.976999912261963,
+      "real_rate": 1.956999912261963,
       "hy_oas": 2.9,
       "ig_oas": 0.83,
       "fed_balance_sheet": 6693871.0
@@ -101,7 +101,7 @@
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
     "breadth_signal_score": 1.627,
-    "liquidity_signal_score": 6.721,
+    "liquidity_signal_score": 6.741,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
@@ -111,7 +111,7 @@
     "kospi_20d_cum_pct": 10.51,
     "kosdaq_5d_cum_pct": 5.84,
     "kospi_abs_move_5d_avg": 2.37,
-    "usdkrw_5d_change_pct": -2.256,
+    "usdkrw_5d_change_pct": -1.871,
     "vix_5d_avg": 21.996,
     "reversal_signal": false,
     "note": "rolling_20d: kospi20d=+10.51%, vol20d=3.49, reversal=false"

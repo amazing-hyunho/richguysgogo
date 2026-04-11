@@ -1,7 +1,7 @@
 # 데일리 AI 투자위원회 리포트
 
 - 시장 기준일: **2026-04-11**
-- 생성 시각(UTC): `2026-04-10T22:51:35.445320+00:00`
+- 생성 시각(UTC): `2026-04-11T00:57:17.563008+00:00`
 
 ## 1) 한눈에 보기
 - **위원회 합의**: 위원회는 엄격한 리스크 통제를 전제로 위험자산 비중 확대를 지지합니다.
@@ -16,12 +16,12 @@
 ## 3) 시장/매크로 스냅샷
 - **국내 지수**: KOSPI +1.40% / KOSDAQ +1.64%
 - **미국 지수**: S&P500 -0.11% / NASDAQ +0.35% / DOW -0.56%
-- **환율/변동성**: USD/KRW 1476.98 (+0.74%) / VIX 19.2
-- **시장 요약 노트**: KOSPI 1.40%, USD/KRW 1476.98. Headlines loaded. Flows loaded.
+- **환율/변동성**: USD/KRW 1482.80 (+0.74%) / VIX 19.2
+- **시장 요약 노트**: KOSPI 1.40%, USD/KRW 1482.80. Headlines loaded. Flows loaded.
 - **수급 요약**: 외국인 +10622억 / 기관 -1100억 / 개인 -13104억
 - **일간 매크로**: 미10년 4.32% / 미2년 3.59% / 2-10 0.72%p / DXY 98.70
 - **월간 매크로**: 실업률 4.30% / CPI YoY 3.32% / Core CPI YoY 2.67% / PMI n/a
-- **분기/구조**: GDP QoQ 연율 0.50% / 기준금리 3.64% / 실질금리 1.98%
+- **분기/구조**: GDP QoQ 연율 0.50% / 기준금리 3.64% / 실질금리 1.96%
 
 ## 4) 위원회 핵심 포인트
 - 다수 국면 태그: RISK_ON.
@@ -83,21 +83,21 @@
 - 라운드: 1
 - 지표 활용 체크: 7/7명이 수치형 지표 근거를 인용했습니다.
 - 진행 메모: 오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.
-- [매크로 담당자] 저는 매크로 담당자 입장에서 '거시는 균형적이며 선택적 대응이 적절합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1476.98, kospi_change_pct=+1.40%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [매크로 담당자] 저는 매크로 담당자 입장에서 '거시는 균형적이며 선택적 대응이 적절합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1482.80, kospi_change_pct=+1.40%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
 - [수급 담당자] 저는 수급 담당자 입장에서 '수급 흐름이 우호적이라 위험 선호가 높아 보입니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+10622억, institution_net=-1100억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.flow_summary.retail_net
 - [섹터 담당자] 저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+10622억, institution_net=-1100억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.sector_moves, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [리스크 담당자] 저는 리스크 담당자 입장에서 '급격한 리스크는 없어 규율을 유지하세요.' 의견을 유지합니다. 근거 숫자는 usdkrw=1476.98, kospi_change_pct=+1.40%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [리스크 담당자] 저는 리스크 담당자 입장에서 '급격한 리스크는 없어 규율을 유지하세요.' 의견을 유지합니다. 근거 숫자는 usdkrw=1482.80, kospi_change_pct=+1.40%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
 - [이익모멘텀 담당자] 저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 견조해 위험자산 선호를 지지합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+10622억, institution_net=-1100억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.earnings_signal_score, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.news_headlines
 - [브레드스 담당자] 저는 브레드스 담당자 입장에서 '브레드스가 개선되어 기술적 추세는 우호적입니다.' 의견을 유지합니다. 근거 숫자는 vix=19.2, foreign_net=+10622억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.breadth_signal_score, snapshot.markets.volatility.vix, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=98.70, real_rate=1.98%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=98.70, real_rate=1.96%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.liquidity_signal_score, snapshot.macro.daily.dxy, snapshot.macro.structural.real_rate, snapshot.flow_summary.foreign_net
-- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +1.40%, USD/KRW 1476.98(+0.74%), VIX 19.2, 외국인 +10622억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다.
+- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +1.40%, USD/KRW 1482.80(+0.74%), VIX 19.2, 외국인 +10622억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다.
 
 ## 7) 이견 사항
 - 국면 태그: 다수=RISK_ON, 소수=NEUTRAL, 에이전트=[macro, sector, risk]
