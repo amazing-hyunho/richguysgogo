@@ -236,6 +236,117 @@
     .eco-card h4 { margin: 0 0 8px 0; font-size: 13px; color: #fff; }
     .eco-card .muted { font-size: 11px; color: var(--muted); line-height: 1.4; }
     .empty-state { color: var(--muted); font-size: 13px; padding: 10px 0; }
+    .sector-top-highlights {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    @media (min-width: 720px) {
+      .sector-top-highlights { grid-template-columns: repeat(3, 1fr); }
+    }
+    .sector-top-card {
+      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 14px;
+      padding: 14px;
+      min-width: 0;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5);
+    }
+    .sector-top-card.rank-1 {
+      border-color: rgba(52, 211, 153, 0.45);
+      box-shadow: 0 0 24px rgba(52, 211, 153, 0.12);
+    }
+    .sector-top-card.rank-2,
+    .sector-top-card.rank-3 { border-color: rgba(56, 189, 248, 0.35); }
+    .sector-top-card .rank-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .sector-top-card .sector-name { font-size: 15px; font-weight: 700; color: #f8fafc; line-height: 1.3; word-break: break-word; }
+    .sector-top-card .meta-row { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+    .sector-top-card .score-pill {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+    }
+    .sector-summary-block {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+    .sector-summary-block #sector-focus-now {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #f1f5f9;
+      margin-bottom: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(51, 65, 85, 0.7);
+    }
+    .sector-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    @media (min-width: 640px) {
+      .sector-summary-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .sector-summary-grid .sum-item .sum-h {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 6px;
+    }
+    .sector-summary-grid .sum-item .sum-body {
+      font-size: 13px;
+      line-height: 1.55;
+      color: #cbd5e1;
+      word-break: break-word;
+    }
+    .trend-badge {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    .trend-badge.strong {
+      background: rgba(52, 211, 153, 0.18);
+      color: #6ee7b7;
+      border: 1px solid rgba(52, 211, 153, 0.45);
+    }
+    .trend-badge.neutral {
+      background: rgba(245, 158, 11, 0.12);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.35);
+    }
+    .trend-badge.weak {
+      background: rgba(248, 113, 113, 0.12);
+      color: #fca5a5;
+      border: 1px solid rgba(248, 113, 113, 0.35);
+    }
+    .driver-badge {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: #cbd5e1;
+      display: inline-block;
+      white-space: nowrap;
+    }
+    tr.sector-row-top td {
+      background: rgba(56, 189, 248, 0.06);
+    }
+    tr.sector-row-top td:first-child {
+      box-shadow: inset 3px 0 0 0 rgba(52, 211, 153, 0.65);
+    }
+    #section-sector .table-wrap table { min-width: 640px; }
   </style>
 </head>
 <body>
@@ -291,26 +402,38 @@
         <h2 id="heading-sector">4. Sector</h2>
         <span class="section-meta" id="sector-digest-meta"></span>
       </div>
-      <div class="rank-row">
-        <div class="rank-box"><h4>한국 섹터/테마 (뉴스 기반)</h4><ol id="sector-rank-kr"></ol></div>
-        <div class="rank-box"><h4>미국 섹터/테마 (뉴스 기반)</h4><ol id="sector-rank-us"></ol></div>
+      <p style="font-size:13px;color:var(--muted);margin:0 0 12px 0;line-height:1.5;">지금 어디에 집중할까? 상위 섹터·추세·드라이버를 한눈에 보고, 약한 섹터는 피합니다.</p>
+      <div id="sector-top-highlights" class="sector-top-highlights" aria-label="상위 섹터 하이라이트"></div>
+      <div id="sector-summary" class="sector-summary-block">
+        <div id="sector-focus-now" role="status">-</div>
+        <div class="sector-summary-grid">
+          <div class="sum-item">
+            <div class="sum-h">자금·수급이 기우는 곳</div>
+            <div id="sector-flow-summary" class="sum-body">-</div>
+          </div>
+          <div class="sum-item">
+            <div class="sum-h">지금은 피하는 편이 나은 섹터</div>
+            <div id="sector-avoid-summary" class="sum-body">-</div>
+          </div>
+        </div>
       </div>
-      <h3 style="font-size:14px;margin:18px 0 8px 0;color:#cbd5e1;">섹터 강도 스코어보드 (추정)</h3>
+      <h3 style="font-size:14px;margin:18px 0 8px 0;color:#cbd5e1;">섹터 랭킹 · 액션 테이블 (추정)</h3>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
+              <th>순위</th>
               <th>섹터</th>
+              <th>점수</th>
               <th>추세</th>
-              <th>수급</th>
-              <th>실적</th>
-              <th>뉴스</th>
-              <th>합계</th>
+              <th>드라이버</th>
+              <th>노트</th>
             </tr>
           </thead>
           <tbody id="sector-scoreboard"></tbody>
         </table>
       </div>
+      <h3 style="font-size:13px;margin:20px 0 8px 0;color:var(--muted);font-weight:600;">섹터 생태계 (참고)</h3>
       <div class="eco-grid" id="sector-ecosystem"></div>
     </section>
 
@@ -610,74 +733,208 @@ function renderAgentCard(title, stance) {
     </div>`;
 }
 
-function sectorTopicsForRegion(regionHint) {
-  const digest = data.latest_news_digest || {};
-  const hot = safeArr(digest.sector_hot_topics);
-  const topics = [];
-  hot.forEach(block => {
-    const sec = String(block.sector || '');
-    const isKr = /한국|코스피|코스닥|K-|국내/i.test(sec) || (!/미국|나스닥|S&P|뉴욕|NASDAQ|US\b/i.test(sec) && regionHint === 'kr');
-    const isUs = /미국|나스닥|S&P|뉴욕|NASDAQ|US\b|달러|연준|Fed/i.test(sec);
-    if (regionHint === 'kr' && isUs && !isKr) return;
-    if (regionHint === 'us' && isKr && !isUs) return;
-    safeArr(block.topics).forEach(t => topics.push({ sector: sec, topic: t.topic, count: t.count }));
-  });
-  safeArr(digest.top_articles).forEach(a => {
-    const t = a.topic || '';
-    if (regionHint === 'kr' && /미국|나스닥|연준|달러|뉴욕/i.test(t)) return;
-    if (regionHint === 'us' && /코스피|코스닥|한국|원\/달러/i.test(t)) return;
-    topics.push({ sector: '', topic: t, count: a.count });
-  });
-  const seen = new Set();
-  const out = [];
-  topics.forEach(x => {
-    const k = `${x.topic}`;
-    if (!k || seen.has(k)) return;
-    seen.add(k);
-    out.push(x);
-  });
-  return out.slice(0, 8);
-}
-
 function coarseScore(n) {
   const x = Number(n);
   if (!Number.isFinite(x)) return 1;
   return Math.max(1, Math.min(5, Math.round(2.5 + x)));
 }
 
-function buildSectorScoreboard() {
+const SECTOR_DRIVER_ORDER = [
+  { key: 'flow', label: 'flow' },
+  { key: 'earnings', label: 'earnings' },
+  { key: 'macro', label: 'macro' },
+  { key: 'news', label: 'news' },
+];
+
+function sectorAgentMentionBoost(sectorName, flowSt, sectorSt) {
+  const name = String(sectorName || '').trim();
+  if (name.length < 2) return 0;
+  const needle = name.slice(0, Math.min(6, name.length));
+  const parts = [];
+  if (flowSt) {
+    if (flowSt.korean_comment) parts.push(String(flowSt.korean_comment));
+    safeArr(flowSt.core_claims).forEach(c => parts.push(String(c)));
+  }
+  if (sectorSt) {
+    if (sectorSt.korean_comment) parts.push(String(sectorSt.korean_comment));
+    safeArr(sectorSt.core_claims).forEach(c => parts.push(String(c)));
+  }
+  const blob = parts.join(' ');
+  return blob.indexOf(needle) !== -1 ? 0.35 : 0;
+}
+
+function computeSectorSubScores(block, ctx) {
+  const cnt = Number(block && block.total_count) || safeArr(block && block.topics).reduce((s, t) => s + (Number(t.count) || 0), 0);
+  const flowBase = coarseScore(ctx.foreign / 5000);
+  const flowAdj = sectorAgentMentionBoost(block && block.sector, ctx.stFlow, ctx.stSector);
+  const flowS = Math.min(5, flowBase + flowAdj);
+
+  const earnS = ctx.stEarn && typeof ctx.stEarn.confidence === 'number'
+    ? coarseScore(ctx.stEarn.confidence)
+    : 3;
+
+  const kospi = typeof ctx.kospiPct === 'number' ? ctx.kospiPct : 0;
+  const vix = typeof ctx.vix === 'number' && Number.isFinite(ctx.vix) ? ctx.vix : null;
+  const macroRaw = (kospi / 2) + (vix != null ? (18 - vix) / 6 : 0);
+  let macroS = coarseScore(macroRaw);
+  const stMacro = ctx.stMacro;
+  const macroBlob = [
+    stMacro && stMacro.korean_comment,
+    ...safeArr(stMacro && stMacro.core_claims).map(c => String(c)),
+  ].filter(Boolean).join(' ');
+  const secNm = String(block && block.sector || '').trim();
+  if (secNm.length >= 2 && macroBlob && macroBlob.indexOf(secNm.slice(0, Math.min(6, secNm.length))) !== -1) {
+    macroS = Math.min(5, macroS + 0.35);
+  }
+
+  const newsS = coarseScore(Math.min(5, cnt / 3));
+
+  return { flow: flowS, earnings: earnS, macro: macroS, news: newsS };
+}
+
+function sectorTotalScore(subs) {
+  return (subs.flow + subs.earnings + subs.macro + subs.news) / 4;
+}
+
+function sectorTrendFromTotal(total) {
+  const t = Number(total);
+  if (!Number.isFinite(t)) return { label: 'Weak', cls: 'weak' };
+  if (t >= 4.0) return { label: 'Strong', cls: 'strong' };
+  if (t >= 2.8) return { label: 'Neutral', cls: 'neutral' };
+  return { label: 'Weak', cls: 'weak' };
+}
+
+function sectorDriverFromSubs(subs) {
+  let best = SECTOR_DRIVER_ORDER[0];
+  for (let i = 1; i < SECTOR_DRIVER_ORDER.length; i++) {
+    const k = SECTOR_DRIVER_ORDER[i].key;
+    if (subs[k] > subs[best.key]) best = SECTOR_DRIVER_ORDER[i];
+  }
+  return best;
+}
+
+function buildSectorNote(block, digest) {
+  const topics = safeArr(block && block.topics);
+  const first = topics[0];
+  const t = first && first.topic != null ? String(first.topic).trim() : '';
+  if (t) return t.length > 88 ? `${t.slice(0, 85)}…` : t;
+  const sec = String(block && block.sector || '');
+  const arts = safeArr(digest && digest.top_articles);
+  const sample = arts.find(a => sec && String(a.topic || '').indexOf(sec) !== -1) || arts[0];
+  const line = sample ? firstSentence(sample.title || sample.topic) : '';
+  return line || '핫토픽·기사 연계 노트 부족';
+}
+
+function computeSectorRanking() {
   const digest = data.latest_news_digest || {};
   const hot = safeArr(digest.sector_hot_topics);
   const mkt = lastRow(safeArr(data.market_daily)) || {};
-  const kospiPct = typeof mkt.kospi_pct === 'number' ? mkt.kospi_pct : 0;
+  const dm = lastRow(safeArr(data.daily_macro)) || {};
   const flowRow = lastRow(safeArr(data.market_flow_daily));
   const foreign = flowRow && typeof flowRow.foreign_net === 'number' ? flowRow.foreign_net : 0;
-  const earn = stanceByAgent('earnings');
+  const ctx = {
+    foreign,
+    kospiPct: typeof mkt.kospi_pct === 'number' ? mkt.kospi_pct : null,
+    vix: typeof dm.vix === 'number' ? dm.vix : null,
+    stEarn: stanceByAgent('earnings'),
+    stFlow: stanceByAgent('flow'),
+    stSector: stanceByAgent('sector'),
+    stMacro: stanceByAgent('macro'),
+  };
 
   const rows = [];
   hot.forEach(block => {
-    const name = block.sector || '기타';
-    const cnt = Number(block.total_count) || safeArr(block.topics).reduce((s, t) => s + (Number(t.count) || 0), 0);
-    const trend = coarseScore(kospiPct);
-    const flowS = coarseScore(foreign / 5000);
-    const earnS = earn && typeof earn.confidence === 'number' ? coarseScore(earn.confidence) : 3;
-    const newsS = coarseScore(Math.min(5, cnt / 3));
-    const total = Math.round((trend + flowS + earnS + newsS) / 4);
-    rows.push({ name, trend, flow: flowS, earn: earnS, news: newsS, total });
+    const name = (block && block.sector) != null && String(block.sector).trim() ? String(block.sector).trim() : '기타';
+    const subs = computeSectorSubScores(block, ctx);
+    const total = sectorTotalScore(subs);
+    const trend = sectorTrendFromTotal(total);
+    const driver = sectorDriverFromSubs(subs);
+    rows.push({
+      name,
+      subs,
+      total,
+      trend,
+      driver,
+      note: buildSectorNote(block, digest),
+    });
   });
-  if (!rows.length) {
+
+  rows.sort((a, b) => b.total - a.total);
+  rows.forEach((r, i) => { r.rank = i + 1; });
+  return rows;
+}
+
+function renderSectorTopHighlights(ranked) {
+  const el = document.getElementById('sector-top-highlights');
+  if (!el) return;
+  const top = safeArr(ranked).slice(0, 3);
+  if (!top.length) {
+    el.innerHTML = '<div class="empty-state">섹터 핫토픽이 없어 하이라이트를 만들 수 없습니다.</div>';
+    return;
+  }
+  el.innerHTML = top.map((r, i) => {
+    const rk = i + 1;
+    const rankCls = rk === 1 ? 'rank-1' : rk === 2 ? 'rank-2' : 'rank-3';
+    return `
+      <div class="sector-top-card ${rankCls}">
+        <div class="rank-label">TOP ${rk}</div>
+        <div class="sector-name">${escapeHtml(r.name)}</div>
+        <div class="meta-row">
+          <span class="score-pill">${escapeHtml(formatMetric(r.total))}</span>
+          <span class="trend-badge ${escapeHtml(r.trend.cls)}">${escapeHtml(r.trend.label)}</span>
+          <span class="driver-badge">${escapeHtml(r.driver.label)}</span>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderSectorSummaries(ranked) {
+  const top3 = safeArr(ranked).slice(0, 3).map(r => r.name).filter(Boolean);
+  const weak = safeArr(ranked).filter(r => r.trend && r.trend.cls === 'weak').map(r => r.name);
+
+  const flowEl = document.getElementById('sector-flow-summary');
+  const avoidEl = document.getElementById('sector-avoid-summary');
+  const focusEl = document.getElementById('sector-focus-now');
+  if (flowEl) {
+    flowEl.textContent = top3.length
+      ? `랭킹 상위: ${top3.join(', ')}. 뉴스 핫토픽·수급·에이전트 힌트를 종합하면 관심 자금이 이쪽으로 기우는 편입니다 (추정).`
+      : '데이터가 부족해 자금 쏠림 요약을 만들 수 없습니다.';
+  }
+  if (avoidEl) {
+    avoidEl.textContent = weak.length
+      ? `추세 Weak: ${weak.join(', ')}. 신규 비중 확대는 보류하고 퀄리티·리스크를 우선하세요 (추정).`
+      : '현재 표에서 Weak로 분류된 섹터가 없거나 데이터가 부족합니다.';
+  }
+  if (focusEl) {
+    if (top3.length) {
+      const lead = top3[0];
+      const rest = top3.slice(1);
+      focusEl.textContent = rest.length
+        ? `지금은 「${lead}」을(를) 최우선으로, 이어서 ${rest.join(', ')} 순으로 리서치·비중을 두는 편이 질문에 가장 직접 답합니다 (추정).`
+        : `지금은 「${lead}」에 집중해 흐름을 따라가는 편이 유리합니다 (추정).`;
+    } else {
+      focusEl.textContent = '섹터 핫토픽이 없어 지금의 집중 섹터를 특정하기 어렵습니다. 뉴스 다이제스트를 먼저 확인하세요.';
+    }
+  }
+}
+
+function renderSectorScoreboardRows(ranked) {
+  if (!safeArr(ranked).length) {
     return '<tr><td colspan="6">섹터 핫토픽이 부족합니다. 뉴스 다이제스트를 확인하세요.</td></tr>';
   }
-  return rows.map(r => `
-    <tr>
+  return ranked.map(r => {
+    const topCls = r.rank <= 3 ? 'sector-row-top' : '';
+    const trAttr = topCls ? ` class="${escapeHtml(topCls)}"` : '';
+    return `
+    <tr${trAttr}>
+      <td>${escapeHtml(String(r.rank))}</td>
       <td>${escapeHtml(r.name)}</td>
-      <td>${r.trend}</td>
-      <td>${r.flow}</td>
-      <td>${r.earn}</td>
-      <td>${r.news}</td>
-      <td><strong>${r.total}</strong></td>
-    </tr>
-  `).join('');
+      <td><strong>${escapeHtml(formatMetric(r.total))}</strong></td>
+      <td><span class="trend-badge ${escapeHtml(r.trend.cls)}">${escapeHtml(r.trend.label)}</span></td>
+      <td><span class="driver-badge">${escapeHtml(r.driver.label)}</span></td>
+      <td>${escapeHtml(r.note)}</td>
+    </tr>`;
+  }).join('');
 }
 
 function extractNamesFromText(text) {
@@ -920,22 +1177,11 @@ function buildStockRows() {
   document.getElementById('sector-digest-meta').textContent =
     `뉴스일 ${digest.news_date || '-'} · 수집 ${digest.total_collected || 0}건`;
 
-  function fillRank(id, region) {
-    const ol = document.getElementById(id);
-    const items = sectorTopicsForRegion(region);
-    if (!items.length) {
-      ol.innerHTML = '<li class="empty-state">토픽이 부족합니다. 섹터 핫토픽·기사를 확보하면 순위가 채워집니다.</li>';
-      return;
-    }
-    ol.innerHTML = items.slice(0, 5).map((x, i) => {
-      const label = x.sector ? `${x.topic} (${x.sector})` : x.topic;
-      return `<li>${escapeHtml(String(i + 1))}. ${escapeHtml(label)}${x.count != null ? ` · ${escapeHtml(String(x.count))}건` : ''}</li>`;
-    }).join('');
-  }
-  fillRank('sector-rank-kr', 'kr');
-  fillRank('sector-rank-us', 'us');
-
-  document.getElementById('sector-scoreboard').innerHTML = buildSectorScoreboard();
+  const sectorRanked = computeSectorRanking();
+  renderSectorTopHighlights(sectorRanked);
+  renderSectorSummaries(sectorRanked);
+  const sectorBoard = document.getElementById('sector-scoreboard');
+  if (sectorBoard) sectorBoard.innerHTML = renderSectorScoreboardRows(sectorRanked);
 
   const eco = document.getElementById('sector-ecosystem');
   const hotBlocks = safeArr(digest.sector_hot_topics);
@@ -944,7 +1190,7 @@ function buildStockRows() {
   } else {
     eco.innerHTML = hotBlocks.slice(0, 6).map(block => {
       const top = safeArr(block.topics).slice(0, 2).map(t => t.topic).join(', ');
-      const sample = safeArr(digest.top_articles).find(a => (a.topic || '').indexOf(block.sector) !== -1) || safeArr(digest.top_articles)[0];
+      const sample = safeArr(digest.top_articles).find(a => (a.topic || '').indexOf(String(block.sector || '')) !== -1) || safeArr(digest.top_articles)[0];
       const leaders = extractNamesFromText(sample && (sample.title || sample.topic));
       return `
         <div class="eco-card">
