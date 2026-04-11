@@ -138,6 +138,8 @@ class MacroMonthly(BaseModel):
     core_cpi_yoy: Optional[float] = None
     pce_yoy: Optional[float] = None
     pmi: Optional[float] = None
+    retail_sales_mom: Optional[float] = None
+    nfp_change: Optional[float] = None
     # Wage series clarification:
     # - CES0500000003 is a *level* series (average hourly earnings), not a growth rate.
     #   We keep `wage_growth` for backward compatibility, but it mirrors `wage_level`.

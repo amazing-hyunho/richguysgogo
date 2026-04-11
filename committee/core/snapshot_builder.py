@@ -29,8 +29,10 @@ from committee.tools.macro_daily_provider import (
 from committee.tools.fred_monthly_provider import (
     fetch_cpi_yoy,
     fetch_core_cpi_yoy,
+    fetch_nfp_change,
     fetch_pce_yoy,
     fetch_pmi,
+    fetch_retail_sales_mom,
     fetch_unemployment_rate,
     fetch_wage_growth,
     fetch_wage_level,
@@ -79,6 +81,8 @@ def build_snapshot_real(
         "core_cpi_yoy": "FAIL",
         "pce_yoy": "FAIL",
         "pmi": "FAIL",
+        "retail_sales_mom": "FAIL",
+        "nfp_change": "FAIL",
         "wage_growth": "FAIL",
         # Phase 3 quarterly macro.
         "real_gdp": "FAIL",
@@ -127,6 +131,8 @@ def build_snapshot_real(
     core_cpi_yoy = fetch_core_cpi_yoy()
     pce_yoy = fetch_pce_yoy()
     pmi = fetch_pmi()
+    retail_sales_mom = fetch_retail_sales_mom()
+    nfp_change = fetch_nfp_change()
     wage_level = fetch_wage_level()
     wage_yoy = fetch_wage_yoy()
     # Backward compatibility: keep wage_growth populated with the level series.
@@ -209,6 +215,8 @@ def build_snapshot_real(
     status["core_cpi_yoy"] = "OK" if core_cpi_yoy is not None else "FAIL"
     status["pce_yoy"] = "OK" if pce_yoy is not None else "FAIL"
     status["pmi"] = "OK" if pmi is not None else "FAIL"
+    status["retail_sales_mom"] = "OK" if retail_sales_mom is not None else "FAIL"
+    status["nfp_change"] = "OK" if nfp_change is not None else "FAIL"
     status["wage_growth"] = "OK" if wage_growth is not None else "FAIL"
     status["wage_level"] = "OK" if wage_level is not None else "FAIL"
     status["wage_yoy"] = "OK" if wage_yoy is not None else "FAIL"
@@ -342,6 +350,8 @@ def build_snapshot_real(
                 "core_cpi_yoy": core_cpi_yoy,
                 "pce_yoy": pce_yoy,
                 "pmi": pmi,
+                "retail_sales_mom": retail_sales_mom,
+                "nfp_change": nfp_change,
                 "wage_growth": wage_growth,
                 "wage_level": wage_level,
                 "wage_yoy": wage_yoy,

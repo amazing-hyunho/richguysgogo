@@ -194,6 +194,8 @@ def init_db(db_path: Path | None = None) -> None:
                 core_cpi_yoy REAL,
                 pce_yoy REAL,
                 pmi REAL,
+                retail_sales_mom REAL,
+                nfp_change REAL,
                 wage_level REAL,
                 wage_yoy REAL,
                 created_at TEXT
@@ -208,6 +210,8 @@ def init_db(db_path: Path | None = None) -> None:
             "core_cpi_yoy",
             "pce_yoy",
             "pmi",
+            "retail_sales_mom",
+            "nfp_change",
             "wage_level",
             "wage_yoy",
         ]:
@@ -315,6 +319,8 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
                 core_cpi_yoy REAL,
                 pce_yoy REAL,
                 pmi REAL,
+                retail_sales_mom REAL,
+                nfp_change REAL,
                 wage_level REAL,
                 wage_yoy REAL,
                 created_at TEXT
@@ -331,6 +337,8 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
                 core_cpi_yoy,
                 pce_yoy,
                 pmi,
+                retail_sales_mom,
+                nfp_change,
                 wage_level,
                 wage_yoy,
                 created_at
@@ -342,6 +350,8 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
                 {sel("core_cpi_yoy")},
                 {sel("pce_yoy")},
                 {sel("pmi")},
+                {sel("retail_sales_mom")},
+                {sel("nfp_change")},
                 {wage_level_expr},
                 {wage_yoy_expr},
                 {sel("created_at")}
@@ -568,6 +578,8 @@ def upsert_monthly_macro(
     core_cpi_yoy: float | None = None,
     pce_yoy: float | None = None,
     pmi: float | None = None,
+    retail_sales_mom: float | None = None,
+    nfp_change: float | None = None,
     wage_level: float | None = None,
     wage_yoy: float | None = None,
     db_path: Path | None = None,
@@ -580,9 +592,11 @@ def upsert_monthly_macro(
             """
             INSERT INTO monthly_macro (
                 date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi,
+                retail_sales_mom, nfp_change,
                 wage_level, wage_yoy, created_at
             ) VALUES (
                 :date, :unemployment_rate, :cpi_yoy, :core_cpi_yoy, :pce_yoy, :pmi,
+                :retail_sales_mom, :nfp_change,
                 :wage_level, :wage_yoy, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
@@ -591,6 +605,8 @@ def upsert_monthly_macro(
                 core_cpi_yoy=excluded.core_cpi_yoy,
                 pce_yoy=excluded.pce_yoy,
                 pmi=excluded.pmi,
+                retail_sales_mom=excluded.retail_sales_mom,
+                nfp_change=excluded.nfp_change,
                 wage_level=excluded.wage_level,
                 wage_yoy=excluded.wage_yoy,
                 created_at=excluded.created_at;
@@ -602,6 +618,8 @@ def upsert_monthly_macro(
                 "core_cpi_yoy": None if core_cpi_yoy is None else float(core_cpi_yoy),
                 "pce_yoy": None if pce_yoy is None else float(pce_yoy),
                 "pmi": None if pmi is None else float(pmi),
+                "retail_sales_mom": None if retail_sales_mom is None else float(retail_sales_mom),
+                "nfp_change": None if nfp_change is None else float(nfp_change),
                 "wage_level": None if wage_level is None else float(wage_level),
                 "wage_yoy": None if wage_yoy is None else float(wage_yoy),
                 "created_at": created_at,
@@ -682,7 +700,7 @@ def upsert_domestic_policy_rate_daily(
     *,
     date: str,
     base_rate: float | None,
-    source: str = "BOK_ECOS_722Y001_0101000",
+    source: str = "BOK_ECOS_722Y001_D_0101000",
     db_path: Path | None = None,
 ) -> None:
     """Upsert one row into `domestic_policy_rate_daily`."""

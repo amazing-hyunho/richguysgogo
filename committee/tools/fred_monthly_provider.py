@@ -124,6 +124,28 @@ def _yoy_from_index(series_id: str) -> float | None:
     return (current / prev - 1.0) * 100.0
 
 
+def _mom_pct_from_index(series_id: str) -> float | None:
+    """MoM% = (current / previous_month - 1) * 100."""
+    values = _fetch_last_n_values(series_id, 2)
+    if not values or len(values) < 2:
+        return None
+    current = values[0]
+    prev = values[1]
+    if prev == 0:
+        return None
+    return (current / prev - 1.0) * 100.0
+
+
+def _mom_delta_from_level(series_id: str) -> float | None:
+    """Monthly level change = current - previous_month."""
+    values = _fetch_last_n_values(series_id, 2)
+    if not values or len(values) < 2:
+        return None
+    current = values[0]
+    prev = values[1]
+    return current - prev
+
+
 # --- Provider functions (per spec) ---
 
 
@@ -221,4 +243,14 @@ def fetch_wage_yoy() -> float | None:
     if prev == 0:
         return None
     return (current / prev - 1.0) * 100.0
+
+
+def fetch_retail_sales_mom() -> float | None:
+    """US retail sales monthly change % (FRED: RSAFS)."""
+    return _mom_pct_from_index("RSAFS")
+
+
+def fetch_nfp_change() -> float | None:
+    """US Nonfarm Payrolls monthly change (FRED: PAYEMS, thousands of persons)."""
+    return _mom_delta_from_level("PAYEMS")
 

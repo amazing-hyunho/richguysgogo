@@ -370,7 +370,11 @@ def main() -> None:
                 "SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d FROM market_flow_daily ORDER BY date",
             ),
             "daily_macro": fetch_rows(conn, "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, vix3m, vix_term_spread, hy_oas, ig_oas, fed_balance_sheet FROM daily_macro ORDER BY date"),
-            "monthly_macro": fetch_rows(conn, "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, wage_yoy FROM monthly_macro ORDER BY date"),
+            "monthly_macro": fetch_rows(
+                conn,
+                "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, "
+                "retail_sales_mom, nfp_change, wage_level, wage_yoy FROM monthly_macro ORDER BY date",
+            ),
             "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
             "committee_history": load_committee_history(),
             "latest_stances": load_latest_stances(),

@@ -65,7 +65,7 @@ def persist_snapshot_metrics(
     safe_upsert_domestic_policy_rate_daily(
         date=market_date.isoformat(),
         base_rate=domestic_base_rate,
-        source="BOK_ECOS_722Y001_0101000",
+        source="BOK_ECOS_722Y001_D_0101000",
     )
     if rate_check.status == "ok":
         print(f"[ecos] domestic base rate ok: {domestic_base_rate:.2f}% ({market_date.isoformat()})")
@@ -103,6 +103,8 @@ def persist_snapshot_metrics(
         core_cpi_yoy=m.core_cpi_yoy,
         pce_yoy=m.pce_yoy,
         pmi=m.pmi,
+        retail_sales_mom=m.retail_sales_mom,
+        nfp_change=m.nfp_change,
         wage_level=m.wage_level,
         wage_yoy=m.wage_yoy,
     )
