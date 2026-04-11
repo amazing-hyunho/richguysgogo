@@ -29,6 +29,9 @@ TELEGRAM_CHAT_ID=...
 
 # FRED (매크로 보강 시)
 FRED_API_KEY=...
+
+# 한국은행 ECOS (국내 기준금리 수집 시)
+ECOS_API_KEY=...
 ```
 
 참고:

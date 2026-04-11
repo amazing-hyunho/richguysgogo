@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import json
-import re
 import sqlite3
 from datetime import date
 from pathlib import Path
@@ -320,16 +319,24 @@ def load_latest_policy_rates() -> dict[str, object]:
             overseas_base_rate = float(fed)
 
     domestic_base_rate = None
-    headlines = snapshot.get("news_headlines") if isinstance(snapshot, dict) else None
-    if isinstance(headlines, list):
-        for item in headlines:
-            text = str(item)
-            if "기준금리" not in text:
-                continue
-            match = re.search(r"(\d+(?:\.\d+)?)\s*%", text)
-            if match:
-                domestic_base_rate = float(match.group(1))
-                break
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        try:
+            row = conn.execute(
+                """
+                SELECT base_rate
+                FROM domestic_policy_rate_daily
+                ORDER BY date DESC
+                LIMIT 1
+                """
+            ).fetchone()
+            if row and row["base_rate"] is not None:
+                domestic_base_rate = float(row["base_rate"])
+        finally:
+            conn.close()
+    except Exception:
+        domestic_base_rate = None
 
     return {
         "market_date": payload.get("market_date", latest_path.stem),

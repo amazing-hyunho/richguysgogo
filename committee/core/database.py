@@ -116,6 +116,18 @@ def init_db(db_path: Path | None = None) -> None:
         _ensure_column_exists(conn, table="market_flow_daily", column="institution_net", column_ddl="REAL")
         _ensure_column_exists(conn, table="market_flow_daily", column="retail_net", column_ddl="REAL")
 
+        # domestic_policy_rate_daily: BOK base rate snapshot by market date.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS domestic_policy_rate_daily (
+                date TEXT PRIMARY KEY,
+                base_rate REAL,
+                source TEXT,
+                created_at TEXT
+            );
+            """
+        )
+
 
         # stock_daily: stock-level features (composite primary key: date + ticker).
         conn.execute(
@@ -666,6 +678,35 @@ def upsert_market_forward(
         )
 
 
+def upsert_domestic_policy_rate_daily(
+    *,
+    date: str,
+    base_rate: float | None,
+    source: str = "BOK_ECOS_722Y001_0101000",
+    db_path: Path | None = None,
+) -> None:
+    """Upsert one row into `domestic_policy_rate_daily`."""
+    created_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO domestic_policy_rate_daily (date, base_rate, source, created_at)
+            VALUES (:date, :base_rate, :source, :created_at)
+            ON CONFLICT(date) DO UPDATE SET
+                base_rate=excluded.base_rate,
+                source=excluded.source,
+                created_at=excluded.created_at;
+            """,
+            {
+                "date": date,
+                "base_rate": None if base_rate is None else float(base_rate),
+                "source": source,
+                "created_at": created_at,
+            },
+        )
+
+
 # --- Rolling calculation helpers (no LLM dependency) ---
 
 _ALLOWED_FLOW_COLUMNS = {"foreign_net", "institution_net", "retail_net", "foreign_20d", "foreign_60d"}
@@ -810,6 +851,14 @@ def safe_upsert_monthly_macro(**kwargs: Any) -> None:
         upsert_monthly_macro(**kwargs)
     except Exception as exc:  # noqa: BLE001
         _log_db_error("upsert_monthly_macro", exc)
+
+
+def safe_upsert_domestic_policy_rate_daily(**kwargs: Any) -> None:
+    """Fail-safe wrapper for `upsert_domestic_policy_rate_daily`."""
+    try:
+        upsert_domestic_policy_rate_daily(**kwargs)
+    except Exception as exc:  # noqa: BLE001
+        _log_db_error("upsert_domestic_policy_rate_daily", exc)
 
 
 

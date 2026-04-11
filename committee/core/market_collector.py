@@ -4,12 +4,14 @@ from datetime import date
 
 from committee.core.database import (
     safe_upsert_daily_macro,
+    safe_upsert_domestic_policy_rate_daily,
     safe_upsert_market_daily,
     safe_upsert_market_flow_daily,
     safe_upsert_monthly_macro,
     safe_upsert_quarterly_macro,
 )
 from committee.schemas.snapshot import Snapshot
+from committee.tools.bok_policy_rate_provider import fetch_bok_base_rate
 
 
 def persist_snapshot_metrics(
@@ -57,6 +59,12 @@ def persist_snapshot_metrics(
         foreign_net=foreign_net_db,
         institution_net=institution_net_db,
         retail_net=retail_net_db,
+    )
+    domestic_base_rate = fetch_bok_base_rate(market_date=market_date)
+    safe_upsert_domestic_policy_rate_daily(
+        date=market_date.isoformat(),
+        base_rate=domestic_base_rate,
+        source="BOK_ECOS_722Y001_0101000",
     )
 
     if snapshot.macro is None:
