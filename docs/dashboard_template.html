@@ -5,211 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AI 투자위원회 · 의사결정 플로우</title>
   <style>
-    :root {
-      --bg: #0f172a;
-      --panel: #1e293b;
-      --panel-soft: #0b1220;
-      --line: #334155;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
-      --blue: #38bdf8;
-      --green: #34d399;
-      --amber: #f59e0b;
-      --red: #f87171;
-      --purple: #c084fc;
-    }
+    :root { --bg: #0f172a; --panel: #1e293b; --panel-soft: #0b1220; --line: #334155; --text: #e2e8f0; --muted: #94a3b8; --blue: #38bdf8; --green: #34d399; --amber: #f59e0b; --red: #f87171; }
     * { box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: var(--bg); color: var(--text); overflow-x: hidden; }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px 18px 48px; }
     h1 { margin: 0 0 6px 0; font-size: clamp(1.25rem, 4vw, 1.65rem); }
     .page-desc { color: var(--muted); margin: 0 0 20px 0; font-size: 14px; line-height: 1.5; }
-    .section {
-      margin-bottom: 28px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid rgba(51, 65, 85, 0.6);
-    }
+    .section { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(51, 65, 85, 0.6); }
     .section:last-of-type { border-bottom: none; }
-    .section-head {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      gap: 8px 14px;
-      margin-bottom: 14px;
-    }
+    .section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 14px; }
     .section-head h2 { margin: 0; font-size: clamp(1.05rem, 3vw, 1.2rem); }
     .section-meta { font-size: 12px; color: var(--muted); }
-    .synth-line {
-      margin-top: 12px;
-      padding: 12px 14px;
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      font-size: 14px;
-      line-height: 1.55;
-      color: #dbe4f0;
-      word-break: break-word;
-      overflow-wrap: anywhere;
-    }
-    .mode-pill {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-    }
+    .synth-line { margin-top: 12px; padding: 12px 14px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; font-size: 14px; line-height: 1.55; color: #dbe4f0; word-break: break-word; overflow-wrap: anywhere; }
+    .synth-bullets { margin: 8px 0 0 0; padding-left: 18px; font-size: 13px; line-height: 1.5; color: #cbd5e1; }
+    .mode-pill { display: inline-flex; align-items: center; padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
     .mode-pill.risk-on { background: rgba(52, 211, 153, 0.18); border: 1px solid rgba(52, 211, 153, 0.45); color: #6ee7b7; }
     .mode-pill.risk-off { background: rgba(248, 113, 113, 0.15); border: 1px solid rgba(248, 113, 113, 0.4); color: #fca5a5; }
     .mode-pill.neutral { background: rgba(148, 163, 184, 0.15); border: 1px solid rgba(148, 163, 184, 0.35); color: #cbd5e1; }
-    .exec-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 720px) {
-      .exec-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .exec-card {
-      background: var(--panel);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      border-radius: 14px;
-      padding: 14px;
-      min-width: 0;
-    }
+    .exec-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 720px) { .exec-grid { grid-template-columns: 1fr 1fr; } }
+    .exec-card { background: var(--panel); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 14px; padding: 14px; min-width: 0; }
     .exec-card .label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
     .exec-card .body { font-size: 14px; line-height: 1.55; word-break: break-word; overflow-wrap: anywhere; }
     .key-changes { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.55; }
     .key-changes li { margin-bottom: 6px; }
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
-      gap: 10px;
-    }
-    .metric-card {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
+    .metric-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 10px; }
+    .metric-card { background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
     .metric-card .name { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
     .metric-card .val { font-size: clamp(15px, 3.5vw, 18px); font-weight: 700; line-height: 1.2; word-break: break-word; }
     .metric-card .delta { font-size: 12px; margin-top: 6px; color: #cbd5e1; }
     .metric-card .delta.up { color: var(--green); }
     .metric-card .delta.down { color: var(--red); }
+    .metric-card.key-card { padding: 16px 14px; border-color: rgba(56, 189, 248, 0.28); background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.55)); }
+    .metric-card.key-card .val { font-size: clamp(17px, 4vw, 22px); }
+    .metric-card .interp { font-size: 11px; margin-top: 8px; line-height: 1.35; }
+    .metric-card .interp.bull { color: var(--green); }
+    .metric-card .interp.bear { color: var(--red); }
+    .metric-card .interp.neu { color: #94a3b8; }
+    .cio-strategy-box { background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.92)); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 16px 18px; margin-bottom: 20px; }
+    .cio-strategy-box .cio-title { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+    .cio-strategy-box #cio-market-stance { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 800; margin-bottom: 12px; letter-spacing: 0.02em; }
+    .cio-strategy-box #cio-strategy-points { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: #e2e8f0; }
+    .cio-strategy-box #cio-strategy-points li { margin-bottom: 6px; }
+    .cio-strategy-box #cio-main-risk { margin-top: 14px; font-size: 13px; color: #fcd34d; line-height: 1.5; padding-top: 12px; border-top: 1px solid rgba(51, 65, 85, 0.7); }
+    .macro-prompt { font-size: 13px; color: var(--amber); margin: 0 0 10px 0; font-weight: 600; }
+    .macro-story-box { margin-top: 14px; padding: 12px 14px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; font-size: 13px; line-height: 1.55; color: #dbe4f0; }
+    .macro-conclusion { margin-top: 12px; padding: 12px 14px; background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 12px; font-size: 13px; line-height: 1.5; color: #e2e8f0; }
+    .foreign-flow-visibility { margin-top: 16px; padding: 14px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; }
+    .foreign-flow-visibility h4 { margin: 0 0 10px 0; font-size: 13px; color: #dbe4f0; }
+    .foreign-flow-chart-wrap { width: 100%; max-width: 360px; margin: 8px 0; }
+    .foreign-flow-visibility .flow-meta { font-size: 12px; color: #cbd5e1; line-height: 1.45; margin-top: 8px; }
+    .foreign-flow-visibility #foreign-flow-interpretation { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+    .agent-card .agent-bullets { margin: 0; padding-left: 16px; font-size: 12px; line-height: 1.45; color: #cbd5e1; }
+    .agent-card .agent-bullets li { margin-bottom: 4px; }
     .tag-row { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      color: #cbd5e1;
-      max-width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    .tag { font-size: 11px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); color: #cbd5e1; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
     .tag.bull { border-color: rgba(52, 211, 153, 0.45); color: #6ee7b7; background: rgba(52, 211, 153, 0.08); }
     .tag.bear { border-color: rgba(248, 113, 113, 0.45); color: #fca5a5; background: rgba(248, 113, 113, 0.08); }
     .tag.neu { border-color: rgba(148, 163, 184, 0.4); color: #94a3b8; }
     .news-mini { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
-    .news-item {
-      background: var(--panel);
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      padding: 12px;
-      font-size: 13px;
-      line-height: 1.45;
-      min-width: 0;
-    }
+    .news-item { background: var(--panel); border-radius: 12px; border: 1px solid rgba(148, 163, 184, 0.12); padding: 12px; font-size: 13px; line-height: 1.45; min-width: 0; }
     .news-item .impact { font-size: 11px; margin-top: 6px; color: var(--amber); }
-    .agent-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .agent-card {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
+    .agent-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-top: 14px; }
+    .agent-card { background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
     .agent-card .title { font-size: 12px; font-weight: 700; color: #fff; margin-bottom: 6px; }
     .agent-card .sub { font-size: 11px; color: var(--muted); margin-bottom: 6px; }
     .agent-card .text { font-size: 12px; line-height: 1.45; color: #cbd5e1; word-break: break-word; overflow-wrap: anywhere; }
-    .index-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 10px;
-    }
-    .index-card {
-      background: var(--panel);
-      border: 1px solid rgba(148, 163, 184, 0.12);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
+    .index-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+    .index-card { background: var(--panel); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 12px; padding: 12px; min-width: 0; }
     .index-card .nm { font-size: 12px; color: var(--muted); }
     .index-card .px { font-size: clamp(16px, 3vw, 20px); font-weight: 700; margin-top: 4px; word-break: break-word; }
     .index-card .ch { font-size: 13px; margin-top: 4px; }
     .index-card .ch.up { color: var(--green); }
     .index-card .ch.down { color: var(--red); }
     .index-card .ch.flat { color: #cbd5e1; }
-    .flow-board {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    @media (min-width: 640px) {
-      .flow-board { grid-template-columns: 1fr 1fr; }
-    }
-    .flow-block {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
+    .flow-board { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 12px; }
+    @media (min-width: 640px) { .flow-board { grid-template-columns: 1fr 1fr; } }
+    .flow-block { background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
     .flow-block h4 { margin: 0 0 8px 0; font-size: 13px; color: #dbe4f0; }
     .flow-rows { font-size: 12px; }
     .flow-rows div { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; color: #cbd5e1; }
     .flow-rows .v { font-weight: 600; color: #f1f5f9; }
-    .state-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .state-card {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
+    .state-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-top: 12px; }
+    .state-card { background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
     .state-card .sn { font-size: 12px; color: var(--muted); }
     .state-card .sv { font-size: 15px; font-weight: 700; margin-top: 6px; word-break: break-word; }
-    .rank-row {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 12px;
-    }
-    @media (min-width: 720px) {
-      .rank-row { grid-template-columns: 1fr 1fr; }
-    }
-    .rank-box {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
-    .rank-box h4 { margin: 0 0 8px 0; font-size: 13px; }
-    .rank-box ol { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.5; }
     .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); }
     table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 520px; }
     th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
@@ -218,145 +98,36 @@
     .action-tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; display: inline-block; white-space: nowrap; }
     .action-buy { background: rgba(52, 211, 153, 0.15); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.35); }
     .action-wait { background: rgba(245, 158, 11, 0.12); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35); }
-    .action-watch { background: rgba(148, 163, 184, 0.12); color: #cbd5e1; border: 1px solid rgba(148, 163, 184, 0.3); }
     .action-excl { background: rgba(248, 113, 113, 0.12); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.35); }
-    .eco-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .eco-card {
-      background: var(--panel);
-      border: 1px solid rgba(148, 163, 184, 0.1);
-      border-radius: 12px;
-      padding: 12px;
-      min-width: 0;
-    }
+    .eco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
+    .eco-card { background: var(--panel); border: 1px solid rgba(148, 163, 184, 0.1); border-radius: 12px; padding: 12px; min-width: 0; }
     .eco-card h4 { margin: 0 0 8px 0; font-size: 13px; color: #fff; }
     .eco-card .muted { font-size: 11px; color: var(--muted); line-height: 1.4; }
     .empty-state { color: var(--muted); font-size: 13px; padding: 10px 0; }
-    .sector-top-highlights {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    @media (min-width: 720px) {
-      .sector-top-highlights { grid-template-columns: repeat(3, 1fr); }
-    }
-    .sector-top-card {
-      background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.85));
-      border: 1px solid rgba(56, 189, 248, 0.22);
-      border-radius: 14px;
-      padding: 14px;
-      min-width: 0;
-      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5);
-    }
-    .sector-top-card.rank-1 {
-      border-color: rgba(52, 211, 153, 0.45);
-      box-shadow: 0 0 24px rgba(52, 211, 153, 0.12);
-    }
-    .sector-top-card.rank-2,
-    .sector-top-card.rank-3 { border-color: rgba(56, 189, 248, 0.35); }
+    .sector-top-highlights { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 4px; }
+    @media (min-width: 720px) { .sector-top-highlights { grid-template-columns: repeat(3, 1fr); } }
+    .sector-top-card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.85)); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 14px; padding: 14px; min-width: 0; box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5); }
+    .sector-top-card.rank-1 { border-color: rgba(52, 211, 153, 0.45); box-shadow: 0 0 24px rgba(52, 211, 153, 0.12); }
+    .sector-top-card.rank-2, .sector-top-card.rank-3 { border-color: rgba(56, 189, 248, 0.35); }
     .sector-top-card .rank-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
     .sector-top-card .sector-name { font-size: 15px; font-weight: 700; color: #f8fafc; line-height: 1.3; word-break: break-word; }
     .sector-top-card .meta-row { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-    .sector-top-card .score-pill {
-      font-size: 12px;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #7dd3fc;
-    }
-    .sector-summary-block {
-      margin-top: 16px;
-      padding: 14px 16px;
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-    }
-    .sector-summary-block #sector-focus-now {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.5;
-      color: #f1f5f9;
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(51, 65, 85, 0.7);
-    }
-    .sector-summary-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-    @media (min-width: 640px) {
-      .sector-summary-grid { grid-template-columns: 1fr 1fr; }
-    }
-    .sector-summary-grid .sum-item .sum-h {
-      font-size: 11px;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-bottom: 6px;
-    }
-    .sector-summary-grid .sum-item .sum-body {
-      font-size: 13px;
-      line-height: 1.55;
-      color: #cbd5e1;
-      word-break: break-word;
-    }
-    .trend-badge {
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 999px;
-      display: inline-block;
-      white-space: nowrap;
-    }
-    .trend-badge.strong {
-      background: rgba(52, 211, 153, 0.18);
-      color: #6ee7b7;
-      border: 1px solid rgba(52, 211, 153, 0.45);
-    }
-    .trend-badge.neutral {
-      background: rgba(245, 158, 11, 0.12);
-      color: #fcd34d;
-      border: 1px solid rgba(245, 158, 11, 0.35);
-    }
-    .trend-badge.weak {
-      background: rgba(248, 113, 113, 0.12);
-      color: #fca5a5;
-      border: 1px solid rgba(248, 113, 113, 0.35);
-    }
-    .driver-badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 8px;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      color: #cbd5e1;
-      display: inline-block;
-      white-space: nowrap;
-    }
-    tr.sector-row-top td {
-      background: rgba(56, 189, 248, 0.06);
-    }
-    tr.sector-row-top td:first-child {
-      box-shadow: inset 3px 0 0 0 rgba(52, 211, 153, 0.65);
-    }
+    .sector-top-card .score-pill { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: #7dd3fc; }
+    .sector-summary-block { margin-top: 16px; padding: 14px 16px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 14px; }
+    .sector-summary-block #sector-focus-now { font-size: 15px; font-weight: 700; line-height: 1.5; color: #f1f5f9; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(51, 65, 85, 0.7); }
+    .sector-summary-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 640px) { .sector-summary-grid { grid-template-columns: 1fr 1fr; } }
+    .sector-summary-grid .sum-item .sum-h { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+    .sector-summary-grid .sum-item .sum-body { font-size: 13px; line-height: 1.55; color: #cbd5e1; word-break: break-word; }
+    .trend-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; display: inline-block; white-space: nowrap; }
+    .trend-badge.strong { background: rgba(52, 211, 153, 0.18); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.45); }
+    .trend-badge.neutral { background: rgba(245, 158, 11, 0.12); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .trend-badge.weak { background: rgba(248, 113, 113, 0.12); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.35); }
+    .driver-badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(148, 163, 184, 0.35); color: #cbd5e1; display: inline-block; white-space: nowrap; }
+    tr.sector-row-top td { background: rgba(56, 189, 248, 0.06); }
+    tr.sector-row-top td:first-child { box-shadow: inset 3px 0 0 0 rgba(52, 211, 153, 0.65); }
     #section-sector .table-wrap table { min-width: 640px; }
-    #stock-buy-now-summary.stock-buy-now-summary {
-      margin: 0 0 12px 0;
-      padding: 10px 12px;
-      font-size: 13px;
-      line-height: 1.5;
-      color: #dbe4f0;
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-    }
+    #stock-buy-now-summary.stock-buy-now-summary { margin: 0 0 12px 0; padding: 10px 12px; font-size: 13px; line-height: 1.5; color: #dbe4f0; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; }
     #section-stock .table-wrap table { min-width: 640px; }
   </style>
 </head>
@@ -364,6 +135,20 @@
   <div class="container">
     <h1>AI 투자위원회 · 5단계 의사결정 플로우</h1>
     <p class="page-desc">요약 → 매크로 → 주식시장 → 섹터 → 종목 판단 순으로 한 페이지에서 스크롤합니다. 데이터는 DB·최신 런 스냅샷·뉴스 다이제스트에서만 구성됩니다.</p>
+
+    <section class="section" id="section-cio-strategy" aria-labelledby="heading-cio-strategy">
+      <div class="section-head">
+        <h2 id="heading-cio-strategy">Today's Strategy (CIO Summary)</h2>
+        <span class="section-meta">합의·운영 가이드·변동성 힌트 기반</span>
+      </div>
+      <div class="cio-strategy-box">
+        <div class="cio-title">시장 스탠스</div>
+        <div id="cio-market-stance">-</div>
+        <div class="cio-title" style="margin-top:4px;">핵심 전략</div>
+        <ul id="cio-strategy-points"></ul>
+        <div id="cio-main-risk">-</div>
+      </div>
+    </section>
 
     <section class="section" id="section-executive" aria-labelledby="heading-executive">
       <div class="section-head">
@@ -390,7 +175,10 @@
         <h2 id="heading-macro">2. Macro</h2>
         <span class="section-meta" id="macro-dates"></span>
       </div>
+      <p class="macro-prompt">지금은 어떤 매크로 환경인가?</p>
       <div class="metric-grid" id="macro-metric-cards"></div>
+      <div class="macro-story-box" id="macro-story-box" role="region" aria-label="매크로 스토리"></div>
+      <div class="macro-conclusion" id="macro-conclusion" role="region" aria-label="매크로 결론"></div>
       <div class="news-mini" id="macro-news-items"></div>
       <div class="agent-grid" id="macro-agent-cards"></div>
       <div class="synth-line" id="macro-synth"><strong>매크로 종합:</strong> -</div>
@@ -402,6 +190,12 @@
         <span class="section-meta" id="equity-date"></span>
       </div>
       <div class="index-grid" id="equity-index-cards"></div>
+      <div class="foreign-flow-visibility" id="foreign-flow-visibility" aria-label="외국인 순매수 누적">
+        <h4>한국 시장 외국인 순매수 가시화</h4>
+        <div class="foreign-flow-chart-wrap" id="foreign-flow-chart-wrap"></div>
+        <div class="flow-meta" id="foreign-flow-5d-trend">-</div>
+        <div id="foreign-flow-interpretation">-</div>
+      </div>
       <div class="flow-board" id="equity-flow-board"></div>
       <div class="state-grid" id="equity-state-cards"></div>
       <div class="agent-grid" id="equity-agent-cards"></div>
@@ -413,7 +207,7 @@
         <h2 id="heading-sector">4. Sector</h2>
         <span class="section-meta" id="sector-digest-meta"></span>
       </div>
-      <p style="font-size:13px;color:var(--muted);margin:0 0 12px 0;line-height:1.5;">지금 어디에 집중할까? 상위 섹터·추세·드라이버를 한눈에 보고, 약한 섹터는 피합니다.</p>
+      <p style="font-size:13px;color:var(--muted);margin:0 0 12px 0;line-height:1.5;">지금 어디에 집중할까? 상위 섹터·Trend·Reason을 한눈에 보고, 약한 섹터는 피합니다.</p>
       <div id="sector-top-highlights" class="sector-top-highlights" aria-label="상위 섹터 하이라이트"></div>
       <div id="sector-summary" class="sector-summary-block">
         <div id="sector-focus-now" role="status">-</div>
@@ -436,8 +230,8 @@
               <th>순위</th>
               <th>섹터</th>
               <th>점수</th>
-              <th>추세</th>
-              <th>드라이버</th>
+              <th>Trend</th>
+              <th>Reason</th>
               <th>노트</th>
             </tr>
           </thead>
@@ -502,21 +296,10 @@ const CHAIR_TEXT_MAP = {
 
 function toKoreanChairText(text) { return CHAIR_TEXT_MAP[text] || text || '-'; }
 function formatGuidanceLevel(level) { return LABEL_BY_LEVEL[level] ? `${level} · ${LABEL_BY_LEVEL[level]}` : (level || '-'); }
-
 function safeArr(x) { return Array.isArray(x) ? x : []; }
-
-function latest(rows, key) {
-  const r = safeArr(rows);
-  return r.length ? (r[r.length - 1][key] ?? null) : null;
-}
-function prevRow(rows) {
-  const r = safeArr(rows);
-  return r.length >= 2 ? r[r.length - 2] : null;
-}
-function lastRow(rows) {
-  const r = safeArr(rows);
-  return r.length ? r[r.length - 1] : null;
-}
+function latest(rows, key) { const r = safeArr(rows); return r.length ? (r[r.length - 1][key] ?? null) : null; }
+function prevRow(rows) { const r = safeArr(rows); return r.length >= 2 ? r[r.length - 2] : null; }
+function lastRow(rows) { const r = safeArr(rows); return r.length ? r[r.length - 1] : null; }
 function latestNonNull(rows, key) {
   const r = safeArr(rows);
   for (let i = r.length - 1; i >= 0; i--) {
@@ -534,7 +317,6 @@ function previousNonNullBefore(rows, key, beforeIndex) {
   }
   return null;
 }
-
 function formatMetric(value) {
   if (value === null || value === undefined || value === '') return '-';
   if (typeof value === 'number' && Number.isFinite(value)) return value.toFixed(2);
@@ -549,6 +331,14 @@ function formatSignedPercent(value) {
   if (value === null || value === undefined || value === '') return '-';
   if (typeof value !== 'number' || !Number.isFinite(value)) return String(value);
   return `${value > 0 ? '+' : ''}${value.toFixed(2)}%`;
+}
+function formatSignedPercentArrow(value) {
+  const s = formatSignedPercent(value);
+  if (s === '-') return '-';
+  const c = percentClass(value);
+  if (c === 'up') return '\u25B2 ' + s;
+  if (c === 'down') return '\u25BC ' + s;
+  return s;
 }
 function formatRatePercent(value) {
   if (value === null || value === undefined || value === '') return '-';
@@ -569,20 +359,27 @@ function escapeHtml(value) {
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
 }
-
-function numDelta(curr, prev, label) {
+function metricDeltaOrMissing(curr, prev, label) {
   const prefix = label || '전일 대비';
-  if (typeof curr !== 'number' || !Number.isFinite(curr)) return { text: '-', cls: '' };
-  if (typeof prev !== 'number' || !Number.isFinite(prev)) return { text: `${prefix}: -`, cls: '' };
+  if (typeof curr !== 'number' || !Number.isFinite(curr)) return { text: '데이터 없음', cls: '' };
+  if (typeof prev !== 'number' || !Number.isFinite(prev)) return { text: '데이터 없음', cls: '' };
   const d = curr - prev;
   const sign = d > 0 ? '+' : '';
   return { text: `${prefix}: ${sign}${formatMetric(d)}`, cls: d > 0 ? 'up' : d < 0 ? 'down' : '' };
 }
-
+function prefixDeltaArrow(delta) {
+  const t = delta.text;
+  if (!t || t === '데이터 없음') return t;
+  if (delta.cls === 'up') return '\u25B2 ' + t;
+  if (delta.cls === 'down') return '\u25BC ' + t;
+  return t;
+}
 function rateDeltaTag(deltaText, higherIsTight) {
-  if (!deltaText || deltaText === '-' || !/:\s*[+-]?\d/.test(deltaText)) return { tag: '해석: 데이터 부족', cls: 'neu' };
+  if (!deltaText || deltaText === '-' || deltaText === '데이터 없음' || !/:\s*[+-]?\d/.test(deltaText)) {
+    return { tag: '해석: 데이터 없음', cls: 'neu' };
+  }
   const m = deltaText.match(/-?\d+\.?\d*/);
-  if (!m) return { tag: '해석: 확인 필요', cls: 'neu' };
+  if (!m) return { tag: '해석: 데이터 없음', cls: 'neu' };
   const d = parseFloat(m[0]);
   if (!Number.isFinite(d) || d === 0) return { tag: '해석: 중립', cls: 'neu' };
   if (higherIsTight) {
@@ -590,19 +387,28 @@ function rateDeltaTag(deltaText, higherIsTight) {
   }
   return d > 0 ? { tag: '해석: 강세 요인', cls: 'bull' } : { tag: '해석: 약세 요인', cls: 'bear' };
 }
-
+function macroMetricCard(name, valStr, delta, interp, isKey) {
+  const kc = isKey ? ' key-card' : '';
+  const ic = interp.cls === 'bull' ? 'bull' : interp.cls === 'bear' ? 'bear' : 'neu';
+  const dLine = prefixDeltaArrow(delta);
+  return `
+      <div class="metric-card${kc}">
+        <div class="name">${escapeHtml(name)}</div>
+        <div class="val">${escapeHtml(valStr)}</div>
+        <div class="delta ${escapeHtml(delta.cls)}">${escapeHtml(dLine)}</div>
+        <div class="interp ${ic}">${escapeHtml(interp.tag)}</div>
+      </div>`;
+}
 function stanceByAgent(name) {
   const st = (data.latest_stances && safeArr(data.latest_stances.stances)) || [];
   return st.find(s => String(s.agent_name || '') === name) || null;
 }
-
 function firstSentence(text) {
   const t = String(text || '').trim();
   if (!t) return '';
   const cut = t.split(/[.。\n]/)[0];
-  return cut.length > 120 ? cut.slice(0, 117) + '…' : cut;
+  return cut.length > 120 ? cut.slice(0, 117) + '\u2026' : cut;
 }
-
 function inferMarketMode() {
   const chair = data.latest_committee || {};
   const c = String(chair.consensus || '');
@@ -612,7 +418,6 @@ function inferMarketMode() {
   if (/중립|NEUTRAL|neutral/i.test(c)) return { label: 'Neutral', cls: 'neutral' };
   return { label: 'Neutral', cls: 'neutral' };
 }
-
 function buildMacroMetricCards() {
   const daily = safeArr(data.daily_macro);
   const monthly = safeArr(data.monthly_macro);
@@ -621,129 +426,271 @@ function buildMacroMetricCards() {
   const dPrev = prevRow(daily);
   const mLast = lastRow(monthly);
   const mPrev = prevRow(monthly);
-
   const fed = pol.overseas_base_rate;
-  const fedDelta = { text: '(일별 시계열 없음)', cls: '' };
-  const fedTag = { tag: '해석: 정책 금리', cls: 'neu' };
   const krBase = pol.domestic_base_rate;
-  const krBaseDelta = { text: '(일별 시계열 없음)', cls: '' };
-  const krBaseTag = { tag: '해석: 정책 금리', cls: 'neu' };
-
-  function card(name, valStr, delta, interp) {
-    return `
-      <div class="metric-card">
-        <div class="name">${escapeHtml(name)}</div>
-        <div class="val">${escapeHtml(valStr)}</div>
-        <div class="delta ${escapeHtml(delta.cls)}">${escapeHtml(delta.text)}</div>
-        <div class="tag-row"><span class="tag ${escapeHtml(interp.cls)}">${escapeHtml(interp.tag)}</span></div>
-      </div>`;
-  }
+  const fedVal = formatRatePercent(fed);
+  const krVal = formatRatePercent(krBase);
+  const noSeries = { text: '데이터 없음', cls: '' };
+  const noInterp = { tag: '해석: 데이터 없음', cls: 'neu' };
 
   const cpiCurr = mLast && mLast.cpi_yoy;
   const cpiPrev = mPrev && mPrev.cpi_yoy;
-  const cpiD = numDelta(
+  const cpiVal = (typeof cpiCurr === 'number' && Number.isFinite(cpiCurr)) ? `${formatMetric(cpiCurr)}%` : '-';
+  const cpiD = metricDeltaOrMissing(
     typeof cpiCurr === 'number' ? cpiCurr : NaN,
     typeof cpiPrev === 'number' ? cpiPrev : NaN,
     '직전 공시 대비'
   );
-  const cpiTag = rateDeltaTag(cpiD.text, true);
+  const cpiTag = cpiVal === '-' ? noInterp : rateDeltaTag(cpiD.text, true);
 
   const pceCurr = mLast && mLast.pce_yoy;
   const pcePrev = mPrev && mPrev.pce_yoy;
-  const pceD = numDelta(
+  const pceVal = (typeof pceCurr === 'number' && Number.isFinite(pceCurr)) ? `${formatMetric(pceCurr)}%` : '-';
+  const pceD = metricDeltaOrMissing(
     typeof pceCurr === 'number' ? pceCurr : NaN,
     typeof pcePrev === 'number' ? pcePrev : NaN,
     '직전 공시 대비'
   );
-  const pceTag = rateDeltaTag(pceD.text, true);
+  const pceTag = pceVal === '-' ? noInterp : rateDeltaTag(pceD.text, true);
 
   const y10 = dLast && dLast.us10y;
   const y10p = dPrev && dPrev.us10y;
-  const y10d = numDelta(
+  const y10Val = (typeof y10 === 'number' && Number.isFinite(y10)) ? `${formatMetric(y10)}%` : '-';
+  const y10d = metricDeltaOrMissing(
     typeof y10 === 'number' ? y10 : NaN,
     typeof y10p === 'number' ? y10p : NaN
   );
-  const y10Tag = rateDeltaTag(y10d.text, false);
+  const y10Tag = y10Val === '-' ? noInterp : rateDeltaTag(y10d.text, false);
 
   const dxy = dLast && dLast.dxy;
   const dxyp = dPrev && dPrev.dxy;
-  const dxyd = numDelta(
+  const dxyVal = (typeof dxy === 'number' && Number.isFinite(dxy)) ? formatMetric(dxy) : '-';
+  const dxyd = metricDeltaOrMissing(
     typeof dxy === 'number' ? dxy : NaN,
     typeof dxyp === 'number' ? dxyp : NaN
   );
-  const dxyTag = rateDeltaTag(dxyd.text, false);
+  const dxyTag = dxyVal === '-' ? noInterp : rateDeltaTag(dxyd.text, false);
 
   const fx = dLast && dLast.usdkrw;
   const fxp = dPrev && dPrev.usdkrw;
-  const fxd = numDelta(
+  const fxVal = formatNumberWithComma(fx, 2);
+  const fxd = metricDeltaOrMissing(
     typeof fx === 'number' ? fx : NaN,
     typeof fxp === 'number' ? fxp : NaN
   );
-  const fxTag = rateDeltaTag(fxd.text, true);
+  const fxTag = fxVal === '-' ? noInterp : rateDeltaTag(fxd.text, true);
 
   const oil = dLast && dLast.oil_wti;
   const oilp = dPrev && dPrev.oil_wti;
-  let oilCardVal;
-  let oild;
-  let oilTag;
+  let oilCardVal; let oild; let oilTag;
   if (typeof oil === 'number' && Number.isFinite(oil)) {
     oilCardVal = formatNumberWithComma(oil, 2);
-    oild = numDelta(oil, typeof oilp === 'number' ? oilp : NaN);
+    oild = metricDeltaOrMissing(oil, typeof oilp === 'number' ? oilp : NaN);
     oilTag = rateDeltaTag(oild.text, true);
   } else {
     oilCardVal = '-';
-    oild = { text: '데이터 없음', cls: '' };
-    oilTag = { tag: '해석: 데이터 없음', cls: 'neu' };
+    oild = noSeries;
+    oilTag = noInterp;
   }
 
   const exLatest = latestNonNull(monthly, 'export_yoy');
-  let exCardVal;
-  let exd;
-  let exTag;
+  let exCardVal; let exd; let exTag;
   if (exLatest) {
     const exIdx = monthly.lastIndexOf(exLatest.row);
     const exp = previousNonNullBefore(monthly, 'export_yoy', exIdx);
     exCardVal = `${formatMetric(exLatest.value)}%`;
-    exd = numDelta(exLatest.value, exp, '직전 공시 대비');
+    exd = metricDeltaOrMissing(exLatest.value, exp, '직전 공시 대비');
     exTag = rateDeltaTag(exd.text, false);
   } else {
     exCardVal = '-';
-    exd = { text: '데이터 없음', cls: '' };
-    exTag = { tag: '해석: 데이터 없음', cls: 'neu' };
+    exd = noSeries;
+    exTag = noInterp;
   }
 
   let html = '';
-  html += card('Fed 금리 (정책)', formatRatePercent(fed), fedDelta, fedTag);
-  html += card('한국 기준금리 (정책)', formatRatePercent(krBase), krBaseDelta, krBaseTag);
-  html += card('CPI YoY', formatMetric(cpiCurr) === '-' ? '-' : `${formatMetric(cpiCurr)}%`, cpiD, cpiTag);
-  html += card('PCE YoY', formatMetric(pceCurr) === '-' ? '-' : `${formatMetric(pceCurr)}%`, pceD, pceTag);
-  html += card('US 10Y', formatMetric(y10) === '-' ? '-' : `${formatMetric(y10)}%`, y10d, y10Tag);
-  html += card('DXY', formatMetric(dxy), dxyd, dxyTag);
-  html += card('USD/KRW (매크로 일별)', formatNumberWithComma(fx, 2), fxd, fxTag);
-  html += card('유가 (WTI)', oilCardVal, oild, oilTag);
-  html += card('한국 수출 YoY', exCardVal, exd, exTag);
+  html += macroMetricCard('Fed 금리 (정책)', fedVal, noSeries, noInterp, true);
+  html += macroMetricCard('한국 기준금리 (정책)', krVal, noSeries, noInterp, true);
+  html += macroMetricCard('CPI YoY', cpiVal, cpiD, cpiTag, false);
+  html += macroMetricCard('PCE YoY', pceVal, pceD, pceTag, false);
+  html += macroMetricCard('US 10Y', y10Val, y10d, y10Tag, true);
+  html += macroMetricCard('DXY', dxyVal, dxyd, dxyTag, true);
+  html += macroMetricCard('USD/KRW (매크로 일별)', fxVal, fxd, fxTag, false);
+  html += macroMetricCard('유가 (WTI)', oilCardVal, oild, oilTag, false);
+  html += macroMetricCard('한국 수출 YoY', exCardVal, exd, exTag, false);
   return html;
 }
-
 function newsImpactTag(topic, title) {
   const blob = `${topic || ''} ${title || ''}`;
   if (/인하|완화|호재|상승|반등/i.test(blob)) return '영향: 완화·긍정 (추정)';
   if (/인상|긴축|우려|하락|충격|전쟁|리스크/i.test(blob)) return '영향: 긴축·부정 (추정)';
   return '영향: 중립·혼조 (추정)';
 }
-
+function stanceBulletsFromStance(stance, maxN) {
+  const out = [];
+  const k = stance && stance.korean_comment ? String(stance.korean_comment).trim() : '';
+  if (k) {
+    k.split(/[.。]\s+/).forEach(part => {
+      const p = part.trim();
+      if (p && out.length < maxN) out.push(p.length > 140 ? p.slice(0, 137) + '\u2026' : p);
+    });
+  }
+  safeArr(stance && stance.core_claims).forEach(c => {
+    if (out.length >= maxN) return;
+    const p = String(c || '').trim();
+    if (p) out.push(p.length > 140 ? p.slice(0, 137) + '\u2026' : p);
+  });
+  return out.slice(0, maxN);
+}
 function renderAgentCard(title, stance) {
   if (!stance) {
-    return `<div class="agent-card"><div class="title">${escapeHtml(title)}</div><div class="sub">의견 없음</div><div class="text">-</div></div>`;
+    return `<div class="agent-card"><div class="title">${escapeHtml(title)}</div><div class="sub">의견 없음</div><ul class="agent-bullets"><li>-</li></ul></div>`;
   }
   const conf = stance.confidence != null && stance.confidence !== '' ? `신뢰도 ${escapeHtml(formatMetric(stance.confidence))}` : '';
-  const txt = stance.korean_comment || firstSentence((stance.core_claims || []).join(' ')) || '-';
+  const bullets = stanceBulletsFromStance(stance, 2);
+  const lis = (bullets.length ? bullets : ['-']).map(b => `<li>${escapeHtml(b)}</li>`).join('');
   return `
     <div class="agent-card">
       <div class="title">${escapeHtml(title)}</div>
       <div class="sub">${escapeHtml(conf)}</div>
-      <div class="text">${escapeHtml(txt)}</div>
+      <ul class="agent-bullets">${lis}</ul>
     </div>`;
+}
+function renderSynthBulletsHtml(strongTitle, lines, maxN) {
+  const L = safeArr(lines).filter(Boolean).slice(0, maxN);
+  if (!L.length) return `<strong>${escapeHtml(strongTitle)}</strong> <span>데이터 부족</span>`;
+  return `<strong>${escapeHtml(strongTitle)}</strong><ul class="synth-bullets">${L.map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
+}
+function buildCioStrategyBullets(chair) {
+  const guidance = safeArr(chair.ops_guidance);
+  const okT = guidance.find(g => String(g.level) === 'OK');
+  const cautT = guidance.find(g => String(g.level) === 'CAUTION');
+  const keyPts = safeArr(chair.key_points).map(p => (typeof p === 'string' ? p : p.point)).filter(Boolean);
+  const bullets = [];
+  const push = (txt) => {
+    const t = String(txt || '').trim();
+    if (!t || bullets.length >= 2) return;
+    bullets.push(toKoreanChairText(t));
+  };
+  push(okT && okT.text);
+  push(cautT && cautT.text);
+  keyPts.forEach(push);
+  if (!bullets.length) bullets.push('합의·운영 가이드가 비어 있으면 최신 런의 committee_result를 확인하세요.');
+  return bullets.slice(0, 2);
+}
+function buildCioMainRiskLine(chair, mode, dm) {
+  const guidance = safeArr(chair.ops_guidance);
+  const avoidT = guidance.find(g => String(g.level) === 'AVOID');
+  const vix = dm && typeof dm.vix === 'number' && Number.isFinite(dm.vix) ? dm.vix : null;
+  const y10 = dm && typeof dm.us10y === 'number' && Number.isFinite(dm.us10y) ? dm.us10y : null;
+  const dxy = dm && typeof dm.dxy === 'number' && Number.isFinite(dm.dxy) ? dm.dxy : null;
+  const parts = [];
+  if (avoidT && avoidT.text) parts.push(`회피: ${toKoreanChairText(avoidT.text)}`);
+  if (vix != null && vix >= 22) parts.push(`VIX ${formatMetric(vix)} — 변동성 부담`);
+  if (mode.cls === 'risk-off') parts.push('합의 방향: 위험 축소·방어 우선');
+  if (!parts.length) {
+    if (y10 != null && y10 >= 4.3) parts.push('장기 금리 상단 — 밸류 민감');
+    else if (dxy != null && dxy >= 105) parts.push('달러 강세 — 신흥 수급 경계');
+    else parts.push('특이 리스크 신호는 제한적 — 뉴스·수급 병행 확인');
+  }
+  return parts.slice(0, 2).join(' · ');
+}
+function buildMacroStoryKo(dm, dPrev, digest) {
+  const vix = dm && typeof dm.vix === 'number' ? dm.vix : null;
+  const y10 = dm && typeof dm.us10y === 'number' ? dm.us10y : null;
+  const y10p = dPrev && typeof dPrev.us10y === 'number' ? dPrev.us10y : null;
+  const dxy = dm && typeof dm.dxy === 'number' ? dm.dxy : null;
+  const art = safeArr(digest.top_articles)[0];
+  const head = art ? String(art.topic || art.title || '').slice(0, 72) : '';
+  let cause = '';
+  if (y10 != null && y10p != null && y10 !== y10p) {
+    cause = y10 > y10p
+      ? `원인: 미국 10Y가 ${formatMetric(y10)}%로 전일 대비 상승해 할인율이 높아졌습니다.`
+      : `원인: 미국 10Y가 ${formatMetric(y10)}%로 완화 쪽으로 움직였습니다.`;
+  } else if (vix != null) {
+    cause = `원인: VIX ${formatMetric(vix)}로 리스크 선호/회피 심리가 조정되고 있습니다.`;
+  } else if (dxy != null) {
+    cause = `원인: DXY ${formatMetric(dxy)} 수준에서 달러·환율 민감도가 작동합니다.`;
+  } else if (head) {
+    cause = `원인: 헤드라인(${head})이 단기 심리 변수입니다.`;
+  } else {
+    cause = '원인: 일별·월별 매크로 데이터가 제한적입니다.';
+  }
+  const tail = vix != null && vix >= 22
+    ? (y10 != null && y10p != null && y10 > y10p
+      ? ' 영향·시장 함의: 금리 상승 압력과 변동성 확대가 겹쳐 위험자산은 선별·사이즈 조절이 유리합니다.'
+      : ' 영향·시장 함의: 변동성 확대 구간에서 리스크 자산은 선별력이 필요합니다.')
+    : (y10 != null && y10p != null && y10 > y10p
+      ? ' 영향·시장 함의: 할인율 상승이 성장주 밸류에 부담 — 금리·환율에 베타가 연동됩니다.'
+      : ' 영향·시장 함의: 금리·환율 흐름에 따라 주식·채권 상대매력이 재조정됩니다.');
+  return cause + tail;
+}
+function buildMacroConclusionKo(mode, dm) {
+  const vix = dm && typeof dm.vix === 'number' ? dm.vix : null;
+  const env = mode.cls === 'risk-on' ? '현재 환경: 위험선호 흐름이 상대적으로 강합니다.'
+    : mode.cls === 'risk-off' ? '현재 환경: 방어·보수 국면으로 읽힙니다.'
+    : '현재 환경: 중립~혼조입니다.';
+  const riskA = mode.cls === 'risk-off' || (vix != null && vix >= 22)
+    ? '위험자산: 비중·진입을 줄이고 변동성 대비.'
+    : mode.cls === 'risk-on'
+    ? '위험자산: 추세 활용하되 과열 구간 경계.'
+    : '위험자산: 크게 베팅하지 않고 단계·선별 접근.';
+  return `${env} ${riskA}`;
+}
+function foreignFlowCumulativeSlice(rows, maxN) {
+  const r = safeArr(rows).slice(-maxN);
+  let cum = 0;
+  const series = [];
+  r.forEach(row => {
+    const v = row && row.foreign_net;
+    if (typeof v === 'number' && Number.isFinite(v)) cum += v;
+    series.push(cum);
+  });
+  return series;
+}
+function svgCumulativeLine(series) {
+  const w = 280; const h = 64; const pad = 4;
+  if (!series.length) return '<span class="empty-state">차트 데이터 없음</span>';
+  const vals = series;
+  const minV = Math.min(...vals);
+  const maxV = Math.max(...vals);
+  const range = maxV - minV || 1;
+  const n = vals.length;
+  const pts = vals.map((v, i) => {
+    const x = pad + (i / Math.max(1, n - 1)) * (w - 2 * pad);
+    const y = pad + (1 - (v - minV) / range) * (h - 2 * pad);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="64" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#38bdf8" stroke-width="2" points="${pts}"/></svg>`;
+}
+function foreignFlow5dTrendText(rows) {
+  const last5 = safeArr(rows).slice(-5);
+  const nums = last5.map(r => r && r.foreign_net).filter(v => typeof v === 'number' && Number.isFinite(v));
+  if (!nums.length) return '최근 5거래일: foreign_net 데이터 없음';
+  const sum = nums.reduce((a, b) => a + b, 0);
+  const pos = nums.filter(v => v > 0).length;
+  const neg = nums.filter(v => v < 0).length;
+  const dir = sum > 0 ? '순매수 합계 우위' : sum < 0 ? '순매도 합계 우위' : '순입출 균형';
+  return `최근 5거래일 누적 약 ${formatNumberWithComma(sum, 0)}억 · ${dir} (매수우위 ${pos}일 / 매도우위 ${neg}일)`;
+}
+function foreignFlowInterpretation(sum5d) {
+  if (sum5d == null || !Number.isFinite(sum5d)) return '해석: 데이터 없음';
+  if (sum5d > 0) return '해석: 외국인 순유입이 상승 에너지를 뒷받침하는 편 (추정)';
+  if (sum5d < 0) return '해석: 외국인 순유출이 상단 제한·되돌림 압력으로 작용할 수 있음 (추정)';
+  return '해석: 유입·유출이 엇갈려 방향 신호는 제한적 (추정)';
+}
+function renderForeignFlowBlock() {
+  const rows = safeArr(data.market_flow_daily);
+  const wrap = document.getElementById('foreign-flow-chart-wrap');
+  const t5 = document.getElementById('foreign-flow-5d-trend');
+  const interpEl = document.getElementById('foreign-flow-interpretation');
+  if (!wrap || !t5 || !interpEl) return;
+  const series = foreignFlowCumulativeSlice(rows, 30);
+  wrap.innerHTML = svgCumulativeLine(series);
+  t5.textContent = foreignFlow5dTrendText(rows);
+  const last5 = rows.slice(-5);
+  const nums = last5.map(r => r && r.foreign_net).filter(v => typeof v === 'number' && Number.isFinite(v));
+  const sum5 = nums.length ? nums.reduce((a, b) => a + b, 0) : null;
+  interpEl.textContent = foreignFlowInterpretation(sum5);
 }
 
 function coarseScore(n) {
@@ -751,14 +698,12 @@ function coarseScore(n) {
   if (!Number.isFinite(x)) return 1;
   return Math.max(1, Math.min(5, Math.round(2.5 + x)));
 }
-
 const SECTOR_DRIVER_ORDER = [
   { key: 'flow', label: 'flow' },
   { key: 'earnings', label: 'earnings' },
   { key: 'macro', label: 'macro' },
   { key: 'news', label: 'news' },
 ];
-
 function sectorAgentMentionBoost(sectorName, flowSt, sectorSt) {
   const name = String(sectorName || '').trim();
   if (name.length < 2) return 0;
@@ -775,17 +720,14 @@ function sectorAgentMentionBoost(sectorName, flowSt, sectorSt) {
   const blob = parts.join(' ');
   return blob.indexOf(needle) !== -1 ? 0.35 : 0;
 }
-
 function computeSectorSubScores(block, ctx) {
   const cnt = Number(block && block.total_count) || safeArr(block && block.topics).reduce((s, t) => s + (Number(t.count) || 0), 0);
   const flowBase = coarseScore(ctx.foreign / 5000);
   const flowAdj = sectorAgentMentionBoost(block && block.sector, ctx.stFlow, ctx.stSector);
   const flowS = Math.min(5, flowBase + flowAdj);
-
   const earnS = ctx.stEarn && typeof ctx.stEarn.confidence === 'number'
     ? coarseScore(ctx.stEarn.confidence)
     : 3;
-
   const kospi = typeof ctx.kospiPct === 'number' ? ctx.kospiPct : 0;
   const vix = typeof ctx.vix === 'number' && Number.isFinite(ctx.vix) ? ctx.vix : null;
   const macroRaw = (kospi / 2) + (vix != null ? (18 - vix) / 6 : 0);
@@ -799,16 +741,12 @@ function computeSectorSubScores(block, ctx) {
   if (secNm.length >= 2 && macroBlob && macroBlob.indexOf(secNm.slice(0, Math.min(6, secNm.length))) !== -1) {
     macroS = Math.min(5, macroS + 0.35);
   }
-
   const newsS = coarseScore(Math.min(5, cnt / 3));
-
   return { flow: flowS, earnings: earnS, macro: macroS, news: newsS };
 }
-
 function sectorTotalScore(subs) {
   return (subs.flow + subs.earnings + subs.macro + subs.news) / 4;
 }
-
 function sectorTrendFromTotal(total) {
   const t = Number(total);
   if (!Number.isFinite(t)) return { label: 'Weak', cls: 'weak' };
@@ -816,7 +754,6 @@ function sectorTrendFromTotal(total) {
   if (t >= 2.8) return { label: 'Neutral', cls: 'neutral' };
   return { label: 'Weak', cls: 'weak' };
 }
-
 function sectorDriverFromSubs(subs) {
   let best = SECTOR_DRIVER_ORDER[0];
   for (let i = 1; i < SECTOR_DRIVER_ORDER.length; i++) {
@@ -825,19 +762,17 @@ function sectorDriverFromSubs(subs) {
   }
   return best;
 }
-
 function buildSectorNote(block, digest) {
   const topics = safeArr(block && block.topics);
   const first = topics[0];
   const t = first && first.topic != null ? String(first.topic).trim() : '';
-  if (t) return t.length > 88 ? `${t.slice(0, 85)}…` : t;
+  if (t) return t.length > 88 ? `${t.slice(0, 85)}\u2026` : t;
   const sec = String(block && block.sector || '');
   const arts = safeArr(digest && digest.top_articles);
   const sample = arts.find(a => sec && String(a.topic || '').indexOf(sec) !== -1) || arts[0];
   const line = sample ? firstSentence(sample.title || sample.topic) : '';
   return line || '핫토픽·기사 연계 노트 부족';
 }
-
 function computeSectorRanking() {
   const digest = data.latest_news_digest || {};
   const hot = safeArr(digest.sector_hot_topics);
@@ -854,7 +789,6 @@ function computeSectorRanking() {
     stSector: stanceByAgent('sector'),
     stMacro: stanceByAgent('macro'),
   };
-
   const rows = [];
   hot.forEach(block => {
     const name = (block && block.sector) != null && String(block.sector).trim() ? String(block.sector).trim() : '기타';
@@ -862,21 +796,12 @@ function computeSectorRanking() {
     const total = sectorTotalScore(subs);
     const trend = sectorTrendFromTotal(total);
     const driver = sectorDriverFromSubs(subs);
-    rows.push({
-      name,
-      subs,
-      total,
-      trend,
-      driver,
-      note: buildSectorNote(block, digest),
-    });
+    rows.push({ name, subs, total, trend, driver, note: buildSectorNote(block, digest) });
   });
-
   rows.sort((a, b) => b.total - a.total);
   rows.forEach((r, i) => { r.rank = i + 1; });
   return rows;
 }
-
 function renderSectorTopHighlights(ranked) {
   const el = document.getElementById('sector-top-highlights');
   if (!el) return;
@@ -900,37 +825,34 @@ function renderSectorTopHighlights(ranked) {
       </div>`;
   }).join('');
 }
-
 function renderSectorSummaries(ranked) {
   const top3 = safeArr(ranked).slice(0, 3).map(r => r.name).filter(Boolean);
   const weak = safeArr(ranked).filter(r => r.trend && r.trend.cls === 'weak').map(r => r.name);
-
   const flowEl = document.getElementById('sector-flow-summary');
   const avoidEl = document.getElementById('sector-avoid-summary');
   const focusEl = document.getElementById('sector-focus-now');
   if (flowEl) {
     flowEl.textContent = top3.length
-      ? `랭킹 상위: ${top3.join(', ')}. 뉴스 핫토픽·수급·에이전트 힌트를 종합하면 관심 자금이 이쪽으로 기우는 편입니다 (추정).`
+      ? `TOP: ${top3.join(', ')} — 수급·뉴스·에이전트 종합 (추정).`
       : '데이터가 부족해 자금 쏠림 요약을 만들 수 없습니다.';
   }
   if (avoidEl) {
     avoidEl.textContent = weak.length
-      ? `추세 Weak: ${weak.join(', ')}. 신규 비중 확대는 보류하고 퀄리티·리스크를 우선하세요 (추정).`
-      : '현재 표에서 Weak로 분류된 섹터가 없거나 데이터가 부족합니다.';
+      ? `Weak: ${weak.join(', ')} — 비중 확대 보류 권장 (추정).`
+      : 'Weak 섹터 없음 또는 데이터 부족.';
   }
   if (focusEl) {
     if (top3.length) {
       const lead = top3[0];
       const rest = top3.slice(1);
       focusEl.textContent = rest.length
-        ? `지금은 「${lead}」을(를) 최우선으로, 이어서 ${rest.join(', ')} 순으로 리서치·비중을 두는 편이 질문에 가장 직접 답합니다 (추정).`
-        : `지금은 「${lead}」에 집중해 흐름을 따라가는 편이 유리합니다 (추정).`;
+        ? `집중: 「${lead}」 우선, 이어 ${rest.join(', ')} (추정).`
+        : `집중: 「${lead}」 (추정).`;
     } else {
-      focusEl.textContent = '섹터 핫토픽이 없어 지금의 집중 섹터를 특정하기 어렵습니다. 뉴스 다이제스트를 먼저 확인하세요.';
+      focusEl.textContent = '섹터 핫토픽 부족 — 뉴스 다이제스트 확인.';
     }
   }
 }
-
 function renderSectorScoreboardRows(ranked) {
   if (!safeArr(ranked).length) {
     return '<tr><td colspan="6">섹터 핫토픽이 부족합니다. 뉴스 다이제스트를 확인하세요.</td></tr>';
@@ -949,7 +871,6 @@ function renderSectorScoreboardRows(ranked) {
     </tr>`;
   }).join('');
 }
-
 function extractNamesFromText(text) {
   const t = String(text || '');
   const caps = t.match(/\b[A-Z]{2,5}\b/g) || [];
@@ -957,19 +878,16 @@ function extractNamesFromText(text) {
   const mix = [...new Set([...caps.slice(0, 4), ...kr.slice(0, 4)])];
   return mix.join(', ') || '(토픽·기사에서 유추 불가)';
 }
-
 function stockMajorIndexPct(mkt) {
   const m = mkt || {};
   if (typeof m.sp500_pct === 'number' && Number.isFinite(m.sp500_pct)) return m.sp500_pct;
   if (typeof m.kospi_pct === 'number' && Number.isFinite(m.kospi_pct)) return m.kospi_pct;
   return null;
 }
-
 function stockKospiPct(mkt) {
   const m = mkt || {};
   return typeof m.kospi_pct === 'number' && Number.isFinite(m.kospi_pct) ? m.kospi_pct : null;
 }
-
 function stockClassifyTrend(mode, majorPct, kospiPct) {
   const riskOn = mode && mode.cls === 'risk-on';
   const riskOff = mode && mode.cls === 'risk-off';
@@ -979,17 +897,14 @@ function stockClassifyTrend(mode, majorPct, kospiPct) {
   if (riskOn && kospiPct != null && kospiPct > 0) return 'Uptrend';
   return 'Sideways';
 }
-
 function stockClassifyPosition(trend, majorPct) {
   if (trend === 'Uptrend' && majorPct != null && majorPct >= 0.5) return 'Near high';
   if (trend === 'Downtrend' && majorPct != null && majorPct <= -0.5) return 'Bottom';
   return 'Pullback';
 }
-
 function stockFlowIn(foreignNet, kospiForeign) {
   return (foreignNet != null && foreignNet > 0) || (kospiForeign != null && kospiForeign > 0);
 }
-
 function stockResolveFlowIn(foreignNet, kospiForeign, stFlow) {
   if (foreignNet != null || kospiForeign != null) return stockFlowIn(foreignNet, kospiForeign);
   const blob = [
@@ -1003,7 +918,6 @@ function stockResolveFlowIn(foreignNet, kospiForeign, stFlow) {
   if (outH && !inH) return false;
   return false;
 }
-
 function stockFormatFlow(flowIn, foreignNet, kospiForeign) {
   const bits = [];
   if (foreignNet != null && Number.isFinite(foreignNet)) {
@@ -1015,7 +929,6 @@ function stockFormatFlow(flowIn, foreignNet, kospiForeign) {
   const ctx = bits.length ? ` (${bits.join(', ')})` : '';
   return (flowIn ? 'inflow' : 'outflow') + ctx;
 }
-
 function stockClassifyRisk(vix, mode) {
   if (mode && mode.cls === 'risk-off') return 'High';
   if (typeof vix === 'number' && Number.isFinite(vix)) {
@@ -1024,7 +937,6 @@ function stockClassifyRisk(vix, mode) {
   }
   return 'Medium';
 }
-
 function stockEarningsMomentumMeta(article, stEarn) {
   const topicBlob = `${article && article.topic != null ? article.topic : ''} ${article && article.title != null ? article.title : ''}`;
   const earnKw = /earnings|실적|어닝|revision|상향|컨센서스|eps|guidance|서프라이즈/i.test(topicBlob);
@@ -1042,7 +954,6 @@ function stockEarningsMomentumMeta(article, stEarn) {
   const momentumIsEarnings = earnKw || agentPos;
   return { earnKw, agentPos, momentumIsEarnings, blobEarn };
 }
-
 function stockPositiveMomentum(momentumIsEarnings, article, meta, stEarn) {
   if (momentumIsEarnings) {
     return !!(meta && (meta.agentPos || meta.earnKw
@@ -1051,7 +962,6 @@ function stockPositiveMomentum(momentumIsEarnings, article, meta, stEarn) {
   const blob = `${article && article.topic != null ? article.topic : ''} ${article && article.title != null ? article.title : ''}`;
   return /호재|상승|개선|긍정|반등|상향|강세|surge|rally/i.test(blob);
 }
-
 function stockMomentumLabel(momentumIsEarnings, article, meta) {
   const line = article && safeArr(article.summary_lines)[0];
   const tail = line ? String(line).trim().slice(0, 48) : '';
@@ -1061,7 +971,6 @@ function stockMomentumLabel(momentumIsEarnings, article, meta) {
   }
   return tail ? `news trigger · ${tail}` : 'news trigger';
 }
-
 function stockClassifyAction(trend, position, flowIn, risk, positiveMom) {
   const riskHigh = risk === 'High';
   if (trend === 'Downtrend' || (!flowIn && riskHigh)) return { action: 'Avoid', actionCls: 'action-excl' };
@@ -1076,7 +985,6 @@ function stockClassifyAction(trend, position, flowIn, risk, positiveMom) {
   }
   return { action: 'Wait', actionCls: 'action-wait' };
 }
-
 function buildStockBuyNowSummary(rowObjs) {
   const rows = safeArr(rowObjs);
   const n = rows.length;
@@ -1110,7 +1018,6 @@ function buildStockBuyNowSummary(rowObjs) {
   else tail = 'Mixed risk/flow.';
   return `${head} · ${tail}`;
 }
-
 function buildStockRows() {
   const mode = inferMarketMode();
   const digest = data.latest_news_digest || {};
@@ -1124,7 +1031,6 @@ function buildStockRows() {
     || {};
   const kf = krFlow.KOSPI || krFlow.kospi;
   const kospiForeign = kf && typeof kf.foreign === 'number' && Number.isFinite(kf.foreign) ? kf.foreign : null;
-
   const vix = latest(safeArr(data.daily_macro), 'vix');
   const stEarn = stanceByAgent('earnings');
   const stFlow = stanceByAgent('flow');
@@ -1138,10 +1044,8 @@ function buildStockRows() {
     flowLabel += ' (flow agent)';
   }
   const risk = stockClassifyRisk(vix, mode);
-
   const rows = [];
   const used = new Set();
-
   function pushRow(theme, article) {
     const meta = stockEarningsMomentumMeta(article, stEarn);
     const mom = stockMomentumLabel(meta.momentumIsEarnings, article, meta);
@@ -1159,14 +1063,12 @@ function buildStockRows() {
       actionCls: act.actionCls,
     });
   }
-
   articles.slice(0, 12).forEach(a => {
     const theme = a.topic || a.title || '테마 미상';
     if (used.has(theme)) return;
     used.add(theme);
     pushRow(theme, a);
   });
-
   if (rows.length < 4) {
     const betaArticle = {
       topic: '시장 베타 (KOSPI)',
@@ -1175,7 +1077,6 @@ function buildStockRows() {
     };
     pushRow('시장 베타 (KOSPI)', betaArticle);
   }
-
   const slice = rows.slice(0, 10);
   const summary = buildStockBuyNowSummary(slice);
   const tableHtml = slice.length
@@ -1191,7 +1092,6 @@ function buildStockRows() {
     </tr>
   `).join('')
     : '<tr><td colspan="7">뉴스 후보가 부족합니다. 뉴스 다이제스트를 확인하세요.</td></tr>';
-
   return { tableHtml, summary };
 }
 
@@ -1202,30 +1102,38 @@ function buildStockRows() {
   const digest = data.latest_news_digest || {};
   const compare = data.korean_market_flow_compare || {};
   const latestKrFlow = compare.current || (data.latest_korean_market_flow && data.latest_korean_market_flow.market) || {};
-
   const md = lastRow(marketDaily) || {};
   const mdDate = md.date || chair.market_date || '-';
+  const dm = lastRow(dailyMacro) || {};
+  const dPrev = prevRow(dailyMacro) || {};
+  const mode = inferMarketMode();
+
+  const stanceKo = mode.cls === 'risk-on' ? '(비중 확대 국면)' : mode.cls === 'risk-off' ? '(비중 축소·방어 국면)' : '(중립 국면)';
+  const cioStance = document.getElementById('cio-market-stance');
+  if (cioStance) cioStance.textContent = `${mode.label} ${stanceKo}`;
+  const cioUl = document.getElementById('cio-strategy-points');
+  if (cioUl) {
+    const bs = buildCioStrategyBullets(chair);
+    cioUl.innerHTML = bs.map(b => `<li>${escapeHtml(b)}</li>`).join('');
+  }
+  const cioRisk = document.getElementById('cio-main-risk');
+  if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dm);
+
   document.getElementById('executive-date').textContent = `기준일 ${mdDate}`;
   document.getElementById('equity-date').textContent = `시장 일자 ${mdDate}`;
-
-  const mode = inferMarketMode();
   const pill = document.getElementById('market-mode-pill');
   pill.textContent = `시장 모드 · ${mode.label}`;
   pill.className = `mode-pill ${mode.cls}`;
-
   const krLine = [
     `KOSPI ${formatSignedPercent(md.kospi_pct)} · KOSDAQ ${formatSignedPercent(md.kosdaq_pct)}`,
     `USD/KRW ${formatNumberWithComma(md.usdkrw, 2)} (${formatSignedPercent(md.usdkrw_pct)})`,
   ].join(' · ');
   document.getElementById('exec-kr-line').textContent = krLine || '-';
-
-  const dm = lastRow(dailyMacro) || {};
   const usLine = [
     `S&P500 ${formatSignedPercent(md.sp500_pct)} · NASDAQ ${formatSignedPercent(md.nasdaq_pct)}`,
     `VIX ${formatMetric(dm.vix)}`,
   ].join(' · ');
   document.getElementById('exec-us-line').textContent = usLine || '-';
-
   const keyUl = document.getElementById('exec-key-changes');
   const changes = [];
   changes.push(`KOSPI ${formatSignedPercent(md.kospi_pct)} / KOSDAQ ${formatSignedPercent(md.kosdaq_pct)}`);
@@ -1234,7 +1142,6 @@ function buildStockRows() {
   const art = safeArr(digest.top_articles)[0];
   if (art && art.topic) changes[2] = `${changes[2]} · 헤드라인 토픽: ${art.topic}`;
   keyUl.innerHTML = changes.slice(0, 3).map(c => `<li>${escapeHtml(c)}</li>`).join('');
-
   document.getElementById('exec-cio').textContent = toKoreanChairText(chair.consensus) || '-';
 
   const monthlyArr = safeArr(data.monthly_macro);
@@ -1247,6 +1154,11 @@ function buildStockRows() {
     `일별 ${dm.date || '-'} · 월별 ${mLast && mLast.date ? mLast.date : '-'} · 수출 기준 ${exportAsOf}`;
 
   document.getElementById('macro-metric-cards').innerHTML = buildMacroMetricCards();
+
+  const storyEl = document.getElementById('macro-story-box');
+  if (storyEl) storyEl.textContent = buildMacroStoryKo(dm, dPrev, digest);
+  const concEl = document.getElementById('macro-conclusion');
+  if (concEl) concEl.textContent = buildMacroConclusionKo(mode, dm);
 
   const topArts = safeArr(digest.top_articles).slice(0, 3);
   const newsEl = document.getElementById('macro-news-items');
@@ -1269,12 +1181,12 @@ function buildStockRows() {
 
   const stMacro = stanceByAgent('macro');
   const stLiq = stanceByAgent('liquidity');
-  const macroSynth = [
+  const macroSynthLines = [
     firstSentence(toKoreanChairText(chair.consensus)),
     firstSentence(stMacro && stMacro.korean_comment),
     firstSentence(stLiq && stLiq.korean_comment),
-  ].filter(Boolean).join(' · ') || '매크로 에이전트·합의 데이터가 부족합니다.';
-  document.getElementById('macro-synth').innerHTML = `<strong>매크로 종합:</strong> ${escapeHtml(macroSynth)}`;
+  ].filter(Boolean);
+  document.getElementById('macro-synth').innerHTML = renderSynthBulletsHtml('매크로 종합:', macroSynthLines, 2);
 
   document.getElementById('equity-index-cards').innerHTML = [
     { label: 'KOSPI', px: md.kospi, ch: md.kospi_pct },
@@ -1285,9 +1197,11 @@ function buildStockRows() {
     <div class="index-card">
       <div class="nm">${escapeHtml(x.label)}</div>
       <div class="px">${escapeHtml(formatNumberWithComma(x.px, x.label.indexOf('NASDAQ') !== -1 ? 2 : 0))}</div>
-      <div class="ch ${percentClass(x.ch)}">${escapeHtml(formatSignedPercent(x.ch))}</div>
+      <div class="ch ${percentClass(x.ch)}">${escapeHtml(formatSignedPercentArrow(x.ch))}</div>
     </div>
   `).join('');
+
+  renderForeignFlowBlock();
 
   function flowBlock(title, key) {
     const f = latestKrFlow[key];
@@ -1310,12 +1224,10 @@ function buildStockRows() {
 
   const breadth = stanceByAgent('breadth');
   const breadthText = breadth
-    ? `${firstSentence(breadth.korean_comment) || '-'} (신뢰도 ${formatMetric(breadth.confidence)})`
-    : '브레드스 에이전트 의견 없음 · 지수 등락으로 대체';
-
+    ? `${firstSentence(breadth.korean_comment) || '-'}`
+    : '브레드스 에이전트 의견 없음';
   const hot0 = safeArr(digest.sector_hot_topics)[0];
   const leadTopic = hot0 && safeArr(hot0.topics)[0] && hot0.topics[0].topic;
-
   document.getElementById('equity-state-cards').innerHTML = `
     <div class="state-card"><div class="sn">내부 상태 · 브레드스</div><div class="sv">${escapeHtml(breadthText)}</div></div>
     <div class="state-card"><div class="sn">변동성 · VIX</div><div class="sv">${escapeHtml(formatMetric(dm.vix))}</div></div>
@@ -1331,12 +1243,12 @@ function buildStockRows() {
 
   const stFlow = stanceByAgent('flow');
   const stSector = stanceByAgent('sector');
-  const eqSynth = [
+  const eqSynthLines = [
     firstSentence(stFlow && stFlow.korean_comment),
     firstSentence(stSector && stSector.korean_comment),
     `VIX ${formatMetric(dm.vix)}`,
-  ].filter(Boolean).join(' · ') || '시장 에이전트 데이터가 부족합니다.';
-  document.getElementById('equity-synth').innerHTML = `<strong>시장 종합:</strong> ${escapeHtml(eqSynth)}`;
+  ].filter(Boolean);
+  document.getElementById('equity-synth').innerHTML = renderSynthBulletsHtml('시장 종합:', eqSynthLines, 2);
 
   document.getElementById('sector-digest-meta').textContent =
     `뉴스일 ${digest.news_date || '-'} · 수집 ${digest.total_collected || 0}건`;
