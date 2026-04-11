@@ -94,6 +94,14 @@ def fetch_usdkrw() -> float | None:
     return None
 
 
+def fetch_oil_wti() -> float | None:
+    """WTI crude spot proxy (best-effort): CL=F then Brent BZ=F fallback."""
+    for symbol in ["CL=F", "BZ=F"]:
+        v = _fetch_latest_close(symbol)
+        if v is not None:
+            return v
+    return None
+
 
 def fetch_vix3m() -> float | None:
     """VIX 3M index level from Yahoo (^VIX3M)."""

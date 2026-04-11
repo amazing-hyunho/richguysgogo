@@ -19,6 +19,7 @@ from committee.tools.http_provider import HttpProvider
 from committee.tools.providers import IDataProvider
 from committee.tools.macro_daily_provider import (
     fetch_dxy,
+    fetch_oil_wti,
     fetch_us10y,
     fetch_us2y,
     fetch_usdkrw,
@@ -76,6 +77,7 @@ def build_snapshot_real(
         "usdkrw_macro": "FAIL",
         "vix3m": "FAIL",
         "vix_term_spread": "FAIL",
+        "oil_wti": "FAIL",
         # Phase 2: monthly macro (FRED).
         "unemployment_rate": "FAIL",
         "cpi_yoy": "FAIL",
@@ -123,6 +125,7 @@ def build_snapshot_real(
     usdkrw_macro = fetch_usdkrw()
     vix3m = fetch_vix3m()
     vix_term_spread = fetch_vix_term_spread()
+    oil_wti = fetch_oil_wti()
 
     # Spread calculation: only when both yields are available.
     spread_2_10 = (us10y - us2y) if (us10y is not None and us2y is not None) else None
@@ -211,6 +214,7 @@ def build_snapshot_real(
     status["spread_2_10"] = "OK" if spread_2_10 is not None else "FAIL"
     status["vix3m"] = "OK" if vix3m is not None else "FAIL"
     status["vix_term_spread"] = "OK" if vix_term_spread is not None else "FAIL"
+    status["oil_wti"] = "OK" if oil_wti is not None else "FAIL"
 
     # Phase 2 monthly status tracking (FAIL when missing/unavailable).
     status["unemployment_rate"] = "OK" if unemployment_rate is not None else "FAIL"
@@ -347,6 +351,7 @@ def build_snapshot_real(
                 "usdkrw": usdkrw_macro,
                 "vix3m": vix3m,
                 "vix_term_spread": vix_term_spread,
+                "oil_wti": oil_wti,
             },
             "monthly": {
                 "unemployment_rate": unemployment_rate,

@@ -126,6 +126,7 @@ class MacroDaily(BaseModel):
     usdkrw: Optional[float] = None
     vix3m: Optional[float] = None
     vix_term_spread: Optional[float] = None
+    oil_wti: Optional[float] = None
 
     class Config:
         extra = "forbid"

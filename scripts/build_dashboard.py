@@ -369,7 +369,7 @@ def main() -> None:
                 conn,
                 "SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d FROM market_flow_daily ORDER BY date",
             ),
-            "daily_macro": fetch_rows(conn, "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, vix3m, vix_term_spread, hy_oas, ig_oas, fed_balance_sheet FROM daily_macro ORDER BY date"),
+            "daily_macro": fetch_rows(conn, "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet FROM daily_macro ORDER BY date"),
             "monthly_macro": fetch_rows(
                 conn,
                 "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, "

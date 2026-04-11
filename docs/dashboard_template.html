@@ -545,6 +545,21 @@ function buildMacroMetricCards() {
   );
   const fxTag = rateDeltaTag(fxd.text, true);
 
+  const oil = dLast && dLast.oil_wti;
+  const oilp = dPrev && dPrev.oil_wti;
+  let oilCardVal;
+  let oild;
+  let oilTag;
+  if (typeof oil === 'number' && Number.isFinite(oil)) {
+    oilCardVal = formatNumberWithComma(oil, 2);
+    oild = numDelta(oil, typeof oilp === 'number' ? oilp : NaN);
+    oilTag = rateDeltaTag(oild.text, true);
+  } else {
+    oilCardVal = '-';
+    oild = { text: '데이터 없음', cls: '' };
+    oilTag = { tag: '해석: 데이터 없음', cls: 'neu' };
+  }
+
   const exLatest = latestNonNull(monthly, 'export_yoy');
   let exCardVal;
   let exd;
@@ -569,7 +584,7 @@ function buildMacroMetricCards() {
   html += card('US 10Y', formatMetric(y10) === '-' ? '-' : `${formatMetric(y10)}%`, y10d, y10Tag);
   html += card('DXY', formatMetric(dxy), dxyd, dxyTag);
   html += card('USD/KRW (매크로 일별)', formatNumberWithComma(fx, 2), fxd, fxTag);
-  html += card('유가 (WTI)', '미연동', { text: '수집 파이프라인 없음', cls: '' }, { tag: '해석: 추후 연동', cls: 'neu' });
+  html += card('유가 (WTI)', oilCardVal, oild, oilTag);
   html += card('한국 수출 YoY', exCardVal, exd, exTag);
   return html;
 }

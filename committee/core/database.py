@@ -168,6 +168,7 @@ def init_db(db_path: Path | None = None) -> None:
                 vix REAL,
                 dxy REAL,
                 usdkrw REAL,
+                oil_wti REAL,
                 created_at TEXT
             );
             """
@@ -183,6 +184,7 @@ def init_db(db_path: Path | None = None) -> None:
         _ensure_column_exists(conn, table="daily_macro", column="hy_oas", column_ddl="REAL")
         _ensure_column_exists(conn, table="daily_macro", column="ig_oas", column_ddl="REAL")
         _ensure_column_exists(conn, table="daily_macro", column="fed_balance_sheet", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="oil_wti", column_ddl="REAL")
 
         # Phase 2: monthly_macro table (NULL-based; no 0.0 placeholders).
         conn.execute(
@@ -523,6 +525,7 @@ def upsert_daily_macro(
     real_rate: float | None = None,
     vix3m: float | None = None,
     vix_term_spread: float | None = None,
+    oil_wti: float | None = None,
     hy_oas: float | None = None,
     ig_oas: float | None = None,
     fed_balance_sheet: float | None = None,
@@ -535,9 +538,9 @@ def upsert_daily_macro(
         conn.execute(
             """
             INSERT INTO daily_macro (
-                date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate, vix3m, vix_term_spread, hy_oas, ig_oas, fed_balance_sheet, created_at
+                date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate, vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet, created_at
             ) VALUES (
-                :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate, :vix3m, :vix_term_spread, :hy_oas, :ig_oas, :fed_balance_sheet, :created_at
+                :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate, :vix3m, :vix_term_spread, :oil_wti, :hy_oas, :ig_oas, :fed_balance_sheet, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
                 us10y=excluded.us10y,
@@ -550,6 +553,7 @@ def upsert_daily_macro(
                 real_rate=excluded.real_rate,
                 vix3m=excluded.vix3m,
                 vix_term_spread=excluded.vix_term_spread,
+                oil_wti=excluded.oil_wti,
                 hy_oas=excluded.hy_oas,
                 ig_oas=excluded.ig_oas,
                 fed_balance_sheet=excluded.fed_balance_sheet,
@@ -567,6 +571,7 @@ def upsert_daily_macro(
                 "real_rate": None if real_rate is None else float(real_rate),
                 "vix3m": None if vix3m is None else float(vix3m),
                 "vix_term_spread": None if vix_term_spread is None else float(vix_term_spread),
+                "oil_wti": None if oil_wti is None else float(oil_wti),
                 "hy_oas": None if hy_oas is None else float(hy_oas),
                 "ig_oas": None if ig_oas is None else float(ig_oas),
                 "fed_balance_sheet": None if fed_balance_sheet is None else float(fed_balance_sheet),

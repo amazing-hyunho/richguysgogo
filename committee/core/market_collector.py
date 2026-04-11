@@ -92,6 +92,7 @@ def persist_snapshot_metrics(
         real_rate=s.real_rate,
         vix3m=d.vix3m,
         vix_term_spread=d.vix_term_spread,
+        oil_wti=d.oil_wti,
         hy_oas=s.hy_oas,
         ig_oas=s.ig_oas,
         fed_balance_sheet=s.fed_balance_sheet,
