@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-04-12T16:42:56.899112+00:00",
+  "crawled_at": "2026-04-12T17:43:18.956865+00:00",
   "news_date": "2026-04-13",
-  "total_collected": 4,
+  "total_collected": 6,
   "topic_counts": [
     [
       "인플레이션",
@@ -9,11 +9,15 @@
     ],
     [
       "에너지/원자재",
-      1
+      2
     ],
     [
       "정책/테마",
       2
+    ],
+    [
+      "반도체/AI",
+      1
     ]
   ],
   "top_articles": [
@@ -30,7 +34,7 @@
     },
     {
       "topic": "에너지/원자재",
-      "count": 1,
+      "count": 2,
       "title": "중동 리스크, 가격 넘어 ‘생산 차질’로 확산 - 드림투데이",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1OS0htWkFoSnd6NHVwRGFHNWNYT0ZOTkVDb3pQX0laYUZjNmpuMURlLVgzeGg3X2xVdkFOWXUtalUwTzZwSmNCOVhRMjAxOWlENTVsWHNCeHBpYThWUHFXZmtVZ1hELVRxTUE?oc=5",
       "summary_lines": [
@@ -42,10 +46,21 @@
     {
       "topic": "정책/테마",
       "count": 2,
-      "title": "트럼프 “호르무즈 정리 오래 안 걸려…中, 이란에 무기 주면 50% 관세” - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBJYWZqekwtallwR3Z5OVJ2ekktX0lDVnRPS1JnYk5BSHZaaF9vSkUzdzFOYXQzYTJNWDI4LVBYd3htLUstekYxdHlYdHd4OHM?oc=5",
+      "title": "트럼프 \"이란, 돌아올 것…中, 이란에 무기 주면 50% 관세\"(종합) - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBfWlQ5YTBfd2hpazNhSXFrZ2FELWZuaHpGbkZzekJoV0dWQkI3RHBNMFZSZEVLUHJhSVJFZ3Z2eENENmFTOWN5V1N1ZTFvcTZacEgxVk1welIyN0MtYTUxNdIBeEFVX3lxTE5tWDhWOUVjd0NsNHhuNWdBa0dGM0FxZWVtWkpKZ091SndOV3B5UXNYMGJUcDFYdWZnd2E3bWgyRzRYcV8wVFhuM3pZbXJpd0NGQ202X3JGbkI4aE8wcjYzemR1UUg3SGx2bWxtdDRtZXhWb01VTk1QcA?oc=5",
       "summary_lines": [
-        "핵심 이슈: 트럼프 “호르무즈 정리 오래 안 걸려…中, 이란에 무기 주면 50% 관세” - v.daum.net",
+        "핵심 이슈: 트럼프 \"이란, 돌아올 것…中, 이란에 무기 주면 50% 관세\"(종합) - 뉴시스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "반도체/AI",
+      "count": 1,
+      "title": "엔비디아 뚫은 ‘삼성 HBM4’…비결은 ‘불량 제로’ - dt.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA1RG5tYmVEQVZoaHJiQjlmMTVPdHdDbUMxaHlweGVTakdDNWlQMk1YdFJDaUd6NGxtRi1SWmw1NzU1MWpkMHlHRlB1QWtYQQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 엔비디아 뚫은 ‘삼성 HBM4’…비결은 ‘불량 제로’ - dt.co.kr",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -53,14 +68,26 @@
   ],
   "sector_hot_topics": [
     {
+      "sector": "에너지/소재",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "에너지/원자재",
+          "count": 2,
+          "title": "중동 리스크, 가격 넘어 ‘생산 차질’로 확산 - 드림투데이",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1OS0htWkFoSnd6NHVwRGFHNWNYT0ZOTkVDb3pQX0laYUZjNmpuMURlLVgzeGg3X2xVdkFOWXUtalUwTzZwSmNCOVhRMjAxOWlENTVsWHNCeHBpYThWUHFXZmtVZ1hELVRxTUE?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "정책/테마",
       "total_count": 2,
       "topics": [
         {
           "topic": "정책/테마",
           "count": 2,
-          "title": "트럼프 “호르무즈 정리 오래 안 걸려…中, 이란에 무기 주면 50% 관세” - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBJYWZqekwtallwR3Z5OVJ2ekktX0lDVnRPS1JnYk5BSHZaaF9vSkUzdzFOYXQzYTJNWDI4LVBYd3htLUstekYxdHlYdHd4OHM?oc=5"
+          "title": "트럼프 \"이란, 돌아올 것…中, 이란에 무기 주면 50% 관세\"(종합) - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBfWlQ5YTBfd2hpazNhSXFrZ2FELWZuaHpGbkZzekJoV0dWQkI3RHBNMFZSZEVLUHJhSVJFZ3Z2eENENmFTOWN5V1N1ZTFvcTZacEgxVk1welIyN0MtYTUxNdIBeEFVX3lxTE5tWDhWOUVjd0NsNHhuNWdBa0dGM0FxZWVtWkpKZ091SndOV3B5UXNYMGJUcDFYdWZnd2E3bWgyRzRYcV8wVFhuM3pZbXJpd0NGQ202X3JGbkI4aE8wcjYzemR1UUg3SGx2bWxtdDRtZXhWb01VTk1QcA?oc=5"
         }
       ]
     },
@@ -77,14 +104,14 @@
       ]
     },
     {
-      "sector": "에너지/소재",
+      "sector": "IT/반도체",
       "total_count": 1,
       "topics": [
         {
-          "topic": "에너지/원자재",
+          "topic": "반도체/AI",
           "count": 1,
-          "title": "중동 리스크, 가격 넘어 ‘생산 차질’로 확산 - 드림투데이",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1OS0htWkFoSnd6NHVwRGFHNWNYT0ZOTkVDb3pQX0laYUZjNmpuMURlLVgzeGg3X2xVdkFOWXUtalUwTzZwSmNCOVhRMjAxOWlENTVsWHNCeHBpYThWUHFXZmtVZ1hELVRxTUE?oc=5"
+          "title": "엔비디아 뚫은 ‘삼성 HBM4’…비결은 ‘불량 제로’ - dt.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFA1RG5tYmVEQVZoaHJiQjlmMTVPdHdDbUMxaHlweGVTakdDNWlQMk1YdFJDaUd6NGxtRi1SWmw1NzU1MWpkMHlHRlB1QWtYQQ?oc=5"
         }
       ]
     }
