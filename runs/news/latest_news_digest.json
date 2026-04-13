@@ -1,15 +1,11 @@
 {
-  "crawled_at": "2026-04-13T16:42:40.373921+00:00",
+  "crawled_at": "2026-04-13T17:42:32.208847+00:00",
   "news_date": "2026-04-14",
-  "total_collected": 10,
+  "total_collected": 7,
   "topic_counts": [
     [
       "환율/달러",
       1
-    ],
-    [
-      "반도체/AI",
-      2
     ],
     [
       "2차전지/전기차",
@@ -21,6 +17,10 @@
     ],
     [
       "바이오/헬스케어",
+      1
+    ],
+    [
+      "국내지수",
       1
     ]
   ],
@@ -37,23 +37,12 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 2,
-      "title": "반도체 초호황에 이달 1~10일 수출액 또 역대 최대 - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9VVkZnUEtjWlRCS0haNU9NWWRibm1QNnBVYkJneExzcmtRNVl6dTdQWWRXTHFoNVlhU1N3UENJd3oxbm5SLU9XM29QWkoxU2s?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 반도체 초호황에 이달 1~10일 수출액 또 역대 최대 - v.daum.net",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "2차전지/전기차",
       "count": 2,
-      "title": "코너 몰린 배터리·철강 “AI 전환은 생존과 직결된 과제” - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE93aWNQZUQ4ZzVZMEpGV2pncEhXaWNiRVRvTVpKTWZZUHRhNVpKSUFWZjVfNkxBajduQzktelBqYnNfU0NfbnhtbDljMjBxOVU?oc=5",
+      "title": "김동명 LG엔솔 사장 “AX 도입해 배터리시장 판도 바꿔야” - 동아일보",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05eGtrTC1Ic1hpcS1JRlFTSldrVFI3aUJFTUl5RzBFVWo4VEpHSVNIemxTcXV4OTMwYTFjUEp3SnpleXZ6Wk9BV05xaC13YlBtS2NBN20zNUxCRnFUMzRDNnlMWjN2N2J6d1F1T2tZdTNUNmVGdXfSAWZBVV95cUxQWU5TdzlCZlNRc1oyNnlEUnUwSzhHRHJ3cTQ1T2ZNemhEcy0yWG9zQUpjU2RaRkQzcF9xcVRvUVUzQURoOTlENjg2Q1Y1bVFQcU9nUUxyZnl4ZkxfVnZIMFF3QVREN2c?oc=5",
       "summary_lines": [
-        "핵심 이슈: 코너 몰린 배터리·철강 “AI 전환은 생존과 직결된 과제” - v.daum.net",
+        "핵심 이슈: 김동명 LG엔솔 사장 “AX 도입해 배터리시장 판도 바꿔야” - 동아일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -79,21 +68,20 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
+    },
+    {
+      "topic": "국내지수",
+      "count": 1,
+      "title": "협상 결렬에 유가 급등‥코스피 5,800 지킨 이유는? - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4wd1VzLW9wS0NFNjRob19BLWE4LXB3MTI3aTFOTk9paWVkdG5IVzdzUGV6TTk3YmpXREJNWVV2QmhYX3BjekVrb0FVd0pSdHc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 협상 결렬에 유가 급등‥코스피 5,800 지킨 이유는? - v.daum.net",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
     }
   ],
   "sector_hot_topics": [
-    {
-      "sector": "IT/반도체",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "반도체/AI",
-          "count": 2,
-          "title": "반도체 초호황에 이달 1~10일 수출액 또 역대 최대 - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9VVkZnUEtjWlRCS0haNU9NWWRibm1QNnBVYkJneExzcmtRNVl6dTdQWWRXTHFoNVlhU1N3UENJd3oxbm5SLU9XM29QWkoxU2s?oc=5"
-        }
-      ]
-    },
     {
       "sector": "2차전지/자동차",
       "total_count": 2,
@@ -101,8 +89,26 @@
         {
           "topic": "2차전지/전기차",
           "count": 2,
-          "title": "코너 몰린 배터리·철강 “AI 전환은 생존과 직결된 과제” - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE93aWNQZUQ4ZzVZMEpGV2pncEhXaWNiRVRvTVpKTWZZUHRhNVpKSUFWZjVfNkxBajduQzktelBqYnNfU0NfbnhtbDljMjBxOVU?oc=5"
+          "title": "김동명 LG엔솔 사장 “AX 도입해 배터리시장 판도 바꿔야” - 동아일보",
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE05eGtrTC1Ic1hpcS1JRlFTSldrVFI3aUJFTUl5RzBFVWo4VEpHSVNIemxTcXV4OTMwYTFjUEp3SnpleXZ6Wk9BV05xaC13YlBtS2NBN20zNUxCRnFUMzRDNnlMWjN2N2J6d1F1T2tZdTNUNmVGdXfSAWZBVV95cUxQWU5TdzlCZlNRc1oyNnlEUnUwSzhHRHJ3cTQ1T2ZNemhEcy0yWG9zQUpjU2RaRkQzcF9xcVRvUVUzQURoOTlENjg2Q1Y1bVFQcU9nUUxyZnl4ZkxfVnZIMFF3QVREN2c?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "지수/시장",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "미국지수",
+          "count": 1,
+          "title": "‘미국, 이란 선박 봉쇄’에 유가 급등·증시 하락 - VOA 한국어 홈페이지",
+          "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNZmtzc2IxcDVXWklQdW9ZMUZBc0gtdmd1OFg5RUJrbVhDR25Da3B4V2pxTlJHOUgwTHNmQUtYNWJIQnFlN2ItS1NQb2JydFpldTh1YjM0TnNVZl9LUmZJTHVYaHBlM25CT2I2YW5RTk0yendxSndjS1dyU0VjWGxqTHg1NDlHTVRrRnlFUUpwSjJNSFo1YWlHZjN3ZlJmLUhX0gGjAUFVX3lxTE43WWlnWjJNcVBFVTI0NFFEUXVraU1RbU1UY1VqS2pMUDc2ZG0taXg0Rk1fWktwTFNmVjRDQWpYZ21XRWlUUWgxdVFHcHgtOWRseTF2Q0YwXzc1ZzExWS1vWndTdHFNRUFCaDJPekdYaUVtMUhHLU5UZEpIWkU1TFdjM2lfakoyMnNUbmloWE9LRTFkX25tbzdWblBLZVRKZC1kYjA?oc=5"
+        },
+        {
+          "topic": "국내지수",
+          "count": 1,
+          "title": "협상 결렬에 유가 급등‥코스피 5,800 지킨 이유는? - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE4wd1VzLW9wS0NFNjRob19BLWE4LXB3MTI3aTFOTk9paWVkdG5IVzdzUGV6TTk3YmpXREJNWVV2QmhYX3BjekVrb0FVd0pSdHc?oc=5"
         }
       ]
     },
@@ -115,18 +121,6 @@
           "count": 1,
           "title": "[주식 매매 상위 종목 및 환율] 2026년 4월 13일자 - 조선비즈 - Chosunbiz",
           "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQTFd3cVRuVU42UGJXLUFjVDZBNG45QTZGcFkzR21QcUlIMmEyLWZ0d3ZIT18wbFkwczVIU2tpTkFhd3BjS25qQUJhUXYybVkxOGVWemRfdkZsLUltcUxnN0IxcU5jQm1qM3gySWppbThLV2Y3MmR5dkN5VkR5TU1fb1o3NG9qejFx0gGcAUFVX3lxTE9XcENXZUVUYlhCVjVkWWV5YmpWd3NBMXZxVlI1WmFEVlBnb0xoaEVjY2E1OUUzRU9Mc1JkaE43WUJtRjFBc25wRFNoUzVCTTRKc0JUYUhHbHpkLTlIZnQzYmg5cVo2S1QzRzFQNmU1RTRZWTQ1LXAwZTNYM1JwR3duTm00Q3lSaGZGYTgySF9FOW5rdGJuUW5XbWRVYw?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "미국지수",
-          "count": 1,
-          "title": "‘미국, 이란 선박 봉쇄’에 유가 급등·증시 하락 - VOA 한국어 홈페이지",
-          "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNZmtzc2IxcDVXWklQdW9ZMUZBc0gtdmd1OFg5RUJrbVhDR25Da3B4V2pxTlJHOUgwTHNmQUtYNWJIQnFlN2ItS1NQb2JydFpldTh1YjM0TnNVZl9LUmZJTHVYaHBlM25CT2I2YW5RTk0yendxSndjS1dyU0VjWGxqTHg1NDlHTVRrRnlFUUpwSjJNSFo1YWlHZjN3ZlJmLUhX0gGjAUFVX3lxTE43WWlnWjJNcVBFVTI0NFFEUXVraU1RbU1UY1VqS2pMUDc2ZG0taXg0Rk1fWktwTFNmVjRDQWpYZ21XRWlUUWgxdVFHcHgtOWRseTF2Q0YwXzc1ZzExWS1vWndTdHFNRUFCaDJPekdYaUVtMUhHLU5UZEpIWkU1TFdjM2lfakoyMnNUbmloWE9LRTFkX25tbzdWblBLZVRKZC1kYjA?oc=5"
         }
       ]
     },
