@@ -1,33 +1,55 @@
 {
-  "crawled_at": "2026-04-12T23:42:31.398824+00:00",
+  "crawled_at": "2026-04-13T00:42:52.858902+00:00",
   "news_date": "2026-04-13",
-  "total_collected": 78,
+  "total_collected": 110,
   "topic_counts": [
     [
-      "에너지/원자재",
-      16
-    ],
-    [
-      "금리/연준",
-      1
+      "환율/달러",
+      8
     ],
     [
       "반도체/AI",
-      7
+      10
     ],
     [
-      "환율/달러",
-      3
+      "에너지/원자재",
+      17
+    ],
+    [
+      "금리/연준",
+      2
     ],
     [
       "경기/성장",
-      4
+      5
     ]
   ],
   "top_articles": [
     {
+      "topic": "환율/달러",
+      "count": 8,
+      "title": "[외환] 원/달러 환율 12.9원 오른 1,495.4원(개장) - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ocnlLOTJ4NkpzazR4ZThTSGFLOUtwS0EyYlJocWpMTjF6WUNmQnRSTGNyZTViQ29zcTlDRUl0dHMySjhnMG5RZUxKbG5NTlJfU0JNSG1GZEUyQ1nSAWBBVV95cUxOaFN0eUpqVmNLSDhMQ3M0QnVmcGNLdE5JR2hTT3lVdzNNTXFmZmlUM2JjUnNHbFhFdWNCQWJFUEtiLW85UXV4YXdiLXotTzl0MXBvMWNTOTdFV3VtQ1FXOW0?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [외환] 원/달러 환율 12.9원 오른 1,495.4원(개장) - 연합뉴스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "반도체/AI",
+      "count": 10,
+      "title": "정의선 \"로보틱스·AI는 성장 핵심축…美에 260억달러 투자\" - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPYWtOWEhrSklMa1dBdkszcGdKdDBSZzdlLUZ0WkpjV0pHVXdjSnk3MW4zWXVUckhfYW9rcVN6MHNvd1Zna1RqSEhQWEo5b2VZVFpNdGdYMF91Znp0Mk1wdXpORFJCSF80UXpaMDM1aUdZSlhIc0FJZ3UwLWg1cVYtZg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 정의선 \"로보틱스·AI는 성장 핵심축…美에 260억달러 투자\" - 연합뉴스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "에너지/원자재",
-      "count": 16,
+      "count": 17,
       "title": "'중동 전쟁' 원자재 수급난에 4천만원 납품 사기…경찰 수사 - 연합뉴스",
       "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE42VXJqcDRSbUJTZGlNdXByVGY5NWZtUmtobERSbVdWZkxMYTZfRkhPQ2JqSmtvZ3BleUhzOF8wN21lTDlQOHRMeVpqcUhyblV0UjFOaldLVEN3bmvSAWBBVV95cUxPWndWallXV2FEaUlhOG9fRTE0Rkh0Ql9PSlhHLVAzVlg1U3hjRUNxd0ljRlNnZzFOTzhBTmVJc0hFRVBNU25yNEdsV1Z2aGpyMGVMQ1d4SlZ6NTB4YzVQRm0?oc=5",
       "summary_lines": [
@@ -38,40 +60,18 @@
     },
     {
       "topic": "금리/연준",
-      "count": 1,
-      "title": "고물가·고환율·고금리에 대한 효과적 대책 시급 - 데일리안",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5GeGFhbHdTeTZfNEhPcGxrQzZwREtTbjBzeXJQUDBGY1IxSElRYmJkUWw1d09VZmFoS1JqYS1lWFpXX1JrVEdjZFRSUGZ2ZUFkQWZ30gGkAkFVX3lxTE0zYWc1MkVSRmhrU25ickRCOFktclRiUW4zLWEyaERsakZmUEFvODBCU2ptTFZUUm9VQnhsbGVOUkdOOUNaR1ZDRmxhbnF4ZU9hNS1BdFBPd1RDOVE2YVFNdHl2UVdVY3piSUhXXzNnXzJmejE0NWlBU2lWX0pBdzQ5YnRSUGRoV0REOFJVUEwzMFV5NkRDSEt2b2hvVEVZcG10TFZJNTFfNFItY01hTTNpSVBOc3EyRDV5YjY3OVpjQ01FTGppY2MyaThxbUVUT19wNkhQZnFjeDZPTWFJMkZSR2Q0aWY1NUMtY3lXX3VjOW9IQnhNTWdvcnhnUFk3c2V2RVNBNndSWk8yZm5zZjJIT2ZUWmsxNGtzczlJdjNxVi1fVUc?oc=5",
+      "count": 2,
+      "title": "“4월 기준금리 동결…전쟁 여파에 전략적 관망 필요” - 뉴스투데이",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9mOEJpNFlNOHcxLUtEN04zUWJkRkZhVGZIRHFIWlJVUS1KUS1QaEZFb1dxaFl1dEVQMkV1UlY3Vmw1QTlSbGFUajhzTEprLVZxQjBKVlFBbU91SG4xZ0E?oc=5",
       "summary_lines": [
-        "핵심 이슈: 고물가·고환율·고금리에 대한 효과적 대책 시급 - 데일리안",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "반도체/AI",
-      "count": 7,
-      "title": "[AI의 종목 이야기] 미국 실적 시즌, 이란전쟁·AI 위협 속 시작…주목할 5가지 - 뉴스핌",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE04bk4yRTd5RW9QZmxOdXctT293czFfMWFyS2xSbjdYRy01YzMtcVltZXJ2aU50UG1xTS1Ta3MtaE82RjhIeFlUZzFTTFAybHVua3M2S2lrRFN4aEcz?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [AI의 종목 이야기] 미국 실적 시즌, 이란전쟁·AI 위협 속 시작…주목할 5가지 - 뉴스핌",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "환율/달러",
-      "count": 3,
-      "title": "환율까지 흔드는 달러 스테이블코인…BIS \"유입 늘면 현지 통화 가치 절하\" - 연합인포맥스",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNSmtpZnBtWlZOS2tmTi1CRXFwNGVVVm9zYUpKb3h1SXZHNlhqaXdUSWthZ3JSNFA4YnJHb0R6YnBpQVllY1BqVGJPZFVVb28wZm05cnhPTHBpbjhTRy1oa3MwMnZsYV9iN2NCN3NCM1M?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 환율까지 흔드는 달러 스테이블코인…BIS \"유입 늘면 현지 통화 가치 절하\" - 연합인포맥스",
+        "핵심 이슈: “4월 기준금리 동결…전쟁 여파에 전략적 관망 필요” - 뉴스투데이",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "경기/성장",
-      "count": 4,
+      "count": 5,
       "title": "끝나지 않는 중동전쟁, 경제전망·지표 혼조…2% 성장 빨간불 - 뉴시스",
       "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9VTVJnTjR3WS0yaVlJNm5zc0dvY01rNHl5STUwQzhab0JvQ3RUbTIwQWU4S2lpR1FwXzVqWlRHdTd1a0pQeVc5ZHh0NHU3ZXZqUmRObFh5YkhJM29tb0VGY9IBeEFVX3lxTFAxQ21rekxXTjVoeExBRnh5Mk9jenNwLTZOQ0RCM2x3VHZDMWdUbEdxWDFxbmNnYW1DOVlOQ2VYS1d0bzdDUTh4WkVkT281dEVtVElhT0pDZ3UzNXBzVldJQXNLRWNBTl9jRHpuNWVXNThuUFdha3I2SQ?oc=5",
       "summary_lines": [
@@ -84,11 +84,11 @@
   "sector_hot_topics": [
     {
       "sector": "에너지/소재",
-      "total_count": 16,
+      "total_count": 17,
       "topics": [
         {
           "topic": "에너지/원자재",
-          "count": 16,
+          "count": 17,
           "title": "'중동 전쟁' 원자재 수급난에 4천만원 납품 사기…경찰 수사 - 연합뉴스",
           "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE42VXJqcDRSbUJTZGlNdXByVGY5NWZtUmtobERSbVdWZkxMYTZfRkhPQ2JqSmtvZ3BleUhzOF8wN21lTDlQOHRMeVpqcUhyblV0UjFOaldLVEN3bmvSAWBBVV95cUxPWndWallXV2FEaUlhOG9fRTE0Rkh0Ql9PSlhHLVAzVlg1U3hjRUNxd0ljRlNnZzFOTzhBTmVJc0hFRVBNU25yNEdsV1Z2aGpyMGVMQ1d4SlZ6NTB4YzVQRm0?oc=5"
         }
@@ -96,37 +96,37 @@
     },
     {
       "sector": "매크로",
-      "total_count": 8,
+      "total_count": 15,
       "topics": [
         {
+          "topic": "환율/달러",
+          "count": 8,
+          "title": "[외환] 원/달러 환율 12.9원 오른 1,495.4원(개장) - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ocnlLOTJ4NkpzazR4ZThTSGFLOUtwS0EyYlJocWpMTjF6WUNmQnRSTGNyZTViQ29zcTlDRUl0dHMySjhnMG5RZUxKbG5NTlJfU0JNSG1GZEUyQ1nSAWBBVV95cUxOaFN0eUpqVmNLSDhMQ3M0QnVmcGNLdE5JR2hTT3lVdzNNTXFmZmlUM2JjUnNHbFhFdWNCQWJFUEtiLW85UXV4YXdiLXotTzl0MXBvMWNTOTdFV3VtQ1FXOW0?oc=5"
+        },
+        {
           "topic": "경기/성장",
-          "count": 4,
+          "count": 5,
           "title": "끝나지 않는 중동전쟁, 경제전망·지표 혼조…2% 성장 빨간불 - 뉴시스",
           "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9VTVJnTjR3WS0yaVlJNm5zc0dvY01rNHl5STUwQzhab0JvQ3RUbTIwQWU4S2lpR1FwXzVqWlRHdTd1a0pQeVc5ZHh0NHU3ZXZqUmRObFh5YkhJM29tb0VGY9IBeEFVX3lxTFAxQ21rekxXTjVoeExBRnh5Mk9jenNwLTZOQ0RCM2x3VHZDMWdUbEdxWDFxbmNnYW1DOVlOQ2VYS1d0bzdDUTh4WkVkT281dEVtVElhT0pDZ3UzNXBzVldJQXNLRWNBTl9jRHpuNWVXNThuUFdha3I2SQ?oc=5"
         },
         {
-          "topic": "환율/달러",
-          "count": 3,
-          "title": "환율까지 흔드는 달러 스테이블코인…BIS \"유입 늘면 현지 통화 가치 절하\" - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBNSmtpZnBtWlZOS2tmTi1CRXFwNGVVVm9zYUpKb3h1SXZHNlhqaXdUSWthZ3JSNFA4YnJHb0R6YnBpQVllY1BqVGJPZFVVb28wZm05cnhPTHBpbjhTRy1oa3MwMnZsYV9iN2NCN3NCM1M?oc=5"
-        },
-        {
           "topic": "금리/연준",
-          "count": 1,
-          "title": "고물가·고환율·고금리에 대한 효과적 대책 시급 - 데일리안",
-          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5GeGFhbHdTeTZfNEhPcGxrQzZwREtTbjBzeXJQUDBGY1IxSElRYmJkUWw1d09VZmFoS1JqYS1lWFpXX1JrVEdjZFRSUGZ2ZUFkQWZ30gGkAkFVX3lxTE0zYWc1MkVSRmhrU25ickRCOFktclRiUW4zLWEyaERsakZmUEFvODBCU2ptTFZUUm9VQnhsbGVOUkdOOUNaR1ZDRmxhbnF4ZU9hNS1BdFBPd1RDOVE2YVFNdHl2UVdVY3piSUhXXzNnXzJmejE0NWlBU2lWX0pBdzQ5YnRSUGRoV0REOFJVUEwzMFV5NkRDSEt2b2hvVEVZcG10TFZJNTFfNFItY01hTTNpSVBOc3EyRDV5YjY3OVpjQ01FTGppY2MyaThxbUVUT19wNkhQZnFjeDZPTWFJMkZSR2Q0aWY1NUMtY3lXX3VjOW9IQnhNTWdvcnhnUFk3c2V2RVNBNndSWk8yZm5zZjJIT2ZUWmsxNGtzczlJdjNxVi1fVUc?oc=5"
+          "count": 2,
+          "title": "“4월 기준금리 동결…전쟁 여파에 전략적 관망 필요” - 뉴스투데이",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9mOEJpNFlNOHcxLUtEN04zUWJkRkZhVGZIRHFIWlJVUS1KUS1QaEZFb1dxaFl1dEVQMkV1UlY3Vmw1QTlSbGFUajhzTEprLVZxQjBKVlFBbU91SG4xZ0E?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 7,
+      "total_count": 10,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 7,
-          "title": "[AI의 종목 이야기] 미국 실적 시즌, 이란전쟁·AI 위협 속 시작…주목할 5가지 - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE04bk4yRTd5RW9QZmxOdXctT293czFfMWFyS2xSbjdYRy01YzMtcVltZXJ2aU50UG1xTS1Ta3MtaE82RjhIeFlUZzFTTFAybHVua3M2S2lrRFN4aEcz?oc=5"
+          "count": 10,
+          "title": "정의선 \"로보틱스·AI는 성장 핵심축…美에 260억달러 투자\" - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPYWtOWEhrSklMa1dBdkszcGdKdDBSZzdlLUZ0WkpjV0pHVXdjSnk3MW4zWXVUckhfYW9rcVN6MHNvd1Zna1RqSEhQWEo5b2VZVFpNdGdYMF91Znp0Mk1wdXpORFJCSF80UXpaMDM1aUdZSlhIc0FJZ3UwLWg1cVYtZg?oc=5"
         }
       ]
     }
