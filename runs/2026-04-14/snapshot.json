@@ -1,0 +1,123 @@
+{
+  "market_summary": {
+    "note": "KOSPI -0.86%, USD/KRW 1485.53. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -0.86,
+    "usdkrw": 1485.528728
+  },
+  "flow_summary": {
+    "note": "외국인 -6070억, 기관 -7621억, 개인 +9793억 | KOSPI(외 -4579, 기관 -6698, 개인 +7173) KOSDAQ(외 -1491, 기관 -923, 개인 +2620)",
+    "foreign_net": -6070.0,
+    "institution_net": -7621.0,
+    "retail_net": 9793.0
+  },
+  "korean_market_flow": {
+    "date": "2026-04-14",
+    "market": {
+      "KOSPI": {
+        "individual": 7173,
+        "foreign": -4579,
+        "institution": -6698
+      },
+      "KOSDAQ": {
+        "individual": 2620,
+        "foreign": -1491,
+        "institution": -923
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[국내지수] 전쟁 후 코스피·코스닥 VI 발동, 월평균의 2.5배 폭증 - 서울경제",
+    "[환율/달러] 중동 전쟁 속 물가·환율 불안…한은 총재 후보자 생각은? - v.daum.net",
+    "[반도체/AI] \"로보틱스·피지컬AI 중심 성장\" 현대차, 美에 260억달러 투자 - 머니투데이 - mt.co.kr",
+    "[미국지수] 해상 봉쇄에도 증시는 ‘낙관론’···S&P500, 전쟁 손실 만회 - 경향신문",
+    "[정책/테마] 미국 AI 반도체 규제 강화, 한국 반도체 산업에 미칠 파장은? - 브랜드경제신문"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 5808.62,
+      "kosdaq": 1099.84,
+      "kospi_pct": -0.86,
+      "kosdaq_pct": 0.57
+    },
+    "us": {
+      "sp500": 6886.24,
+      "nasdaq": 23183.736,
+      "dow": 48218.25,
+      "sp500_pct": 1.0173260827151305,
+      "nasdaq_pct": 1.2262248942764673,
+      "dow_pct": 0.629594313616355
+    },
+    "fx": {
+      "usdkrw": 1485.528728,
+      "usdkrw_pct": -0.510970035209144
+    },
+    "volatility": {
+      "vix": 19.1200008392334
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.296999931335449,
+      "us2y": 3.6029999256134033,
+      "spread_2_10": 0.6940000057220459,
+      "vix": 19.1200008392334,
+      "dxy": 98.3740005493164,
+      "usdkrw": 1477.8199462890625,
+      "vix3m": 21.34000015258789,
+      "vix_term_spread": 2.219999313354492,
+      "oil_wti": 97.81999969482422
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 2.801756656951593,
+      "pmi": null,
+      "retail_sales_mom": 0.600990523942202,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24055.749,
+      "gdp_qoq_annualized": 0.5
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.9169999313354493,
+      "hy_oas": 2.94,
+      "ig_oas": 0.82,
+      "fed_balance_sheet": 6693871.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -1.103,
+    "liquidity_signal_score": 6.138,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 4.74,
+    "kospi_20d_cum_pct": 16.67,
+    "kosdaq_5d_cum_pct": 7.13,
+    "kospi_abs_move_5d_avg": 1.292,
+    "usdkrw_5d_change_pct": 0.579,
+    "vix_5d_avg": 19.314,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+16.67%, vol20d=3.12, reversal=false"
+  }
+}
