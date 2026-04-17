@@ -153,6 +153,102 @@ def init_db(db_path: Path | None = None) -> None:
         # Helpful indexes for history queries.
         conn.execute("CREATE INDEX IF NOT EXISTS idx_stock_daily_ticker_date ON stock_daily(ticker, date);")
 
+        # ticker_master: canonical ticker metadata.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS ticker_master (
+                ticker TEXT PRIMARY KEY,
+                company_name TEXT,
+                market TEXT,
+                isin TEXT,
+                dart_corp_code TEXT,
+                updated_at TEXT
+            );
+            """
+        )
+
+        # daily_price_kr: daily OHLCV for KR market (unique by ticker + trade_date).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS daily_price_kr (
+                ticker TEXT,
+                trade_date TEXT,
+                open_price REAL,
+                high_price REAL,
+                low_price REAL,
+                close_price REAL,
+                volume REAL,
+                updated_at TEXT,
+                UNIQUE(ticker, trade_date)
+            );
+            """
+        )
+
+        # dart_company_code: DART corp code mapping table.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS dart_company_code (
+                dart_corp_code TEXT PRIMARY KEY,
+                company_name TEXT,
+                stock_code TEXT,
+                updated_at TEXT
+            );
+            """
+        )
+
+        # financial_statement: account-level financial rows.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS financial_statement (
+                ticker TEXT,
+                business_year TEXT,
+                report_code TEXT,
+                account_name TEXT,
+                amount REAL,
+                updated_at TEXT,
+                UNIQUE(ticker, business_year, report_code, account_name)
+            );
+            """
+        )
+
+        # financial_metric: normalized annual/period metrics.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS financial_metric (
+                ticker TEXT,
+                business_year TEXT,
+                report_code TEXT,
+                revenue REAL,
+                operating_income REAL,
+                net_income REAL,
+                total_assets REAL,
+                total_liabilities REAL,
+                total_equity REAL,
+                updated_at TEXT,
+                UNIQUE(ticker, business_year, report_code)
+            );
+            """
+        )
+
+        # theme taxonomy + mapping.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS theme_master (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                theme_name TEXT UNIQUE
+            );
+            """
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS theme_stock_map (
+                theme_id INTEGER,
+                ticker TEXT,
+                UNIQUE(theme_id, ticker)
+            );
+            """
+        )
+
         # --- Macro engine tables (v1) ---
         # NULL-based design: missing/unavailable/not-implemented values must be stored as NULL,
         # never as 0.0 placeholders.
@@ -669,6 +765,162 @@ def upsert_quarterly_macro(
         )
 
 
+def upsert_ticker_master(data: Dict[str, Any], db_path: Path | None = None) -> None:
+    """Upsert one row into `ticker_master`."""
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO ticker_master (
+                ticker, company_name, market, isin, dart_corp_code, updated_at
+            ) VALUES (
+                :ticker, :company_name, :market, :isin, :dart_corp_code, :updated_at
+            )
+            ON CONFLICT(ticker) DO UPDATE SET
+                company_name=excluded.company_name,
+                market=excluded.market,
+                isin=excluded.isin,
+                dart_corp_code=excluded.dart_corp_code,
+                updated_at=excluded.updated_at;
+            """,
+            {
+                "ticker": str(data.get("ticker", "")).strip().upper(),
+                "company_name": data.get("company_name"),
+                "market": data.get("market"),
+                "isin": data.get("isin"),
+                "dart_corp_code": data.get("dart_corp_code"),
+                "updated_at": data.get("updated_at") or updated_at,
+            },
+        )
+
+
+def upsert_daily_price(data: Dict[str, Any], db_path: Path | None = None) -> None:
+    """Upsert one row into `daily_price_kr`."""
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO daily_price_kr (
+                ticker, trade_date, open_price, high_price, low_price, close_price, volume, updated_at
+            ) VALUES (
+                :ticker, :trade_date, :open_price, :high_price, :low_price, :close_price, :volume, :updated_at
+            )
+            ON CONFLICT(ticker, trade_date) DO UPDATE SET
+                open_price=excluded.open_price,
+                high_price=excluded.high_price,
+                low_price=excluded.low_price,
+                close_price=excluded.close_price,
+                volume=excluded.volume,
+                updated_at=excluded.updated_at;
+            """,
+            {
+                "ticker": str(data.get("ticker", "")).strip().upper(),
+                "trade_date": data.get("trade_date"),
+                "open_price": None if data.get("open_price") is None else float(data["open_price"]),
+                "high_price": None if data.get("high_price") is None else float(data["high_price"]),
+                "low_price": None if data.get("low_price") is None else float(data["low_price"]),
+                "close_price": None if data.get("close_price") is None else float(data["close_price"]),
+                "volume": None if data.get("volume") is None else float(data["volume"]),
+                "updated_at": data.get("updated_at") or updated_at,
+            },
+        )
+
+
+def upsert_dart_company(data: Dict[str, Any], db_path: Path | None = None) -> None:
+    """Upsert one row into `dart_company_code`."""
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO dart_company_code (
+                dart_corp_code, company_name, stock_code, updated_at
+            ) VALUES (
+                :dart_corp_code, :company_name, :stock_code, :updated_at
+            )
+            ON CONFLICT(dart_corp_code) DO UPDATE SET
+                company_name=excluded.company_name,
+                stock_code=excluded.stock_code,
+                updated_at=excluded.updated_at;
+            """,
+            {
+                "dart_corp_code": data.get("dart_corp_code"),
+                "company_name": data.get("company_name"),
+                "stock_code": data.get("stock_code"),
+                "updated_at": data.get("updated_at") or updated_at,
+            },
+        )
+
+
+def upsert_financial_statement(data: Dict[str, Any], db_path: Path | None = None) -> None:
+    """Upsert one row into `financial_statement`."""
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO financial_statement (
+                ticker, business_year, report_code, account_name, amount, updated_at
+            ) VALUES (
+                :ticker, :business_year, :report_code, :account_name, :amount, :updated_at
+            )
+            ON CONFLICT(ticker, business_year, report_code, account_name) DO UPDATE SET
+                amount=excluded.amount,
+                updated_at=excluded.updated_at;
+            """,
+            {
+                "ticker": str(data.get("ticker", "")).strip().upper(),
+                "business_year": data.get("business_year"),
+                "report_code": data.get("report_code"),
+                "account_name": data.get("account_name"),
+                "amount": None if data.get("amount") is None else float(data["amount"]),
+                "updated_at": data.get("updated_at") or updated_at,
+            },
+        )
+
+
+def upsert_financial_metric(data: Dict[str, Any], db_path: Path | None = None) -> None:
+    """Upsert one row into `financial_metric`."""
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO financial_metric (
+                ticker, business_year, report_code,
+                revenue, operating_income, net_income,
+                total_assets, total_liabilities, total_equity, updated_at
+            ) VALUES (
+                :ticker, :business_year, :report_code,
+                :revenue, :operating_income, :net_income,
+                :total_assets, :total_liabilities, :total_equity, :updated_at
+            )
+            ON CONFLICT(ticker, business_year, report_code) DO UPDATE SET
+                revenue=excluded.revenue,
+                operating_income=excluded.operating_income,
+                net_income=excluded.net_income,
+                total_assets=excluded.total_assets,
+                total_liabilities=excluded.total_liabilities,
+                total_equity=excluded.total_equity,
+                updated_at=excluded.updated_at;
+            """,
+            {
+                "ticker": str(data.get("ticker", "")).strip().upper(),
+                "business_year": data.get("business_year"),
+                "report_code": data.get("report_code"),
+                "revenue": None if data.get("revenue") is None else float(data["revenue"]),
+                "operating_income": None if data.get("operating_income") is None else float(data["operating_income"]),
+                "net_income": None if data.get("net_income") is None else float(data["net_income"]),
+                "total_assets": None if data.get("total_assets") is None else float(data["total_assets"]),
+                "total_liabilities": None if data.get("total_liabilities") is None else float(data["total_liabilities"]),
+                "total_equity": None if data.get("total_equity") is None else float(data["total_equity"]),
+                "updated_at": data.get("updated_at") or updated_at,
+            },
+        )
+
+
 def safe_upsert_quarterly_macro(**kwargs: Any) -> None:
     """Fail-safe wrapper for `upsert_quarterly_macro`."""
     try:
@@ -984,4 +1236,3 @@ def safe_migrate_placeholders_to_null(db_path: Path | None = None) -> dict[str, 
     except Exception as exc:  # noqa: BLE001 - migration should never block pipeline
         _log_db_error("migrate_placeholders_to_null", exc)
         return {}
-
