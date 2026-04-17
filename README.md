@@ -75,6 +75,18 @@ python scripts/build_dashboard.py
 python scripts/send_morning.py
 ```
 
+### 주식/재무 데이터 업데이트 커맨드
+```bash
+# 1) 종목 마스터 동기화 (ticker_master)
+python scripts/sync_stock_master.py
+
+# 2) 일자별 주가 동기화 (daily_price_kr)
+python scripts/sync_daily_prices.py 2026-04-17
+
+# 3) DART 재무 데이터 동기화 (dart_company_code / financial_statement / financial_metric)
+python scripts/sync_financials.py 2025
+```
+
 ## 파이프라인 흐름
 
 `scripts/run_nightly.py` 기준:
