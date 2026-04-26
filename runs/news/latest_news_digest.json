@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-04-26T17:42:55.642701+00:00",
+  "crawled_at": "2026-04-26T18:42:54.580697+00:00",
   "news_date": "2026-04-27",
-  "total_collected": 10,
+  "total_collected": 9,
   "topic_counts": [
     [
       "금리/연준",
@@ -12,16 +12,16 @@
       1
     ],
     [
-      "반도체/AI",
-      2
-    ],
-    [
       "2차전지/전기차",
       1
     ],
     [
       "중국/신흥국",
-      1
+      2
+    ],
+    [
+      "경기/성장",
+      2
     ]
   ],
   "top_articles": [
@@ -48,17 +48,6 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 2,
-      "title": "[사설] 삼성·SK하이닉스에만 있는 세계 유일의 ‘반도체 노조’ - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdlJGNUwtN1JRT1JjdmF2WEF4eUFydE02dEpvNlJxNjRrQ283Q0liRFpBMWFKYzhyUFhzZzA0Si04ZUZYWGRsTmNxbUpWdHF1RGM5b1FzQWJvR084MU9tbm4zZmZZMEQtN2k5UDBRbGpuYWo3NkUzVm82X1VKZkEwRzN5a0E0dw?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [사설] 삼성·SK하이닉스에만 있는 세계 유일의 ‘반도체 노조’ - 조선일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "2차전지/전기차",
       "count": 1,
       "title": "호실적에 조선 ETF '질주'…2차전지도 들썩 - 한국경제",
@@ -71,11 +60,22 @@
     },
     {
       "topic": "중국/신흥국",
-      "count": 1,
-      "title": "원화 실질가치, 금융위기 후 최저…5개월째 위안화보다 저평가 - 중앙일보",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9KOXVCSXdoQjVpWHV6NjZOQXNQeXAzQ0dLcUtscFcwX0dPZHUzU3BLOFFwU25tZjg4YlpyYmhiZjRCSVoxUjlFdlA2YUFpMWVSRGRfLUt3?oc=5",
+      "count": 2,
+      "title": "중동 위기, 중국 제조업 타격과 한국 경제에 미치는 파급효과 - 유스연합",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1WaDhZZTcxLURhUEZUd1c1b2RSWVpjZ1FGSUxva2hHd2gyc3hZX0ZmTGt5bWEzT3U3R1BaWGJDVllUN0hXS0k1ei0xbjJLRW5ScWc?oc=5",
       "summary_lines": [
-        "핵심 이슈: 원화 실질가치, 금융위기 후 최저…5개월째 위안화보다 저평가 - 중앙일보",
+        "핵심 이슈: 중동 위기, 중국 제조업 타격과 한국 경제에 미치는 파급효과 - 유스연합",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "경기/성장",
+      "count": 2,
+      "title": "[가리사니] 전쟁이 남길 것 - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1oQzMybUVVQkdxOUExZWlHbUZuUmhvZXBPR1UyLWNocTVGVWRVQzZ0TVFDcmU2OGlkQTRCWUpoc0JKck1Bajh0VTdacnBIODg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [가리사니] 전쟁이 남길 것 - v.daum.net",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,8 +84,14 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 2,
+      "total_count": 4,
       "topics": [
+        {
+          "topic": "경기/성장",
+          "count": 2,
+          "title": "[가리사니] 전쟁이 남길 것 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1oQzMybUVVQkdxOUExZWlHbUZuUmhvZXBPR1UyLWNocTVGVWRVQzZ0TVFDcmU2OGlkQTRCWUpoc0JKck1Bajh0VTdacnBIODg?oc=5"
+        },
         {
           "topic": "금리/연준",
           "count": 1,
@@ -101,14 +107,14 @@
       ]
     },
     {
-      "sector": "IT/반도체",
+      "sector": "글로벌",
       "total_count": 2,
       "topics": [
         {
-          "topic": "반도체/AI",
+          "topic": "중국/신흥국",
           "count": 2,
-          "title": "[사설] 삼성·SK하이닉스에만 있는 세계 유일의 ‘반도체 노조’ - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQdlJGNUwtN1JRT1JjdmF2WEF4eUFydE02dEpvNlJxNjRrQ283Q0liRFpBMWFKYzhyUFhzZzA0Si04ZUZYWGRsTmNxbUpWdHF1RGM5b1FzQWJvR084MU9tbm4zZmZZMEQtN2k5UDBRbGpuYWo3NkUzVm82X1VKZkEwRzN5a0E0dw?oc=5"
+          "title": "중동 위기, 중국 제조업 타격과 한국 경제에 미치는 파급효과 - 유스연합",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1WaDhZZTcxLURhUEZUd1c1b2RSWVpjZ1FGSUxva2hHd2gyc3hZX0ZmTGt5bWEzT3U3R1BaWGJDVllUN0hXS0k1ei0xbjJLRW5ScWc?oc=5"
         }
       ]
     },
@@ -121,18 +127,6 @@
           "count": 1,
           "title": "호실적에 조선 ETF '질주'…2차전지도 들썩 - 한국경제",
           "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5qSjM5a2l5X3V5UEgwd3NSYmtfRkIzRmZKRWh6RUgzc3lZakV2c1R4VzIyUGNNUzQ4QzRSbGxuV1IzcU9TVEhMUlF0QW12c3NfWmxFNk15YlpLZ9IBVEFVX3lxTE13VVpXN1kwclJiSnhNaVM3Q21vSUk1bTgyQ0h0eHlhWmQyeU5QNDY5bTFhWmpvaTlVbHRRQnByS1BDUUdBMGVxVVJPQks1eDhub2ZxWg?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "글로벌",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "중국/신흥국",
-          "count": 1,
-          "title": "원화 실질가치, 금융위기 후 최저…5개월째 위안화보다 저평가 - 중앙일보",
-          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9KOXVCSXdoQjVpWHV6NjZOQXNQeXAzQ0dLcUtscFcwX0dPZHUzU3BLOFFwU25tZjg4YlpyYmhiZjRCSVoxUjlFdlA2YUFpMWVSRGRfLUt3?oc=5"
         }
       ]
     }
