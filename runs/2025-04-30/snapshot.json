@@ -1,0 +1,123 @@
+{
+  "market_summary": {
+    "note": "KOSPI 0.00%, USD/KRW 1477.70. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 0.0,
+    "usdkrw": 1477.704707
+  },
+  "flow_summary": {
+    "note": "외국인 -12171억, 기관 +9940억, 개인 +2842억 | KOSPI(외 -19496, 기관 +8053, 개인 +11832) KOSDAQ(외 +7325, 기관 +1887, 개인 -8990)",
+    "foreign_net": -12171.0,
+    "institution_net": 9940.0,
+    "retail_net": 2842.0
+  },
+  "korean_market_flow": {
+    "date": "2026-04-26",
+    "market": {
+      "KOSPI": {
+        "individual": 11832,
+        "foreign": -19496,
+        "institution": 8053
+      },
+      "KOSDAQ": {
+        "individual": -8990,
+        "foreign": 7325,
+        "institution": 1887
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[반도체/AI] \"AI 시대 가장 중요한 핵심 자산\"…K반도체, '특허' 확보 총력 - 뉴시스",
+    "[미국지수] \"전쟁 공포 이긴 AI 실적\" 나스닥 100, 반도체 18일 광풍 타고 4주간 기록적 상승세 - Benzinga",
+    "[환율/달러] 현대차·기아 1분기 최대 매출에도 '관세·환율' 파고 힘겨운 싸움 - 뉴스1",
+    "[금리/연준] [주간증시전망] W자 반등 이후 코스피, 상승 이어갈까…반도체·FOMC 변수 - 아주경제",
+    "[에너지/원자재] 이란 전쟁, 패스트패션 산업에 직격탄… 폴리에스터 원자재 가격 폭등으로 아시아 공급망 흔들 - 굿모닝베트남미디어"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6475.63,
+      "kosdaq": 1203.84,
+      "kospi_pct": 0.0,
+      "kosdaq_pct": 2.51
+    },
+    "us": {
+      "sp500": 7165.08,
+      "nasdaq": 24836.598,
+      "dow": 49230.71,
+      "sp500_pct": 0.7973664959765953,
+      "nasdaq_pct": 1.628962231076014,
+      "dow_pct": -0.16144693443482133
+    },
+    "fx": {
+      "usdkrw": 1477.704707,
+      "usdkrw_pct": -0.2776220422444916
+    },
+    "volatility": {
+      "vix": 18.709999084472656
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.309999942779541,
+      "us2y": 3.5929999351501465,
+      "spread_2_10": 0.7170000076293945,
+      "vix": 18.709999084472656,
+      "dxy": 98.51000213623047,
+      "usdkrw": 1476.3199462890625,
+      "vix3m": 21.299999237060547,
+      "vix_term_spread": 2.5900001525878906,
+      "oil_wti": 94.4000015258789
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 2.801756656951593,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24055.749,
+      "gdp_qoq_annualized": 0.5
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.889999942779541,
+      "hy_oas": 2.86,
+      "ig_oas": 0.8,
+      "fed_balance_sheet": 6707419.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 0.5,
+    "liquidity_signal_score": 6.839,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 4,
+    "kospi_5d_cum_pct": 0.0,
+    "kospi_20d_cum_pct": 0.0,
+    "kosdaq_5d_cum_pct": 10.04,
+    "kospi_abs_move_5d_avg": 0.0,
+    "usdkrw_5d_change_pct": 0.0,
+    "vix_5d_avg": 18.71,
+    "reversal_signal": false,
+    "note": "rolling_4d: kospi20d=+0.00%, vol20d=0.00, reversal=false"
+  }
+}

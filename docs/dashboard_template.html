@@ -76,8 +76,12 @@
     .tf-row button { font: inherit; cursor: pointer; padding: 6px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: #cbd5e1; font-size: 12px; font-weight: 600; }
     .tf-row button.tf-active { border-color: rgba(56, 189, 248, 0.55); background: rgba(56, 189, 248, 0.12); color: #7dd3fc; }
     .tf-row button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-    #market-trend-chart { width: 100%; min-height: 248px; }
-    #market-trend-chart svg { display: block; width: 100%; height: auto; }
+    .market-trend-chart-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 980px) { .market-trend-chart-grid { grid-template-columns: repeat(2, 1fr); } }
+    .market-trend-chart-card { background: var(--panel); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 10px; padding: 10px; }
+    .market-trend-chart-card .mtcc-title { font-size: 12px; font-weight: 700; color: #e2e8f0; margin: 0 0 6px 0; }
+    .market-trend-chart { width: 100%; min-height: 248px; }
+    .market-trend-chart svg { display: block; width: 100%; height: auto; }
     .market-trend-legend { display: flex; flex-wrap: wrap; gap: 12px 18px; margin-top: 10px; font-size: 12px; color: #cbd5e1; }
     .market-trend-legend .leg-item { display: inline-flex; align-items: center; gap: 6px; }
     .market-trend-legend .leg-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
@@ -268,14 +272,23 @@
         </div>
       </div>
       <div id="market-trend-chart-block" class="market-trend-chart-block" aria-label="지수 추세">
-        <h4 class="mtc-title">핵심 추세: KOSPI · 나스닥 (일별 지수)</h4>
+        <h4 class="mtc-title">핵심 추세: KOSPI / 나스닥 (분리 차트)</h4>
         <p class="mtc-sub">거래일 기준 일별 지수 레벨을 모드에 맞게 묶습니다. 일별(1주)=최근 7거래일 그대로, 주별(1달)=최근 30거래일을 약 5거래일마다 대표값, 월별(1년)=최근 365거래일을 월(YYYY-MM)별 말일에 가장 가까운 행으로 요약.</p>
         <div class="tf-row" role="group" aria-label="차트 기간">
           <button type="button" id="tf-1m">일별(1주)</button>
           <button type="button" id="tf-3m" class="tf-active">주별(1달)</button>
           <button type="button" id="tf-6m">월별(1년)</button>
         </div>
-        <div id="market-trend-chart"></div>
+        <div class="market-trend-chart-grid">
+          <div class="market-trend-chart-card">
+            <p class="mtcc-title">KOSPI</p>
+            <div id="market-trend-chart-kospi" class="market-trend-chart"></div>
+          </div>
+          <div class="market-trend-chart-card">
+            <p class="mtcc-title">NASDAQ</p>
+            <div id="market-trend-chart-nasdaq" class="market-trend-chart"></div>
+          </div>
+        </div>
       </div>
       <div class="foreign-flow-visibility" id="foreign-flow-visibility" aria-label="외국인 순매수 누적">
         <h4>한국 시장 외국인 순매수 가시화</h4>
@@ -1105,13 +1118,10 @@ function buildMarketTrendSeries(modeKey) {
 }
 
 function renderMarketTrendChart(modeKey) {
-  const host = document.getElementById('market-trend-chart');
-  if (!host) return;
   const model = buildMarketTrendSeries(modeKey);
-  if (model.empty || !model.lines.length) {
-    host.innerHTML = '<span class="empty-state">차트 데이터 부족</span>';
-    return;
-  }
+  const hostKospi = document.getElementById('market-trend-chart-kospi');
+  const hostNasdaq = document.getElementById('market-trend-chart-nasdaq');
+  if (!hostKospi || !hostNasdaq) return;
   const w = 640;
   const h = 248;
   const padL = 56;
@@ -1141,30 +1151,49 @@ function renderMarketTrendChart(modeKey) {
   const x1 = padL + innerW;
   const y0 = padT;
   const y1 = padT + innerH;
-  const yTicks = [yMax, yMid, yMin];
-  const yLbls = yTicks.map(v => formatNumberWithComma(v, v >= 1000 ? 0 : 2));
   const xi0 = 0;
   const xi1 = Math.floor(idxMax / 2);
   const xi2 = idxMax;
   const d0 = model.slice[xi0] && model.slice[xi0].date != null ? String(model.slice[xi0].date).slice(0, 10) : '—';
   const d1 = model.slice[xi1] && model.slice[xi1].date != null ? String(model.slice[xi1].date).slice(0, 10) : '—';
   const d2 = model.slice[xi2] && model.slice[xi2].date != null ? String(model.slice[xi2].date).slice(0, 10) : '—';
-  const polylines = model.lines.map(L => {
-    const ptsStr = L.pts.map(p => `${xAt(p.i).toFixed(1)},${yAt(p.yNorm).toFixed(1)}`).join(' ');
-    return `<polyline fill="none" stroke="${L.color}" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round" points="${ptsStr}"/>`;
-  }).join('');
-  const yTickSvg = yTicks.map((v, t) => {
-    const yn = yNormAtValue(v);
-    const py = yAt(yn);
-    return `<line x1="${x0}" y1="${py.toFixed(1)}" x2="${x0 - 5}" y2="${py.toFixed(1)}" stroke="${axisStroke}" stroke-width="1"/><text x="${x0 - 8}" y="${py.toFixed(1)}" fill="${tickFill}" font-size="10" text-anchor="end" dominant-baseline="middle">${escapeHtml(yLbls[t])}</text>`;
-  }).join('');
-  const xTickXs = [xAt(xi0), xAt(xi1), xAt(xi2)];
-  const xDates = [d0, d1, d2];
-  const xTickSvg = xTickXs.map((xx, t) => {
-    return `<line x1="${xx.toFixed(1)}" y1="${y1}" x2="${xx.toFixed(1)}" y2="${y1 + 5}" stroke="${axisStroke}" stroke-width="1"/><text x="${xx.toFixed(1)}" y="${y1 + 18}" fill="${tickFill}" font-size="10" text-anchor="middle" dominant-baseline="middle">${escapeHtml(xDates[t])}</text>`;
-  }).join('');
-  const axes = `<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="${axisStroke}" stroke-width="1.25"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y1}" stroke="${axisStroke}" stroke-width="1.25"/>${yTickSvg}${xTickSvg}<text x="${(padL + x1) / 2}" y="${h - 6}" fill="${titleFill}" font-size="11" text-anchor="middle" dominant-baseline="middle">${escapeHtml('기간')}</text><text x="12" y="${(y0 + y1) / 2}" fill="${titleFill}" font-size="11" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 12 ${(y0 + y1) / 2})">${escapeHtml('지수 레벨')}</text>`;
-  const legend = model.lines.map(L => {
+
+  function renderSingle(host, line) {
+    if (!line || !line.pts || line.pts.length < 2) {
+      host.innerHTML = '<span class="empty-state">차트 데이터 부족</span>';
+      return;
+    }
+    const rawVals = line.pts.map(p => p.raw).filter(v => typeof v === 'number' && Number.isFinite(v));
+    if (rawVals.length < 2) {
+      host.innerHTML = '<span class="empty-state">차트 데이터 부족</span>';
+      return;
+    }
+    const localMin = Math.min(...rawVals);
+    const localMax = Math.max(...rawVals);
+    const localRange = (localMax - localMin) || 1;
+    const localPad = localRange * 0.08 || 1;
+    const yMinLocal = localMin - localPad;
+    const yMaxLocal = localMax + localPad;
+    const yRangeLocal = (yMaxLocal - yMinLocal) || 1;
+    function yAtLocal(raw) {
+      const yn = (raw - yMinLocal) / yRangeLocal;
+      return yAt(yn);
+    }
+    const polylines = `<polyline fill="none" stroke="${line.color}" stroke-width="2.25" stroke-linejoin="round" stroke-linecap="round" points="${line.pts.map(p => `${xAt(p.i).toFixed(1)},${yAtLocal(p.raw).toFixed(1)}`).join(' ')}"/>`;
+    const yTicks = [yMaxLocal, (yMinLocal + yMaxLocal) / 2, yMinLocal];
+    const yLbls = yTicks.map(v => formatNumberWithComma(v, v >= 1000 ? 0 : 2));
+    const yTickSvg = yTicks.map((v, t) => {
+      const py = yAtLocal(v);
+      return `<line x1="${x0}" y1="${py.toFixed(1)}" x2="${x0 - 5}" y2="${py.toFixed(1)}" stroke="${axisStroke}" stroke-width="1"/><text x="${x0 - 8}" y="${py.toFixed(1)}" fill="${tickFill}" font-size="10" text-anchor="end" dominant-baseline="middle">${escapeHtml(yLbls[t])}</text>`;
+    }).join('');
+    const xTickXs = [xAt(xi0), xAt(xi1), xAt(xi2)];
+    const xDates = [d0, d1, d2];
+    const xTickSvg = xTickXs.map((xx, t) => {
+      return `<line x1="${xx.toFixed(1)}" y1="${y1}" x2="${xx.toFixed(1)}" y2="${y1 + 5}" stroke="${axisStroke}" stroke-width="1"/><text x="${xx.toFixed(1)}" y="${y1 + 18}" fill="${tickFill}" font-size="10" text-anchor="middle" dominant-baseline="middle">${escapeHtml(xDates[t])}</text>`;
+    }).join('');
+    const axes = `<line x1="${x0}" y1="${y1}" x2="${x1}" y2="${y1}" stroke="${axisStroke}" stroke-width="1.25"/><line x1="${x0}" y1="${y0}" x2="${x0}" y2="${y1}" stroke="${axisStroke}" stroke-width="1.25"/>${yTickSvg}${xTickSvg}<text x="${(padL + x1) / 2}" y="${h - 6}" fill="${titleFill}" font-size="11" text-anchor="middle" dominant-baseline="middle">${escapeHtml('기간')}</text><text x="12" y="${(y0 + y1) / 2}" fill="${titleFill}" font-size="11" text-anchor="middle" dominant-baseline="middle" transform="rotate(-90 12 ${(y0 + y1) / 2})">${escapeHtml('지수 레벨')}</text>`;
+    const legend = (() => {
+      const L = line;
     const pct = L.periodChgPct;
     const digits = L.key === 'nasdaq' ? 2 : 0;
     let legCls = 'neu';
@@ -1175,9 +1204,20 @@ function renderMarketTrendChart(modeKey) {
     } else {
       legTxt = `${formatNumberWithComma(L.last, digits)}`;
     }
-    return `<span class="leg-item"><span class="leg-swatch" style="background:${L.color}"></span><span>${escapeHtml(L.label)}</span> <span class="${escapeHtml(legCls)}">(${escapeHtml(legTxt)})</span></span>`;
-  }).join('');
-  host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="248" preserveAspectRatio="xMidYMid meet" role="img" aria-label="일별 지수 레벨 추세">${axes}${polylines}</svg><div class="market-trend-legend">${legend}</div>`;
+      return `<span class="leg-item"><span class="leg-swatch" style="background:${L.color}"></span><span>${escapeHtml(L.label)}</span> <span class="${escapeHtml(legCls)}">(${escapeHtml(legTxt)})</span></span>`;
+    })();
+    host.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="248" preserveAspectRatio="xMidYMid meet" role="img" aria-label="${escapeHtml(line.label)} 일별 지수 레벨 추세">${axes}${polylines}</svg><div class="market-trend-legend">${legend}</div>`;
+  }
+
+  if (model.empty || !model.lines.length) {
+    hostKospi.innerHTML = '<span class="empty-state">차트 데이터 부족</span>';
+    hostNasdaq.innerHTML = '<span class="empty-state">차트 데이터 부족</span>';
+    return;
+  }
+  const lineKospi = model.lines.find(x => x && x.key === 'kospi');
+  const lineNasdaq = model.lines.find(x => x && x.key === 'nasdaq');
+  renderSingle(hostKospi, lineKospi);
+  renderSingle(hostNasdaq, lineNasdaq);
 }
 
 function setupMarketTrendToggles() {
