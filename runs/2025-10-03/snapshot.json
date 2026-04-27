@@ -1,0 +1,89 @@
+{
+  "market_summary": {
+    "note": "KOSPI n/a, USD/KRW n/a. DB historical rebuild (2025-10-03, market_asof=2025-10-03).",
+    "kospi_change_pct": 0.0,
+    "usdkrw": 0.0
+  },
+  "flow_summary": {
+    "note": "외국인 +31933억, 기관 -547억, 개인 -31345억",
+    "foreign_net": 31933.0,
+    "institution_net": -547.0,
+    "retail_net": -31345.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "historical_rebuild_from_db:2025-10-03"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": null,
+      "kosdaq": null,
+      "kospi_pct": 0.0,
+      "kosdaq_pct": 0.0
+    },
+    "us": {
+      "sp500": 6715.7900390625,
+      "nasdaq": 22780.509765625,
+      "dow": 46758.28125,
+      "sp500_pct": 0.006551280273586117,
+      "nasdaq_pct": -0.27815126237222937,
+      "dow_pct": 0.5128201683291561
+    },
+    "fx": {
+      "usdkrw": 0.0,
+      "usdkrw_pct": 0.0
+    },
+    "volatility": {
+      "vix": 0.0
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.11899995803833,
+      "us2y": 3.8580000400543213,
+      "spread_2_10": 0.2609999179840088,
+      "vix": 16.649999618530273,
+      "dxy": 97.72000122070312,
+      "usdkrw": null,
+      "vix3m": 19.079999923706055,
+      "vix_term_spread": 2.4300003051757812,
+      "oil_wti": 60.880001068115234
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 2.801756656951593,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24055.749,
+      "gdp_qoq_annualized": 0.5
+    },
+    "structural": {
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 2.8,
+      "ig_oas": 0.75,
+      "fed_balance_sheet": 6587119.0
+    }
+  },
+  "phase_two_signals": null,
+  "cumulative_context": null
+}

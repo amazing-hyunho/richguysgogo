@@ -1,0 +1,89 @@
+{
+  "market_summary": {
+    "note": "KOSPI +1.76%, USD/KRW 1425.97. DB historical rebuild (2025-10-29, market_asof=2025-10-29).",
+    "kospi_change_pct": 1.7639092208698322,
+    "usdkrw": 1425.969970703125
+  },
+  "flow_summary": {
+    "note": "외국인 -683억, 기관 +4630억, 개인 -2947억",
+    "foreign_net": -683.0,
+    "institution_net": 4630.0,
+    "retail_net": -2947.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "historical_rebuild_from_db:2025-10-29"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 4081.14990234375,
+      "kosdaq": 901.5900268554688,
+      "kospi_pct": 1.7639092208698322,
+      "kosdaq_pct": -0.1893015565823204
+    },
+    "us": {
+      "sp500": 6890.58984375,
+      "nasdaq": 23958.470703125,
+      "dow": 47632.0,
+      "sp500_pct": -0.004357825517342977,
+      "nasdaq_pct": 0.549703168322107,
+      "dow_pct": -0.15589342061639927
+    },
+    "fx": {
+      "usdkrw": 1425.969970703125,
+      "usdkrw_pct": -0.34941334216420955
+    },
+    "volatility": {
+      "vix": 0.0
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.058000087738037,
+      "us2y": 3.7300000190734863,
+      "spread_2_10": 0.3280000686645508,
+      "vix": 16.920000076293945,
+      "dxy": 99.22000122070312,
+      "usdkrw": 1425.969970703125,
+      "vix3m": 19.829999923706055,
+      "vix_term_spread": 2.9099998474121094,
+      "oil_wti": 60.47999954223633
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 2.801756656951593,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24055.749,
+      "gdp_qoq_annualized": 0.5
+    },
+    "structural": {
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 2.76,
+      "ig_oas": 0.75,
+      "fed_balance_sheet": 6587034.0
+    }
+  },
+  "phase_two_signals": null,
+  "cumulative_context": null
+}

@@ -1,44 +1,26 @@
 {
-  "generated_at": "2026-04-10T09:16:33.426970+00:00",
+  "generated_at": "2026-04-26T13:14:19.453679+00:00",
   "market_date": "2026-04-10",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI 1.40%, USD/KRW 1476.98. Headlines loaded. Flows loaded.",
-      "kospi_change_pct": 1.4,
-      "usdkrw": 1476.982511
+      "note": "KOSPI +1.40%, USD/KRW n/a. DB historical rebuild (2026-04-10, market_asof=2026-04-10).",
+      "kospi_change_pct": 1.3994498943833722,
+      "usdkrw": 0.0
     },
     "flow_summary": {
-      "note": "외국인 +10622억, 기관 -1100억, 개인 -13104억 | KOSPI(외 +10641, 기관 -2031, 개인 -12280) KOSDAQ(외 -19, 기관 +931, 개인 -824)",
+      "note": "외국인 +10622억, 기관 -1100억, 개인 -13104억",
       "foreign_net": 10622.0,
       "institution_net": -1100.0,
       "retail_net": -13104.0
     },
-    "korean_market_flow": {
-      "date": "2026-04-10",
-      "market": {
-        "KOSPI": {
-          "individual": -12280,
-          "foreign": 10641,
-          "institution": -2031
-        },
-        "KOSDAQ": {
-          "individual": -824,
-          "foreign": -19,
-          "institution": 931
-        }
-      }
-    },
+    "korean_market_flow": null,
     "sector_moves": [
       "n/a",
       "n/a",
       "n/a"
     ],
     "news_headlines": [
-      "[금리/연준] [속보] 한은, 기준금리 7연속 2.50% 동결…중동 변수에 ‘신중 모드’ - 중앙일보",
-      "[인플레이션] 미 2월 근원 PCE 3.0%↑…전쟁 전에도 물가상승 압력 - 연합뉴스TV",
-      "[환율/달러] 기준금리 7연속 동결…이란전쟁에 물가·환율·성장 모두 불안(종합2보) - 연합뉴스",
-      "[정책/테마] 트럼프 관세전쟁 '시즌2'…공급망·통상질서 재편 가속화 [로앤비즈 브리핑] - 한국경제",
-      "[경기/성장] 미 작년 4분기 GDP 성장률 확정치 0.5%…시장 전망 하회 - 연합뉴스TV"
+      "historical_rebuild_from_db:2026-04-10"
     ],
     "watchlist": [
       "SPY",
@@ -47,349 +29,65 @@
     ],
     "markets": {
       "kr": {
-        "kospi": 5858.87,
-        "kosdaq": 1093.63,
-        "kospi_pct": 1.4,
-        "kosdaq_pct": 1.64
+        "kospi": 5858.8701171875,
+        "kosdaq": 1093.6300048828125,
+        "kospi_pct": 1.3994498943833722,
+        "kosdaq_pct": 1.63847629022421
       },
       "us": {
-        "sp500": 6824.66,
-        "nasdaq": 22822.418,
-        "dow": 48185.8,
-        "sp500_pct": 0.6170009184983725,
-        "nasdaq_pct": 0.8280276106987381,
-        "dow_pct": 0.5758306421718189
+        "sp500": 6816.89013671875,
+        "nasdaq": 22902.890625,
+        "dow": 47916.5703125,
+        "sp500_pct": -0.1138521091652343,
+        "nasdaq_pct": 0.35259496320050554,
+        "dow_pct": -0.5587340344767345
       },
       "fx": {
-        "usdkrw": 1476.982511,
-        "usdkrw_pct": 0.7554949712789906
+        "usdkrw": 0.0,
+        "usdkrw_pct": 0.0
       },
       "volatility": {
-        "vix": 19.760000228881836
+        "vix": 0.0
       }
     },
     "macro": {
       "daily": {
-        "us10y": 4.293000221252441,
-        "us2y": 3.5880000591278076,
-        "spread_2_10": 0.7050001621246338,
-        "vix": 19.760000228881836,
-        "dxy": 98.9280014038086,
-        "usdkrw": 1485.8699951171875,
-        "vix3m": 21.809999465942383,
-        "vix_term_spread": 2.049999237060547
+        "us10y": 4.316999912261963,
+        "us2y": 3.5929999351501465,
+        "spread_2_10": 0.7239999771118164,
+        "vix": 19.229999542236328,
+        "dxy": 98.6500015258789,
+        "usdkrw": null,
+        "vix3m": 21.860000610351562,
+        "vix_term_spread": 2.6300010681152344,
+        "oil_wti": 96.56999969482422
       },
       "monthly": {
         "unemployment_rate": 4.3,
-        "cpi_yoy": 2.6645890876940914,
-        "core_cpi_yoy": 2.7335062438778035,
+        "cpi_yoy": 3.3202055812236786,
+        "core_cpi_yoy": 2.6730984898529986,
         "pce_yoy": 2.801756656951593,
         "pmi": null,
+        "retail_sales_mom": null,
+        "nfp_change": null,
         "wage_growth": 37.38,
         "wage_level": 37.38,
-        "wage_yoy": 3.517031293270567
+        "wage_yoy": 3.517031293270567,
+        "export_yoy": null
       },
       "quarterly": {
         "real_gdp": 24055.749,
         "gdp_qoq_annualized": 0.5
       },
       "structural": {
-        "fed_funds_rate": 3.64,
-        "real_rate": 1.9530002212524415,
+        "fed_funds_rate": null,
+        "real_rate": null,
         "hy_oas": 2.94,
-        "ig_oas": 0.83,
+        "ig_oas": 0.82,
         "fed_balance_sheet": 6693871.0
       }
     },
-    "phase_two_signals": {
-      "earnings_signal_score": 0.0,
-      "breadth_signal_score": 0.846,
-      "liquidity_signal_score": 5.751,
-      "note": "derived from headlines + markets + macro.daily + macro.structural"
-    },
-    "cumulative_context": {
-      "lookback_days": 20,
-      "sample_count": 20,
-      "kospi_5d_cum_pct": 13.19,
-      "kospi_20d_cum_pct": 6.38,
-      "kosdaq_5d_cum_pct": 4.9,
-      "kospi_abs_move_5d_avg": 2.638,
-      "usdkrw_5d_change_pct": -2.188,
-      "vix_5d_avg": 22.924,
-      "reversal_signal": false,
-      "note": "rolling_20d: kospi20d=+6.38%, vol20d=3.56, reversal=false"
-    }
-  },
-  "stances": [
-    {
-      "agent_name": "macro",
-      "core_claims": [
-        "Macro tone is balanced.",
-        "No major shocks.",
-        "Flows are mixed."
-      ],
-      "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
-      "raw_response": null,
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.market_summary.usdkrw",
-        "snapshot.market_summary.kospi_change_pct",
-        "snapshot.flow_summary.foreign_net",
-        "snapshot.flow_summary.institution_net"
-      ],
-      "confidence": "MED"
-    },
-    {
-      "agent_name": "flow",
-      "core_claims": [
-        "외국인+기관 순매수가 강합니다.",
-        "프로 수급이 방향성을 지지합니다.",
-        "위험자산 선호가 강화됩니다."
-      ],
-      "korean_comment": "수급 흐름이 우호적이라 위험 선호가 높아 보입니다.",
-      "raw_response": null,
-      "regime_tag": "RISK_ON",
-      "evidence_ids": [
-        "snapshot.flow_summary.foreign_net",
-        "snapshot.flow_summary.institution_net",
-        "snapshot.flow_summary.retail_net"
-      ],
-      "confidence": "HIGH"
-    },
-    {
-      "agent_name": "sector",
-      "core_claims": [
-        "Sector moves are mixed.",
-        "No clear leader.",
-        "Maintain balance."
-      ],
-      "korean_comment": "섹터 주도주가 불명확해 균형 유지가 낫습니다.",
-      "raw_response": null,
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.sector_moves",
-        "snapshot.flow_summary.foreign_net",
-        "snapshot.flow_summary.institution_net"
-      ],
-      "confidence": "LOW"
-    },
-    {
-      "agent_name": "risk",
-      "core_claims": [
-        "Risk signals stable.",
-        "No acute stress.",
-        "Maintain discipline."
-      ],
-      "korean_comment": "급격한 리스크는 없어 규율을 유지하세요.",
-      "raw_response": null,
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.market_summary.usdkrw",
-        "snapshot.market_summary.kospi_change_pct",
-        "snapshot.flow_summary.foreign_net",
-        "snapshot.flow_summary.institution_net"
-      ],
-      "confidence": "MED"
-    },
-    {
-      "agent_name": "earnings",
-      "core_claims": [
-        "실적/가이던스 상향 관련 단서가 우세합니다.",
-        "이익 추정치 개선 기대가 유지됩니다.",
-        "주가 상승의 펀더멘털 정당화 가능성이 있습니다."
-      ],
-      "korean_comment": "이익 모멘텀이 견조해 위험자산 선호를 지지합니다.",
-      "raw_response": null,
-      "regime_tag": "RISK_ON",
-      "evidence_ids": [
-        "snapshot.phase_two_signals.earnings_signal_score",
-        "snapshot.flow_summary.foreign_net",
-        "snapshot.flow_summary.institution_net",
-        "snapshot.news_headlines"
-      ],
-      "confidence": "MED"
-    },
-    {
-      "agent_name": "breadth",
-      "core_claims": [
-        "추세 확산과 역추세 신호가 공존합니다.",
-        "기술적 우위가 명확하지 않습니다.",
-        "방향 확정 전까지 균형 비중이 적절합니다."
-      ],
-      "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
-      "raw_response": null,
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.phase_two_signals.breadth_signal_score",
-        "snapshot.markets.volatility.vix",
-        "snapshot.flow_summary.foreign_net",
-        "snapshot.flow_summary.institution_net"
-      ],
-      "confidence": "LOW"
-    },
-    {
-      "agent_name": "liquidity",
-      "core_claims": [
-        "달러 압력이 완화되고 금리 부담이 제한적입니다.",
-        "유동성 환경이 위험자산 회복에 우호적입니다.",
-        "정책 충격 가능성이 낮아 비중 확대 여지가 있습니다."
-      ],
-      "korean_comment": "유동성/정책 환경이 우호적이라 리스크온을 지지합니다.",
-      "raw_response": null,
-      "regime_tag": "RISK_ON",
-      "evidence_ids": [
-        "snapshot.phase_two_signals.liquidity_signal_score",
-        "snapshot.macro.daily.dxy",
-        "snapshot.macro.structural.real_rate",
-        "snapshot.flow_summary.foreign_net"
-      ],
-      "confidence": "MED"
-    }
-  ],
-  "debate_round": {
-    "round_index": 1,
-    "facilitator_note": "오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
-    "minutes": [
-      {
-        "speaker": "macro",
-        "speaker_label": "매크로 담당자",
-        "summary": "저는 매크로 담당자 입장에서 '거시는 균형적이며 선택적 대응이 적절합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1476.98, kospi_change_pct=+1.40%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.market_summary.usdkrw",
-          "snapshot.market_summary.kospi_change_pct",
-          "snapshot.flow_summary.foreign_net",
-          "snapshot.flow_summary.institution_net"
-        ],
-        "internal_regime_tag": "NEUTRAL"
-      },
-      {
-        "speaker": "flow",
-        "speaker_label": "수급 담당자",
-        "summary": "저는 수급 담당자 입장에서 '수급 흐름이 우호적이라 위험 선호가 높아 보입니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+10622억, institution_net=-1100억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.flow_summary.foreign_net",
-          "snapshot.flow_summary.institution_net",
-          "snapshot.flow_summary.retail_net"
-        ],
-        "internal_regime_tag": "RISK_ON"
-      },
-      {
-        "speaker": "sector",
-        "speaker_label": "섹터 담당자",
-        "summary": "저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+10622억, institution_net=-1100억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.sector_moves",
-          "snapshot.flow_summary.foreign_net",
-          "snapshot.flow_summary.institution_net"
-        ],
-        "internal_regime_tag": "NEUTRAL"
-      },
-      {
-        "speaker": "risk",
-        "speaker_label": "리스크 담당자",
-        "summary": "저는 리스크 담당자 입장에서 '급격한 리스크는 없어 규율을 유지하세요.' 의견을 유지합니다. 근거 숫자는 usdkrw=1476.98, kospi_change_pct=+1.40%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.market_summary.usdkrw",
-          "snapshot.market_summary.kospi_change_pct",
-          "snapshot.flow_summary.foreign_net",
-          "snapshot.flow_summary.institution_net"
-        ],
-        "internal_regime_tag": "NEUTRAL"
-      },
-      {
-        "speaker": "earnings",
-        "speaker_label": "이익모멘텀 담당자",
-        "summary": "저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 견조해 위험자산 선호를 지지합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+10622억, institution_net=-1100억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.phase_two_signals.earnings_signal_score",
-          "snapshot.flow_summary.foreign_net",
-          "snapshot.flow_summary.institution_net",
-          "snapshot.news_headlines"
-        ],
-        "internal_regime_tag": "RISK_ON"
-      },
-      {
-        "speaker": "breadth",
-        "speaker_label": "브레드스 담당자",
-        "summary": "저는 브레드스 담당자 입장에서 '브레드스 신호가 혼재되어 중립 대응이 합리적입니다.' 의견을 유지합니다. 근거 숫자는 vix=19.8, foreign_net=+10622억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.phase_two_signals.breadth_signal_score",
-          "snapshot.markets.volatility.vix",
-          "snapshot.flow_summary.foreign_net",
-          "snapshot.flow_summary.institution_net"
-        ],
-        "internal_regime_tag": "NEUTRAL"
-      },
-      {
-        "speaker": "liquidity",
-        "speaker_label": "유동성 담당자",
-        "summary": "저는 유동성 담당자 입장에서 '유동성/정책 환경이 우호적이라 리스크온을 지지합니다.' 의견을 유지합니다. 근거 숫자는 dxy=98.93, real_rate=1.95%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
-        "references": [
-          "snapshot.phase_two_signals.liquidity_signal_score",
-          "snapshot.macro.daily.dxy",
-          "snapshot.macro.structural.real_rate",
-          "snapshot.flow_summary.foreign_net"
-        ],
-        "internal_regime_tag": "RISK_ON"
-      }
-    ],
-    "round_conclusion": "의장 정리: 오늘 다수 의견은 중립입니다. 근거는 KOSPI +1.40%, USD/KRW 1476.98(+0.76%), VIX 19.8, 외국인 +10622억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 중립 비중을 유지하면서 확인된 시그널에서만 선별 대응합니다."
-  },
-  "committee_result": {
-    "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
-    "key_points": [
-      {
-        "point": "Majority regime tag: RISK_ON.",
-        "sources": [
-          "macro",
-          "sector",
-          "risk",
-          "breadth"
-        ]
-      },
-      {
-        "point": "Shared evidence focus: snapshot.flow_summary.foreign_net.",
-        "sources": [
-          "breadth",
-          "earnings",
-          "flow",
-          "liquidity",
-          "macro"
-        ]
-      },
-      {
-        "point": "Stability guardrail applied from confidence-weighted votes and cumulative context.",
-        "sources": [
-          "regime_tuner"
-        ]
-      }
-    ],
-    "disagreements": [
-      {
-        "topic": "Regime tags",
-        "majority": "NEUTRAL",
-        "minority": "RISK_ON",
-        "minority_agents": [
-          "flow",
-          "earnings",
-          "liquidity"
-        ],
-        "why_it_matters": "Minority risk regime can change positioning boundaries."
-      }
-    ],
-    "ops_guidance": [
-      {
-        "level": "OK",
-        "text": "Lean into confirmed momentum leaders."
-      },
-      {
-        "level": "CAUTION",
-        "text": "Size positions with volatility limits."
-      },
-      {
-        "level": "AVOID",
-        "text": "Avoid chasing overstretched breakouts."
-      }
-    ]
+    "phase_two_signals": null,
+    "cumulative_context": null
   }
 }

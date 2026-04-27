@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-04-26T13:14:19.370686+00:00",
+  "market_date": "2026-02-06",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI -1.44%, USD/KRW 1470.68. DB historical rebuild (2026-02-06, market_asof=2026-02-06).",
+      "kospi_change_pct": -1.4414385790021003,
+      "usdkrw": 1470.6800537109375
+    },
+    "flow_summary": {
+      "note": "외국인 -32505억, 기관 +7771억, 개인 +23220억",
+      "foreign_net": -32505.0,
+      "institution_net": 7771.0,
+      "retail_net": 23220.0
+    },
+    "korean_market_flow": null,
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "historical_rebuild_from_db:2026-02-06"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi": 5089.14013671875,
+        "kosdaq": 1080.77001953125,
+        "kospi_pct": -1.4414385790021003,
+        "kosdaq_pct": -2.4936633372227934
+      },
+      "us": {
+        "sp500": 6932.2998046875,
+        "nasdaq": 23031.2109375,
+        "dow": 50115.671875,
+        "sp500_pct": 1.9695796697335792,
+        "nasdaq_pct": 2.1766116022293813,
+        "dow_pct": 2.4677668028259276
+      },
+      "fx": {
+        "usdkrw": 1470.6800537109375,
+        "usdkrw_pct": 0.7239227500269413
+      },
+      "volatility": {
+        "vix": 0.0
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.205999851226807,
+        "us2y": 3.5899999141693115,
+        "spread_2_10": 0.6159999370574951,
+        "vix": 20.3700008392334,
+        "dxy": 97.62999725341797,
+        "usdkrw": 1470.6800537109375,
+        "vix3m": 20.3700008392334,
+        "vix_term_spread": 0.0,
+        "oil_wti": 63.54999923706055
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 3.3202055812236786,
+        "core_cpi_yoy": 2.6730984898529986,
+        "pce_yoy": 2.801756656951593,
+        "pmi": null,
+        "retail_sales_mom": 1.6614578545822267,
+        "nfp_change": 178.0,
+        "wage_growth": 37.38,
+        "wage_level": 37.38,
+        "wage_yoy": 3.517031293270567,
+        "export_yoy": null
+      },
+      "quarterly": {
+        "real_gdp": 24055.749,
+        "gdp_qoq_annualized": 0.5
+      },
+      "structural": {
+        "fed_funds_rate": null,
+        "real_rate": null,
+        "hy_oas": 2.87,
+        "ig_oas": 0.76,
+        "fed_balance_sheet": 6605909.0
+      }
+    },
+    "phase_two_signals": null,
+    "cumulative_context": null
+  }
+}

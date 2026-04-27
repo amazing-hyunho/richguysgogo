@@ -1,14 +1,14 @@
 {
   "market_summary": {
-    "note": "KOSPI 0.02%, USD/KRW 1483.37. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": 0.02,
-    "usdkrw": 1483.374038
+    "note": "KOSPI -5.96%, USD/KRW 1483.89. DB historical rebuild (2026-03-09, market_asof=2026-03-09).",
+    "kospi_change_pct": -5.962537946499218,
+    "usdkrw": 1483.8900146484375
   },
   "flow_summary": {
-    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
-    "foreign_net": 0.0,
-    "institution_net": 0.0,
-    "retail_net": 0.0
+    "note": "외국인 -37124억, 기관 -14994억, 개인 +51307억",
+    "foreign_net": -37124.0,
+    "institution_net": -14994.0,
+    "retail_net": 51307.0
   },
   "korean_market_flow": null,
   "sector_moves": [
@@ -17,11 +17,7 @@
     "n/a"
   ],
   "news_headlines": [
-    "[금리/연준] 美연준, 올해 마지막 FOMC서 금리 0.25%P↓…내년 전망은 안갯속(종합2보) - 연합뉴스",
-    "[환율/달러] 원/달러 환율, 유가 급등에 8.8원 오른 1,476.9원 - 연합뉴스 한민족센터",
-    "[인플레이션] 연준이 물가지표 척도로 CPI보다 PCE를 선호하는 이유 - CME Group",
-    "[경기/성장] 중동 전쟁에 세계경제 '흔들'…에너지·식량·물류 연쇄 충격 - 뉴시스",
-    "[변동성/리스크] 국채 부진 속 회사채 활황…신용 스프레드 4년來 최저 - sedaily.com"
+    "historical_rebuild_from_db:2026-03-09"
   ],
   "watchlist": [
     "SPY",
@@ -30,32 +26,38 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": 0.02,
-      "kosdaq_pct": 3.43
+      "kospi": 5251.8701171875,
+      "kosdaq": 1102.280029296875,
+      "kospi_pct": -5.962537946499218,
+      "kosdaq_pct": -4.537228182471043
     },
     "us": {
-      "sp500_pct": -1.327680431463195,
-      "nasdaq_pct": -1.5882895951470384,
-      "dow_pct": -0.9449543006211992
+      "sp500": 6795.990234375,
+      "nasdaq": 22695.94921875,
+      "dow": 47740.80078125,
+      "sp500_pct": 0.8304161513105205,
+      "nasdaq_pct": 1.376960612055389,
+      "dow_pct": 0.5036677667678119
     },
     "fx": {
-      "usdkrw": 1483.374038,
-      "usdkrw_pct": 0.04863648952626893
+      "usdkrw": 1483.8900146484375,
+      "usdkrw_pct": 0.29604428857540166
     },
     "volatility": {
-      "vix": 29.489999771118164
+      "vix": 0.0
     }
   },
   "macro": {
     "daily": {
-      "us10y": 4.132999897003174,
-      "us2y": 3.569999933242798,
-      "spread_2_10": 0.562999963760376,
-      "vix": 29.489999771118164,
-      "dxy": 99.4010009765625,
-      "usdkrw": 1481.0899658203125,
-      "vix3m": 27.559999465942383,
-      "vix_term_spread": -1.9300003051757812
+      "us10y": 4.136000156402588,
+      "us2y": 3.5929999351501465,
+      "spread_2_10": 0.5430002212524414,
+      "vix": 25.5,
+      "dxy": 99.18000030517578,
+      "usdkrw": 1483.8900146484375,
+      "vix3m": 25.34000015258789,
+      "vix_term_spread": -0.15999984741210938,
+      "oil_wti": 94.7699966430664
     },
     "monthly": {
       "unemployment_rate": 4.4,
@@ -63,38 +65,25 @@
       "core_cpi_yoy": 2.9493378374616075,
       "pce_yoy": 2.901287416285925,
       "pmi": null,
+      "retail_sales_mom": null,
+      "nfp_change": null,
       "wage_growth": 37.32,
       "wage_level": 37.32,
-      "wage_yoy": 3.8397328881469184
+      "wage_yoy": 3.8397328881469184,
+      "export_yoy": null
     },
     "quarterly": {
       "real_gdp": 24111.83,
       "gdp_qoq_annualized": 1.4
     },
     "structural": {
-      "fed_funds_rate": 3.64,
-      "real_rate": 1.7829998970031737,
-      "hy_oas": 3.0,
-      "ig_oas": 0.82,
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 3.19,
+      "ig_oas": 0.85,
       "fed_balance_sheet": 6628894.0
     }
   },
-  "phase_two_signals": {
-    "earnings_signal_score": 0.0,
-    "breadth_signal_score": 3.012,
-    "liquidity_signal_score": -0.5,
-    "note": "derived from headlines + markets + macro.daily + macro.structural"
-  },
-  "cumulative_context": {
-    "lookback_days": 20,
-    "sample_count": 18,
-    "kospi_5d_cum_pct": 9.707,
-    "kospi_20d_cum_pct": 3.552,
-    "kosdaq_5d_cum_pct": 11.849,
-    "kospi_abs_move_5d_avg": 1.941,
-    "usdkrw_5d_change_pct": 1.299,
-    "vix_5d_avg": 26.674,
-    "reversal_signal": false,
-    "note": "rolling_18d: kospi20d=+3.55%, vol20d=3.34, reversal=false"
-  }
+  "phase_two_signals": null,
+  "cumulative_context": null
 }

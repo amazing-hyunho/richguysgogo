@@ -1,0 +1,89 @@
+{
+  "market_summary": {
+    "note": "KOSPI -3.88%, USD/KRW n/a. DB historical rebuild (2025-08-01, market_asof=2025-08-01).",
+    "kospi_change_pct": -3.8832956878649294,
+    "usdkrw": 0.0
+  },
+  "flow_summary": {
+    "note": "외국인 -7631억, 기관 -12130억, 개인 +18724억",
+    "foreign_net": -7631.0,
+    "institution_net": -12130.0,
+    "retail_net": 18724.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "historical_rebuild_from_db:2025-08-01"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 3119.409912109375,
+      "kosdaq": 772.7899780273438,
+      "kospi_pct": -3.8832956878649294,
+      "kosdaq_pct": -4.029856018152586
+    },
+    "us": {
+      "sp500": 6238.009765625,
+      "nasdaq": 20650.130859375,
+      "dow": 43588.578125,
+      "sp500_pct": -1.599213314014843,
+      "nasdaq_pct": -2.2360965552978196,
+      "dow_pct": -1.2290738569338735
+    },
+    "fx": {
+      "usdkrw": 0.0,
+      "usdkrw_pct": 0.0
+    },
+    "volatility": {
+      "vix": 0.0
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.21999979019165,
+      "us2y": 4.182000160217285,
+      "spread_2_10": 0.037999629974365234,
+      "vix": 20.3799991607666,
+      "dxy": 98.69000244140625,
+      "usdkrw": null,
+      "vix3m": 21.239999771118164,
+      "vix_term_spread": 0.8600006103515625,
+      "oil_wti": 67.33000183105469
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 2.801756656951593,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24055.749,
+      "gdp_qoq_annualized": 0.5
+    },
+    "structural": {
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 3.13,
+      "ig_oas": 0.82,
+      "fed_balance_sheet": 6642578.0
+    }
+  },
+  "phase_two_signals": null,
+  "cumulative_context": null
+}

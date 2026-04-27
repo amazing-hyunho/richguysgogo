@@ -1,14 +1,14 @@
 {
   "market_summary": {
-    "note": "KOSPI -1.00%, USD/KRW 1440.10. Headlines loaded. Flows unavailable.",
+    "note": "KOSPI -1.00%, USD/KRW 1432.32. DB historical rebuild (2026-03-01, market_asof=2026-02-27).",
     "kospi_change_pct": -1.0010691871955486,
-    "usdkrw": 1440.098904
+    "usdkrw": 1432.3199462890625
   },
   "flow_summary": {
-    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
-    "foreign_net": 0.0,
-    "institution_net": 0.0,
-    "retail_net": 0.0
+    "note": "외국인 -69905억, 기관 +10126억, 개인 +57772억",
+    "foreign_net": -69905.0,
+    "institution_net": 10126.0,
+    "retail_net": 57772.0
   },
   "korean_market_flow": null,
   "sector_moves": [
@@ -17,16 +17,7 @@
     "n/a"
   ],
   "news_headlines": [
-    "7조원 던진 외국인, 역대 최대 투매에 코스피 주춤…6200선 마감 [투자360] - 헤럴드경제",
-    "코스피, 강한 변동성 끝 1% 하락…외인 6.8조 순매도 - 한국경제",
-    "美·이란 전쟁, 증시 '초대형 변수'…'육천피' 안착한 코스피 '위협' - 뉴스1",
-    "[美 이란 공격] 코스피발 '경기 훈풍' 아직인데…고개 든 '중동 리스크' - 연합뉴스",
-    "“코스피 8000 간다”…‘34만 전자·170만 닉스’ 현실화될까[주형연의 에구MONEY] - v.daum.net",
-    "\"코스피, 블로오프 탑…폭락할 수도\" - 연합인포맥스",
-    "개장 5분만에 코스피 1조 팔아치웠다…2월 역대급 外人 순매도에 고개드는 거품론 [투자360] - 헤럴드경제",
-    "“코스피 6000 시대”…빚내서 투자하는 ‘빚투’ 32조 돌파, 사상 최고 - v.daum.net",
-    "코스피 6300 돌파, 삼성전자 시총 1조달러 넘겨 - 동아일보",
-    "또 'AI 과열론'...깜짝 실적에도 추락한 엔비디아, 코스피도 하락 출발 - mt.co.kr"
+    "historical_rebuild_from_db:2026-03-01"
   ],
   "watchlist": [
     "SPY",
@@ -35,32 +26,38 @@
   ],
   "markets": {
     "kr": {
+      "kospi": 6244.1298828125,
+      "kosdaq": 1192.780029296875,
       "kospi_pct": -1.0010691871955486,
       "kosdaq_pct": 0.3896818404810278
     },
     "us": {
+      "sp500": 6878.8798828125,
+      "nasdaq": 22668.2109375,
+      "dow": 48977.921875,
       "sp500_pct": -0.4339352811031182,
       "nasdaq_pct": -0.9186398424208307,
       "dow_pct": -1.053102579389897
     },
     "fx": {
-      "usdkrw": 1440.098904,
-      "usdkrw_pct": 0.0
+      "usdkrw": 1432.3199462890625,
+      "usdkrw_pct": 0.37772647398572945
     },
     "volatility": {
-      "vix": 19.860000610351562
+      "vix": 0.0
     }
   },
   "macro": {
     "daily": {
-      "us10y": 3.9619998931884766,
-      "us2y": 3.578000068664551,
-      "spread_2_10": 0.3839998245239258,
-      "vix": 19.860000610351562,
-      "dxy": 97.61000061035156,
-      "usdkrw": 1439.22998046875,
+      "us10y": null,
+      "us2y": null,
+      "spread_2_10": null,
+      "vix": null,
+      "dxy": null,
+      "usdkrw": null,
       "vix3m": 21.559999465942383,
-      "vix_term_spread": 1.6999988555908203
+      "vix_term_spread": 1.6999988555908203,
+      "oil_wti": null
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -68,26 +65,25 @@
       "core_cpi_yoy": 2.9493378374616075,
       "pce_yoy": 2.901287416285925,
       "pmi": null,
+      "retail_sales_mom": null,
+      "nfp_change": null,
       "wage_growth": 37.17,
       "wage_level": 37.17,
-      "wage_yoy": 3.7109375
+      "wage_yoy": 3.7109375,
+      "export_yoy": null
     },
     "quarterly": {
       "real_gdp": 24111.83,
       "gdp_qoq_annualized": 1.4
     },
     "structural": {
-      "fed_funds_rate": 3.64,
-      "real_rate": 1.7119998931884766,
-      "hy_oas": 2.98,
-      "ig_oas": 0.82,
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 3.12,
+      "ig_oas": 0.86,
       "fed_balance_sheet": 6613797.0
     }
   },
-  "phase_two_signals": {
-    "earnings_signal_score": 0.0,
-    "breadth_signal_score": 0.496,
-    "liquidity_signal_score": 5.032,
-    "note": "derived from headlines + markets + macro.daily + macro.structural"
-  }
+  "phase_two_signals": null,
+  "cumulative_context": null
 }

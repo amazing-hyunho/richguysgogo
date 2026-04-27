@@ -1,14 +1,14 @@
 {
   "market_summary": {
-    "note": "KOSPI 2.31%, USD/KRW 1447.95. Headlines loaded. Flows unavailable.",
-    "kospi_change_pct": 2.3123833749834866,
-    "usdkrw": 1447.954091
+    "note": "KOSPI +0.65%, USD/KRW 1443.44. DB historical rebuild (2026-02-23, market_asof=2026-02-23).",
+    "kospi_change_pct": 0.6466362398577187,
+    "usdkrw": 1443.43994140625
   },
   "flow_summary": {
-    "note": "flows_fetch_failed: unavailable (\uc678\uad6d\uc778/\uae30\uad00/\uac1c\uc778 \uc21c\ub9e4\uc218\ub294 \ub370\uc774\ud130 \uc5c6\uc74c)",
-    "foreign_net": 0.0,
-    "institution_net": 0.0,
-    "retail_net": 0.0
+    "note": "외국인 -9327억, 기관 -4895억, 개인 +12994억",
+    "foreign_net": -9327.0,
+    "institution_net": -4895.0,
+    "retail_net": 12994.0
   },
   "korean_market_flow": null,
   "sector_moves": [
@@ -17,14 +17,7 @@
     "n/a"
   ],
   "news_headlines": [
-    "Foreign investors lock in gains as KOSPI rally continues - The Korea Times",
-    "South Korea's Kospi hits fresh high for a second straight session amid regional declines - CNBC",
-    "Should You Bet on South Korea ETFs After the Kospi Rally? - Yahoo Finance",
-    "A Stock Market Fervor Takes Hold in South Korea - The New York Times",
-    "South Korean leader celebrates \u2018Kospi 5,000\u2019 moment as stock market soars - Financial Times",
-    "Japan stocks jump over 3% to record high as Asia markets rebound - CNBC",
-    "South Korea's Kospi jumps to record high as regional rally tracks Wall Street gains - CNBC",
-    "South Korea's Kospi hits record high for second straight session as the region trades mixed - CNBC"
+    "historical_rebuild_from_db:2026-02-23"
   ],
   "watchlist": [
     "SPY",
@@ -33,30 +26,38 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": 2.3123833749834866,
-      "kosdaq_pct": -0.5780910962528827
+      "kospi": 5846.08984375,
+      "kosdaq": 1151.989990234375,
+      "kospi_pct": 0.6466362398577187,
+      "kosdaq_pct": -0.17417762267114384
     },
     "us": {
-      "sp500_pct": 0.6939724763506775,
-      "nasdaq_pct": 0.8964522328127177,
-      "dow_pct": 0.4672696535852726
+      "sp500": 6837.75,
+      "nasdaq": 22627.26953125,
+      "dow": 48804.05859375,
+      "sp500_pct": -1.0385652247284864,
+      "nasdaq_pct": -1.1308222762413136,
+      "dow_pct": -1.656209796912025
     },
     "fx": {
-      "usdkrw": 1447.954091,
-      "usdkrw_pct": 0.0
+      "usdkrw": 1443.43994140625,
+      "usdkrw_pct": -0.29770737998618546
     },
     "volatility": {
-      "vix": 19.09000015258789
+      "vix": 0.0
     }
   },
   "macro": {
     "daily": {
-      "us10y": 4.085999965667725,
-      "us2y": 3.5950000286102295,
-      "spread_2_10": 0.4909999370574951,
-      "vix": 19.09000015258789,
-      "dxy": 97.78900146484375,
-      "usdkrw": 1444.68994140625
+      "us10y": 4.0289998054504395,
+      "us2y": 3.5880000591278076,
+      "spread_2_10": 0.44099974632263184,
+      "vix": 21.010000228881836,
+      "dxy": 97.69999694824219,
+      "usdkrw": 1443.43994140625,
+      "vix3m": 22.139999389648438,
+      "vix_term_spread": 1.1299991607666016,
+      "oil_wti": 66.30999755859375
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -64,17 +65,25 @@
       "core_cpi_yoy": 2.9493378374616075,
       "pce_yoy": 2.901287416285925,
       "pmi": null,
+      "retail_sales_mom": null,
+      "nfp_change": null,
       "wage_growth": 37.17,
       "wage_level": 37.17,
-      "wage_yoy": 3.7109375
+      "wage_yoy": 3.7109375,
+      "export_yoy": null
     },
     "quarterly": {
       "real_gdp": 24111.83,
       "gdp_qoq_annualized": 1.4
     },
     "structural": {
-      "fed_funds_rate": 3.64,
-      "real_rate": 1.8059999656677248
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 2.95,
+      "ig_oas": 0.8,
+      "fed_balance_sheet": 6613395.0
     }
-  }
+  },
+  "phase_two_signals": null,
+  "cumulative_context": null
 }

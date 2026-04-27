@@ -1,14 +1,14 @@
 {
   "market_summary": {
-    "note": "KOSPI -1.00%, USD/KRW 1429.10. Headlines loaded. Flows unavailable.",
+    "note": "KOSPI -1.00%, USD/KRW 1432.32. DB historical rebuild (2026-02-27, market_asof=2026-02-27).",
     "kospi_change_pct": -1.0010691871955486,
-    "usdkrw": 1429.096597
+    "usdkrw": 1432.3199462890625
   },
   "flow_summary": {
-    "note": "flows_fetch_failed: unavailable (외국인/기관/개인 순매수는 데이터 없음)",
-    "foreign_net": 0.0,
-    "institution_net": 0.0,
-    "retail_net": 0.0
+    "note": "외국인 -69905억, 기관 +10126억, 개인 +57772억",
+    "foreign_net": -69905.0,
+    "institution_net": 10126.0,
+    "retail_net": 57772.0
   },
   "korean_market_flow": null,
   "sector_moves": [
@@ -17,16 +17,7 @@
     "n/a"
   ],
   "news_headlines": [
-    "‘코스피 6000 파티′ 욕망의 감옥에서 살아남을 3가지 생존 전략 - 조선일보",
-    "“진짜 강심장이네” 코스피 3배 레버리지 사려고 줄 섰다…99%나 급등 [투자360] - v.daum.net",
-    "코스피 하락 마감 - 뉴시스",
-    "코스피, 강한 변동성 끝 1% 하락…외인 6.8조 순매도 - 한국경제",
-    "오르는 코스피에 2조 던진 외국인…\"셀코리아 아닌 리밸런싱\" - 연합인포맥스",
-    "외국인 6조원 순매도에…코스피, 6200선 ‘숨고르기’ 마감 - 매일경제 마켓",
-    "코스피 6300 잔치 와중에…외인 13조 짐 싸서 떠났다, 왜 - 중앙일보",
-    "주식시장은 살려냈다…분류체계 바꾸면 '코스피 10000·코스닥 3000' 간다 - 지디넷코리아",
-    "“The KOSPI will exceed 7,000 this year···chip prices are the variable” Outlook for the local market from a sitting head of research - 경향신문",
-    "코스피 ETF 투자한 李대통령, 9개월 만에 수익률 150% 돌파 - 국제신문"
+    "historical_rebuild_from_db:2026-02-27"
   ],
   "watchlist": [
     "SPY",
@@ -35,32 +26,38 @@
   ],
   "markets": {
     "kr": {
+      "kospi": 6244.1298828125,
+      "kosdaq": 1192.780029296875,
       "kospi_pct": -1.0010691871955486,
       "kosdaq_pct": 0.3896818404810278
     },
     "us": {
-      "sp500_pct": -0.5365580569328385,
-      "nasdaq_pct": -1.1821798206745227,
-      "dow_pct": 0.03445844974079194
+      "sp500": 6878.8798828125,
+      "nasdaq": 22668.2109375,
+      "dow": 48977.921875,
+      "sp500_pct": -0.4339352811031182,
+      "nasdaq_pct": -0.9186398424208307,
+      "dow_pct": -1.053102579389897
     },
     "fx": {
-      "usdkrw": 1429.096597,
-      "usdkrw_pct": 0.0
+      "usdkrw": 1432.3199462890625,
+      "usdkrw_pct": 0.37772647398572945
     },
     "volatility": {
-      "vix": 19.15999984741211
+      "vix": 0.0
     }
   },
   "macro": {
     "daily": {
-      "us10y": 4.017000198364258,
-      "us2y": 3.5880000591278076,
-      "spread_2_10": 0.4290001392364502,
-      "vix": 19.15999984741211,
-      "dxy": 97.64900207519531,
-      "usdkrw": 1439.97998046875,
-      "vix3m": 20.809999465942383,
-      "vix_term_spread": 1.6499996185302734
+      "us10y": 3.9619998931884766,
+      "us2y": 3.578000068664551,
+      "spread_2_10": 0.3839998245239258,
+      "vix": 19.860000610351562,
+      "dxy": 97.61000061035156,
+      "usdkrw": 1432.3199462890625,
+      "vix3m": 21.559999465942383,
+      "vix_term_spread": 1.6999988555908203,
+      "oil_wti": 67.0199966430664
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -68,26 +65,25 @@
       "core_cpi_yoy": 2.9493378374616075,
       "pce_yoy": 2.901287416285925,
       "pmi": null,
+      "retail_sales_mom": null,
+      "nfp_change": null,
       "wage_growth": 37.17,
       "wage_level": 37.17,
-      "wage_yoy": 3.7109375
+      "wage_yoy": 3.7109375,
+      "export_yoy": null
     },
     "quarterly": {
       "real_gdp": 24111.83,
       "gdp_qoq_annualized": 1.4
     },
     "structural": {
-      "fed_funds_rate": 3.64,
-      "real_rate": 1.737000198364258,
-      "hy_oas": 2.94,
-      "ig_oas": 0.8,
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 3.1,
+      "ig_oas": 0.85,
       "fed_balance_sheet": 6613797.0
     }
   },
-  "phase_two_signals": {
-    "earnings_signal_score": 0.0,
-    "breadth_signal_score": 0.256,
-    "liquidity_signal_score": 5.07,
-    "note": "derived from headlines + markets + macro.daily + macro.structural"
-  }
+  "phase_two_signals": null,
+  "cumulative_context": null
 }

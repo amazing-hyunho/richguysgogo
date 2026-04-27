@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-04-26T13:14:19.238517+00:00",
+  "market_date": "2025-10-18",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI +0.01%, USD/KRW n/a. DB historical rebuild (2025-10-18, market_asof=2025-10-17).",
+      "kospi_change_pct": 0.013866704044023301,
+      "usdkrw": 0.0
+    },
+    "flow_summary": {
+      "note": "외국인 +4942억, 기관 -2929억, 개인 -2250억",
+      "foreign_net": 4942.0,
+      "institution_net": -2929.0,
+      "retail_net": -2250.0
+    },
+    "korean_market_flow": null,
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "historical_rebuild_from_db:2025-10-18"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi": 3748.889892578125,
+        "kosdaq": 859.5399780273438,
+        "kospi_pct": 0.013866704044023301,
+        "kosdaq_pct": -0.6782906713980239
+      },
+      "us": {
+        "sp500": 6664.009765625,
+        "nasdaq": 22679.970703125,
+        "dow": 46190.609375,
+        "sp500_pct": 0.527071555025712,
+        "nasdaq_pct": 0.5204717443356227,
+        "dow_pct": 0.5187366332213313
+      },
+      "fx": {
+        "usdkrw": 0.0,
+        "usdkrw_pct": 0.0
+      },
+      "volatility": {
+        "vix": 0.0
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": null,
+        "us2y": null,
+        "spread_2_10": null,
+        "vix": null,
+        "dxy": null,
+        "usdkrw": null,
+        "vix3m": 22.09000015258789,
+        "vix_term_spread": 1.3099994659423828,
+        "oil_wti": null
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 3.3202055812236786,
+        "core_cpi_yoy": 2.6730984898529986,
+        "pce_yoy": 2.801756656951593,
+        "pmi": null,
+        "retail_sales_mom": 1.6614578545822267,
+        "nfp_change": 178.0,
+        "wage_growth": 37.38,
+        "wage_level": 37.38,
+        "wage_yoy": 3.517031293270567,
+        "export_yoy": null
+      },
+      "quarterly": {
+        "real_gdp": 24055.749,
+        "gdp_qoq_annualized": 0.5
+      },
+      "structural": {
+        "fed_funds_rate": null,
+        "real_rate": null,
+        "hy_oas": 3.04,
+        "ig_oas": 0.8,
+        "fed_balance_sheet": 6596454.0
+      }
+    },
+    "phase_two_signals": null,
+    "cumulative_context": null
+  }
+}

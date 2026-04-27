@@ -1,41 +1,23 @@
 {
   "market_summary": {
-    "note": "KOSPI -1.52%, USD/KRW 1497.96. Headlines loaded. Flows loaded.",
-    "kospi_change_pct": -1.52,
-    "usdkrw": 1497.959631
+    "note": "KOSPI -2.73%, USD/KRW 1505.25. DB historical rebuild (2026-03-19, market_asof=2026-03-19).",
+    "kospi_change_pct": -2.7309494834587213,
+    "usdkrw": 1505.25
   },
   "flow_summary": {
-    "note": "외국인 -14987억, 기관 -3694억, 개인 +18323억 | KOSPI(외 -13335, 기관 -2306, 개인 +15068) KOSDAQ(외 -1652, 기관 -1388, 개인 +3255)",
-    "foreign_net": -14987.0,
-    "institution_net": -3694.0,
-    "retail_net": 18323.0
+    "note": "외국인 -20764억, 기관 -9261억, 개인 +29134억",
+    "foreign_net": -20764.0,
+    "institution_net": -9261.0,
+    "retail_net": 29134.0
   },
-  "korean_market_flow": {
-    "date": "2026-03-19",
-    "market": {
-      "KOSPI": {
-        "individual": 15068,
-        "foreign": -13335,
-        "institution": -2306
-      },
-      "KOSDAQ": {
-        "individual": 3255,
-        "foreign": -1652,
-        "institution": -1388
-      }
-    }
-  },
+  "korean_market_flow": null,
   "sector_moves": [
     "n/a",
     "n/a",
     "n/a"
   ],
   "news_headlines": [
-    "[금리/연준] 美 연준 ‘속도 조절’에 한은도 동결 기류…기준금리 2.50% 유지 무게 - 서울경제TV",
-    "[인플레이션] [속보] 연준, 올해 美 PCE물가 2.7%상승 전망…작년 12월 대비 0.3%P↑ - 연합뉴스",
-    "[환율/달러] 이란 전쟁 격화에 환율 1,500원대 출발…코스피도 후퇴 - 연합뉴스",
-    "[미국지수] 연준 '금리동결'...장중, 미국증시 하락 vs 미국국채금리 상승 - 초이스경제",
-    "[정책/테마] 연준 파월 \"관세 이어 에너지 충격까지‥인플레이션 우려\" - MBC 뉴스"
+    "historical_rebuild_from_db:2026-03-19"
   ],
   "watchlist": [
     "SPY",
@@ -44,32 +26,38 @@
   ],
   "markets": {
     "kr": {
-      "kospi_pct": -1.52,
-      "kosdaq_pct": -1.12
+      "kospi": 5763.22021484375,
+      "kosdaq": 1143.47998046875,
+      "kospi_pct": -2.7309494834587213,
+      "kosdaq_pct": -1.7949487561121384
     },
     "us": {
-      "sp500_pct": -1.3607619909798756,
-      "nasdaq_pct": -1.455132930510504,
-      "dow_pct": -1.63451099157624
+      "sp500": 6606.490234375,
+      "nasdaq": 22090.689453125,
+      "dow": 46021.4296875,
+      "sp500_pct": -0.2748797741878944,
+      "nasdaq_pct": -0.27866241687231014,
+      "dow_pct": -0.4407097800355224
     },
     "fx": {
-      "usdkrw": 1497.959631,
-      "usdkrw_pct": -0.6439376355352797
+      "usdkrw": 1505.25,
+      "usdkrw_pct": 1.3725110581956428
     },
     "volatility": {
-      "vix": 25.09000015258789
+      "vix": 0.0
     }
   },
   "macro": {
     "daily": {
-      "us10y": 4.258999824523926,
-      "us2y": 3.609999895095825,
-      "spread_2_10": 0.6489999294281006,
-      "vix": 25.09000015258789,
-      "dxy": 100.03199768066406,
-      "usdkrw": 1498.3800048828125,
-      "vix3m": 26.559999465942383,
-      "vix_term_spread": 1.4699993133544922
+      "us10y": 4.281000137329102,
+      "us2y": 3.611999988555908,
+      "spread_2_10": 0.6690001487731934,
+      "vix": 24.059999465942383,
+      "dxy": 99.2300033569336,
+      "usdkrw": 1505.25,
+      "vix3m": 25.540000915527344,
+      "vix_term_spread": 1.480001449584961,
+      "oil_wti": 96.13999938964844
     },
     "monthly": {
       "unemployment_rate": 4.4,
@@ -77,38 +65,25 @@
       "core_cpi_yoy": 2.7335062438778035,
       "pce_yoy": 2.8321519411244056,
       "pmi": null,
+      "retail_sales_mom": null,
+      "nfp_change": null,
       "wage_growth": 37.32,
       "wage_level": 37.32,
-      "wage_yoy": 3.8397328881469184
+      "wage_yoy": 3.8397328881469184,
+      "export_yoy": null
     },
     "quarterly": {
       "real_gdp": 24065.956,
       "gdp_qoq_annualized": 0.7
     },
     "structural": {
-      "fed_funds_rate": 3.64,
-      "real_rate": 1.8589998245239259,
-      "hy_oas": 3.22,
-      "ig_oas": 0.92,
-      "fed_balance_sheet": 6646344.0
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 3.27,
+      "ig_oas": 0.9,
+      "fed_balance_sheet": 6655939.0
     }
   },
-  "phase_two_signals": {
-    "earnings_signal_score": 0.0,
-    "breadth_signal_score": 0.163,
-    "liquidity_signal_score": 4.276,
-    "note": "derived from headlines + markets + macro.daily + macro.structural"
-  },
-  "cumulative_context": {
-    "lookback_days": 20,
-    "sample_count": 20,
-    "kospi_5d_cum_pct": -5.05,
-    "kospi_20d_cum_pct": -10.169,
-    "kosdaq_5d_cum_pct": -0.04,
-    "kospi_abs_move_5d_avg": 1.662,
-    "usdkrw_5d_change_pct": 0.095,
-    "vix_5d_avg": 25.808,
-    "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=-10.17%, vol20d=3.58, reversal=false"
-  }
+  "phase_two_signals": null,
+  "cumulative_context": null
 }

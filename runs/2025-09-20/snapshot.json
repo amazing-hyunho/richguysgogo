@@ -1,0 +1,89 @@
+{
+  "market_summary": {
+    "note": "KOSPI -0.46%, USD/KRW n/a. DB historical rebuild (2025-09-20, market_asof=2025-09-19).",
+    "kospi_change_pct": -0.4639892054197201,
+    "usdkrw": 0.0
+  },
+  "flow_summary": {
+    "note": "외국인 -980억, 기관 -2565억, 개인 +2747억",
+    "foreign_net": -980.0,
+    "institution_net": -2565.0,
+    "retail_net": 2747.0
+  },
+  "korean_market_flow": null,
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "historical_rebuild_from_db:2025-09-20"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 3445.239990234375,
+      "kosdaq": 863.1099853515625,
+      "kospi_pct": -0.4639892054197201,
+      "kosdaq_pct": 0.7000268463257919
+    },
+    "us": {
+      "sp500": 6664.35986328125,
+      "nasdaq": 22631.48046875,
+      "dow": 46315.26953125,
+      "sp500_pct": 0.48854188708295393,
+      "nasdaq_pct": 0.7154188232273438,
+      "dow_pct": 0.3745959774678602
+    },
+    "fx": {
+      "usdkrw": 0.0,
+      "usdkrw_pct": 0.0
+    },
+    "volatility": {
+      "vix": 0.0
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": null,
+      "us2y": null,
+      "spread_2_10": null,
+      "vix": null,
+      "dxy": null,
+      "usdkrw": null,
+      "vix3m": 18.479999542236328,
+      "vix_term_spread": 3.0299997329711914,
+      "oil_wti": null
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 2.801756656951593,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24055.749,
+      "gdp_qoq_annualized": 0.5
+    },
+    "structural": {
+      "fed_funds_rate": null,
+      "real_rate": null,
+      "hy_oas": 2.72,
+      "ig_oas": 0.74,
+      "fed_balance_sheet": 6608597.0
+    }
+  },
+  "phase_two_signals": null,
+  "cumulative_context": null
+}

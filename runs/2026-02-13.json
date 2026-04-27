@@ -1,130 +1,93 @@
 {
-  "generated_at": "2026-02-12T16:41:14.059783+00:00",
+  "generated_at": "2026-04-26T13:14:19.379424+00:00",
   "market_date": "2026-02-13",
   "snapshot": {
     "market_summary": {
-      "note": "KOSPI 3.13%, USD/KRW 1447.80. Headlines loaded. Flows unavailable.",
-      "kospi_change_pct": 3.133440865745346,
-      "usdkrw": 1447.795951
+      "note": "KOSPI -0.28%, USD/KRW 1440.90. DB historical rebuild (2026-02-13, market_asof=2026-02-13).",
+      "kospi_change_pct": -0.27634023422029885,
+      "usdkrw": 1440.9000244140625
     },
     "flow_summary": {
-      "note": "flows_fetch_failed: unavailable",
-      "foreign_net": 0.0,
-      "institution_net": 0.0,
-      "retail_net": 0.0
+      "note": "외국인 -11634억, 기관 -2550억, 개인 +13361억",
+      "foreign_net": -11634.0,
+      "institution_net": -2550.0,
+      "retail_net": 13361.0
     },
+    "korean_market_flow": null,
     "sector_moves": [
       "n/a",
       "n/a",
       "n/a"
     ],
     "news_headlines": [
-      "Kospi Surpasses 5,500 Mark Driven by Semiconductor Rally - \uc870\uc120\uc77c\ubcf4",
-      "Asia stocks: KOSPI hits record high, Nikkei tops historic 58,000; US jobs in focus - Investing.com",
-      "KOSPI surpasses 5,500 mark for 1st time in midday trading - The Korea Times",
-      "Japan stocks extend post-election rally with Nikkei 225 breaching 58,000 for the first time - CNBC",
-      "KOSPI jumps over 3 pct to end at fresh high of above 5,500-point milestone - upi.com",
-      "South Korea\u2019s KOSPI outpaces global peers, even as concentration tops the S&P 500 - Seeking Alpha",
-      "Japan's Nikkei 225 closes at record high as Asian stock markets mostly rise - CNBC",
-      "A Stock Market Fervor Takes Hold in South Korea - The New York Times"
+      "historical_rebuild_from_db:2026-02-13"
     ],
     "watchlist": [
       "SPY",
       "QQQ",
       "XLK"
-    ]
-  },
-  "stances": [
-    {
-      "agent_name": "macro",
-      "core_claims": [
-        "macro sees balanced risk.",
-        "Liquidity is stable."
-      ],
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.market_summary.note",
-        "snapshot.flow_summary.note"
-      ],
-      "confidence": "MED"
-    },
-    {
-      "agent_name": "flow",
-      "core_claims": [
-        "flow sees balanced risk.",
-        "Liquidity is stable."
-      ],
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.market_summary.note",
-        "snapshot.flow_summary.note"
-      ],
-      "confidence": "MED"
-    },
-    {
-      "agent_name": "sector",
-      "core_claims": [
-        "sector sees balanced risk.",
-        "Liquidity is stable."
-      ],
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.market_summary.note",
-        "snapshot.flow_summary.note"
-      ],
-      "confidence": "MED"
-    },
-    {
-      "agent_name": "risk",
-      "core_claims": [
-        "risk sees balanced risk.",
-        "Liquidity is stable."
-      ],
-      "regime_tag": "NEUTRAL",
-      "evidence_ids": [
-        "snapshot.market_summary.note",
-        "snapshot.flow_summary.note"
-      ],
-      "confidence": "MED"
-    }
-  ],
-  "committee_result": {
-    "consensus": "Committee agrees on a neutral stance with selective monitoring.",
-    "key_points": [
-      {
-        "point": "Majority regime tag: NEUTRAL.",
-        "sources": [
-          "macro",
-          "flow",
-          "sector",
-          "risk"
-        ]
-      }
     ],
-    "disagreements": [
-      {
-        "topic": "Regime tags",
-        "majority": "NEUTRAL",
-        "minority": "None",
-        "minority_agents": [
-          "none"
-        ],
-        "why_it_matters": "No dissenting regime tags are present."
-      }
-    ],
-    "ops_guidance": [
-      {
-        "level": "OK",
-        "text": "Keep watchlist tight and avoid overexposure."
+    "markets": {
+      "kr": {
+        "kospi": 5507.009765625,
+        "kosdaq": 1106.0799560546875,
+        "kospi_pct": -0.27634023422029885,
+        "kosdaq_pct": -1.768224793503113
       },
-      {
-        "level": "CAUTION",
-        "text": "Keep position sizes moderate."
+      "us": {
+        "sp500": 6836.169921875,
+        "nasdaq": 22546.669921875,
+        "dow": 49500.9296875,
+        "sp500_pct": 0.0499089148012519,
+        "nasdaq_pct": -0.22339307336266215,
+        "dow_pct": 0.09898333350053046
       },
-      {
-        "level": "AVOID",
-        "text": "Avoid aggressive leverage."
+      "fx": {
+        "usdkrw": 1440.9000244140625,
+        "usdkrw_pct": -0.22780362179949898
+      },
+      "volatility": {
+        "vix": 0.0
       }
-    ]
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.056000232696533,
+        "us2y": 3.5929999351501465,
+        "spread_2_10": 0.4630002975463867,
+        "vix": 20.600000381469727,
+        "dxy": 96.87999725341797,
+        "usdkrw": 1440.9000244140625,
+        "vix3m": 22.170000076293945,
+        "vix_term_spread": 1.5699996948242188,
+        "oil_wti": 62.88999938964844
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 3.3202055812236786,
+        "core_cpi_yoy": 2.6730984898529986,
+        "pce_yoy": 2.801756656951593,
+        "pmi": null,
+        "retail_sales_mom": 1.6614578545822267,
+        "nfp_change": 178.0,
+        "wage_growth": 37.38,
+        "wage_level": 37.38,
+        "wage_yoy": 3.517031293270567,
+        "export_yoy": null
+      },
+      "quarterly": {
+        "real_gdp": 24055.749,
+        "gdp_qoq_annualized": 0.5
+      },
+      "structural": {
+        "fed_funds_rate": null,
+        "real_rate": null,
+        "hy_oas": 2.95,
+        "ig_oas": 0.79,
+        "fed_balance_sheet": 6622382.0
+      }
+    },
+    "phase_two_signals": null,
+    "cumulative_context": null
   }
 }
