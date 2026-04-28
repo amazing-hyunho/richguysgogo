@@ -1,23 +1,41 @@
 {
   "market_summary": {
-    "note": "KOSPI n/a, USD/KRW 1476.32. DB historical rebuild (2026-04-29, market_asof=2026-04-25).",
-    "kospi_change_pct": 0.0,
-    "usdkrw": 1476.3199462890625
+    "note": "KOSPI 0.39%, USD/KRW 1473.34. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 0.39,
+    "usdkrw": 1473.343018
   },
   "flow_summary": {
-    "note": "외국인 -12171억, 기관 +9940억, 개인 +2842억",
-    "foreign_net": -12171.0,
-    "institution_net": 9940.0,
-    "retail_net": 2842.0
+    "note": "외국인 -6792억, 기관 +989억, 개인 +6656억 | KOSPI(외 -1843, 기관 +3532, 개인 -1306) KOSDAQ(외 -4949, 기관 -2543, 개인 +7962)",
+    "foreign_net": -6792.0,
+    "institution_net": 989.0,
+    "retail_net": 6656.0
   },
-  "korean_market_flow": null,
+  "korean_market_flow": {
+    "date": "2026-04-29",
+    "market": {
+      "KOSPI": {
+        "individual": -1306,
+        "foreign": -1843,
+        "institution": 3532
+      },
+      "KOSDAQ": {
+        "individual": 7962,
+        "foreign": -4949,
+        "institution": -2543
+      }
+    }
+  },
   "sector_moves": [
     "n/a",
     "n/a",
     "n/a"
   ],
   "news_headlines": [
-    "historical_rebuild_from_db:2026-04-29"
+    "[에너지/원자재] 세계은행 “원자재 가격 4년래 최고…중동 전쟁發 ‘역대급 공급 충격’” - 이데일리",
+    "[환율/달러] 관세·환율·대미투자 정보제공…수출중기 대상 설명회 - 뉴시스",
+    "[금리/연준] [단독] 기준금리 내려도 이자는 그대로…대신증권 신용융자 '9.5% 고정' 의혹 - 신아일보",
+    "[반도체/AI] [금융현미경]'전쟁 이긴 반도체'에 장밋빛 전망…올해 韓 성장률 체크 포인트는 - 아시아경제",
+    "[정책/테마] 미국 관세 맞서던 카니 총리...‘스트롱 캐나다 펀드’ 유치 나섰다 - 서울경제"
   ],
   "watchlist": [
     "SPY",
@@ -26,38 +44,38 @@
   ],
   "markets": {
     "kr": {
-      "kospi": null,
-      "kosdaq": null,
-      "kospi_pct": 0.0,
-      "kosdaq_pct": 0.0
+      "kospi": 6641.02,
+      "kosdaq": 1215.58,
+      "kospi_pct": 0.39,
+      "kosdaq_pct": -0.86
     },
     "us": {
-      "sp500": null,
-      "nasdaq": null,
-      "dow": null,
-      "sp500_pct": 0.0,
-      "nasdaq_pct": 0.0,
-      "dow_pct": 0.0
+      "sp500": 7138.8,
+      "nasdaq": 24663.799,
+      "dow": 49141.93,
+      "sp500_pct": -0.4894123288415895,
+      "nasdaq_pct": -0.8972560081327253,
+      "dow_pct": -0.05259540849812566
     },
     "fx": {
-      "usdkrw": 1476.3199462890625,
-      "usdkrw_pct": -0.2452788947314156
+      "usdkrw": 1473.343018,
+      "usdkrw_pct": -0.07462787826157133
     },
     "volatility": {
-      "vix": 0.0
+      "vix": 17.829999923706055
     }
   },
   "macro": {
     "daily": {
-      "us10y": null,
-      "us2y": null,
-      "spread_2_10": null,
-      "vix": null,
-      "dxy": null,
-      "usdkrw": null,
-      "vix3m": 21.299999237060547,
-      "vix_term_spread": 2.5900001525878906,
-      "oil_wti": null
+      "us10y": 4.354000091552734,
+      "us2y": 3.5900001525878906,
+      "spread_2_10": 0.7639999389648438,
+      "vix": 17.829999923706055,
+      "dxy": 98.59500122070312,
+      "usdkrw": 1472.8800048828125,
+      "vix3m": 20.489999771118164,
+      "vix_term_spread": 2.6599998474121094,
+      "oil_wti": 99.51000213623047
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -77,13 +95,29 @@
       "gdp_qoq_annualized": 0.5
     },
     "structural": {
-      "fed_funds_rate": null,
-      "real_rate": null,
-      "hy_oas": 2.86,
-      "ig_oas": 0.8,
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.9140000915527344,
+      "hy_oas": 2.84,
+      "ig_oas": 0.81,
       "fed_balance_sheet": 6707419.0
     }
   },
-  "phase_two_signals": null,
-  "cumulative_context": null
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 0.245,
+    "liquidity_signal_score": 7.009,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 2.54,
+    "kospi_20d_cum_pct": 14.929,
+    "kosdaq_5d_cum_pct": 1.0,
+    "kospi_abs_move_5d_avg": 0.508,
+    "usdkrw_5d_change_pct": -0.202,
+    "vix_5d_avg": 7.17,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+14.93%, vol20d=1.10, reversal=false"
+  }
 }
