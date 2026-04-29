@@ -1,48 +1,70 @@
 {
-  "crawled_at": "2026-04-29T22:42:48.052214+00:00",
+  "crawled_at": "2026-04-29T23:42:47.335045+00:00",
   "news_date": "2026-04-30",
-  "total_collected": 67,
+  "total_collected": 87,
   "topic_counts": [
     [
       "금리/연준",
-      17
+      22
     ],
     [
       "환율/달러",
-      8
-    ],
-    [
-      "경기/성장",
-      7
+      9
     ],
     [
       "인플레이션",
-      5
+      7
     ],
     [
       "반도체/AI",
+      9
+    ],
+    [
+      "경기/성장",
       7
     ]
   ],
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 17,
-      "title": "FOMC 기준금리 3연속 동결…위원 4명 반대,1992년 이후 처음 - 동아일보",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5zSndaSUhfemtJdGZqUHUtT3l5UVdBUjZKUm5FaUx0VmtnR1pBQWsyQzZiWGlBSDEwRlhXR3EwbHN3STdLcEJkenlUYTExZzdONzBzV0lNUFZnWkVIOFhocWpoYm42bFZnSHFBbDVxWE85dzDSAWZBVV95cUxPYXFLOHpXVU9kYXl4emJ0b2Vab2xYN1hTR1dLbE9YMnlyV29KOHpieDMxTDd0RTFCcDhiZnltck1qRmhTX3lpUThWTXNFNFQtdFJnMVdMUnI4TTRCN0E5Y0NxZHd5MHc?oc=5",
+      "count": 22,
+      "title": "美연준, 기준금리 3연속 동결…파월 의장 “마지막 회견, 이사직은 계속 수행” - 중앙일보",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBaWTU1V3ZxN3BRb191STl2QWQyUVB2RmlwLU5yU05neDNmMlBJTEJ1UHFPSzJCWk9NcHlRZ0t1WjVIcUVlVzVORzBpSU9MZjkxeVpaRmdn?oc=5",
       "summary_lines": [
-        "핵심 이슈: FOMC 기준금리 3연속 동결…위원 4명 반대,1992년 이후 처음 - 동아일보",
+        "핵심 이슈: 美연준, 기준금리 3연속 동결…파월 의장 “마지막 회견, 이사직은 계속 수행” - 중앙일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "환율/달러",
-      "count": 8,
-      "title": "[채권/외환] 미 국채금리 한 달래 최고…유가 급등·매파적 연준에 달러 강세 - 뉴스핌",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA0cjFTT0c0UXdhRkV1d0lBdjhNcmVpLS1ZNEdDd2RqcDVaeW1zaEV5ekRXeWZoVEVweXNlLVZFb0plWllvR2ZNY0lDZjJ0dEJieDg5Y0xsQURKVVR5?oc=5",
+      "count": 9,
+      "title": "국제유가 100달러선 파죽지세…환율, 1490원대 돌파 시도[외환브리핑] - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcVN4YkRnaHA2YVZ6RThYZlJEV0xiMHdMdWo4LWFRNWFmSXJNR1NXY3QyODBDengwNU8wSU45QTBYaHE4MDIwXzFZZ2t3cFRYWUdwVUxSYjU4UExBTm9fN2pZUXN0UVJhUU10Y2xFR2l1d0JpUC13THl6ZXVPbzFxeQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: [채권/외환] 미 국채금리 한 달래 최고…유가 급등·매파적 연준에 달러 강세 - 뉴스핌",
+        "핵심 이슈: 국제유가 100달러선 파죽지세…환율, 1490원대 돌파 시도[외환브리핑] - 이데일리",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "인플레이션",
+      "count": 7,
+      "title": "“물가 상승률 3%대 고착 우려”…美 연준, 금리 인하 신중론 급부상 - 조선비즈 - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNUGZhd1pqbEZwemkza3E0N1I3TnRaQ2NMcWp1Uk1MSlJHN3JYQ3NWYXUyNHZwS1RRWkxXS2RIc0p2b3Znem51WWhwZ252MGI0bUl5YVhjLTJwbklDb0w5Y20tTzc1dE10TXRJbnlScVRzLTlDVElwUVhHMEpyZ1pZQnhiX0VjZDZoQ2s5NVhJZU9sY0ZENUxNRkJpekZod9IBsgFBVV95cUxNOC0xaGgzb3F3bjBmMWh3UUdXX3ZVcGZBcFlZUTRCZnlrUTByeUYwcThwV25KMzAtVHBOYzNrSTFZTnpoV3dENlVCbE1QU0phMm91aXVYNnUxSU1HZ3FzdjIybXEtc21QLUhJMjhvVUVuRlhtWVJKZTNNVFhBWkpaYy1iQ0JWY0o5dm5SVnRjZDlkNllYZi1RTTk3aWI4S0lPbEo0S0M2MGZ1XzFlMFNIWFp3?oc=5",
+      "summary_lines": [
+        "핵심 이슈: “물가 상승률 3%대 고착 우려”…美 연준, 금리 인하 신중론 급부상 - 조선비즈 - Chosunbiz",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "반도체/AI",
+      "count": 9,
+      "title": "구글, AI칩 TPU 외부 직접 판매 선언…엔비디아에 정면 도전 - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9ZYVYtNUFoXzhVS0J1dlhoTWpVNi1aSVpZalA5VEZfdEkxUmVZSkRSWjk5RGlVcGFTX1lVV1lPR1ZidzBuM1lNLWd2Y2lxd2hSYnc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 구글, AI칩 TPU 외부 직접 판매 선언…엔비디아에 정면 도전 - 매일경제 마켓",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -57,70 +79,48 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "인플레이션",
-      "count": 5,
-      "title": "“물가 상승률 3%대 고착 우려”…美 연준, 금리 인하 신중론 급부상 - 조선비즈 - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNUGZhd1pqbEZwemkza3E0N1I3TnRaQ2NMcWp1Uk1MSlJHN3JYQ3NWYXUyNHZwS1RRWkxXS2RIc0p2b3Znem51WWhwZ252MGI0bUl5YVhjLTJwbklDb0w5Y20tTzc1dE10TXRJbnlScVRzLTlDVElwUVhHMEpyZ1pZQnhiX0VjZDZoQ2s5NVhJZU9sY0ZENUxNRkJpekZod9IBsgFBVV95cUxNOC0xaGgzb3F3bjBmMWh3UUdXX3ZVcGZBcFlZUTRCZnlrUTByeUYwcThwV25KMzAtVHBOYzNrSTFZTnpoV3dENlVCbE1QU0phMm91aXVYNnUxSU1HZ3FzdjIybXEtc21QLUhJMjhvVUVuRlhtWVJKZTNNVFhBWkpaYy1iQ0JWY0o5dm5SVnRjZDlkNllYZi1RTTk3aWI4S0lPbEo0S0M2MGZ1XzFlMFNIWFp3?oc=5",
-      "summary_lines": [
-        "핵심 이슈: “물가 상승률 3%대 고착 우려”…美 연준, 금리 인하 신중론 급부상 - 조선비즈 - Chosunbiz",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "반도체/AI",
-      "count": 7,
-      "title": "삼양그룹, AI로 일하는 방식 확 바꾼다…반도체 소재 신성장 동력 - 뉴시스",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE15aXN3Nmt4QV9IZ0NmSkw2ZEJTLTVKMDFyU0JZY0NfMFRWZVZGWkVQQzZoMnhzaXZBNHlya081a29YQlU4bE5WbFN4V29VSXdIbTJlZ1FZZkd5X1FoS2VHU9IBeEFVX3lxTE04dzUtQVlISWFoeTJiRUF2b1kzZGdMamZsMGdhNk5TYUV3VldyR2wyNDhWaGFIbUdnVDBkc21veXRvWVRQcFlFaDdra1NOSGQ0dDJrM2NLeWpwY2R2MTNvTFpxRERMYjNNc1ZCeEpncUpqOXdFSWN4Rg?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 삼양그룹, AI로 일하는 방식 확 바꾼다…반도체 소재 신성장 동력 - 뉴시스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 37,
+      "total_count": 45,
       "topics": [
         {
           "topic": "금리/연준",
-          "count": 17,
-          "title": "FOMC 기준금리 3연속 동결…위원 4명 반대,1992년 이후 처음 - 동아일보",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5zSndaSUhfemtJdGZqUHUtT3l5UVdBUjZKUm5FaUx0VmtnR1pBQWsyQzZiWGlBSDEwRlhXR3EwbHN3STdLcEJkenlUYTExZzdONzBzV0lNUFZnWkVIOFhocWpoYm42bFZnSHFBbDVxWE85dzDSAWZBVV95cUxPYXFLOHpXVU9kYXl4emJ0b2Vab2xYN1hTR1dLbE9YMnlyV29KOHpieDMxTDd0RTFCcDhiZnltck1qRmhTX3lpUThWTXNFNFQtdFJnMVdMUnI4TTRCN0E5Y0NxZHd5MHc?oc=5"
+          "count": 22,
+          "title": "美연준, 기준금리 3연속 동결…파월 의장 “마지막 회견, 이사직은 계속 수행” - 중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBaWTU1V3ZxN3BRb191STl2QWQyUVB2RmlwLU5yU05neDNmMlBJTEJ1UHFPSzJCWk9NcHlRZ0t1WjVIcUVlVzVORzBpSU9MZjkxeVpaRmdn?oc=5"
         },
         {
           "topic": "환율/달러",
-          "count": 8,
-          "title": "[채권/외환] 미 국채금리 한 달래 최고…유가 급등·매파적 연준에 달러 강세 - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA0cjFTT0c0UXdhRkV1d0lBdjhNcmVpLS1ZNEdDd2RqcDVaeW1zaEV5ekRXeWZoVEVweXNlLVZFb0plWllvR2ZNY0lDZjJ0dEJieDg5Y0xsQURKVVR5?oc=5"
+          "count": 9,
+          "title": "국제유가 100달러선 파죽지세…환율, 1490원대 돌파 시도[외환브리핑] - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPcVN4YkRnaHA2YVZ6RThYZlJEV0xiMHdMdWo4LWFRNWFmSXJNR1NXY3QyODBDengwNU8wSU45QTBYaHE4MDIwXzFZZ2t3cFRYWUdwVUxSYjU4UExBTm9fN2pZUXN0UVJhUU10Y2xFR2l1d0JpUC13THl6ZXVPbzFxeQ?oc=5"
+        },
+        {
+          "topic": "인플레이션",
+          "count": 7,
+          "title": "“물가 상승률 3%대 고착 우려”…美 연준, 금리 인하 신중론 급부상 - 조선비즈 - Chosunbiz",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNUGZhd1pqbEZwemkza3E0N1I3TnRaQ2NMcWp1Uk1MSlJHN3JYQ3NWYXUyNHZwS1RRWkxXS2RIc0p2b3Znem51WWhwZ252MGI0bUl5YVhjLTJwbklDb0w5Y20tTzc1dE10TXRJbnlScVRzLTlDVElwUVhHMEpyZ1pZQnhiX0VjZDZoQ2s5NVhJZU9sY0ZENUxNRkJpekZod9IBsgFBVV95cUxNOC0xaGgzb3F3bjBmMWh3UUdXX3ZVcGZBcFlZUTRCZnlrUTByeUYwcThwV25KMzAtVHBOYzNrSTFZTnpoV3dENlVCbE1QU0phMm91aXVYNnUxSU1HZ3FzdjIybXEtc21QLUhJMjhvVUVuRlhtWVJKZTNNVFhBWkpaYy1iQ0JWY0o5dm5SVnRjZDlkNllYZi1RTTk3aWI4S0lPbEo0S0M2MGZ1XzFlMFNIWFp3?oc=5"
         },
         {
           "topic": "경기/성장",
           "count": 7,
           "title": "[서미숙의 집수다] '고금리+경기침체'…공실의 늪에 빠진 도심 상가 - 연합뉴스",
           "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE02QTNMOXF3VWZaZjNhblRRVEpKZTVpbUlLMTdmTkFTX1pkSG9zcEpwZkdWWDVPQ1F4MWJsYWRSeGxqQTNKUEhVMThaS3cwbldVMnRWdTJPV1hhV0HSAWBBVV95cUxOa2twZDBoOEZXOXMzQV9CQlRoa0lJeU5NTGZMMlFOYml2RUt2TzhJM3BZbjB2RThmSERTal91bkZYNUdsTHVSeUdjYkNBOVdrdFdfaWZXbnRHUFhmRWxobW0?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 5,
-          "title": "“물가 상승률 3%대 고착 우려”…美 연준, 금리 인하 신중론 급부상 - 조선비즈 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNUGZhd1pqbEZwemkza3E0N1I3TnRaQ2NMcWp1Uk1MSlJHN3JYQ3NWYXUyNHZwS1RRWkxXS2RIc0p2b3Znem51WWhwZ252MGI0bUl5YVhjLTJwbklDb0w5Y20tTzc1dE10TXRJbnlScVRzLTlDVElwUVhHMEpyZ1pZQnhiX0VjZDZoQ2s5NVhJZU9sY0ZENUxNRkJpekZod9IBsgFBVV95cUxNOC0xaGgzb3F3bjBmMWh3UUdXX3ZVcGZBcFlZUTRCZnlrUTByeUYwcThwV25KMzAtVHBOYzNrSTFZTnpoV3dENlVCbE1QU0phMm91aXVYNnUxSU1HZ3FzdjIybXEtc21QLUhJMjhvVUVuRlhtWVJKZTNNVFhBWkpaYy1iQ0JWY0o5dm5SVnRjZDlkNllYZi1RTTk3aWI4S0lPbEo0S0M2MGZ1XzFlMFNIWFp3?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 7,
+      "total_count": 9,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 7,
-          "title": "삼양그룹, AI로 일하는 방식 확 바꾼다…반도체 소재 신성장 동력 - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE15aXN3Nmt4QV9IZ0NmSkw2ZEJTLTVKMDFyU0JZY0NfMFRWZVZGWkVQQzZoMnhzaXZBNHlya081a29YQlU4bE5WbFN4V29VSXdIbTJlZ1FZZkd5X1FoS2VHU9IBeEFVX3lxTE04dzUtQVlISWFoeTJiRUF2b1kzZGdMamZsMGdhNk5TYUV3VldyR2wyNDhWaGFIbUdnVDBkc21veXRvWVRQcFlFaDdra1NOSGQ0dDJrM2NLeWpwY2R2MTNvTFpxRERMYjNNc1ZCeEpncUpqOXdFSWN4Rg?oc=5"
+          "count": 9,
+          "title": "구글, AI칩 TPU 외부 직접 판매 선언…엔비디아에 정면 도전 - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9ZYVYtNUFoXzhVS0J1dlhoTWpVNi1aSVpZalA5VEZfdEkxUmVZSkRSWjk5RGlVcGFTX1lVV1lPR1ZidzBuM1lNLWd2Y2lxd2hSYnc?oc=5"
         }
       ]
     }
