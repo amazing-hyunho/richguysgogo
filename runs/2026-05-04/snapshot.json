@@ -1,0 +1,123 @@
+{
+  "market_summary": {
+    "note": "KOSPI -1.38%, USD/KRW 1474.07. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -1.38,
+    "usdkrw": 1474.069522
+  },
+  "flow_summary": {
+    "note": "외국인 -16671억, 기관 -207억, 개인 +17356억 | KOSPI(외 -14559, 기관 +2838, 개인 +11824) KOSDAQ(외 -2112, 기관 -3045, 개인 +5532)",
+    "foreign_net": -16671.0,
+    "institution_net": -207.0,
+    "retail_net": 17356.0
+  },
+  "korean_market_flow": {
+    "date": "2026-05-04",
+    "market": {
+      "KOSPI": {
+        "individual": 11824,
+        "foreign": -14559,
+        "institution": 2838
+      },
+      "KOSDAQ": {
+        "individual": 5532,
+        "foreign": -2112,
+        "institution": -3045
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] 캐시카리 연준 총재, 이란 전쟁이 인플레이션 위험 높이고 금리 인하 불확실 By Investing.com - Investing.com 한국어",
+    "[정책/테마] 獨총리, '미군감축·관세인상' 후폭풍에 \"美, 최우선 동맹\"(종합) - 연합뉴스",
+    "[반도체/AI] “반도체 강국 한국, ‘AI 패키지 수출국’으로 거듭나야” - 신동아",
+    "[에너지/원자재] '중동전쟁 3개월' 광주·전남, 유가 급등·원자재 수급난에 '울상' - 전남일보",
+    "[환율/달러] 금리·환율 변동성에 커진 헤지 수요…장외파생상품 거래 2경6779조 ‘역대 최대’ - v.daum.net"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6598.87,
+      "kosdaq": 1192.35,
+      "kospi_pct": -1.38,
+      "kosdaq_pct": -2.29
+    },
+    "us": {
+      "sp500": 7230.12,
+      "nasdaq": 25114.443,
+      "dow": 49499.27,
+      "sp500_pct": 0.2928280027354612,
+      "nasdaq_pct": 0.8924165304130195,
+      "dow_pct": -0.3078016841180972
+    },
+    "fx": {
+      "usdkrw": 1474.069522,
+      "usdkrw_pct": -0.13575704918477893
+    },
+    "volatility": {
+      "vix": 16.989999771118164
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.377999782562256,
+      "us2y": 3.575000047683716,
+      "spread_2_10": 0.80299973487854,
+      "vix": 16.989999771118164,
+      "dxy": 98.08799743652344,
+      "usdkrw": 1471.219970703125,
+      "vix3m": 20.3700008392334,
+      "vix_term_spread": 3.3800010681152344,
+      "oil_wti": 101.2699966430664
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 3.496081498479442,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24174.527,
+      "gdp_qoq_annualized": 2.0
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.8979997825622559,
+      "hy_oas": 2.83,
+      "ig_oas": 0.81,
+      "fed_balance_sheet": 6699950.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -2.127,
+    "liquidity_signal_score": 8.292,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -4.77,
+    "kospi_20d_cum_pct": 5.479,
+    "kosdaq_5d_cum_pct": -8.77,
+    "kospi_abs_move_5d_avg": 1.254,
+    "usdkrw_5d_change_pct": 0.051,
+    "vix_5d_avg": 17.334,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+5.48%, vol20d=1.22, reversal=false"
+  }
+}
