@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-05-03T02:43:47.382756+00:00",
+  "crawled_at": "2026-05-03T03:43:31.669258+00:00",
   "news_date": "2026-05-03",
-  "total_collected": 86,
+  "total_collected": 99,
   "topic_counts": [
     [
       "금리/연준",
       4
+    ],
+    [
+      "반도체/AI",
+      12
     ],
     [
       "환율/달러",
@@ -17,11 +21,7 @@
     ],
     [
       "경기/성장",
-      5
-    ],
-    [
-      "반도체/AI",
-      9
+      6
     ]
   ],
   "top_articles": [
@@ -32,6 +32,17 @@
       "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9McHpsODhQdU9iQmJrWTNuUWtsMF83UU5oQXJnWjVfNWFFcmlGZTY3V3RPTTZYd1ZFaGNZQzNSOHNUWFdsSlJhZU9adjNpa3B2T0tkbGhfVi01d0HSAWBBVV95cUxQcVhCUWt3a0FNWVliNzdRQ295VEk0UXp3aUIxV2lSem1Gc1RnUTl4UHc3Vlc1QnNmcUh2UFRyb0FPX25SWVlkN2JodUxDRFJ1dWh6THRvN1pyNlk2MkhhZUI?oc=5",
       "summary_lines": [
         "핵심 이슈: 중동긴장 지속에도 금값 잠잠…'워시의 연준' 美금리 향배 주목 - 연합뉴스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "반도체/AI",
+      "count": 12,
+      "title": "1분기 반도체 빼면 제조업 생산 증가 0.2% 뿐…K자 양극화 여전 - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5mbnRQMVV6Q2FsSEs3YTJna2NWWUVrc1JaaVhtMnh0eFc1Zm1CSDl1dW1KcmVpMm9yNUhKQ3ZhYkZjUndKTTd6Q3ZOR0xjT1lyTUJFRVhkM1Q0ODjSAWBBVV95cUxPc0JlcDNkWllXcWttUlJ6d2hsUGtRY0lqd2FMYzYzU25wcVV1Q0ViTzdULVN4VnloaVBoSGJObHdTbDRlQ3EyWTBBNEZIVHlxT3RfcjhURE9JWkdhUFlDQkQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 1분기 반도체 빼면 제조업 생산 증가 0.2% 뿐…K자 양극화 여전 - 연합뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -60,22 +71,11 @@
     },
     {
       "topic": "경기/성장",
-      "count": 5,
+      "count": 6,
       "title": "GDP 서프라이즈 비웃는 '경제 착시' … 반도체 빼면 제조업 생산 증가 '0.2%', 선행-동행지수 격차 16년래 최대 - 뉴데일리 경제",
       "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAzSmZ3QkZLSUtqTWpHRHcxWE9MN1lSTjJQQ3dWaGFvWmdDd2pqOFRDZ0NtWEdBV2x2T3FQVVpfcDlUeW9oVE10bnZDckpVWEtBdm1qS2QyN1R3djJHUUNUOXNCN05nbFVkTTc0S1l0MnpqYi1mY3Vyc3lCdw?oc=5",
       "summary_lines": [
         "핵심 이슈: GDP 서프라이즈 비웃는 '경제 착시' … 반도체 빼면 제조업 생산 증가 '0.2%', 선행-동행지수 격차 16년래 최대 - 뉴데일리 경제",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "반도체/AI",
-      "count": 9,
-      "title": "엔비디아 중심 AI 랠리···클라우드·전력까지 확산 - 뉴스웨이",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9tc1JaNkVRWmhKaXpvdjVhdmdYRjNsQzlrbEJqNUNVNTZzZEJDNEE1MDVOMzFzMk1iWWliMmlJejRSclk0UlUwOHFFZzFsV1lYeDNyZTJuaU1MdWRKLXkyZ0JWUE1aMm9uUlE?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 엔비디아 중심 AI 랠리···클라우드·전력까지 확산 - 뉴스웨이",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,19 +84,19 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 18,
+      "total_count": 19,
       "topics": [
+        {
+          "topic": "경기/성장",
+          "count": 6,
+          "title": "GDP 서프라이즈 비웃는 '경제 착시' … 반도체 빼면 제조업 생산 증가 '0.2%', 선행-동행지수 격차 16년래 최대 - 뉴데일리 경제",
+          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAzSmZ3QkZLSUtqTWpHRHcxWE9MN1lSTjJQQ3dWaGFvWmdDd2pqOFRDZ0NtWEdBV2x2T3FQVVpfcDlUeW9oVE10bnZDckpVWEtBdm1qS2QyN1R3djJHUUNUOXNCN05nbFVkTTc0S1l0MnpqYi1mY3Vyc3lCdw?oc=5"
+        },
         {
           "topic": "환율/달러",
           "count": 5,
           "title": "금리차가 만든 '원화 캐리트레이드'…환율 움직이는 또 하나의 축 - 연합인포맥스",
           "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5JdUhCZHFfeW9FZW5HaVBFb0hLeE5rYXpQNkVhRU16bC1OX0dKcV8tUEtTWFdWSEFGZEthQk44cjkzTEpKcjhVX3hfRDlfS0NvdWx5d1A4d2xQcHlCaHBPSXpLRk9IaUhRd1F3R29jNmc?oc=5"
-        },
-        {
-          "topic": "경기/성장",
-          "count": 5,
-          "title": "GDP 서프라이즈 비웃는 '경제 착시' … 반도체 빼면 제조업 생산 증가 '0.2%', 선행-동행지수 격차 16년래 최대 - 뉴데일리 경제",
-          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFAzSmZ3QkZLSUtqTWpHRHcxWE9MN1lSTjJQQ3dWaGFvWmdDd2pqOFRDZ0NtWEdBV2x2T3FQVVpfcDlUeW9oVE10bnZDckpVWEtBdm1qS2QyN1R3djJHUUNUOXNCN05nbFVkTTc0S1l0MnpqYi1mY3Vyc3lCdw?oc=5"
         },
         {
           "topic": "금리/연준",
@@ -114,13 +114,13 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 9,
+      "total_count": 12,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 9,
-          "title": "엔비디아 중심 AI 랠리···클라우드·전력까지 확산 - 뉴스웨이",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9tc1JaNkVRWmhKaXpvdjVhdmdYRjNsQzlrbEJqNUNVNTZzZEJDNEE1MDVOMzFzMk1iWWliMmlJejRSclk0UlUwOHFFZzFsV1lYeDNyZTJuaU1MdWRKLXkyZ0JWUE1aMm9uUlE?oc=5"
+          "count": 12,
+          "title": "1분기 반도체 빼면 제조업 생산 증가 0.2% 뿐…K자 양극화 여전 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5mbnRQMVV6Q2FsSEs3YTJna2NWWUVrc1JaaVhtMnh0eFc1Zm1CSDl1dW1KcmVpMm9yNUhKQ3ZhYkZjUndKTTd6Q3ZOR0xjT1lyTUJFRVhkM1Q0ODjSAWBBVV95cUxPc0JlcDNkWllXcWttUlJ6d2hsUGtRY0lqd2FMYzYzU25wcVV1Q0ViTzdULVN4VnloaVBoSGJObHdTbDRlQ3EyWTBBNEZIVHlxT3RfcjhURE9JWkdhUFlDQkQ?oc=5"
         }
       ]
     }
