@@ -1,19 +1,19 @@
 {
-  "crawled_at": "2026-05-04T09:43:25.525769+00:00",
+  "crawled_at": "2026-05-04T10:42:58.203088+00:00",
   "news_date": "2026-05-04",
-  "total_collected": 267,
+  "total_collected": 279,
   "topic_counts": [
     [
       "금리/연준",
-      16
+      18
+    ],
+    [
+      "환율/달러",
+      23
     ],
     [
       "인플레이션",
       15
-    ],
-    [
-      "환율/달러",
-      21
     ],
     [
       "경기/성장",
@@ -21,17 +21,28 @@
     ],
     [
       "반도체/AI",
-      26
+      27
     ]
   ],
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 16,
+      "count": 18,
       "title": "연준 인사 ″상황 악화시 금리인상해야 할 수도″ - 연합뉴스TV",
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBUMkJOa0J6ZjlEazg4bUFpdWNEU2dXd1VUTEhrNEdrYkhmUUQwTThYRnc0M3VRV3VEcXJCUXp1TThnZFZrRjAzdnpyTzR3eTlSdmVERDVNdzBmcnBuV2x6dTdNeWM?oc=5",
       "summary_lines": [
         "핵심 이슈: 연준 인사 ″상황 악화시 금리인상해야 할 수도″ - 연합뉴스TV",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "환율/달러",
+      "count": 23,
+      "title": "달러 환율 20원대 하락 `1,462.8원`…중동전 이후 최저치 - 매일신문",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA0NTJ3eUhpYzN4Y19nbzk3bmFSc3l6UVRkdnFJdm45M1lpX2JhQlhCTWh3RXk1Y2xON05ZOVZYODRtRWFrc3o0TEM3YkdpclZiTnk2VFozZk5QLUFZWTZtMkN3?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 달러 환율 20원대 하락 `1,462.8원`…중동전 이후 최저치 - 매일신문",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -43,17 +54,6 @@
       "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA1UWhuREpsWURpemR6YUdwR0htMFlLSHBGb29HVU8xRG9WNlZSbEtmaUkzalRIVFczRTdSY3E2eWpXT3FiZjhUYnJCT0ZWdjV6cGxLcjdBU0tzMDTSAWBBVV95cUxNRG1WWml0cEQ3bEd6UUROeEtHdmRVaEQ3WVJvZXMxYWtaX285UjR5cjFTa0lFeTNaMW9lZUVlMDEzUjRSSmk4S3djX290bWVubmN5aXh2OXB3Smt2VjRsNlc?oc=5",
       "summary_lines": [
         "핵심 이슈: 연준 인사 \"상황 악화시 금리인상으로 가야할 수도\" - 연합뉴스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "환율/달러",
-      "count": 21,
-      "title": "달러 환율 20원대 하락 `1,462.8원`…중동전 이후 최저치 - 매일신문",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA0NTJ3eUhpYzN4Y19nbzk3bmFSc3l6UVRkdnFJdm45M1lpX2JhQlhCTWh3RXk1Y2xON05ZOVZYODRtRWFrc3o0TEM3YkdpclZiTnk2VFozZk5QLUFZWTZtMkN3?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 달러 환율 20원대 하락 `1,462.8원`…중동전 이후 최저치 - 매일신문",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -71,7 +71,7 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 26,
+      "count": 27,
       "title": "미국 전쟁부, 엔비디아·MS·AWS 기밀망 AI 계약…앤트로픽 제외 - 지디넷코리아",
       "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8xUklSODl0bVVFOVAwVzljd0J1SEN2bWtDbjExSWdydnlWTkdXdTNNdWRqaU9uNGoxSm1iYXFOaGVNeVpEUEFlTDlNd0h6YVNPdjNTYlNn?oc=5",
       "summary_lines": [
@@ -84,11 +84,11 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 71,
+      "total_count": 75,
       "topics": [
         {
           "topic": "환율/달러",
-          "count": 21,
+          "count": 23,
           "title": "달러 환율 20원대 하락 `1,462.8원`…중동전 이후 최저치 - 매일신문",
           "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFA0NTJ3eUhpYzN4Y19nbzk3bmFSc3l6UVRkdnFJdm45M1lpX2JhQlhCTWh3RXk1Y2xON05ZOVZYODRtRWFrc3o0TEM3YkdpclZiTnk2VFozZk5QLUFZWTZtMkN3?oc=5"
         },
@@ -100,7 +100,7 @@
         },
         {
           "topic": "금리/연준",
-          "count": 16,
+          "count": 18,
           "title": "연준 인사 ″상황 악화시 금리인상해야 할 수도″ - 연합뉴스TV",
           "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBUMkJOa0J6ZjlEazg4bUFpdWNEU2dXd1VUTEhrNEdrYkhmUUQwTThYRnc0M3VRV3VEcXJCUXp1TThnZFZrRjAzdnpyTzR3eTlSdmVERDVNdzBmcnBuV2x6dTdNeWM?oc=5"
         },
@@ -114,11 +114,11 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 26,
+      "total_count": 27,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 26,
+          "count": 27,
           "title": "미국 전쟁부, 엔비디아·MS·AWS 기밀망 AI 계약…앤트로픽 제외 - 지디넷코리아",
           "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8xUklSODl0bVVFOVAwVzljd0J1SEN2bWtDbjExSWdydnlWTkdXdTNNdWRqaU9uNGoxSm1iYXFOaGVNeVpEUEFlTDlNd0h6YVNPdjNTYlNn?oc=5"
         }
