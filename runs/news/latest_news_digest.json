@@ -1,37 +1,48 @@
 {
-  "crawled_at": "2026-05-05T17:42:39.454526+00:00",
+  "crawled_at": "2026-05-05T18:42:34.354626+00:00",
   "news_date": "2026-05-06",
-  "total_collected": 13,
+  "total_collected": 21,
   "topic_counts": [
     [
       "반도체/AI",
       4
     ],
     [
+      "에너지/원자재",
+      2
+    ],
+    [
       "금리/연준",
       1
     ],
     [
-      "경기/성장",
-      1
-    ],
-    [
       "환율/달러",
-      1
+      2
     ],
     [
-      "2차전지/전기차",
-      2
+      "인플레이션",
+      1
     ]
   ],
   "top_articles": [
     {
       "topic": "반도체/AI",
       "count": 4,
-      "title": "개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBMYmY5THp1Z0Z4OG5VaURIa2VMeklNYUNBSDA1cTJYWmJtZS1YTXc4TnNvcEo3SHc5ZUliNm1ReEhxaFd0cVNDU2dfNFlZd21IanFWNm9oM3o5QdIBVEFVX3lxTFBXVFp3M0taR1RBVlBjVDVRZV90RVZDSXJQSVJYZy1KR3ZtUWhoQjRVeUhXQTlGeG5tTkJMOFZEWjhrbmQzSkJBM21CTmNhOGhvMjBuMQ?oc=5",
+      "title": "HBM4 수주 전쟁… 삼성·SK, 엔비디아 '1조 달러 과실' 누구에게 - 글로벌이코노믹",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxObWRHLU9vc1pzQmthQ3huNVA3ZVFYOTg4bTZ2ektXLVdJTVI5Z2hjXzZ0NUNLeTVhaHJ0U1dCTGIzTjZjd01saG5iX3Z2SExORlRWdjA1Y0N6UUpRbUtSWnozSlZiSkFfT2JfUEJ2R09mX0tEYk9YX0liU0plU3JlSXpvdzY1LXFy?oc=5",
       "summary_lines": [
-        "핵심 이슈: 개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
+        "핵심 이슈: HBM4 수주 전쟁… 삼성·SK, 엔비디아 '1조 달러 과실' 누구에게 - 글로벌이코노믹",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "에너지/원자재",
+      "count": 2,
+      "title": "국제유가발 인플레 우려…미국채 30년물 금리 5% 넘어서 - 중앙일보",
+      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jNUF6c2hiNDFMd0FONl90cW9DMG1zLVhET0RiR0prTmRhTGVidzJUSmxXbktqa0JTSVhhRE0xQ1YySVZNWXZ0SWlUNzlTRTFNVXY4c2x3?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 국제유가발 인플레 우려…미국채 30년물 금리 5% 넘어서 - 중앙일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -48,34 +59,23 @@
       ]
     },
     {
-      "topic": "경기/성장",
-      "count": 1,
-      "title": "헝가리 차기 총리, GDP 대비 재정 적자 6.8% 경고 - Investing.com 한국어",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9uZ2N1cTNyN0xBZTdHQnY5cTFDLUlLVXRJdEFMZWxDSUxpVm5Dck5TLUZpaFBPSkUtNzVmeEhZSDhlVkFkRXg4SEp4aWxyTDFsUU1oby13N09zTnBhNlBEaTg4SExYRE1CZHY5MUlBa1g?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 헝가리 차기 총리, GDP 대비 재정 적자 6.8% 경고 - Investing.com 한국어",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "환율/달러",
-      "count": 1,
-      "title": "오늘(5월 5일) 금 가격: 강세 달러, 수익률 상승, 금 가격 약세. - Vietnam.vn",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYzNRVm5sQzJEYWwybFJHeEJhN2hXUzZhQkJJTklOMkRvbi03LUJuNW5EcGcxZXZWQmFkODZDZVBmelNBZ05FaDV6RW1mOUxtMFd6T013VjA0U1dOYkVJck03SGpCRkpFOWYxWml0c0lMUGIwSzF3Z0tRUWdiLVh3dmgtRW9tMnlqRXpXemp4Yw?oc=5",
+      "count": 2,
+      "title": "미국 달러 대비 원화, ₩1,464 지지선이 주목받으며 횡보세 지속 - Traders Union",
+      "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTGY0RXRNLU4wWnhhN0tqWnhJNjZ1NUludjI0SGE5WGwwOXRuelFUR1VWUlJHU19KM2UyUDBDRk8xS3dYWFk3U3YwdmpwZWFmLXBWRlpQM2hZaXVoV0VESDhoVmhvTVJ0WV9ZZFozV1pYU2pzTFVDellYRGNWbXBQMmJGd3ZLQjdpczhWRjdn?oc=5",
       "summary_lines": [
-        "핵심 이슈: 오늘(5월 5일) 금 가격: 강세 달러, 수익률 상승, 금 가격 약세. - Vietnam.vn",
+        "핵심 이슈: 미국 달러 대비 원화, ₩1,464 지지선이 주목받으며 횡보세 지속 - Traders Union",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "2차전지/전기차",
-      "count": 2,
-      "title": "포스코퓨처엠, 日 완성차 업체와 전고체 양극재 개발 - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1yNEZ2dTc5MWx3a3JCdnplWGhYd1luNy1UaG96akMwWXM2MzJpSTRBbmY1ZXo2aGxSUUhtVDNrY0p2TGI3SXdJempsdUlRNHhwVGNraTZKdVFLd9IBVEFVX3lxTE05RDByeWRZdW5HWkw4Vy0tcVRPSHlXbDUzV09wNUVxWWFWejI5Yk9CekFHZWREWlhNeWtmaTFnYW1tVzZicFZqeFZaYnFmZWE1cGt6Sg?oc=5",
+      "topic": "인플레이션",
+      "count": 1,
+      "title": "유럽중앙은행(ECB)은 분쟁으로 인한 인플레이션 압력에 대해 경고했습니다. - Vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5tNTU4bzhSUVRYS0NCalhHbFotcEdfNy1lUWdsTE5UUFN6Nno2Rnk4OEtTZ1VfSzkzMzNmc04wOUt4ODI0Sm5CWUJDTnBNdmEzOWxBVjVPT2IwT0VFd01FWk5yYmJRbWlsanhvaE5ObEpkZFFw?oc=5",
       "summary_lines": [
-        "핵심 이슈: 포스코퓨처엠, 日 완성차 업체와 전고체 양극재 개발 - 한국경제",
+        "핵심 이슈: 유럽중앙은행(ECB)은 분쟁으로 인한 인플레이션 압력에 대해 경고했습니다. - Vietnam.vn",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -89,15 +89,21 @@
         {
           "topic": "반도체/AI",
           "count": 4,
-          "title": "개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBMYmY5THp1Z0Z4OG5VaURIa2VMeklNYUNBSDA1cTJYWmJtZS1YTXc4TnNvcEo3SHc5ZUliNm1ReEhxaFd0cVNDU2dfNFlZd21IanFWNm9oM3o5QdIBVEFVX3lxTFBXVFp3M0taR1RBVlBjVDVRZV90RVZDSXJQSVJYZy1KR3ZtUWhoQjRVeUhXQTlGeG5tTkJMOFZEWjhrbmQzSkJBM21CTmNhOGhvMjBuMQ?oc=5"
+          "title": "HBM4 수주 전쟁… 삼성·SK, 엔비디아 '1조 달러 과실' 누구에게 - 글로벌이코노믹",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxObWRHLU9vc1pzQmthQ3huNVA3ZVFYOTg4bTZ2ektXLVdJTVI5Z2hjXzZ0NUNLeTVhaHJ0U1dCTGIzTjZjd01saG5iX3Z2SExORlRWdjA1Y0N6UUpRbUtSWnozSlZiSkFfT2JfUEJ2R09mX0tEYk9YX0liU0plU3JlSXpvdzY1LXFy?oc=5"
         }
       ]
     },
     {
       "sector": "매크로",
-      "total_count": 3,
+      "total_count": 4,
       "topics": [
+        {
+          "topic": "환율/달러",
+          "count": 2,
+          "title": "미국 달러 대비 원화, ₩1,464 지지선이 주목받으며 횡보세 지속 - Traders Union",
+          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTGY0RXRNLU4wWnhhN0tqWnhJNjZ1NUludjI0SGE5WGwwOXRuelFUR1VWUlJHU19KM2UyUDBDRk8xS3dYWFk3U3YwdmpwZWFmLXBWRlpQM2hZaXVoV0VESDhoVmhvTVJ0WV9ZZFozV1pYU2pzTFVDellYRGNWbXBQMmJGd3ZLQjdpczhWRjdn?oc=5"
+        },
         {
           "topic": "금리/연준",
           "count": 1,
@@ -105,28 +111,22 @@
           "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5DamM3eE85UUdneXhtTTJ1S1BfeFVTSDVYVUVXamZxbEZuMmZjZzdrUDJFbmtHc1ZYTktCa2IzbWZBMjlvV2JYd1hRZ0VWOVN1QTcwTWxtaUo4RGZmaHczazdwWWNuRGJjZWo5UzV3?oc=5"
         },
         {
-          "topic": "경기/성장",
+          "topic": "인플레이션",
           "count": 1,
-          "title": "헝가리 차기 총리, GDP 대비 재정 적자 6.8% 경고 - Investing.com 한국어",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9uZ2N1cTNyN0xBZTdHQnY5cTFDLUlLVXRJdEFMZWxDSUxpVm5Dck5TLUZpaFBPSkUtNzVmeEhZSDhlVkFkRXg4SEp4aWxyTDFsUU1oby13N09zTnBhNlBEaTg4SExYRE1CZHY5MUlBa1g?oc=5"
-        },
-        {
-          "topic": "환율/달러",
-          "count": 1,
-          "title": "오늘(5월 5일) 금 가격: 강세 달러, 수익률 상승, 금 가격 약세. - Vietnam.vn",
-          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYzNRVm5sQzJEYWwybFJHeEJhN2hXUzZhQkJJTklOMkRvbi03LUJuNW5EcGcxZXZWQmFkODZDZVBmelNBZ05FaDV6RW1mOUxtMFd6T013VjA0U1dOYkVJck03SGpCRkpFOWYxWml0c0lMUGIwSzF3Z0tRUWdiLVh3dmgtRW9tMnlqRXpXemp4Yw?oc=5"
+          "title": "유럽중앙은행(ECB)은 분쟁으로 인한 인플레이션 압력에 대해 경고했습니다. - Vietnam.vn",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5tNTU4bzhSUVRYS0NCalhHbFotcEdfNy1lUWdsTE5UUFN6Nno2Rnk4OEtTZ1VfSzkzMzNmc04wOUt4ODI0Sm5CWUJDTnBNdmEzOWxBVjVPT2IwT0VFd01FWk5yYmJRbWlsanhvaE5ObEpkZFFw?oc=5"
         }
       ]
     },
     {
-      "sector": "2차전지/자동차",
+      "sector": "에너지/소재",
       "total_count": 2,
       "topics": [
         {
-          "topic": "2차전지/전기차",
+          "topic": "에너지/원자재",
           "count": 2,
-          "title": "포스코퓨처엠, 日 완성차 업체와 전고체 양극재 개발 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1yNEZ2dTc5MWx3a3JCdnplWGhYd1luNy1UaG96akMwWXM2MzJpSTRBbmY1ZXo2aGxSUUhtVDNrY0p2TGI3SXdJempsdUlRNHhwVGNraTZKdVFLd9IBVEFVX3lxTE05RDByeWRZdW5HWkw4Vy0tcVRPSHlXbDUzV09wNUVxWWFWejI5Yk9CekFHZWREWlhNeWtmaTFnYW1tVzZicFZqeFZaYnFmZWE1cGt6Sg?oc=5"
+          "title": "국제유가발 인플레 우려…미국채 30년물 금리 5% 넘어서 - 중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jNUF6c2hiNDFMd0FONl90cW9DMG1zLVhET0RiR0prTmRhTGVidzJUSmxXbktqa0JTSVhhRE0xQ1YySVZNWXZ0SWlUNzlTRTFNVXY4c2x3?oc=5"
         }
       ]
     }
