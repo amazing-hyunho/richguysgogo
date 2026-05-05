@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-05-05T16:42:40.157173+00:00",
+  "crawled_at": "2026-05-05T17:42:39.454526+00:00",
   "news_date": "2026-05-06",
-  "total_collected": 11,
+  "total_collected": 13,
   "topic_counts": [
+    [
+      "반도체/AI",
+      4
+    ],
     [
       "금리/연준",
       1
@@ -12,12 +16,8 @@
       1
     ],
     [
-      "미국지수",
-      2
-    ],
-    [
-      "반도체/AI",
-      2
+      "환율/달러",
+      1
     ],
     [
       "2차전지/전기차",
@@ -25,6 +25,17 @@
     ]
   ],
   "top_articles": [
+    {
+      "topic": "반도체/AI",
+      "count": 4,
+      "title": "개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBMYmY5THp1Z0Z4OG5VaURIa2VMeklNYUNBSDA1cTJYWmJtZS1YTXc4TnNvcEo3SHc5ZUliNm1ReEhxaFd0cVNDU2dfNFlZd21IanFWNm9oM3o5QdIBVEFVX3lxTFBXVFp3M0taR1RBVlBjVDVRZV90RVZDSXJQSVJYZy1KR3ZtUWhoQjRVeUhXQTlGeG5tTkJMOFZEWjhrbmQzSkJBM21CTmNhOGhvMjBuMQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "금리/연준",
       "count": 1,
@@ -48,23 +59,12 @@
       ]
     },
     {
-      "topic": "미국지수",
-      "count": 2,
-      "title": "개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBMYmY5THp1Z0Z4OG5VaURIa2VMeklNYUNBSDA1cTJYWmJtZS1YTXc4TnNvcEo3SHc5ZUliNm1ReEhxaFd0cVNDU2dfNFlZd21IanFWNm9oM3o5QdIBVEFVX3lxTFBXVFp3M0taR1RBVlBjVDVRZV90RVZDSXJQSVJYZy1KR3ZtUWhoQjRVeUhXQTlGeG5tTkJMOFZEWjhrbmQzSkJBM21CTmNhOGhvMjBuMQ?oc=5",
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "오늘(5월 5일) 금 가격: 강세 달러, 수익률 상승, 금 가격 약세. - Vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYzNRVm5sQzJEYWwybFJHeEJhN2hXUzZhQkJJTklOMkRvbi03LUJuNW5EcGcxZXZWQmFkODZDZVBmelNBZ05FaDV6RW1mOUxtMFd6T013VjA0U1dOYkVJck03SGpCRkpFOWYxWml0c0lMUGIwSzF3Z0tRUWdiLVh3dmgtRW9tMnlqRXpXemp4Yw?oc=5",
       "summary_lines": [
-        "핵심 이슈: 개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "반도체/AI",
-      "count": 2,
-      "title": "‘엔비디아 대항마’ 세레브라스, 상장 목표 시총 39조원 확정 - 서울신문",
-      "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA3X1EyWWlqMXc1Y1M0N3JTdmdySDV3WjVXUTYxZ0lNZm9LLUFYOU4tcTc0ZldFY1JpV3RqSjVUeGkwSUJtZVJHcTNyUHRTR05vWGZJZ0Z1cm4wcHVUcjNRZWgxbDQ5VGEwN3hMZjhTWkVReDMxSERCVUVlOA?oc=5",
-      "summary_lines": [
-        "핵심 이슈: ‘엔비디아 대항마’ 세레브라스, 상장 목표 시총 39조원 확정 - 서울신문",
+        "핵심 이슈: 오늘(5월 5일) 금 가격: 강세 달러, 수익률 상승, 금 가격 약세. - Vietnam.vn",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -83,8 +83,20 @@
   ],
   "sector_hot_topics": [
     {
+      "sector": "IT/반도체",
+      "total_count": 4,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 4,
+          "title": "개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBMYmY5THp1Z0Z4OG5VaURIa2VMeklNYUNBSDA1cTJYWmJtZS1YTXc4TnNvcEo3SHc5ZUliNm1ReEhxaFd0cVNDU2dfNFlZd21IanFWNm9oM3o5QdIBVEFVX3lxTFBXVFp3M0taR1RBVlBjVDVRZV90RVZDSXJQSVJYZy1KR3ZtUWhoQjRVeUhXQTlGeG5tTkJMOFZEWjhrbmQzSkJBM21CTmNhOGhvMjBuMQ?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "매크로",
-      "total_count": 2,
+      "total_count": 3,
       "topics": [
         {
           "topic": "금리/연준",
@@ -97,30 +109,12 @@
           "count": 1,
           "title": "헝가리 차기 총리, GDP 대비 재정 적자 6.8% 경고 - Investing.com 한국어",
           "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9uZ2N1cTNyN0xBZTdHQnY5cTFDLUlLVXRJdEFMZWxDSUxpVm5Dck5TLUZpaFBPSkUtNzVmeEhZSDhlVkFkRXg4SEp4aWxyTDFsUU1oby13N09zTnBhNlBEaTg4SExYRE1CZHY5MUlBa1g?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 2,
-      "topics": [
+        },
         {
-          "topic": "미국지수",
-          "count": 2,
-          "title": "개미들 반도체 하락 점칠 때, 큰손은 나스닥100 3배 베팅 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBMYmY5THp1Z0Z4OG5VaURIa2VMeklNYUNBSDA1cTJYWmJtZS1YTXc4TnNvcEo3SHc5ZUliNm1ReEhxaFd0cVNDU2dfNFlZd21IanFWNm9oM3o5QdIBVEFVX3lxTFBXVFp3M0taR1RBVlBjVDVRZV90RVZDSXJQSVJYZy1KR3ZtUWhoQjRVeUhXQTlGeG5tTkJMOFZEWjhrbmQzSkJBM21CTmNhOGhvMjBuMQ?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "IT/반도체",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "반도체/AI",
-          "count": 2,
-          "title": "‘엔비디아 대항마’ 세레브라스, 상장 목표 시총 39조원 확정 - 서울신문",
-          "link": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA3X1EyWWlqMXc1Y1M0N3JTdmdySDV3WjVXUTYxZ0lNZm9LLUFYOU4tcTc0ZldFY1JpV3RqSjVUeGkwSUJtZVJHcTNyUHRTR05vWGZJZ0Z1cm4wcHVUcjNRZWgxbDQ5VGEwN3hMZjhTWkVReDMxSERCVUVlOA?oc=5"
+          "topic": "환율/달러",
+          "count": 1,
+          "title": "오늘(5월 5일) 금 가격: 강세 달러, 수익률 상승, 금 가격 약세. - Vietnam.vn",
+          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYzNRVm5sQzJEYWwybFJHeEJhN2hXUzZhQkJJTklOMkRvbi03LUJuNW5EcGcxZXZWQmFkODZDZVBmelNBZ05FaDV6RW1mOUxtMFd6T013VjA0U1dOYkVJck03SGpCRkpFOWYxWml0c0lMUGIwSzF3Z0tRUWdiLVh3dmgtRW9tMnlqRXpXemp4Yw?oc=5"
         }
       ]
     },
