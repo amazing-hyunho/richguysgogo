@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-05-04T23:43:04.129672+00:00",
+  "crawled_at": "2026-05-05T00:43:37.303757+00:00",
   "news_date": "2026-05-05",
-  "total_collected": 57,
+  "total_collected": 72,
   "topic_counts": [
     [
       "경기/성장",
@@ -12,16 +12,16 @@
       6
     ],
     [
+      "반도체/AI",
+      12
+    ],
+    [
+      "인플레이션",
+      2
+    ],
+    [
       "변동성/리스크",
       1
-    ],
-    [
-      "반도체/AI",
-      8
-    ],
-    [
-      "환율/달러",
-      3
     ]
   ],
   "top_articles": [
@@ -48,19 +48,8 @@
       ]
     },
     {
-      "topic": "변동성/리스크",
-      "count": 1,
-      "title": "금리·환율 변동성에 커진 헤지 수요…장외파생상품 거래 2경6779조 ‘역대 최대’ - dt.co.kr",
-      "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBkdWtXNkxIa2daQlFPNU1JTnMtT0FwTmdBejVFcjdkejlpNmRRNU94aVJQR2Z0ODBXSGt0dGFVd0g2emJLOVhLeDFocGpZUQ?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 금리·환율 변동성에 커진 헤지 수요…장외파생상품 거래 2경6779조 ‘역대 최대’ - dt.co.kr",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "반도체/AI",
-      "count": 8,
+      "count": 12,
       "title": "엔비디아 GPU 못 사는 中, 화웨이 반도체에 맞춰 AI ‘새 판’ 짠다 - Chosunbiz",
       "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNLTlyVWsyVjJmYjVCYWwyWER0Y3JXTFlWSlllTlc1YVZqOVdFNUFobmNkX2lQQmg5RnFCOEF2Wm9VTkViTkg3UzFIbUJtNU5fRU1tR1FGMm9EUENScERsa2JPSVJrcWhyWmVQbkc1RXhaMk0tcTVsUkt5WUJEVmk1S3d3?oc=5",
       "summary_lines": [
@@ -70,12 +59,23 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 3,
-      "title": "[채권/외환] 미 국채 금리 상승·달러 강세…이란 전쟁발 인플레 우려 영향 - 네이트",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE50LWN1cHJHeDJZckFWblcyRDlqUnVLd3NSejNrZGRvQm5GNlZrMzZHbnozVGRvMjRaV3hJMWJlNkFOampLVVM2eG5DUTlqMDZSbU1v?oc=5",
+      "topic": "인플레이션",
+      "count": 2,
+      "title": "미 30년물 국채 금리 5% 돌파…이란 전쟁발 물가 우려에 2024년 7월 이후 최고치 - 네이트",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5IZFI1MDB2aXRvUGdtSWhtdTk2ZHBsQWhGTGZyNGpJMmJzZ2hxVVRfNG1jQ0JfVHI5RE5FdUJ2N0ZISzhfWGJ3R2U4SldIZUd2TzE1bnppM2M5Qm1BRGdqLQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: [채권/외환] 미 국채 금리 상승·달러 강세…이란 전쟁발 인플레 우려 영향 - 네이트",
+        "핵심 이슈: 미 30년물 국채 금리 5% 돌파…이란 전쟁발 물가 우려에 2024년 7월 이후 최고치 - 네이트",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "변동성/리스크",
+      "count": 1,
+      "title": "금리·환율 변동성에 커진 헤지 수요…장외파생상품 거래 2경6779조 ‘역대 최대’ - dt.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBkdWtXNkxIa2daQlFPNU1JTnMtT0FwTmdBejVFcjdkejlpNmRRNU94aVJQR2Z0ODBXSGt0dGFVd0g2emJLOVhLeDFocGpZUQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 금리·환율 변동성에 커진 헤지 수요…장외파생상품 거래 2경6779조 ‘역대 최대’ - dt.co.kr",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,7 +84,7 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 16,
+      "total_count": 15,
       "topics": [
         {
           "topic": "경기/성장",
@@ -99,20 +99,20 @@
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA2MEEzU2hoMVlzbGxIUlBaWXBVbjYteF9yMElkaVBWOVJJRUZ5LTF1dThEbmUyNnlUVUNCcWNLMEdZak5JNk5sQkJVa251ZHNYTWfSAVNBVV95cUxQUllMNnQxN0tuMmFGZFpLZm9HTXpnM0dVcWxXYVFfUGdtTmJhOENfcmZmaXNlb3pGN09BTkFPVWI4NEluVmlLRkF0cVVfdnhjYUVOZw?oc=5"
         },
         {
-          "topic": "환율/달러",
-          "count": 3,
-          "title": "[채권/외환] 미 국채 금리 상승·달러 강세…이란 전쟁발 인플레 우려 영향 - 네이트",
-          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE50LWN1cHJHeDJZckFWblcyRDlqUnVLd3NSejNrZGRvQm5GNlZrMzZHbnozVGRvMjRaV3hJMWJlNkFOampLVVM2eG5DUTlqMDZSbU1v?oc=5"
+          "topic": "인플레이션",
+          "count": 2,
+          "title": "미 30년물 국채 금리 5% 돌파…이란 전쟁발 물가 우려에 2024년 7월 이후 최고치 - 네이트",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5IZFI1MDB2aXRvUGdtSWhtdTk2ZHBsQWhGTGZyNGpJMmJzZ2hxVVRfNG1jQ0JfVHI5RE5FdUJ2N0ZISzhfWGJ3R2U4SldIZUd2TzE1bnppM2M5Qm1BRGdqLQ?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 8,
+      "total_count": 12,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 8,
+          "count": 12,
           "title": "엔비디아 GPU 못 사는 中, 화웨이 반도체에 맞춰 AI ‘새 판’ 짠다 - Chosunbiz",
           "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNLTlyVWsyVjJmYjVCYWwyWER0Y3JXTFlWSlllTlc1YVZqOVdFNUFobmNkX2lQQmg5RnFCOEF2Wm9VTkViTkg3UzFIbUJtNU5fRU1tR1FGMm9EUENScERsa2JPSVJrcWhyWmVQbkc1RXhaMk0tcTVsUkt5WUJEVmk1S3d3?oc=5"
         }
