@@ -1,19 +1,19 @@
 {
-  "crawled_at": "2026-05-05T18:42:34.354626+00:00",
+  "crawled_at": "2026-05-05T19:42:31.685971+00:00",
   "news_date": "2026-05-06",
-  "total_collected": 21,
+  "total_collected": 23,
   "topic_counts": [
+    [
+      "금리/연준",
+      3
+    ],
     [
       "반도체/AI",
       4
     ],
     [
       "에너지/원자재",
-      2
-    ],
-    [
-      "금리/연준",
-      1
+      3
     ],
     [
       "환율/달러",
@@ -25,6 +25,17 @@
     ]
   ],
   "top_articles": [
+    {
+      "topic": "금리/연준",
+      "count": 3,
+      "title": "미 연준, 두 차례 연속 금리 동결…\"중동상황 영향 불확실\" - 네이트",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBrZVRValp2aUl1US1EY0c4VjBqMXp6Y3NmNmRTOUZLRlZ2YkZ1VkxOOXRaWnp1TERQbkxIclNqalBwemljc2Fkcl9fTGZQcGhZY2xF?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 미 연준, 두 차례 연속 금리 동결…\"중동상황 영향 불확실\" - 네이트",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "반도체/AI",
       "count": 4,
@@ -38,22 +49,11 @@
     },
     {
       "topic": "에너지/원자재",
-      "count": 2,
+      "count": 3,
       "title": "국제유가발 인플레 우려…미국채 30년물 금리 5% 넘어서 - 중앙일보",
       "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jNUF6c2hiNDFMd0FONl90cW9DMG1zLVhET0RiR0prTmRhTGVidzJUSmxXbktqa0JTSVhhRE0xQ1YySVZNWXZ0SWlUNzlTRTFNVXY4c2x3?oc=5",
       "summary_lines": [
         "핵심 이슈: 국제유가발 인플레 우려…미국채 30년물 금리 5% 넘어서 - 중앙일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "금리/연준",
-      "count": 1,
-      "title": "[사설] “금리 인상 고민할 때”… 너무 강한 韓銀 발언 - 아시아투데이",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5DamM3eE85UUdneXhtTTJ1S1BfeFVTSDVYVUVXamZxbEZuMmZjZzdrUDJFbmtHc1ZYTktCa2IzbWZBMjlvV2JYd1hRZ0VWOVN1QTcwTWxtaUo4RGZmaHczazdwWWNuRGJjZWo5UzV3?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [사설] “금리 인상 고민할 때”… 너무 강한 韓銀 발언 - 아시아투데이",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -83,6 +83,30 @@
   ],
   "sector_hot_topics": [
     {
+      "sector": "매크로",
+      "total_count": 6,
+      "topics": [
+        {
+          "topic": "금리/연준",
+          "count": 3,
+          "title": "미 연준, 두 차례 연속 금리 동결…\"중동상황 영향 불확실\" - 네이트",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBrZVRValp2aUl1US1EY0c4VjBqMXp6Y3NmNmRTOUZLRlZ2YkZ1VkxOOXRaWnp1TERQbkxIclNqalBwemljc2Fkcl9fTGZQcGhZY2xF?oc=5"
+        },
+        {
+          "topic": "환율/달러",
+          "count": 2,
+          "title": "미국 달러 대비 원화, ₩1,464 지지선이 주목받으며 횡보세 지속 - Traders Union",
+          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTGY0RXRNLU4wWnhhN0tqWnhJNjZ1NUludjI0SGE5WGwwOXRuelFUR1VWUlJHU19KM2UyUDBDRk8xS3dYWFk3U3YwdmpwZWFmLXBWRlpQM2hZaXVoV0VESDhoVmhvTVJ0WV9ZZFozV1pYU2pzTFVDellYRGNWbXBQMmJGd3ZLQjdpczhWRjdn?oc=5"
+        },
+        {
+          "topic": "인플레이션",
+          "count": 1,
+          "title": "유럽중앙은행(ECB)은 분쟁으로 인한 인플레이션 압력에 대해 경고했습니다. - Vietnam.vn",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5tNTU4bzhSUVRYS0NCalhHbFotcEdfNy1lUWdsTE5UUFN6Nno2Rnk4OEtTZ1VfSzkzMzNmc04wOUt4ODI0Sm5CWUJDTnBNdmEzOWxBVjVPT2IwT0VFd01FWk5yYmJRbWlsanhvaE5ObEpkZFFw?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "IT/반도체",
       "total_count": 4,
       "topics": [
@@ -95,36 +119,12 @@
       ]
     },
     {
-      "sector": "매크로",
-      "total_count": 4,
-      "topics": [
-        {
-          "topic": "환율/달러",
-          "count": 2,
-          "title": "미국 달러 대비 원화, ₩1,464 지지선이 주목받으며 횡보세 지속 - Traders Union",
-          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTGY0RXRNLU4wWnhhN0tqWnhJNjZ1NUludjI0SGE5WGwwOXRuelFUR1VWUlJHU19KM2UyUDBDRk8xS3dYWFk3U3YwdmpwZWFmLXBWRlpQM2hZaXVoV0VESDhoVmhvTVJ0WV9ZZFozV1pYU2pzTFVDellYRGNWbXBQMmJGd3ZLQjdpczhWRjdn?oc=5"
-        },
-        {
-          "topic": "금리/연준",
-          "count": 1,
-          "title": "[사설] “금리 인상 고민할 때”… 너무 강한 韓銀 발언 - 아시아투데이",
-          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5DamM3eE85UUdneXhtTTJ1S1BfeFVTSDVYVUVXamZxbEZuMmZjZzdrUDJFbmtHc1ZYTktCa2IzbWZBMjlvV2JYd1hRZ0VWOVN1QTcwTWxtaUo4RGZmaHczazdwWWNuRGJjZWo5UzV3?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 1,
-          "title": "유럽중앙은행(ECB)은 분쟁으로 인한 인플레이션 압력에 대해 경고했습니다. - Vietnam.vn",
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE5tNTU4bzhSUVRYS0NCalhHbFotcEdfNy1lUWdsTE5UUFN6Nno2Rnk4OEtTZ1VfSzkzMzNmc04wOUt4ODI0Sm5CWUJDTnBNdmEzOWxBVjVPT2IwT0VFd01FWk5yYmJRbWlsanhvaE5ObEpkZFFw?oc=5"
-        }
-      ]
-    },
-    {
       "sector": "에너지/소재",
-      "total_count": 2,
+      "total_count": 3,
       "topics": [
         {
           "topic": "에너지/원자재",
-          "count": 2,
+          "count": 3,
           "title": "국제유가발 인플레 우려…미국채 30년물 금리 5% 넘어서 - 중앙일보",
           "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9jNUF6c2hiNDFMd0FONl90cW9DMG1zLVhET0RiR0prTmRhTGVidzJUSmxXbktqa0JTSVhhRE0xQ1YySVZNWXZ0SWlUNzlTRTFNVXY4c2x3?oc=5"
         }
