@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-05-06T13:42:41.282018+00:00",
+  "crawled_at": "2026-05-06T14:42:38.934333+00:00",
   "news_date": "2026-05-06",
-  "total_collected": 271,
+  "total_collected": 279,
   "topic_counts": [
     [
       "반도체/AI",
       26
+    ],
+    [
+      "국내지수",
+      38
     ],
     [
       "금리/연준",
@@ -14,10 +18,6 @@
     [
       "정책/테마",
       29
-    ],
-    [
-      "경기/성장",
-      22
     ],
     [
       "인플레이션",
@@ -32,6 +32,17 @@
       "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxONTVQa1VsbjZ6TW1vSTJ5ek1sSXVYX1hPNE5xaG90TGM1a1FXU2tqVVhkdk1NdFMxaTFHZFFQTEh5NEhTYmRaN1poT0pFTFVhRG92OUhZTEVTN0pyMU9KSTFtQ19FTnY3WUo2X3o5cnREYkw5eDBjXzM0NzJVOUhVcjVQdw?oc=5",
       "summary_lines": [
         "핵심 이슈: 엔비디아 빈자리 화웨이가 채운다...반도체부터 AI 모델까지 자립 강화 - 조선일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "국내지수",
+      "count": 38,
+      "title": "외국인 코스피 3조 ‘폭풍 매수’에…원달러 환율 1450원대로 뚝 - 동아일보",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5FbnN5M0c0WHkxUTZmeW16c0ItenZNYlZjWllkYlphMjJ0THNOeXctcnJfMkIyazJvRk83WGljY3BDT1ktUklOdlRObW1SVjRZN3pvY1B2ZENVZVR4M3F1WjIxQm4xRk9FcklzazdpYmVpdjk0NWfSAWZBVV95cUxQWEVQcFZseTVOcHA5Q1NJZFlpV05NZ3NRQmlncjBxdUhIci1jSlhnVnZKTXNMVFFtd1ZqNENSOVd5TGtjSENKZ3J5a2pVR19yOE5NeHROc3lsVFFocnRQR2JqSlhpVWc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 외국인 코스피 3조 ‘폭풍 매수’에…원달러 환율 1450원대로 뚝 - 동아일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -59,17 +70,6 @@
       ]
     },
     {
-      "topic": "경기/성장",
-      "count": 22,
-      "title": "전쟁으로 GDP 60% 잃은 이란, 그래도 버틴다 - 오마이뉴스",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBRdzhxam5YZUd6N1pjYVNUSTlqcEo3VkxKMzY3Zkg0MTVmLWozM0ZFQXk1V2FtUno5M2FQTXJKeWk3VV80YzlnLXZFelVnV1k4bkxjcHdudUZPX0trMG9IMEI2ejhKeHNEc001ZmhxanBncnhyUGtV?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 전쟁으로 GDP 60% 잃은 이란, 그래도 버틴다 - 오마이뉴스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "인플레이션",
       "count": 19,
       "title": "\"5월 물가 오름폭 더 커질 것\"…기준금리 인상 '깜빡이' 켠 한은 - 머니투데이 - 머니투데이",
@@ -83,15 +83,21 @@
   ],
   "sector_hot_topics": [
     {
-      "sector": "매크로",
-      "total_count": 52,
+      "sector": "지수/시장",
+      "total_count": 38,
       "topics": [
         {
-          "topic": "경기/성장",
-          "count": 22,
-          "title": "전쟁으로 GDP 60% 잃은 이란, 그래도 버틴다 - 오마이뉴스",
-          "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBRdzhxam5YZUd6N1pjYVNUSTlqcEo3VkxKMzY3Zkg0MTVmLWozM0ZFQXk1V2FtUno5M2FQTXJKeWk3VV80YzlnLXZFelVnV1k4bkxjcHdudUZPX0trMG9IMEI2ejhKeHNEc001ZmhxanBncnhyUGtV?oc=5"
-        },
+          "topic": "국내지수",
+          "count": 38,
+          "title": "외국인 코스피 3조 ‘폭풍 매수’에…원달러 환율 1450원대로 뚝 - 동아일보",
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5FbnN5M0c0WHkxUTZmeW16c0ItenZNYlZjWllkYlphMjJ0THNOeXctcnJfMkIyazJvRk83WGljY3BDT1ktUklOdlRObW1SVjRZN3pvY1B2ZENVZVR4M3F1WjIxQm4xRk9FcklzazdpYmVpdjk0NWfSAWZBVV95cUxQWEVQcFZseTVOcHA5Q1NJZFlpV05NZ3NRQmlncjBxdUhIci1jSlhnVnZKTXNMVFFtd1ZqNENSOVd5TGtjSENKZ3J5a2pVR19yOE5NeHROc3lsVFFocnRQR2JqSlhpVWc?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "매크로",
+      "total_count": 30,
+      "topics": [
         {
           "topic": "인플레이션",
           "count": 19,
