@@ -1,0 +1,123 @@
+{
+  "market_summary": {
+    "note": "KOSPI 1.43%, USD/KRW 1447.35. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 1.43,
+    "usdkrw": 1447.353141
+  },
+  "flow_summary": {
+    "note": "외국인 -65240억, 기관 +7594억, 개인 +59748억 | KOSPI(외 -66987, 기관 +8917, 개인 +59925) KOSDAQ(외 +1747, 기관 -1323, 개인 -177)",
+    "foreign_net": -65240.0,
+    "institution_net": 7594.0,
+    "retail_net": 59748.0
+  },
+  "korean_market_flow": {
+    "date": "2026-05-08",
+    "market": {
+      "KOSPI": {
+        "individual": 59925,
+        "foreign": -66987,
+        "institution": 8917
+      },
+      "KOSDAQ": {
+        "individual": -177,
+        "foreign": 1747,
+        "institution": -1323
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[환율/달러] 엔·달러 160엔 돌파에 日 5조 엔 개입…미일 환율 공조 본격화 - 서울경제",
+    "[금리/연준] [채권/외환] 美 국채금리·달러 동반 반등…호르무즈 갈등에 시장 다시 흔들 - 뉴스핌",
+    "[반도체/AI] 엔비디아, 데이터센터기업 IREN에 2조9천억원 투자 - 연합뉴스",
+    "[2차전지/전기차] 업종별 운명 가른 중동 전쟁…조선·정유 '웃고', 항공·배터리 '울고' - v.daum.net",
+    "[정책/테마] [속보] 美무역법원, 트럼프의 10% ‘글로벌 관세’도 위법 판단 - 조선일보"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 7490.05,
+      "kosdaq": 1199.18,
+      "kospi_pct": 1.43,
+      "kosdaq_pct": -0.91
+    },
+    "us": {
+      "sp500": 7337.11,
+      "nasdaq": 25806.195,
+      "dow": 49596.97,
+      "sp500_pct": -0.38030609141467103,
+      "nasdaq_pct": -0.1267389304585702,
+      "dow_pct": -0.6283636398607898
+    },
+    "fx": {
+      "usdkrw": 1447.353141,
+      "usdkrw_pct": 0.6952274881188704
+    },
+    "volatility": {
+      "vix": 17.079999923706055
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.3919997215271,
+      "us2y": 3.5980000495910645,
+      "spread_2_10": 0.7939996719360352,
+      "vix": 17.079999923706055,
+      "dxy": 98.25700378417969,
+      "usdkrw": 1455.6199951171875,
+      "vix3m": 20.350000381469727,
+      "vix_term_spread": 3.270000457763672,
+      "oil_wti": 97.61000061035156
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.3202055812236786,
+      "core_cpi_yoy": 2.6730984898529986,
+      "pce_yoy": 3.496081498479442,
+      "pmi": null,
+      "retail_sales_mom": 1.6614578545822267,
+      "nfp_change": 178.0,
+      "wage_growth": 37.38,
+      "wage_level": 37.38,
+      "wage_yoy": 3.517031293270567,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24174.527,
+      "gdp_qoq_annualized": 2.0
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 1.9419997215270994,
+      "hy_oas": 2.75,
+      "ig_oas": 0.78,
+      "fed_balance_sheet": 6709505.0
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 0.638,
+    "liquidity_signal_score": 8.138,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 16.74,
+    "kospi_20d_cum_pct": 20.413,
+    "kosdaq_5d_cum_pct": 0.09,
+    "kospi_abs_move_5d_avg": 3.9,
+    "usdkrw_5d_change_pct": -1.812,
+    "vix_5d_avg": 17.426,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+20.41%, vol20d=2.20, reversal=false"
+  }
+}
