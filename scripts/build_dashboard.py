@@ -389,23 +389,16 @@ def build_dashboard_html(data: dict[str, object]) -> str:
 
 
 def load_financial_metrics_summary() -> list[dict[str, object]]:
-    """Load most recent annual financial metrics per ticker from DB."""
+    """Load all financial metric rows per ticker (all periods) for popup display."""
     try:
         conn = sqlite3.connect(DB_PATH)
         conn.row_factory = sqlite3.Row
         try:
-            # For each ticker, pick the most recent annual row
             rows = conn.execute(
                 """
-                SELECT fm.*
-                FROM financial_metric fm
-                INNER JOIN (
-                    SELECT ticker, MAX(business_year) AS max_year
-                    FROM financial_metric
-                    WHERE period_type IN ('annual', 'q3', NULL) OR period_type IS NULL
-                    GROUP BY ticker
-                ) latest ON fm.ticker = latest.ticker AND fm.business_year = latest.max_year
-                ORDER BY fm.currency, fm.ticker
+                SELECT *
+                FROM financial_metric
+                ORDER BY ticker, business_year DESC, period_type
                 """
             ).fetchall()
             return [dict(row) for row in rows]

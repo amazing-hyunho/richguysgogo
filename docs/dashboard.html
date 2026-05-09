@@ -464,12 +464,7 @@
               <th>종목코드</th>
               <th>종목명</th>
               <th>시장</th>
-              <th class="r">매출</th>
-              <th class="r">영업이익</th>
-              <th class="r">순이익</th>
-              <th class="r">ROE</th>
-              <th class="r">부채비율</th>
-              <th style="font-size:11px;color:var(--text-muted)">기준</th>
+              <th>재무</th>
             </tr>
           </thead>
           <tbody id="ticker-directory-body"></tbody>
@@ -2406,28 +2401,13 @@ function buildStockRows() {
     let filtered = [...allTickers];
     let currentPage = 1;
 
-    // financial_metrics를 ticker 기준으로 빠르게 조회할 수 있도록 Map으로 변환
+    // financial_metrics를 ticker 기준 Map으로 인덱싱 (복수 기간 지원)
     const finMap = new Map();
     (data?.financial_metrics || []).forEach(f => {
-      if (!finMap.has(f.ticker)) finMap.set(f.ticker, f);
+      const key = (f.ticker || '').toUpperCase();
+      if (!finMap.has(key)) finMap.set(key, []);
+      finMap.get(key).push(f);
     });
-
-    function _fmtB(v) {
-      if (v === null || v === undefined) return '<span style="color:#334155">-</span>';
-      const n = parseFloat(v);
-      if (isNaN(n)) return '-';
-      // 억 단위
-      const b = n / 1e8;
-      if (Math.abs(b) >= 10000) return (b/10000).toFixed(1) + '조';
-      return b.toFixed(0) + '억';
-    }
-    function _fmtPct(v) {
-      if (v === null || v === undefined) return '<span style="color:#334155">-</span>';
-      const n = parseFloat(v);
-      if (isNaN(n)) return '-';
-      const cls = n >= 0 ? 'pos' : 'neg';
-      return `<span class="${cls}">${n.toFixed(1)}%</span>`;
-    }
 
     function renderPage() {
       const tbody = document.getElementById('ticker-directory-body');
@@ -2444,24 +2424,18 @@ function buildStockRows() {
           ? '<span style="background:rgba(167,139,250,0.15);color:#c4b5fd;border-radius:4px;padding:2px 6px;font-size:11px;">KOSDAQ</span>'
           : `<span style="background:rgba(100,116,139,0.15);color:#94a3b8;border-radius:4px;padding:2px 6px;font-size:11px;">${escapeHtml(r.market||'KR')}</span>`;
 
-        const fin = finMap.get(r.ticker) || finMap.get(r.ticker?.toUpperCase()) || null;
-        const rev     = fin ? _fmtB(fin.revenue) : '<span style="color:#334155">-</span>';
-        const opinc   = fin ? _fmtB(fin.operating_income) : '<span style="color:#334155">-</span>';
-        const netinc  = fin ? _fmtB(fin.net_income) : '<span style="color:#334155">-</span>';
-        const roe     = fin ? _fmtPct(fin.roe) : '<span style="color:#334155">-</span>';
-        const debt    = fin ? _fmtPct(fin.debt_ratio) : '<span style="color:#334155">-</span>';
-        const period  = fin ? `<span style="font-size:10px;color:#475569;">${escapeHtml(fin.period||'')}</span>` : '';
+        const hasFin = finMap.has((r.ticker||'').toUpperCase());
+        const finBtn = hasFin
+          ? `<button onclick="openFinModal('${escapeHtml(r.ticker)}','${escapeHtml(r.company_name||r.ticker)}')"
+              style="font-size:11px;padding:3px 10px;background:rgba(56,189,248,0.1);color:#7dd3fc;
+              border:1px solid rgba(56,189,248,0.25);border-radius:6px;cursor:pointer;">📑 보기</button>`
+          : `<span style="color:#334155;font-size:11px;">-</span>`;
 
         return `<tr data-ticker="${escapeHtml(r.ticker)}" data-name="${escapeHtml(r.company_name||'')}" data-market="${escapeHtml(r.market||'')}">
           <td style="font-weight:700;font-family:monospace;">${escapeHtml(r.ticker)}</td>
           <td>${escapeHtml(r.company_name || '-')}</td>
           <td>${mktBadge}</td>
-          <td class="r">${rev}</td>
-          <td class="r">${opinc}</td>
-          <td class="r">${netinc}</td>
-          <td class="r">${roe}</td>
-          <td class="r">${debt}</td>
-          <td>${period}</td>
+          <td>${finBtn}</td>
         </tr>`;
       }).join('');
 
@@ -2513,6 +2487,93 @@ function buildStockRows() {
       renderPage();
     };
 
+    function _fmtNum(v, unit) {
+      if (v === null || v === undefined) return '-';
+      const n = parseFloat(v);
+      if (isNaN(n)) return '-';
+      if (unit === 'pct') {
+        const cls = n >= 0 ? 'color:#4ade80' : 'color:#f87171';
+        return `<span style="${cls}">${n.toFixed(1)}%</span>`;
+      }
+      if (unit === 'money') {
+        const b = n / 1e8;
+        if (Math.abs(b) >= 10000) return (b/10000).toFixed(1) + '조';
+        return b.toFixed(0) + '억';
+      }
+      return n.toFixed(2);
+    }
+
+    window.openFinModal = function(ticker, name) {
+      const rows = finMap.get(ticker.toUpperCase()) || [];
+      const modal = document.getElementById('fin-modal');
+      document.getElementById('fin-modal-title').textContent = `${ticker} · ${name}`;
+      document.getElementById('fin-modal-sub').textContent = `재무제표 ${rows.length}개 기간`;
+
+      if (!rows.length) {
+        document.getElementById('fin-modal-body').innerHTML = '<p style="color:#64748b;text-align:center;padding:32px 0;">재무 데이터가 없습니다.</p>';
+        modal.style.display = 'block';
+        return;
+      }
+
+      // 최신순 정렬
+      const sorted = [...rows].sort((a,b) => (b.period||'').localeCompare(a.period||''));
+
+      const fields = [
+        { key: 'revenue',          label: '매출',       unit: 'money' },
+        { key: 'gross_profit',     label: '매출총이익', unit: 'money' },
+        { key: 'operating_income', label: '영업이익',   unit: 'money' },
+        { key: 'net_income',       label: '순이익',     unit: 'money' },
+        { key: 'gross_margin',     label: '매출총이익률', unit: 'pct' },
+        { key: 'operating_margin', label: '영업이익률', unit: 'pct' },
+        { key: 'net_margin',       label: '순이익률',   unit: 'pct' },
+        { key: 'roe',              label: 'ROE',        unit: 'pct' },
+        { key: 'roa',              label: 'ROA',        unit: 'pct' },
+        { key: 'debt_ratio',       label: '부채비율',   unit: 'pct' },
+        { key: 'eps_diluted',      label: 'EPS(희석)',  unit: 'num' },
+        { key: 'free_cashflow',    label: '잉여현금흐름', unit: 'money' },
+        { key: 'cash_and_equivalents', label: '현금성자산', unit: 'money' },
+        { key: 'total_debt',       label: '총부채',     unit: 'money' },
+      ];
+
+      const periodHeaders = sorted.map(r =>
+        `<th style="text-align:right;padding:6px 12px;color:#7dd3fc;font-size:12px;">${escapeHtml(r.period||'-')}</th>`
+      ).join('');
+
+      const bodyRows = fields.map(f => {
+        const cells = sorted.map(r => {
+          const val = _fmtNum(r[f.key], f.unit);
+          return `<td style="text-align:right;padding:6px 12px;font-size:13px;">${val}</td>`;
+        }).join('');
+        return `<tr style="border-bottom:1px solid #1e293b;">
+          <td style="padding:6px 12px;color:#94a3b8;font-size:12px;white-space:nowrap;">${f.label}</td>
+          ${cells}
+        </tr>`;
+      }).join('');
+
+      document.getElementById('fin-modal-body').innerHTML = `
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid #334155;">
+                <th style="text-align:left;padding:6px 12px;color:#64748b;font-size:12px;">항목</th>
+                ${periodHeaders}
+              </tr>
+            </thead>
+            <tbody>${bodyRows}</tbody>
+          </table>
+        </div>
+        <p style="margin-top:12px;font-size:11px;color:#475569;text-align:right;">
+          출처: ${escapeHtml((sorted[0]?.source)||'yfinance/DART')} · 단위: 억/조원 또는 %
+        </p>`;
+      modal.style.display = 'block';
+    };
+
+    window.closeFinModal = function(e) {
+      if (e.target === document.getElementById('fin-modal')) {
+        document.getElementById('fin-modal').style.display = 'none';
+      }
+    };
+
     const metaEl = document.getElementById('ticker-directory-meta');
     if (metaEl) metaEl.textContent = `${allTickers.length.toLocaleString()}개 상장 종목`;
 
@@ -2520,5 +2581,22 @@ function buildStockRows() {
   })();
 })();
 </script>
+<!-- ── 재무제표 팝업 모달 ─────────────────────────────────────── -->
+<div id="fin-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);" onclick="closeFinModal(event)">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    background:#1e293b;border:1px solid #334155;border-radius:16px;
+    width:min(700px,95vw);max-height:85vh;overflow-y:auto;padding:28px 28px 24px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <div id="fin-modal-title" style="font-size:18px;font-weight:700;color:#f1f5f9;"></div>
+        <div id="fin-modal-sub" style="font-size:12px;color:#64748b;margin-top:3px;"></div>
+      </div>
+      <button onclick="document.getElementById('fin-modal').style.display='none'"
+        style="background:rgba(100,116,139,0.2);border:none;color:#94a3b8;
+        font-size:20px;width:32px;height:32px;border-radius:8px;cursor:pointer;line-height:1;">✕</button>
+    </div>
+    <div id="fin-modal-body"></div>
+  </div>
+</div>
 </body>
 </html>
