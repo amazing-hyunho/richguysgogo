@@ -49,7 +49,7 @@ def connect(db_path: Path | None = None) -> Iterable[sqlite3.Connection]:
     """
     path = db_path or get_db_path()
     path.parent.mkdir(parents=True, exist_ok=True)
-    conn = sqlite3.connect(str(path))
+    conn = sqlite3.connect(str(path), timeout=30)
     try:
         conn.row_factory = sqlite3.Row
         conn.execute("PRAGMA foreign_keys = ON;")

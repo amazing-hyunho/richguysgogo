@@ -101,15 +101,32 @@ def _is_us_ticker(ticker: str) -> bool:
 
 def _yf_fetch(yf_ticker: str) -> dict[str, Any] | None:
     """Return yfinance .info dict or None on failure."""
+    import io
+    import logging
+    import sys
     try:
         import yfinance as yf  # type: ignore
-        t = yf.Ticker(yf_ticker)
-        info = getattr(t, "info", None)
+
+        # yfinance 내부 404/에러 로그 suppression (정상적인 KR 종목 probe 실패 포함)
+        _yf_logger = logging.getLogger("yfinance")
+        _prev_level = _yf_logger.level
+        _yf_logger.setLevel(logging.CRITICAL)
+        _stderr = sys.stderr
+        sys.stderr = io.StringIO()
+        try:
+            t = yf.Ticker(yf_ticker)
+            info = getattr(t, "info", None)
+        finally:
+            sys.stderr = _stderr
+            _yf_logger.setLevel(_prev_level)
+
         if not isinstance(info, dict) or not info:
             return None
+        # 실제 데이터 없는 경우 (symbol not found)
+        if info.get("trailingPegRatio") is None and not info.get("symbol"):
+            return None
         return info
-    except Exception as exc:
-        print(f"[consensus] yfinance_fetch_failed[{yf_ticker}]: {exc}")
+    except Exception:
         return None
 
 
