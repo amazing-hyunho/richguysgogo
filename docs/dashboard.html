@@ -450,6 +450,11 @@
           <option value="KOSPI">KOSPI</option>
           <option value="KOSDAQ">KOSDAQ</option>
         </select>
+        <select id="ticker-fin-filter" onchange="filterTickerDirectory()"
+          style="padding:8px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:13px;">
+          <option value="">전체 종목</option>
+          <option value="has_fin">재무제표 있음</option>
+        </select>
         <span id="ticker-directory-count" style="color:var(--text-muted);font-size:13px;white-space:nowrap;"></span>
       </div>
       <div style="overflow-x:auto;">
@@ -459,8 +464,12 @@
               <th>종목코드</th>
               <th>종목명</th>
               <th>시장</th>
-              <th>DART코드</th>
-              <th>액션</th>
+              <th class="r">매출</th>
+              <th class="r">영업이익</th>
+              <th class="r">순이익</th>
+              <th class="r">ROE</th>
+              <th class="r">부채비율</th>
+              <th style="font-size:11px;color:var(--text-muted)">기준</th>
             </tr>
           </thead>
           <tbody id="ticker-directory-body"></tbody>
@@ -2397,6 +2406,29 @@ function buildStockRows() {
     let filtered = [...allTickers];
     let currentPage = 1;
 
+    // financial_metrics를 ticker 기준으로 빠르게 조회할 수 있도록 Map으로 변환
+    const finMap = new Map();
+    (data?.financial_metrics || []).forEach(f => {
+      if (!finMap.has(f.ticker)) finMap.set(f.ticker, f);
+    });
+
+    function _fmtB(v) {
+      if (v === null || v === undefined) return '<span style="color:#334155">-</span>';
+      const n = parseFloat(v);
+      if (isNaN(n)) return '-';
+      // 억 단위
+      const b = n / 1e8;
+      if (Math.abs(b) >= 10000) return (b/10000).toFixed(1) + '조';
+      return b.toFixed(0) + '억';
+    }
+    function _fmtPct(v) {
+      if (v === null || v === undefined) return '<span style="color:#334155">-</span>';
+      const n = parseFloat(v);
+      if (isNaN(n)) return '-';
+      const cls = n >= 0 ? 'pos' : 'neg';
+      return `<span class="${cls}">${n.toFixed(1)}%</span>`;
+    }
+
     function renderPage() {
       const tbody = document.getElementById('ticker-directory-body');
       const countEl = document.getElementById('ticker-directory-count');
@@ -2411,18 +2443,25 @@ function buildStockRows() {
           : (r.market || '').includes('KOSDAQ')
           ? '<span style="background:rgba(167,139,250,0.15);color:#c4b5fd;border-radius:4px;padding:2px 6px;font-size:11px;">KOSDAQ</span>'
           : `<span style="background:rgba(100,116,139,0.15);color:#94a3b8;border-radius:4px;padding:2px 6px;font-size:11px;">${escapeHtml(r.market||'KR')}</span>`;
-        const dart = r.dart_corp_code
-          ? `<span style="font-size:11px;color:#64748b;">${escapeHtml(r.dart_corp_code)}</span>`
-          : '<span style="color:#334155">-</span>';
-        const syncBtn = `<button onclick="syncTicker('${escapeHtml(r.ticker)}')"
-          style="font-size:11px;padding:2px 8px;background:rgba(56,189,248,0.1);color:#7dd3fc;border:1px solid rgba(56,189,248,0.2);border-radius:4px;cursor:pointer;">
-          컨센서스</button>`;
+
+        const fin = finMap.get(r.ticker) || finMap.get(r.ticker?.toUpperCase()) || null;
+        const rev     = fin ? _fmtB(fin.revenue) : '<span style="color:#334155">-</span>';
+        const opinc   = fin ? _fmtB(fin.operating_income) : '<span style="color:#334155">-</span>';
+        const netinc  = fin ? _fmtB(fin.net_income) : '<span style="color:#334155">-</span>';
+        const roe     = fin ? _fmtPct(fin.roe) : '<span style="color:#334155">-</span>';
+        const debt    = fin ? _fmtPct(fin.debt_ratio) : '<span style="color:#334155">-</span>';
+        const period  = fin ? `<span style="font-size:10px;color:#475569;">${escapeHtml(fin.period||'')}</span>` : '';
+
         return `<tr data-ticker="${escapeHtml(r.ticker)}" data-name="${escapeHtml(r.company_name||'')}" data-market="${escapeHtml(r.market||'')}">
           <td style="font-weight:700;font-family:monospace;">${escapeHtml(r.ticker)}</td>
           <td>${escapeHtml(r.company_name || '-')}</td>
           <td>${mktBadge}</td>
-          <td>${dart}</td>
-          <td>${syncBtn}</td>
+          <td class="r">${rev}</td>
+          <td class="r">${opinc}</td>
+          <td class="r">${netinc}</td>
+          <td class="r">${roe}</td>
+          <td class="r">${debt}</td>
+          <td>${period}</td>
         </tr>`;
       }).join('');
 
@@ -2461,20 +2500,17 @@ function buildStockRows() {
     window.filterTickerDirectory = function() {
       const q = (document.getElementById('ticker-search-input')?.value || '').toLowerCase();
       const mkt = (document.getElementById('ticker-market-filter')?.value || '').toUpperCase();
+      const finOnly = (document.getElementById('ticker-fin-filter')?.value || '') === 'has_fin';
       filtered = allTickers.filter(r => {
         const matchQ = !q ||
           (r.ticker || '').toLowerCase().includes(q) ||
           (r.company_name || '').toLowerCase().includes(q);
         const matchM = !mkt || (r.market || '').toUpperCase().includes(mkt);
-        return matchQ && matchM;
+        const matchF = !finOnly || finMap.has(r.ticker) || finMap.has((r.ticker||'').toUpperCase());
+        return matchQ && matchM && matchF;
       });
       currentPage = 1;
       renderPage();
-    };
-
-    // 컨센서스 수집 안내 (실제 실행은 서버 필요, 여기선 안내만)
-    window.syncTicker = function(ticker) {
-      alert(`터미널에서 실행:\npython scripts/sync_stock_consensus.py --tickers ${ticker}`);
     };
 
     const metaEl = document.getElementById('ticker-directory-meta');

@@ -122,21 +122,28 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Backfill new macro indicator columns in daily_macro.")
     parser.add_argument("--dry-run", action="store_true", help="Do not write DB updates; only print what would change.")
     parser.add_argument("--limit", type=int, default=0, help="Max rows to process (0 means all).")
+    parser.add_argument("--days", type=int, default=0, help="최근 N일만 처리 (0=전체). 일별 실행엔 --days 7 권장.")
     args = parser.parse_args()
 
     init_db(DB_PATH)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:
+        since_clause = ""
+        if args.days and args.days > 0:
+            since_date = (date.today() - timedelta(days=args.days)).isoformat()
+            since_clause = f"AND date >= '{since_date}'"
+
         rows = conn.execute(
-            """
+            f"""
             SELECT date
             FROM daily_macro
-            WHERE vix3m IS NULL
+            WHERE (vix3m IS NULL
                OR vix_term_spread IS NULL
                OR hy_oas IS NULL
                OR ig_oas IS NULL
-               OR fed_balance_sheet IS NULL
+               OR fed_balance_sheet IS NULL)
+            {since_clause}
             ORDER BY date
             """
         ).fetchall()

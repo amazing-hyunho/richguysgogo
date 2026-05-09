@@ -26,27 +26,30 @@ def main() -> None:
     )
     args = parser.parse_args()
 
+    db_metrics = _load_latest_db_metrics(ROOT_DIR / "data" / "investment.db")
+
+    # snapshot은 있으면 사용, 없어도 DB만으로 전송 가능
+    snapshot: dict = {}
+    stances: list = []
+    committee = None
+    report_text = ""
+
     runs_dir = ROOT_DIR / "runs"
     latest_dir = _latest_run_dir(runs_dir)
-    if latest_dir is None:
-        print("실행 결과가 없습니다.")
-        return
+    if latest_dir is not None:
+        sp = latest_dir / "snapshot.json"
+        if sp.exists():
+            snapshot = json.loads(sp.read_text(encoding="utf-8"))
+        sp2 = latest_dir / "stances.json"
+        if sp2.exists():
+            stances = json.loads(sp2.read_text(encoding="utf-8"))
+        cp = latest_dir / "committee_result.json"
+        if cp.exists():
+            committee = json.loads(cp.read_text(encoding="utf-8"))
+        rp = latest_dir / "report.md"
+        if args.include_report and rp.exists():
+            report_text = rp.read_text(encoding="utf-8")
 
-    snapshot_path = latest_dir / "snapshot.json"
-    stances_path = latest_dir / "stances.json"
-    committee_path = latest_dir / "committee_result.json"
-    report_path = latest_dir / "report.md"
-
-    if not snapshot_path.exists():
-        print("snapshot.json을 찾을 수 없습니다.")
-        return
-
-    snapshot = json.loads(snapshot_path.read_text(encoding="utf-8"))
-    stances = json.loads(stances_path.read_text(encoding="utf-8")) if stances_path.exists() else []
-    committee = json.loads(committee_path.read_text(encoding="utf-8")) if committee_path.exists() else None
-    report_text = report_path.read_text(encoding="utf-8") if (args.include_report and report_path.exists()) else ""
-
-    db_metrics = _load_latest_db_metrics(ROOT_DIR / "data" / "investment.db")
     news_digest = _load_latest_news_digest(ROOT_DIR / "runs" / "news" / "latest_news_digest.json")
     text = _build_morning_brief(
         snapshot=snapshot,
@@ -102,146 +105,84 @@ def _build_morning_brief(
     db_metrics: dict | None,
     news_digest: dict | None,
 ) -> str:
-    """Build a concise morning brief for Telegram."""
+    """간결한 아침 브리프: 시장 지수 + 수급 + 대시보드 링크만."""
+    from datetime import date as _date
+
     markets = snapshot.get("markets", {}) or {}
     kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
     us = (markets.get("us") or {}) if isinstance(markets, dict) else {}
     fx = (markets.get("fx") or {}) if isinstance(markets, dict) else {}
-    vol = (markets.get("volatility") or {}) if isinstance(markets, dict) else {}
-
-    macro = snapshot.get("macro") or {}
-    daily = (macro.get("daily") or {}) if isinstance(macro, dict) else {}
-    structural = (macro.get("structural") or {}) if isinstance(macro, dict) else {}
-    headlines = snapshot.get("news_headlines") or []
-    cumulative = snapshot.get("cumulative_context") or {}
 
     if db_metrics:
         kr = _merge_kr_with_fallback(kr, db_metrics.get("kr", {}))
         us = _merge_non_null(us, db_metrics.get("us", {}))
         fx = _merge_non_null(fx, db_metrics.get("fx", {}))
-        vol = _merge_non_null(vol, db_metrics.get("volatility", {}))
-        daily = _merge_non_null(daily, db_metrics.get("daily", {}))
-        structural = _merge_non_null(structural, db_metrics.get("structural", {}))
 
-    digest_headlines = _digest_headlines(news_digest, limit=3)
-    if digest_headlines:
-        headlines = digest_headlines
+    # 수급 데이터는 DB에서 직접
+    flow = _load_latest_flow(ROOT_DIR / "data" / "investment.db")
 
+    today = _date.today().strftime("%Y-%m-%d")
     lines: list[str] = []
-    market_summary = snapshot.get("market_summary", {}) or {}
-    summary_note = str(market_summary.get("note", "n/a"))
-    if kr.get("kospi_pct") is not None and fx.get("usdkrw") is not None:
-        summary_note = (
-            f"KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')}, "
-            f"USD/KRW {_fmt(fx.get('usdkrw'), 2)}."
-        )
-    lines.append("📌 오늘 브리프 핵심")
-    lines.append(f"- 요약: {summary_note}")
-    lines.append("- 대시보드: https://amazing-hyunho.github.io/richguysgogo/")
+
+    lines.append(f"📊 {today} 시장 브리프")
     lines.append("")
 
-    lines.append("🧭 의장 결정")
-    if committee and committee.get("consensus"):
-        lines.append(f"- 최종 결론: {_translate_sentence(committee.get('consensus'))}")
-        majority_tag = _extract_majority_tag(committee)
-        if majority_tag:
-            lines.append(f"- 시장 국면 판단: {majority_tag} ({_regime_kr(majority_tag)})")
-        for g in (committee.get("ops_guidance") or [])[:2]:
-            lvl = g.get("level", "")
-            txt = _translate_sentence(g.get("text", ""))
-            lines.append(f"- 실행 원칙 [{_level_kr(lvl)}]: {txt}")
+    # ── 시장 지수 ────────────────────────────────
+    lines.append("🌍 시장")
+    lines.append(f"  KOSPI   {_fmt_signed(kr.get('kospi_pct'), 2, '%')}")
+    lines.append(f"  KOSDAQ  {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
+    lines.append(f"  S&P500  {_fmt_signed(us.get('sp500_pct'), 2, '%')}")
+    lines.append(f"  NASDAQ  {_fmt_signed(us.get('nasdaq_pct'), 2, '%')}")
+    lines.append(f"  USD/KRW {_fmt(fx.get('usdkrw'), 1)}")
+    lines.append("")
 
-        key_points = [kp.get("point", "") for kp in (committee.get("key_points") or []) if kp.get("point")]
-        translated_points = [_translate_key_point(point) for point in key_points[:2]]
-        if translated_points:
-            lines.append(f"- 근거 요약: {' / '.join(translated_points)}")
+    # ── 수급 ─────────────────────────────────────
+    lines.append("💰 수급 (억원)")
+    if flow:
+        def _flow_str(v) -> str:
+            if v is None:
+                return "n/a"
+            try:
+                return f"{float(v):+,.0f}"
+            except Exception:
+                return "n/a"
+        lines.append(f"  외국인  {_flow_str(flow.get('foreign_net'))}")
+        lines.append(f"  기관    {_flow_str(flow.get('institution_net'))}")
+        lines.append(f"  개인    {_flow_str(flow.get('retail_net'))}")
     else:
-        lines.append("- 합의 결과 없음")
+        lines.append("  수급 데이터 없음")
     lines.append("")
 
-    lines.append("🗳️ 에이전트 투표 현황")
-    vote = _vote_summary(stances)
-    lines.append(f"- 전체: RISK_ON={vote['RISK_ON']}, NEUTRAL={vote['NEUTRAL']}, RISK_OFF={vote['RISK_OFF']}")
-    lines.append("- 태그 설명: RISK_ON=확대, NEUTRAL=중립, RISK_OFF=방어")
-    focus_stances = [s for s in stances if s.get("regime_tag") in {"RISK_ON", "RISK_OFF"}]
-    for stance in focus_stances[:4]:
-        agent = _agent_label(stance.get("agent_name"))
-        tag = stance.get("regime_tag", "N/A")
-        conf = stance.get("confidence", "N/A")
-        lines.append(f"- {agent}: {tag} ({_regime_kr(tag)}), 신뢰도 {conf}")
-    if not focus_stances:
-        lines.append("- 특이 신호 없음: 극단 의견(RISK_ON/RISK_OFF) 부재")
-    lines.append("")
-
-    lines.append("🌍 시장 체크")
-    lines.append(f"- 국내: KOSPI {_fmt_signed(kr.get('kospi_pct'), 2, '%')} / KOSDAQ {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
-    lines.append(f"- 미국: S&P500 {_fmt_signed(us.get('sp500_pct'), 2, '%')} / NASDAQ {_fmt_signed(us.get('nasdaq_pct'), 2, '%')} / DOW {_fmt_signed(us.get('dow_pct'), 2, '%')}")
-    lines.append(f"- 환율: USD/KRW {_fmt(fx.get('usdkrw'), 2)} (일변화 {_fmt_signed(fx.get('usdkrw_pct'), 2, '%')})")
-    lines.append(f"- 변동성: VIX {_fmt(vol.get('vix'), 1)}")
-    lines.append("")
-
-    if isinstance(cumulative, dict) and cumulative:
-        lines.append("🧱 누적 레짐 컨텍스트")
-        lines.append(
-            "- 5일/20일 누적: "
-            f"KOSPI {_fmt_signed(cumulative.get('kospi_5d_cum_pct'), 2, '%')} / "
-            f"{_fmt_signed(cumulative.get('kospi_20d_cum_pct'), 2, '%')}"
-        )
-        lines.append(
-            "- 변동성/환율 누적: "
-            f"|KOSPI| 5일 평균 {_fmt(cumulative.get('kospi_abs_move_5d_avg'), 2)} / "
-            f"USDKRW 5일 {_fmt_signed(cumulative.get('usdkrw_5d_change_pct'), 2, '%')} / "
-            f"VIX 5일 평균 {_fmt(cumulative.get('vix_5d_avg'), 2)}"
-        )
-        lines.append(f"- 급반전 신호: {'감지' if cumulative.get('reversal_signal') else '없음'}")
-        lines.append("")
-
-    lines.append("🏦 매크로 핵심")
-    lines.append(
-        f"- 금리/달러: 미10년 {_fmt(daily.get('us10y'), 2, '%')}, DXY {_fmt(daily.get('dxy'), 2)}, USD/KRW {_fmt(fx.get('usdkrw'), 2)}"
-    )
-    lines.append(
-        f"- 변동성/신용: VIX {_fmt(vol.get('vix'), 2)}, HY {_fmt(structural.get('hy_oas'), 2)}, IG {_fmt(structural.get('ig_oas'), 2)}"
-    )
-    lines.append("")
-
-    lines.append("📰 헤드라인 기사")
-    top_headlines = _top_headlines(headlines, limit=3)
-    if top_headlines:
-        for idx, headline in enumerate(top_headlines, start=1):
-            lines.append(f"- {idx}. {headline}")
-    else:
-        lines.append("- 헤드라인 없음")
-    lines.append("")
-
-    if news_digest and isinstance(news_digest.get("top_articles"), list):
-        lines.append("🧩 뉴스 주제 Top3")
-        for item in news_digest.get("top_articles", [])[:3]:
-            if not isinstance(item, dict):
-                continue
-            topic = str(item.get("topic", "-"))
-            count = item.get("count", "-")
-            title = str(item.get("title", "-"))
-            lines.append(f"- [{topic}] {count}건: {title}")
-        lines.append("")
-
-    if stances:
-        lines.append("🤖 AI 에이전트 한줄 코멘트")
-        has_comment = False
-        for stance in stances:
-            agent = _agent_label(stance.get("agent_name"))
-            comment = stance.get("korean_comment")
-            if agent and comment:
-                lines.append(f"- {agent}: {comment}")
-                has_comment = True
-        if not has_comment:
-            lines.append("- 코멘트 없음")
-        lines.append("")
-
-    if report_text.strip():
-        lines.extend(_format_report_for_telegram(report_text))
+    # ── 대시보드 링크 ─────────────────────────────
+    lines.append("🔗 대시보드")
+    lines.append("  https://amazing-hyunho.github.io/richguysgogo/")
 
     return "\n".join(lines)
+
+
+def _load_latest_flow(db_path: Path) -> dict | None:
+    """DB에서 최신 수급 데이터 1행 반환."""
+    if not db_path.exists():
+        return None
+    try:
+        import sqlite3
+        conn = sqlite3.connect(str(db_path))
+        conn.row_factory = sqlite3.Row
+        try:
+            row = conn.execute(
+                """
+                SELECT foreign_net, institution_net, retail_net, date
+                FROM market_flow_daily
+                WHERE foreign_net IS NOT NULL
+                ORDER BY date DESC
+                LIMIT 1
+                """
+            ).fetchone()
+            return dict(row) if row else None
+        finally:
+            conn.close()
+    except Exception:
+        return None
 
 
 def _vote_summary(stances: list[dict]) -> dict[str, int]:
