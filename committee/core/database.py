@@ -918,6 +918,39 @@ def upsert_dart_company(data: Dict[str, Any], db_path: Path | None = None) -> No
         )
 
 
+def bulk_upsert_dart_companies(rows: list[Dict[str, Any]], db_path: Path | None = None) -> int:
+    """Bulk upsert all DART company codes in a single transaction (much faster than one-by-one)."""
+    if not rows:
+        return 0
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    params = [
+        {
+            "dart_corp_code": r.get("dart_corp_code"),
+            "company_name": r.get("company_name"),
+            "stock_code": r.get("stock_code"),
+            "updated_at": r.get("updated_at") or updated_at,
+        }
+        for r in rows
+    ]
+    with connect(db_path) as conn:
+        conn.executemany(
+            """
+            INSERT INTO dart_company_code (
+                dart_corp_code, company_name, stock_code, updated_at
+            ) VALUES (
+                :dart_corp_code, :company_name, :stock_code, :updated_at
+            )
+            ON CONFLICT(dart_corp_code) DO UPDATE SET
+                company_name=excluded.company_name,
+                stock_code=excluded.stock_code,
+                updated_at=excluded.updated_at;
+            """,
+            params,
+        )
+    return len(params)
+
+
 def upsert_financial_statement(data: Dict[str, Any], db_path: Path | None = None) -> None:
     """Upsert one row into `financial_statement`."""
     updated_at = _utc_now_iso()

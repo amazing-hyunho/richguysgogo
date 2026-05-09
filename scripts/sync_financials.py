@@ -41,9 +41,9 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 from committee.core.database import (
+    bulk_upsert_dart_companies,
     connect,
     get_financial_metrics,
-    upsert_dart_company,
     upsert_financial_metric,
     upsert_financial_statement,
 )
@@ -150,17 +150,17 @@ def sync_kr(
     if quarterly:
         periods += ["q3", "half", "q1"]
 
-    # Sync DART company codes first
+    # Sync DART company codes (bulk upsert — 단건 반복 대신 한 트랜잭션으로 처리)
     corp_rows = fetch_dart_company_codes()
-    print(f"[sync_kr] dart_company_codes_fetched={len(corp_rows)}")
-    corp_ok = corp_err = 0
-    for row in corp_rows:
-        try:
-            upsert_dart_company(row)
-            corp_ok += 1
-        except Exception as exc:
-            corp_err += 1
-            print(f"  dart_company_upsert_failed[{row.get('dart_corp_code')}]: {exc}")
+    print(f"[sync_kr] dart_company_codes_fetched={len(corp_rows)}, bulk upserting...")
+    try:
+        corp_ok = bulk_upsert_dart_companies(corp_rows)
+        corp_err = 0
+        print(f"[sync_kr] dart_company_codes_saved={corp_ok}")
+    except Exception as exc:
+        corp_ok = 0
+        corp_err = len(corp_rows)
+        print(f"[sync_kr] dart_company_bulk_failed: {exc}")
 
     ticker_to_dart = _build_ticker_to_dart_map()
     print(f"[sync_kr] ticker_mapped={len(ticker_to_dart)}")

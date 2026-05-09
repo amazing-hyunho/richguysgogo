@@ -273,17 +273,30 @@ def fetch_us_financials(
     ticker = ticker.strip().upper()
     try:
         t = yf.Ticker(ticker)
-        info = getattr(t, "info", None) or {}
+        info = getattr(t, "info", None)
+        if not isinstance(info, dict):
+            info = {}
+
+        def _first_nonempty(*attrs: str) -> Any:
+            """Return the first non-empty DataFrame among the given attributes."""
+            for attr in attrs:
+                df = getattr(t, attr, None)
+                try:
+                    if df is not None and not df.empty:
+                        return df
+                except Exception:
+                    pass
+            return None
 
         # Annual
-        inc_a = getattr(t, "income_stmt", None) or getattr(t, "financials", None)
-        bal_a = getattr(t, "balance_sheet", None)
-        cf_a = getattr(t, "cashflow", None) or getattr(t, "cash_flow", None)
+        inc_a = _first_nonempty("income_stmt", "financials")
+        bal_a = _first_nonempty("balance_sheet")
+        cf_a  = _first_nonempty("cashflow", "cash_flow")
 
         # Quarterly
-        inc_q = getattr(t, "quarterly_income_stmt", None) or getattr(t, "quarterly_financials", None)
-        bal_q = getattr(t, "quarterly_balance_sheet", None)
-        cf_q = getattr(t, "quarterly_cashflow", None) or getattr(t, "quarterly_cash_flow", None)
+        inc_q = _first_nonempty("quarterly_income_stmt", "quarterly_financials")
+        bal_q = _first_nonempty("quarterly_balance_sheet")
+        cf_q  = _first_nonempty("quarterly_cashflow", "quarterly_cash_flow")
 
     except Exception as exc:
         print(f"[us_financial] yfinance_fetch_failed[{ticker}]: {exc}")

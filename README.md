@@ -107,8 +107,8 @@ python scripts/sync_weekly.py --top 300
 # 중단 후 재시작
 python scripts/sync_weekly.py --resume
 
-# KR 재무제표 포함 (DART_API_KEY 필요, 추가 1~2시간)
-python scripts/sync_weekly.py --kr-financials --year 2024
+# KR 재무제표 생략 (기본: DART_API_KEY 있으면 자동 수집)
+python scripts/sync_weekly.py --skip-kr-financials
 
 # 종목 마스터만 갱신 (빠름)
 python scripts/sync_weekly.py --master-only
@@ -124,7 +124,7 @@ python scripts/sync_weekly.py --skip-stocks
 |---|---|
 | `--top N` | 상위 N종목만 컨센서스 수집 |
 | `--resume` | 오늘 수집된 종목 건너뜀 (재시작용) |
-| `--kr-financials` | KR 재무제표 수집 (DART_API_KEY 필요) |
+| `--skip-kr-financials` | KR 재무제표 건너뜀 (기본: DART_API_KEY 있으면 자동 수집) |
 | `--skip-us-financials` | US 재무제표 건너뜀 |
 | `--master-only` | 종목 마스터 갱신만 |
 | `--deep-macro` | FRED 전체 재백필 |

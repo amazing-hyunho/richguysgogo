@@ -10,15 +10,16 @@ from __future__ import annotations
 1. 종목 마스터 갱신     - KR (DART/Naver), US (S&P500 + NASDAQ100)
 2. 수급 2년치 백필      - Naver Finance (skip-existing 포함)
 3. 전체 종목 컨센서스   - ticker_master에 있는 KR 전체 or --top N
-4. 전체 종목 재무제표   - US watchlist (yfinance) + KR (DART, 옵션)
-5. FRED 매크로 전체 재백필 (옵션, --deep-macro)
-6. 대시보드 빌드
+4. US 재무제표          - watchlist (yfinance)
+5. KR 재무제표          - DART_API_KEY 있으면 자동 수집 (--skip-kr-financials 로 생략)
+6. FRED 매크로 전체 재백필 (옵션, --deep-macro)
+7. 대시보드 빌드
 
 소요 시간 예상
 --------------
-- 기본 실행          : 2~4시간 (KR 컨센서스 전체)
-- --top 300 모드     : 20~40분
-- --kr-financials 포함: 추가 1~2시간 (DART)
+- 기본 실행 (KR 컨센서스 전체 + KR 재무제표) : 3~5시간
+- --top 300 모드                               : 30~60분
+- --skip-kr-financials 포함                   : 2~4시간 (재무제표 제외)
 
 사용 예시
 ----------
@@ -31,8 +32,8 @@ from __future__ import annotations
     # 빠른 모드: 상위 300종목만, US 재무제표 생략
     python scripts/sync_weekly.py --top 300 --skip-us-financials
 
-    # KR 재무제표 포함 (DART_API_KEY 필요)
-    python scripts/sync_weekly.py --kr-financials --year 2024
+    # KR 재무제표 생략 (기본은 수집함, DART_API_KEY 없으면 자동 스킵)
+    python scripts/sync_weekly.py --skip-kr-financials
 
     # FRED 매크로 전체 재백필 포함 (최초 1회)
     python scripts/sync_weekly.py --deep-macro
@@ -103,8 +104,8 @@ def _parse_args() -> argparse.Namespace:
         help="오늘 이미 수집된 종목은 건너뜀 (중단 후 재시작용)",
     )
     p.add_argument(
-        "--kr-financials", action="store_true",
-        help="KR 재무제표도 수집 (DART_API_KEY 필요, 매우 느림)",
+        "--skip-kr-financials", action="store_true",
+        help="KR 재무제표 수집 건너뜀 (기본: DART_API_KEY 있으면 자동 수집)",
     )
     p.add_argument(
         "--year", type=int, default=date.today().year - 1,
@@ -204,8 +205,9 @@ def main() -> None:
     if args.skip_stocks:
         print("\n[sync_weekly] --skip-stocks 모드: 컨센서스·재무제표 건너뜀")
     else:
-        # ── 4. 전체 종목 컨센서스 ─────────────────────────────────
-        consensus_cmd = [py, "scripts/sync_all_stocks.py", "--skip-kr-financials"]
+        # ── 4. 전체 종목 컨센서스 (재무제표는 별도 스텝 5·6에서 처리) ──
+        # sync_all_stocks.py 는 --with-kr-financials 없으면 KR 재무제표 수집 안 함
+        consensus_cmd = [py, "scripts/sync_all_stocks.py", "--skip-us-financials"]
         if args.top:
             consensus_cmd += ["--top", str(args.top)]
         if args.resume:
@@ -226,21 +228,20 @@ def main() -> None:
         )
 
         # ── 6. KR 재무제표 (DART API) ─────────────────────────────
-        if args.kr_financials:
-            if not _has_dart_key():
-                print("[sync_weekly] ⚠  DART_API_KEY 없음 → KR 재무제표 건너뜀")
-                print("              환경변수 DART_API_KEY 를 설정하세요.")
-                results.append(("KR 재무제표 (DART)", False))
-            else:
-                kr_cmd = [
-                    py, "scripts/sync_financials.py",
-                    "--year", str(args.year),
-                ]
-                if args.quarterly:
-                    kr_cmd.append("--quarterly")
-                step(f"KR 재무제표 {args.year}년 (DART)", kr_cmd)
+        # 기본 수집. DART_API_KEY 없으면 자동 스킵, --skip-kr-financials 로 명시적 생략 가능.
+        if args.skip_kr_financials:
+            print("[sync_weekly] ⏭  SKIP  KR 재무제표 (--skip-kr-financials)")
+        elif not _has_dart_key():
+            print("[sync_weekly] ⚠  SKIP  KR 재무제표 (DART_API_KEY 없음)")
+            print("              환경변수 DART_API_KEY 를 설정하면 자동으로 수집됩니다.")
         else:
-            print("[sync_weekly] ⏭  SKIP  KR 재무제표 (--kr-financials 없음)")
+            kr_cmd = [
+                py, "scripts/sync_financials.py",
+                "--year", str(args.year),
+            ]
+            if args.quarterly:
+                kr_cmd.append("--quarterly")
+            step(f"KR 재무제표 {args.year}년 (DART)", kr_cmd)
 
     # ── 7. 대시보드 빌드 ──────────────────────────────────────────
     step(
