@@ -45,6 +45,7 @@ def _empty_result(ticker: str, market: str) -> dict[str, Any]:
         "ticker": ticker,
         "market": market,
         "source": None,
+        "current_price": None,
         "target_mean_price": None,
         "target_high_price": None,
         "target_low_price": None,
@@ -117,6 +118,12 @@ def _parse_yf_info(info: dict[str, Any], ticker: str, market: str) -> dict[str, 
     result["source"] = "yfinance"
     result["company_name"] = info.get("longName") or info.get("shortName")
     result["currency"] = info.get("currency")
+    # 현재가: currentPrice → regularMarketPrice → previousClose 순으로 시도
+    result["current_price"] = _float_or_none(
+        info.get("currentPrice")
+        or info.get("regularMarketPrice")
+        or info.get("previousClose")
+    )
     result["target_mean_price"] = _float_or_none(info.get("targetMeanPrice"))
     result["target_high_price"] = _float_or_none(info.get("targetHighPrice"))
     result["target_low_price"] = _float_or_none(info.get("targetLowPrice"))

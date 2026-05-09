@@ -38,6 +38,7 @@
     .metric-card .delta.down, .metric-card .delta.neg { color: var(--red); }
     .pos { color: var(--green); }
     .neg { color: var(--red); }
+    .neu { color: var(--text-muted); }
     .neu { color: #cbd5e1; }
     .metric-card.key-card { padding: 16px 14px; border-color: rgba(56, 189, 248, 0.28); background: linear-gradient(160deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.55)); }
     .metric-card.key-card .val { font-size: clamp(17px, 4vw, 22px); }
@@ -479,13 +480,14 @@
               <th>티커</th>
               <th>종목명</th>
               <th>시장</th>
-              <th class="r">목표주가(평균)</th>
+              <th class="r">현재가</th>
+              <th class="r">목표주가</th>
+              <th class="r">괴리율</th>
               <th class="r">목표범위</th>
               <th>투자의견</th>
               <th class="r">애널리스트</th>
               <th class="r">Fwd EPS</th>
               <th class="r">Fwd PER</th>
-              <th>출처</th>
               <th>기준일</th>
             </tr>
           </thead>
@@ -2301,6 +2303,7 @@ function buildStockRows() {
 
     const html = rows.map(r => {
       const cur = r.currency || '';
+      const curPrice = r.current_price !== null && r.current_price !== undefined ? r.current_price : null;
       const tp = fmtPrice(r.target_mean_price, cur);
       const hi = r.target_high_price !== null && r.target_high_price !== undefined ? fmtPrice(r.target_high_price, cur) : '-';
       const lo = r.target_low_price !== null && r.target_low_price !== undefined ? fmtPrice(r.target_low_price, cur) : '-';
@@ -2311,19 +2314,35 @@ function buildStockRows() {
       const fwdEps = r.forward_eps !== null ? fmtPrice(r.forward_eps, cur) : '<span style="color:#475569">-</span>';
       const fwdPe = r.forward_pe !== null && r.forward_pe !== undefined ? r.forward_pe.toFixed(1) + 'x' : '<span style="color:#475569">-</span>';
       const mktBadge = r.market === 'KR'
-        ? '<span style="background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px;">KR</span>'
-        : '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px;">US</span>';
+        ? '<span class="mkt-badge-kr">KR</span>'
+        : '<span class="mkt-badge-us">US</span>';
+
+      // 현재가
+      const curPriceHtml = curPrice !== null
+        ? fmtPrice(curPrice, cur)
+        : '<span style="color:#475569">-</span>';
+
+      // 괴리율 (목표주가 - 현재가) / 현재가 * 100
+      let upsideHtml = '<span style="color:#475569">-</span>';
+      if (curPrice && r.target_mean_price && curPrice > 0) {
+        const upside = (r.target_mean_price / curPrice - 1) * 100;
+        const uCls = upside >= 5 ? 'pos' : upside <= -5 ? 'neg' : 'neu';
+        const sign = upside >= 0 ? '▲' : '▼';
+        upsideHtml = `<span class="${uCls}" style="font-weight:600;">${sign}${Math.abs(upside).toFixed(1)}%</span>`;
+      }
+
       return `<tr data-market="${escapeHtml(r.market || '')}">
         <td style="font-weight:700;">${escapeHtml(r.ticker || '')}</td>
         <td style="color:#cbd5e1;">${escapeHtml((r.company_name || '').slice(0, 18))}</td>
         <td>${mktBadge}</td>
+        <td class="r">${curPriceHtml}</td>
         <td class="r" style="font-weight:600;">${tp}</td>
+        <td class="r">${upsideHtml}</td>
         <td class="r" style="font-size:12px;color:#94a3b8;">${range}</td>
         <td class="${escapeHtml(cls)}">${rec}</td>
         <td class="r">${analysts}</td>
         <td class="r">${fwdEps}</td>
         <td class="r">${fwdPe}</td>
-        <td style="font-size:11px;color:#64748b;">${escapeHtml(r.source || '-')}</td>
         <td style="font-size:11px;color:#64748b;">${escapeHtml(r.date || '-')}</td>
       </tr>`;
     }).join('');

@@ -388,6 +388,7 @@ def init_db(db_path: Path | None = None) -> None:
         # Safe schema migrations for stock_consensus columns.
         for _col in [
             "market", "source", "company_name", "currency",
+            "current_price",
             "target_mean_price", "target_high_price", "target_low_price",
             "recommendation_key", "recommendation_mean", "num_analysts",
             "forward_eps", "forward_pe", "revenue_estimate_avg",
@@ -1092,6 +1093,7 @@ def upsert_stock_consensus(
     source: str | None = None,
     company_name: str | None = None,
     currency: str | None = None,
+    current_price: float | None = None,
     target_mean_price: float | None = None,
     target_high_price: float | None = None,
     target_low_price: float | None = None,
@@ -1111,11 +1113,13 @@ def upsert_stock_consensus(
             """
             INSERT INTO stock_consensus (
                 ticker, date, market, source, company_name, currency,
+                current_price,
                 target_mean_price, target_high_price, target_low_price,
                 recommendation_key, recommendation_mean, num_analysts,
                 forward_eps, forward_pe, revenue_estimate_avg, updated_at
             ) VALUES (
                 :ticker, :date, :market, :source, :company_name, :currency,
+                :current_price,
                 :target_mean_price, :target_high_price, :target_low_price,
                 :recommendation_key, :recommendation_mean, :num_analysts,
                 :forward_eps, :forward_pe, :revenue_estimate_avg, :updated_at
@@ -1125,6 +1129,7 @@ def upsert_stock_consensus(
                 source=excluded.source,
                 company_name=excluded.company_name,
                 currency=excluded.currency,
+                current_price=excluded.current_price,
                 target_mean_price=excluded.target_mean_price,
                 target_high_price=excluded.target_high_price,
                 target_low_price=excluded.target_low_price,
@@ -1143,6 +1148,7 @@ def upsert_stock_consensus(
                 "source": source,
                 "company_name": company_name,
                 "currency": currency,
+                "current_price": None if current_price is None else float(current_price),
                 "target_mean_price": None if target_mean_price is None else float(target_mean_price),
                 "target_high_price": None if target_high_price is None else float(target_high_price),
                 "target_low_price": None if target_low_price is None else float(target_low_price),

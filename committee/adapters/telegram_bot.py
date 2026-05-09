@@ -173,12 +173,22 @@ def _format_consensus(r: dict, stored_date: str | None = None) -> str:
     if company:
         lines.append(f"기업명: {company} ({market})")
 
+    cur_price = r.get("current_price")
+    if cur_price is not None:
+        lines.append(f"현재가: {fp(cur_price)}")
+
     tp_mean = fp(r.get("target_mean_price"))
     tp_hi = fp(r.get("target_high_price"))
     tp_lo = fp(r.get("target_low_price"))
     lines.append(f"목표주가(평균): {tp_mean}")
     if r.get("target_high_price") or r.get("target_low_price"):
         lines.append(f"목표주가(범위): {tp_lo} ~ {tp_hi}")
+
+    # 현재가 대비 괴리율
+    if cur_price and r.get("target_mean_price") and cur_price > 0:
+        upside = (r["target_mean_price"] / cur_price - 1) * 100
+        sign = "▲" if upside >= 0 else "▼"
+        lines.append(f"괴리율(목표 vs 현재): {sign}{abs(upside):.1f}%")
 
     lines.append(f"투자의견: {frec(r.get('recommendation_key'), r.get('recommendation_mean'))}")
 

@@ -181,6 +181,7 @@ def run_sync(tickers: list[str], today: str, dry_run: bool) -> list[dict]:
             source=result.get("source"),
             company_name=result.get("company_name"),
             currency=result.get("currency"),
+            current_price=result.get("current_price"),
             target_mean_price=result.get("target_mean_price"),
             target_high_price=result.get("target_high_price"),
             target_low_price=result.get("target_low_price"),
