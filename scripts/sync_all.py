@@ -7,8 +7,8 @@ from __future__ import annotations
     # 일반 일별 실행 (권장)
     python scripts/sync_all.py
 
-    # 대시보드 빌드 생략
-    python scripts/sync_all.py --skip-dashboard
+    # 완료 후 git commit + push
+    python scripts/sync_all.py --auto-push
 
     # 빠른 모드 (시장/매크로/수급만, 컨센서스·재무 생략)
     python scripts/sync_all.py --fast
@@ -28,6 +28,29 @@ from datetime import date, timedelta
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
+
+
+def _git_commit_push(tag: str) -> None:
+    """변경된 파일을 git add → commit → push 한다."""
+    today = date.today().isoformat()
+    msg = f"auto: {tag} {today}"
+    print(f"\n[git] ▶  add . → commit '{msg}' → push")
+    for cmd in (
+        ["git", "add", "."],
+        ["git", "commit", "-m", msg],
+        ["git", "push"],
+    ):
+        r = subprocess.run(cmd, cwd=str(ROOT_DIR), capture_output=True, text=True)
+        if r.returncode != 0:
+            # commit 에서 "nothing to commit" 은 정상
+            if "nothing to commit" in (r.stdout + r.stderr):
+                print("[git] ℹ  nothing to commit, skipping push")
+                return
+            print(f"[git] ✗  {' '.join(cmd)} failed:\n{r.stderr.strip()}")
+            return
+        if r.stdout.strip():
+            print(r.stdout.strip())
+    print("[git] ✓  push 완료")
 
 
 def _run(label: str, cmd: list[str], skip: bool = False) -> bool:
@@ -56,6 +79,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--skip-consensus", action="store_true", help="컨센서스 수집 건너뜀")
     p.add_argument("--skip-us-financials", action="store_true", help="US 재무제표 건너뜀")
     p.add_argument("--backfill-macro-all", action="store_true", help="FRED 지표 전체 날짜 재백필 (최초 1회용)")
+    p.add_argument("--auto-push", action="store_true", help="완료 후 git commit + push 자동 실행")
     return p.parse_args()
 
 
@@ -156,6 +180,9 @@ def main() -> None:
     failed = sum(1 for _, ok in results if not ok)
     print(f"\n  총 {len(results)}단계 / 실패 {failed}개")
     print("=" * 60)
+
+    if args.auto_push:
+        _git_commit_push("sync_all")
 
 
 if __name__ == "__main__":

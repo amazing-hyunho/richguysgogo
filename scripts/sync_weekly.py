@@ -8,10 +8,11 @@ from __future__ import annotations
 포함 작업
 ----------
 1. 종목 마스터 갱신     - KR (DART/Naver), US (S&P500 + NASDAQ100)
-2. 전체 종목 컨센서스   - ticker_master에 있는 KR 전체 or --top N
-3. 전체 종목 재무제표   - US watchlist (yfinance) + KR (DART, 옵션)
-4. FRED 매크로 전체 재백필 (옵션, --deep-macro)
-5. 대시보드 빌드
+2. 수급 2년치 백필      - Naver Finance (skip-existing 포함)
+3. 전체 종목 컨센서스   - ticker_master에 있는 KR 전체 or --top N
+4. 전체 종목 재무제표   - US watchlist (yfinance) + KR (DART, 옵션)
+5. FRED 매크로 전체 재백필 (옵션, --deep-macro)
+6. 대시보드 빌드
 
 소요 시간 예상
 --------------
@@ -23,6 +24,9 @@ from __future__ import annotations
 ----------
     # 주 1회 전체 갱신 (권장)
     python scripts/sync_weekly.py
+
+    # 완료 후 git commit + push
+    python scripts/sync_weekly.py --auto-push
 
     # 빠른 모드: 상위 300종목만, US 재무제표 생략
     python scripts/sync_weekly.py --top 300 --skip-us-financials
@@ -48,6 +52,28 @@ from datetime import date, timedelta
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
+
+
+def _git_commit_push(tag: str) -> None:
+    """변경된 파일을 git add → commit → push 한다."""
+    today = date.today().isoformat()
+    msg = f"auto: {tag} {today}"
+    print(f"\n[git] ▶  add . → commit '{msg}' → push")
+    for cmd in (
+        ["git", "add", "."],
+        ["git", "commit", "-m", msg],
+        ["git", "push"],
+    ):
+        r = subprocess.run(cmd, cwd=str(ROOT_DIR), capture_output=True, text=True)
+        if r.returncode != 0:
+            if "nothing to commit" in (r.stdout + r.stderr):
+                print("[git] ℹ  nothing to commit, skipping push")
+                return
+            print(f"[git] ✗  {' '.join(cmd)} failed:\n{r.stderr.strip()}")
+            return
+        if r.stdout.strip():
+            print(r.stdout.strip())
+    print("[git] ✓  push 완료")
 
 
 def _run(label: str, cmd: list[str], skip: bool = False) -> bool:
@@ -116,6 +142,10 @@ def _parse_args() -> argparse.Namespace:
         "--us-ndx", action="store_true",
         help="US 종목 마스터: NASDAQ 100 포함 (기본 포함)",
     )
+    p.add_argument(
+        "--auto-push", action="store_true",
+        help="완료 후 git commit + push 자동 실행",
+    )
     return p.parse_args()
 
 
@@ -148,7 +178,7 @@ def main() -> None:
 
     if args.master_only:
         print("\n[sync_weekly] --master-only 모드: 마스터 갱신 후 종료")
-        _print_summary(results)
+        _print_summary(results, auto_push=args.auto_push)
         return
 
     # ── 2. 수급 전체 백필 (외국인/기관/개인, 2년치) ──────────────
@@ -219,10 +249,10 @@ def main() -> None:
         skip=args.skip_dashboard,
     )
 
-    _print_summary(results)
+    _print_summary(results, auto_push=args.auto_push)
 
 
-def _print_summary(results: list[tuple[str, bool]]) -> None:
+def _print_summary(results: list[tuple[str, bool]], auto_push: bool = False, tag: str = "sync_weekly") -> None:
     print("\n" + "=" * 62)
     print("  sync_weekly: 완료 요약")
     print("=" * 62)
@@ -232,6 +262,9 @@ def _print_summary(results: list[tuple[str, bool]]) -> None:
     failed = sum(1 for _, ok in results if not ok)
     print(f"\n  총 {len(results)}단계 / 실패 {failed}개")
     print("=" * 62)
+
+    if auto_push:
+        _git_commit_push(tag)
 
 
 if __name__ == "__main__":
