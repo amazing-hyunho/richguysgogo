@@ -27,64 +27,180 @@ OPENAI_API_KEY=...
 TELEGRAM_BOT_TOKEN=...
 TELEGRAM_CHAT_ID=...
 
-# FRED (매크로 보강 시)
+# FRED (매크로 심화 지표: CPI/PMI/GDP/금리/OAS)
 FRED_API_KEY=...
 
 # 한국은행 ECOS (국내 기준금리 수집 시)
 ECOS_API_KEY=...
 # 선택: 수출 YoY(901Y011) 항목 코드를 직접 지정할 때
 # ECOS_EXPORT_ITEM_CODE=...
+
+# DART OpenAPI (한국 주식 재무제표, https://opendart.fss.or.kr 발급)
+DART_API_KEY=...
 ```
+
+API 키 발급 링크:
+- FRED: https://fred.stlouisfed.org/docs/api/api_key.html
+- 한국은행 ECOS: https://ecos.bok.or.kr/api
+- DART: https://opendart.fss.or.kr (회원가입 → API 신청, 무료)
 
 참고:
 - `scripts/run_local.py`, `scripts/run_nightly.py`, `scripts/run_bot.py`는 `.env`를 자동 로드합니다.
 - `scripts/send_morning.py`, `scripts/run_news_hourly.py`는 `.env` 자동 로드가 없습니다(실행 환경에 변수 필요).
 
-## 가장 중요한 실행 커맨드
+## 커맨드 전체 정리
 
-### 일일 배치 (권장)
+---
+
+### 🔄 일일 파이프라인
+
+| 목적 | 커맨드 |
+|---|---|
+| 일일 배치 실행 (AI 분석 + 보고서) | `python scripts/run_nightly.py` |
+| 로컬 디버그 실행 | `python scripts/run_local.py` |
+| 아침 브리프 전송 (Telegram) | `python scripts/send_morning.py` |
+| 시간별 뉴스 수집 | `python scripts/run_news_hourly.py` |
+| 대시보드 재생성 | `python scripts/build_dashboard.py` |
+| Telegram Q&A 봇 시작 | `python scripts/run_bot.py` |
+
+`run_nightly.py` 주요 옵션:
+- `--build-dashboard` : 실행 후 대시보드 재생성
+- `--no-auto-commit` / `--no-auto-push` : git 자동 푸시 비활성화
+
+---
+
+### 📦 한방 전체 동기화
+
 ```bash
-python scripts/run_nightly.py
+# 기본: 시장지수 + 매크로 + 수급 + 컨센서스(워치리스트) + US재무제표 + 대시보드
+python scripts/sync_all.py
+
+# 빠른 모드 (시장/매크로/수급만, ~5분)
+python scripts/sync_all.py --fast
+
+# KR 재무제표 포함 (DART_API_KEY 필요)
+python scripts/sync_all.py --with-kr-financials --year 2024
+
+# KR 분기보고서까지
+python scripts/sync_all.py --with-kr-financials --year 2024 --quarterly
 ```
 
-옵션:
-- `--build-dashboard` : 실행 후 `docs/dashboard.html` 재생성
-- `--no-auto-commit` : 자동 커밋 비활성화 (기본은 자동 커밋/푸시 켬)
-- `--no-auto-push` : 자동 푸시 비활성화
+---
 
-### 로컬 디버그 실행
-```bash
-python scripts/run_local.py
-```
-- 결과: `reports/YYYY-MM-DD.json`
-- `run_nightly`와 달리 `runs/YYYY-MM-DD/` 아카이브 저장 경로가 다릅니다.
+### 📊 시장 데이터 수집 (market_daily / daily_macro / market_flow_daily)
 
-### 뉴스 시간배치
 ```bash
-python scripts/run_news_hourly.py
-```
-- 결과: `runs/news/latest_news_digest.json`, `runs/news/history.jsonl`
+# 시장 지수 (Kospi/Nasdaq/S&P 등) 기간 백필
+python scripts/backfill_market_daily_history.py --start-date 2024-01-01 --end-date 2026-04-26
 
-### 대시보드만 재생성
-```bash
-python scripts/build_dashboard.py
+# 매크로 지표 기본 (US10Y/VIX/DXY/원달러/WTI) 백필
+python scripts/backfill_daily_macro_history.py --start-date 2024-01-01 --end-date 2026-04-26
+
+# 매크로 심화 지표 (FRED: CPI/PMI/GDP/금리/OAS) 백필
+python scripts/backfill_macro_indicators.py
+
+# 수급 (외국인/기관/개인) 백필
+python scripts/backfill_market_flow_history.py --start-date 2024-01-01 --end-date 2026-04-26
+
+# 위 전체를 날짜 범위 지정으로 한번에
+python scripts/backfill_all_history.py --start-date 2024-01-01 --end-date 2026-04-26
 ```
 
-### 아침 브리프 전송
-```bash
-python scripts/send_morning.py
-```
+---
 
-### 주식/재무 데이터 업데이트 커맨드
+### 🏦 종목 마스터 / 주가
+
 ```bash
-# 1) 종목 마스터 동기화 (ticker_master)
+# KRX 전체 상장 종목 마스터 동기화 (~2,500종목)
 python scripts/sync_stock_master.py
 
-# 2) 일자별 주가 동기화 (daily_price_kr)
-python scripts/sync_daily_prices.py 2026-04-17
+# 특정 날짜 전체 종목 일별 주가 수집
+python scripts/sync_daily_prices.py 2026-04-25
+```
 
-# 3) DART 재무 데이터 동기화 (dart_company_code / financial_statement / financial_metric)
-python scripts/sync_financials.py 2025
+---
+
+### 📈 애널리스트 컨센서스 (목표주가 / 투자의견 / EPS 추정)
+
+```bash
+# 워치리스트 수집 (KR 12 + US 10 = 22종목, 빠름)
+python scripts/sync_stock_consensus.py
+
+# 특정 종목만
+python scripts/sync_stock_consensus.py --tickers AAPL 005930 NVDA
+
+# DB에 저장된 종목 갱신
+python scripts/sync_stock_consensus.py --from-db
+
+# 저장 없이 조회만
+python scripts/sync_stock_consensus.py --dry-run --tickers AAPL
+
+# 특정 종목 히스토리 보기
+python scripts/sync_stock_consensus.py --show 005930
+
+# ★ ticker_master 전체 종목 수집 (약 1~3시간, KRX 전체 ~2,500종목)
+python scripts/sync_all_stocks.py
+
+# 상위 300종목만
+python scripts/sync_all_stocks.py --top 300
+
+# 중단 후 재시작 (오늘 수집된 종목 건너뜀)
+python scripts/sync_all_stocks.py --resume
+
+# 특정 종목만 테스트
+python scripts/sync_all_stocks.py --tickers 005930 000660 035420
+```
+
+---
+
+### 📑 재무제표 (매출 / 영업이익 / ROE / EPS / FCF 등)
+
+```bash
+# 미국 주식 재무제표 (yfinance, API 키 불필요)
+python scripts/sync_financials.py --us
+
+# 미국 특정 종목
+python scripts/sync_financials.py --us --us-tickers AAPL NVDA TSLA MSFT
+
+# 한국 주식 연간 재무제표 (DART_API_KEY 필요)
+python scripts/sync_financials.py --year 2024
+
+# 한국 분기 포함
+python scripts/sync_financials.py --year 2024 --quarterly
+
+# 특정 KR 종목만
+python scripts/sync_financials.py --year 2024 --kr-tickers 005930 000660
+
+# KR + US 동시
+python scripts/sync_financials.py --year 2024 --quarterly --us
+
+# 종목 재무성과 터미널 조회
+python scripts/sync_financials.py --show AAPL
+python scripts/sync_financials.py --show 005930
+
+# ★ 전체 종목 재무제표 포함 (오래 걸림)
+python scripts/sync_all_stocks.py --with-kr-financials --year 2024 --quarterly
+```
+
+---
+
+### 🔧 runs 복구 / 백필
+
+```bash
+# 누락된 날짜 runs 파이프라인 재실행 (AI 제외)
+python scripts/backfill_pipeline_range.py --start-date 2025-01-01 --end-date 2025-12-31 --exclude-ai
+
+# DB 기반으로 runs/*.json 재생성
+python scripts/rebuild_runs_from_db.py --start-date 2025-01-01 --end-date 2025-12-31
+```
+
+---
+
+### 🗂️ DB 유지보수
+
+```bash
+# 0.0 플레이스홀더를 NULL로 마이그레이션
+python scripts/migrate_db_nulls.py
 ```
 
 ## 파이프라인 흐름

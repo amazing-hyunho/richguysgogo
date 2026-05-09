@@ -377,6 +377,72 @@
         </table>
       </div>
     </section>
+
+    <!-- ── 재무성과 ───────────────────────────────────────────── -->
+    <section class="section" id="sec-financial-metrics">
+      <div class="section-head">
+        <h2>📑 재무성과</h2>
+        <span class="section-meta" id="financial-meta">DB 저장 기준 최신 연간 데이터</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="border-bottom:1px solid #334155;color:#94a3b8;text-align:left;">
+              <th style="padding:8px 10px;">티커</th>
+              <th style="padding:8px 10px;">시장</th>
+              <th style="padding:8px 10px;">기간</th>
+              <th style="padding:8px 10px;text-align:right;">매출</th>
+              <th style="padding:8px 10px;text-align:right;">영업이익</th>
+              <th style="padding:8px 10px;text-align:right;">순이익</th>
+              <th style="padding:8px 10px;text-align:right;">영업이익률</th>
+              <th style="padding:8px 10px;text-align:right;">순이익률</th>
+              <th style="padding:8px 10px;text-align:right;">ROE</th>
+              <th style="padding:8px 10px;text-align:right;">ROA</th>
+              <th style="padding:8px 10px;text-align:right;">부채비율</th>
+              <th style="padding:8px 10px;text-align:right;">EPS</th>
+              <th style="padding:8px 10px;text-align:right;">FCF</th>
+            </tr>
+          </thead>
+          <tbody id="financial-table-body"></tbody>
+        </table>
+      </div>
+      <p id="financial-empty" style="color:#94a3b8;font-size:13px;display:none;">
+        저장된 재무 데이터가 없습니다.<br>
+        KR: <code>python scripts/sync_financials.py --year 2024 --quarterly</code><br>
+        US: <code>python scripts/sync_financials.py --us</code>
+      </p>
+    </section>
+
+    <!-- ── 애널리스트 컨센서스 ─────────────────────────────────── -->
+    <section class="section" id="sec-stock-consensus">
+      <div class="section-head">
+        <h2>📊 애널리스트 컨센서스</h2>
+        <span class="section-meta" id="consensus-meta">DB 저장 기준 최신 데이터</span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="border-bottom:1px solid #334155;color:#94a3b8;text-align:left;">
+              <th style="padding:8px 10px;">티커</th>
+              <th style="padding:8px 10px;">종목명</th>
+              <th style="padding:8px 10px;">시장</th>
+              <th style="padding:8px 10px;text-align:right;">목표주가(평균)</th>
+              <th style="padding:8px 10px;text-align:right;">목표범위</th>
+              <th style="padding:8px 10px;">투자의견</th>
+              <th style="padding:8px 10px;text-align:right;">애널리스트</th>
+              <th style="padding:8px 10px;text-align:right;">Fwd EPS</th>
+              <th style="padding:8px 10px;text-align:right;">Fwd PER</th>
+              <th style="padding:8px 10px;">출처</th>
+              <th style="padding:8px 10px;">기준일</th>
+            </tr>
+          </thead>
+          <tbody id="consensus-table-body"></tbody>
+        </table>
+      </div>
+      <p id="consensus-empty" style="color:#94a3b8;font-size:13px;display:none;">
+        저장된 컨센서스 데이터가 없습니다. <code>python scripts/sync_stock_consensus.py</code>를 실행하세요.
+      </p>
+    </section>
   </div>
 
 <script>
@@ -2019,6 +2085,137 @@ function buildStockRows() {
   document.getElementById('stock-candidate-table').innerHTML = stockOut.tableHtml;
   const stockBuyNow = document.getElementById('stock-buy-now-summary');
   if (stockBuyNow) stockBuyNow.textContent = stockOut.summary;
+
+  // ── 재무성과 테이블 렌더링 ───────────────────────────────────
+  (function renderFinancialTable() {
+    const rows = safeArr(data.financial_metrics);
+    const tbody = document.getElementById('financial-table-body');
+    const emptyEl = document.getElementById('financial-empty');
+    if (!tbody) return;
+    if (!rows.length) {
+      if (emptyEl) emptyEl.style.display = '';
+      return;
+    }
+    if (emptyEl) emptyEl.style.display = 'none';
+
+    function fmtVal(v, cur) {
+      if (v === null || v === undefined) return '<span style="color:#475569">-</span>';
+      if (cur === 'KRW') {
+        if (Math.abs(v) >= 1e12) return (v / 1e12).toFixed(1) + '조';
+        if (Math.abs(v) >= 1e8) return Math.round(v / 1e8).toLocaleString() + '억';
+        return v.toLocaleString();
+      }
+      // USD in raw dollars from yfinance
+      if (Math.abs(v) >= 1e9) return '$' + (v / 1e9).toFixed(1) + 'B';
+      if (Math.abs(v) >= 1e6) return '$' + (v / 1e6).toFixed(0) + 'M';
+      return '$' + v.toFixed(2);
+    }
+    function fmtPct(v) {
+      if (v === null || v === undefined) return '<span style="color:#475569">-</span>';
+      const cls = v > 0 ? 'pos' : v < 0 ? 'neg' : 'neu';
+      return `<span class="${cls}">${v.toFixed(1)}%</span>`;
+    }
+    function fmtEps(v, cur) {
+      if (v === null || v === undefined) return '<span style="color:#475569">-</span>';
+      if (cur === 'KRW') return v.toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + '원';
+      return '$' + v.toFixed(2);
+    }
+
+    const html = rows.map(r => {
+      const cur = r.currency || '';
+      const mktBadge = cur === 'KRW'
+        ? '<span style="background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px;">KR</span>'
+        : '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px;">US</span>';
+      const period = (r.business_year || '-') + (r.period_type ? ` (${r.period_type})` : '');
+      return `<tr style="border-bottom:1px solid rgba(51,65,85,0.5);">
+        <td style="padding:8px 10px;font-weight:700;">${escapeHtml(r.ticker || '')}</td>
+        <td style="padding:8px 10px;">${mktBadge}</td>
+        <td style="padding:8px 10px;font-size:12px;color:#94a3b8;">${escapeHtml(period)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.revenue, cur)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.operating_income, cur)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.net_income, cur)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.operating_margin)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.net_margin)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.roe)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.roa)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.debt_ratio)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtEps(r.eps_diluted ?? r.eps_basic, cur)}</td>
+        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.free_cashflow, cur)}</td>
+      </tr>`;
+    }).join('');
+    tbody.innerHTML = html;
+    const meta = document.getElementById('financial-meta');
+    if (meta) meta.textContent = `${rows.length}개 종목 · 최신 기간 기준`;
+  })();
+
+  // ── 애널리스트 컨센서스 테이블 렌더링 ────────────────────────
+  (function renderConsensusTable() {
+    const rows = safeArr(data.stock_consensus);
+    const tbody = document.getElementById('consensus-table-body');
+    const emptyEl = document.getElementById('consensus-empty');
+    if (!tbody) return;
+    if (!rows.length) {
+      if (emptyEl) emptyEl.style.display = '';
+      return;
+    }
+    if (emptyEl) emptyEl.style.display = 'none';
+
+    function fmtPrice(v, cur) {
+      if (v === null || v === undefined) return '<span style="color:#475569">N/A</span>';
+      if (cur === 'KRW') return v.toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + '원';
+      if (cur === 'USD') return '$' + v.toFixed(2);
+      return v.toFixed(2);
+    }
+    function fmtRec(key, mean) {
+      const KO = { 'strong buy': '강매수', buy: '매수', hold: '보유', underperform: '약보유', sell: '매도' };
+      const meanLabel = mean !== null && mean !== undefined
+        ? { 1: '강매수', 2: '매수', 3: '보유', 4: '약보유', 5: '매도' }[Math.round(mean)] || mean.toFixed(1)
+        : null;
+      const parts = [];
+      if (key) parts.push(KO[key.toLowerCase()] || key.toUpperCase());
+      if (meanLabel) parts.push(`(${meanLabel})`);
+      return parts.length ? parts.join(' ') : '<span style="color:#475569">N/A</span>';
+    }
+    function recCls(key) {
+      if (!key) return '';
+      const k = key.toLowerCase();
+      if (k.includes('buy') || k.includes('매수')) return 'pos';
+      if (k.includes('sell') || k.includes('매도')) return 'neg';
+      return 'neu';
+    }
+
+    const html = rows.map(r => {
+      const cur = r.currency || '';
+      const tp = fmtPrice(r.target_mean_price, cur);
+      const hi = r.target_high_price !== null && r.target_high_price !== undefined ? fmtPrice(r.target_high_price, cur) : '-';
+      const lo = r.target_low_price !== null && r.target_low_price !== undefined ? fmtPrice(r.target_low_price, cur) : '-';
+      const range = (r.target_high_price || r.target_low_price) ? `${lo} ~ ${hi}` : '<span style="color:#475569">-</span>';
+      const rec = fmtRec(r.recommendation_key, r.recommendation_mean);
+      const cls = recCls(r.recommendation_key);
+      const analysts = r.num_analysts !== null && r.num_analysts !== undefined ? r.num_analysts + '명' : '<span style="color:#475569">-</span>';
+      const fwdEps = r.forward_eps !== null ? fmtPrice(r.forward_eps, cur) : '<span style="color:#475569">-</span>';
+      const fwdPe = r.forward_pe !== null && r.forward_pe !== undefined ? r.forward_pe.toFixed(1) + 'x' : '<span style="color:#475569">-</span>';
+      const mktBadge = r.market === 'KR'
+        ? '<span style="background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px;">KR</span>'
+        : '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px;">US</span>';
+      return `<tr style="border-bottom:1px solid rgba(51,65,85,0.5);">
+        <td style="padding:8px 10px;font-weight:700;">${escapeHtml(r.ticker || '')}</td>
+        <td style="padding:8px 10px;color:#cbd5e1;">${escapeHtml((r.company_name || '').slice(0, 18))}</td>
+        <td style="padding:8px 10px;">${mktBadge}</td>
+        <td style="padding:8px 10px;text-align:right;font-weight:600;">${tp}</td>
+        <td style="padding:8px 10px;text-align:right;font-size:12px;color:#94a3b8;">${range}</td>
+        <td style="padding:8px 10px;" class="${escapeHtml(cls)}">${rec}</td>
+        <td style="padding:8px 10px;text-align:right;">${analysts}</td>
+        <td style="padding:8px 10px;text-align:right;">${fwdEps}</td>
+        <td style="padding:8px 10px;text-align:right;">${fwdPe}</td>
+        <td style="padding:8px 10px;font-size:11px;color:#64748b;">${escapeHtml(r.source || '-')}</td>
+        <td style="padding:8px 10px;font-size:11px;color:#64748b;">${escapeHtml(r.date || '-')}</td>
+      </tr>`;
+    }).join('');
+    tbody.innerHTML = html;
+    const meta = document.getElementById('consensus-meta');
+    if (meta) meta.textContent = `${rows.length}개 종목 · 최신 저장 기준`;
+  })();
 })();
 </script>
 </body>

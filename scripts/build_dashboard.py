@@ -388,6 +388,58 @@ def build_dashboard_html(data: dict[str, object]) -> str:
 
 
 
+def load_financial_metrics_summary() -> list[dict[str, object]]:
+    """Load most recent annual financial metrics per ticker from DB."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        try:
+            # For each ticker, pick the most recent annual row
+            rows = conn.execute(
+                """
+                SELECT fm.*
+                FROM financial_metric fm
+                INNER JOIN (
+                    SELECT ticker, MAX(business_year) AS max_year
+                    FROM financial_metric
+                    WHERE period_type IN ('annual', 'q3', NULL) OR period_type IS NULL
+                    GROUP BY ticker
+                ) latest ON fm.ticker = latest.ticker AND fm.business_year = latest.max_year
+                ORDER BY fm.currency, fm.ticker
+                """
+            ).fetchall()
+            return [dict(row) for row in rows]
+        finally:
+            conn.close()
+    except Exception:
+        return []
+
+
+def load_stock_consensus_summary() -> list[dict[str, object]]:
+    """Load most recent consensus per ticker from DB for dashboard display."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        try:
+            rows = conn.execute(
+                """
+                SELECT s.*
+                FROM stock_consensus s
+                INNER JOIN (
+                    SELECT ticker, MAX(date) AS max_date
+                    FROM stock_consensus
+                    GROUP BY ticker
+                ) latest ON s.ticker = latest.ticker AND s.date = latest.max_date
+                ORDER BY s.market, s.ticker
+                """
+            ).fetchall()
+            return [dict(row) for row in rows]
+        finally:
+            conn.close()
+    except Exception:
+        return []
+
+
 def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     init_db(DB_PATH)
@@ -424,6 +476,8 @@ def main() -> None:
             "latest_korean_market_flow": load_latest_korean_market_flow_breakdown(),
             "korean_market_flow_compare": load_korean_market_flow_compare(),
             "latest_policy_rates": load_latest_policy_rates(),
+            "stock_consensus": load_stock_consensus_summary(),
+            "financial_metrics": load_financial_metrics_summary(),
         }
     finally:
         conn.close()

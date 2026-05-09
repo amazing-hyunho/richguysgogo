@@ -7,8 +7,9 @@ from pathlib import Path
 
 import requests
 
-from committee.core.database import get_last_n_market_flow
+from committee.core.database import get_last_n_market_flow, get_latest_stock_consensus
 from committee.core.strategy_store import load_latest_strategy, update_strategy
+from committee.tools.stock_consensus_provider import fetch_stock_consensus
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
@@ -84,6 +85,8 @@ def answer_for_message(text: str) -> str:
         return _handle_strategy_command(stripped, context)
     if stripped.startswith("/flow"):
         return _handle_flow_command(stripped)
+    if stripped.startswith("/consensus"):
+        return _handle_consensus_command(stripped)
     if _is_foreign_flow_trend_question(stripped):
         return _format_foreign_flow_trend()
 
@@ -94,6 +97,107 @@ def _handle_flow_command(command: str) -> str:
     if command in {"/flow", "/flow trend"}:
         return _format_foreign_flow_trend()
     return "지원 커맨드: /flow trend"
+
+
+def _handle_consensus_command(command: str) -> str:
+    """Handle /consensus [TICKER] command.
+
+    Examples
+    --------
+    /consensus AAPL      → fetch live consensus for AAPL
+    /consensus 005930    → fetch live consensus for 삼성전자
+    /consensus           → show help
+    """
+    parts = command.strip().split()
+    if len(parts) < 2:
+        return (
+            "종목 컨센서스 조회: /consensus TICKER\n"
+            "예) /consensus AAPL\n"
+            "예) /consensus 005930 (삼성전자)\n"
+            "예) /consensus NVDA\n\n"
+            "DB에 저장된 데이터를 먼저 확인하고, 없으면 실시간 조회합니다."
+        )
+
+    ticker = parts[1].strip().upper()
+
+    # First try DB (fast, no network)
+    stored = None
+    try:
+        stored = get_latest_stock_consensus(ticker)
+    except Exception:
+        pass
+
+    # Live fetch (always do for freshness)
+    live = None
+    try:
+        live = fetch_stock_consensus(ticker)
+    except Exception as exc:
+        live = None
+        print(f"[telegram] consensus_live_failed[{ticker}]: {exc}")
+
+    result = live or stored
+    if result is None:
+        return f"{ticker} 컨센서스 데이터를 가져올 수 없습니다."
+
+    return _format_consensus(result, stored_date=stored.get("date") if stored else None)
+
+
+def _format_consensus(r: dict, stored_date: str | None = None) -> str:
+    ticker = r.get("ticker", "?")
+    company = r.get("company_name") or ""
+    market = r.get("market", "?")
+    cur = r.get("currency") or ""
+    source = r.get("source") or "unknown"
+
+    def fp(v: float | None) -> str:
+        if v is None:
+            return "N/A"
+        if cur == "KRW":
+            return f"{v:,.0f}원"
+        if cur == "USD":
+            return f"${v:,.2f}"
+        return f"{v:,.2f}"
+
+    def frec(key: str | None, mean: float | None) -> str:
+        parts_r = []
+        if key:
+            parts_r.append(key.upper())
+        if mean is not None:
+            label = {1: "강매수", 2: "매수", 3: "보유", 4: "약보유", 5: "매도"}.get(
+                round(mean), f"{mean:.1f}"
+            )
+            parts_r.append(f"({label})")
+        return " ".join(parts_r) if parts_r else "N/A"
+
+    lines = [f"📊 {ticker} 애널리스트 컨센서스"]
+    if company:
+        lines.append(f"기업명: {company} ({market})")
+
+    tp_mean = fp(r.get("target_mean_price"))
+    tp_hi = fp(r.get("target_high_price"))
+    tp_lo = fp(r.get("target_low_price"))
+    lines.append(f"목표주가(평균): {tp_mean}")
+    if r.get("target_high_price") or r.get("target_low_price"):
+        lines.append(f"목표주가(범위): {tp_lo} ~ {tp_hi}")
+
+    lines.append(f"투자의견: {frec(r.get('recommendation_key'), r.get('recommendation_mean'))}")
+
+    analysts = r.get("num_analysts")
+    if analysts is not None:
+        lines.append(f"참여 애널리스트: {analysts}명")
+
+    fwd_eps = r.get("forward_eps")
+    fwd_pe = r.get("forward_pe")
+    if fwd_eps is not None:
+        lines.append(f"Forward EPS: {fp(fwd_eps)}")
+    if fwd_pe is not None:
+        lines.append(f"Forward PER: {fwd_pe:.1f}x")
+
+    lines.append(f"데이터 출처: {source}")
+    if stored_date:
+        lines.append(f"DB 저장일: {stored_date}")
+
+    return "\n".join(lines)
 
 
 def _is_foreign_flow_trend_question(text: str) -> bool:

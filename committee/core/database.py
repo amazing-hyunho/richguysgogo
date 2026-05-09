@@ -229,6 +229,27 @@ def init_db(db_path: Path | None = None) -> None:
             );
             """
         )
+        # Safe schema migrations for extended financial_metric columns.
+        for _col, _ddl in [
+            ("period_type", "TEXT"),          # 'annual' | 'q1' | 'half' | 'q3' | 'quarterly'
+            ("currency", "TEXT"),             # 'KRW' | 'USD'
+            ("gross_profit", "REAL"),
+            ("shares_outstanding", "REAL"),
+            ("eps_basic", "REAL"),
+            ("eps_diluted", "REAL"),
+            ("cash_and_equivalents", "REAL"),
+            ("total_debt", "REAL"),
+            ("operating_cashflow", "REAL"),
+            ("capital_expenditure", "REAL"),
+            ("free_cashflow", "REAL"),
+            ("gross_margin", "REAL"),
+            ("operating_margin", "REAL"),
+            ("net_margin", "REAL"),
+            ("roe", "REAL"),
+            ("roa", "REAL"),
+            ("debt_ratio", "REAL"),
+        ]:
+            _ensure_column_exists(conn, table="financial_metric", column=_col, column_ddl=_ddl)
 
         # theme taxonomy + mapping.
         conn.execute(
@@ -335,6 +356,48 @@ def init_db(db_path: Path | None = None) -> None:
         )
         for col in ["real_gdp", "gdp_qoq_annualized"]:
             _ensure_column_exists(conn, table="quarterly_macro", column=col, column_ddl="REAL")
+
+        # stock_consensus: analyst consensus per ticker (updated periodically, not daily).
+        # Primary key: (ticker, date) — store the snapshot date so history is preserved.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS stock_consensus (
+                ticker TEXT,
+                date TEXT,
+                market TEXT,
+                source TEXT,
+                company_name TEXT,
+                currency TEXT,
+                target_mean_price REAL,
+                target_high_price REAL,
+                target_low_price REAL,
+                recommendation_key TEXT,
+                recommendation_mean REAL,
+                num_analysts INTEGER,
+                forward_eps REAL,
+                forward_pe REAL,
+                revenue_estimate_avg REAL,
+                updated_at TEXT,
+                PRIMARY KEY (ticker, date)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_stock_consensus_ticker ON stock_consensus(ticker);"
+        )
+        # Safe schema migrations for stock_consensus columns.
+        for _col in [
+            "market", "source", "company_name", "currency",
+            "target_mean_price", "target_high_price", "target_low_price",
+            "recommendation_key", "recommendation_mean", "num_analysts",
+            "forward_eps", "forward_pe", "revenue_estimate_avg",
+        ]:
+            _ensure_column_exists(
+                conn,
+                table="stock_consensus",
+                column=_col,
+                column_ddl="TEXT" if _col in {"market", "source", "company_name", "currency", "recommendation_key"} else "REAL" if _col != "num_analysts" else "INTEGER",
+            )
 
 
 def _ensure_column_exists(conn: sqlite3.Connection, *, table: str, column: str, column_ddl: str) -> None:
@@ -882,43 +945,135 @@ def upsert_financial_statement(data: Dict[str, Any], db_path: Path | None = None
 
 
 def upsert_financial_metric(data: Dict[str, Any], db_path: Path | None = None) -> None:
-    """Upsert one row into `financial_metric`."""
+    """Upsert one row into `financial_metric` (NULL-based extended schema)."""
     updated_at = _utc_now_iso()
     init_db(db_path)
+
+    def _f(key: str) -> float | None:
+        v = data.get(key)
+        return None if v is None else float(v)
+
     with connect(db_path) as conn:
         conn.execute(
             """
             INSERT INTO financial_metric (
                 ticker, business_year, report_code,
-                revenue, operating_income, net_income,
-                total_assets, total_liabilities, total_equity, updated_at
+                period_type, currency,
+                revenue, gross_profit, operating_income, net_income,
+                total_assets, total_liabilities, total_equity,
+                shares_outstanding, eps_basic, eps_diluted,
+                cash_and_equivalents, total_debt,
+                operating_cashflow, capital_expenditure, free_cashflow,
+                gross_margin, operating_margin, net_margin,
+                roe, roa, debt_ratio,
+                updated_at
             ) VALUES (
                 :ticker, :business_year, :report_code,
-                :revenue, :operating_income, :net_income,
-                :total_assets, :total_liabilities, :total_equity, :updated_at
+                :period_type, :currency,
+                :revenue, :gross_profit, :operating_income, :net_income,
+                :total_assets, :total_liabilities, :total_equity,
+                :shares_outstanding, :eps_basic, :eps_diluted,
+                :cash_and_equivalents, :total_debt,
+                :operating_cashflow, :capital_expenditure, :free_cashflow,
+                :gross_margin, :operating_margin, :net_margin,
+                :roe, :roa, :debt_ratio,
+                :updated_at
             )
             ON CONFLICT(ticker, business_year, report_code) DO UPDATE SET
+                period_type=excluded.period_type,
+                currency=excluded.currency,
                 revenue=excluded.revenue,
+                gross_profit=excluded.gross_profit,
                 operating_income=excluded.operating_income,
                 net_income=excluded.net_income,
                 total_assets=excluded.total_assets,
                 total_liabilities=excluded.total_liabilities,
                 total_equity=excluded.total_equity,
+                shares_outstanding=excluded.shares_outstanding,
+                eps_basic=excluded.eps_basic,
+                eps_diluted=excluded.eps_diluted,
+                cash_and_equivalents=excluded.cash_and_equivalents,
+                total_debt=excluded.total_debt,
+                operating_cashflow=excluded.operating_cashflow,
+                capital_expenditure=excluded.capital_expenditure,
+                free_cashflow=excluded.free_cashflow,
+                gross_margin=excluded.gross_margin,
+                operating_margin=excluded.operating_margin,
+                net_margin=excluded.net_margin,
+                roe=excluded.roe,
+                roa=excluded.roa,
+                debt_ratio=excluded.debt_ratio,
                 updated_at=excluded.updated_at;
             """,
             {
                 "ticker": str(data.get("ticker", "")).strip().upper(),
                 "business_year": data.get("business_year"),
                 "report_code": data.get("report_code"),
-                "revenue": None if data.get("revenue") is None else float(data["revenue"]),
-                "operating_income": None if data.get("operating_income") is None else float(data["operating_income"]),
-                "net_income": None if data.get("net_income") is None else float(data["net_income"]),
-                "total_assets": None if data.get("total_assets") is None else float(data["total_assets"]),
-                "total_liabilities": None if data.get("total_liabilities") is None else float(data["total_liabilities"]),
-                "total_equity": None if data.get("total_equity") is None else float(data["total_equity"]),
+                "period_type": data.get("period_type"),
+                "currency": data.get("currency"),
+                "revenue": _f("revenue"),
+                "gross_profit": _f("gross_profit"),
+                "operating_income": _f("operating_income"),
+                "net_income": _f("net_income"),
+                "total_assets": _f("total_assets"),
+                "total_liabilities": _f("total_liabilities"),
+                "total_equity": _f("total_equity"),
+                "shares_outstanding": _f("shares_outstanding"),
+                "eps_basic": _f("eps_basic"),
+                "eps_diluted": _f("eps_diluted"),
+                "cash_and_equivalents": _f("cash_and_equivalents"),
+                "total_debt": _f("total_debt"),
+                "operating_cashflow": _f("operating_cashflow"),
+                "capital_expenditure": _f("capital_expenditure"),
+                "free_cashflow": _f("free_cashflow"),
+                "gross_margin": _f("gross_margin"),
+                "operating_margin": _f("operating_margin"),
+                "net_margin": _f("net_margin"),
+                "roe": _f("roe"),
+                "roa": _f("roa"),
+                "debt_ratio": _f("debt_ratio"),
                 "updated_at": data.get("updated_at") or updated_at,
             },
         )
+
+
+def get_financial_metrics(
+    ticker: str,
+    period_type: str | None = None,
+    limit: int = 8,
+    db_path: Path | None = None,
+) -> List[Dict[str, Any]]:
+    """Return financial_metric rows for a ticker, most recent first.
+
+    Parameters
+    ----------
+    ticker : str
+    period_type : 'annual' | 'quarterly' | 'q1' | 'half' | 'q3' | None (all)
+    limit : int
+    """
+    init_db(db_path)
+    with connect(db_path) as conn:
+        if period_type:
+            rows = conn.execute(
+                """
+                SELECT * FROM financial_metric
+                WHERE ticker = :ticker AND period_type = :pt
+                ORDER BY business_year DESC, report_code DESC
+                LIMIT :lim;
+                """,
+                {"ticker": ticker.strip().upper(), "pt": period_type, "lim": int(limit)},
+            ).fetchall()
+        else:
+            rows = conn.execute(
+                """
+                SELECT * FROM financial_metric
+                WHERE ticker = :ticker
+                ORDER BY business_year DESC, report_code DESC
+                LIMIT :lim;
+                """,
+                {"ticker": ticker.strip().upper(), "lim": int(limit)},
+            ).fetchall()
+        return [dict(row) for row in rows]
 
 
 def safe_upsert_quarterly_macro(**kwargs: Any) -> None:
@@ -927,6 +1082,133 @@ def safe_upsert_quarterly_macro(**kwargs: Any) -> None:
         upsert_quarterly_macro(**kwargs)
     except Exception as exc:  # noqa: BLE001
         _log_db_error("upsert_quarterly_macro", exc)
+
+
+def upsert_stock_consensus(
+    *,
+    ticker: str,
+    date: str,
+    market: str | None = None,
+    source: str | None = None,
+    company_name: str | None = None,
+    currency: str | None = None,
+    target_mean_price: float | None = None,
+    target_high_price: float | None = None,
+    target_low_price: float | None = None,
+    recommendation_key: str | None = None,
+    recommendation_mean: float | None = None,
+    num_analysts: int | None = None,
+    forward_eps: float | None = None,
+    forward_pe: float | None = None,
+    revenue_estimate_avg: float | None = None,
+    db_path: Path | None = None,
+) -> None:
+    """Upsert one analyst consensus snapshot into `stock_consensus` (NULL-based)."""
+    updated_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO stock_consensus (
+                ticker, date, market, source, company_name, currency,
+                target_mean_price, target_high_price, target_low_price,
+                recommendation_key, recommendation_mean, num_analysts,
+                forward_eps, forward_pe, revenue_estimate_avg, updated_at
+            ) VALUES (
+                :ticker, :date, :market, :source, :company_name, :currency,
+                :target_mean_price, :target_high_price, :target_low_price,
+                :recommendation_key, :recommendation_mean, :num_analysts,
+                :forward_eps, :forward_pe, :revenue_estimate_avg, :updated_at
+            )
+            ON CONFLICT(ticker, date) DO UPDATE SET
+                market=excluded.market,
+                source=excluded.source,
+                company_name=excluded.company_name,
+                currency=excluded.currency,
+                target_mean_price=excluded.target_mean_price,
+                target_high_price=excluded.target_high_price,
+                target_low_price=excluded.target_low_price,
+                recommendation_key=excluded.recommendation_key,
+                recommendation_mean=excluded.recommendation_mean,
+                num_analysts=excluded.num_analysts,
+                forward_eps=excluded.forward_eps,
+                forward_pe=excluded.forward_pe,
+                revenue_estimate_avg=excluded.revenue_estimate_avg,
+                updated_at=excluded.updated_at;
+            """,
+            {
+                "ticker": ticker.strip().upper(),
+                "date": date,
+                "market": market,
+                "source": source,
+                "company_name": company_name,
+                "currency": currency,
+                "target_mean_price": None if target_mean_price is None else float(target_mean_price),
+                "target_high_price": None if target_high_price is None else float(target_high_price),
+                "target_low_price": None if target_low_price is None else float(target_low_price),
+                "recommendation_key": recommendation_key,
+                "recommendation_mean": None if recommendation_mean is None else float(recommendation_mean),
+                "num_analysts": None if num_analysts is None else int(num_analysts),
+                "forward_eps": None if forward_eps is None else float(forward_eps),
+                "forward_pe": None if forward_pe is None else float(forward_pe),
+                "revenue_estimate_avg": None if revenue_estimate_avg is None else float(revenue_estimate_avg),
+                "updated_at": updated_at,
+            },
+        )
+
+
+def safe_upsert_stock_consensus(**kwargs: Any) -> None:
+    """Fail-safe wrapper for `upsert_stock_consensus`."""
+    try:
+        upsert_stock_consensus(**kwargs)
+    except Exception as exc:  # noqa: BLE001
+        _log_db_error("upsert_stock_consensus", exc)
+
+
+def get_latest_stock_consensus(ticker: str, db_path: Path | None = None) -> Dict[str, Any] | None:
+    """Return the most recent consensus snapshot for a ticker, or None."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        row = conn.execute(
+            """
+            SELECT *
+            FROM stock_consensus
+            WHERE ticker = :ticker
+            ORDER BY date DESC
+            LIMIT 1;
+            """,
+            {"ticker": ticker.strip().upper()},
+        ).fetchone()
+        return dict(row) if row else None
+
+
+def get_stock_consensus_history(
+    ticker: str, n: int = 10, db_path: Path | None = None
+) -> List[Dict[str, Any]]:
+    """Return last N consensus snapshots for a ticker (most recent first)."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT *
+            FROM stock_consensus
+            WHERE ticker = :ticker
+            ORDER BY date DESC
+            LIMIT :n;
+            """,
+            {"ticker": ticker.strip().upper(), "n": int(n)},
+        ).fetchall()
+        return [dict(row) for row in rows]
+
+
+def list_consensus_tickers(db_path: Path | None = None) -> List[str]:
+    """Return distinct tickers that have consensus data stored."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            "SELECT DISTINCT ticker FROM stock_consensus ORDER BY ticker;"
+        ).fetchall()
+        return [row["ticker"] for row in rows]
 
 
 def upsert_market_forward(
