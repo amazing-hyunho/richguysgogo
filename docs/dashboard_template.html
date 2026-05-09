@@ -200,12 +200,41 @@
     #section-sector .table-wrap table { min-width: 640px; }
     #stock-buy-now-summary.stock-buy-now-summary { margin: 0 0 12px 0; padding: 10px 12px; font-size: 13px; line-height: 1.5; color: #dbe4f0; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; }
     #section-stock .table-wrap table { min-width: 640px; }
+    /* ── 탭 네비게이션 ── */
+    .tab-nav { display: flex; gap: 2px; margin-bottom: 0; border-bottom: 1px solid var(--line); padding-bottom: 0; flex-wrap: wrap; }
+    .tab-btn { padding: 10px 22px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: -1px; border-radius: 8px 8px 0 0; transition: color 0.15s, background 0.15s; letter-spacing: 0.01em; }
+    .tab-btn:hover { color: #e2e8f0; background: rgba(255,255,255,0.04); }
+    .tab-btn.tab-active { color: var(--blue); border-bottom-color: var(--blue); background: rgba(56,189,248,0.06); }
+    .tab-pane { display: none; padding-top: 24px; }
+    .tab-pane.tab-active { display: block; }
+    /* 종목탭 - 필터 바 */
+    .stock-tab-filter { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 18px; }
+    .stock-tab-filter input[type=text] { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: #e2e8f0; font: inherit; font-size: 13px; padding: 7px 12px; width: 200px; outline: none; }
+    .stock-tab-filter input[type=text]:focus { border-color: rgba(56,189,248,0.5); }
+    .stock-tab-filter select { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: #e2e8f0; font: inherit; font-size: 13px; padding: 7px 10px; outline: none; cursor: pointer; }
+    .stock-tab-filter label { font-size: 12px; color: var(--muted); }
+    .stock-data-table { width:100%; border-collapse:collapse; font-size:13px; }
+    .stock-data-table th { padding:8px 10px; color:#94a3b8; text-align:left; border-bottom:1px solid #334155; font-weight:600; font-size:12px; white-space:nowrap; }
+    .stock-data-table th.r, .stock-data-table td.r { text-align:right; }
+    .stock-data-table td { padding:8px 10px; border-bottom:1px solid rgba(51,65,85,0.4); white-space:nowrap; }
+    .stock-data-table tr:hover td { background: rgba(56,189,248,0.04); }
+    .mkt-badge-kr { background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px; }
+    .mkt-badge-us { background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px; }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>AI 투자위원회 · 5단계 의사결정 플로우</h1>
-    <p class="page-desc">요약 → 매크로 → 주식시장 → 섹터 → 종목 판단 순으로 한 페이지에서 스크롤합니다. 데이터는 DB·최신 런 스냅샷·뉴스 다이제스트에서만 구성됩니다.</p>
+    <h1>AI 투자위원회 · 의사결정 대시보드</h1>
+    <p class="page-desc">데이터는 DB·최신 런 스냅샷·뉴스 다이제스트에서만 구성됩니다.</p>
+
+    <!-- ── 탭 네비게이션 ── -->
+    <nav class="tab-nav" role="tablist">
+      <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
+      <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
+    </nav>
+
+    <!-- ══ 탭 1: 시장 분석 ══════════════════════════════════════ -->
+    <div id="tab-market" class="tab-pane tab-active" role="tabpanel">
 
     <section class="section" id="section-cio-strategy" aria-labelledby="heading-cio-strategy">
       <div class="section-head">
@@ -378,6 +407,30 @@
       </div>
     </section>
 
+    </div><!-- /tab-market -->
+
+    <!-- ══ 탭 2: 종목 데이터 ════════════════════════════════════ -->
+    <div id="tab-stocks" class="tab-pane" role="tabpanel">
+
+    <!-- ── 공통 필터 바 (재무 + 컨센서스 공유) ─────────────────── -->
+    <div class="stock-tab-filter" style="margin-bottom:20px;padding:14px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;">
+      <div>
+        <label for="stock-search">종목 검색</label><br>
+        <input type="text" id="stock-search" placeholder="티커 또는 종목명..." oninput="filterStockTables()">
+      </div>
+      <div>
+        <label for="stock-market-filter">시장</label><br>
+        <select id="stock-market-filter" onchange="filterStockTables()">
+          <option value="">전체</option>
+          <option value="KR">KR (한국)</option>
+          <option value="US">US (미국)</option>
+        </select>
+      </div>
+      <div style="margin-left:auto;font-size:12px;color:#64748b;align-self:flex-end;">
+        <span id="stock-tab-count"></span>
+      </div>
+    </div>
+
     <!-- ── 재무성과 ───────────────────────────────────────────── -->
     <section class="section" id="sec-financial-metrics">
       <div class="section-head">
@@ -385,22 +438,22 @@
         <span class="section-meta" id="financial-meta">DB 저장 기준 최신 연간 데이터</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <table class="stock-data-table" id="financial-table">
           <thead>
-            <tr style="border-bottom:1px solid #334155;color:#94a3b8;text-align:left;">
-              <th style="padding:8px 10px;">티커</th>
-              <th style="padding:8px 10px;">시장</th>
-              <th style="padding:8px 10px;">기간</th>
-              <th style="padding:8px 10px;text-align:right;">매출</th>
-              <th style="padding:8px 10px;text-align:right;">영업이익</th>
-              <th style="padding:8px 10px;text-align:right;">순이익</th>
-              <th style="padding:8px 10px;text-align:right;">영업이익률</th>
-              <th style="padding:8px 10px;text-align:right;">순이익률</th>
-              <th style="padding:8px 10px;text-align:right;">ROE</th>
-              <th style="padding:8px 10px;text-align:right;">ROA</th>
-              <th style="padding:8px 10px;text-align:right;">부채비율</th>
-              <th style="padding:8px 10px;text-align:right;">EPS</th>
-              <th style="padding:8px 10px;text-align:right;">FCF</th>
+            <tr>
+              <th>티커</th>
+              <th>시장</th>
+              <th>기간</th>
+              <th class="r">매출</th>
+              <th class="r">영업이익</th>
+              <th class="r">순이익</th>
+              <th class="r">영업이익률</th>
+              <th class="r">순이익률</th>
+              <th class="r">ROE</th>
+              <th class="r">ROA</th>
+              <th class="r">부채비율</th>
+              <th class="r">EPS</th>
+              <th class="r">FCF</th>
             </tr>
           </thead>
           <tbody id="financial-table-body"></tbody>
@@ -420,20 +473,20 @@
         <span class="section-meta" id="consensus-meta">DB 저장 기준 최신 데이터</span>
       </div>
       <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+        <table class="stock-data-table" id="consensus-table">
           <thead>
-            <tr style="border-bottom:1px solid #334155;color:#94a3b8;text-align:left;">
-              <th style="padding:8px 10px;">티커</th>
-              <th style="padding:8px 10px;">종목명</th>
-              <th style="padding:8px 10px;">시장</th>
-              <th style="padding:8px 10px;text-align:right;">목표주가(평균)</th>
-              <th style="padding:8px 10px;text-align:right;">목표범위</th>
-              <th style="padding:8px 10px;">투자의견</th>
-              <th style="padding:8px 10px;text-align:right;">애널리스트</th>
-              <th style="padding:8px 10px;text-align:right;">Fwd EPS</th>
-              <th style="padding:8px 10px;text-align:right;">Fwd PER</th>
-              <th style="padding:8px 10px;">출처</th>
-              <th style="padding:8px 10px;">기준일</th>
+            <tr>
+              <th>티커</th>
+              <th>종목명</th>
+              <th>시장</th>
+              <th class="r">목표주가(평균)</th>
+              <th class="r">목표범위</th>
+              <th>투자의견</th>
+              <th class="r">애널리스트</th>
+              <th class="r">Fwd EPS</th>
+              <th class="r">Fwd PER</th>
+              <th>출처</th>
+              <th>기준일</th>
             </tr>
           </thead>
           <tbody id="consensus-table-body"></tbody>
@@ -443,6 +496,8 @@
         저장된 컨센서스 데이터가 없습니다. <code>python scripts/sync_stock_consensus.py</code>를 실행하세요.
       </p>
     </section>
+
+    </div><!-- /tab-stocks -->
   </div>
 
 <script>
@@ -2086,6 +2141,66 @@ function buildStockRows() {
   const stockBuyNow = document.getElementById('stock-buy-now-summary');
   if (stockBuyNow) stockBuyNow.textContent = stockOut.summary;
 
+  // ── 탭 전환 ──────────────────────────────────────────────────
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('tab-active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('tab-active'));
+      btn.classList.add('tab-active');
+      btn.setAttribute('aria-selected', 'true');
+      const pane = document.getElementById('tab-' + btn.dataset.tab);
+      if (pane) pane.classList.add('tab-active');
+      // URL hash 저장
+      history.replaceState(null, '', '#' + btn.dataset.tab);
+    });
+  });
+  // 페이지 로드 시 hash 복원
+  (function restoreTab() {
+    const hash = location.hash.replace('#', '');
+    if (hash && document.getElementById('tab-' + hash)) {
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        const active = b.dataset.tab === hash;
+        b.classList.toggle('tab-active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('tab-active'));
+      document.getElementById('tab-' + hash).classList.add('tab-active');
+    }
+  })();
+
+  // ── 종목 탭 필터 ─────────────────────────────────────────────
+  function filterStockTables() {
+    const q = (document.getElementById('stock-search').value || '').toLowerCase();
+    const mkt = (document.getElementById('stock-market-filter').value || '').toUpperCase();
+    let visF = 0, visC = 0;
+
+    function filterRows(tbodyId) {
+      let vis = 0;
+      const tbody = document.getElementById(tbodyId);
+      if (!tbody) return 0;
+      Array.from(tbody.rows).forEach(row => {
+        const ticker = (row.cells[0] && row.cells[0].textContent || '').toLowerCase();
+        const name = (row.cells[1] && row.cells[1].textContent || '').toLowerCase();
+        const rowMkt = (row.dataset.market || '').toUpperCase();
+        const matchQ = !q || ticker.includes(q) || name.includes(q);
+        const matchM = !mkt || rowMkt === mkt;
+        const show = matchQ && matchM;
+        row.style.display = show ? '' : 'none';
+        if (show) vis++;
+      });
+      return vis;
+    }
+
+    visF = filterRows('financial-table-body');
+    visC = filterRows('consensus-table-body');
+
+    const countEl = document.getElementById('stock-tab-count');
+    if (countEl) countEl.textContent = `재무 ${visF}종목 · 컨센서스 ${visC}종목`;
+  }
+
   // ── 재무성과 테이블 렌더링 ───────────────────────────────────
   (function renderFinancialTable() {
     const rows = safeArr(data.financial_metrics);
@@ -2127,20 +2242,20 @@ function buildStockRows() {
         ? '<span style="background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px;">KR</span>'
         : '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px;">US</span>';
       const period = (r.business_year || '-') + (r.period_type ? ` (${r.period_type})` : '');
-      return `<tr style="border-bottom:1px solid rgba(51,65,85,0.5);">
-        <td style="padding:8px 10px;font-weight:700;">${escapeHtml(r.ticker || '')}</td>
-        <td style="padding:8px 10px;">${mktBadge}</td>
-        <td style="padding:8px 10px;font-size:12px;color:#94a3b8;">${escapeHtml(period)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.revenue, cur)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.operating_income, cur)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.net_income, cur)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.operating_margin)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.net_margin)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.roe)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.roa)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtPct(r.debt_ratio)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtEps(r.eps_diluted ?? r.eps_basic, cur)}</td>
-        <td style="padding:8px 10px;text-align:right;">${fmtVal(r.free_cashflow, cur)}</td>
+      return `<tr data-market="${escapeHtml(cur === 'KRW' ? 'KR' : 'US')}">
+        <td style="font-weight:700;">${escapeHtml(r.ticker || '')}</td>
+        <td>${mktBadge}</td>
+        <td style="font-size:12px;color:#94a3b8;">${escapeHtml(period)}</td>
+        <td class="r">${fmtVal(r.revenue, cur)}</td>
+        <td class="r">${fmtVal(r.operating_income, cur)}</td>
+        <td class="r">${fmtVal(r.net_income, cur)}</td>
+        <td class="r">${fmtPct(r.operating_margin)}</td>
+        <td class="r">${fmtPct(r.net_margin)}</td>
+        <td class="r">${fmtPct(r.roe)}</td>
+        <td class="r">${fmtPct(r.roa)}</td>
+        <td class="r">${fmtPct(r.debt_ratio)}</td>
+        <td class="r">${fmtEps(r.eps_diluted ?? r.eps_basic, cur)}</td>
+        <td class="r">${fmtVal(r.free_cashflow, cur)}</td>
       </tr>`;
     }).join('');
     tbody.innerHTML = html;
@@ -2198,24 +2313,27 @@ function buildStockRows() {
       const mktBadge = r.market === 'KR'
         ? '<span style="background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px;">KR</span>'
         : '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px;">US</span>';
-      return `<tr style="border-bottom:1px solid rgba(51,65,85,0.5);">
-        <td style="padding:8px 10px;font-weight:700;">${escapeHtml(r.ticker || '')}</td>
-        <td style="padding:8px 10px;color:#cbd5e1;">${escapeHtml((r.company_name || '').slice(0, 18))}</td>
-        <td style="padding:8px 10px;">${mktBadge}</td>
-        <td style="padding:8px 10px;text-align:right;font-weight:600;">${tp}</td>
-        <td style="padding:8px 10px;text-align:right;font-size:12px;color:#94a3b8;">${range}</td>
-        <td style="padding:8px 10px;" class="${escapeHtml(cls)}">${rec}</td>
-        <td style="padding:8px 10px;text-align:right;">${analysts}</td>
-        <td style="padding:8px 10px;text-align:right;">${fwdEps}</td>
-        <td style="padding:8px 10px;text-align:right;">${fwdPe}</td>
-        <td style="padding:8px 10px;font-size:11px;color:#64748b;">${escapeHtml(r.source || '-')}</td>
-        <td style="padding:8px 10px;font-size:11px;color:#64748b;">${escapeHtml(r.date || '-')}</td>
+      return `<tr data-market="${escapeHtml(r.market || '')}">
+        <td style="font-weight:700;">${escapeHtml(r.ticker || '')}</td>
+        <td style="color:#cbd5e1;">${escapeHtml((r.company_name || '').slice(0, 18))}</td>
+        <td>${mktBadge}</td>
+        <td class="r" style="font-weight:600;">${tp}</td>
+        <td class="r" style="font-size:12px;color:#94a3b8;">${range}</td>
+        <td class="${escapeHtml(cls)}">${rec}</td>
+        <td class="r">${analysts}</td>
+        <td class="r">${fwdEps}</td>
+        <td class="r">${fwdPe}</td>
+        <td style="font-size:11px;color:#64748b;">${escapeHtml(r.source || '-')}</td>
+        <td style="font-size:11px;color:#64748b;">${escapeHtml(r.date || '-')}</td>
       </tr>`;
     }).join('');
     tbody.innerHTML = html;
     const meta = document.getElementById('consensus-meta');
     if (meta) meta.textContent = `${rows.length}개 종목 · 최신 저장 기준`;
   })();
+
+  // 초기 카운트 표시
+  filterStockTables();
 })();
 </script>
 </body>
