@@ -1,23 +1,23 @@
 {
-  "crawled_at": "2026-05-09T19:42:38.121334+00:00",
+  "crawled_at": "2026-05-09T20:42:38.913297+00:00",
   "news_date": "2026-05-10",
-  "total_collected": 11,
+  "total_collected": 14,
   "topic_counts": [
     [
       "금리/연준",
-      1
-    ],
-    [
-      "반도체/AI",
-      1
+      2
     ],
     [
       "경기/성장",
       2
     ],
     [
-      "인플레이션",
+      "국내지수",
       1
+    ],
+    [
+      "인플레이션",
+      3
     ],
     [
       "2차전지/전기차",
@@ -27,22 +27,11 @@
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 1,
+      "count": 2,
       "title": "[머니랩]파월의 마지막 FOMC 될까 …이란 전쟁 이후 금리 향방에 쏠리는 눈 - 중앙일보",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1YZjR0cTBnU2d5Sk1Cd09FVWVUeVlBMDZYWGt3WkgwaG9xX3RQRmFkZWlFUVhfSTI4ODZGaWo3TTNxWWtHN2dyb2FiN1pyRC1Bb2UxY2hoMWhLUXF4d0FCbWpR?oc=5",
       "summary_lines": [
         "핵심 이슈: [머니랩]파월의 마지막 FOMC 될까 …이란 전쟁 이후 금리 향방에 쏠리는 눈 - 중앙일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "반도체/AI",
-      "count": 1,
-      "title": "삼성·SK, 지금 팔아야 하나… 반도체 전쟁 4대 전선의 '진짜 경고' - 글로벌이코노믹",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNLUFmSkRncDIzQ0I1WUlFd19aSDQtM3FYb0FLcFFfUEwwRk1uVU5SRGFER0FZNWRFNXlaR0g5RmdJSWR0X01UdW0wa3JkVjM0eHZTUlpvcVlVNzM2Yk12SHRxSVVaTXd5aXFnbjk3QUQ4T1dpVWN6WGN1TWpTdGtDdXNDNnJFMjJk?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 삼성·SK, 지금 팔아야 하나… 반도체 전쟁 4대 전선의 '진짜 경고' - 글로벌이코노믹",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -59,8 +48,19 @@
       ]
     },
     {
-      "topic": "인플레이션",
+      "topic": "국내지수",
       "count": 1,
+      "title": "7천 넘은 코스피...'반도체 쏠림장'에 '빚투' 경고도 - YTN",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB4amxWY0ZqcWs1ZHU3U05DNzRfWVRaamZvWkxHWVE3U1REYkVzVHd0VUhHRXU5YWVmMEpCTDFvbV9OV1RubjZaRGdlbTV1dnl5VnB4Q2doZ094T1d2a0E?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 7천 넘은 코스피...'반도체 쏠림장'에 '빚투' 경고도 - YTN",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "인플레이션",
+      "count": 3,
       "title": "[주간 월가 레이더] CPI·트럼프-시진핑 회담…랠리의 다음 시험대 - 포커스온경제",
       "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9rbndWS3pLUFc0VEVOS0hncHJYR0hUMFh3M0hCNmlYcVFaR0JuR1BzUFpOamswR2M4eHF2N1B1TzBoS0xjOG9qanBOeTFSQ0pkM2t1OVhYeDFETzAyU2c?oc=5",
       "summary_lines": [
@@ -84,25 +84,25 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 4,
+      "total_count": 7,
       "topics": [
+        {
+          "topic": "인플레이션",
+          "count": 3,
+          "title": "[주간 월가 레이더] CPI·트럼프-시진핑 회담…랠리의 다음 시험대 - 포커스온경제",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9rbndWS3pLUFc0VEVOS0hncHJYR0hUMFh3M0hCNmlYcVFaR0JuR1BzUFpOamswR2M4eHF2N1B1TzBoS0xjOG9qanBOeTFSQ0pkM2t1OVhYeDFETzAyU2c?oc=5"
+        },
+        {
+          "topic": "금리/연준",
+          "count": 2,
+          "title": "[머니랩]파월의 마지막 FOMC 될까 …이란 전쟁 이후 금리 향방에 쏠리는 눈 - 중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1YZjR0cTBnU2d5Sk1Cd09FVWVUeVlBMDZYWGt3WkgwaG9xX3RQRmFkZWlFUVhfSTI4ODZGaWo3TTNxWWtHN2dyb2FiN1pyRC1Bb2UxY2hoMWhLUXF4d0FCbWpR?oc=5"
+        },
         {
           "topic": "경기/성장",
           "count": 2,
           "title": "트럼프 관세, 미국 경제에 득보다 실…가구당 세금 700달러·GDP 0.3% 감소 경고 - 브랜드경제신문",
           "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE5pNVAzZHpDWkNlcng5M1ZweEpPbG90R0hTM3VtcDB5MmtrZm5qdGdIeTRsSTR5NTNiUURfUml1RjFaZTU1bjl0V3ducGg?oc=5"
-        },
-        {
-          "topic": "금리/연준",
-          "count": 1,
-          "title": "[머니랩]파월의 마지막 FOMC 될까 …이란 전쟁 이후 금리 향방에 쏠리는 눈 - 중앙일보",
-          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1YZjR0cTBnU2d5Sk1Cd09FVWVUeVlBMDZYWGt3WkgwaG9xX3RQRmFkZWlFUVhfSTI4ODZGaWo3TTNxWWtHN2dyb2FiN1pyRC1Bb2UxY2hoMWhLUXF4d0FCbWpR?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 1,
-          "title": "[주간 월가 레이더] CPI·트럼프-시진핑 회담…랠리의 다음 시험대 - 포커스온경제",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9rbndWS3pLUFc0VEVOS0hncHJYR0hUMFh3M0hCNmlYcVFaR0JuR1BzUFpOamswR2M4eHF2N1B1TzBoS0xjOG9qanBOeTFSQ0pkM2t1OVhYeDFETzAyU2c?oc=5"
         }
       ]
     },
@@ -119,14 +119,14 @@
       ]
     },
     {
-      "sector": "IT/반도체",
+      "sector": "지수/시장",
       "total_count": 1,
       "topics": [
         {
-          "topic": "반도체/AI",
+          "topic": "국내지수",
           "count": 1,
-          "title": "삼성·SK, 지금 팔아야 하나… 반도체 전쟁 4대 전선의 '진짜 경고' - 글로벌이코노믹",
-          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNLUFmSkRncDIzQ0I1WUlFd19aSDQtM3FYb0FLcFFfUEwwRk1uVU5SRGFER0FZNWRFNXlaR0g5RmdJSWR0X01UdW0wa3JkVjM0eHZTUlpvcVlVNzM2Yk12SHRxSVVaTXd5aXFnbjk3QUQ4T1dpVWN6WGN1TWpTdGtDdXNDNnJFMjJk?oc=5"
+          "title": "7천 넘은 코스피...'반도체 쏠림장'에 '빚투' 경고도 - YTN",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFB4amxWY0ZqcWs1ZHU3U05DNzRfWVRaamZvWkxHWVE3U1REYkVzVHd0VUhHRXU5YWVmMEpCTDFvbV9OV1RubjZaRGdlbTV1dnl5VnB4Q2doZ094T1d2a0E?oc=5"
         }
       ]
     }
