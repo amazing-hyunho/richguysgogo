@@ -69,10 +69,12 @@ API 키 발급 링크:
 
 ---
 
-### 📦 한방 전체 동기화
+### 📦 매일 실행 (`sync_all.py`) — 약 5~15분
+
+시장 지수 · 매크로 · 수급 · 워치리스트 컨센서스 · US 재무제표 · 대시보드 빌드
 
 ```bash
-# 기본: 시장지수 + 매크로 + 수급 + 컨센서스(워치리스트) + US재무제표 + 대시보드
+# 기본 (매일 권장)
 python scripts/sync_all.py
 
 # 빠른 모드 (시장/매크로/수급만, ~5분)
@@ -83,7 +85,50 @@ python scripts/sync_all.py --with-kr-financials --year 2024
 
 # KR 분기보고서까지
 python scripts/sync_all.py --with-kr-financials --year 2024 --quarterly
+
+# FRED 매크로 전체 재백필 (최초 1회)
+python scripts/sync_all.py --backfill-macro-all
 ```
+
+---
+
+### 🗓️ 주간 실행 (`sync_weekly.py`) — 약 2~4시간
+
+종목 마스터 갱신 · 전체 종목 컨센서스 · US 재무제표 · 대시보드 빌드  
+매주 1~2회 실행 권장 (종목 데이터가 빠르게 바뀌지 않으므로 매일 불필요)
+
+```bash
+# 기본 (KR 전체 종목 컨센서스 + 마스터 갱신, 주 1회 권장)
+python scripts/sync_weekly.py
+
+# 빠른 모드: 상위 300종목만 (~30분)
+python scripts/sync_weekly.py --top 300
+
+# 중단 후 재시작
+python scripts/sync_weekly.py --resume
+
+# KR 재무제표 포함 (DART_API_KEY 필요, 추가 1~2시간)
+python scripts/sync_weekly.py --kr-financials --year 2024
+
+# 종목 마스터만 갱신 (빠름)
+python scripts/sync_weekly.py --master-only
+
+# FRED 매크로 전체 재백필 포함
+python scripts/sync_weekly.py --deep-macro
+
+# 종목 데이터 생략하고 마스터 + 매크로만
+python scripts/sync_weekly.py --skip-stocks
+```
+
+| 플래그 | 설명 |
+|---|---|
+| `--top N` | 상위 N종목만 컨센서스 수집 |
+| `--resume` | 오늘 수집된 종목 건너뜀 (재시작용) |
+| `--kr-financials` | KR 재무제표 수집 (DART_API_KEY 필요) |
+| `--skip-us-financials` | US 재무제표 건너뜀 |
+| `--master-only` | 종목 마스터 갱신만 |
+| `--deep-macro` | FRED 전체 재백필 |
+| `--skip-stocks` | 컨센서스·재무 생략 |
 
 ---
 

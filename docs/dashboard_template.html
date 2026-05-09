@@ -452,8 +452,8 @@
         </select>
         <select id="ticker-fin-filter" onchange="filterTickerDirectory()"
           style="padding:8px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:13px;">
+          <option value="has_fin" selected>재무제표 있음</option>
           <option value="">전체 종목</option>
-          <option value="has_fin">재무제표 있음</option>
         </select>
         <span id="ticker-directory-count" style="color:var(--text-muted);font-size:13px;white-space:nowrap;"></span>
       </div>
@@ -2245,7 +2245,15 @@ function buildStockRows() {
 
   // ── 재무성과 테이블 렌더링 ───────────────────────────────────
   (function renderFinancialTable() {
-    const rows = safeArr(data.financial_metrics);
+    // 최신 기간 1개만 (ticker별 dedup)
+    const allFin = safeArr(data.financial_metrics);
+    const seen = new Set();
+    const rows = allFin.filter(r => {
+      if (seen.has(r.ticker)) return false;
+      if (!r.revenue && !r.net_income && !r.operating_income) return false;
+      seen.add(r.ticker);
+      return true;
+    });
     const tbody = document.getElementById('financial-table-body');
     const emptyEl = document.getElementById('financial-empty');
     if (!tbody) return;
@@ -2307,7 +2315,10 @@ function buildStockRows() {
 
   // ── 애널리스트 컨센서스 테이블 렌더링 ────────────────────────
   (function renderConsensusTable() {
-    const rows = safeArr(data.stock_consensus);
+    // 실제 데이터 있는 것만 표시 (target_mean_price 또는 current_price 있는 것)
+    const rows = safeArr(data.stock_consensus).filter(r =>
+      r.target_mean_price != null || r.current_price != null || r.recommendation_key != null
+    );
     const tbody = document.getElementById('consensus-table-body');
     const emptyEl = document.getElementById('consensus-empty');
     if (!tbody) return;

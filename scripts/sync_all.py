@@ -24,7 +24,7 @@ import argparse
 import os
 import subprocess
 import sys
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -97,12 +97,17 @@ def main() -> None:
          "--days", "0" if args.backfill_macro_all else "7"],
     )
 
-    # ── 4. 수급 (외국인/기관/개인) ───────────────────────────────
+    # ── 4. 수급 (외국인/기관/개인) ── 최근 7일 누락분만 ────────
+    # 전체 백필은 sync_weekly.py 에서 수행.
+    # 여기선 최근 7일 범위에서 DB에 없는 날짜만 빠르게 채움.
+    _flow_start = (date.today() - timedelta(days=6)).isoformat()
     step(
-        "외국인/기관/개인 수급 (market_flow_daily)",
+        "외국인/기관/개인 수급 (market_flow_daily, 최근 7일 누락분)",
         [py, "scripts/backfill_market_flow_history.py",
-         "--start-date", f"{date.today().year - 2}-01-01",
-         "--end-date", date.today().isoformat()],
+         "--start-date", _flow_start,
+         "--end-date", date.today().isoformat(),
+         "--source", "NAVER",
+         "--skip-existing"],
     )
 
     # ── 5. 종목 컨센서스 ─────────────────────────────────────────

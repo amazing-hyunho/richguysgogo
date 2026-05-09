@@ -38,6 +38,10 @@ def _parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--sleep-ms", type=int, default=250, help="Sleep between dates.")
     parser.add_argument("--dry-run", action="store_true", help="Print updates without writing DB.")
+    parser.add_argument(
+        "--skip-existing", action="store_true",
+        help="이미 DB에 값이 있는 날짜는 API 호출 없이 건너뜀 (빠른 일별 실행용)",
+    )
     return parser.parse_args()
 
 
@@ -100,10 +104,24 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     try:
         now_iso = datetime.now(UTC).isoformat().replace("+00:00", "Z")
+
+        # --skip-existing: 이미 값이 있는 날짜 목록 미리 조회
+        existing_dates: set[str] = set()
+        if args.skip_existing:
+            rows = conn.execute(
+                "SELECT date FROM market_flow_daily "
+                "WHERE foreign_net IS NOT NULL OR institution_net IS NOT NULL"
+            ).fetchall()
+            existing_dates = {r[0] for r in rows}
+
         changed = 0
         missing = 0
+        skipped = 0
         for d in _iter_dates(start_d, end_d):
             ds = d.isoformat()
+            if ds in existing_dates:
+                skipped += 1
+                continue
             flow, reason = _fetch_flow(d, str(args.source))
             if flow is None:
                 foreign_net = None
@@ -150,6 +168,7 @@ def main() -> None:
             conn.commit()
         print(
             f"backfill_market_flow_done changed={changed} missing={missing} "
+            f"skipped={skipped} "
             f"range={start_d.isoformat()}..{end_d.isoformat()} dry_run={args.dry_run}"
         )
     finally:
