@@ -415,6 +415,22 @@ def load_financial_metrics_summary() -> list[dict[str, object]]:
         return []
 
 
+def load_ticker_master() -> list[dict[str, object]]:
+    """Load all tickers from ticker_master for the stock search directory."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        try:
+            rows = conn.execute(
+                "SELECT ticker, company_name, market, dart_corp_code FROM ticker_master ORDER BY ticker"
+            ).fetchall()
+            return [dict(row) for row in rows]
+        finally:
+            conn.close()
+    except Exception:
+        return []
+
+
 def load_stock_consensus_summary() -> list[dict[str, object]]:
     """Load most recent consensus per ticker from DB for dashboard display."""
     try:
@@ -478,6 +494,7 @@ def main() -> None:
             "latest_policy_rates": load_latest_policy_rates(),
             "stock_consensus": load_stock_consensus_summary(),
             "financial_metrics": load_financial_metrics_summary(),
+            "ticker_master": load_ticker_master(),
         }
     finally:
         conn.close()

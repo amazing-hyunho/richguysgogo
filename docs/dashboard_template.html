@@ -433,6 +433,42 @@
     </div>
 
     <!-- ── 재무성과 ───────────────────────────────────────────── -->
+    <!-- ── 종목 검색 디렉토리 ──────────────────────────────────── -->
+    <section class="section" id="sec-ticker-directory">
+      <div class="section-head">
+        <h2>🔍 종목 검색</h2>
+        <span class="section-meta" id="ticker-directory-meta">전체 상장 종목 디렉토리</span>
+      </div>
+      <div style="margin-bottom:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <input type="text" id="ticker-search-input" placeholder="종목코드 또는 종목명으로 검색..."
+          style="flex:1;min-width:200px;padding:8px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:14px;"
+          oninput="filterTickerDirectory()">
+        <select id="ticker-market-filter" onchange="filterTickerDirectory()"
+          style="padding:8px 12px;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--text);font-size:13px;">
+          <option value="">전체 시장</option>
+          <option value="KR">KR</option>
+          <option value="KOSPI">KOSPI</option>
+          <option value="KOSDAQ">KOSDAQ</option>
+        </select>
+        <span id="ticker-directory-count" style="color:var(--text-muted);font-size:13px;white-space:nowrap;"></span>
+      </div>
+      <div style="overflow-x:auto;">
+        <table class="stock-data-table" id="ticker-directory-table">
+          <thead>
+            <tr>
+              <th>종목코드</th>
+              <th>종목명</th>
+              <th>시장</th>
+              <th>DART코드</th>
+              <th>액션</th>
+            </tr>
+          </thead>
+          <tbody id="ticker-directory-body"></tbody>
+        </table>
+      </div>
+      <div id="ticker-directory-pagination" style="margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;"></div>
+    </section>
+
     <section class="section" id="sec-financial-metrics">
       <div class="section-head">
         <h2>📑 재무성과</h2>
@@ -2353,6 +2389,99 @@ function buildStockRows() {
 
   // 초기 카운트 표시
   filterStockTables();
+
+  // ── 종목 검색 디렉토리 ────────────────────────────────────────
+  (function() {
+    const allTickers = (data?.ticker_master || []);
+    const PAGE_SIZE = 50;
+    let filtered = [...allTickers];
+    let currentPage = 1;
+
+    function renderPage() {
+      const tbody = document.getElementById('ticker-directory-body');
+      const countEl = document.getElementById('ticker-directory-count');
+      if (!tbody) return;
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageItems = filtered.slice(start, start + PAGE_SIZE);
+
+      tbody.innerHTML = pageItems.map(r => {
+        const mktBadge = (r.market || '').includes('KOSPI')
+          ? '<span class="mkt-badge-kr">KOSPI</span>'
+          : (r.market || '').includes('KOSDAQ')
+          ? '<span style="background:rgba(167,139,250,0.15);color:#c4b5fd;border-radius:4px;padding:2px 6px;font-size:11px;">KOSDAQ</span>'
+          : `<span style="background:rgba(100,116,139,0.15);color:#94a3b8;border-radius:4px;padding:2px 6px;font-size:11px;">${escapeHtml(r.market||'KR')}</span>`;
+        const dart = r.dart_corp_code
+          ? `<span style="font-size:11px;color:#64748b;">${escapeHtml(r.dart_corp_code)}</span>`
+          : '<span style="color:#334155">-</span>';
+        const syncBtn = `<button onclick="syncTicker('${escapeHtml(r.ticker)}')"
+          style="font-size:11px;padding:2px 8px;background:rgba(56,189,248,0.1);color:#7dd3fc;border:1px solid rgba(56,189,248,0.2);border-radius:4px;cursor:pointer;">
+          컨센서스</button>`;
+        return `<tr data-ticker="${escapeHtml(r.ticker)}" data-name="${escapeHtml(r.company_name||'')}" data-market="${escapeHtml(r.market||'')}">
+          <td style="font-weight:700;font-family:monospace;">${escapeHtml(r.ticker)}</td>
+          <td>${escapeHtml(r.company_name || '-')}</td>
+          <td>${mktBadge}</td>
+          <td>${dart}</td>
+          <td>${syncBtn}</td>
+        </tr>`;
+      }).join('');
+
+      if (countEl) countEl.textContent = `${filtered.length.toLocaleString()}개 종목 (${currentPage}/${Math.ceil(filtered.length/PAGE_SIZE) || 1} 페이지)`;
+      renderPagination();
+    }
+
+    function renderPagination() {
+      const el = document.getElementById('ticker-directory-pagination');
+      if (!el) return;
+      const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+      const pages = [];
+
+      const btn = (label, page, disabled) =>
+        `<button onclick="tickerGoPage(${page})" ${disabled ? 'disabled' : ''}
+          style="padding:4px 10px;background:${page===currentPage?'rgba(56,189,248,0.2)':'var(--panel)'};
+          color:${page===currentPage?'#7dd3fc':'var(--text-muted)'};
+          border:1px solid var(--line);border-radius:6px;cursor:${disabled?'default':'pointer'};font-size:12px;">
+          ${label}</button>`;
+
+      pages.push(btn('◀', currentPage - 1, currentPage <= 1));
+      const start = Math.max(1, currentPage - 2);
+      const end = Math.min(totalPages, currentPage + 2);
+      for (let p = start; p <= end; p++) pages.push(btn(p, p, false));
+      pages.push(btn('▶', currentPage + 1, currentPage >= totalPages));
+
+      el.innerHTML = pages.join('');
+    }
+
+    window.tickerGoPage = function(page) {
+      const totalPages = Math.ceil(filtered.length / PAGE_SIZE) || 1;
+      currentPage = Math.max(1, Math.min(page, totalPages));
+      renderPage();
+    };
+
+    window.filterTickerDirectory = function() {
+      const q = (document.getElementById('ticker-search-input')?.value || '').toLowerCase();
+      const mkt = (document.getElementById('ticker-market-filter')?.value || '').toUpperCase();
+      filtered = allTickers.filter(r => {
+        const matchQ = !q ||
+          (r.ticker || '').toLowerCase().includes(q) ||
+          (r.company_name || '').toLowerCase().includes(q);
+        const matchM = !mkt || (r.market || '').toUpperCase().includes(mkt);
+        return matchQ && matchM;
+      });
+      currentPage = 1;
+      renderPage();
+    };
+
+    // 컨센서스 수집 안내 (실제 실행은 서버 필요, 여기선 안내만)
+    window.syncTicker = function(ticker) {
+      alert(`터미널에서 실행:\npython scripts/sync_stock_consensus.py --tickers ${ticker}`);
+    };
+
+    const metaEl = document.getElementById('ticker-directory-meta');
+    if (metaEl) metaEl.textContent = `${allTickers.length.toLocaleString()}개 상장 종목`;
+
+    renderPage();
+  })();
 })();
 </script>
 </body>

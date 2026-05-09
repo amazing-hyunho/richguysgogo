@@ -9,8 +9,17 @@ import requests
 
 _KRX_JSON_URL = "https://data.krx.co.kr/comm/bldAttendant/getJsonData.cmd"
 _HEADERS = {
-    "User-Agent": "DailyAIInvestmentCommittee/1.0",
-    "Referer": "https://data.krx.co.kr/",
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/124.0.0.0 Safari/537.36"
+    ),
+    "Referer": "https://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd",
+    "Origin": "https://data.krx.co.kr",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "Accept": "application/json, text/javascript, */*; q=0.01",
+    "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+    "X-Requested-With": "XMLHttpRequest",
 }
 
 
@@ -63,56 +72,116 @@ def _request_krx_rows(*, bld: str, params: dict[str, Any], session: requests.Ses
     return []
 
 
-def fetch_stock_master() -> list[dict[str, Any]]:
-    """Fetch KRX listed stock master rows mapped to ticker_master schema."""
-    session = requests.Session()
-    markets = ("STK", "KSQ", "KNX")
-    bld_candidates = (
-        "dbms/MDC/STAT/standard/MDCSTAT01901",
-        "dbms/MDC/STAT/standard/MDCSTAT00601",
-    )
+_KRX_OTP_URL = "http://data.krx.co.kr/comm/fileDn/GenerateOTP/generate.cmd"
+_KRX_CSV_URL = "http://data.krx.co.kr/comm/fileDn/download_csv.cmd"
+_KRX_OTP_HEADERS = {
+    "User-Agent": _HEADERS["User-Agent"],
+    "Referer": "https://data.krx.co.kr/contents/MDC/MDI/mdiLoader/index.cmd",
+}
 
+
+def _fetch_krx_listing_csv(mkt_id: str) -> list[dict[str, Any]]:
+    """KRX OTP 방식으로 상장종목 CSV 다운로드.
+
+    data.krx.co.kr JSON API는 브라우저 쿠키 없으면 403이지만,
+    OTP→CSV 다운로드 경로는 쿠키 없이도 동작한다.
+    """
+    import csv
+    import io
+
+    # 1단계: OTP 발급
+    try:
+        otp_resp = requests.post(
+            _KRX_OTP_URL,
+            headers=_KRX_OTP_HEADERS,
+            data={
+                "locale": "ko_KR",
+                "mktId": mkt_id,
+                "share": "1",
+                "money": "1",
+                "csvxls_isNo": "false",
+                "name": "fileDown",
+                "url": "dbms/MDC/STAT/standard/MDCSTAT01901",
+            },
+            timeout=15,
+        )
+        otp_resp.raise_for_status()
+        otp = otp_resp.text.strip()
+        if not otp:
+            print(f"krx_otp_empty[{mkt_id}]")
+            return []
+    except Exception as exc:
+        print(f"krx_otp_error[{mkt_id}]: {exc}")
+        return []
+
+    # 2단계: CSV 다운로드
+    try:
+        csv_resp = requests.post(
+            _KRX_CSV_URL,
+            headers=_KRX_OTP_HEADERS,
+            data={"code": otp},
+            timeout=30,
+        )
+        csv_resp.raise_for_status()
+        # EUC-KR 또는 UTF-8-sig 인코딩 시도
+        for enc in ("utf-8-sig", "euc-kr", "cp949"):
+            try:
+                text = csv_resp.content.decode(enc)
+                break
+            except UnicodeDecodeError:
+                continue
+        else:
+            print(f"krx_csv_decode_error[{mkt_id}]")
+            return []
+    except Exception as exc:
+        print(f"krx_csv_error[{mkt_id}]: {exc}")
+        return []
+
+    rows: list[dict[str, Any]] = []
+    reader = csv.DictReader(io.StringIO(text))
+    for row in reader:
+        rows.append(dict(row))
+    return rows
+
+
+def fetch_stock_master() -> list[dict[str, Any]]:
+    """KRX 전종목 마스터 수집 (OTP→CSV 방식, 쿠키 불필요)."""
+    market_map = {
+        "STK": "KOSPI",
+        "KSQ": "KOSDAQ",
+        "KNX": "KONEX",
+    }
     normalized: list[dict[str, Any]] = []
     seen: set[str] = set()
 
-    for market in markets:
-        rows: list[dict[str, Any]] = []
-        for bld in bld_candidates:
-            try:
-                rows = _request_krx_rows(
-                    bld=bld,
-                    params={"mktId": market, "share": "1", "money": "1"},
-                    session=session,
-                )
-                if rows:
-                    break
-            except requests.RequestException as exc:
-                print(f"krx_stock_master_http_error[{market}][{bld}]: {exc}")
-            except Exception as exc:  # noqa: BLE001
-                print(f"krx_stock_master_parse_error[{market}][{bld}]: {exc}")
-
+    for mkt_id, market_name in market_map.items():
+        rows = _fetch_krx_listing_csv(mkt_id)
         if not rows:
-            print(f"krx_stock_master_empty[{market}]")
+            print(f"krx_stock_master_empty[{mkt_id}]")
             continue
 
+        count = 0
         for row in rows:
-            ticker_raw = _first(row, ["ISU_SRT_CD", "종목코드", "short_code", "isu_cd"])
-            ticker = (_clean_text(ticker_raw) or "").upper()
-            if not ticker:
-                continue
-            if ticker in seen:
+            ticker_raw = _first(row, ["단축코드", "ISU_SRT_CD", "종목코드", "Symbol"])
+            ticker = (_clean_text(ticker_raw) or "").strip().zfill(6)
+            if not ticker or ticker == "000000" or ticker in seen:
                 continue
             seen.add(ticker)
-
+            count += 1
             normalized.append(
                 {
                     "ticker": ticker,
-                    "company_name": _clean_text(_first(row, ["ISU_ABBRV", "종목명", "한글 종목약명", "corp_name"])),
-                    "market": _clean_text(_first(row, ["MKT_NM", "시장구분", "market", "mkt_nm"])) or market,
-                    "isin": _clean_text(_first(row, ["ISU_CD", "표준코드", "isin"])),
+                    "company_name": _clean_text(
+                        _first(row, ["한글 종목약명", "종목명", "ISU_ABBRV", "Name"])
+                    ),
+                    "market": market_name,
+                    "isin": _clean_text(
+                        _first(row, ["표준코드", "ISU_CD", "ISIN"])
+                    ),
                     "dart_corp_code": None,
                 }
             )
+        print(f"krx_stock_master_ok[{mkt_id}={market_name}] count={count}")
 
     return normalized
 
@@ -123,6 +192,7 @@ def fetch_daily_prices(trade_date: str) -> list[dict[str, Any]]:
     iso_date = f"{ymd[:4]}-{ymd[4:6]}-{ymd[6:8]}"
 
     session = requests.Session()
+    _init_krx_session(session)
     markets = ("STK", "KSQ", "KNX")
     bld_candidates = (
         "dbms/MDC/STAT/standard/MDCSTAT01501",
