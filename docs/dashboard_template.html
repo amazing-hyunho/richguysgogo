@@ -478,21 +478,23 @@
         <h2>📑 재무성과</h2>
         <span class="section-meta" id="financial-meta">DB 저장 기준 최신 연간 데이터</span>
       </div>
-      <div style="overflow-x:auto;">
-        <table class="stock-data-table" id="financial-table">
-          <thead>
+      <div style="overflow-x:auto;max-height:520px;overflow-y:auto;border:1px solid var(--line);border-radius:10px;">
+        <table class="stock-data-table" id="financial-table" style="min-width:900px;">
+          <thead style="position:sticky;top:0;z-index:2;background:var(--card);">
             <tr>
               <th>티커</th>
+              <th>종목명</th>
               <th>시장</th>
               <th>기간</th>
+              <th class="r" title="종합점수 (영업이익률·ROE·ROA 가중합산)" style="cursor:pointer;">점수 ▼</th>
+              <th class="r">영업이익률</th>
+              <th class="r">ROE</th>
+              <th class="r">ROA</th>
+              <th class="r">순이익률</th>
+              <th class="r">부채비율</th>
               <th class="r">매출</th>
               <th class="r">영업이익</th>
               <th class="r">순이익</th>
-              <th class="r">영업이익률</th>
-              <th class="r">순이익률</th>
-              <th class="r">ROE</th>
-              <th class="r">ROA</th>
-              <th class="r">부채비율</th>
               <th class="r">EPS</th>
               <th class="r">FCF</th>
             </tr>
@@ -2245,15 +2247,24 @@ function buildStockRows() {
 
   // ── 재무성과 테이블 렌더링 ───────────────────────────────────
   (function renderFinancialTable() {
-    // 최신 기간 1개만 (ticker별 dedup)
+    // 최신 기간 1개만 (ticker별 dedup, annual 우선)
     const allFin = safeArr(data.financial_metrics);
     const seen = new Set();
-    const rows = allFin.filter(r => {
+    // annual 우선 정렬 → ticker 중복 제거
+    const sorted = [...allFin].sort((a, b) => {
+      if (a.ticker < b.ticker) return -1;
+      if (a.ticker > b.ticker) return 1;
+      if ((a.period_type === 'annual') !== (b.period_type === 'annual'))
+        return a.period_type === 'annual' ? -1 : 1;
+      return (b.business_year || '').localeCompare(a.business_year || '');
+    });
+    const rows = sorted.filter(r => {
       if (seen.has(r.ticker)) return false;
       if (!r.revenue && !r.net_income && !r.operating_income) return false;
       seen.add(r.ticker);
       return true;
     });
+
     const tbody = document.getElementById('financial-table-body');
     const emptyEl = document.getElementById('financial-empty');
     if (!tbody) return;
@@ -2263,6 +2274,26 @@ function buildStockRows() {
     }
     if (emptyEl) emptyEl.style.display = 'none';
 
+    // ── 종합점수 계산 (긍정 지표 가중합산) ─────────────────────
+    // 영업이익률 35% + ROE 30% + ROA 20% + 순이익률 15% - 부채비율 패널티
+    function calcScore(r) {
+      let s = 0, w = 0;
+      if (r.operating_margin != null) { s += r.operating_margin * 0.35; w += 0.35; }
+      if (r.roe != null)              { s += r.roe              * 0.30; w += 0.30; }
+      if (r.roa != null)              { s += r.roa              * 0.20; w += 0.20; }
+      if (r.net_margin != null)       { s += r.net_margin       * 0.15; w += 0.15; }
+      // 부채비율 100% 초과분 패널티
+      if (r.debt_ratio != null && r.debt_ratio > 100) s -= (r.debt_ratio - 100) * 0.05;
+      return w > 0 ? s / w * (w / 1.0) : null;
+    }
+
+    // 점수순 정렬
+    rows.sort((a, b) => {
+      const sa = calcScore(a) ?? -9999;
+      const sb = calcScore(b) ?? -9999;
+      return sb - sa;
+    });
+
     function fmtVal(v, cur) {
       if (v === null || v === undefined) return '<span style="color:#475569">-</span>';
       if (cur === 'KRW') {
@@ -2270,15 +2301,22 @@ function buildStockRows() {
         if (Math.abs(v) >= 1e8) return Math.round(v / 1e8).toLocaleString() + '억';
         return v.toLocaleString();
       }
-      // USD in raw dollars from yfinance
       if (Math.abs(v) >= 1e9) return '$' + (v / 1e9).toFixed(1) + 'B';
       if (Math.abs(v) >= 1e6) return '$' + (v / 1e6).toFixed(0) + 'M';
       return '$' + v.toFixed(2);
     }
-    function fmtPct(v) {
+    function fmtPct(v, invertBad) {
       if (v === null || v === undefined) return '<span style="color:#475569">-</span>';
-      const cls = v > 0 ? 'pos' : v < 0 ? 'neg' : 'neu';
+      const cls = invertBad
+        ? (v < 60 ? 'pos' : v < 100 ? 'neu' : 'neg')   // 부채비율: 낮을수록 좋음
+        : (v > 15 ? 'pos' : v > 0 ? 'neu' : 'neg');
       return `<span class="${cls}">${v.toFixed(1)}%</span>`;
+    }
+    function fmtScore(r) {
+      const s = calcScore(r);
+      if (s === null) return '<span style="color:#475569">-</span>';
+      const cls = s > 20 ? 'pos' : s > 5 ? 'neu' : 'neg';
+      return `<span class="${cls}" style="font-weight:700;">${s.toFixed(1)}</span>`;
     }
     function fmtEps(v, cur) {
       if (v === null || v === undefined) return '<span style="color:#475569">-</span>';
@@ -2289,28 +2327,31 @@ function buildStockRows() {
     const html = rows.map(r => {
       const cur = r.currency || '';
       const mktBadge = cur === 'KRW'
-        ? '<span style="background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px;">KR</span>'
-        : '<span style="background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px;">US</span>';
+        ? '<span class="mkt-badge-kr">KR</span>'
+        : '<span class="mkt-badge-us">US</span>';
       const period = (r.business_year || '-') + (r.period_type ? ` (${r.period_type})` : '');
+      const name = r.name || '';
       return `<tr data-market="${escapeHtml(cur === 'KRW' ? 'KR' : 'US')}">
-        <td style="font-weight:700;">${escapeHtml(r.ticker || '')}</td>
+        <td style="font-weight:700;white-space:nowrap;">${escapeHtml(r.ticker || '')}</td>
+        <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#cbd5e1;" title="${escapeHtml(name)}">${escapeHtml(name)}</td>
         <td>${mktBadge}</td>
-        <td style="font-size:12px;color:#94a3b8;">${escapeHtml(period)}</td>
+        <td style="font-size:12px;color:#94a3b8;white-space:nowrap;">${escapeHtml(period)}</td>
+        <td class="r">${fmtScore(r)}</td>
+        <td class="r">${fmtPct(r.operating_margin)}</td>
+        <td class="r">${fmtPct(r.roe)}</td>
+        <td class="r">${fmtPct(r.roa)}</td>
+        <td class="r">${fmtPct(r.net_margin)}</td>
+        <td class="r">${fmtPct(r.debt_ratio, true)}</td>
         <td class="r">${fmtVal(r.revenue, cur)}</td>
         <td class="r">${fmtVal(r.operating_income, cur)}</td>
         <td class="r">${fmtVal(r.net_income, cur)}</td>
-        <td class="r">${fmtPct(r.operating_margin)}</td>
-        <td class="r">${fmtPct(r.net_margin)}</td>
-        <td class="r">${fmtPct(r.roe)}</td>
-        <td class="r">${fmtPct(r.roa)}</td>
-        <td class="r">${fmtPct(r.debt_ratio)}</td>
         <td class="r">${fmtEps(r.eps_diluted ?? r.eps_basic, cur)}</td>
         <td class="r">${fmtVal(r.free_cashflow, cur)}</td>
       </tr>`;
     }).join('');
     tbody.innerHTML = html;
     const meta = document.getElementById('financial-meta');
-    if (meta) meta.textContent = `${rows.length}개 종목 · 최신 기간 기준`;
+    if (meta) meta.textContent = `${rows.length}개 종목 · 점수순 정렬 · 최신 연간 기준`;
   })();
 
   // ── 애널리스트 컨센서스 테이블 렌더링 ────────────────────────

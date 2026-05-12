@@ -108,15 +108,19 @@ def _build_morning_brief(
     """간결한 아침 브리프: 시장 지수 + 수급 + 대시보드 링크만."""
     from datetime import date as _date
 
+    # DB 데이터를 항상 우선 사용 (snapshot은 DB에 값이 없을 때만 fallback)
     markets = snapshot.get("markets", {}) or {}
-    kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
-    us = (markets.get("us") or {}) if isinstance(markets, dict) else {}
-    fx = (markets.get("fx") or {}) if isinstance(markets, dict) else {}
+    snap_kr = (markets.get("kr") or {}) if isinstance(markets, dict) else {}
+    snap_us = (markets.get("us") or {}) if isinstance(markets, dict) else {}
+    snap_fx = (markets.get("fx") or {}) if isinstance(markets, dict) else {}
 
     if db_metrics:
-        kr = _merge_kr_with_fallback(kr, db_metrics.get("kr", {}))
-        us = _merge_non_null(us, db_metrics.get("us", {}))
-        fx = _merge_non_null(fx, db_metrics.get("fx", {}))
+        # DB가 primary, snapshot은 fallback
+        kr = _merge_non_null(snap_kr, db_metrics.get("kr", {}))
+        us = _merge_non_null(snap_us, db_metrics.get("us", {}))
+        fx = _merge_non_null(snap_fx, db_metrics.get("fx", {}))
+    else:
+        kr, us, fx = snap_kr, snap_us, snap_fx
 
     # 수급 데이터는 DB에서 직접
     flow = _load_latest_flow(ROOT_DIR / "data" / "investment.db")
@@ -128,13 +132,33 @@ def _build_morning_brief(
     lines.append("")
 
     # ── 시장 지수 ────────────────────────────────
+    daily = (db_metrics or {}).get("daily", {})
+
     lines.append("🌍 시장")
-    lines.append(f"  KOSPI   {_fmt_signed(kr.get('kospi_pct'), 2, '%')}")
-    lines.append(f"  KOSDAQ  {_fmt_signed(kr.get('kosdaq_pct'), 2, '%')}")
-    lines.append(f"  S&P500  {_fmt_signed(us.get('sp500_pct'), 2, '%')}")
-    lines.append(f"  NASDAQ  {_fmt_signed(us.get('nasdaq_pct'), 2, '%')}")
-    lines.append(f"  USD/KRW {_fmt(fx.get('usdkrw'), 1)}")
+    kospi_val  = db_metrics.get("kr", {}).get("kospi_pct")  if db_metrics else None
+    kosdaq_val = db_metrics.get("kr", {}).get("kosdaq_pct") if db_metrics else None
+    sp500_val  = db_metrics.get("us", {}).get("sp500_pct")  if db_metrics else None
+    nasdaq_val = db_metrics.get("us", {}).get("nasdaq_pct") if db_metrics else None
+    usdkrw_val = db_metrics.get("fx", {}).get("usdkrw")     if db_metrics else None
+    lines.append(f"  KOSPI   {_fmt_signed(kospi_val,  2, '%')}")
+    lines.append(f"  KOSDAQ  {_fmt_signed(kosdaq_val, 2, '%')}")
+    lines.append(f"  S&P500  {_fmt_signed(sp500_val,  2, '%')}")
+    lines.append(f"  NASDAQ  {_fmt_signed(nasdaq_val, 2, '%')}")
+    lines.append(f"  USD/KRW {_fmt(usdkrw_val, 1)}")
     lines.append("")
+
+    # ── 주요 매크로 지표 ──────────────────────────
+    vix     = daily.get("vix")
+    us10y   = daily.get("us10y")
+    dxy     = daily.get("dxy")
+    spread  = daily.get("spread_2_10")
+    if any(v is not None for v in [vix, us10y, dxy]):
+        lines.append("📈 매크로")
+        if vix    is not None: lines.append(f"  VIX      {_fmt(vix, 2)}")
+        if us10y  is not None: lines.append(f"  US10Y    {_fmt(us10y, 2, '%')}")
+        if dxy    is not None: lines.append(f"  DXY      {_fmt(dxy, 2)}")
+        if spread is not None: lines.append(f"  2s10s    {_fmt(spread, 2)}")
+        lines.append("")
 
     # ── 수급 ─────────────────────────────────────
     lines.append("💰 수급 (억원)")

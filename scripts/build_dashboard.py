@@ -389,16 +389,17 @@ def build_dashboard_html(data: dict[str, object]) -> str:
 
 
 def load_financial_metrics_summary() -> list[dict[str, object]]:
-    """Load all financial metric rows per ticker (all periods) for popup display."""
+    """Load all financial metric rows per ticker (all periods) for popup display, with company name."""
     try:
         conn = sqlite3.connect(DB_PATH)
         conn.row_factory = sqlite3.Row
         try:
             rows = conn.execute(
                 """
-                SELECT *
-                FROM financial_metric
-                ORDER BY ticker, business_year DESC, period_type
+                SELECT fm.*, COALESCE(tm.company_name, '') AS name
+                FROM financial_metric fm
+                LEFT JOIN ticker_master tm ON tm.ticker = fm.ticker
+                ORDER BY fm.ticker, fm.business_year DESC, fm.period_type
                 """
             ).fetchall()
             return [dict(row) for row in rows]
