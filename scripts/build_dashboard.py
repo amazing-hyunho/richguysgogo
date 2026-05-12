@@ -229,6 +229,37 @@ def load_latest_committee() -> dict[str, object]:
 
 
 
+def load_news_history(max_entries: int = 40) -> list[dict]:
+    """history.jsonl에서 최근 N개 뉴스 스냅샷을 로드 (최신순)."""
+    history_path = RUNS_DIR / "news" / "history.jsonl"
+    if not history_path.exists():
+        latest = load_latest_news_digest()
+        return [latest] if latest.get("top_articles") else []
+    try:
+        lines = history_path.read_text(encoding="utf-8").strip().splitlines()
+        recent = lines[-max_entries:] if len(lines) > max_entries else lines
+        entries = []
+        for line in reversed(recent):
+            try:
+                obj = json.loads(line)
+                if obj.get("top_articles"):
+                    entries.append(obj)
+            except Exception:
+                pass
+        # 최신 데이터도 latest_news_digest에서 추가 (중복 방지)
+        latest_path = RUNS_DIR / "news" / "latest_news_digest.json"
+        if latest_path.exists():
+            try:
+                latest = json.loads(latest_path.read_text(encoding="utf-8"))
+                if latest.get("top_articles") and (not entries or entries[0].get("crawled_at") != latest.get("crawled_at")):
+                    entries.insert(0, latest)
+            except Exception:
+                pass
+        return entries[:max_entries]
+    except Exception:
+        return []
+
+
 def load_latest_news_digest() -> dict[str, object]:
     digest_path = RUNS_DIR / "news" / "latest_news_digest.json"
     if not digest_path.exists():
@@ -483,6 +514,7 @@ def main() -> None:
             "meeting_handoff": load_handoff_context(),
             "latest_committee": load_latest_committee(),
             "latest_news_digest": load_latest_news_digest(),
+            "news_history": load_news_history(),
             "latest_korean_market_flow": load_latest_korean_market_flow_breakdown(),
             "korean_market_flow_compare": load_korean_market_flow_compare(),
             "latest_policy_rates": load_latest_policy_rates(),

@@ -221,6 +221,35 @@
     .stock-data-table tr:hover td { background: rgba(56,189,248,0.04); }
     .mkt-badge-kr { background:rgba(56,189,248,0.15);color:#7dd3fc;border-radius:4px;padding:2px 6px;font-size:11px; }
     .mkt-badge-us { background:rgba(245,158,11,0.15);color:#fcd34d;border-radius:4px;padding:2px 6px;font-size:11px; }
+    /* ── 뉴스 타임라인 ── */
+    .news-toolbar { display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:20px; }
+    .news-search { flex:1;min-width:180px;max-width:300px;padding:8px 14px;background:var(--bg);border:1px solid var(--line);border-radius:10px;color:var(--text);font-size:13px;outline:none; }
+    .news-search:focus { border-color:var(--blue); }
+    .topic-chip { padding:5px 12px;border-radius:20px;border:1px solid transparent;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;background:var(--panel);color:var(--muted); }
+    .topic-chip:hover { color:#e2e8f0;border-color:var(--line); }
+    .topic-chip.chip-active { color:#fff;border-color:transparent; }
+    .news-timeline { display:flex;flex-direction:column;gap:0; }
+    .news-day-block { margin-bottom:28px; }
+    .news-day-header { display:flex;align-items:center;gap:12px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--line); }
+    .news-day-dot { width:12px;height:12px;border-radius:50%;background:var(--blue);flex-shrink:0;box-shadow:0 0 0 3px rgba(56,189,248,0.15); }
+    .news-day-label { font-size:13px;font-weight:700;color:#94a3b8; }
+    .news-day-count { font-size:12px;color:#475569;margin-left:auto; }
+    .news-cards { display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px; }
+    .news-card { background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;transition:border-color 0.15s,transform 0.15s;display:flex;flex-direction:column;gap:8px; }
+    .news-card:hover { border-color:rgba(56,189,248,0.4);transform:translateY(-2px); }
+    .news-card-header { display:flex;align-items:center;gap:8px; }
+    .news-topic-badge { padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0; }
+    .news-card-title { font-size:14px;font-weight:600;color:#e2e8f0;line-height:1.45;text-decoration:none; }
+    .news-card-title:hover { color:var(--blue); }
+    .news-card-summary { font-size:12px;color:#64748b;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+    .news-empty { text-align:center;padding:60px 20px;color:#475569;font-size:14px; }
+    .news-stats { display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap; }
+    .news-stat-card { background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 18px;display:flex;flex-direction:column;gap:3px;min-width:120px; }
+    .news-stat-val { font-size:22px;font-weight:700;color:var(--blue); }
+    .news-stat-label { font-size:11px;color:#475569; }
+    .topic-heatmap { display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px; }
+    .heatmap-chip { padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:5px;cursor:pointer;transition:opacity 0.15s; }
+    .heatmap-chip:hover { opacity:0.8; }
   </style>
 </head>
 <body>
@@ -232,6 +261,7 @@
     <nav class="tab-nav" role="tablist">
       <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
+      <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
     </nav>
 
     <!-- ══ 탭 1: 시장 분석 ══════════════════════════════════════ -->
@@ -542,6 +572,37 @@
     </section>
 
     </div><!-- /tab-stocks -->
+
+    <!-- ══ 탭 3: 뉴스 타임라인 ══════════════════════════════════ -->
+    <div id="tab-news" class="tab-pane" role="tabpanel">
+      <section class="section">
+        <div class="section-head" style="margin-bottom:16px;">
+          <h2>📰 뉴스 타임라인</h2>
+          <span class="section-meta" id="news-meta"></span>
+        </div>
+
+        <!-- 통계 카드 -->
+        <div class="news-stats" id="news-stats"></div>
+
+        <!-- 토픽 히트맵 -->
+        <div class="topic-heatmap" id="news-heatmap"></div>
+
+        <!-- 검색 + 필터 -->
+        <div class="news-toolbar">
+          <input type="text" class="news-search" id="news-search-input"
+            placeholder="기사 제목 검색..." oninput="filterNews()" />
+          <div id="news-topic-chips" style="display:flex;flex-wrap:wrap;gap:6px;"></div>
+        </div>
+
+        <!-- 타임라인 -->
+        <div class="news-timeline" id="news-timeline"></div>
+        <div class="news-empty" id="news-empty" style="display:none;">
+          뉴스 데이터가 없습니다.<br>
+          <code style="font-size:12px;">python scripts/run_news_hourly.py</code> 를 실행하세요.
+        </div>
+      </section>
+    </div><!-- /tab-news -->
+
   </div>
 
 <script>
@@ -2619,6 +2680,220 @@ function buildStockRows() {
         </p>`;
       modal.style.display = 'block';
     };
+
+  // ══════════════════════════════════════════════════════════
+  // 뉴스 타임라인 렌더링
+  // ══════════════════════════════════════════════════════════
+  (function renderNewsTimeline() {
+    const history = safeArr(data.news_history);
+    const emptyEl = document.getElementById('news-empty');
+    const timelineEl = document.getElementById('news-timeline');
+    const metaEl = document.getElementById('news-meta');
+    if (!timelineEl) return;
+
+    if (!history.length) {
+      if (emptyEl) emptyEl.style.display = '';
+      return;
+    }
+
+    // ── 토픽 컬러 매핑 ────────────────────────────────────
+    const TOPIC_COLORS = {
+      '국내지수':   { bg:'rgba(125,211,252,0.18)', color:'#7dd3fc' },
+      '미국지수':   { bg:'rgba(192,132,252,0.18)', color:'#c084fc' },
+      '환율/달러':  { bg:'rgba(34,211,238,0.18)',  color:'#22d3ee' },
+      '금리/연준':  { bg:'rgba(129,140,248,0.18)', color:'#818cf8' },
+      '인플레이션': { bg:'rgba(245,158,11,0.18)',  color:'#fbbf24' },
+      '경기/성장':  { bg:'rgba(45,212,191,0.18)',  color:'#2dd4bf' },
+      '변동성/리스크':{ bg:'rgba(251,113,133,0.18)', color:'#fb7185' },
+      '반도체/AI':  { bg:'rgba(167,139,250,0.18)', color:'#a78bfa' },
+      '2차전지/전기차':{ bg:'rgba(251,191,36,0.18)', color:'#fcd34d' },
+      '바이오/헬스케어':{ bg:'rgba(244,114,182,0.18)', color:'#f472b6' },
+      '에너지/원자재':{ bg:'rgba(251,146,60,0.18)',  color:'#fb923c' },
+      '중국/신흥국': { bg:'rgba(248,113,113,0.18)', color:'#f87171' },
+      '정책/테마':  { bg:'rgba(148,163,184,0.18)', color:'#94a3b8' },
+    };
+    function getTopicStyle(topic) {
+      for (const [key, val] of Object.entries(TOPIC_COLORS)) {
+        if (topic && topic.includes(key.split('/')[0])) return val;
+      }
+      return { bg:'rgba(148,163,184,0.15)', color:'#94a3b8' };
+    }
+
+    // ── 전체 기사 플랫 리스트 (타임스탬프 포함) ────────────
+    let allArticles = [];
+    const topicTotalMap = {};
+    history.forEach(snap => {
+      const ts = snap.crawled_at || snap.news_date || '';
+      const dateLabel = ts.length >= 10 ? ts.slice(0, 10) : ts;
+      const timeLabel = ts.length >= 16 ? ts.slice(11, 16) : '';
+      (snap.top_articles || []).forEach(a => {
+        const topic = a.topic || '기타';
+        allArticles.push({
+          topic,
+          title: a.title || '',
+          link: a.link || '#',
+          summary: (a.summary_lines || []).filter(s => s && !s.startsWith('핵심 이슈:') && !s.includes('Google 뉴스') && !s.includes('원문 링크')).join(' '),
+          dateLabel,
+          timeLabel,
+          ts,
+          snapId: ts,
+        });
+        topicTotalMap[topic] = (topicTotalMap[topic] || 0) + 1;
+      });
+    });
+
+    // ── 통계 카드 ─────────────────────────────────────────
+    const statsEl = document.getElementById('news-stats');
+    if (statsEl) {
+      const latest = history[0] || {};
+      const totalSnaps = history.length;
+      const totalArts = allArticles.length;
+      const topTopic = Object.entries(topicTotalMap).sort((a,b)=>b[1]-a[1])[0];
+      statsEl.innerHTML = `
+        <div class="news-stat-card">
+          <span class="news-stat-val">${totalArts}</span>
+          <span class="news-stat-label">총 기사</span>
+        </div>
+        <div class="news-stat-card">
+          <span class="news-stat-val">${totalSnaps}</span>
+          <span class="news-stat-label">수집 회차</span>
+        </div>
+        <div class="news-stat-card">
+          <span class="news-stat-val">${latest.news_date || latest.crawled_at?.slice(0,10) || '-'}</span>
+          <span class="news-stat-label">최신 날짜</span>
+        </div>
+        <div class="news-stat-card">
+          <span class="news-stat-val" style="font-size:16px;">${topTopic ? topTopic[0] : '-'}</span>
+          <span class="news-stat-label">🔥 핫 토픽</span>
+        </div>`;
+    }
+
+    // ── 토픽 히트맵 ───────────────────────────────────────
+    const heatmapEl = document.getElementById('news-heatmap');
+    if (heatmapEl) {
+      const sorted = Object.entries(topicTotalMap).sort((a,b)=>b[1]-a[1]);
+      const max = sorted[0]?.[1] || 1;
+      heatmapEl.innerHTML = sorted.map(([topic, cnt]) => {
+        const style = getTopicStyle(topic);
+        const opacity = 0.4 + 0.6 * (cnt / max);
+        return `<div class="heatmap-chip" style="background:${style.bg};color:${style.color};opacity:${opacity.toFixed(2)}"
+          onclick="toggleTopicFilter('${topic.replace(/'/g,"\\'")}')">
+          ${escapeHtml(topic)} <span style="opacity:0.7">${cnt}</span>
+        </div>`;
+      }).join('');
+    }
+
+    // ── 토픽 필터 칩 ─────────────────────────────────────
+    const allTopics = [...new Set(allArticles.map(a => a.topic))].sort();
+    let activeTopics = new Set(); // 비어있으면 전체
+    const chipsEl = document.getElementById('news-topic-chips');
+    if (chipsEl) {
+      const allChip = `<button class="topic-chip chip-active" id="chip-all" onclick="clearTopicFilter()" style="background:rgba(56,189,248,0.15);color:#38bdf8;">전체</button>`;
+      const topicChips = allTopics.map(t => {
+        const s = getTopicStyle(t);
+        return `<button class="topic-chip" id="chip-${escapeHtml(t)}" onclick="toggleTopicFilter('${t.replace(/'/g,"\\'")}')"
+          style="background:${s.bg};color:${s.color};">${escapeHtml(t)}</button>`;
+      }).join('');
+      chipsEl.innerHTML = allChip + topicChips;
+    }
+
+    // ── 필터 함수 (전역) ──────────────────────────────────
+    window.activeNewsTopics = new Set();
+    window.toggleTopicFilter = function(topic) {
+      if (window.activeNewsTopics.has(topic)) {
+        window.activeNewsTopics.delete(topic);
+      } else {
+        window.activeNewsTopics.add(topic);
+      }
+      _updateChipStyles();
+      renderFilteredNews();
+    };
+    window.clearTopicFilter = function() {
+      window.activeNewsTopics.clear();
+      _updateChipStyles();
+      renderFilteredNews();
+    };
+    window.filterNews = function() { renderFilteredNews(); };
+    function _updateChipStyles() {
+      const allChip = document.getElementById('chip-all');
+      if (allChip) {
+        const isAll = window.activeNewsTopics.size === 0;
+        allChip.classList.toggle('chip-active', isAll);
+        allChip.style.background = isAll ? 'rgba(56,189,248,0.15)' : '';
+        allChip.style.color = isAll ? '#38bdf8' : '';
+      }
+      allTopics.forEach(t => {
+        const el = document.getElementById('chip-' + t);
+        if (!el) return;
+        const active = window.activeNewsTopics.has(t);
+        const s = getTopicStyle(t);
+        el.classList.toggle('chip-active', active);
+        el.style.background = active ? s.bg : '';
+        el.style.color = active ? s.color : '';
+        el.style.border = active ? `1px solid ${s.color}` : '';
+      });
+    }
+
+    // ── 타임라인 렌더 ────────────────────────────────────
+    function renderFilteredNews() {
+      const q = (document.getElementById('news-search-input')?.value || '').toLowerCase();
+      const filtered = allArticles.filter(a => {
+        if (window.activeNewsTopics.size > 0 && !window.activeNewsTopics.has(a.topic)) return false;
+        if (q && !a.title.toLowerCase().includes(q) && !a.topic.toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      if (!filtered.length) {
+        timelineEl.innerHTML = '';
+        if (emptyEl) emptyEl.style.display = '';
+        return;
+      }
+      if (emptyEl) emptyEl.style.display = 'none';
+
+      // 날짜별 그룹
+      const groups = new Map();
+      filtered.forEach(a => {
+        const key = a.dateLabel || '날짜 미상';
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(a);
+      });
+
+      timelineEl.innerHTML = [...groups.entries()].map(([date, arts]) => {
+        const cards = arts.map(a => {
+          const s = getTopicStyle(a.topic);
+          const summaryHtml = a.summary
+            ? `<div class="news-card-summary">${escapeHtml(a.summary)}</div>`
+            : '';
+          const timeHtml = a.timeLabel
+            ? `<span style="font-size:11px;color:#475569;margin-left:auto;">${escapeHtml(a.timeLabel)}</span>`
+            : '';
+          return `<div class="news-card">
+            <div class="news-card-header">
+              <span class="news-topic-badge" style="background:${s.bg};color:${s.color};">${escapeHtml(a.topic)}</span>
+              ${timeHtml}
+            </div>
+            <a href="${escapeHtml(a.link)}" target="_blank" rel="noopener" class="news-card-title">${escapeHtml(a.title)}</a>
+            ${summaryHtml}
+          </div>`;
+        }).join('');
+        return `<div class="news-day-block">
+          <div class="news-day-header">
+            <div class="news-day-dot"></div>
+            <span class="news-day-label">${escapeHtml(date)}</span>
+            <span class="news-day-count">${arts.length}건</span>
+          </div>
+          <div class="news-cards">${cards}</div>
+        </div>`;
+      }).join('');
+    }
+
+    renderFilteredNews();
+    if (metaEl) {
+      const latest = history[0];
+      const ts = latest?.crawled_at || latest?.news_date || '';
+      metaEl.textContent = ts ? `최신 수집: ${ts.slice(0,16).replace('T',' ')}` : '';
+    }
+  })();
 
     window.closeFinModal = function(e) {
       if (e.target === document.getElementById('fin-modal')) {
