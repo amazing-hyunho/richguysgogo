@@ -1,15 +1,19 @@
 {
-  "crawled_at": "2026-05-14T15:43:55.606954+00:00",
+  "crawled_at": "2026-05-14T16:43:27.422575+00:00",
   "news_date": "2026-05-15",
-  "total_collected": 7,
+  "total_collected": 14,
   "topic_counts": [
+    [
+      "인플레이션",
+      1
+    ],
     [
       "금리/연준",
       1
     ],
     [
       "반도체/AI",
-      2
+      6
     ],
     [
       "바이오/헬스케어",
@@ -18,13 +22,20 @@
     [
       "정책/테마",
       1
-    ],
-    [
-      "경기/성장",
-      1
     ]
   ],
   "top_articles": [
+    {
+      "topic": "인플레이션",
+      "count": 1,
+      "title": "미 달러화 강세…파운드 약세 속 美 인플레이션 우려 지속 - 연합인포맥스",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE96b3JGWC0xQ05OY1JCbEpTN3VXNU1neUdGLVdUekRNVHhMalhRTDl6cjFMb3VyQ0JYLXZBd3RFSm9xY1VBb2F1UzBUNDJseUN0bmltVDhmMXVTeERHR25BSUFCMEJpVnB5UDV5SzF5Y24?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 미 달러화 강세…파운드 약세 속 美 인플레이션 우려 지속 - 연합인포맥스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "금리/연준",
       "count": 1,
@@ -38,7 +49,7 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 2,
+      "count": 6,
       "title": "SOL 한국형글로벌반도체액티브(423170) - 매일경제 마켓",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaGVmYW1yOWFIbjIyREhrUjZ3YUkzaC1XLWJBd1h5cHBxWGtFRnpNMUl5dzROTDNpQjhMNG9MYjd0WFNMTGZMMUFtX1FvcFY2Vk1lVktRalYzTUVjX29CLXJWODJxWGpZZmhmRnQwX184RDFWS1pQeU5SbGdrRFFKNlhfR0twTU9aZlQ5bEJXVTZFNzRLUmxV?oc=5",
       "summary_lines": [
@@ -68,47 +79,36 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "경기/성장",
-      "count": 1,
-      "title": "월풀, 소비자 지출 급감으로 경기침체 수준의 수요 직면 By Investing.com - Investing.com 한국어",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5Cc25oRjNIalVWRWhtWUNxVnZ3M2xfVzlqektVcDN4VURnanNDZGR4dGxYc2I0SHZicmR4QUdkN3JrMFFzSk1SRmUzZExXZWZOOFI4S1N6eFh3dEQ0WEFhdjVIOW9xZFU1ZllTZkZxOGc?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 월풀, 소비자 지출 급감으로 경기침체 수준의 수요 직면 By Investing.com - Investing.com 한국어",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "IT/반도체",
+      "total_count": 6,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 6,
+          "title": "SOL 한국형글로벌반도체액티브(423170) - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaGVmYW1yOWFIbjIyREhrUjZ3YUkzaC1XLWJBd1h5cHBxWGtFRnpNMUl5dzROTDNpQjhMNG9MYjd0WFNMTGZMMUFtX1FvcFY2Vk1lVktRalYzTUVjX29CLXJWODJxWGpZZmhmRnQwX184RDFWS1pQeU5SbGdrRFFKNlhfR0twTU9aZlQ5bEJXVTZFNzRLUmxV?oc=5"
+        }
+      ]
+    },
     {
       "sector": "매크로",
       "total_count": 2,
       "topics": [
         {
+          "topic": "인플레이션",
+          "count": 1,
+          "title": "미 달러화 강세…파운드 약세 속 美 인플레이션 우려 지속 - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE96b3JGWC0xQ05OY1JCbEpTN3VXNU1neUdGLVdUekRNVHhMalhRTDl6cjFMb3VyQ0JYLXZBd3RFSm9xY1VBb2F1UzBUNDJseUN0bmltVDhmMXVTeERHR25BSUFCMEJpVnB5UDV5SzF5Y24?oc=5"
+        },
+        {
           "topic": "금리/연준",
           "count": 1,
           "title": "국고채 금리 4% 돌파… 채권값 하락 베팅 사상 최대 - 조선일보",
           "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNWG1BOFVGSUtubDhtQzV6cGh1YTZxbHBlZEhqSEk3Y25vRURaSU9SRl96TWRPM1JrdkVHXzZQMU5wVjBMTGdLbDJJbW83VDZJT0hRU0tPX3lJQXNfbzgyUHZNMXBCTkFpZ0RlMUUzd2tydGM4ZTJ3c0wwb1FtRzB4eA?oc=5"
-        },
-        {
-          "topic": "경기/성장",
-          "count": 1,
-          "title": "월풀, 소비자 지출 급감으로 경기침체 수준의 수요 직면 By Investing.com - Investing.com 한국어",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5Cc25oRjNIalVWRWhtWUNxVnZ3M2xfVzlqektVcDN4VURnanNDZGR4dGxYc2I0SHZicmR4QUdkN3JrMFFzSk1SRmUzZExXZWZOOFI4S1N6eFh3dEQ0WEFhdjVIOW9xZFU1ZllTZkZxOGc?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "IT/반도체",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "반도체/AI",
-          "count": 2,
-          "title": "SOL 한국형글로벌반도체액티브(423170) - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPaGVmYW1yOWFIbjIyREhrUjZ3YUkzaC1XLWJBd1h5cHBxWGtFRnpNMUl5dzROTDNpQjhMNG9MYjd0WFNMTGZMMUFtX1FvcFY2Vk1lVktRalYzTUVjX29CLXJWODJxWGpZZmhmRnQwX184RDFWS1pQeU5SbGdrRFFKNlhfR0twTU9aZlQ5bEJXVTZFNzRLUmxV?oc=5"
         }
       ]
     },
