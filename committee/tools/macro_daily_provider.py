@@ -31,6 +31,8 @@ def _fetch_latest_close(symbol: str) -> float | None:
         t = yf.Ticker(symbol)
         hist = t.history(period="2d")
         if hist is None or getattr(hist, "empty", True):
+            hist = t.history(period="7d")
+        if hist is None or getattr(hist, "empty", True):
             return None
         close_series = hist.get("Close")
         if close_series is None or len(close_series) < 1:

@@ -57,13 +57,14 @@
     .macro-conclusion { margin-top: 12px; padding: 12px 14px; background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 12px; font-size: 13px; line-height: 1.5; color: #e2e8f0; }
     .foreign-flow-visibility { margin-top: 16px; padding: 14px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; }
     .foreign-flow-visibility h4 { margin: 0 0 10px 0; font-size: 13px; color: #dbe4f0; }
-    .foreign-flow-chart-wrap { width: 100%; max-width: 360px; margin: 8px 0; }
+    .foreign-flow-chart-wrap { width: 100%; max-width: 560px; margin: 8px 0; }
+    .foreign-flow-chart-wrap .ffc-caption { font-size: 11px; color: var(--muted); margin: 6px 0 0 0; line-height: 1.4; }
     .recent-change-panel { margin: 0 0 16px 0; padding: 12px 14px; background: var(--panel-soft); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 12px; }
     .recent-change-panel .rcp-title { font-size: 13px; font-weight: 700; color: #f1f5f9; margin: 0 0 4px 0; }
     .recent-change-panel .rcp-sub { font-size: 12px; color: var(--muted); margin: 0 0 12px 0; line-height: 1.45; }
     .rcp-grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
     @media (min-width: 560px) { .rcp-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (min-width: 900px) { .rcp-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (min-width: 900px) { .rcp-grid { grid-template-columns: repeat(3, 1fr); } }
     .rcp-card { background: var(--panel); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 10px; padding: 10px 12px; min-width: 0; }
     .rcp-card .rcp-name { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
     .rcp-card .rcp-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 13px; margin-top: 4px; }
@@ -741,6 +742,46 @@ function deltaLevelLastN(rows, key, n) {
   if (typeof b !== 'number' || !Number.isFinite(b)) return null;
   return b - a;
 }
+/** Latest minus oldest among the last `n` rows that have a finite `key` (handles sparse daily_macro). */
+function deltaLevelLastNFinite(rows, key, n) {
+  const want = typeof n === 'number' && n >= 2 ? Math.floor(n) : 5;
+  const r = safeArr(rows);
+  const vals = [];
+  for (let i = r.length - 1; i >= 0 && vals.length < want; i--) {
+    const v = r[i] && r[i][key];
+    if (typeof v === 'number' && Number.isFinite(v)) vals.push(v);
+  }
+  if (vals.length < 2) return null;
+  return vals[0] - vals[vals.length - 1];
+}
+function lastFiniteValue(rows, key) {
+  const r = safeArr(rows);
+  for (let i = r.length - 1; i >= 0; i--) {
+    const v = r[i] && r[i][key];
+    if (typeof v === 'number' && Number.isFinite(v)) return v;
+  }
+  return null;
+}
+function lastTwoFinite(rows, key) {
+  const r = safeArr(rows);
+  let curr = null;
+  let prev = null;
+  for (let i = r.length - 1; i >= 0; i--) {
+    const v = r[i] && r[i][key];
+    if (typeof v !== 'number' || !Number.isFinite(v)) continue;
+    if (curr == null) curr = v;
+    else { prev = v; break; }
+  }
+  return { curr, prev };
+}
+function lastFinitePctDaily(rows, pctKey) {
+  const r = safeArr(rows);
+  for (let i = r.length - 1; i >= 0; i--) {
+    const v = r[i] && r[i][pctKey];
+    if (typeof v === 'number' && Number.isFinite(v)) return v;
+  }
+  return null;
+}
 function formatSignedLevelDelta(d) {
   if (d == null || typeof d !== 'number' || !Number.isFinite(d)) return '—';
   const sign = d > 0 ? '+' : '';
@@ -875,8 +916,9 @@ function buildMacroMetricCards() {
     pceTag = noInterp;
   }
 
-  const y10 = dLast && dLast.us10y;
-  const y10p = dPrev && dPrev.us10y;
+  const y10Pair = lastTwoFinite(daily, 'us10y');
+  const y10 = y10Pair.curr;
+  const y10p = y10Pair.prev;
   const y10Val = (typeof y10 === 'number' && Number.isFinite(y10)) ? `${formatMetric(y10)}%` : '-';
   const y10d = metricDeltaOrMissing(
     typeof y10 === 'number' ? y10 : NaN,
@@ -884,8 +926,9 @@ function buildMacroMetricCards() {
   );
   const y10Tag = y10Val === '-' ? noInterp : rateDeltaTag(y10d.text, false);
 
-  const dxy = dLast && dLast.dxy;
-  const dxyp = dPrev && dPrev.dxy;
+  const dxyPair = lastTwoFinite(daily, 'dxy');
+  const dxy = dxyPair.curr;
+  const dxyp = dxyPair.prev;
   const dxyVal = (typeof dxy === 'number' && Number.isFinite(dxy)) ? formatMetric(dxy) : '-';
   const dxyd = metricDeltaOrMissing(
     typeof dxy === 'number' ? dxy : NaN,
@@ -1014,12 +1057,12 @@ function buildCioStrategyBullets(chair) {
   if (!bullets.length) bullets.push('합의·운영 가이드가 비어 있으면 최신 런의 committee_result를 확인하세요.');
   return bullets.slice(0, 2);
 }
-function buildCioMainRiskLine(chair, mode, dm) {
+function buildCioMainRiskLine(chair, mode, dailyRows) {
   const guidance = safeArr(chair.ops_guidance);
   const avoidT = guidance.find(g => String(g.level) === 'AVOID');
-  const vix = dm && typeof dm.vix === 'number' && Number.isFinite(dm.vix) ? dm.vix : null;
-  const y10 = dm && typeof dm.us10y === 'number' && Number.isFinite(dm.us10y) ? dm.us10y : null;
-  const dxy = dm && typeof dm.dxy === 'number' && Number.isFinite(dm.dxy) ? dm.dxy : null;
+  const vix = lastFiniteValue(dailyRows, 'vix');
+  const y10 = lastFiniteValue(dailyRows, 'us10y');
+  const dxy = lastFiniteValue(dailyRows, 'dxy');
   const parts = [];
   if (avoidT && avoidT.text) parts.push(`회피: ${toKoreanChairText(avoidT.text)}`);
   if (vix != null && vix >= 22) parts.push(`VIX ${formatMetric(vix)} — 변동성 부담`);
@@ -1031,11 +1074,12 @@ function buildCioMainRiskLine(chair, mode, dm) {
   }
   return parts.slice(0, 2).join(' · ');
 }
-function buildMacroStoryKo(dm, dPrev, digest) {
-  const vix = dm && typeof dm.vix === 'number' ? dm.vix : null;
-  const y10 = dm && typeof dm.us10y === 'number' ? dm.us10y : null;
-  const y10p = dPrev && typeof dPrev.us10y === 'number' ? dPrev.us10y : null;
-  const dxy = dm && typeof dm.dxy === 'number' ? dm.dxy : null;
+function buildMacroStoryKo(dailyRows, digest) {
+  const y10Pair = lastTwoFinite(dailyRows, 'us10y');
+  const y10 = y10Pair.curr;
+  const y10p = y10Pair.prev;
+  const vix = lastFiniteValue(dailyRows, 'vix');
+  const dxy = lastFiniteValue(dailyRows, 'dxy');
   const art = safeArr(digest.top_articles)[0];
   const head = art ? String(art.topic || art.title || '').slice(0, 72) : '';
   let cause = '';
@@ -1061,8 +1105,8 @@ function buildMacroStoryKo(dm, dPrev, digest) {
       : ' 영향·시장 함의: 금리·환율 흐름에 따라 주식·채권 상대매력이 재조정됩니다.');
   return cause + tail;
 }
-function buildMacroConclusionKo(mode, dm) {
-  const vix = dm && typeof dm.vix === 'number' ? dm.vix : null;
+function buildMacroConclusionKo(mode, dailyRows) {
+  const vix = lastFiniteValue(dailyRows, 'vix');
   const env = mode.cls === 'risk-on' ? '현재 환경: 위험선호 흐름이 상대적으로 강합니다.'
     : mode.cls === 'risk-off' ? '현재 환경: 방어·보수 국면으로 읽힙니다.'
     : '현재 환경: 중립~혼조입니다.';
@@ -1073,31 +1117,61 @@ function buildMacroConclusionKo(mode, dm) {
     : '위험자산: 크게 베팅하지 않고 단계·선별 접근.';
   return `${env} ${riskA}`;
 }
-function foreignFlowCumulativeSlice(rows, maxN) {
-  const r = safeArr(rows).slice(-maxN);
-  let cum = 0;
-  const series = [];
-  r.forEach(row => {
+function svgForeignFlowBarsFromRows(rows, maxDays) {
+  const slice = safeArr(rows).slice(-(maxDays || 20));
+  if (!slice.length) return '<span class="empty-state">차트 데이터 없음</span>';
+  const pts = slice.map(row => {
     const v = row && row.foreign_net;
-    if (typeof v === 'number' && Number.isFinite(v)) cum += v;
-    series.push(cum);
+    const ok = typeof v === 'number' && Number.isFinite(v);
+    return {
+      date: row && row.date ? String(row.date) : '',
+      v: ok ? v : null,
+    };
   });
-  return series;
-}
-function svgCumulativeLine(series) {
-  const w = 280; const h = 64; const pad = 4;
-  if (!series.length) return '<span class="empty-state">차트 데이터 없음</span>';
-  const vals = series;
-  const minV = Math.min(...vals);
-  const maxV = Math.max(...vals);
-  const range = maxV - minV || 1;
-  const n = vals.length;
-  const pts = vals.map((v, i) => {
-    const x = pad + (i / Math.max(1, n - 1)) * (w - 2 * pad);
-    const y = pad + (1 - (v - minV) / range) * (h - 2 * pad);
-    return `${x.toFixed(1)},${y.toFixed(1)}`;
-  }).join(' ');
-  return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="64" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#38bdf8" stroke-width="2" points="${pts}"/></svg>`;
+  const finite = pts.filter(p => p.v != null).map(p => p.v);
+  if (!finite.length) return '<span class="empty-state">차트 데이터 없음</span>';
+  const minV = Math.min(0, ...finite);
+  const maxV = Math.max(0, ...finite);
+  const span = Math.max(maxV - minV, 1e-6);
+  const w = 480;
+  const h = 128;
+  const padL = 30;
+  const padR = 10;
+  const padB = 26;
+  const padT = 12;
+  const innerW = w - padL - padR;
+  const innerH = h - padT - padB;
+  const yAt = val => padT + innerH * (1 - (val - minV) / span);
+  const zeroY = yAt(0);
+  const n = pts.length;
+  const bw = (innerW / Math.max(n, 1)) * 0.68;
+  const rects = [];
+  pts.forEach((p, i) => {
+    if (p.v == null) return;
+    const cx = padL + (i + 0.5) * (innerW / n);
+    const x = cx - bw / 2;
+    const y1 = yAt(p.v);
+    const top = Math.min(y1, zeroY);
+    const height = Math.max(Math.abs(y1 - zeroY), 1.2);
+    const fill = p.v >= 0 ? '#34d399' : '#f87171';
+    const tip = `${p.date || '-'} · ${p.v > 0 ? '+' : ''}${formatNumberWithComma(p.v, 0)}억`;
+    rects.push(`<rect x="${x.toFixed(1)}" y="${top.toFixed(1)}" width="${bw.toFixed(1)}" height="${height.toFixed(1)}" fill="${fill}" opacity="0.92" rx="2"><title>${escapeHtml(tip)}</title></rect>`);
+  });
+  const lab = idx => {
+    if (idx < 0 || idx >= n) return '';
+    const cx = padL + (idx + 0.5) * (innerW / n);
+    const raw = pts[idx] && pts[idx].date ? String(pts[idx].date) : '';
+    const short = raw.length >= 10 ? raw.slice(5, 10) : raw;
+    return `<text x="${cx.toFixed(1)}" y="${(h - 7).toFixed(1)}" text-anchor="middle" fill="#94a3b8" font-size="9">${escapeHtml(short)}</text>`;
+  };
+  const iLast = n - 1;
+  const iMid = Math.floor(iLast / 2);
+  const xLabs = n <= 1 ? lab(0) : `${lab(0)}${lab(iMid)}${lab(iLast)}`;
+  return `<svg viewBox="0 0 ${w} ${h}" width="100%" height="140" preserveAspectRatio="xMidYMid meet" role="img" aria-label="외국인 일별 순매수 막대 그래프">
+    <line x1="${padL.toFixed(1)}" y1="${zeroY.toFixed(1)}" x2="${(w - padR).toFixed(1)}" y2="${zeroY.toFixed(1)}" stroke="#64748b" stroke-width="1.2" stroke-dasharray="4 3"/>
+    ${rects.join('')}
+    ${xLabs}
+  </svg>`;
 }
 function foreignFlow5dTrendText(rows) {
   const last5 = safeArr(rows).slice(-5);
@@ -1128,8 +1202,8 @@ function renderForeignFlowBlock() {
   const elLatest = document.getElementById('foreign-flow-latest');
   const el5d = document.getElementById('foreign-flow-5d-cum');
   if (!wrap || !t5 || !interpEl) return;
-  const series = foreignFlowCumulativeSlice(rows, 30);
-  wrap.innerHTML = svgCumulativeLine(series);
+  const barDays = 20;
+  wrap.innerHTML = `${svgForeignFlowBarsFromRows(rows, barDays)}<p class="ffc-caption">일별 외국인 순매수(최근 ${barDays}영업일·억원). 초록=순매수, 빨강=순매도, 점선=0선. 막대에 마우스를 올리면 일자·금액을 확인할 수 있습니다.</p>`;
   t5.textContent = foreignFlow5dTrendText(rows);
   const { latestNet, sum5 } = foreignFlowLatestAndSum5(rows);
   function applyForeignFlowValue(el, n) {
@@ -1164,7 +1238,11 @@ function renderRecentChangePanel() {
   const dmPrev = prevRow(macro) || {};
   const kospiD = typeof last.kospi_pct === 'number' && Number.isFinite(last.kospi_pct) ? last.kospi_pct : null;
   const kospiW = sumLastN(mkt, 'kospi_pct', 5);
-  const nasD = typeof last.nasdaq_pct === 'number' && Number.isFinite(last.nasdaq_pct) ? last.nasdaq_pct : null;
+  const kosD = typeof last.kosdaq_pct === 'number' && Number.isFinite(last.kosdaq_pct) ? last.kosdaq_pct : lastFinitePctDaily(mkt, 'kosdaq_pct');
+  const kosW = sumLastN(mkt, 'kosdaq_pct', 5);
+  const spD = typeof last.sp500_pct === 'number' && Number.isFinite(last.sp500_pct) ? last.sp500_pct : lastFinitePctDaily(mkt, 'sp500_pct');
+  const spW = sumLastN(mkt, 'sp500_pct', 5);
+  const nasD = typeof last.nasdaq_pct === 'number' && Number.isFinite(last.nasdaq_pct) ? last.nasdaq_pct : lastFinitePctDaily(mkt, 'nasdaq_pct');
   const nasW = sumLastN(mkt, 'nasdaq_pct', 5);
   let fxD = typeof last.usdkrw_pct === 'number' && Number.isFinite(last.usdkrw_pct) ? last.usdkrw_pct : null;
   if (fxD == null) {
@@ -1177,7 +1255,13 @@ function renderRecentChangePanel() {
     && typeof dmPrev.dxy === 'number' && Number.isFinite(dmPrev.dxy))
     ? dmLast.dxy - dmPrev.dxy
     : null;
-  const dxyW = deltaLevelLastN(macro, 'dxy', 5);
+  const dxyDAlt = (() => {
+    const pair = lastTwoFinite(macro, 'dxy');
+    if (pair.curr == null || pair.prev == null) return null;
+    return pair.curr - pair.prev;
+  })();
+  const dxyDFinal = dxyD != null ? dxyD : dxyDAlt;
+  const dxyW = deltaLevelLastNFinite(macro, 'dxy', 5);
   function rcpCard(title, dailyVal, dailyStr, weeklyVal, weeklyStr) {
     const dCls = classBySign(dailyVal);
     const wCls = classBySign(weeklyVal);
@@ -1190,12 +1274,14 @@ function renderRecentChangePanel() {
   }
   el.innerHTML = `
     <div class="rcp-title">최근 변화 스냅샷</div>
-    <div class="rcp-sub">일간=최신 행 · 주간≈최근 5영업일(지수% 합, 환율·DXY는 수준 변화).</div>
+    <div class="rcp-sub">일간=최신 행(누락 시 직전 확정치) · 주간≈최근 5영업일(지수% 합, 환율·DXY는 유효 행 기준 수준 변화).</div>
     <div class="rcp-grid">
       ${rcpCard('KOSPI %', kospiD, kospiD != null ? formatSignedPercent(kospiD) : '—', kospiW, kospiW != null ? formatSignedPercent(kospiW) : '—')}
+      ${rcpCard('KOSDAQ %', kosD, kosD != null ? formatSignedPercent(kosD) : '—', kosW, kosW != null ? formatSignedPercent(kosW) : '—')}
+      ${rcpCard('S&P500 %', spD, spD != null ? formatSignedPercent(spD) : '—', spW, spW != null ? formatSignedPercent(spW) : '—')}
       ${rcpCard('NASDAQ %', nasD, nasD != null ? formatSignedPercent(nasD) : '—', nasW, nasW != null ? formatSignedPercent(nasW) : '—')}
       ${rcpCard('USD/KRW %', fxD, fxD != null ? formatSignedPercent(fxD) : '—', fxW, fxW != null ? formatSignedPercent(fxW) : '—')}
-      ${rcpCard('DXY Δ', dxyD, formatSignedLevelDelta(dxyD), dxyW, formatSignedLevelDelta(dxyW))}
+      ${rcpCard('DXY Δ', dxyDFinal, formatSignedLevelDelta(dxyDFinal), dxyW, formatSignedLevelDelta(dxyW))}
     </div>`;
 }
 
@@ -2034,7 +2120,6 @@ function buildStockRows() {
   const md = lastRow(marketDaily) || {};
   const mdDate = md.date || chair.market_date || '-';
   const dm = lastRow(dailyMacro) || {};
-  const dPrev = prevRow(dailyMacro) || {};
   const mode = inferMarketMode();
 
   const stanceKo = mode.cls === 'risk-on' ? '(비중 확대 국면)' : mode.cls === 'risk-off' ? '(비중 축소·방어 국면)' : '(중립 국면)';
@@ -2046,7 +2131,7 @@ function buildStockRows() {
     cioUl.innerHTML = bs.map(b => `<li>${escapeHtml(b)}</li>`).join('');
   }
   const cioRisk = document.getElementById('cio-main-risk');
-  if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dm);
+  if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dailyMacro);
 
   document.getElementById('executive-date').textContent = `기준일 ${mdDate}`;
   document.getElementById('equity-date').textContent = `시장 일자 ${mdDate}`;
@@ -2060,14 +2145,14 @@ function buildStockRows() {
   document.getElementById('exec-kr-line').textContent = krLine || '-';
   const usLine = [
     `S&P500 ${formatSignedPercent(md.sp500_pct)} · NASDAQ ${formatSignedPercent(md.nasdaq_pct)}`,
-    `VIX ${formatMetric(dm.vix)}`,
+    `VIX ${formatMetric(lastFiniteValue(dailyMacro, 'vix'))}`,
   ].join(' · ');
   document.getElementById('exec-us-line').textContent = usLine || '-';
   const keyUl = document.getElementById('exec-key-changes');
   const changes = [];
   changes.push(`KOSPI ${formatSignedPercent(md.kospi_pct)} / KOSDAQ ${formatSignedPercent(md.kosdaq_pct)}`);
   changes.push(`미국 주요지수 S&P ${formatSignedPercent(md.sp500_pct)}, 나스닥 ${formatSignedPercent(md.nasdaq_pct)}`);
-  changes.push(`환율 USD/KRW ${formatSignedPercent(md.usdkrw_pct)} · VIX ${formatMetric(dm.vix)}`);
+  changes.push(`환율 USD/KRW ${formatSignedPercent(md.usdkrw_pct)} · VIX ${formatMetric(lastFiniteValue(dailyMacro, 'vix'))}`);
   const art = safeArr(digest.top_articles)[0];
   if (art && art.topic) changes[2] = `${changes[2]} · 헤드라인 토픽: ${art.topic}`;
   keyUl.innerHTML = changes.slice(0, 3).map(c => `<li>${escapeHtml(c)}</li>`).join('');
@@ -2086,9 +2171,9 @@ function buildStockRows() {
   document.getElementById('macro-metric-cards').innerHTML = buildMacroMetricCards();
 
   const storyEl = document.getElementById('macro-story-box');
-  if (storyEl) storyEl.textContent = buildMacroStoryKo(dm, dPrev, digest);
+  if (storyEl) storyEl.textContent = buildMacroStoryKo(dailyMacro, digest);
   const concEl = document.getElementById('macro-conclusion');
-  if (concEl) concEl.textContent = buildMacroConclusionKo(mode, dm);
+  if (concEl) concEl.textContent = buildMacroConclusionKo(mode, dailyMacro);
 
   const topArts = safeArr(digest.top_articles).slice(0, 3);
   const newsEl = document.getElementById('macro-news-items');

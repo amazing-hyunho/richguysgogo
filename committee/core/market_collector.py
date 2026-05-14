@@ -32,7 +32,11 @@ def persist_snapshot_metrics(
     dow_db = snapshot.markets.us.dow if status.get("dow") == "OK" else None
     usdkrw_db = snapshot.markets.fx.usdkrw if status.get("usdkrw") == "OK" else None
     usdkrw_pct_db = snapshot.markets.fx.usdkrw_pct if status.get("usdkrw_pct") == "OK" else None
-    us10y_db = None  # Not implemented in top-level markets payload yet.
+    us10y_db = (
+        float(snapshot.macro.daily.us10y)
+        if snapshot.macro is not None and snapshot.macro.daily.us10y is not None
+        else None
+    )
     vix_db = snapshot.markets.volatility.vix if status.get("vix") == "OK" else None
     safe_upsert_market_daily(
         date=market_date.isoformat(),

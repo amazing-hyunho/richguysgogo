@@ -571,20 +571,20 @@ def upsert_market_daily(
                 :usdkrw, :usdkrw_pct, :us10y, :vix, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
-                kospi_pct=excluded.kospi_pct,
-                kosdaq_pct=excluded.kosdaq_pct,
-                sp500_pct=excluded.sp500_pct,
-                nasdaq_pct=excluded.nasdaq_pct,
-                dow_pct=excluded.dow_pct,
-                kospi=excluded.kospi,
-                kosdaq=excluded.kosdaq,
-                sp500=excluded.sp500,
-                nasdaq=excluded.nasdaq,
-                dow=excluded.dow,
-                usdkrw=excluded.usdkrw,
-                usdkrw_pct=excluded.usdkrw_pct,
-                us10y=excluded.us10y,
-                vix=excluded.vix,
+                kospi_pct=COALESCE(excluded.kospi_pct, market_daily.kospi_pct),
+                kosdaq_pct=COALESCE(excluded.kosdaq_pct, market_daily.kosdaq_pct),
+                sp500_pct=COALESCE(excluded.sp500_pct, market_daily.sp500_pct),
+                nasdaq_pct=COALESCE(excluded.nasdaq_pct, market_daily.nasdaq_pct),
+                dow_pct=COALESCE(excluded.dow_pct, market_daily.dow_pct),
+                kospi=COALESCE(excluded.kospi, market_daily.kospi),
+                kosdaq=COALESCE(excluded.kosdaq, market_daily.kosdaq),
+                sp500=COALESCE(excluded.sp500, market_daily.sp500),
+                nasdaq=COALESCE(excluded.nasdaq, market_daily.nasdaq),
+                dow=COALESCE(excluded.dow, market_daily.dow),
+                usdkrw=COALESCE(excluded.usdkrw, market_daily.usdkrw),
+                usdkrw_pct=COALESCE(excluded.usdkrw_pct, market_daily.usdkrw_pct),
+                us10y=COALESCE(excluded.us10y, market_daily.us10y),
+                vix=COALESCE(excluded.vix, market_daily.vix),
                 created_at=excluded.created_at;
             """,
             {
@@ -703,20 +703,20 @@ def upsert_daily_macro(
                 :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate, :vix3m, :vix_term_spread, :oil_wti, :hy_oas, :ig_oas, :fed_balance_sheet, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
-                us10y=excluded.us10y,
-                us2y=excluded.us2y,
-                spread_2_10=excluded.spread_2_10,
-                vix=excluded.vix,
-                dxy=excluded.dxy,
-                usdkrw=excluded.usdkrw,
-                fed_funds_rate=excluded.fed_funds_rate,
-                real_rate=excluded.real_rate,
-                vix3m=excluded.vix3m,
-                vix_term_spread=excluded.vix_term_spread,
-                oil_wti=excluded.oil_wti,
-                hy_oas=excluded.hy_oas,
-                ig_oas=excluded.ig_oas,
-                fed_balance_sheet=excluded.fed_balance_sheet,
+                us10y=COALESCE(excluded.us10y, daily_macro.us10y),
+                us2y=COALESCE(excluded.us2y, daily_macro.us2y),
+                spread_2_10=COALESCE(excluded.spread_2_10, daily_macro.spread_2_10),
+                vix=COALESCE(excluded.vix, daily_macro.vix),
+                dxy=COALESCE(excluded.dxy, daily_macro.dxy),
+                usdkrw=COALESCE(excluded.usdkrw, daily_macro.usdkrw),
+                fed_funds_rate=COALESCE(excluded.fed_funds_rate, daily_macro.fed_funds_rate),
+                real_rate=COALESCE(excluded.real_rate, daily_macro.real_rate),
+                vix3m=COALESCE(excluded.vix3m, daily_macro.vix3m),
+                vix_term_spread=COALESCE(excluded.vix_term_spread, daily_macro.vix_term_spread),
+                oil_wti=COALESCE(excluded.oil_wti, daily_macro.oil_wti),
+                hy_oas=COALESCE(excluded.hy_oas, daily_macro.hy_oas),
+                ig_oas=COALESCE(excluded.ig_oas, daily_macro.ig_oas),
+                fed_balance_sheet=COALESCE(excluded.fed_balance_sheet, daily_macro.fed_balance_sheet),
                 created_at=excluded.created_at;
             """,
             {
@@ -771,16 +771,16 @@ def upsert_monthly_macro(
                 :wage_level, :wage_yoy, :export_yoy, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
-                unemployment_rate=excluded.unemployment_rate,
-                cpi_yoy=excluded.cpi_yoy,
-                core_cpi_yoy=excluded.core_cpi_yoy,
-                pce_yoy=excluded.pce_yoy,
-                pmi=excluded.pmi,
-                retail_sales_mom=excluded.retail_sales_mom,
-                nfp_change=excluded.nfp_change,
-                wage_level=excluded.wage_level,
-                wage_yoy=excluded.wage_yoy,
-                export_yoy=excluded.export_yoy,
+                unemployment_rate=COALESCE(excluded.unemployment_rate, monthly_macro.unemployment_rate),
+                cpi_yoy=COALESCE(excluded.cpi_yoy, monthly_macro.cpi_yoy),
+                core_cpi_yoy=COALESCE(excluded.core_cpi_yoy, monthly_macro.core_cpi_yoy),
+                pce_yoy=COALESCE(excluded.pce_yoy, monthly_macro.pce_yoy),
+                pmi=COALESCE(excluded.pmi, monthly_macro.pmi),
+                retail_sales_mom=COALESCE(excluded.retail_sales_mom, monthly_macro.retail_sales_mom),
+                nfp_change=COALESCE(excluded.nfp_change, monthly_macro.nfp_change),
+                wage_level=COALESCE(excluded.wage_level, monthly_macro.wage_level),
+                wage_yoy=COALESCE(excluded.wage_yoy, monthly_macro.wage_yoy),
+                export_yoy=COALESCE(excluded.export_yoy, monthly_macro.export_yoy),
                 created_at=excluded.created_at;
             """,
             {
@@ -816,8 +816,8 @@ def upsert_quarterly_macro(
             INSERT INTO quarterly_macro (date, real_gdp, gdp_qoq_annualized, created_at)
             VALUES (:date, :real_gdp, :gdp_qoq_annualized, :created_at)
             ON CONFLICT(date) DO UPDATE SET
-                real_gdp=excluded.real_gdp,
-                gdp_qoq_annualized=excluded.gdp_qoq_annualized,
+                real_gdp=COALESCE(excluded.real_gdp, quarterly_macro.real_gdp),
+                gdp_qoq_annualized=COALESCE(excluded.gdp_qoq_annualized, quarterly_macro.gdp_qoq_annualized),
                 created_at=excluded.created_at;
             """,
             {
