@@ -53,11 +53,14 @@ class LLMChairAgent:
     def _system_prompt() -> str:
         use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
         agent_instruction = (
-            "Use both market indicators AND agent opinions as evidence. "
-            "Reference agent names and their claims where relevant."
+            "Base your analysis on three sources of evidence: "
+            "(1) numeric market data and macro indicators, "
+            "(2) today's news headlines and digest, "
+            "(3) agent opinions provided — reference agent names and their claims where relevant."
         ) if use_llm_agents else (
             "Base your entire analysis on the numeric market data, flow figures, macro indicators, "
-            "and news headlines provided. Do NOT invent agent opinions — none are provided."
+            "and today's news headlines and digest provided. "
+            "Do NOT invent agent opinions — none are provided."
         )
         return (
             "You are the CHAIR of an investment committee. Your job is two-fold:\n"
