@@ -299,6 +299,17 @@
     .retire-pf-split { display:grid;grid-template-columns:1fr;gap:20px; }
     @media(min-width:720px){ .retire-pf-split { grid-template-columns:1fr 1fr; } }
     .retire-pf-col { background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px; }
+    .retire-profile-bar { display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 16px;background:linear-gradient(135deg,rgba(52,211,153,0.08),rgba(56,189,248,0.06));border:1px solid rgba(52,211,153,0.25);border-radius:12px;margin-bottom:20px; }
+    .retire-profile-bar .pb-label { font-size:12px;color:#94a3b8;font-weight:600;white-space:nowrap; }
+    .retire-profile-bar .pb-file { font:inherit;font-size:13px;color:#e2e8f0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer;flex:1;min-width:180px;max-width:320px; }
+    .retire-profile-bar .pb-btn { padding:7px 16px;border-radius:8px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap; }
+    .retire-profile-bar .pb-save { background:rgba(56,189,248,0.12);border:1px solid rgba(56,189,248,0.4);color:#7dd3fc; }
+    .retire-profile-bar .pb-save:hover { background:rgba(56,189,248,0.22); }
+    .retire-profile-bar .pb-reset { background:rgba(148,163,184,0.1);border:1px solid rgba(148,163,184,0.3);color:#94a3b8; }
+    .retire-profile-bar .pb-reset:hover { background:rgba(148,163,184,0.18); }
+    .retire-profile-msg { font-size:12px;padding:0 4px; }
+    .retire-profile-msg.ok  { color:#34d399; }
+    .retire-profile-msg.err { color:#f87171; }
   </style>
 </head>
 <body>
@@ -655,6 +666,16 @@
 
     <!-- ══ 탭 4: 은퇴 준비 ══════════════════════════════════════ -->
     <div id="tab-retire" class="tab-pane" role="tabpanel">
+
+      <!-- ── 내 정보 프로필 불러오기 / 저장 ── -->
+      <div class="retire-profile-bar">
+        <span class="pb-label">📂 내 정보 불러오기</span>
+        <input type="file" id="retire-profile-file" accept=".json" class="pb-file"
+          onchange="loadRetireProfile(this)">
+        <button class="pb-btn pb-save" onclick="saveRetireProfile()">💾 현재 입력값 저장</button>
+        <button class="pb-btn pb-reset" onclick="resetRetireProfile()">↺ 초기화</button>
+        <span id="retire-profile-msg" class="retire-profile-msg"></span>
+      </div>
 
       <div class="retire-subnav" role="tablist" aria-label="은퇴 준비 메뉴">
         <button class="retire-subbtn retire-subbtn-active" data-retire="goal" role="tab">📊 필요 자산 계산</button>
@@ -3281,6 +3302,108 @@ function buildStockRows() {
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 
 <script>
+/* ════════════════════════════════════════════════════════
+   은퇴 준비 탭 – 프로필 불러오기 / 저장
+   JSON 스키마: retire_profile.json 참고
+════════════════════════════════════════════════════════ */
+
+// 필드 id ↔ JSON 키 매핑 (모든 계산기 입력 필드)
+const RETIRE_FIELD_MAP = {
+  // 필요 자산 계산
+  'goal-age'            : 'age',
+  'goal-month-expense'  : 'monthly_expense',
+  'goal-invest-rate'    : 'return_rate_pct',
+  'goal-inflation-rate' : 'inflation_rate_pct',
+  'goal-pension'        : 'national_pension',
+  // 은퇴 시점 예상 자산 (나이는 goal-age와 공유)
+  'fund-age'            : 'age',
+  'fund-seed'           : 'invest_seed',
+  'fund-year-income'    : 'invest_yearly',
+  'fund-invest-rate'    : 'invest_return_pct',
+  'fund-pension-seed'   : 'pension_seed',
+  'fund-year-pension'   : 'pension_yearly',
+  'fund-pension-rate'   : 'pension_return_pct',
+  'fund-irp-seed'       : 'irp_seed',
+  'fund-year-irp'       : 'irp_yearly',
+  'fund-irp-rate'       : 'irp_return_pct',
+};
+
+function _profileMsg(text, type) {
+  const el = document.getElementById('retire-profile-msg');
+  el.textContent = text;
+  el.className = 'retire-profile-msg ' + type;
+  setTimeout(() => { el.textContent = ''; el.className = 'retire-profile-msg'; }, 4000);
+}
+
+function loadRetireProfile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const data = JSON.parse(e.target.result);
+      let filled = 0;
+      // 먼저 age를 채워서 두 탭 모두 반영
+      const ageVal = data['age'];
+      if (ageVal !== undefined) {
+        ['goal-age', 'fund-age'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.value = ageVal; filled++; }
+        });
+      }
+      Object.entries(RETIRE_FIELD_MAP).forEach(([elId, key]) => {
+        if (key === 'age') return; // 위에서 처리
+        const val = data[key];
+        if (val === undefined || val === null) return;
+        const el = document.getElementById(elId);
+        if (el) { el.value = val; filled++; }
+      });
+      _profileMsg(`✓ ${filled}개 필드 자동 입력 완료`, 'ok');
+      // 파일 입력 초기화 (같은 파일 다시 선택 가능하도록)
+      input.value = '';
+    } catch(err) {
+      _profileMsg('JSON 파싱 오류: ' + err.message, 'err');
+    }
+  };
+  reader.readAsText(file, 'utf-8');
+}
+
+function saveRetireProfile() {
+  const profile = {};
+  // 중복 키는 마지막 값 사용 (age는 goal-age 기준)
+  Object.entries(RETIRE_FIELD_MAP).forEach(([elId, key]) => {
+    const el = document.getElementById(elId);
+    if (!el || el.value === '') return;
+    const v = parseFloat(el.value);
+    if (!isNaN(v)) profile[key] = v;
+  });
+  if (!Object.keys(profile).length) {
+    _profileMsg('저장할 입력값이 없습니다.', 'err'); return;
+  }
+  const json = JSON.stringify(profile, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'retire_profile.json';
+  a.click();
+  URL.revokeObjectURL(url);
+  _profileMsg('✓ retire_profile.json 저장됨', 'ok');
+}
+
+function resetRetireProfile() {
+  Object.keys(RETIRE_FIELD_MAP).forEach(elId => {
+    const el = document.getElementById(elId);
+    if (el) el.value = '';
+  });
+  // 결과 패널 숨기기
+  ['goal-result','fund-result','pf-result'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = 'none';
+  });
+  _profileMsg('초기화 완료', 'ok');
+}
+
 /* ════════════════════════════════════════════════════════
    은퇴 준비 탭 – 서브탭 전환
 ════════════════════════════════════════════════════════ */
