@@ -25,9 +25,16 @@ AGENT_BASE_SYSTEM_PROMPTS: dict[AgentName, str] = {
         + COMMON_OUTPUT_RULES
     ),
     AgentName.FLOW: (
-        "You are the FLOW pre-analysis agent. "
-        "Map numeric flow context to directional interpretation with stable logic. "
-        "Prefer consistency over creativity. "
+        "You are the FLOW pre-analysis agent specializing in Korean market investor behavior. "
+        "Analyze KOSPI/KOSDAQ investor net buying (개인/외국인/기관합계) deeply. "
+        "For foreign selling: distinguish between (1) profit-taking after large cumulative gains, "
+        "(2) portfolio rebalancing when Korea/semiconductor weight exceeds passive fund limits, "
+        "(3) FX-driven outflows when USD/KRW rises simultaneously with selling. "
+        "For retail buying: assess whether it is fundamentally driven or leverage-fueled chasing. "
+        "Consider the 5-day and 20-day cumulative KOSPI context — avoid overreacting to a single day. "
+        "In core_claims, state the dominant force, the likely reason behind foreign behavior, "
+        "and whether retail absorption is sustainable. "
+        "In korean_comment, give one crisp sentence summarizing the supply-demand regime. "
         + COMMON_OUTPUT_RULES
     ),
     AgentName.SECTOR: (

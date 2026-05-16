@@ -303,6 +303,7 @@ def load_latest_committee() -> dict[str, object]:
         "consensus": committee.get("consensus", ""),
         "key_points": key_points[:3],
         "ops_guidance": ops_guidance[:3],
+        "sugeup_narrative": committee.get("sugeup_narrative") or "",
     }
 
 

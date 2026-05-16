@@ -3,7 +3,7 @@ from __future__ import annotations
 # Committee result schema for consensus output.
 
 from enum import Enum
-from typing import Annotated
+from typing import Annotated, Optional
 
 from pydantic import BaseModel, Field, constr
 
@@ -72,6 +72,14 @@ class CommitteeResult(BaseModel):
     ops_guidance: OpsGuidanceList = Field(
         ...,
         description="Operational guidance list (non-binding).",
+    )
+    sugeup_narrative: Optional[str] = Field(
+        default=None,
+        description=(
+            "Long-form Korean supply-demand narrative (수급 분석). "
+            "3 sections: (1) 외국인 매도 이유, (2) 개인 매수 이유·리스크, (3) 시나리오·투자 결론. "
+            "Plain text, no markdown. Max ~1500 chars."
+        ),
     )
 
     class Config:
