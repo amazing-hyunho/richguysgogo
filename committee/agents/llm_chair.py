@@ -51,17 +51,27 @@ class LLMChairAgent:
 
     @staticmethod
     def _system_prompt() -> str:
+        use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
+        agent_instruction = (
+            "Use both market indicators AND agent opinions as evidence. "
+            "Reference agent names and their claims where relevant."
+        ) if use_llm_agents else (
+            "Base your entire analysis on the numeric market data, flow figures, macro indicators, "
+            "and news headlines provided. Do NOT invent agent opinions — none are provided."
+        )
         return (
             "You are the CHAIR of an investment committee. Your job is two-fold:\n"
             "(A) Produce a structured consensus JSON, AND\n"
             "(B) Write a professional Korean market report in sugeup_narrative — "
             "similar to a sell-side equity strategist's daily note.\n\n"
+            f"{agent_instruction}\n\n"
             "Output JSON only. No markdown outside sugeup_narrative. "
             "All natural-language text must be in Korean.\n\n"
             "=== JSON SCHEMA ===\n"
             "Required keys: consensus, key_points, disagreements, ops_guidance, sugeup_narrative.\n"
             "consensus: one concise Korean sentence summarizing today's market regime.\n"
-            "key_points: 1~3 items, each with keys 'point' (Korean, max 200 chars) and 'sources' (agent name list).\n"
+            "key_points: 1~3 items, each with keys 'point' (Korean, max 200 chars) and 'sources' "
+            "(list of data sources used, e.g. ['flow_data', 'news', 'macro_daily'] — not agent names unless USE_LLM_AGENTS is on).\n"
             "disagreements: 1~3 items with keys topic, majority, minority, minority_agents, why_it_matters.\n"
             "ops_guidance: exactly 3 items with levels OK, CAUTION, AVOID and concise Korean text.\n\n"
             "=== sugeup_narrative FORMAT ===\n"
@@ -200,19 +210,27 @@ class LLMChairAgent:
             "news_digest": news_context,
             "sector_moves": snapshot.sector_moves,
         }
-        agent_opinions = [
-            {
-                "agent_name": stance.agent_name.value,
-                "regime_tag": stance.regime_tag.value,
-                "confidence": stance.confidence.value,
-                "core_claims": stance.core_claims,
-                "korean_comment": stance.korean_comment,
-            }
-            for stance in stances
-        ]
+        # USE_LLM_AGENTS=0이면 에이전트 의견은 규칙 기반 stub 출력이므로
+        # 의장에게 전달하지 않는다. 의장은 수치 데이터와 뉴스만으로 판단한다.
+        use_llm_agents = os.getenv("USE_LLM_AGENTS", "0").strip() == "1"
+        if use_llm_agents:
+            agent_opinions = [
+                {
+                    "agent_name": stance.agent_name.value,
+                    "regime_tag": stance.regime_tag.value,
+                    "confidence": stance.confidence.value,
+                    "core_claims": stance.core_claims,
+                    "korean_comment": stance.korean_comment,
+                }
+                for stance in stances
+            ]
+        else:
+            agent_opinions = None  # stub 의견은 의장에게 전달하지 않음
+
         payload = {
             "indicator_context": indicator_context,
-            "agent_opinions": agent_opinions,
             "debate_round": debate_round.model_dump() if debate_round is not None else None,
         }
+        if agent_opinions is not None:
+            payload["agent_opinions"] = agent_opinions
         return json.dumps(payload, ensure_ascii=False)
