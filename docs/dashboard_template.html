@@ -2839,9 +2839,9 @@ function buildStockRows() {
 
   // ── 애널리스트 컨센서스 테이블 렌더링 ────────────────────────
   (function renderConsensusTable() {
-    // 실제 데이터 있는 것만 표시 (target_mean_price 또는 current_price 있는 것)
+    // 목표주가(target_mean_price)가 있는 종목만 표시
     const rows = safeArr(data.stock_consensus).filter(r =>
-      r.target_mean_price != null || r.current_price != null || r.recommendation_key != null
+      r.target_mean_price != null && r.target_mean_price !== 0
     );
     const tbody = document.getElementById('consensus-table-body');
     const emptyEl = document.getElementById('consensus-empty');
