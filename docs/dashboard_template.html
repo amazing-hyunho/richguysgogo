@@ -340,6 +340,13 @@
         <ul id="cio-strategy-points"></ul>
         <div id="cio-main-risk">-</div>
       </div>
+      <div id="cio-sugeup-wrap" style="display:none; margin-top:14px;">
+        <div class="cio-title">AI 수급 분석</div>
+        <div
+          id="cio-sugeup-narrative"
+          style="font-size:13px; line-height:1.7; color:#dbe4f0; white-space:pre-wrap; word-break:break-word;"
+        >-</div>
+      </div>
     </section>
 
     <section class="section" id="section-executive" aria-labelledby="heading-executive">
@@ -2573,6 +2580,17 @@ function buildStockRows() {
   }
   const cioRisk = document.getElementById('cio-main-risk');
   if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dailyMacro);
+  const cioSugeupWrap = document.getElementById('cio-sugeup-wrap');
+  const cioSugeup = document.getElementById('cio-sugeup-narrative');
+  const sugeupText = String(chair.sugeup_narrative || '').trim();
+  if (cioSugeupWrap && cioSugeup) {
+    if (sugeupText) {
+      cioSugeup.textContent = sugeupText;
+      cioSugeupWrap.style.display = 'block';
+    } else {
+      cioSugeupWrap.style.display = 'none';
+    }
+  }
 
   document.getElementById('executive-date').textContent = `기준일 ${mdDate}`;
   document.getElementById('equity-date').textContent = `시장 일자 ${mdDate}`;
