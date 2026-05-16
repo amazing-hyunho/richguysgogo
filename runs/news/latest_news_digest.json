@@ -1,33 +1,22 @@
 {
-  "crawled_at": "2026-05-16T16:43:37.995579+00:00",
+  "crawled_at": "2026-05-16T17:43:27.916148+00:00",
   "news_date": "2026-05-17",
-  "total_collected": 3,
+  "total_collected": 5,
   "topic_counts": [
-    [
-      "반도체/AI",
-      1
-    ],
     [
       "미국지수",
       1
     ],
     [
-      "2차전지/전기차",
+      "에너지/원자재",
       1
+    ],
+    [
+      "2차전지/전기차",
+      3
     ]
   ],
   "top_articles": [
-    {
-      "topic": "반도체/AI",
-      "count": 1,
-      "title": "KODEX 미국반도체MV(390390) - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSWM4TUFERE1pWHZ2c3RQUVA2d1RRWm5rMkVBRWxRck5VTXYyTkpVNzhzbHRyVG1ZN1o2SjkwbjVJSXc5Wjc0bVlEdkd4dE95bEs5NTZJWVkxUnhBenAzaDE0UzdEQ0F5d1VXb2xxc3I0cDJXd205TmxtNHV2VWVENy0xV1p4dkxLcE1TOWRrMVR2enhQOEtF?oc=5",
-      "summary_lines": [
-        "핵심 이슈: KODEX 미국반도체MV(390390) - 매일경제 마켓",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
     {
       "topic": "미국지수",
       "count": 1,
@@ -40,8 +29,19 @@
       ]
     },
     {
-      "topic": "2차전지/전기차",
+      "topic": "에너지/원자재",
       "count": 1,
+      "title": "이란과의 전쟁 여파…인도 경제 압박에 연료·원자재값 급등 - gukjenews.com",
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9UQzNMTlNhUGliNFVtUGdSOFN5V2QzSWZzU2JQRFVSZWxrME9MaFF0NGRBRGZQTkZKSTc0RHBUM1FrRVQ2dS15RGFOZmJIb2hJcnMtR2prTG9hdXhlMzlXR0J3SXNOdkJtLVNXaWR3?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 이란과의 전쟁 여파…인도 경제 압박에 연료·원자재값 급등 - gukjenews.com",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "2차전지/전기차",
+      "count": 3,
       "title": "AION V, 또 다른 이정표 달성: 4월 글로벌 판매 179% 증가하면서 제이디파워 콤팩트 배터리 전기차 상품성 만족도 조사 1위 기록 - 뉴시스",
       "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5oQXN2ZUVtd2FWeVFkaEk1YjhCWDZWRkFHQU5RWTljV1dMX1h2TlYyckdLWHpuODRYYVFOYkdGcWFfN2ZXM2s2ckhTQ2Y2TlAzZkduYVhTbzduUTRVTGRJdA?oc=5",
       "summary_lines": [
@@ -53,14 +53,14 @@
   ],
   "sector_hot_topics": [
     {
-      "sector": "IT/반도체",
-      "total_count": 1,
+      "sector": "2차전지/자동차",
+      "total_count": 3,
       "topics": [
         {
-          "topic": "반도체/AI",
-          "count": 1,
-          "title": "KODEX 미국반도체MV(390390) - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPSWM4TUFERE1pWHZ2c3RQUVA2d1RRWm5rMkVBRWxRck5VTXYyTkpVNzhzbHRyVG1ZN1o2SjkwbjVJSXc5Wjc0bVlEdkd4dE95bEs5NTZJWVkxUnhBenAzaDE0UzdEQ0F5d1VXb2xxc3I0cDJXd205TmxtNHV2VWVENy0xV1p4dkxLcE1TOWRrMVR2enhQOEtF?oc=5"
+          "topic": "2차전지/전기차",
+          "count": 3,
+          "title": "AION V, 또 다른 이정표 달성: 4월 글로벌 판매 179% 증가하면서 제이디파워 콤팩트 배터리 전기차 상품성 만족도 조사 1위 기록 - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5oQXN2ZUVtd2FWeVFkaEk1YjhCWDZWRkFHQU5RWTljV1dMX1h2TlYyckdLWHpuODRYYVFOYkdGcWFfN2ZXM2s2ckhTQ2Y2TlAzZkduYVhTbzduUTRVTGRJdA?oc=5"
         }
       ]
     },
@@ -77,14 +77,14 @@
       ]
     },
     {
-      "sector": "2차전지/자동차",
+      "sector": "에너지/소재",
       "total_count": 1,
       "topics": [
         {
-          "topic": "2차전지/전기차",
+          "topic": "에너지/원자재",
           "count": 1,
-          "title": "AION V, 또 다른 이정표 달성: 4월 글로벌 판매 179% 증가하면서 제이디파워 콤팩트 배터리 전기차 상품성 만족도 조사 1위 기록 - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5oQXN2ZUVtd2FWeVFkaEk1YjhCWDZWRkFHQU5RWTljV1dMX1h2TlYyckdLWHpuODRYYVFOYkdGcWFfN2ZXM2s2ckhTQ2Y2TlAzZkduYVhTbzduUTRVTGRJdA?oc=5"
+          "title": "이란과의 전쟁 여파…인도 경제 압박에 연료·원자재값 급등 - gukjenews.com",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9UQzNMTlNhUGliNFVtUGdSOFN5V2QzSWZzU2JQRFVSZWxrME9MaFF0NGRBRGZQTkZKSTc0RHBUM1FrRVQ2dS15RGFOZmJIb2hJcnMtR2prTG9hdXhlMzlXR0J3SXNOdkJtLVNXaWR3?oc=5"
         }
       ]
     }
