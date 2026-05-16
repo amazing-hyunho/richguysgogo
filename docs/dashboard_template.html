@@ -251,6 +251,54 @@
     .topic-heatmap { display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px; }
     .heatmap-chip { padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:5px;cursor:pointer;transition:opacity 0.15s; }
     .heatmap-chip:hover { opacity:0.8; }
+
+    /* ── 은퇴 준비 탭 ─────────────────────────────────────── */
+    .retire-subnav { display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:24px;padding-bottom:0; }
+    .retire-subbtn { padding:9px 20px;background:none;border:none;border-bottom:2px solid transparent;color:var(--muted);font:inherit;font-size:13px;font-weight:600;cursor:pointer;margin-bottom:-1px;border-radius:8px 8px 0 0;transition:color 0.15s,background 0.15s; }
+    .retire-subbtn:hover { color:#e2e8f0;background:rgba(255,255,255,0.04); }
+    .retire-subbtn.retire-subbtn-active { color:var(--green);border-bottom-color:var(--green);background:rgba(52,211,153,0.06); }
+    .retire-subpane { display:none; }
+    .retire-subpane.retire-subpane-active { display:block; }
+    .retire-card { background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:20px; }
+    .retire-section-title { font-size:15px;font-weight:700;color:#f1f5f9;margin-bottom:4px; }
+    .retire-sub-title { font-size:13px;font-weight:700;color:#e2e8f0;margin-bottom:10px; }
+    .retire-form-grid { display:grid;grid-template-columns:1fr;gap:14px; }
+    @media(min-width:640px){ .retire-form-grid { grid-template-columns:1fr 1fr; } }
+    @media(min-width:960px){ .retire-form-grid { grid-template-columns:repeat(3,1fr); } }
+    .retire-field { display:flex;flex-direction:column;gap:5px; }
+    .retire-label { font-size:12px;color:#94a3b8;font-weight:600; }
+    .retire-unit { font-weight:400;color:#64748b; }
+    .retire-input { background:var(--panel-soft);border:1px solid var(--line);border-radius:8px;color:#e2e8f0;font:inherit;font-size:14px;padding:8px 12px;outline:none;transition:border-color 0.15s; }
+    .retire-input:focus { border-color:rgba(52,211,153,0.5); }
+    .retire-input::placeholder { color:#475569; }
+    .retire-calc-btn { background:rgba(52,211,153,0.15);border:1px solid rgba(52,211,153,0.45);color:#6ee7b7;font:inherit;font-size:14px;font-weight:700;padding:10px 28px;border-radius:10px;cursor:pointer;transition:background 0.15s; }
+    .retire-calc-btn:hover { background:rgba(52,211,153,0.25); }
+    .retire-error { margin-top:10px;padding:10px 14px;background:rgba(248,113,113,0.1);border:1px solid rgba(248,113,113,0.35);border-radius:8px;color:#fca5a5;font-size:13px; }
+    .retire-result-wrap { animation:fadeInUp 0.25s ease; }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+    .retire-result-box { background:linear-gradient(145deg,rgba(30,41,59,0.98),rgba(15,23,42,0.92));border:1px solid rgba(52,211,153,0.3);border-radius:14px;padding:18px 20px;margin-bottom:14px; }
+    .retire-result-label { font-size:12px;color:#64748b;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.04em; }
+    .retire-result-value { font-size:clamp(18px,4vw,28px);font-weight:800;color:#34d399; }
+    .retire-assumption-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-top:14px; }
+    .retire-assumption-card { background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;padding:10px 12px; }
+    .retire-assump-label { font-size:11px;color:#64748b;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px; }
+    .retire-assump-val { font-size:13px;font-weight:700;color:#e2e8f0; }
+    .retire-table-wrap { width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:10px; }
+    .retire-table { width:100%;border-collapse:collapse;font-size:12px;min-width:420px; }
+    .retire-table th { background:rgba(15,23,42,0.6);color:#94a3b8;font-weight:600;padding:8px 10px;text-align:left;white-space:nowrap;border-bottom:1px solid var(--line); }
+    .retire-table td { padding:7px 10px;border-bottom:1px solid rgba(51,65,85,0.4);color:#cbd5e1; }
+    .retire-table tr:last-child td { border-bottom:none; }
+    .retire-table tr:hover td { background:rgba(52,211,153,0.04); }
+    .retire-table th.r, .retire-table td.r { text-align:right; }
+    .retire-fund-3col { display:grid;grid-template-columns:1fr;gap:16px; }
+    @media(min-width:640px){ .retire-fund-3col { grid-template-columns:repeat(3,1fr); } }
+    .retire-fund-col { background:var(--panel-soft);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px; }
+    .retire-fund-col-title { font-size:13px;font-weight:700;color:#f1f5f9;padding-bottom:8px;border-bottom:1px solid rgba(51,65,85,0.6); }
+    .retire-fund-result-row { display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px; }
+    .retire-goal-banner { padding:12px 16px;background:rgba(30,41,59,0.8);border:1px solid rgba(52,211,153,0.3);border-radius:10px;font-size:13px;color:#cbd5e1;margin-bottom:16px; }
+    .retire-pf-split { display:grid;grid-template-columns:1fr;gap:20px; }
+    @media(min-width:720px){ .retire-pf-split { grid-template-columns:1fr 1fr; } }
+    .retire-pf-col { background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px; }
   </style>
 </head>
 <body>
@@ -263,6 +311,7 @@
       <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
+      <button class="tab-btn" data-tab="retire" role="tab" aria-selected="false">🏖️ 은퇴 준비</button>
     </nav>
 
     <!-- ══ 탭 1: 시장 분석 ══════════════════════════════════════ -->
@@ -603,6 +652,221 @@
         </div>
       </section>
     </div><!-- /tab-news -->
+
+    <!-- ══ 탭 4: 은퇴 준비 ══════════════════════════════════════ -->
+    <div id="tab-retire" class="tab-pane" role="tabpanel">
+
+      <div class="retire-subnav" role="tablist" aria-label="은퇴 준비 메뉴">
+        <button class="retire-subbtn retire-subbtn-active" data-retire="goal" role="tab">📊 필요 자산 계산</button>
+        <button class="retire-subbtn" data-retire="fund" role="tab">📈 은퇴 시점 예상 자산</button>
+        <button class="retire-subbtn" data-retire="portfolio" role="tab">💼 계좌 분석</button>
+      </div>
+
+      <!-- ── 서브탭 1: 필요 자산 계산 ── -->
+      <div id="retire-goal" class="retire-subpane retire-subpane-active">
+        <div class="retire-card">
+          <div class="retire-section-title">필요 자산 입력</div>
+          <p style="font-size:12px;color:#64748b;margin:0 0 16px 0;">은퇴 나이 55세, 기대수명 90세 기준으로 계산합니다.</p>
+          <div class="retire-form-grid">
+            <div class="retire-field">
+              <label class="retire-label" for="goal-age">현재 나이 <span class="retire-unit">(만 나이)</span></label>
+              <input class="retire-input" type="number" id="goal-age" min="1" max="54" step="1" placeholder="예) 35">
+            </div>
+            <div class="retire-field">
+              <label class="retire-label" for="goal-month-expense">예상 월 생활비 <span class="retire-unit">(현재 물가, 만원)</span></label>
+              <input class="retire-input" type="number" id="goal-month-expense" min="1" step="1" placeholder="예) 300">
+            </div>
+            <div class="retire-field">
+              <label class="retire-label" for="goal-invest-rate">은퇴 후 투자 수익률 <span class="retire-unit">(%)</span></label>
+              <input class="retire-input" type="number" id="goal-invest-rate" min="0" step="0.1" placeholder="예) 4">
+            </div>
+            <div class="retire-field">
+              <label class="retire-label" for="goal-inflation-rate">물가 상승률 <span class="retire-unit">(%)</span></label>
+              <input class="retire-input" type="number" id="goal-inflation-rate" min="0" step="0.1" placeholder="예) 2.5">
+            </div>
+            <div class="retire-field">
+              <label class="retire-label" for="goal-pension">국민연금 월 수령액 <span class="retire-unit">(만원, 65세~)</span></label>
+              <input class="retire-input" type="number" id="goal-pension" min="0" step="1" placeholder="예) 80">
+            </div>
+          </div>
+          <div style="margin-top:18px;">
+            <button class="retire-calc-btn" onclick="calcGoal()">계산하기</button>
+          </div>
+          <div id="goal-error" class="retire-error" style="display:none;"></div>
+        </div>
+        <div id="goal-result" style="display:none;" class="retire-result-wrap">
+          <div class="retire-result-box">
+            <div class="retire-result-label">55세에 필요한 총 유동 자산 (국민연금 반영)</div>
+            <div class="retire-result-value" id="goal-result-value">-</div>
+          </div>
+          <div class="retire-assumption-grid" id="goal-assumption-grid"></div>
+          <div style="margin-top:20px;">
+            <div class="retire-sub-title">연도별 현재가치 환산 지출 내역</div>
+            <div class="retire-table-wrap">
+              <table class="retire-table">
+                <thead><tr><th>경과연수</th><th>나이</th><th class="r">명목 연간지출</th><th class="r">국민연금 차감</th><th class="r">현재가치 환산</th></tr></thead>
+                <tbody id="goal-detail-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div><!-- /retire-goal -->
+
+      <!-- ── 서브탭 2: 은퇴 시점 예상 자산 ── -->
+      <div id="retire-fund" class="retire-subpane">
+        <div class="retire-card">
+          <div class="retire-section-title">투자 정보 입력</div>
+          <p style="font-size:12px;color:#64748b;margin:0 0 16px 0;">55세까지 매년 납입 후 복리로 성장한 예상 자산을 계산합니다.</p>
+          <div class="retire-field" style="max-width:220px;margin-bottom:20px;">
+            <label class="retire-label" for="fund-age">현재 나이 <span class="retire-unit">(만 나이)</span></label>
+            <input class="retire-input" type="number" id="fund-age" min="1" max="54" step="1" placeholder="예) 35">
+          </div>
+          <div class="retire-fund-3col">
+            <div class="retire-fund-col">
+              <div class="retire-fund-col-title">📦 투자 (연금 제외)</div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-seed">초기 자금 <span class="retire-unit">(만원)</span></label>
+                <input class="retire-input" type="number" id="fund-seed" min="0" step="1" placeholder="예) 5000">
+              </div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-year-income">연 추가 납입액 <span class="retire-unit">(만원)</span></label>
+                <input class="retire-input" type="number" id="fund-year-income" min="0" step="1" placeholder="예) 1200">
+              </div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-invest-rate">예상 수익률 <span class="retire-unit">(%)</span></label>
+                <input class="retire-input" type="number" id="fund-invest-rate" min="0" step="0.1" placeholder="예) 7">
+              </div>
+            </div>
+            <div class="retire-fund-col">
+              <div class="retire-fund-col-title">🏦 개인 연금</div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-pension-seed">현재 자금 <span class="retire-unit">(만원)</span></label>
+                <input class="retire-input" type="number" id="fund-pension-seed" min="0" step="1" placeholder="예) 2000">
+              </div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-year-pension">연 추가 납입액 <span class="retire-unit">(만원)</span></label>
+                <input class="retire-input" type="number" id="fund-year-pension" min="0" step="1" placeholder="예) 400">
+              </div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-pension-rate">예상 수익률 <span class="retire-unit">(%)</span></label>
+                <input class="retire-input" type="number" id="fund-pension-rate" min="0" step="0.1" placeholder="예) 6">
+              </div>
+            </div>
+            <div class="retire-fund-col">
+              <div class="retire-fund-col-title">💎 IRP</div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-irp-seed">현재 자금 <span class="retire-unit">(만원)</span></label>
+                <input class="retire-input" type="number" id="fund-irp-seed" min="0" step="1" placeholder="예) 1000">
+              </div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-year-irp">연 추가 납입액 <span class="retire-unit">(만원)</span></label>
+                <input class="retire-input" type="number" id="fund-year-irp" min="0" step="1" placeholder="예) 300">
+              </div>
+              <div class="retire-field">
+                <label class="retire-label" for="fund-irp-rate">예상 수익률 <span class="retire-unit">(%)</span></label>
+                <input class="retire-input" type="number" id="fund-irp-rate" min="0" step="0.1" placeholder="예) 5">
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:18px;">
+            <button class="retire-calc-btn" onclick="calcFund()">계산하기</button>
+          </div>
+          <div id="fund-error" class="retire-error" style="display:none;"></div>
+        </div>
+        <div id="fund-result" style="display:none;" class="retire-result-wrap">
+          <div class="retire-fund-result-row">
+            <div class="retire-result-box" style="flex:1;">
+              <div class="retire-result-label">55세 예상 총 투자 자산</div>
+              <div class="retire-result-value" id="fund-result-total">-</div>
+            </div>
+            <div class="retire-result-box" style="flex:1;background:rgba(56,189,248,0.06);">
+              <div class="retire-result-label">연금 외 투자</div>
+              <div class="retire-result-value" id="fund-result-invest" style="font-size:clamp(14px,2.5vw,18px);color:#7dd3fc;">-</div>
+            </div>
+            <div class="retire-result-box" style="flex:1;background:rgba(56,189,248,0.06);">
+              <div class="retire-result-label">개인연금</div>
+              <div class="retire-result-value" id="fund-result-pension" style="font-size:clamp(14px,2.5vw,18px);color:#7dd3fc;">-</div>
+            </div>
+            <div class="retire-result-box" style="flex:1;background:rgba(56,189,248,0.06);">
+              <div class="retire-result-label">IRP</div>
+              <div class="retire-result-value" id="fund-result-irp" style="font-size:clamp(14px,2.5vw,18px);color:#7dd3fc;">-</div>
+            </div>
+          </div>
+          <div id="fund-vs-goal-banner" style="display:none;" class="retire-goal-banner">
+            <span id="fund-vs-goal-text"></span>
+          </div>
+          <div style="margin-top:20px;">
+            <div class="retire-sub-title">연도별 자산 성장 추이 (만원)</div>
+            <div style="width:100%;overflow-x:auto;">
+              <canvas id="fund-growth-chart" style="min-width:480px;max-height:300px;"></canvas>
+            </div>
+          </div>
+          <div style="margin-top:18px;">
+            <div class="retire-sub-title">연도별 자산 현황</div>
+            <div class="retire-table-wrap">
+              <table class="retire-table">
+                <thead><tr><th>연도</th><th>나이</th><th class="r">연금 외 투자</th><th class="r">개인연금</th><th class="r">IRP</th><th class="r">합계</th></tr></thead>
+                <tbody id="fund-detail-tbody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div><!-- /retire-fund -->
+
+      <!-- ── 서브탭 3: 계좌 분석 ── -->
+      <div id="retire-portfolio" class="retire-subpane">
+        <div class="retire-card">
+          <div class="retire-section-title">계좌 분석</div>
+          <div class="retire-field" style="max-width:260px;margin-bottom:14px;">
+            <label class="retire-label" for="pf-exchange">환율 <span class="retire-unit">(1 USD → 원)</span></label>
+            <input class="retire-input" type="number" id="pf-exchange" value="1380" step="1" min="1">
+          </div>
+          <div>
+            <label class="retire-label">계좌 엑셀 업로드 <span class="retire-unit">(.xls / .xlsx)</span></label>
+            <p style="font-size:12px;color:#64748b;margin:4px 0 10px 0;">
+              필수 컬럼:
+              <code style="background:#0f172a;padding:2px 6px;border-radius:4px;font-size:11px;">Account</code> (일반계좌 / 연금계좌) ·
+              <code style="background:#0f172a;padding:2px 6px;border-radius:4px;font-size:11px;">Account_sub</code> ·
+              <code style="background:#0f172a;padding:2px 6px;border-radius:4px;font-size:11px;">Amount</code> ·
+              <code style="background:#0f172a;padding:2px 6px;border-radius:4px;font-size:11px;">Unit</code> (원 / 달러)
+            </p>
+            <input type="file" id="pf-file" accept=".xls,.xlsx"
+              style="font:inherit;font-size:13px;color:#e2e8f0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px 10px;cursor:pointer;width:100%;max-width:480px;"
+              onchange="loadPortfolio()">
+          </div>
+          <div id="pf-error" class="retire-error" style="display:none;margin-top:10px;"></div>
+        </div>
+        <div id="pf-result" style="display:none;" class="retire-result-wrap">
+          <div class="retire-pf-split">
+            <div class="retire-pf-col">
+              <div class="retire-sub-title">일반 계좌</div>
+              <div style="display:flex;justify-content:center;margin:12px 0;">
+                <canvas id="pf-normal-chart" width="220" height="220"></canvas>
+              </div>
+              <div class="retire-table-wrap">
+                <table class="retire-table">
+                  <thead><tr><th>세부 계좌</th><th class="r">금액 (만원)</th><th class="r">비중</th></tr></thead>
+                  <tbody id="pf-normal-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="retire-pf-col">
+              <div class="retire-sub-title">연금 계좌</div>
+              <div style="display:flex;justify-content:center;margin:12px 0;">
+                <canvas id="pf-pension-chart" width="220" height="220"></canvas>
+              </div>
+              <div class="retire-table-wrap">
+                <table class="retire-table">
+                  <thead><tr><th>세부 계좌</th><th class="r">금액 (만원)</th><th class="r">비중</th></tr></thead>
+                  <tbody id="pf-pension-tbody"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /retire-portfolio -->
+
+    </div><!-- /tab-retire -->
 
   </div>
 
@@ -3010,5 +3274,263 @@ function buildStockRows() {
     <div id="fin-modal-body"></div>
   </div>
 </div>
+
+<!-- SheetJS (Excel 파싱) -->
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<!-- Chart.js (자산 성장 차트, 도넛 차트) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+
+<script>
+/* ════════════════════════════════════════════════════════
+   은퇴 준비 탭 – 서브탭 전환
+════════════════════════════════════════════════════════ */
+document.querySelectorAll('.retire-subbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.retire-subbtn').forEach(b => b.classList.remove('retire-subbtn-active'));
+    document.querySelectorAll('.retire-subpane').forEach(p => p.classList.remove('retire-subpane-active'));
+    btn.classList.add('retire-subbtn-active');
+    const pane = document.getElementById('retire-' + btn.dataset.retire);
+    if (pane) pane.classList.add('retire-subpane-active');
+  });
+});
+
+/* ────────────────────────────────────────────────────────
+   서브탭 1: 필요 자산 계산
+   로직 출처: RetirePrepare/API/Goal_API.py :: GetReqFund()
+──────────────────────────────────────────────────────── */
+function calcGoal() {
+  const errEl = document.getElementById('goal-error');
+  errEl.style.display = 'none';
+  const age        = parseFloat(document.getElementById('goal-age').value);
+  const expense    = parseFloat(document.getElementById('goal-month-expense').value);
+  const investRate = parseFloat(document.getElementById('goal-invest-rate').value);
+  const inflation  = parseFloat(document.getElementById('goal-inflation-rate').value);
+  const pension    = parseFloat(document.getElementById('goal-pension').value);
+  if ([age, expense, investRate, inflation, pension].some(v => isNaN(v))) {
+    errEl.textContent = '모든 항목을 입력해주세요.'; errEl.style.display = 'block'; return;
+  }
+  if (age >= 55) {
+    errEl.textContent = '현재 나이는 55세 미만이어야 합니다.'; errEl.style.display = 'block'; return;
+  }
+  const RETIRE_AGE  = 55, LIFE_EXPECT = 90;
+  const remainRetire = Math.max(RETIRE_AGE - age, 0);
+  const remainLife   = Math.max(LIFE_EXPECT - age, 0);
+  let totalReqFund = 0;
+  const rows = [];
+  let currentAge = RETIRE_AGE;
+  for (let year = remainRetire; year < remainLife; year++) {
+    currentAge++;
+    const pensionYearly  = currentAge >= 65 ? pension * 12 : 0;
+    const nominalExpense = (expense * 12) * Math.pow(1 + inflation / 100, year);
+    const pv = (nominalExpense - pensionYearly) / Math.pow(1 + investRate / 100, year - remainRetire);
+    totalReqFund += pv;
+    rows.push({ year, age: currentAge, nominalExpense, pensionYearly, pv });
+  }
+  document.getElementById('goal-result-value').textContent =
+    totalReqFund.toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + ' 만원';
+  const assumptions = [
+    { label: '현재 나이', value: age + '세' },
+    { label: '은퇴 나이', value: '55세' },
+    { label: '기대 수명', value: '90세' },
+    { label: '월 생활비', value: expense.toLocaleString() + ' 만원' },
+    { label: '투자 수익률', value: investRate + '%' },
+    { label: '물가 상승률', value: inflation + '%' },
+    { label: '국민연금(월)', value: pension.toLocaleString() + ' 만원 (65세~)' },
+  ];
+  document.getElementById('goal-assumption-grid').innerHTML = assumptions.map(a =>
+    `<div class="retire-assumption-card"><div class="retire-assump-label">${a.label}</div><div class="retire-assump-val">${a.value}</div></div>`
+  ).join('');
+  document.getElementById('goal-detail-tbody').innerHTML = rows.map(r =>
+    `<tr>
+      <td>${r.year - remainRetire + 1}</td>
+      <td>${r.age}세</td>
+      <td class="r">${r.nominalExpense.toLocaleString('ko-KR', {maximumFractionDigits:0})} 만원</td>
+      <td class="r" style="color:${r.pensionYearly > 0 ? 'var(--green)' : 'var(--muted)'}">
+        ${r.pensionYearly > 0 ? '-' + r.pensionYearly.toLocaleString('ko-KR') : '-'} 만원
+      </td>
+      <td class="r">${r.pv.toLocaleString('ko-KR', {maximumFractionDigits:0})} 만원</td>
+    </tr>`
+  ).join('');
+  document.getElementById('goal-result').style.display = 'block';
+}
+
+/* ────────────────────────────────────────────────────────
+   서브탭 2: 은퇴 시점 예상 자산
+   로직 출처: RetirePrepare/API/Fund_API.py :: GetExpectInvest()
+──────────────────────────────────────────────────────── */
+let _fundChart = null;
+function calcFund() {
+  const errEl = document.getElementById('fund-error');
+  errEl.style.display = 'none';
+  const age         = parseFloat(document.getElementById('fund-age').value);
+  const seed        = parseFloat(document.getElementById('fund-seed').value);
+  const yearIncome  = parseFloat(document.getElementById('fund-year-income').value);
+  const investRate  = parseFloat(document.getElementById('fund-invest-rate').value);
+  const pensionSeed = parseFloat(document.getElementById('fund-pension-seed').value);
+  const yearPension = parseFloat(document.getElementById('fund-year-pension').value);
+  const pensionRate = parseFloat(document.getElementById('fund-pension-rate').value);
+  const irpSeed     = parseFloat(document.getElementById('fund-irp-seed').value);
+  const yearIrp     = parseFloat(document.getElementById('fund-year-irp').value);
+  const irpRate     = parseFloat(document.getElementById('fund-irp-rate').value);
+  if ([age,seed,yearIncome,investRate,pensionSeed,yearPension,pensionRate,irpSeed,yearIrp,irpRate].some(v => isNaN(v))) {
+    errEl.textContent = '모든 항목을 입력해주세요.'; errEl.style.display = 'block'; return;
+  }
+  if (age >= 55) {
+    errEl.textContent = '현재 나이는 55세 미만이어야 합니다.'; errEl.style.display = 'block'; return;
+  }
+  const duration = Math.max(55 - age, 0);
+  const rows = [{ year:0, age, invest:seed, pension:pensionSeed, irp:irpSeed, total:seed+pensionSeed+irpSeed }];
+  for (let y = 1; y < duration; y++) {
+    const p = rows[y-1];
+    const invest  = Math.round(((p.invest  + yearIncome)  * (1 + investRate  / 100)) * 100) / 100;
+    const pension = Math.round(((p.pension + yearPension) * (1 + pensionRate / 100)) * 100) / 100;
+    const irp     = Math.round(((p.irp     + yearIrp)     * (1 + irpRate     / 100)) * 100) / 100;
+    rows.push({ year:y, age:age+y, invest, pension, irp, total:Math.round((invest+pension+irp)*100)/100 });
+  }
+  const last = rows[Math.max(rows.length-1, 0)];
+  const fmt = v => v.toLocaleString('ko-KR', {maximumFractionDigits:0}) + ' 만원';
+  document.getElementById('fund-result-total').textContent   = fmt(last.total);
+  document.getElementById('fund-result-invest').textContent  = fmt(last.invest);
+  document.getElementById('fund-result-pension').textContent = fmt(last.pension);
+  document.getElementById('fund-result-irp').textContent     = fmt(last.irp);
+  // 필요 자산 대비 달성률 (goal 탭 결과 있으면 비교)
+  const goalEl = document.getElementById('goal-result-value');
+  const banner = document.getElementById('fund-vs-goal-banner');
+  if (goalEl && goalEl.textContent !== '-') {
+    const goalVal = parseFloat(goalEl.textContent.replace(/[^0-9.]/g, ''));
+    if (!isNaN(goalVal) && goalVal > 0) {
+      const ratio = (last.total / goalVal) * 100;
+      const diff  = last.total - goalVal;
+      const color = ratio >= 100 ? 'var(--green)' : ratio >= 80 ? 'var(--amber)' : 'var(--red)';
+      document.getElementById('fund-vs-goal-text').innerHTML =
+        `필요 자산 대비 달성률: <strong style="color:${color}">${ratio.toFixed(1)}%</strong>
+         &nbsp;|&nbsp; ${diff >= 0 ? '여유' : '부족'}: <strong style="color:${color}">${Math.abs(diff).toLocaleString('ko-KR',{maximumFractionDigits:0})} 만원</strong>`;
+      banner.style.display = 'block';
+    }
+  }
+  // 성장 차트
+  const ctx = document.getElementById('fund-growth-chart').getContext('2d');
+  if (_fundChart) _fundChart.destroy();
+  _fundChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: rows.map(r => r.age + '세'),
+      datasets: [
+        { label:'연금 외 투자', data:rows.map(r=>r.invest),  backgroundColor:'rgba(56,189,248,0.7)', stack:'s' },
+        { label:'개인연금',     data:rows.map(r=>r.pension), backgroundColor:'rgba(52,211,153,0.7)', stack:'s' },
+        { label:'IRP',          data:rows.map(r=>r.irp),     backgroundColor:'rgba(167,139,250,0.7)', stack:'s' },
+        { label:'합계', data:rows.map(r=>r.total), type:'line', borderColor:'#fcd34d',
+          backgroundColor:'transparent', pointRadius:2, borderWidth:2, tension:0.3 },
+      ]
+    },
+    options: {
+      responsive:true,
+      plugins: {
+        legend:{ labels:{ color:'#cbd5e1', font:{size:12} } },
+        tooltip:{ callbacks:{ label: c => c.dataset.label+': '+c.parsed.y.toLocaleString('ko-KR',{maximumFractionDigits:0})+' 만원' } }
+      },
+      scales: {
+        x:{ stacked:true, ticks:{color:'#64748b',maxRotation:45}, grid:{color:'rgba(51,65,85,0.4)'} },
+        y:{ stacked:true, ticks:{color:'#64748b', callback:v=>v.toLocaleString('ko-KR')}, grid:{color:'rgba(51,65,85,0.4)'} }
+      }
+    }
+  });
+  // 연도별 테이블
+  document.getElementById('fund-detail-tbody').innerHTML = rows.map(r =>
+    `<tr>
+      <td>${new Date().getFullYear() + r.year}</td>
+      <td>${r.age}세</td>
+      <td class="r">${r.invest.toLocaleString('ko-KR',{maximumFractionDigits:0})} 만원</td>
+      <td class="r">${r.pension.toLocaleString('ko-KR',{maximumFractionDigits:0})} 만원</td>
+      <td class="r">${r.irp.toLocaleString('ko-KR',{maximumFractionDigits:0})} 만원</td>
+      <td class="r" style="font-weight:700;color:#f1f5f9;">${r.total.toLocaleString('ko-KR',{maximumFractionDigits:0})} 만원</td>
+    </tr>`
+  ).join('');
+  document.getElementById('fund-result').style.display = 'block';
+}
+
+/* ────────────────────────────────────────────────────────
+   서브탭 3: 계좌 분석
+   로직 출처: RetirePrepare/API/Portfolio_API.py
+──────────────────────────────────────────────────────── */
+let _pfNormalChart = null, _pfPensionChart = null;
+function loadPortfolio() {
+  const errEl = document.getElementById('pf-error');
+  errEl.style.display = 'none';
+  const file = document.getElementById('pf-file').files[0];
+  if (!file) return;
+  if (typeof XLSX === 'undefined') {
+    errEl.textContent = 'SheetJS 로딩 중입니다. 잠시 후 다시 시도해주세요.'; errEl.style.display = 'block'; return;
+  }
+  const exchangeRate = parseFloat(document.getElementById('pf-exchange').value) || 1380;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const wb  = XLSX.read(e.target.result, { type:'array' });
+      const ws  = wb.Sheets[wb.SheetNames[0]];
+      const raw = XLSX.utils.sheet_to_json(ws);
+      if (!raw.length) throw new Error('시트가 비어 있습니다.');
+      const required = ['Account','Account_sub','Amount','Unit'];
+      const missing  = required.filter(r => !Object.keys(raw[0]).includes(r));
+      if (missing.length) throw new Error('필수 컬럼 없음: ' + missing.join(', '));
+      const data = raw.map(row => ({
+        ...row,
+        Amount: (row.Unit==='달러'||row.Unit==='USD')
+          ? parseFloat(row.Amount) * exchangeRate / 10000
+          : parseFloat(row.Amount) / 10000
+      })).filter(row => !isNaN(row.Amount));
+      const group = type => {
+        const map = {};
+        data.filter(r=>r.Account===type).forEach(r => { map[r.Account_sub]=(map[r.Account_sub]||0)+r.Amount; });
+        return Object.entries(map).map(([name,amt]) => ({ name, amt:Math.round(amt) }));
+      };
+      const normal  = group('일반계좌');
+      const pension = group('연금계좌');
+      renderPfTable('pf-normal-tbody',  normal);
+      renderPfTable('pf-pension-tbody', pension);
+      renderPfDonut('pf-normal-chart',  normal,  'normal');
+      renderPfDonut('pf-pension-chart', pension, 'pension');
+      document.getElementById('pf-result').style.display = 'block';
+    } catch(err) {
+      errEl.textContent = '파일 파싱 오류: ' + err.message; errEl.style.display = 'block';
+    }
+  };
+  reader.readAsArrayBuffer(file);
+}
+function renderPfTable(tbodyId, rows) {
+  const total = rows.reduce((s,r)=>s+r.amt, 0);
+  const el = document.getElementById(tbodyId);
+  if (!rows.length) { el.innerHTML='<tr><td colspan="3" style="color:#64748b;">데이터 없음</td></tr>'; return; }
+  el.innerHTML = rows.map(r =>
+    `<tr><td>${r.name}</td><td class="r">${r.amt.toLocaleString('ko-KR')} 만원</td><td class="r">${total>0?((r.amt/total)*100).toFixed(1):0}%</td></tr>`
+  ).join('') +
+  `<tr style="font-weight:700;border-top:1px solid #334155;"><td>합계</td><td class="r">${total.toLocaleString('ko-KR')} 만원</td><td class="r">100%</td></tr>`;
+}
+const _PF_COLORS = ['rgba(56,189,248,0.8)','rgba(52,211,153,0.8)','rgba(167,139,250,0.8)',
+  'rgba(251,191,36,0.8)','rgba(248,113,113,0.8)','rgba(14,165,233,0.8)','rgba(34,197,94,0.8)'];
+function renderPfDonut(canvasId, rows, key) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || !rows.length) return;
+  if (key==='normal'  && _pfNormalChart)  { _pfNormalChart.destroy();  _pfNormalChart=null;  }
+  if (key==='pension' && _pfPensionChart) { _pfPensionChart.destroy(); _pfPensionChart=null; }
+  const chart = new Chart(canvas.getContext('2d'), {
+    type:'doughnut',
+    data:{
+      labels:rows.map(r=>r.name),
+      datasets:[{ data:rows.map(r=>r.amt), backgroundColor:_PF_COLORS.slice(0,rows.length),
+        borderColor:'#0f172a', borderWidth:2, hoverOffset:8 }]
+    },
+    options:{
+      cutout:'60%',
+      plugins:{
+        legend:{ position:'bottom', labels:{ color:'#cbd5e1', font:{size:11}, padding:10 } },
+        tooltip:{ callbacks:{ label: c => c.label+': '+c.parsed.toLocaleString('ko-KR')+' 만원' } }
+      }
+    }
+  });
+  if (key==='normal') _pfNormalChart=chart; else _pfPensionChart=chart;
+}
+</script>
+
 </body>
 </html>
