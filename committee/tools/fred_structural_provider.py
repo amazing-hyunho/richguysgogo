@@ -41,3 +41,15 @@ def fetch_ig_oas() -> float | None:
 def fetch_fed_balance_sheet() -> float | None:
     """Fetch Fed total assets (FRED: WALCL)."""
     return fetch_fred_latest("WALCL")
+
+
+def fetch_tga_balance() -> float | None:
+    """US Treasury General Account balance (FRED: WDTGAL, 주간 수요일 기준, 단위: 십억달러).
+    TGA가 줄면 재무부가 시장에 유동성 공급 → 위험자산에 긍정적."""
+    return fetch_fred_latest("WDTGAL")
+
+
+def fetch_boj_rate() -> float | None:
+    """Bank of Japan 기준금리 (FRED: IRSTCB01JPM156N, 월간).
+    일본 마이너스 금리 해제 이후 추이 모니터링."""
+    return fetch_fred_latest("IRSTCB01JPM156N")

@@ -100,6 +100,10 @@ def persist_snapshot_metrics(
         hy_oas=s.hy_oas,
         ig_oas=s.ig_oas,
         fed_balance_sheet=s.fed_balance_sheet,
+        russell2000=d.russell2000,
+        oil_brent=d.oil_brent,
+        tga_balance=s.tga_balance,
+        boj_rate=s.boj_rate,
     )
     safe_upsert_monthly_macro(
         date=market_date.isoformat(),

@@ -302,6 +302,11 @@ def init_db(db_path: Path | None = None) -> None:
         _ensure_column_exists(conn, table="daily_macro", column="ig_oas", column_ddl="REAL")
         _ensure_column_exists(conn, table="daily_macro", column="fed_balance_sheet", column_ddl="REAL")
         _ensure_column_exists(conn, table="daily_macro", column="oil_wti", column_ddl="REAL")
+        # Extended indicators: Russell 2000, Brent crude, TGA balance, BOJ rate
+        _ensure_column_exists(conn, table="daily_macro", column="russell2000", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="oil_brent", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="tga_balance", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="boj_rate", column_ddl="REAL")
 
         # Phase 2: monthly_macro table (NULL-based; no 0.0 placeholders).
         conn.execute(
@@ -689,6 +694,10 @@ def upsert_daily_macro(
     hy_oas: float | None = None,
     ig_oas: float | None = None,
     fed_balance_sheet: float | None = None,
+    russell2000: float | None = None,
+    oil_brent: float | None = None,
+    tga_balance: float | None = None,
+    boj_rate: float | None = None,
     db_path: Path | None = None,
 ) -> None:
     """Upsert one row into `daily_macro` (NULL-based missing data)."""
@@ -698,9 +707,13 @@ def upsert_daily_macro(
         conn.execute(
             """
             INSERT INTO daily_macro (
-                date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate, vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet, created_at
+                date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate,
+                vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet,
+                russell2000, oil_brent, tga_balance, boj_rate, created_at
             ) VALUES (
-                :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate, :vix3m, :vix_term_spread, :oil_wti, :hy_oas, :ig_oas, :fed_balance_sheet, :created_at
+                :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate,
+                :vix3m, :vix_term_spread, :oil_wti, :hy_oas, :ig_oas, :fed_balance_sheet,
+                :russell2000, :oil_brent, :tga_balance, :boj_rate, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
                 us10y=COALESCE(excluded.us10y, daily_macro.us10y),
@@ -717,6 +730,10 @@ def upsert_daily_macro(
                 hy_oas=COALESCE(excluded.hy_oas, daily_macro.hy_oas),
                 ig_oas=COALESCE(excluded.ig_oas, daily_macro.ig_oas),
                 fed_balance_sheet=COALESCE(excluded.fed_balance_sheet, daily_macro.fed_balance_sheet),
+                russell2000=COALESCE(excluded.russell2000, daily_macro.russell2000),
+                oil_brent=COALESCE(excluded.oil_brent, daily_macro.oil_brent),
+                tga_balance=COALESCE(excluded.tga_balance, daily_macro.tga_balance),
+                boj_rate=COALESCE(excluded.boj_rate, daily_macro.boj_rate),
                 created_at=excluded.created_at;
             """,
             {
@@ -735,6 +752,10 @@ def upsert_daily_macro(
                 "hy_oas": None if hy_oas is None else float(hy_oas),
                 "ig_oas": None if ig_oas is None else float(ig_oas),
                 "fed_balance_sheet": None if fed_balance_sheet is None else float(fed_balance_sheet),
+                "russell2000": None if russell2000 is None else float(russell2000),
+                "oil_brent": None if oil_brent is None else float(oil_brent),
+                "tga_balance": None if tga_balance is None else float(tga_balance),
+                "boj_rate": None if boj_rate is None else float(boj_rate),
                 "created_at": created_at,
             },
         )

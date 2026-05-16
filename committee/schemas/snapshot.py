@@ -127,6 +127,8 @@ class MacroDaily(BaseModel):
     vix3m: Optional[float] = None
     vix_term_spread: Optional[float] = None
     oil_wti: Optional[float] = None
+    russell2000: Optional[float] = None
+    oil_brent: Optional[float] = None
 
     class Config:
         extra = "forbid"
@@ -173,6 +175,8 @@ class MacroStructural(BaseModel):
     hy_oas: Optional[float] = None
     ig_oas: Optional[float] = None
     fed_balance_sheet: Optional[float] = None
+    tga_balance: Optional[float] = None
+    boj_rate: Optional[float] = None
 
     class Config:
         extra = "forbid"

@@ -1309,15 +1309,119 @@ function buildMacroMetricCards() {
     exTag = noInterp;
   }
 
+  // ── 신규: Russell 2000 ──
+  const r2kPair = lastTwoFinite(daily, 'russell2000');
+  const r2k = r2kPair.curr; const r2kp = r2kPair.prev;
+  const r2kVal = typeof r2k === 'number' ? formatNumberWithComma(r2k, 2) : '-';
+  const r2kd = metricDeltaOrMissing(typeof r2k === 'number' ? r2k : NaN, typeof r2kp === 'number' ? r2kp : NaN);
+  const r2kTag = r2kVal === '-' ? noInterp : rateDeltaTag(r2kd.text, false);
+
+  // ── 신규: 브렌트유 ──
+  const brentPair = lastTwoFinite(daily, 'oil_brent');
+  const brent = brentPair.curr; const brentp = brentPair.prev;
+  const brentVal = typeof brent === 'number' ? formatNumberWithComma(brent, 2) : '-';
+  const brentd = metricDeltaOrMissing(typeof brent === 'number' ? brent : NaN, typeof brentp === 'number' ? brentp : NaN);
+  const brentTag = brentVal === '-' ? noInterp : rateDeltaTag(brentd.text, true);
+
+  // ── 신규: TGA 잔고 (미국 재무부 일반계정) ──
+  const tgaLatest = latestNonNull(daily, 'tga_balance');
+  let tgaVal; let tgad; let tgaTag; let tgaInterp;
+  if (tgaLatest) {
+    const tgaIdx = indexOfLatestNonNullRow(daily, 'tga_balance');
+    const tgap = tgaIdx >= 0 ? previousNonNullBefore(daily, 'tga_balance', tgaIdx) : null;
+    tgaVal = formatNumberWithComma(tgaLatest.value, 0) + ' B';
+    tgad = metricDeltaOrMissing(tgaLatest.value, tgap, '직전 공시 대비');
+    // TGA 감소 → 시장 유동성 공급 → 긍정적 (부호 반전)
+    tgaTag = tgad.text === '데이터 없음' ? noInterp : rateDeltaTag(tgad.text, false);
+    const tgaN = tgaLatest.value;
+    tgaInterp = tgaN > 700 ? { tag: '잔고 충분 (유동성 공급 여력 낮음)', cls: 'neu' }
+               : tgaN > 300 ? { tag: '잔고 보통', cls: 'neu' }
+               : { tag: '잔고 감소 → 시장 유동성 공급 가능성', cls: 'bull' };
+  } else {
+    tgaVal = '-'; tgad = noSeries; tgaTag = noInterp; tgaInterp = noInterp;
+  }
+
+  // ── 신규: 일본 BOJ 기준금리 ──
+  const bojLatest = latestNonNull(daily, 'boj_rate');
+  let bojVal; let bojd; let bojTag;
+  if (bojLatest) {
+    const bojIdx = indexOfLatestNonNullRow(daily, 'boj_rate');
+    const bojp = bojIdx >= 0 ? previousNonNullBefore(daily, 'boj_rate', bojIdx) : null;
+    bojVal = formatRatePercent(bojLatest.value);
+    bojd = metricDeltaOrMissing(bojLatest.value, bojp, '직전 공시 대비');
+    bojTag = bojd.text === '데이터 없음' ? noInterp : rateDeltaTag(bojd.text, true);
+  } else {
+    bojVal = '-'; bojd = noSeries; bojTag = noInterp;
+  }
+
+  // ── 신규: 공포탐욕지수 (CNN F&G, 빌드 시 fetch) ──
+  const fg = (data.fear_greed) || {};
+  const fgScore = fg.score;
+  const fgRating = fg.rating || '';
+  let fgVal; let fgInterpCls;
+  if (typeof fgScore === 'number') {
+    fgVal = String(Math.round(fgScore));
+    fgInterpCls = fgScore <= 25 ? 'bear' : fgScore <= 45 ? 'neu' : fgScore <= 55 ? 'neu' : fgScore <= 75 ? 'bull' : 'bull';
+  } else {
+    fgVal = '-'; fgInterpCls = 'neu';
+  }
+  const FG_LABEL = {'extreme fear':'극단적 공포','fear':'공포','neutral':'중립','greed':'탐욕','extreme greed':'극단적 탐욕'};
+  const fgLabel = FG_LABEL[fgRating.toLowerCase()] || fgRating || '데이터 없음';
+  const fgInterp = { tag: fgLabel, cls: fgInterpCls };
+  const fgDelta = fg.prev_close != null
+    ? metricDeltaOrMissing(fgScore, fg.prev_close, '전일 대비')
+    : noSeries;
+
+  // ── 신규: RSI 14d (KOSPI & S&P500, market_daily 데이터 계산) ──
+  function calcRSI14(rows, priceKey) {
+    const prices = rows.map(r => r[priceKey]).filter(v => typeof v === 'number' && Number.isFinite(v));
+    if (prices.length < 15) return null;
+    const recent = prices.slice(-15);
+    let gains = 0, losses = 0;
+    for (let i = 1; i < recent.length; i++) {
+      const d = recent[i] - recent[i-1];
+      if (d > 0) gains += d; else losses -= d;
+    }
+    const avgGain = gains / 14; const avgLoss = losses / 14;
+    if (avgLoss === 0) return 100;
+    return 100 - (100 / (1 + avgGain / avgLoss));
+  }
+  const mktDaily = safeArr(data.market_daily);
+  const kospiRSI = calcRSI14(mktDaily, 'kospi');
+  const sp500RSI = calcRSI14(mktDaily, 'sp500');
+  function rsiLabel(v) {
+    if (v == null) return '데이터 없음';
+    if (v >= 70) return '과매수 (' + v.toFixed(1) + ')';
+    if (v <= 30) return '과매도 (' + v.toFixed(1) + ')';
+    return '중립 (' + v.toFixed(1) + ')';
+  }
+  function rsiCls(v) {
+    if (v == null) return 'neu';
+    if (v >= 70) return 'bear'; if (v <= 30) return 'bull'; return 'neu';
+  }
+  const kospiRSIVal = kospiRSI != null ? kospiRSI.toFixed(1) : '-';
+  const sp500RSIVal = sp500RSI != null ? sp500RSI.toFixed(1) : '-';
+  const rsiCombinedVal = (kospiRSI != null || sp500RSI != null)
+    ? `K:${kospiRSIVal} / S:${sp500RSIVal}` : '-';
+  const rsiInterpTag = kospiRSI != null
+    ? { tag: 'KOSPI ' + rsiLabel(kospiRSI), cls: rsiCls(kospiRSI) }
+    : noInterp;
+
   let html = '';
   html += macroMetricCard('Fed 금리 (정책)', fedVal, fedD, fedTag, true);
   html += macroMetricCard('한국 기준금리 (정책)', krVal, noSeries, noInterp, true);
+  html += macroMetricCard('일본 BOJ 금리', bojVal, bojd, bojTag, true);
   html += macroMetricCard('CPI YoY', cpiVal, cpiD, cpiTag, false);
   html += macroMetricCard('PCE YoY', pceVal, pceD, pceTag, false);
   html += macroMetricCard('US 10Y', y10Val, y10d, y10Tag, true);
   html += macroMetricCard('DXY', dxyVal, dxyd, dxyTag, true);
   html += macroMetricCard('USD/KRW (매크로 일별)', fxVal, fxd, fxTag, false);
   html += macroMetricCard('유가 (WTI)', oilCardVal, oild, oilTag, false);
+  html += macroMetricCard('유가 (브렌트)', brentVal, brentd, brentTag, false);
+  html += macroMetricCard('Russell 2000', r2kVal, r2kd, r2kTag, false);
+  html += macroMetricCard('TGA 잔고 (재무부)', tgaVal, tgad, tgaInterp, false);
+  html += macroMetricCard('공포탐욕지수 (CNN)', fgVal, fgDelta, fgInterp, false);
+  html += macroMetricCard('RSI 14d (KOSPI/S&P)', rsiCombinedVal, noSeries, rsiInterpTag, false);
   html += macroMetricCard('한국 수출 YoY', exCardVal, exd, exTag, false);
   return html;
 }

@@ -5,6 +5,84 @@ import sqlite3
 from datetime import date
 from pathlib import Path
 
+
+def _fetch_fear_greed() -> dict:
+    """빌드 시 CNN Fear & Greed Index를 가져옵니다. 실패 시 None 반환.
+
+    CNN API가 봇 차단(418)을 반환할 경우 Alternative.me의 크립토 F&G 지수로 폴백.
+    """
+    import urllib.request
+
+    def _try_cnn() -> dict | None:
+        try:
+            urls = [
+                "https://production.dataviz.cnn.io/index/fearandgreed/graphdata",
+                "https://production.dataviz.cnn.io/index/fearandgreed/graphdata/",
+            ]
+            headers = {
+                "User-Agent": (
+                    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/124.0.0.0 Safari/537.36"
+                ),
+                "Accept": "application/json, text/plain, */*",
+                "Referer": "https://edition.cnn.com/markets/fear-and-greed",
+                "Origin": "https://edition.cnn.com",
+            }
+            for url in urls:
+                req = urllib.request.Request(url, headers=headers)
+                with urllib.request.urlopen(req, timeout=8) as resp:
+                    raw = json.loads(resp.read().decode())
+                fg = raw.get("fear_and_greed", {})
+                score = fg.get("score")
+                rating = fg.get("rating", "")
+                if score is None:
+                    continue
+                prev = raw.get("fear_and_greed_historical", {})
+                prev_close = None
+                if isinstance(prev.get("data"), list) and len(prev["data"]) >= 2:
+                    prev_close = prev["data"][-2].get("y")
+                return {
+                    "score": round(float(score), 1),
+                    "rating": rating,
+                    "prev_close": round(float(prev_close), 1) if prev_close is not None else None,
+                    "source": "cnn",
+                }
+        except Exception as exc:
+            print(f"fear_greed_cnn_failed: {exc}")
+        return None
+
+    def _try_alternative_me() -> dict | None:
+        """Alternative.me Crypto Fear & Greed (폴백 — 암호화폐 시장 기반)."""
+        try:
+            url = "https://api.alternative.me/fng/?limit=2&format=json"
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=8) as resp:
+                raw = json.loads(resp.read().decode())
+            items = raw.get("data", [])
+            if not items:
+                return None
+            score = float(items[0]["value"])
+            rating = items[0].get("value_classification", "")
+            prev_close = float(items[1]["value"]) if len(items) >= 2 else None
+            return {
+                "score": round(score, 1),
+                "rating": rating.lower(),
+                "prev_close": round(prev_close, 1) if prev_close is not None else None,
+                "source": "alternative.me (crypto)",
+            }
+        except Exception as exc:
+            print(f"fear_greed_altme_failed: {exc}")
+        return None
+
+    result = _try_cnn() or _try_alternative_me()
+    if result:
+        src = result.get("source", "")
+        print(f"fear_greed_ok: score={result['score']} rating={result['rating']} source={src}")
+        return result
+    print("fear_greed_fetch_failed: all sources exhausted")
+    return {"score": None, "rating": None, "prev_close": None, "source": None}
+
 ROOT_DIR = Path(__file__).resolve().parents[1]
 
 try:
@@ -498,7 +576,8 @@ def main() -> None:
             "daily_macro": fetch_rows(
                 conn,
                 "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, "
-                "vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet "
+                "vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet, "
+                "russell2000, oil_brent, tga_balance, boj_rate "
                 "FROM daily_macro ORDER BY date",
             ),
             "monthly_macro": fetch_rows(
@@ -521,6 +600,7 @@ def main() -> None:
             "stock_consensus": load_stock_consensus_summary(),
             "financial_metrics": load_financial_metrics_summary(),
             "ticker_master": load_ticker_master(),
+            "fear_greed": _fetch_fear_greed(),
         }
     finally:
         conn.close()

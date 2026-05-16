@@ -117,3 +117,13 @@ def fetch_vix_term_spread() -> float | None:
     if vix is None or vix3m is None:
         return None
     return vix3m - vix
+
+
+def fetch_russell2000() -> float | None:
+    """Russell 2000 index level (Yahoo: ^RUT). 미국 소형주 대표 지수."""
+    return _fetch_latest_close("^RUT")
+
+
+def fetch_oil_brent() -> float | None:
+    """Brent crude front-month futures (Yahoo: BZ=F). WTI와 독립 수집."""
+    return _fetch_latest_close("BZ=F")

@@ -19,7 +19,9 @@ from committee.tools.http_provider import HttpProvider
 from committee.tools.providers import IDataProvider
 from committee.tools.macro_daily_provider import (
     fetch_dxy,
+    fetch_oil_brent,
     fetch_oil_wti,
+    fetch_russell2000,
     fetch_us10y,
     fetch_us2y,
     fetch_usdkrw,
@@ -42,11 +44,13 @@ from committee.tools.fred_monthly_provider import (
 )
 from committee.tools.fred_quarterly_provider import fetch_gdp_growth, fetch_real_gdp
 from committee.tools.fred_structural_provider import (
+    fetch_boj_rate,
     fetch_breakeven_10y,
     fetch_fed_balance_sheet,
     fetch_fed_funds_rate,
     fetch_hy_oas,
     fetch_ig_oas,
+    fetch_tga_balance,
 )
 from committee.tools.bok_trade_provider import fetch_korea_export_yoy
 
@@ -126,6 +130,8 @@ def build_snapshot_real(
     vix3m = fetch_vix3m()
     vix_term_spread = fetch_vix_term_spread()
     oil_wti = fetch_oil_wti()
+    oil_brent = fetch_oil_brent()
+    russell2000 = fetch_russell2000()
 
     # Spread calculation: only when both yields are available.
     spread_2_10 = (us10y - us2y) if (us10y is not None and us2y is not None) else None
@@ -155,6 +161,8 @@ def build_snapshot_real(
     hy_oas = fetch_hy_oas()
     ig_oas = fetch_ig_oas()
     fed_balance_sheet = fetch_fed_balance_sheet()
+    tga_balance = fetch_tga_balance()
+    boj_rate = fetch_boj_rate()
 
     if usdkrw_reason is None:
         status["usdkrw"] = "OK"
@@ -215,6 +223,8 @@ def build_snapshot_real(
     status["vix3m"] = "OK" if vix3m is not None else "FAIL"
     status["vix_term_spread"] = "OK" if vix_term_spread is not None else "FAIL"
     status["oil_wti"] = "OK" if oil_wti is not None else "FAIL"
+    status["oil_brent"] = "OK" if oil_brent is not None else "FAIL"
+    status["russell2000"] = "OK" if russell2000 is not None else "FAIL"
 
     # Phase 2 monthly status tracking (FAIL when missing/unavailable).
     status["unemployment_rate"] = "OK" if unemployment_rate is not None else "FAIL"
@@ -243,6 +253,8 @@ def build_snapshot_real(
     status["hy_oas"] = "OK" if hy_oas is not None else "FAIL"
     status["ig_oas"] = "OK" if ig_oas is not None else "FAIL"
     status["fed_balance_sheet"] = "OK" if fed_balance_sheet is not None else "FAIL"
+    status["tga_balance"] = "OK" if tga_balance is not None else "FAIL"
+    status["boj_rate"] = "OK" if boj_rate is not None else "FAIL"
     _set_last_status(status)
 
     if usdkrw != 0.0 or kospi_change_pct != 0.0:
@@ -352,6 +364,8 @@ def build_snapshot_real(
                 "vix3m": vix3m,
                 "vix_term_spread": vix_term_spread,
                 "oil_wti": oil_wti,
+                "oil_brent": oil_brent,
+                "russell2000": russell2000,
             },
             "monthly": {
                 "unemployment_rate": unemployment_rate,
@@ -376,6 +390,8 @@ def build_snapshot_real(
                 "hy_oas": hy_oas,
                 "ig_oas": ig_oas,
                 "fed_balance_sheet": fed_balance_sheet,
+                "tga_balance": tga_balance,
+                "boj_rate": boj_rate,
             },
         },
     )
