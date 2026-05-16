@@ -686,16 +686,37 @@
       <!-- ── 서브탭 1: 필요 자산 계산 ── -->
       <div id="retire-goal" class="retire-subpane retire-subpane-active">
         <div class="retire-card">
-          <div class="retire-section-title">필요 자산 입력</div>
-          <p style="font-size:12px;color:#64748b;margin:0 0 16px 0;">은퇴 나이 55세, 기대수명 90세 기준으로 계산합니다.</p>
-          <div class="retire-form-grid">
+          <div class="retire-section-title">💰 은퇴 설계 파라미터 입력</div>
+          <p style="font-size:12px;color:#64748b;margin:0 0 16px 0;">기대수명 90세 기준. 고정 수입·국민연금도 물가상승률에 따라 매년 증액 반영.</p>
+
+          <!-- 행 1: 나이 -->
+          <div class="retire-form-grid" style="margin-bottom:14px;">
             <div class="retire-field">
               <label class="retire-label" for="goal-age">현재 나이 <span class="retire-unit">(만 나이)</span></label>
-              <input class="retire-input" type="number" id="goal-age" min="1" max="54" step="1" placeholder="예) 35">
+              <input class="retire-input" type="number" id="goal-age" min="1" max="89" step="1" placeholder="예) 35">
+            </div>
+            <div class="retire-field">
+              <label class="retire-label" for="goal-retire-age">목표 은퇴 나이 <span class="retire-unit">(만 나이)</span></label>
+              <input class="retire-input" type="number" id="goal-retire-age" min="2" max="89" step="1" placeholder="예) 55" value="55">
             </div>
             <div class="retire-field">
               <label class="retire-label" for="goal-month-expense">예상 월 생활비 <span class="retire-unit">(현재 물가, 만원)</span></label>
               <input class="retire-input" type="number" id="goal-month-expense" min="1" step="1" placeholder="예) 300">
+            </div>
+            <div class="retire-field">
+              <label class="retire-label" for="goal-pension">국민연금 월 수령액 <span class="retire-unit">(만원, 65세~)</span></label>
+              <input class="retire-input" type="number" id="goal-pension" min="0" step="1" placeholder="예) 80">
+            </div>
+          </div>
+
+          <div style="border-top:1px solid rgba(51,65,85,0.6);margin:4px 0 14px 0;"></div>
+
+          <!-- 행 2: 수익률 / 물가 / 고정수입 -->
+          <div class="retire-form-grid">
+            <div class="retire-field">
+              <label class="retire-label" for="goal-extra-income">은퇴 후 기타 월 고정 수입 <span class="retire-unit">(만원)</span></label>
+              <input class="retire-input" type="number" id="goal-extra-income" min="0" step="1" placeholder="예) 50 (임대·연금 등)" value="0">
+              <span style="font-size:11px;color:#475569;margin-top:2px;">임대료·개인연금 등 은퇴 직후부터 발생하는 수입</span>
             </div>
             <div class="retire-field">
               <label class="retire-label" for="goal-invest-rate">은퇴 후 투자 수익률 <span class="retire-unit">(%)</span></label>
@@ -704,28 +725,59 @@
             <div class="retire-field">
               <label class="retire-label" for="goal-inflation-rate">물가 상승률 <span class="retire-unit">(%)</span></label>
               <input class="retire-input" type="number" id="goal-inflation-rate" min="0" step="0.1" placeholder="예) 2.5">
-            </div>
-            <div class="retire-field">
-              <label class="retire-label" for="goal-pension">국민연금 월 수령액 <span class="retire-unit">(만원, 65세~)</span></label>
-              <input class="retire-input" type="number" id="goal-pension" min="0" step="1" placeholder="예) 80">
+              <span style="font-size:11px;color:#475569;margin-top:2px;">생활비·고정수입 모두 이 비율로 매년 증액</span>
             </div>
           </div>
-          <div style="margin-top:18px;">
-            <button class="retire-calc-btn" onclick="calcGoal()">계산하기</button>
+
+          <div style="margin-top:20px;">
+            <button class="retire-calc-btn" onclick="calcGoal()">은퇴 자산 계산하기</button>
           </div>
           <div id="goal-error" class="retire-error" style="display:none;"></div>
         </div>
+
         <div id="goal-result" style="display:none;" class="retire-result-wrap">
-          <div class="retire-result-box">
-            <div class="retire-result-label">55세에 필요한 총 유동 자산 (국민연금 반영)</div>
-            <div class="retire-result-value" id="goal-result-value">-</div>
+          <!-- 핵심 지표 3개 -->
+          <div class="retire-fund-result-row">
+            <div class="retire-result-box" style="flex:1;">
+              <div class="retire-result-label">은퇴 후 생활 기간</div>
+              <div class="retire-result-value" id="goal-metric-span" style="font-size:clamp(18px,3vw,24px);">-</div>
+            </div>
+            <div class="retire-result-box" style="flex:1;">
+              <div class="retire-result-label">은퇴 첫해 월 필요액 (물가 반영)</div>
+              <div class="retire-result-value" id="goal-metric-first-month" style="font-size:clamp(18px,3vw,24px);">-</div>
+            </div>
+            <div class="retire-result-box" style="flex:2;border-color:rgba(52,211,153,0.5);">
+              <div class="retire-result-label">목표 은퇴 시 필요한 총 자산</div>
+              <div class="retire-result-value" id="goal-result-value">-</div>
+            </div>
           </div>
+
+          <!-- 충분 메시지 -->
+          <div id="goal-congrats-msg" style="display:none;padding:14px 18px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.4);border-radius:12px;color:#6ee7b7;font-size:14px;font-weight:600;margin-bottom:16px;">
+            🎉 설정하신 고정 수입과 연금만으로도 은퇴 생활이 가능합니다!
+          </div>
+
+          <!-- 가정 요약 -->
           <div class="retire-assumption-grid" id="goal-assumption-grid"></div>
+
+          <!-- 계산 로직 안내 -->
+          <div id="goal-logic-box" style="margin:16px 0;padding:12px 16px;background:var(--panel-soft);border:1px solid var(--line);border-radius:10px;font-size:12px;color:#94a3b8;line-height:1.7;"></div>
+
+          <!-- 연도별 상세 테이블 -->
           <div style="margin-top:20px;">
-            <div class="retire-sub-title">연도별 현재가치 환산 지출 내역</div>
+            <div class="retire-sub-title">연도별 지출·수입 내역</div>
             <div class="retire-table-wrap">
               <table class="retire-table">
-                <thead><tr><th>경과연수</th><th>나이</th><th class="r">명목 연간지출</th><th class="r">국민연금 차감</th><th class="r">현재가치 환산</th></tr></thead>
+                <thead>
+                  <tr>
+                    <th>경과연수</th><th>나이</th>
+                    <th class="r">연간 생활비</th>
+                    <th class="r">고정 수입</th>
+                    <th class="r">국민연금</th>
+                    <th class="r">순 지출</th>
+                    <th class="r">현재가치 환산</th>
+                  </tr>
+                </thead>
                 <tbody id="goal-detail-tbody"></tbody>
               </table>
             </div>
@@ -3309,13 +3361,15 @@ function buildStockRows() {
 
 // 필드 id ↔ JSON 키 매핑 (모든 계산기 입력 필드)
 const RETIRE_FIELD_MAP = {
-  // 필요 자산 계산
+  // ── 필요 자산 계산 ──
   'goal-age'            : 'age',
+  'goal-retire-age'     : 'retire_age',
   'goal-month-expense'  : 'monthly_expense',
+  'goal-pension'        : 'national_pension',
+  'goal-extra-income'   : 'extra_income',
   'goal-invest-rate'    : 'return_rate_pct',
   'goal-inflation-rate' : 'inflation_rate_pct',
-  'goal-pension'        : 'national_pension',
-  // 은퇴 시점 예상 자산 (나이는 goal-age와 공유)
+  // ── 은퇴 시점 예상 자산 (나이는 goal-age와 공유) ──
   'fund-age'            : 'age',
   'fund-seed'           : 'invest_seed',
   'fund-year-income'    : 'invest_yearly',
@@ -3419,61 +3473,99 @@ document.querySelectorAll('.retire-subbtn').forEach(btn => {
 
 /* ────────────────────────────────────────────────────────
    서브탭 1: 필요 자산 계산
-   로직 출처: RetirePrepare/API/Goal_API.py :: GetReqFund()
+   로직 출처: RetirePrepare/API/Goal_API.py :: GetReqFund() (v2)
+   - Retire_Age 직접 입력 (55세 하드코딩 제거)
+   - ExtraIncome (기타 고정 수입) 추가
+   - 생활비·고정수입 모두 물가상승률로 매년 증액
 ──────────────────────────────────────────────────────── */
 function calcGoal() {
   const errEl = document.getElementById('goal-error');
   errEl.style.display = 'none';
+
   const age        = parseFloat(document.getElementById('goal-age').value);
+  const retireAge  = parseFloat(document.getElementById('goal-retire-age').value);
   const expense    = parseFloat(document.getElementById('goal-month-expense').value);
+  const pension    = parseFloat(document.getElementById('goal-pension').value);
+  const extra      = parseFloat(document.getElementById('goal-extra-income').value) || 0;
   const investRate = parseFloat(document.getElementById('goal-invest-rate').value);
   const inflation  = parseFloat(document.getElementById('goal-inflation-rate').value);
-  const pension    = parseFloat(document.getElementById('goal-pension').value);
-  if ([age, expense, investRate, inflation, pension].some(v => isNaN(v))) {
+
+  if ([age, retireAge, expense, pension, investRate, inflation].some(v => isNaN(v))) {
     errEl.textContent = '모든 항목을 입력해주세요.'; errEl.style.display = 'block'; return;
   }
-  if (age >= 55) {
-    errEl.textContent = '현재 나이는 55세 미만이어야 합니다.'; errEl.style.display = 'block'; return;
+  if (age >= retireAge) {
+    errEl.textContent = '목표 은퇴 나이를 현재 나이보다 높게 설정해주세요.'; errEl.style.display = 'block'; return;
   }
-  const RETIRE_AGE  = 55, LIFE_EXPECT = 90;
-  const remainRetire = Math.max(RETIRE_AGE - age, 0);
-  const remainLife   = Math.max(LIFE_EXPECT - age, 0);
+
+  const LIFE_EXPECT      = 90;
+  const yearsUntilRetire = retireAge - age;
+  const retireLifeSpan   = LIFE_EXPECT - retireAge;
+
+  // 은퇴 첫해 기준 금액 (현재 물가 → 은퇴 시점 물가로 환산)
+  const initialExpenseAtRetire     = (expense * 12) * Math.pow(1 + inflation / 100, yearsUntilRetire);
+  const initialExtraIncomeAtRetire = (extra   * 12) * Math.pow(1 + inflation / 100, yearsUntilRetire);
+
   let totalReqFund = 0;
   const rows = [];
-  let currentAge = RETIRE_AGE;
-  for (let year = remainRetire; year < remainLife; year++) {
-    currentAge++;
-    const pensionYearly  = currentAge >= 65 ? pension * 12 : 0;
-    const nominalExpense = (expense * 12) * Math.pow(1 + inflation / 100, year);
-    const pv = (nominalExpense - pensionYearly) / Math.pow(1 + investRate / 100, year - remainRetire);
-    totalReqFund += pv;
-    rows.push({ year, age: currentAge, nominalExpense, pensionYearly, pv });
+
+  for (let i = 0; i < retireLifeSpan; i++) {
+    const targetAge      = retireAge + i;
+    const yearlyExpense  = initialExpenseAtRetire     * Math.pow(1 + inflation / 100, i);
+    const yearlyExtra    = initialExtraIncomeAtRetire * Math.pow(1 + inflation / 100, i);
+    const yearlyPension  = targetAge >= 65 ? pension * 12 : 0;
+    const netExpense     = yearlyExpense - (yearlyExtra + yearlyPension);
+    const pv             = netExpense / Math.pow(1 + investRate / 100, i);
+    totalReqFund        += pv;
+    rows.push({ i, targetAge, yearlyExpense, yearlyExtra, yearlyPension, netExpense, pv });
   }
-  document.getElementById('goal-result-value').textContent =
-    totalReqFund.toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + ' 만원';
+
+  const displayFund = Math.max(totalReqFund, 0);
+  const fmt = (v, decimals=0) => v.toLocaleString('ko-KR', {maximumFractionDigits: decimals});
+
+  // 핵심 지표
+  document.getElementById('goal-metric-span').textContent       = retireLifeSpan + '년';
+  document.getElementById('goal-metric-first-month').textContent = fmt(initialExpenseAtRetire / 12) + ' 만원';
+  document.getElementById('goal-result-value').textContent       = fmt(displayFund) + ' 만원';
+
+  // 충분 메시지
+  const congratsEl = document.getElementById('goal-congrats-msg');
+  congratsEl.style.display = totalReqFund <= 0 ? 'block' : 'none';
+
+  // 가정 요약 카드
   const assumptions = [
-    { label: '현재 나이', value: age + '세' },
-    { label: '은퇴 나이', value: '55세' },
-    { label: '기대 수명', value: '90세' },
-    { label: '월 생활비', value: expense.toLocaleString() + ' 만원' },
+    { label: '현재 나이',    value: age + '세' },
+    { label: '목표 은퇴',   value: retireAge + '세' },
+    { label: '기대 수명',   value: LIFE_EXPECT + '세' },
+    { label: '월 생활비',   value: fmt(expense) + ' 만원' },
+    { label: '기타 고정수입', value: fmt(extra) + ' 만원/월' },
+    { label: '국민연금',    value: fmt(pension) + ' 만원/월 (65세~)' },
     { label: '투자 수익률', value: investRate + '%' },
     { label: '물가 상승률', value: inflation + '%' },
-    { label: '국민연금(월)', value: pension.toLocaleString() + ' 만원 (65세~)' },
   ];
   document.getElementById('goal-assumption-grid').innerHTML = assumptions.map(a =>
     `<div class="retire-assumption-card"><div class="retire-assump-label">${a.label}</div><div class="retire-assump-val">${a.value}</div></div>`
   ).join('');
+
+  // 계산 로직 안내
+  document.getElementById('goal-logic-box').innerHTML =
+    `<strong style="color:#e2e8f0;">계산 방식</strong><br>
+    ① 은퇴 첫해 생활비: 현재 <strong>${fmt(expense)}만원</strong> × (1 + ${inflation}%)^${yearsUntilRetire}년 = <strong>${fmt(initialExpenseAtRetire/12)}만원/월</strong><br>
+    ② 기타 고정수입도 동일 물가 비율로 매년 증액 반영<br>
+    ③ 순 지출 = 생활비 − (고정수입 + 국민연금 65세~) → 은퇴 시점 현재가치로 할인 합산`;
+
+  // 연도별 상세 테이블
   document.getElementById('goal-detail-tbody').innerHTML = rows.map(r =>
     `<tr>
-      <td>${r.year - remainRetire + 1}</td>
-      <td>${r.age}세</td>
-      <td class="r">${r.nominalExpense.toLocaleString('ko-KR', {maximumFractionDigits:0})} 만원</td>
-      <td class="r" style="color:${r.pensionYearly > 0 ? 'var(--green)' : 'var(--muted)'}">
-        ${r.pensionYearly > 0 ? '-' + r.pensionYearly.toLocaleString('ko-KR') : '-'} 만원
-      </td>
-      <td class="r">${r.pv.toLocaleString('ko-KR', {maximumFractionDigits:0})} 만원</td>
+      <td>${r.i + 1}</td>
+      <td>${r.targetAge}세</td>
+      <td class="r">${fmt(r.yearlyExpense)} 만원</td>
+      <td class="r" style="color:var(--green);">${r.yearlyExtra > 0 ? fmt(r.yearlyExtra) : '-'} 만원</td>
+      <td class="r" style="color:var(--green);">${r.yearlyPension > 0 ? fmt(r.yearlyPension) : '-'} 만원</td>
+      <td class="r" style="color:${r.netExpense > 0 ? 'var(--amber)' : 'var(--green)'};">${fmt(r.netExpense)} 만원</td>
+      <td class="r">${fmt(r.pv)} 만원</td>
     </tr>`
   ).join('');
+
   document.getElementById('goal-result').style.display = 'block';
 }
 
