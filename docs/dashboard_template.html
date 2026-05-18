@@ -63,11 +63,12 @@
     .md-report h2 { font-size: 16px; }
     .md-report h3 { font-size: 15px; }
     .md-report h4 { font-size: 14px; }
-    .md-report p { margin: 8px 0; }
+    .md-report p { margin: 8px 0; color:#dbe7f3; }
     .md-report ul { margin: 8px 0; padding-left: 18px; }
     .md-report li { margin-bottom: 6px; }
     .md-report a { color: #7dd3fc; text-decoration: underline; }
     .md-report code { background: rgba(148,163,184,0.14); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+    .md-report { background: rgba(15,23,42,0.45); border: 1px solid rgba(56,189,248,0.18); border-radius: 10px; padding: 12px 14px; }
     .macro-prompt { font-size: 13px; color: var(--amber); margin: 0 0 10px 0; font-weight: 600; }
     .macro-story-box { margin-top: 14px; padding: 12px 14px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; font-size: 13px; line-height: 1.55; color: #dbe4f0; }
     .macro-conclusion { margin-top: 12px; padding: 12px 14px; background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 12px; font-size: 13px; line-height: 1.5; color: #e2e8f0; }
@@ -1182,10 +1183,10 @@ function markdownToHtml(mdText) {
     const line = String(lineRaw || '');
     const trimmed = line.trim();
     if (!trimmed) { closeList(); continue; }
-    const li = trimmed.match(/^[-*]\s+(.+)/);
+    const li = trimmed.match(/^([-*]|\d+\.)\s+(.+)/);
     if (li) {
       if (!inList) { out.push('<ul>'); inList = true; }
-      out.push(`<li>${renderMarkdownInline(li[1])}</li>`);
+      out.push(`<li>${renderMarkdownInline(li[2])}</li>`);
       continue;
     }
     closeList();
@@ -1211,6 +1212,23 @@ function toggleCioSugeup() {
   if (willOpen && !body.innerHTML.trim()) {
     body.innerHTML = markdownToHtml(__cioSugeupMd);
   }
+}
+function isWeekdayDate(dateStr) {
+  if (!dateStr) return false;
+  const d = new Date(`${dateStr}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return false;
+  const day = d.getDay();
+  return day >= 1 && day <= 5;
+}
+function marketRowsForSnapshot(rows) {
+  const src = safeArr(rows);
+  const byDate = [];
+  for (const r of src) {
+    const date = r && r.date ? String(r.date) : '';
+    if (!date || !isWeekdayDate(date)) continue;
+    byDate.push(r);
+  }
+  return byDate;
 }
 function metricDeltaOrMissing(curr, prev, label) {
   const prefix = label || '전일 대비';
@@ -1751,14 +1769,18 @@ function renderForeignFlowBlock() {
 function renderRecentChangePanel() {
   const el = document.getElementById('recent-change-panel');
   if (!el) return;
-  const mkt = safeArr(data.market_daily);
+  const mkt = marketRowsForSnapshot(data.market_daily);
   const macro = safeArr(data.daily_macro);
   const last = lastRow(mkt) || {};
   const prev = prevRow(mkt) || {};
   const dmLast = lastRow(macro) || {};
   const dmPrev = prevRow(macro) || {};
-  const kospiD = typeof last.kospi_pct === 'number' && Number.isFinite(last.kospi_pct) ? last.kospi_pct : null;
+  const kospiD = typeof last.kospi_pct === 'number' && Number.isFinite(last.kospi_pct) ? last.kospi_pct : lastFinitePctDaily(mkt, 'kospi_pct');
   const kospiW = sumLastN(mkt, 'kospi_pct', 5);
+  const kospiLevelD = (typeof last.kospi === 'number' && Number.isFinite(last.kospi) && typeof prev.kospi === 'number' && Number.isFinite(prev.kospi))
+    ? (last.kospi - prev.kospi)
+    : null;
+  const kospiLevelW = deltaLevelLastNFinite(mkt, 'kospi', 5);
   const kosD = typeof last.kosdaq_pct === 'number' && Number.isFinite(last.kosdaq_pct) ? last.kosdaq_pct : lastFinitePctDaily(mkt, 'kosdaq_pct');
   const kosW = sumLastN(mkt, 'kosdaq_pct', 5);
   const spD = typeof last.sp500_pct === 'number' && Number.isFinite(last.sp500_pct) ? last.sp500_pct : lastFinitePctDaily(mkt, 'sp500_pct');
@@ -1798,6 +1820,7 @@ function renderRecentChangePanel() {
     <div class="rcp-sub">일간=최신 행(누락 시 직전 확정치) · 주간≈최근 5영업일(지수% 합, 환율·DXY는 유효 행 기준 수준 변화).</div>
     <div class="rcp-grid">
       ${rcpCard('KOSPI %', kospiD, kospiD != null ? formatSignedPercent(kospiD) : '—', kospiW, kospiW != null ? formatSignedPercent(kospiW) : '—')}
+      ${rcpCard('KOSPI pt Δ', kospiLevelD, formatSignedLevelDelta(kospiLevelD), kospiLevelW, formatSignedLevelDelta(kospiLevelW))}
       ${rcpCard('KOSDAQ %', kosD, kosD != null ? formatSignedPercent(kosD) : '—', kosW, kosW != null ? formatSignedPercent(kosW) : '—')}
       ${rcpCard('S&P500 %', spD, spD != null ? formatSignedPercent(spD) : '—', spW, spW != null ? formatSignedPercent(spW) : '—')}
       ${rcpCard('NASDAQ %', nasD, nasD != null ? formatSignedPercent(nasD) : '—', nasW, nasW != null ? formatSignedPercent(nasW) : '—')}

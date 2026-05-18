@@ -68,6 +68,12 @@ class LLMChairAgent:
             "(B) Write a professional Korean market report in sugeup_narrative — "
             "similar to a sell-side equity strategist's daily note.\n\n"
             f"{agent_instruction}\n\n"
+            "=== HARD DATA GROUNDING RULES (MUST FOLLOW) ===\n"
+            "Use ONLY values explicitly provided in indicator_context.KEY_FIGURES_FOR_REPORT and other payload fields.\n"
+            "Do NOT infer, estimate, back-calculate, or invent any index level/price/flow number.\n"
+            "If a required value is missing or null, write '확인 불가(제공 데이터 기준)' instead of guessing.\n"
+            "When mentioning KOSPI/KOSDAQ point levels, use ONLY KOSPI_level_today / KOSDAQ_level_today from payload.\n"
+            "Do NOT mix historical memory or external knowledge. Treat payload as the single source of truth for today's report.\n\n"
             "Output JSON only. "
             "All natural-language text must be in Korean.\n\n"
             "=== JSON SCHEMA ===\n"
@@ -161,8 +167,13 @@ class LLMChairAgent:
 
         # ── 핵심 수치 요약 블록 (의장이 보고서에 바로 인용하도록) ──
         key_figures: dict = {
+            "KOSPI_level_today": m.kr.kospi,
+            "KOSDAQ_level_today": m.kr.kosdaq,
             "KOSPI_pct_today": m.kr.kospi_pct,
             "KOSDAQ_pct_today": m.kr.kosdaq_pct,
+            "SP500_level_today": m.us.sp500,
+            "NASDAQ_level_today": m.us.nasdaq,
+            "DOW_level_today": m.us.dow,
             "USDKRW": m.fx.usdkrw,
             "USDKRW_pct": m.fx.usdkrw_pct,
             "VIX": m.volatility.vix,
@@ -208,6 +219,12 @@ class LLMChairAgent:
             news_context["digest"] = news_digest
 
         indicator_context = {
+            "report_date_context": {
+                "news_date": news_digest.get("news_date") if news_digest else None,
+                "korean_flow_date": (
+                    snapshot.korean_market_flow.date if snapshot.korean_market_flow is not None else None
+                ),
+            },
             "KEY_FIGURES_FOR_REPORT": key_figures,
             "korean_market_flow_breakdown": (
                 snapshot.korean_market_flow.model_dump() if snapshot.korean_market_flow else None
