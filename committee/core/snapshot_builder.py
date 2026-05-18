@@ -11,6 +11,7 @@ import json
 import os
 from pathlib import Path
 import re
+import sqlite3
 from statistics import mean, pstdev
 
 from committee.schemas.snapshot import Snapshot
@@ -511,6 +512,70 @@ def _runs_base_dir() -> Path:
 
 
 def _load_recent_market_rows(market_date: date, max_rows: int) -> list[dict]:
+    """Load historical market rows from DB first, fallback to prior run snapshots.
+
+    Note:
+    - We intentionally keep weekdays only (Mon~Fri) so 5d/20d metrics behave as
+      trading-day-like windows even when weekend placeholder rows exist.
+    """
+    db_rows = _load_recent_market_rows_from_db(market_date=market_date, max_rows=max_rows)
+    if db_rows:
+        return db_rows
+    # Fallback for environments without DB history.
+    return _load_recent_market_rows_from_runs(market_date=market_date, max_rows=max_rows)
+
+
+def _load_recent_market_rows_from_db(market_date: date, max_rows: int) -> list[dict]:
+    """Load historical market rows from market_daily table (< market_date)."""
+    db_path = _repo_root() / "data" / "investment.db"
+    if not db_path.exists():
+        return []
+    try:
+        conn = sqlite3.connect(str(db_path))
+        conn.row_factory = sqlite3.Row
+        try:
+            # Pull more rows than needed to compensate for weekends/invalid rows.
+            fetched = conn.execute(
+                """
+                SELECT date, kospi_pct, kosdaq_pct, usdkrw, vix
+                FROM market_daily
+                WHERE date < ?
+                ORDER BY date DESC
+                LIMIT ?
+                """,
+                (market_date.isoformat(), max_rows * 4),
+            ).fetchall()
+        finally:
+            conn.close()
+    except Exception:
+        return []
+
+    rows: list[dict] = []
+    for row in fetched:
+        date_s = str(row["date"])
+        if not _is_weekday_iso(date_s):
+            continue
+        try:
+            rows.append(
+                {
+                    "date": date_s,
+                    "kospi_pct": float(row["kospi_pct"] or 0.0),
+                    "kosdaq_pct": float(row["kosdaq_pct"] or 0.0),
+                    "usdkrw": float(row["usdkrw"] or 0.0),
+                    "vix": float(row["vix"] or 0.0),
+                }
+            )
+        except Exception:
+            continue
+        if len(rows) >= max_rows:
+            break
+
+    # Query is DESC; context logic expects chronological order.
+    rows.reverse()
+    return rows
+
+
+def _load_recent_market_rows_from_runs(market_date: date, max_rows: int) -> list[dict]:
     """Load historical market rows from prior run snapshots."""
     base = _runs_base_dir()
     if not base.exists():
@@ -523,6 +588,8 @@ def _load_recent_market_rows(market_date: date, max_rows: int) -> list[dict]:
             continue
         date_key = run_dir.name
         if date_key >= market_date_str:
+            continue
+        if not _is_weekday_iso(date_key):
             continue
         snapshot_path = run_dir / "snapshot.json"
         if not snapshot_path.exists():
@@ -546,6 +613,15 @@ def _load_recent_market_rows(market_date: date, max_rows: int) -> list[dict]:
             continue
 
     return rows[-max_rows:]
+
+
+def _is_weekday_iso(date_str: str) -> bool:
+    """Return True when date string (YYYY-MM-DD) is weekday (Mon~Fri)."""
+    try:
+        d = date.fromisoformat(date_str)
+        return d.weekday() < 5
+    except Exception:
+        return False
 
 
 def _market_row_from_live(markets: dict, market_date: date) -> dict:
