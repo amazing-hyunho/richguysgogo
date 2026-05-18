@@ -18,12 +18,44 @@ from committee.core.market_collector import persist_snapshot_metrics
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
 
 
-def _save_digest(payload: dict[str, object]) -> None:
+def _digest_signature(payload: dict[str, object]) -> dict[str, object]:
+    """Return stable signature for dedup check (ignores volatile timestamps)."""
+    top_articles = []
+    for article in payload.get("top_articles", []) or []:
+        if not isinstance(article, dict):
+            continue
+        top_articles.append(
+            {
+                "topic": str(article.get("topic", "")),
+                "title": str(article.get("title", "")),
+                "link": str(article.get("link", "")),
+            }
+        )
+    return {
+        "news_date": str(payload.get("news_date", "")),
+        "topic_counts": payload.get("topic_counts", []),
+        "top_articles": top_articles,
+        "sector_hot_topics": payload.get("sector_hot_topics", []),
+    }
+
+
+def _save_digest(payload: dict[str, object]) -> bool:
     news_dir = ROOT_DIR / "runs" / "news"
     news_dir.mkdir(parents=True, exist_ok=True)
 
     latest_path = news_dir / "latest_news_digest.json"
     history_path = news_dir / "history.jsonl"
+
+    # If content is duplicate of latest snapshot, skip update entirely.
+    if latest_path.exists():
+        try:
+            latest_payload = json.loads(latest_path.read_text(encoding="utf-8"))
+            if _digest_signature(latest_payload) == _digest_signature(payload):
+                print("[news_hourly] duplicate digest detected -> skip latest/history update")
+                return False
+        except Exception:
+            # If latest file is broken, overwrite with fresh payload.
+            pass
 
     latest_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     with history_path.open("a", encoding="utf-8") as handle:
@@ -31,6 +63,7 @@ def _save_digest(payload: dict[str, object]) -> None:
 
     print(f"[news_hourly] saved latest: {latest_path}")
     print(f"[news_hourly] appended history: {history_path}")
+    return True
 
 
 def _build_dashboard() -> None:
@@ -168,9 +201,10 @@ def main() -> None:
 
     payload = asdict(digest)
     payload["recommended_topics"] = recommended_topic_queries()
-    _save_digest(payload)
+    digest_saved = _save_digest(payload)
 
-    if args.build_dashboard:
+    # Rebuild dashboard only if digest changed or indicators were updated.
+    if args.build_dashboard and (digest_saved or args.collect_indicators):
         _build_dashboard()
 
     if args.auto_commit:

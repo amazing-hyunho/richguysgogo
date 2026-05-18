@@ -74,6 +74,12 @@ class LLMChairAgent:
             "If a required value is missing or null, write '확인 불가(제공 데이터 기준)' instead of guessing.\n"
             "When mentioning KOSPI/KOSDAQ point levels, use ONLY KOSPI_level_today / KOSDAQ_level_today from payload.\n"
             "Do NOT mix historical memory or external knowledge. Treat payload as the single source of truth for today's report.\n\n"
+            "=== PRIORITY / CONFLICT RULES ===\n"
+            "You are given two evidence buckets: CORE_SIGNALS and SUPPORTING_SIGNALS.\n"
+            "CORE_SIGNALS drive the main thesis. SUPPORTING_SIGNALS are for confirmation or rebuttal only.\n"
+            "If core and supporting conflict, do NOT change core thesis immediately.\n"
+            "Instead: (1) keep the core thesis, (2) mention the conflict explicitly, (3) lower confidence and state watchpoints.\n"
+            "In the final conclusion, always state one invalidation condition that would break today's thesis.\n\n"
             "Output JSON only. "
             "All natural-language text must be in Korean.\n\n"
             "=== JSON SCHEMA ===\n"
@@ -127,7 +133,8 @@ class LLMChairAgent:
             "Include at least 2 linked news references in sugeup_narrative when news links are available.\n\n"
             "Total sugeup_narrative length: 800~2000 Korean characters. "
             "Write with the depth and precision of a senior Korean equity strategist. "
-            "Always reference the actual numeric data provided."
+            "Always reference the actual numeric data provided. "
+            "Write concise and highly readable Korean for retail investors (short paragraphs, clear transitions, minimal jargon)."
         )
 
     @staticmethod
@@ -165,15 +172,12 @@ class LLMChairAgent:
         macro = snapshot.macro
         cc = snapshot.cumulative_context
 
-        # ── 핵심 수치 요약 블록 (의장이 보고서에 바로 인용하도록) ──
-        key_figures: dict = {
+        # ── 핵심 신호(Core): 본문 논지를 직접 결정하는 지표 ──
+        core_signals: dict = {
             "KOSPI_level_today": m.kr.kospi,
             "KOSDAQ_level_today": m.kr.kosdaq,
             "KOSPI_pct_today": m.kr.kospi_pct,
             "KOSDAQ_pct_today": m.kr.kosdaq_pct,
-            "SP500_level_today": m.us.sp500,
-            "NASDAQ_level_today": m.us.nasdaq,
-            "DOW_level_today": m.us.dow,
             "USDKRW": m.fx.usdkrw,
             "USDKRW_pct": m.fx.usdkrw_pct,
             "VIX": m.volatility.vix,
@@ -184,7 +188,7 @@ class LLMChairAgent:
             "market_note": snapshot.market_summary.note,
         }
         if cc is not None:
-            key_figures.update({
+            core_signals.update({
                 "KOSPI_5d_cum_pct": cc.kospi_5d_cum_pct,
                 "KOSPI_20d_cum_pct": cc.kospi_20d_cum_pct,
                 "USDKRW_5d_change_pct": cc.usdkrw_5d_change_pct,
@@ -193,9 +197,20 @@ class LLMChairAgent:
                 "reversal_signal": cc.reversal_signal,
                 "cumulative_note": cc.note,
             })
+
+        # ── 보조 신호(Supporting): 논지 확인/반증용 지표 ──
+        supporting_signals: dict = {
+            "SP500_level_today": m.us.sp500,
+            "NASDAQ_level_today": m.us.nasdaq,
+            "DOW_level_today": m.us.dow,
+            "SP500_pct_today": m.us.sp500_pct,
+            "NASDAQ_pct_today": m.us.nasdaq_pct,
+            "DOW_pct_today": m.us.dow_pct,
+            "sector_moves": snapshot.sector_moves,
+        }
         if macro:
             d = macro.daily
-            key_figures.update({
+            supporting_signals.update({
                 "US10Y": d.us10y,
                 "US2Y": d.us2y,
                 "spread_2_10": d.spread_2_10,
@@ -225,15 +240,14 @@ class LLMChairAgent:
                     snapshot.korean_market_flow.date if snapshot.korean_market_flow is not None else None
                 ),
             },
-            "KEY_FIGURES_FOR_REPORT": key_figures,
+            "KEY_FIGURES_FOR_REPORT": {
+                "CORE_SIGNALS": core_signals,
+                "SUPPORTING_SIGNALS": supporting_signals,
+            },
             "korean_market_flow_breakdown": (
                 snapshot.korean_market_flow.model_dump() if snapshot.korean_market_flow else None
             ),
-            "SP500_pct": m.us.sp500_pct,
-            "NASDAQ_pct": m.us.nasdaq_pct,
-            "DOW_pct": m.us.dow_pct,
             "news_digest": news_context,
-            "sector_moves": snapshot.sector_moves,
         }
         # USE_LLM_AGENTS=0이면 에이전트 의견은 규칙 기반 stub 출력이므로
         # 의장에게 전달하지 않는다. 의장은 수치 데이터와 뉴스만으로 판단한다.

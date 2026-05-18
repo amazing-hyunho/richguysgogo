@@ -1,7 +1,7 @@
 # 데일리 AI 투자위원회 리포트
 
 - 시장 기준일: **2026-05-18**
-- 생성 시각(UTC): `2026-05-18T02:49:48.267793+00:00`
+- 생성 시각(UTC): `2026-05-18T03:16:02.561870+00:00`
 
 ## 1) 한눈에 보기
 - **위원회 합의**: 위원회는 방어적 입장을 채택하고 위험 노출을 줄입니다.
@@ -14,22 +14,22 @@
 - [OpsGuidanceLevel.AVOID/회피] Avoid high-beta risk assets.
 
 ## 3) 시장/매크로 스냅샷
-- **국내 지수**: KOSPI +1.20% / KOSDAQ -1.57%
+- **국내 지수**: KOSPI +0.68% / KOSDAQ -1.98%
 - **미국 지수**: S&P500 -1.24% / NASDAQ -1.54% / DOW -1.07%
-- **환율/변동성**: USD/KRW 1497.53 (+0.41%) / VIX 18.4
-- **시장 요약 노트**: KOSPI 1.20%, USD/KRW 1497.53. Headlines loaded. Flows loaded.
-- **수급 요약**: 외국인 -22965억 / 기관 +2436억 / 개인 +19786억
-- **일간 매크로**: 미10년 4.59% / 미2년 3.59% / 2-10 1.01%p / DXY 99.34
+- **환율/변동성**: USD/KRW 1497.53 (+0.47%) / VIX 18.4
+- **시장 요약 노트**: KOSPI 0.68%, USD/KRW 1497.53. Headlines loaded. Flows loaded.
+- **수급 요약**: 외국인 -25002억 / 기관 +4084억 / 개인 +20234억
+- **일간 매크로**: 미10년 4.59% / 미2년 3.59% / 2-10 1.01%p / DXY 99.36
 - **월간 매크로**: 실업률 4.30% / CPI YoY 3.95% / Core CPI YoY 2.99% / PMI n/a
 - **분기/구조**: GDP QoQ 연율 2.00% / 기준금리 3.64% / 실질금리 2.10%
 
 ## 4) 위원회 핵심 포인트
 - 다수 국면 태그: RISK_OFF.
   ↳ 출처: `regime_tuner`
-- KOSPI는 +1.20% 상승했으나, 외국인 순매도 -22,965억과 USD/KRW 1,497.53(+0.41%)로 수급 역풍이 뚜렷합니다.
-  ↳ 출처: `flow_data, macro_daily`
-- VIX 18.4로 변동성 레벨이 5일 평균(17.7) 대비 상승, 시장 불안 심리가 확산되고 있습니다.
-  ↳ 출처: `macro_daily`
+- KOSPI는 7544.7pt(+0.68%)로 마감했으나, 외국인 순매도(-2.5조원)와 USD/KRW 상승(1497.53, +0.47%)이 동반되어 수급 역풍이 심화되었습니다.
+  ↳ 출처: `CORE_SIGNALS, flow_data, macro_daily`
+- VIX(18.4) 및 5일 평균 변동성(2.96%)이 높아지며, 시장 변동성 경계가 강화되고 있습니다.
+  ↳ 출처: `CORE_SIGNALS, macro_daily`
 
 ## 5) AI 에이전트 의견
 ### 매크로 담당자
@@ -85,25 +85,25 @@
 - 라운드: 1
 - 지표 활용 체크: 7/7명이 수치형 지표 근거를 인용했습니다.
 - 진행 메모: 오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.
-- [매크로 담당자] 저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1497.53, kospi_change_pct=+1.20%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [매크로 담당자] 저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1497.53, kospi_change_pct=+0.68%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [수급 담당자] 저는 수급 담당자 입장에서 '수급 역풍이 커져 방어적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-22965억, institution_net=+2436억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [수급 담당자] 저는 수급 담당자 입장에서 '수급 역풍이 커져 방어적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-25002억, institution_net=+4084억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.flow_summary.retail_net
-- [섹터 담당자] 저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-22965억, institution_net=+2436억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [섹터 담당자] 저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-25002억, institution_net=+4084억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.sector_moves, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [리스크 담당자] 저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1497.53, kospi_change_pct=+1.20%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [리스크 담당자] 저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1497.53, kospi_change_pct=+0.68%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.market_summary.usdkrw, snapshot.market_summary.kospi_change_pct, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [이익모멘텀 담당자] 저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-22965억, institution_net=+2436억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [이익모멘텀 담당자] 저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-25002억, institution_net=+4084억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.earnings_signal_score, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net, snapshot.news_headlines
-- [브레드스 담당자] 저는 브레드스 담당자 입장에서 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 vix=18.4, foreign_net=-22965억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [브레드스 담당자] 저는 브레드스 담당자 입장에서 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 vix=18.4, foreign_net=-25002억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.breadth_signal_score, snapshot.markets.volatility.vix, snapshot.flow_summary.foreign_net, snapshot.flow_summary.institution_net
-- [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.' 의견을 유지합니다. 근거 숫자는 dxy=99.34, real_rate=2.10%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
+- [유동성 담당자] 저는 유동성 담당자 입장에서 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.' 의견을 유지합니다. 근거 숫자는 dxy=99.36, real_rate=2.10%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.
   - 참조 근거: snapshot.phase_two_signals.liquidity_signal_score, snapshot.macro.daily.dxy, snapshot.macro.structural.real_rate, snapshot.flow_summary.foreign_net
-- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI +1.20%, USD/KRW 1497.53(+0.41%), VIX 18.4, 외국인 -22965억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다.
+- 라운드 결론: 의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI +0.68%, USD/KRW 1497.53(+0.47%), VIX 18.4, 외국인 -25002억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다.
 
 ## 7) 이견 사항
-- 섹터 전략: 다수=방어적 비중 유지 및 공격적 확대 보류, 소수=섹터 주도주 불명확하므로 균형 유지, 에이전트=[sector]
-  - 의미: 섹터별 차별화가 약해지면 시장 전체 변동성에 더 민감해져, 단기 트레이딩 전략이 어려워질 수 있습니다.
+- 섹터 전략: 다수=방어적 비중 유지, 소수=섹터 균형 유지, 에이전트=[sector]
+  - 의미: 섹터 주도주 부재로 일부는 균형 전략을 주장하나, 대다수는 수급·변동성 리스크를 근거로 방어적 접근을 선호합니다.
 
 ## 8) AI 원문 응답 (디버깅/검토용)
 ### 매크로 담당자
