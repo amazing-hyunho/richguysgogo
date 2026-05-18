@@ -11,6 +11,9 @@
     .container { max-width: 1200px; margin: 0 auto; padding: 20px 18px 48px; }
     h1 { margin: 0 0 6px 0; font-size: clamp(1.25rem, 4vw, 1.65rem); }
     .page-desc { color: var(--muted); margin: 0 0 20px 0; font-size: 14px; line-height: 1.5; }
+    .top-link-bar { display:flex; justify-content:flex-end; margin-bottom:8px; }
+    .top-link-pill { display:inline-flex; align-items:center; gap:6px; padding:6px 12px; border-radius:999px; background:rgba(56,189,248,0.12); border:1px solid rgba(56,189,248,0.35); color:#7dd3fc; text-decoration:none; font-size:12px; font-weight:700; }
+    .top-link-pill:hover { background:rgba(56,189,248,0.2); }
     .section { margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid rgba(51, 65, 85, 0.6); }
     .section:last-of-type { border-bottom: none; }
     .section-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 14px; margin-bottom: 14px; }
@@ -52,6 +55,19 @@
     .cio-strategy-box #cio-strategy-points { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: #e2e8f0; }
     .cio-strategy-box #cio-strategy-points li { margin-bottom: 6px; }
     .cio-strategy-box #cio-main-risk { margin-top: 14px; font-size: 13px; color: #fcd34d; line-height: 1.5; padding-top: 12px; border-top: 1px solid rgba(51, 65, 85, 0.7); }
+    .cio-sub-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; }
+    .cio-expand-btn { background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.35); color:#7dd3fc; font-size:12px; font-weight:700; border-radius:8px; padding:6px 10px; cursor:pointer; }
+    .cio-expand-btn:hover { background:rgba(56,189,248,0.18); }
+    .cio-expand-btn:disabled { opacity:0.5; cursor:not-allowed; }
+    .md-report h2,.md-report h3,.md-report h4 { margin: 12px 0 8px 0; color:#e5f3ff; }
+    .md-report h2 { font-size: 16px; }
+    .md-report h3 { font-size: 15px; }
+    .md-report h4 { font-size: 14px; }
+    .md-report p { margin: 8px 0; }
+    .md-report ul { margin: 8px 0; padding-left: 18px; }
+    .md-report li { margin-bottom: 6px; }
+    .md-report a { color: #7dd3fc; text-decoration: underline; }
+    .md-report code { background: rgba(148,163,184,0.14); padding: 1px 5px; border-radius: 4px; font-size: 12px; }
     .macro-prompt { font-size: 13px; color: var(--amber); margin: 0 0 10px 0; font-weight: 600; }
     .macro-story-box { margin-top: 14px; padding: 12px 14px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; font-size: 13px; line-height: 1.55; color: #dbe4f0; }
     .macro-conclusion { margin-top: 12px; padding: 12px 14px; background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 12px; font-size: 13px; line-height: 1.5; color: #e2e8f0; }
@@ -314,6 +330,11 @@
 </head>
 <body>
   <div class="container">
+    <div class="top-link-bar">
+      <a class="top-link-pill" href="https://www.indexergo.com/insight?ctg=insight" target="_blank" rel="noopener noreferrer">
+        🔗 IndexerGo 인사이트 보기
+      </a>
+    </div>
     <h1>AI 투자위원회 · 의사결정 대시보드</h1>
     <p class="page-desc">데이터는 DB·최신 런 스냅샷·뉴스 다이제스트에서만 구성됩니다.</p>
 
@@ -340,11 +361,15 @@
         <ul id="cio-strategy-points"></ul>
         <div id="cio-main-risk">-</div>
       </div>
-      <div id="cio-sugeup-wrap" style="display:none; margin-top:14px;">
-        <div class="cio-title">AI 수급 분석</div>
+      <div class="cio-sub-head">
+        <div class="cio-title" style="margin:0;">AI 수급 분석 (Markdown)</div>
+        <button id="cio-sugeup-toggle" class="cio-expand-btn" type="button" aria-expanded="false">펼쳐보기</button>
+      </div>
+      <div id="cio-sugeup-wrap" style="display:none; margin-top:10px;">
         <div
           id="cio-sugeup-narrative"
-          style="font-size:13px; line-height:1.7; color:#dbe4f0; white-space:pre-wrap; word-break:break-word;"
+          class="md-report"
+          style="font-size:13px; line-height:1.7; color:#dbe4f0; word-break:break-word;"
         >-</div>
       </div>
     </section>
@@ -1138,6 +1163,54 @@ function escapeHtml(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
+}
+function renderMarkdownInline(text) {
+  let s = String(text || '');
+  s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  s = s.replace(/`([^`]+)`/g, '<code>$1</code>');
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+  return s;
+}
+function markdownToHtml(mdText) {
+  const raw = String(mdText || '').replace(/\r/g, '');
+  if (!raw.trim()) return '';
+  const lines = escapeHtml(raw).split('\n');
+  const out = [];
+  let inList = false;
+  const closeList = () => { if (inList) { out.push('</ul>'); inList = false; } };
+  for (const lineRaw of lines) {
+    const line = String(lineRaw || '');
+    const trimmed = line.trim();
+    if (!trimmed) { closeList(); continue; }
+    const li = trimmed.match(/^[-*]\s+(.+)/);
+    if (li) {
+      if (!inList) { out.push('<ul>'); inList = true; }
+      out.push(`<li>${renderMarkdownInline(li[1])}</li>`);
+      continue;
+    }
+    closeList();
+    if (trimmed.startsWith('### ')) { out.push(`<h4>${renderMarkdownInline(trimmed.slice(4))}</h4>`); continue; }
+    if (trimmed.startsWith('## ')) { out.push(`<h3>${renderMarkdownInline(trimmed.slice(3))}</h3>`); continue; }
+    if (trimmed.startsWith('# ')) { out.push(`<h2>${renderMarkdownInline(trimmed.slice(2))}</h2>`); continue; }
+    out.push(`<p>${renderMarkdownInline(trimmed)}</p>`);
+  }
+  closeList();
+  return out.join('');
+}
+let __cioSugeupMd = '';
+function toggleCioSugeup() {
+  const wrap = document.getElementById('cio-sugeup-wrap');
+  const btn = document.getElementById('cio-sugeup-toggle');
+  const body = document.getElementById('cio-sugeup-narrative');
+  if (!wrap || !btn || !body) return;
+  if (!__cioSugeupMd.trim()) return;
+  const willOpen = wrap.style.display === 'none';
+  wrap.style.display = willOpen ? 'block' : 'none';
+  btn.textContent = willOpen ? '접기' : '펼쳐보기';
+  btn.setAttribute('aria-expanded', String(willOpen));
+  if (willOpen && !body.innerHTML.trim()) {
+    body.innerHTML = markdownToHtml(__cioSugeupMd);
+  }
 }
 function metricDeltaOrMissing(curr, prev, label) {
   const prefix = label || '전일 대비';
@@ -2582,13 +2655,23 @@ function buildStockRows() {
   if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dailyMacro);
   const cioSugeupWrap = document.getElementById('cio-sugeup-wrap');
   const cioSugeup = document.getElementById('cio-sugeup-narrative');
+  const cioSugeupToggle = document.getElementById('cio-sugeup-toggle');
   const sugeupText = String(chair.sugeup_narrative || '').trim();
-  if (cioSugeupWrap && cioSugeup) {
+  if (cioSugeupWrap && cioSugeup && cioSugeupToggle) {
+    __cioSugeupMd = sugeupText;
     if (sugeupText) {
-      cioSugeup.textContent = sugeupText;
-      cioSugeupWrap.style.display = 'block';
+      cioSugeupWrap.style.display = 'none';
+      cioSugeup.innerHTML = '';
+      cioSugeupToggle.disabled = false;
+      cioSugeupToggle.textContent = '펼쳐보기';
+      cioSugeupToggle.setAttribute('aria-expanded', 'false');
+      cioSugeupToggle.onclick = toggleCioSugeup;
     } else {
       cioSugeupWrap.style.display = 'none';
+      cioSugeup.innerHTML = '<p>의장 분석 결과가 아직 생성되지 않았습니다.</p>';
+      cioSugeupToggle.disabled = true;
+      cioSugeupToggle.textContent = '분석 없음';
+      cioSugeupToggle.setAttribute('aria-expanded', 'false');
     }
   }
 

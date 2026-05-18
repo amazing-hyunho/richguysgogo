@@ -68,7 +68,7 @@ class LLMChairAgent:
             "(B) Write a professional Korean market report in sugeup_narrative — "
             "similar to a sell-side equity strategist's daily note.\n\n"
             f"{agent_instruction}\n\n"
-            "Output JSON only. No markdown outside sugeup_narrative. "
+            "Output JSON only. "
             "All natural-language text must be in Korean.\n\n"
             "=== JSON SCHEMA ===\n"
             "Required keys: consensus, key_points, disagreements, ops_guidance, sugeup_narrative.\n"
@@ -78,8 +78,8 @@ class LLMChairAgent:
             "disagreements: 1~3 items with keys topic, majority, minority, minority_agents, why_it_matters.\n"
             "ops_guidance: exactly 3 items with levels OK, CAUTION, AVOID and concise Korean text.\n\n"
             "=== sugeup_narrative FORMAT ===\n"
-            "Plain text Korean. No bullet symbols, no markdown. "
-            "Separate sections with a single blank line. "
+            "Korean Markdown text (headings, bullet points, links allowed). "
+            "Use '##' headings for each section and separate sections with a blank line. "
             "MUST contain exactly these 5 sections in order, each as one paragraph:\n\n"
             "Section 1 — [핵심 판단]\n"
             "Open with a strong one-paragraph assessment of TODAY's market character. "
@@ -115,6 +115,10 @@ class LLMChairAgent:
             "(2) For new entrants — what signals must appear before entry (e.g. foreign net selling narrowing, "
             "USD/KRW stabilizing, VIX declining). "
             "Close with one memorable sentence that captures the essence of the current regime.\n\n"
+            "=== NEWS EVIDENCE RULE ===\n"
+            "When citing news as evidence, include markdown links inline using this format: "
+            "[기사 제목](https://...). "
+            "Include at least 2 linked news references in sugeup_narrative when news links are available.\n\n"
             "Total sugeup_narrative length: 800~2000 Korean characters. "
             "Write with the depth and precision of a senior Korean equity strategist. "
             "Always reference the actual numeric data provided."
@@ -140,6 +144,7 @@ class LLMChairAgent:
                                 "topic": a.get("topic", ""),
                                 "title": a.get("title", ""),
                                 "summary": a.get("summary_lines", []),
+                                "link": a.get("link", ""),
                             }
                             for a in data.get("top_articles", [])[:15]
                         ],
