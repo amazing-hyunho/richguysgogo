@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from math import log1p
 from typing import Dict, List, Tuple
-from urllib.parse import quote
+from urllib.parse import parse_qsl, quote, urlencode, urlparse, urlunparse
 
 import requests
 
@@ -202,32 +202,68 @@ def _normalize_headline(title: str) -> str:
     return normalized
 
 
+def _canonical_link(link: str) -> str:
+    """Canonicalize link to reduce duplicate URLs (query/order/tracking noise)."""
+    raw = (link or "").strip()
+    if not raw:
+        return ""
+    try:
+        parsed = urlparse(raw)
+        scheme = (parsed.scheme or "https").lower()
+        netloc = (parsed.netloc or "").lower()
+        path = re.sub(r"/{2,}", "/", parsed.path or "/")
+        # Keep only meaningful query params; drop common tracking noise.
+        keep_keys = {
+            "id", "article", "article_id", "news_id", "oc", "q", "query", "cid", "aid"
+        }
+        qs = []
+        for k, v in parse_qsl(parsed.query, keep_blank_values=False):
+            kl = k.lower()
+            if kl.startswith("utm_"):
+                continue
+            if kl in {"fbclid", "gclid", "mc_cid", "mc_eid", "igshid"}:
+                continue
+            if kl in keep_keys:
+                qs.append((kl, v))
+        qs.sort()
+        query = urlencode(qs)
+        return urlunparse((scheme, netloc, path.rstrip("/") or "/", "", query, ""))
+    except Exception:
+        return raw
+
+
+def _headline_similar(a: str, b: str, threshold: float = 0.82) -> bool:
+    """Return True if two normalized headlines are near-duplicates."""
+    ta = set((a or "").split())
+    tb = set((b or "").split())
+    if not ta or not tb:
+        return False
+    overlap = len(ta & tb) / max(len(ta), len(tb))
+    return overlap >= threshold
+
+
 def _deduplicate_news_items(items: List[tuple[str, str]], limit: int) -> List[tuple[str, str]]:
     """Drop duplicated/near-duplicated headlines while preserving original order."""
     unique: List[tuple[str, str]] = []
-    seen: set[str] = set()
-    seen_tokens: List[set[str]] = []
+    seen_title_norm: List[str] = []
+    seen_links: set[str] = set()
 
     for title, link in items:
         normalized = _normalize_headline(title)
-        if not normalized or normalized in seen:
+        canonical = _canonical_link(link)
+        if not normalized:
+            continue
+        # 1) Hard dedup by canonical link first.
+        if canonical and canonical in seen_links:
             continue
 
-        current_tokens = set(normalized.split())
-        is_duplicate = False
-        for prior_tokens in seen_tokens:
-            if not current_tokens or not prior_tokens:
-                continue
-            overlap = len(current_tokens & prior_tokens) / max(len(current_tokens), len(prior_tokens))
-            if overlap >= 0.85:
-                is_duplicate = True
-                break
-
-        if is_duplicate:
+        # 2) Near-duplicate by normalized title similarity.
+        if any(_headline_similar(normalized, prior) for prior in seen_title_norm):
             continue
 
-        seen.add(normalized)
-        seen_tokens.append(current_tokens)
+        seen_title_norm.append(normalized)
+        if canonical:
+            seen_links.add(canonical)
         unique.append((title, link))
         if len(unique) >= limit:
             break
@@ -352,12 +388,20 @@ def build_topic_digest(
         return None, "no_news_pool"
 
     deduped: List[tuple[str, str, str]] = []
-    seen: set[str] = set()
+    seen_title_norm: List[str] = []
+    seen_links: set[str] = set()
     for title, link, topic in pool:
         normalized = _normalize_headline(title)
-        if not normalized or normalized in seen:
+        canonical = _canonical_link(link)
+        if not normalized:
             continue
-        seen.add(normalized)
+        if canonical and canonical in seen_links:
+            continue
+        if any(_headline_similar(normalized, prior) for prior in seen_title_norm):
+            continue
+        seen_title_norm.append(normalized)
+        if canonical:
+            seen_links.add(canonical)
         deduped.append((title, link, topic))
         if len(deduped) >= target_total:
             break
