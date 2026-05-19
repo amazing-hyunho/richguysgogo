@@ -30,27 +30,33 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).resolve().parents[1]
 
 
-def _git_commit_push(tag: str) -> None:
-    """변경된 파일을 git add → commit → push 한다."""
+def _git_commit_push(tag: str, push: bool) -> None:
+    """변경된 파일을 git add → commit 하고, 필요 시 push 한다."""
     today = date.today().isoformat()
     msg = f"auto: {tag} {today}"
-    print(f"\n[git] ▶  add . → commit '{msg}' → push")
-    for cmd in (
+    flow = "add . → commit" + (" → push" if push else "")
+    print(f"\n[git] ▶  {flow} ('{msg}')")
+    commands = [
         ["git", "add", "."],
         ["git", "commit", "-m", msg],
-        ["git", "push"],
-    ):
+    ]
+    if push:
+        commands.append(["git", "push"])
+    for cmd in commands:
         r = subprocess.run(cmd, cwd=str(ROOT_DIR), capture_output=True, text=True)
         if r.returncode != 0:
             # commit 에서 "nothing to commit" 은 정상
             if "nothing to commit" in (r.stdout + r.stderr):
-                print("[git] ℹ  nothing to commit, skipping push")
+                print("[git] ℹ  nothing to commit, skipping remaining git steps")
                 return
             print(f"[git] ✗  {' '.join(cmd)} failed:\n{r.stderr.strip()}")
             return
         if r.stdout.strip():
             print(r.stdout.strip())
-    print("[git] ✓  push 완료")
+    if push:
+        print("[git] ✓  push 완료")
+    else:
+        print("[git] ✓  commit 완료")
 
 
 def _run(label: str, cmd: list[str], skip: bool = False) -> bool:
@@ -80,7 +86,18 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--skip-consensus", action="store_true", help="컨센서스 수집 건너뜀")
     p.add_argument("--skip-us-financials", action="store_true", help="US 재무제표 건너뜀")
     p.add_argument("--backfill-macro-all", action="store_true", help="FRED 지표 전체 날짜 재백필 (최초 1회용)")
-    p.add_argument("--auto-push", action="store_true", help="완료 후 git commit + push 자동 실행")
+    p.add_argument(
+        "--auto-commit",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="완료 후 git add/commit 자동 실행 (기본: 켬)",
+    )
+    p.add_argument(
+        "--auto-push",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="자동 커밋 후 push까지 수행 (기본: 켬)",
+    )
     return p.parse_args()
 
 
@@ -191,8 +208,8 @@ def main() -> None:
     print(f"\n  총 {len(results)}단계 / 실패 {failed}개")
     print("=" * 60)
 
-    if args.auto_push:
-        _git_commit_push("sync_all")
+    if args.auto_commit:
+        _git_commit_push("sync_all", push=args.auto_push)
 
 
 if __name__ == "__main__":
