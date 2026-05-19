@@ -55,33 +55,17 @@
     .cio-strategy-box #cio-strategy-points { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: #e2e8f0; }
     .cio-strategy-box #cio-strategy-points li { margin-bottom: 6px; }
     .cio-strategy-box #cio-main-risk { margin-top: 14px; font-size: 13px; color: #fcd34d; line-height: 1.5; padding-top: 12px; border-top: 1px solid rgba(51, 65, 85, 0.7); }
-    /* ── Glance Cards (오늘의 액션 / 시장 신호등 / Watch TOP3 / D-Day) ── */
-    .cio-glance-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; }
-    @media (min-width: 760px) { .cio-glance-grid { grid-template-columns: 1fr 1fr; } }
+    /* ── Glance Cards (시장 신호등 · Watch TOP3) ── */
     .glance-card { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 12px; padding: 12px 14px; min-width: 0; }
     .glance-card .glance-title { font-size: 12px; font-weight: 800; letter-spacing: 0.04em; margin: 0 0 10px 0; color: #e2e8f0; }
-    .glance-card.gc-action { border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(8, 47, 73, 0.45)); }
-    .glance-card.gc-action .glance-title { color: #7dd3fc; }
     .glance-card.gc-lights { border-color: rgba(245, 158, 11, 0.32); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(69, 26, 3, 0.32)); }
     .glance-card.gc-lights .glance-title { color: #fcd34d; }
     .glance-card.gc-watch { border-color: rgba(248, 113, 113, 0.32); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(76, 5, 25, 0.35)); }
     .glance-card.gc-watch .glance-title { color: #fca5a5; }
-    .glance-card.gc-dday { border-color: rgba(167, 139, 250, 0.35); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(46, 16, 101, 0.35)); }
-    .glance-card.gc-dday .glance-title { color: #c4b5fd; }
-    /* 액션 가이드 */
-    .gc-action .ag-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px dashed rgba(51, 65, 85, 0.5); }
-    .gc-action .ag-row:last-of-type { border-bottom: none; }
-    .gc-action .ag-lbl { color: #94a3b8; font-size: 12px; flex-shrink: 0; }
-    .gc-action .ag-val { font-weight: 700; text-align: right; color: #e2e8f0; word-break: keep-all; }
-    .gc-action .ag-val.ag-cash { color: #7dd3fc; font-size: 15px; }
-    .gc-action .ag-sub { font-size: 11px; color: #94a3b8; font-weight: 500; margin-left: 4px; }
-    .gc-action .ag-entry { margin-top: 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px; line-height: 1.4; }
-    .gc-action .ag-entry.ag-green { background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.35); color: #6ee7b7; }
-    .gc-action .ag-entry.ag-amber { background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.32); color: #fcd34d; }
-    .gc-action .ag-entry.ag-red { background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.32); color: #fca5a5; }
-    .gc-action .ag-reason { margin-top: 8px; font-size: 11px; color: #94a3b8; line-height: 1.4; }
     /* 시장 신호등 */
     .signal-light-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    @media (min-width: 560px) { .signal-light-grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (min-width: 900px) { .signal-light-grid { grid-template-columns: repeat(6, 1fr); } }
     .signal-light { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(51, 65, 85, 0.55); border-radius: 8px; padding: 8px 9px; min-width: 0; }
     .signal-light .sl-head { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
     .signal-light .sl-emoji { font-size: 13px; line-height: 1; }
@@ -100,17 +84,6 @@
     .gc-watch .watch-list li { margin-bottom: 7px; padding-left: 2px; }
     .gc-watch .watch-list li:last-child { margin-bottom: 0; }
     .gc-watch .watch-empty { font-size: 12px; color: #94a3b8; font-style: italic; list-style: none; margin-left: -20px; padding-left: 0; }
-    /* D-Day */
-    .gc-dday .dday-list { list-style: none; margin: 0; padding: 0; font-size: 13px; }
-    .gc-dday .dday-item { display: grid; grid-template-columns: auto auto 1fr auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px dashed rgba(51, 65, 85, 0.5); }
-    .gc-dday .dday-item:last-child { border-bottom: none; }
-    .gc-dday .dday-tag { font-size: 11px; font-weight: 800; padding: 3px 7px; border-radius: 6px; background: rgba(167, 139, 250, 0.15); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.35); min-width: 44px; text-align: center; }
-    .gc-dday .dday-item.dday-near .dday-tag { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.45); }
-    .gc-dday .dday-item.dday-soon .dday-tag { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border-color: rgba(245, 158, 11, 0.4); }
-    .gc-dday .dday-emoji { font-size: 14px; line-height: 1; }
-    .gc-dday .dday-name { font-size: 13px; color: #e2e8f0; min-width: 0; word-break: keep-all; }
-    .gc-dday .dday-date { font-size: 11px; color: #94a3b8; white-space: nowrap; }
-    .gc-dday .dday-empty { font-size: 12px; color: #94a3b8; font-style: italic; padding: 4px 0; }
     /* 핵심 전략·리스크 접기 */
     .cio-detail-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; margin-top: 4px; border-top: 1px solid rgba(51, 65, 85, 0.6); }
     .cio-detail-head .cio-title { margin: 0; }
@@ -416,23 +389,13 @@
         <span class="section-meta">합의·운영 가이드·변동성 힌트 기반</span>
       </div>
       <div class="cio-strategy-box">
-        <div class="cio-glance-grid">
-          <div class="glance-card gc-action">
-            <h3 class="glance-title">🎯 오늘의 액션 가이드</h3>
-            <div id="glance-action-body"><div class="ag-reason">데이터 준비 중…</div></div>
-          </div>
-          <div class="glance-card gc-lights">
-            <h3 class="glance-title">🚦 시장 신호등</h3>
-            <div class="signal-light-grid" id="glance-lights-body"></div>
-          </div>
-          <div class="glance-card gc-watch">
-            <h3 class="glance-title">🔥 오늘의 주목 포인트 TOP 3</h3>
-            <ol id="glance-watch-body" class="watch-list"></ol>
-          </div>
-          <div class="glance-card gc-dday">
-            <h3 class="glance-title">📅 다가오는 이벤트</h3>
-            <ul id="glance-dday-body" class="dday-list"></ul>
-          </div>
+        <div class="glance-card gc-lights" style="margin-bottom:12px;">
+          <h3 class="glance-title">🚦 시장 신호등</h3>
+          <div class="signal-light-grid" id="glance-lights-body"></div>
+        </div>
+        <div class="glance-card gc-watch" style="margin-bottom:14px;">
+          <h3 class="glance-title">🔥 오늘의 주목 포인트 TOP 3</h3>
+          <ol id="glance-watch-body" class="watch-list"></ol>
         </div>
         <div class="cio-detail-head">
           <span class="cio-title">핵심 전략 · 메인 리스크 (위원회 합의)</span>
@@ -2821,33 +2784,6 @@ function renderSignalLights() {
       <div class="sl-note">${escapeHtml(l.note)}</div>
     </div>`).join('');
 }
-function buildActionGuide() {
-  const lights = buildSignalLights();
-  let red = 0, amber = 0, green = 0;
-  lights.forEach(l => { if (l.cls === 'red') red++; else if (l.cls === 'amber') amber++; else if (l.cls === 'green') green++; });
-  const mode = inferMarketMode();
-  let cashPct, krPct, usPct, entry, entryCls;
-  if (mode.cls === 'risk-off' || red >= 3) {
-    cashPct = '50~60%'; krPct = 20; usPct = 20; entry = '대기 · 방어 우선'; entryCls = 'red';
-  } else if (mode.cls === 'risk-on' && green >= 3 && red === 0) {
-    cashPct = '20~30%'; krPct = 35; usPct = 35; entry = '단계적 진입 가능'; entryCls = 'green';
-  } else {
-    cashPct = '30~45%'; krPct = 30; usPct = 25; entry = '선별 진입 · 사이즈 축소'; entryCls = 'amber';
-  }
-  const reason = `신호등: 🟢${green} · 🟡${amber} · 🔴${red} · 위원회 합의 ${mode.label}`;
-  return { cashPct, krPct, usPct, entry, entryCls, reason, modeLabel: mode.label };
-}
-function renderActionGuide() {
-  const el = document.getElementById('glance-action-body');
-  if (!el) return;
-  const g = buildActionGuide();
-  el.innerHTML = `
-    <div class="ag-row"><span class="ag-lbl">위원회 모드</span><span class="ag-val">${escapeHtml(g.modeLabel)}</span></div>
-    <div class="ag-row"><span class="ag-lbl">권장 현금</span><span class="ag-val ag-cash">${escapeHtml(g.cashPct)}</span></div>
-    <div class="ag-row"><span class="ag-lbl">KR : US</span><span class="ag-val">${g.krPct} : ${g.usPct}<span class="ag-sub">(위험자산 ${g.krPct + g.usPct}%)</span></span></div>
-    <div class="ag-entry ag-${escapeHtml(g.entryCls)}">신규 진입: <strong>${escapeHtml(g.entry)}</strong></div>
-    <div class="ag-reason">${escapeHtml(g.reason)}</div>`;
-}
 function buildWatchTop3() {
   const mkt = safeArr(data.market_daily);
   const macro = safeArr(data.daily_macro);
@@ -2917,56 +2853,6 @@ function renderWatchTop3() {
   }
   el.innerHTML = arr.map(t => `<li>${escapeHtml(t)}</li>`).join('');
 }
-// 다가오는 매크로 이벤트 (필요 시 직접 수정/추가하세요)
-const UPCOMING_EVENTS = [
-  // FOMC 2026
-  { name: 'FOMC (미국 연준)', date: '2026-06-17', tag: '🏦' },
-  { name: 'FOMC (미국 연준)', date: '2026-07-29', tag: '🏦' },
-  { name: 'FOMC (미국 연준)', date: '2026-09-16', tag: '🏦' },
-  { name: 'FOMC (미국 연준)', date: '2026-10-28', tag: '🏦' },
-  { name: 'FOMC (미국 연준)', date: '2026-12-09', tag: '🏦' },
-  // 미국 CPI (매월 중순 추정)
-  { name: '미국 CPI 발표', date: '2026-06-10', tag: '📊' },
-  { name: '미국 CPI 발표', date: '2026-07-15', tag: '📊' },
-  { name: '미국 CPI 발표', date: '2026-08-12', tag: '📊' },
-  { name: '미국 CPI 발표', date: '2026-09-10', tag: '📊' },
-  // 한국 금통위 2026 (추정)
-  { name: '한국 금통위', date: '2026-05-28', tag: '🇰🇷' },
-  { name: '한국 금통위', date: '2026-07-16', tag: '🇰🇷' },
-  { name: '한국 금통위', date: '2026-08-27', tag: '🇰🇷' },
-  { name: '한국 금통위', date: '2026-10-15', tag: '🇰🇷' },
-  // 미국 트리플 위칭 (분기별 셋째 금요일)
-  { name: '미국 트리플 위칭', date: '2026-06-19', tag: '🎰' },
-  { name: '미국 트리플 위칭', date: '2026-09-18', tag: '🎰' },
-  { name: '미국 트리플 위칭', date: '2026-12-18', tag: '🎰' },
-];
-function buildUpcomingEvents() {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return UPCOMING_EVENTS
-    .map(e => {
-      const d = new Date(`${e.date}T00:00:00`);
-      const diff = Math.round((d - today) / 86400000);
-      return Object.assign({}, e, { diff });
-    })
-    .filter(e => e.diff >= 0 && e.diff <= 60)
-    .sort((a, b) => a.diff - b.diff)
-    .slice(0, 4);
-}
-function renderUpcomingEvents() {
-  const el = document.getElementById('glance-dday-body');
-  if (!el) return;
-  const evs = buildUpcomingEvents();
-  if (!evs.length) {
-    el.innerHTML = '<li class="dday-empty">60일 이내 등록된 이벤트 없음 (UPCOMING_EVENTS 업데이트 필요)</li>';
-    return;
-  }
-  el.innerHTML = evs.map(e => {
-    const cls = e.diff <= 3 ? 'dday-near' : e.diff <= 10 ? 'dday-soon' : 'dday-far';
-    const dlabel = e.diff === 0 ? 'D-DAY' : `D-${e.diff}`;
-    return `<li class="dday-item ${cls}"><span class="dday-tag">${escapeHtml(dlabel)}</span><span class="dday-emoji">${e.tag}</span><span class="dday-name">${escapeHtml(e.name)}</span><span class="dday-date">${escapeHtml(e.date)}</span></li>`;
-  }).join('');
-}
 function toggleCioDetail() {
   const wrap = document.getElementById('cio-detail-wrap');
   const btn = document.getElementById('cio-detail-toggle');
@@ -3001,9 +2887,7 @@ function toggleCioDetail() {
   if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dailyMacro);
   // Glance Cards 렌더링 (액션 · 신호등 · Watch · D-Day)
   try { renderSignalLights(); } catch (e) { console.warn('renderSignalLights failed', e); }
-  try { renderActionGuide(); } catch (e) { console.warn('renderActionGuide failed', e); }
   try { renderWatchTop3(); } catch (e) { console.warn('renderWatchTop3 failed', e); }
-  try { renderUpcomingEvents(); } catch (e) { console.warn('renderUpcomingEvents failed', e); }
   const cioDetailToggle = document.getElementById('cio-detail-toggle');
   if (cioDetailToggle) cioDetailToggle.onclick = toggleCioDetail;
   const cioSugeupWrap = document.getElementById('cio-sugeup-wrap');
