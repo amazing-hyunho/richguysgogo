@@ -51,10 +51,6 @@
     .metric-card .interp.neu { color: #94a3b8; }
     .cio-strategy-box { background: linear-gradient(145deg, rgba(30, 41, 59, 0.98), rgba(15, 23, 42, 0.92)); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 16px 18px; margin-bottom: 20px; }
     .cio-strategy-box .cio-title { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
-    .cio-strategy-box #cio-market-stance { font-size: clamp(1.1rem, 3vw, 1.35rem); font-weight: 800; margin-bottom: 12px; letter-spacing: 0.02em; }
-    .cio-strategy-box #cio-strategy-points { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: #e2e8f0; }
-    .cio-strategy-box #cio-strategy-points li { margin-bottom: 6px; }
-    .cio-strategy-box #cio-main-risk { margin-top: 14px; font-size: 13px; color: #fcd34d; line-height: 1.5; padding-top: 12px; border-top: 1px solid rgba(51, 65, 85, 0.7); }
     /* ── Glance Cards (시장 신호등 · Watch TOP3) ── */
     .glance-card { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 12px; padding: 12px 14px; min-width: 0; }
     .glance-card .glance-title { font-size: 12px; font-weight: 800; letter-spacing: 0.04em; margin: 0 0 10px 0; color: #e2e8f0; }
@@ -84,10 +80,18 @@
     .gc-watch .watch-list li { margin-bottom: 7px; padding-left: 2px; }
     .gc-watch .watch-list li:last-child { margin-bottom: 0; }
     .gc-watch .watch-empty { font-size: 12px; color: #94a3b8; font-style: italic; list-style: none; margin-left: -20px; padding-left: 0; }
-    /* 핵심 전략·리스크 접기 */
-    .cio-detail-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; margin-top: 4px; border-top: 1px solid rgba(51, 65, 85, 0.6); }
-    .cio-detail-head .cio-title { margin: 0; }
-    #cio-detail-wrap { margin-top: 10px; padding: 12px 14px; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(51, 65, 85, 0.55); border-radius: 10px; }
+    /* 오늘의 헤드라인 (뉴스) */
+    .glance-card.gc-news { border-color: rgba(125, 211, 252, 0.32); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(7, 41, 65, 0.4)); }
+    .glance-card.gc-news .glance-title { color: #7dd3fc; }
+    .gc-news .news-glance-list { display: flex; flex-direction: column; gap: 8px; }
+    .gc-news .news-glance-item { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(51, 65, 85, 0.6); border-radius: 8px; padding: 9px 11px; min-width: 0; }
+    .gc-news .news-glance-head { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; margin-bottom: 4px; }
+    .gc-news .news-glance-topic { font-size: 11px; font-weight: 800; color: #fcd34d; text-transform: uppercase; letter-spacing: 0.03em; padding: 2px 7px; border-radius: 6px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.3); }
+    .gc-news .news-glance-impact { font-size: 11px; color: var(--amber); }
+    .gc-news .news-glance-title { font-size: 13px; color: #e2e8f0; line-height: 1.45; word-break: keep-all; margin-bottom: 4px; }
+    .gc-news .news-glance-link { display: inline-block; font-size: 11px; color: #7dd3fc; text-decoration: none; border-bottom: 1px dashed rgba(125, 211, 252, 0.4); }
+    .gc-news .news-glance-link:hover { color: #bae6fd; border-bottom-color: rgba(186, 230, 253, 0.8); }
+    .gc-news .news-glance-empty { font-size: 12px; color: #94a3b8; font-style: italic; padding: 4px 0; }
     .cio-sub-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; }
     .cio-expand-btn { background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.35); color:#7dd3fc; font-size:12px; font-weight:700; border-radius:8px; padding:6px 10px; cursor:pointer; }
     .cio-expand-btn:hover { background:rgba(56,189,248,0.18); }
@@ -393,20 +397,13 @@
           <h3 class="glance-title">🚦 시장 신호등</h3>
           <div class="signal-light-grid" id="glance-lights-body"></div>
         </div>
-        <div class="glance-card gc-watch" style="margin-bottom:14px;">
+        <div class="glance-card gc-watch" style="margin-bottom:12px;">
           <h3 class="glance-title">🔥 오늘의 주목 포인트 TOP 3</h3>
           <ol id="glance-watch-body" class="watch-list"></ol>
         </div>
-        <div class="cio-detail-head">
-          <span class="cio-title">핵심 전략 · 메인 리스크 (위원회 합의)</span>
-          <button id="cio-detail-toggle" class="cio-expand-btn" type="button" aria-expanded="false">펼쳐보기</button>
-        </div>
-        <div id="cio-detail-wrap" style="display:none;">
-          <div class="cio-title" style="margin-top:0;">시장 스탠스</div>
-          <div id="cio-market-stance">-</div>
-          <div class="cio-title" style="margin-top:4px;">핵심 전략</div>
-          <ul id="cio-strategy-points"></ul>
-          <div id="cio-main-risk">-</div>
+        <div class="glance-card gc-news">
+          <h3 class="glance-title">📰 오늘의 헤드라인 (TOP 3)</h3>
+          <div class="news-glance-list" id="glance-news-body"></div>
         </div>
       </div>
       <div class="cio-sub-head">
@@ -1626,40 +1623,6 @@ function renderSynthBulletsHtml(strongTitle, lines, maxN) {
   if (!L.length) return `<strong>${escapeHtml(strongTitle)}</strong> <span>데이터 부족</span>`;
   return `<strong>${escapeHtml(strongTitle)}</strong><ul class="synth-bullets">${L.map(t => `<li>${escapeHtml(t)}</li>`).join('')}</ul>`;
 }
-function buildCioStrategyBullets(chair) {
-  const guidance = safeArr(chair.ops_guidance);
-  const okT = guidance.find(g => String(g.level) === 'OK');
-  const cautT = guidance.find(g => String(g.level) === 'CAUTION');
-  const keyPts = safeArr(chair.key_points).map(p => (typeof p === 'string' ? p : p.point)).filter(Boolean);
-  const bullets = [];
-  const push = (txt) => {
-    const t = String(txt || '').trim();
-    if (!t || bullets.length >= 2) return;
-    bullets.push(toKoreanChairText(t));
-  };
-  push(okT && okT.text);
-  push(cautT && cautT.text);
-  keyPts.forEach(push);
-  if (!bullets.length) bullets.push('합의·운영 가이드가 비어 있으면 최신 런의 committee_result를 확인하세요.');
-  return bullets.slice(0, 2);
-}
-function buildCioMainRiskLine(chair, mode, dailyRows) {
-  const guidance = safeArr(chair.ops_guidance);
-  const avoidT = guidance.find(g => String(g.level) === 'AVOID');
-  const vix = lastFiniteValue(dailyRows, 'vix');
-  const y10 = lastFiniteValue(dailyRows, 'us10y');
-  const dxy = lastFiniteValue(dailyRows, 'dxy');
-  const parts = [];
-  if (avoidT && avoidT.text) parts.push(`회피: ${toKoreanChairText(avoidT.text)}`);
-  if (vix != null && vix >= 22) parts.push(`VIX ${formatMetric(vix)} — 변동성 부담`);
-  if (mode.cls === 'risk-off') parts.push('합의 방향: 위험 축소·방어 우선');
-  if (!parts.length) {
-    if (y10 != null && y10 >= 4.3) parts.push('장기 금리 상단 — 밸류 민감');
-    else if (dxy != null && dxy >= 105) parts.push('달러 강세 — 신흥 수급 경계');
-    else parts.push('특이 리스크 신호는 제한적 — 뉴스·수급 병행 확인');
-  }
-  return parts.slice(0, 2).join(' · ');
-}
 function buildMacroStoryKo(dailyRows, digest) {
   const y10Pair = lastTwoFinite(dailyRows, 'us10y');
   const y10 = y10Pair.curr;
@@ -2789,7 +2752,6 @@ function buildWatchTop3() {
   const macro = safeArr(data.daily_macro);
   const last = lastRow(mkt) || {};
   const flowRows = safeArr(data.market_flow_daily);
-  const digest = data.latest_news_digest || {};
   const items = [];
   // 외국인 5일 누적
   const foreign5d = sumLastN(flowRows, 'foreign_net', 5);
@@ -2834,14 +2796,37 @@ function buildWatchTop3() {
       items.push({ impact: Math.abs(d) * 500, text: `Fear & Greed ${Math.round(fg.prev_close)} → ${Math.round(fg.score)} (${sign}${d.toFixed(0)}) · ${tail}` });
     }
   }
-  // 헤드라인 토픽
-  const art = safeArr(digest.top_articles)[0];
-  if (art && (art.topic || art.title)) {
-    const head = String(art.topic || art.title).slice(0, 60);
-    items.push({ impact: 200, text: `헤드라인 토픽: ${head}` });
-  }
   items.sort((a, b) => b.impact - a.impact);
   return items.slice(0, 3).map(i => i.text);
+}
+function renderGlanceNews() {
+  const el = document.getElementById('glance-news-body');
+  if (!el) return;
+  const digest = data.latest_news_digest || {};
+  const arts = safeArr(digest.top_articles).slice(0, 3);
+  if (!arts.length) {
+    el.innerHTML = '<div class="news-glance-empty">오늘의 헤드라인 기사가 아직 수집되지 않았습니다.</div>';
+    return;
+  }
+  el.innerHTML = arts.map(a => {
+    const topic = String(a.topic || '').trim() || '주요';
+    const title = String(a.title || '').trim() || '(제목 없음)';
+    const link = typeof a.link === 'string' ? a.link.trim() : '';
+    const safeLink = /^https?:\/\//i.test(link) ? link : '';
+    const impactTxt = newsImpactTag(a.topic, a.title);
+    const anchor = safeLink
+      ? `<a class="news-glance-link" href="${escapeHtml(safeLink)}" target="_blank" rel="noopener noreferrer">원문 보기 →</a>`
+      : '';
+    return `
+      <div class="news-glance-item">
+        <div class="news-glance-head">
+          <span class="news-glance-topic">${escapeHtml(topic)}</span>
+          <span class="news-glance-impact">${escapeHtml(impactTxt)}</span>
+        </div>
+        <div class="news-glance-title">${escapeHtml(title)}</div>
+        ${anchor}
+      </div>`;
+  }).join('');
 }
 function renderWatchTop3() {
   const el = document.getElementById('glance-watch-body');
@@ -2853,16 +2838,6 @@ function renderWatchTop3() {
   }
   el.innerHTML = arr.map(t => `<li>${escapeHtml(t)}</li>`).join('');
 }
-function toggleCioDetail() {
-  const wrap = document.getElementById('cio-detail-wrap');
-  const btn = document.getElementById('cio-detail-toggle');
-  if (!wrap || !btn) return;
-  const open = wrap.style.display !== 'none';
-  wrap.style.display = open ? 'none' : 'block';
-  btn.textContent = open ? '펼쳐보기' : '접기';
-  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-}
-
 (function renderAll() {
   const marketDaily = safeArr(data.market_daily);
   const dailyMacro = safeArr(data.daily_macro);
@@ -2875,21 +2850,10 @@ function toggleCioDetail() {
   const dm = lastRow(dailyMacro) || {};
   const mode = inferMarketMode();
 
-  const stanceKo = mode.cls === 'risk-on' ? '(비중 확대 국면)' : mode.cls === 'risk-off' ? '(비중 축소·방어 국면)' : '(중립 국면)';
-  const cioStance = document.getElementById('cio-market-stance');
-  if (cioStance) cioStance.textContent = `${mode.label} ${stanceKo}`;
-  const cioUl = document.getElementById('cio-strategy-points');
-  if (cioUl) {
-    const bs = buildCioStrategyBullets(chair);
-    cioUl.innerHTML = bs.map(b => `<li>${escapeHtml(b)}</li>`).join('');
-  }
-  const cioRisk = document.getElementById('cio-main-risk');
-  if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dailyMacro);
-  // Glance Cards 렌더링 (액션 · 신호등 · Watch · D-Day)
+  // Glance Cards 렌더링 (신호등 · Watch TOP3 · 헤드라인)
   try { renderSignalLights(); } catch (e) { console.warn('renderSignalLights failed', e); }
   try { renderWatchTop3(); } catch (e) { console.warn('renderWatchTop3 failed', e); }
-  const cioDetailToggle = document.getElementById('cio-detail-toggle');
-  if (cioDetailToggle) cioDetailToggle.onclick = toggleCioDetail;
+  try { renderGlanceNews(); } catch (e) { console.warn('renderGlanceNews failed', e); }
   const cioSugeupWrap = document.getElementById('cio-sugeup-wrap');
   const cioSugeup = document.getElementById('cio-sugeup-narrative');
   const cioSugeupToggle = document.getElementById('cio-sugeup-toggle');
