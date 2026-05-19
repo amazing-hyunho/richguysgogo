@@ -76,6 +76,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--year", type=int, default=date.today().year - 1, help="KR 재무제표 연도 (기본: 전년도)")
     p.add_argument("--quarterly", action="store_true", help="KR 분기 보고서도 포함")
     p.add_argument("--skip-dashboard", action="store_true", help="대시보드 빌드 건너뜀")
+    p.add_argument("--skip-ai-report", action="store_true", help="AI 보고서(위원회 파이프라인) 실행 건너뜀")
     p.add_argument("--skip-consensus", action="store_true", help="컨센서스 수집 건너뜀")
     p.add_argument("--skip-us-financials", action="store_true", help="US 재무제표 건너뜀")
     p.add_argument("--backfill-macro-all", action="store_true", help="FRED 지표 전체 날짜 재백필 (최초 1회용)")
@@ -162,7 +163,16 @@ def main() -> None:
     else:
         print("[sync_all] ⏭  SKIP  KR 재무제표 (--with-kr-financials 플래그 없음)")
 
-    # ── 8. 대시보드 빌드 ──────────────────────────────────────────
+    # ── 8. AI 보고서 생성 (위원회 파이프라인) ────────────────────
+    # sync_all은 데이터 수집 전용이었지만, 대시보드의 의장 보고서 반영을 위해
+    # run_nightly를 안전 모드(커밋/푸시 off)로 호출해 보고서를 먼저 갱신한다.
+    step(
+        "AI 보고서 생성 (run_nightly pipeline)",
+        [py, "scripts/run_nightly.py", "--no-auto-commit", "--no-auto-push"],
+        skip=args.skip_ai_report,
+    )
+
+    # ── 9. 대시보드 빌드 ──────────────────────────────────────────
     step(
         "대시보드 빌드 (docs/dashboard.html)",
         [py, "scripts/build_dashboard.py"],
