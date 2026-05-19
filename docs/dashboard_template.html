@@ -55,6 +55,66 @@
     .cio-strategy-box #cio-strategy-points { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.55; color: #e2e8f0; }
     .cio-strategy-box #cio-strategy-points li { margin-bottom: 6px; }
     .cio-strategy-box #cio-main-risk { margin-top: 14px; font-size: 13px; color: #fcd34d; line-height: 1.5; padding-top: 12px; border-top: 1px solid rgba(51, 65, 85, 0.7); }
+    /* ── Glance Cards (오늘의 액션 / 시장 신호등 / Watch TOP3 / D-Day) ── */
+    .cio-glance-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 14px; }
+    @media (min-width: 760px) { .cio-glance-grid { grid-template-columns: 1fr 1fr; } }
+    .glance-card { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 12px; padding: 12px 14px; min-width: 0; }
+    .glance-card .glance-title { font-size: 12px; font-weight: 800; letter-spacing: 0.04em; margin: 0 0 10px 0; color: #e2e8f0; }
+    .glance-card.gc-action { border-color: rgba(56, 189, 248, 0.4); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(8, 47, 73, 0.45)); }
+    .glance-card.gc-action .glance-title { color: #7dd3fc; }
+    .glance-card.gc-lights { border-color: rgba(245, 158, 11, 0.32); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(69, 26, 3, 0.32)); }
+    .glance-card.gc-lights .glance-title { color: #fcd34d; }
+    .glance-card.gc-watch { border-color: rgba(248, 113, 113, 0.32); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(76, 5, 25, 0.35)); }
+    .glance-card.gc-watch .glance-title { color: #fca5a5; }
+    .glance-card.gc-dday { border-color: rgba(167, 139, 250, 0.35); background: linear-gradient(150deg, rgba(15, 23, 42, 0.75), rgba(46, 16, 101, 0.35)); }
+    .glance-card.gc-dday .glance-title { color: #c4b5fd; }
+    /* 액션 가이드 */
+    .gc-action .ag-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 5px 0; font-size: 13px; border-bottom: 1px dashed rgba(51, 65, 85, 0.5); }
+    .gc-action .ag-row:last-of-type { border-bottom: none; }
+    .gc-action .ag-lbl { color: #94a3b8; font-size: 12px; flex-shrink: 0; }
+    .gc-action .ag-val { font-weight: 700; text-align: right; color: #e2e8f0; word-break: keep-all; }
+    .gc-action .ag-val.ag-cash { color: #7dd3fc; font-size: 15px; }
+    .gc-action .ag-sub { font-size: 11px; color: #94a3b8; font-weight: 500; margin-left: 4px; }
+    .gc-action .ag-entry { margin-top: 10px; padding: 8px 10px; border-radius: 8px; font-size: 13px; line-height: 1.4; }
+    .gc-action .ag-entry.ag-green { background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.35); color: #6ee7b7; }
+    .gc-action .ag-entry.ag-amber { background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.32); color: #fcd34d; }
+    .gc-action .ag-entry.ag-red { background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.32); color: #fca5a5; }
+    .gc-action .ag-reason { margin-top: 8px; font-size: 11px; color: #94a3b8; line-height: 1.4; }
+    /* 시장 신호등 */
+    .signal-light-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .signal-light { background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(51, 65, 85, 0.55); border-radius: 8px; padding: 8px 9px; min-width: 0; }
+    .signal-light .sl-head { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+    .signal-light .sl-emoji { font-size: 13px; line-height: 1; }
+    .signal-light .sl-name { font-size: 11px; color: #cbd5e1; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+    .signal-light .sl-val { font-size: 14px; font-weight: 800; color: #f1f5f9; line-height: 1.2; word-break: break-word; }
+    .signal-light .sl-note { font-size: 10px; color: #94a3b8; margin-top: 3px; line-height: 1.3; }
+    .signal-light.sl-green { border-color: rgba(52, 211, 153, 0.45); }
+    .signal-light.sl-amber { border-color: rgba(245, 158, 11, 0.45); }
+    .signal-light.sl-red { border-color: rgba(248, 113, 113, 0.5); }
+    .signal-light.sl-gray { border-color: rgba(148, 163, 184, 0.3); }
+    .signal-light.sl-green .sl-note { color: #6ee7b7; }
+    .signal-light.sl-amber .sl-note { color: #fcd34d; }
+    .signal-light.sl-red .sl-note { color: #fca5a5; }
+    /* Watch TOP3 */
+    .gc-watch .watch-list { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.5; color: #e2e8f0; }
+    .gc-watch .watch-list li { margin-bottom: 7px; padding-left: 2px; }
+    .gc-watch .watch-list li:last-child { margin-bottom: 0; }
+    .gc-watch .watch-empty { font-size: 12px; color: #94a3b8; font-style: italic; list-style: none; margin-left: -20px; padding-left: 0; }
+    /* D-Day */
+    .gc-dday .dday-list { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+    .gc-dday .dday-item { display: grid; grid-template-columns: auto auto 1fr auto; gap: 8px; align-items: center; padding: 6px 0; border-bottom: 1px dashed rgba(51, 65, 85, 0.5); }
+    .gc-dday .dday-item:last-child { border-bottom: none; }
+    .gc-dday .dday-tag { font-size: 11px; font-weight: 800; padding: 3px 7px; border-radius: 6px; background: rgba(167, 139, 250, 0.15); color: #c4b5fd; border: 1px solid rgba(167, 139, 250, 0.35); min-width: 44px; text-align: center; }
+    .gc-dday .dday-item.dday-near .dday-tag { background: rgba(248, 113, 113, 0.18); color: #fca5a5; border-color: rgba(248, 113, 113, 0.45); }
+    .gc-dday .dday-item.dday-soon .dday-tag { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border-color: rgba(245, 158, 11, 0.4); }
+    .gc-dday .dday-emoji { font-size: 14px; line-height: 1; }
+    .gc-dday .dday-name { font-size: 13px; color: #e2e8f0; min-width: 0; word-break: keep-all; }
+    .gc-dday .dday-date { font-size: 11px; color: #94a3b8; white-space: nowrap; }
+    .gc-dday .dday-empty { font-size: 12px; color: #94a3b8; font-style: italic; padding: 4px 0; }
+    /* 핵심 전략·리스크 접기 */
+    .cio-detail-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-top: 12px; margin-top: 4px; border-top: 1px solid rgba(51, 65, 85, 0.6); }
+    .cio-detail-head .cio-title { margin: 0; }
+    #cio-detail-wrap { margin-top: 10px; padding: 12px 14px; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(51, 65, 85, 0.55); border-radius: 10px; }
     .cio-sub-head { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; }
     .cio-expand-btn { background:rgba(56,189,248,0.08); border:1px solid rgba(56,189,248,0.35); color:#7dd3fc; font-size:12px; font-weight:700; border-radius:8px; padding:6px 10px; cursor:pointer; }
     .cio-expand-btn:hover { background:rgba(56,189,248,0.18); }
@@ -356,11 +416,35 @@
         <span class="section-meta">합의·운영 가이드·변동성 힌트 기반</span>
       </div>
       <div class="cio-strategy-box">
-        <div class="cio-title">시장 스탠스</div>
-        <div id="cio-market-stance">-</div>
-        <div class="cio-title" style="margin-top:4px;">핵심 전략</div>
-        <ul id="cio-strategy-points"></ul>
-        <div id="cio-main-risk">-</div>
+        <div class="cio-glance-grid">
+          <div class="glance-card gc-action">
+            <h3 class="glance-title">🎯 오늘의 액션 가이드</h3>
+            <div id="glance-action-body"><div class="ag-reason">데이터 준비 중…</div></div>
+          </div>
+          <div class="glance-card gc-lights">
+            <h3 class="glance-title">🚦 시장 신호등</h3>
+            <div class="signal-light-grid" id="glance-lights-body"></div>
+          </div>
+          <div class="glance-card gc-watch">
+            <h3 class="glance-title">🔥 오늘의 주목 포인트 TOP 3</h3>
+            <ol id="glance-watch-body" class="watch-list"></ol>
+          </div>
+          <div class="glance-card gc-dday">
+            <h3 class="glance-title">📅 다가오는 이벤트</h3>
+            <ul id="glance-dday-body" class="dday-list"></ul>
+          </div>
+        </div>
+        <div class="cio-detail-head">
+          <span class="cio-title">핵심 전략 · 메인 리스크 (위원회 합의)</span>
+          <button id="cio-detail-toggle" class="cio-expand-btn" type="button" aria-expanded="false">펼쳐보기</button>
+        </div>
+        <div id="cio-detail-wrap" style="display:none;">
+          <div class="cio-title" style="margin-top:0;">시장 스탠스</div>
+          <div id="cio-market-stance">-</div>
+          <div class="cio-title" style="margin-top:4px;">핵심 전략</div>
+          <ul id="cio-strategy-points"></ul>
+          <div id="cio-main-risk">-</div>
+        </div>
       </div>
       <div class="cio-sub-head">
         <div class="cio-title" style="margin:0;">AI 수급 분석 (Markdown)</div>
@@ -2654,6 +2738,245 @@ function buildStockRows() {
   return { tableHtml, summary };
 }
 
+// ══════════════════════════════════════════════════════════════
+// Glance Cards: 액션 가이드 · 시장 신호등 · Watch TOP3 · D-Day
+// ══════════════════════════════════════════════════════════════
+function buildSignalLights() {
+  const macro = safeArr(data.daily_macro);
+  const mkt = safeArr(data.market_daily);
+  const last = lastRow(mkt) || {};
+  const fg = data.fear_greed || {};
+  const flowRows = safeArr(data.market_flow_daily);
+  const lights = [];
+  // VIX
+  const vix = lastFiniteValue(macro, 'vix');
+  if (vix != null) {
+    const cls = vix >= 22 ? 'red' : vix >= 18 ? 'amber' : 'green';
+    const note = vix >= 22 ? '변동성 확대' : vix >= 18 ? '경계 구간' : '평온';
+    lights.push({ name: 'VIX', val: vix.toFixed(1), cls, note });
+  } else {
+    lights.push({ name: 'VIX', val: '—', cls: 'gray', note: '데이터 없음' });
+  }
+  // 외국인 5일 누적
+  const foreign5d = sumLastN(flowRows, 'foreign_net', 5);
+  if (foreign5d != null) {
+    const cls = foreign5d > 3000 ? 'green' : foreign5d > -3000 ? 'amber' : 'red';
+    const note = foreign5d > 3000 ? '5일 매수 우위' : foreign5d > -3000 ? '5일 혼조' : '5일 매도 우위';
+    const sign = foreign5d > 0 ? '+' : '';
+    lights.push({ name: '외인 5D', val: `${sign}${formatNumberWithComma(foreign5d, 0)}억`, cls, note });
+  } else {
+    lights.push({ name: '외인 5D', val: '—', cls: 'gray', note: '데이터 없음' });
+  }
+  // USD/KRW
+  const fxLast = typeof last.usdkrw === 'number' && Number.isFinite(last.usdkrw) ? last.usdkrw : null;
+  const fxPct = typeof last.usdkrw_pct === 'number' && Number.isFinite(last.usdkrw_pct) ? last.usdkrw_pct : null;
+  if (fxLast != null) {
+    const cls = fxLast >= 1400 ? 'red' : fxLast >= 1350 ? 'amber' : 'green';
+    const note = fxLast >= 1400 ? '원화 약세 부담' : fxLast >= 1350 ? '약달러 경계' : '안정 구간';
+    const extra = fxPct != null ? ` (${formatSignedPercent(fxPct)})` : '';
+    lights.push({ name: 'USD/KRW', val: `${formatNumberWithComma(fxLast, 0)}${extra}`, cls, note });
+  } else {
+    lights.push({ name: 'USD/KRW', val: '—', cls: 'gray', note: '데이터 없음' });
+  }
+  // Fear & Greed
+  if (typeof fg.score === 'number' && Number.isFinite(fg.score)) {
+    const s = fg.score;
+    const cls = s <= 25 ? 'red' : s <= 45 ? 'amber' : s <= 75 ? 'green' : 'amber';
+    const fgMap = { 'extreme fear': '극단적 공포', 'fear': '공포', 'neutral': '중립', 'greed': '탐욕', 'extreme greed': '극단적 탐욕' };
+    const note = fgMap[String(fg.rating || '').toLowerCase()] || (fg.rating || '심리 지표');
+    lights.push({ name: 'F&G', val: String(Math.round(s)), cls, note });
+  } else {
+    lights.push({ name: 'F&G', val: '—', cls: 'gray', note: '데이터 없음' });
+  }
+  // US 10Y
+  const y10 = lastFiniteValue(macro, 'us10y');
+  if (y10 != null) {
+    const cls = y10 >= 4.5 ? 'red' : y10 >= 4.0 ? 'amber' : 'green';
+    const note = y10 >= 4.5 ? '금리 부담' : y10 >= 4.0 ? '금리 경계' : '완화 우호';
+    lights.push({ name: 'US 10Y', val: `${y10.toFixed(2)}%`, cls, note });
+  }
+  // KOSPI vs MA20
+  const kSeries = mkt.map(r => r && r.kospi).filter(v => typeof v === 'number' && Number.isFinite(v));
+  if (kSeries.length >= 20) {
+    const tail = kSeries.slice(-20);
+    const ma20 = tail.reduce((a, b) => a + b, 0) / tail.length;
+    const cur = kSeries[kSeries.length - 1];
+    const dev = ((cur - ma20) / ma20) * 100;
+    const cls = dev >= 1.5 ? 'green' : dev <= -1.5 ? 'red' : 'amber';
+    const note = `MA20 ${formatSignedPercent(dev)}`;
+    lights.push({ name: 'KOSPI vs MA20', val: formatNumberWithComma(cur, 2), cls, note });
+  }
+  return lights;
+}
+function renderSignalLights() {
+  const el = document.getElementById('glance-lights-body');
+  if (!el) return;
+  const arr = buildSignalLights();
+  const ICON = { green: '🟢', amber: '🟡', red: '🔴', gray: '⚪' };
+  if (!arr.length) { el.innerHTML = '<div class="signal-light sl-gray"><div class="sl-name">데이터 없음</div></div>'; return; }
+  el.innerHTML = arr.map(l => `
+    <div class="signal-light sl-${escapeHtml(l.cls)}">
+      <div class="sl-head"><span class="sl-emoji">${ICON[l.cls] || '⚪'}</span><span class="sl-name">${escapeHtml(l.name)}</span></div>
+      <div class="sl-val">${escapeHtml(l.val)}</div>
+      <div class="sl-note">${escapeHtml(l.note)}</div>
+    </div>`).join('');
+}
+function buildActionGuide() {
+  const lights = buildSignalLights();
+  let red = 0, amber = 0, green = 0;
+  lights.forEach(l => { if (l.cls === 'red') red++; else if (l.cls === 'amber') amber++; else if (l.cls === 'green') green++; });
+  const mode = inferMarketMode();
+  let cashPct, krPct, usPct, entry, entryCls;
+  if (mode.cls === 'risk-off' || red >= 3) {
+    cashPct = '50~60%'; krPct = 20; usPct = 20; entry = '대기 · 방어 우선'; entryCls = 'red';
+  } else if (mode.cls === 'risk-on' && green >= 3 && red === 0) {
+    cashPct = '20~30%'; krPct = 35; usPct = 35; entry = '단계적 진입 가능'; entryCls = 'green';
+  } else {
+    cashPct = '30~45%'; krPct = 30; usPct = 25; entry = '선별 진입 · 사이즈 축소'; entryCls = 'amber';
+  }
+  const reason = `신호등: 🟢${green} · 🟡${amber} · 🔴${red} · 위원회 합의 ${mode.label}`;
+  return { cashPct, krPct, usPct, entry, entryCls, reason, modeLabel: mode.label };
+}
+function renderActionGuide() {
+  const el = document.getElementById('glance-action-body');
+  if (!el) return;
+  const g = buildActionGuide();
+  el.innerHTML = `
+    <div class="ag-row"><span class="ag-lbl">위원회 모드</span><span class="ag-val">${escapeHtml(g.modeLabel)}</span></div>
+    <div class="ag-row"><span class="ag-lbl">권장 현금</span><span class="ag-val ag-cash">${escapeHtml(g.cashPct)}</span></div>
+    <div class="ag-row"><span class="ag-lbl">KR : US</span><span class="ag-val">${g.krPct} : ${g.usPct}<span class="ag-sub">(위험자산 ${g.krPct + g.usPct}%)</span></span></div>
+    <div class="ag-entry ag-${escapeHtml(g.entryCls)}">신규 진입: <strong>${escapeHtml(g.entry)}</strong></div>
+    <div class="ag-reason">${escapeHtml(g.reason)}</div>`;
+}
+function buildWatchTop3() {
+  const mkt = safeArr(data.market_daily);
+  const macro = safeArr(data.daily_macro);
+  const last = lastRow(mkt) || {};
+  const flowRows = safeArr(data.market_flow_daily);
+  const digest = data.latest_news_digest || {};
+  const items = [];
+  // 외국인 5일 누적
+  const foreign5d = sumLastN(flowRows, 'foreign_net', 5);
+  if (foreign5d != null && Math.abs(foreign5d) >= 1000) {
+    const dir = foreign5d > 0 ? '순매수' : '순매도';
+    const tail = foreign5d > 0 ? '외인 자금 유입 지속' : '외인 자금 이탈 지속';
+    items.push({ impact: Math.abs(foreign5d), text: `외국인 5일 누적 ${dir} ${formatNumberWithComma(foreign5d, 0)}억 · ${tail}` });
+  }
+  // VIX 점프
+  const vixPair = lastTwoFinite(macro, 'vix');
+  if (vixPair.curr != null && vixPair.prev != null) {
+    const d = vixPair.curr - vixPair.prev;
+    if (Math.abs(d) >= 1.5) {
+      const sign = d > 0 ? '+' : '';
+      const tail = d > 0 ? '변동성 경계 ↑' : '변동성 완화';
+      items.push({ impact: Math.abs(d) * 5000, text: `VIX ${vixPair.prev.toFixed(1)} → ${vixPair.curr.toFixed(1)} (${sign}${d.toFixed(1)}pt) · ${tail}` });
+    }
+  }
+  // KOSPI 일간
+  if (typeof last.kospi_pct === 'number' && Number.isFinite(last.kospi_pct) && Math.abs(last.kospi_pct) >= 1.0) {
+    const tail = last.kospi_pct > 0 ? '단기 모멘텀 양호' : '단기 모멘텀 주의';
+    items.push({ impact: Math.abs(last.kospi_pct) * 4000, text: `KOSPI ${formatSignedPercent(last.kospi_pct)} · ${tail}` });
+  }
+  // NASDAQ 일간
+  if (typeof last.nasdaq_pct === 'number' && Number.isFinite(last.nasdaq_pct) && Math.abs(last.nasdaq_pct) >= 1.0) {
+    const tail = last.nasdaq_pct > 0 ? '미국 기술주 강세' : '미국 기술주 조정';
+    items.push({ impact: Math.abs(last.nasdaq_pct) * 3500, text: `NASDAQ ${formatSignedPercent(last.nasdaq_pct)} · ${tail}` });
+  }
+  // USD/KRW 일간
+  if (typeof last.usdkrw_pct === 'number' && Number.isFinite(last.usdkrw_pct) && Math.abs(last.usdkrw_pct) >= 0.5) {
+    const lvl = typeof last.usdkrw === 'number' && Number.isFinite(last.usdkrw) ? formatNumberWithComma(last.usdkrw, 0) : '-';
+    const tail = last.usdkrw_pct > 0 ? '외인 환차익 압박' : '환율 안정 우호';
+    items.push({ impact: Math.abs(last.usdkrw_pct) * 3000, text: `USD/KRW ${lvl} (${formatSignedPercent(last.usdkrw_pct)}) · ${tail}` });
+  }
+  // Fear & Greed 변화
+  const fg = data.fear_greed || {};
+  if (typeof fg.score === 'number' && typeof fg.prev_close === 'number') {
+    const d = fg.score - fg.prev_close;
+    if (Math.abs(d) >= 5) {
+      const sign = d > 0 ? '+' : '';
+      const tail = d > 0 ? '심리 개선' : '심리 위축';
+      items.push({ impact: Math.abs(d) * 500, text: `Fear & Greed ${Math.round(fg.prev_close)} → ${Math.round(fg.score)} (${sign}${d.toFixed(0)}) · ${tail}` });
+    }
+  }
+  // 헤드라인 토픽
+  const art = safeArr(digest.top_articles)[0];
+  if (art && (art.topic || art.title)) {
+    const head = String(art.topic || art.title).slice(0, 60);
+    items.push({ impact: 200, text: `헤드라인 토픽: ${head}` });
+  }
+  items.sort((a, b) => b.impact - a.impact);
+  return items.slice(0, 3).map(i => i.text);
+}
+function renderWatchTop3() {
+  const el = document.getElementById('glance-watch-body');
+  if (!el) return;
+  const arr = buildWatchTop3();
+  if (!arr.length) {
+    el.innerHTML = '<li class="watch-empty">특이 시그널 없음 — 시장 차분히 관찰</li>';
+    return;
+  }
+  el.innerHTML = arr.map(t => `<li>${escapeHtml(t)}</li>`).join('');
+}
+// 다가오는 매크로 이벤트 (필요 시 직접 수정/추가하세요)
+const UPCOMING_EVENTS = [
+  // FOMC 2026
+  { name: 'FOMC (미국 연준)', date: '2026-06-17', tag: '🏦' },
+  { name: 'FOMC (미국 연준)', date: '2026-07-29', tag: '🏦' },
+  { name: 'FOMC (미국 연준)', date: '2026-09-16', tag: '🏦' },
+  { name: 'FOMC (미국 연준)', date: '2026-10-28', tag: '🏦' },
+  { name: 'FOMC (미국 연준)', date: '2026-12-09', tag: '🏦' },
+  // 미국 CPI (매월 중순 추정)
+  { name: '미국 CPI 발표', date: '2026-06-10', tag: '📊' },
+  { name: '미국 CPI 발표', date: '2026-07-15', tag: '📊' },
+  { name: '미국 CPI 발표', date: '2026-08-12', tag: '📊' },
+  { name: '미국 CPI 발표', date: '2026-09-10', tag: '📊' },
+  // 한국 금통위 2026 (추정)
+  { name: '한국 금통위', date: '2026-05-28', tag: '🇰🇷' },
+  { name: '한국 금통위', date: '2026-07-16', tag: '🇰🇷' },
+  { name: '한국 금통위', date: '2026-08-27', tag: '🇰🇷' },
+  { name: '한국 금통위', date: '2026-10-15', tag: '🇰🇷' },
+  // 미국 트리플 위칭 (분기별 셋째 금요일)
+  { name: '미국 트리플 위칭', date: '2026-06-19', tag: '🎰' },
+  { name: '미국 트리플 위칭', date: '2026-09-18', tag: '🎰' },
+  { name: '미국 트리플 위칭', date: '2026-12-18', tag: '🎰' },
+];
+function buildUpcomingEvents() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return UPCOMING_EVENTS
+    .map(e => {
+      const d = new Date(`${e.date}T00:00:00`);
+      const diff = Math.round((d - today) / 86400000);
+      return Object.assign({}, e, { diff });
+    })
+    .filter(e => e.diff >= 0 && e.diff <= 60)
+    .sort((a, b) => a.diff - b.diff)
+    .slice(0, 4);
+}
+function renderUpcomingEvents() {
+  const el = document.getElementById('glance-dday-body');
+  if (!el) return;
+  const evs = buildUpcomingEvents();
+  if (!evs.length) {
+    el.innerHTML = '<li class="dday-empty">60일 이내 등록된 이벤트 없음 (UPCOMING_EVENTS 업데이트 필요)</li>';
+    return;
+  }
+  el.innerHTML = evs.map(e => {
+    const cls = e.diff <= 3 ? 'dday-near' : e.diff <= 10 ? 'dday-soon' : 'dday-far';
+    const dlabel = e.diff === 0 ? 'D-DAY' : `D-${e.diff}`;
+    return `<li class="dday-item ${cls}"><span class="dday-tag">${escapeHtml(dlabel)}</span><span class="dday-emoji">${e.tag}</span><span class="dday-name">${escapeHtml(e.name)}</span><span class="dday-date">${escapeHtml(e.date)}</span></li>`;
+  }).join('');
+}
+function toggleCioDetail() {
+  const wrap = document.getElementById('cio-detail-wrap');
+  const btn = document.getElementById('cio-detail-toggle');
+  if (!wrap || !btn) return;
+  const open = wrap.style.display !== 'none';
+  wrap.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? '펼쳐보기' : '접기';
+  btn.setAttribute('aria-expanded', open ? 'false' : 'true');
+}
+
 (function renderAll() {
   const marketDaily = safeArr(data.market_daily);
   const dailyMacro = safeArr(data.daily_macro);
@@ -2676,6 +2999,13 @@ function buildStockRows() {
   }
   const cioRisk = document.getElementById('cio-main-risk');
   if (cioRisk) cioRisk.textContent = buildCioMainRiskLine(chair, mode, dailyMacro);
+  // Glance Cards 렌더링 (액션 · 신호등 · Watch · D-Day)
+  try { renderSignalLights(); } catch (e) { console.warn('renderSignalLights failed', e); }
+  try { renderActionGuide(); } catch (e) { console.warn('renderActionGuide failed', e); }
+  try { renderWatchTop3(); } catch (e) { console.warn('renderWatchTop3 failed', e); }
+  try { renderUpcomingEvents(); } catch (e) { console.warn('renderUpcomingEvents failed', e); }
+  const cioDetailToggle = document.getElementById('cio-detail-toggle');
+  if (cioDetailToggle) cioDetailToggle.onclick = toggleCioDetail;
   const cioSugeupWrap = document.getElementById('cio-sugeup-wrap');
   const cioSugeup = document.getElementById('cio-sugeup-narrative');
   const cioSugeupToggle = document.getElementById('cio-sugeup-toggle');
