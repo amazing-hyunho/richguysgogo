@@ -1,0 +1,127 @@
+{
+  "market_summary": {
+    "note": "KOSPI 5.88%, USD/KRW 1507.66. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 5.88,
+    "usdkrw": 1507.658018
+  },
+  "flow_summary": {
+    "note": "외국인 -5843억, 기관 +6522억, 개인 -497억 | KOSPI(외 -6907, 기관 +5683, 개인 +1322) KOSDAQ(외 +1064, 기관 +839, 개인 -1819)",
+    "foreign_net": -5843.0,
+    "institution_net": 6522.0,
+    "retail_net": -497.0
+  },
+  "korean_market_flow": {
+    "date": "2026-05-21",
+    "market": {
+      "KOSPI": {
+        "individual": 1322,
+        "foreign": -6907,
+        "institution": 5683
+      },
+      "KOSDAQ": {
+        "individual": -1819,
+        "foreign": 1064,
+        "institution": 839
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] 미 연준 의사록서 “인플레 2% 계속 웃돌면 ‘통화 긴축’ 필요”...금리 인상 시사 - 조선일보",
+    "[반도체/AI] 엔비디아 분기 순이익 583억 달러…젠슨 황 “AI 수요 포물선처럼 폭증” - 매일경제",
+    "[에너지/원자재] 금리진정·유가하락에 주요지수 반등…엔비디아 실적 호조 [뉴욕증시 브리핑] - 한국경제",
+    "[환율/달러] 물가·금리·환율 '3高' 쇼크…금리 인상 저울질하는 한은 - 노컷뉴스",
+    "[인플레이션] 미 연준 다수위원 ″인플레 2% 계속 웃돌면 금리인상 적절″ - 연합뉴스TV"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 7630.29,
+      "kosdaq": 1114.97,
+      "kospi_pct": 5.88,
+      "kosdaq_pct": 5.58
+    },
+    "us": {
+      "sp500": 7432.97,
+      "nasdaq": 26270.36,
+      "dow": 50009.35,
+      "sp500_pct": 1.0791978361648304,
+      "nasdaq_pct": 1.5448011107851805,
+      "dow_pct": 1.3075754985224037
+    },
+    "fx": {
+      "usdkrw": 1507.658018,
+      "usdkrw_pct": 0.15770973389823045
+    },
+    "volatility": {
+      "vix": 17.440000534057617
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.572000026702881,
+      "us2y": 3.556999921798706,
+      "spread_2_10": 1.0150001049041748,
+      "vix": 17.440000534057617,
+      "dxy": 99.13200378417969,
+      "usdkrw": 1499.0799560546875,
+      "vix3m": 20.760000228881836,
+      "vix_term_spread": 3.3199996948242188,
+      "oil_wti": 99.4000015258789,
+      "russell2000": 2817.36474609375,
+      "oil_brent": 105.70999908447266
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.9470269087042764,
+      "core_cpi_yoy": 2.9884245755166017,
+      "pce_yoy": 3.496081498479442,
+      "pmi": null,
+      "retail_sales_mom": 0.49311759162165014,
+      "nfp_change": 115.0,
+      "wage_growth": 37.41,
+      "wage_level": 37.41,
+      "wage_yoy": 3.5714285714285587,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24174.527,
+      "gdp_qoq_annualized": 2.0
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 2.132000026702881,
+      "hy_oas": 2.86,
+      "ig_oas": 0.76,
+      "fed_balance_sheet": 6728502.0,
+      "tga_balance": 807420.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 4.419,
+    "liquidity_signal_score": 8.202,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -4.043,
+    "kospi_20d_cum_pct": 21.14,
+    "kosdaq_5d_cum_pct": -6.238,
+    "kospi_abs_move_5d_avg": 3.283,
+    "usdkrw_5d_change_pct": 0.661,
+    "vix_5d_avg": 18.022,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+21.14%, vol20d=3.16, reversal=false"
+  }
+}
