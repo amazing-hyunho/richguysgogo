@@ -1,0 +1,52 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 7840.76pt(+0.34%)로 소폭 상승했으나, 외국인 순매도(-7664억)와 변동성(VIX 16.8) 경계가 지속되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1501.66원(-0.01%)으로 안정적이지만, 5일간 0.63% 상승하며 외환 부담이 누적되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "섹터 전략",
+      "majority": "방어적 비중 유지",
+      "minority": "균형 유지(섹터 주도 불명확)",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "섹터별 주도주 부재로 단기 변동성 확대 시, 균형 전략이 일부 투자자에게 유리할 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 7840.76pt(+0.34%)로 소폭 상승했으나, 외국인 순매도(-7664억)와 변동성(VIX 16.8)이 시장을 압박하는 방어적 국면이 이어졌습니다. 5일 누적 상승률은 +4.95%, 20일 누적은 +24.02%로 과열 신호가 감지됩니다. [美연준 위원 \"기업·소비자 얼마나 버티느냐가 금리인상 결정\"](https://news.google.com/rss/articles/CBMiW0FVX3lxTE0xdlhReTFxRTU4a01vX18tV1ZObUJ1M3ZFMFI0WTA5bnlFRlJoMUtDRi1EcnFhUnZ3eGNMVlZhMUpZallQV3g3cVM1ZEY4aHlicUtJb2RHbHJaRG_SAWBBVV95cUxQUGF2czg2RDNUdWJoVy0yakdrOWFzWHZLNGZ1eUc3RDlwYUFDOWNrT0d0VXp3ellBeXNBcHd6bXJpdE00anZteUpyS25vQXVXUjV1Z0xfeDluLVl0ckdBVzY?oc=5), [AMD, 대만 반도체업계에 15조원 투자…엔비디아 추격](https://news.google.com/rss/articles/CBMiaEFVX3lxTE44QTQxTlEtd1JSMjhQUkhQRVVnRTJFV3luS01yODlPSk5xcEg2T1hlbmZvTU1ENWtPMlNVRF9NY2FiUC1pVWZ6Q0ZWNFlwMDE2RnhoOWRSUmlKWXhGNUoxcFdDMllTQjFq0gFuQVVfeXFMTXpGWWhOX1lsalRuVXRqVkVtVldkcHVTLW1STTRoZ1dvODVNY3dqZDNENU5meEpqeDBJN0NHV3o0V3VQa1JyMVJiQUJHdWdQZy1Qd2tNTWEzblhkZGxmU0Z4ZVpkME1tYXVoMU5ZX0E?oc=5) 등 주요 뉴스는 금리·정책·반도체 이슈가 투자심리를 흔들고 있음을 보여줍니다.\n\n## [외국인 매도 이유]\n첫째, 20일 누적 KOSPI 상승률이 +24.02%에 달해 외국인 투자자들이 차익실현에 나섰습니다. 둘째, 반도체·AI 업종 비중이 글로벌 지수 내에서 한계치에 근접하면서 패시브 리밸런싱 매물이 출회되고 있습니다. 셋째, USD/KRW가 1501.66원으로 5일간 0.63% 상승해 환차손 우려가 커지면서 외국인 자금 유출 압력이 가중되고 있습니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자들은 AI·반도체 리레이팅 기대와 FOMO(상승 추격 심리), 국내 성장주 내러티브에 힘입어 외국인 매물을 적극적으로 흡수하고 있습니다. 하지만 레버리지 활용이 늘어날 경우, 시장이 2~3%만 조정해도 강제 청산 매물이 쏟아질 수 있다는 점이 핵심 리스크입니다. 오늘 개인 순매수는 +4478억으로 외국인 매도 물량을 상당 부분 받아냈으나, 이 속도가 지속 가능할지는 추가 모니터링이 필요합니다.\n\n## [시나리오 판단]\n시나리오 A(기본): 외국인 매도세가 단기적으로 이어지나, USD/KRW가 1500원 부근에서 안정되고 변동성(VIX)이 17 이하로 유지된다면, KOSPI는 7700~7900pt 박스권에서 등락을 반복할 가능성이 높습니다. 확률상 가장 유력한 경로입니다.\n시나리오 B(상승 지속): 반도체 업종의 글로벌 투자 확대(예: AMD 대만 투자)와 미국·이란 평화협정 등 지정학 완화 뉴스가 현실화되면, 외국인 매도세가 진정되고 추가 상승 모멘텀이 재개될 수 있습니다. USD/KRW 1500원 하회, 외국인 순매수 전환이 확인 신호입니다.\n시나리오 C(급락): 연준의 매파적 발언, 글로벌 금리 급등, 환율 급등(USD/KRW 1520원 돌파) 등 외부 충격이 발생하면, 개인의 레버리지 청산과 함께 5% 이상 급락이 촉발될 수 있습니다. 가장 먼저 환율과 외국인 순매도 규모를 주시해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 비중을 줄이기보다는 방어적 포지션을 유지하며, 변동성 완화와 외국인 매도 진정 신호를 기다리는 것이 합리적입니다. 신규 진입자는 외국인 순매도 축소, USD/KRW 1500원 하회, VIX 16 이하 진입 등 확인 신호가 나올 때까지 관망이 바람직합니다. \"과열 구간의 방어적 균형이 오늘 시장의 본질입니다.\""
+}
