@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 7,847.71pt(+0.41%)로 마감했으나, 외국인 순매도(-13,246억)와 USD/KRW 상승(1,504.94원, +0.89%)이 동반되어 수급 역풍이 뚜렷합니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "20일 누적 KOSPI 상승률이 +22.34%에 달해 차익실현 욕구가 커졌고, VIX(16.7)도 5일 평균(17.38)과 유사해 변동성 경계가 유지되고 있습니다.",
+      "sources": [
+        "macro_daily",
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "섹터 전략",
+      "majority": "방어적 비중 유지(리스크 오프)",
+      "minority": "섹터 주도주 부재로 균형 유지(중립)",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "섹터별 주도주가 명확하지 않아 일부는 공격적 축소 대신 균형 전략을 주장, 단기 변동성 확대 시 대응 속도에 차이가 발생할 수 있음."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 7,847.71pt(+0.41%)로 마감하며 5일 누적 +5.12%, 20일 누적 +22.34%의 강한 랠리 이후 숨 고르기 국면에 진입했습니다. 외국인은 -13,246억 순매도, 기관은 +10,593억 순매수, 개인은 +1,862억 순매수로 수급이 엇갈렸습니다. USD/KRW 환율은 1,504.94원(+0.89%)로 상승하며 외국인 자금 유출 신호가 강화되었습니다. VIX는 16.7로 5일 평균(17.38)과 유사해 변동성 경계가 유지되고 있습니다. 주요 뉴스에서는 [연준 금리 인상 가능성에 환율 상승폭 확대](https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Gd3dKVVFxNk90bGZHeDZOZmkteFF4WFcyYlYzT3kzR0Z4THpmOFMzYlhXLWNISFl2QndpcFlKS1N3czkzb1dHUVRiVHZBOWpVakI1ZVdZeFlnNVp5Q05vY9IBYEFVX3lxTE5Gd3dKVVFxNk90bGZHeDZOZmkteFF4WFcyYlYzT3kzR0Z4THpmOFMzYlhXLWNISFl2QndpcFlKS1N3czkzb1dHUVRiVHZBOWpVakI1ZVdZeFlnNVp5Q05vYw?oc=5), [미 무역대표의 반도체 관세 발언](https://news.google.com/rss/articles/CBMiVEFVX3lxTE9DdG9acS1wSGk1YUhHcEtJOVc0emF3cU1BVWFWdWk4b0h3OVhOZGNOOFFWVFZHeGdTVVVWUXk3STFQeERFVXZZNjh2MWdWRUwxa0NjSQ?oc=5), [고물가·고환율·고금리 이슈](https://news.google.com/rss/articles/CBMiYEFVX3lxTFA4d3JCX1ZnX3ZWb3BtN1lfMEtHQ3B1THZnbmxNRjVlaGs0SzBnWHllSzc5RkRXSTJxVmYybUdoWko5NkRHTUNHeERsSFpOeDlVVGVvbVZrVk1oVmYwdE40bdIBeEFVX3lxTE95Z2hCRUZqVXBFdzZsaUFyX2Z6S1dOTDNpWUZXSEsxOVo0WDRDYml1VTFIX3RXREFEQndDMElGS2xpOU9SQXJ4c2VDVVlWTDUwQ25rQXpwejh6czVRREFyUXZCX0tyMkJVWldlR3lYd1hGZWtwQ2ExZQ?oc=5) 등 대외 불확실성이 부각되고 있습니다.\n\n## [외국인 매도 이유]\n첫째, 20일 누적 KOSPI 상승률이 +22.34%에 달해 외국인 투자자들은 차익실현 욕구가 커졌습니다. 둘째, 최근 반도체·AI 업종의 급등으로 한국 시장 내 특정 섹터 비중이 글로벌 벤치마크 한도를 초과하면서 패시브 펀드 리밸런싱 매물이 출회되고 있습니다. 셋째, USD/KRW 환율이 1,504.94원으로 0.89% 상승한 점은 단순 리밸런싱이 아닌 자금 유출 압력이 동반되고 있음을 시사합니다. 이는 [연준 금리 인상 가능성](https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Gd3dKVVFxNk90bGZHeDZOZmkteFF4WFcyYlYzT3kzR0Z4THpmOFMzYlhXLWNISFl2QndpcFlKS1N3czkzb1dHUVRiVHZBOWpVakI1ZVdZeFlnNVp5Q05vY9IBYEFVX3lxTE5Gd3dKVVFxNk90bGZHeDZOZmkteFF4WFcyYlYzT3kzR0Z4THpmOFMzYlhXLWNISFl2QndpcFlKS1N3czkzb1dHUVRiVHZBOWpVakI1ZVdZeFlnNVp5Q05vYw?oc=5)과 맞물려 외국인 매도세를 자극하고 있습니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자들은 AI·반도체 업종의 리레이팅 기대, 최근 랠리에서 소외되지 않으려는 FOMO 심리, 그리고 국내 성장주에 대한 낙관론을 바탕으로 외국인 매물을 흡수하고 있습니다. 다만, 개인 순매수(1,862억)는 외국인 매도 규모에 비해 크지 않아, 레버리지 활용도가 높아질 경우 시장이 2~3% 이상 급락할 때 강제 청산(마진콜) 리스크가 커질 수 있습니다. 현재 흡수 속도는 과거 대비 무리가 없는 수준이나, 지속적 외국인 매도세가 이어질 경우 개인의 매수 여력도 한계에 부딪힐 수 있습니다.\n\n## [시나리오 판단]\n시나리오 A(베이스): 외국인 매도세가 점진적으로 완화되고, USD/KRW가 1,500원 부근에서 안정된다면 시장은 단기 조정 후 박스권 횡보로 전환될 가능성이 높습니다. 확률상 가장 유력한 시나리오입니다.\n시나리오 B(상승 지속): 반도체 관세 이슈가 완화되고, 연준의 매파적 발언이 약화되며, 외국인 순매도가 멈추거나 순매수로 전환될 경우 추가 랠리가 가능합니다. [미 무역대표의 관세 유예 발언](https://news.google.com/rss/articles/CBMiVEFVX3lxTE9DdG9acS1wSGk1YUhHcEtJOVc0emF3cU1BVWFWdWk4b0h3OVhOZGNOOFFWVFZHeGdTVVVWUXk3STFQeERFVXZZNjh2MWdWRUwxa0NjSQ?oc=5) 등 정책 변화가 확인되면 신호가 될 수 있습니다.\n시나리오 C(급락): 연준의 추가 금리 인상 시사, 환율의 1,520원 돌파, 외국인 매도세 확대가 동반될 경우 시장은 단기 급락으로 전환될 수 있습니다. [고물가·고환율·고금리 뉴스](https://news.google.com/rss/articles/CBMiYEFVX3lxTFA4d3JCX1ZnX3ZWb3BtN1lfMEtHQ3B1THZnbmxNRjVlaGs0SzBnWHllSzc5RkRXSTJxVmYybUdoWko5NkRHTUNHeERsSFpOeDlVVGVvbVZrVk1oVmYwdE40bdIBeEFVX3lxTE95Z2hCRUZqVXBFdzZsaUFyX2Z6S1dOTDNpWUZXSEsxOVo0WDRDYml1VTFIX3RXREFEQndDMElGS2xpOU9SQXJ4c2VDVVlWTDUwQ25rQXpwejh6czVRREFyUXZCX0tyMkJVWldlR3lYd1hGZWtwQ2ExZQ?oc=5)와 환율 추이를 최우선 모니터링해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 비중을 일부 축소하거나 방어적으로 유지하는 것이 합리적입니다. 신규 진입자는 외국인 순매도 축소, 환율 안정, 변동성(VIX) 하락 등 신호가 확인될 때까지 관망이 바람직합니다. \"지금은 속도를 줄이고, 근거를 확인하며, 변동성 완화 신호를 기다릴 때입니다.\""
+}
