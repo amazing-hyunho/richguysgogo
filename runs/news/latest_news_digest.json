@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-05-23T16:43:49.864199+00:00",
+  "crawled_at": "2026-05-23T17:42:42.827088+00:00",
   "news_date": "2026-05-24",
-  "total_collected": 9,
+  "total_collected": 11,
   "topic_counts": [
     [
       "반도체/AI",
-      2
+      3
+    ],
+    [
+      "인플레이션",
+      1
     ],
     [
       "정책/테마",
@@ -18,20 +22,27 @@
     [
       "국내지수",
       2
-    ],
-    [
-      "바이오/헬스케어",
-      2
     ]
   ],
   "top_articles": [
     {
       "topic": "반도체/AI",
-      "count": 2,
+      "count": 3,
       "title": "SOL 반도체전공정(475300) - 매일경제 마켓",
       "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNV29OU0RZQlp5Z255T1JONVd5dlhWOG9KOGxjLUh4dzZfMy11a3RqR0hmR094cnFtR2dqWWVmMXRJekR6M2NOcF9fRnlodjhOZWtlWEI0MUxYMGhxYklmT3FXMU94bE0wVFgtNU5KcTVmVDBZN0JIX05ydHp3cWFXbkhwSTZLNmdiR2V1SHlkSFdINy1PQmhF?oc=5",
       "summary_lines": [
         "핵심 이슈: SOL 반도체전공정(475300) - 매일경제 마켓",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "인플레이션",
+      "count": 1,
+      "title": "파월의 마지막 경고…“인플레이션 현실 직시해야” - 글로벌이코노믹",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNczMwN0RvekNObGVxeW0wVjVfZmFMNGxPQ1NwTnlVR2xGMHk2T00teHpMcWEzWUhVdGtqbzBxOE1PMGo3UjRmTXpWRjRlNkh0Tk1qcjBYcFB4bThwekVic3cyZEtmTkRHSmtZaXJJMXVfS1Q5Vk1JRjhHeHdSZ2pMcEhnSE54bWhG?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 파월의 마지막 경고…“인플레이션 현실 직시해야” - 글로벌이코노믹",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -68,20 +79,21 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "바이오/헬스케어",
-      "count": 2,
-      "title": "KBSTAR 헬스케어채권혼합(253290) - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRmZIUkgwLVFsM2hmWlBEN2ZXSThQb2JQcGlaVmFVQk9jcVVLbGpFNGtyTE5pYU55VWMwbzM2bl9teEEyZ2w3anRKQlBIVUFKQXNCRlJRa2pod2NhQkNRTnY5eWFubi1sNGhFelk0QklwNTBpaHVIVEhJSTNiT1pSSjNKUzBLd2kxajVjTXllUjFGb0pJcVdR?oc=5",
-      "summary_lines": [
-        "핵심 이슈: KBSTAR 헬스케어채권혼합(253290) - 매일경제 마켓",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "IT/반도체",
+      "total_count": 3,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 3,
+          "title": "SOL 반도체전공정(475300) - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNV29OU0RZQlp5Z255T1JONVd5dlhWOG9KOGxjLUh4dzZfMy11a3RqR0hmR094cnFtR2dqWWVmMXRJekR6M2NOcF9fRnlodjhOZWtlWEI0MUxYMGhxYklmT3FXMU94bE0wVFgtNU5KcTVmVDBZN0JIX05ydHp3cWFXbkhwSTZLNmdiR2V1SHlkSFdINy1PQmhF?oc=5"
+        }
+      ]
+    },
     {
       "sector": "지수/시장",
       "total_count": 3,
@@ -101,26 +113,14 @@
       ]
     },
     {
-      "sector": "IT/반도체",
-      "total_count": 2,
+      "sector": "매크로",
+      "total_count": 1,
       "topics": [
         {
-          "topic": "반도체/AI",
-          "count": 2,
-          "title": "SOL 반도체전공정(475300) - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNV29OU0RZQlp5Z255T1JONVd5dlhWOG9KOGxjLUh4dzZfMy11a3RqR0hmR094cnFtR2dqWWVmMXRJekR6M2NOcF9fRnlodjhOZWtlWEI0MUxYMGhxYklmT3FXMU94bE0wVFgtNU5KcTVmVDBZN0JIX05ydHp3cWFXbkhwSTZLNmdiR2V1SHlkSFdINy1PQmhF?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "헬스케어",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "바이오/헬스케어",
-          "count": 2,
-          "title": "KBSTAR 헬스케어채권혼합(253290) - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNRmZIUkgwLVFsM2hmWlBEN2ZXSThQb2JQcGlaVmFVQk9jcVVLbGpFNGtyTE5pYU55VWMwbzM2bl9teEEyZ2w3anRKQlBIVUFKQXNCRlJRa2pod2NhQkNRTnY5eWFubi1sNGhFelk0QklwNTBpaHVIVEhJSTNiT1pSSjNKUzBLd2kxajVjTXllUjFGb0pJcVdR?oc=5"
+          "topic": "인플레이션",
+          "count": 1,
+          "title": "파월의 마지막 경고…“인플레이션 현실 직시해야” - 글로벌이코노믹",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNczMwN0RvekNObGVxeW0wVjVfZmFMNGxPQ1NwTnlVR2xGMHk2T00teHpMcWEzWUhVdGtqbzBxOE1PMGo3UjRmTXpWRjRlNkh0Tk1qcjBYcFB4bThwekVic3cyZEtmTkRHSmtZaXJJMXVfS1Q5Vk1JRjhHeHdSZ2pMcEhnSE54bWhG?oc=5"
         }
       ]
     },
