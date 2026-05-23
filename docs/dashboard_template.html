@@ -3259,19 +3259,33 @@ function renderWatchTop3() {
       return { bg:'rgba(148,163,184,0.15)', color:'#94a3b8' };
     }
 
-    // ── 전체 기사 플랫 리스트 (타임스탬프 포함) ────────────
+    // ── 전체 기사 플랫 리스트 (타임스탬프 포함, 링크+제목 기준 중복 제거) ──
     let allArticles = [];
     const topicTotalMap = {};
-    history.forEach(snap => {
+    const seenLinks = new Set();
+    const seenTitles = new Set();
+    // history는 최신순 정렬(최근 snap이 앞) 가정. 최신 것을 우선 채택.
+    const sortedHistory = safeArr(history).slice().sort((a, b) => {
+      const ta = a.crawled_at || a.news_date || '';
+      const tb = b.crawled_at || b.news_date || '';
+      return tb.localeCompare(ta);
+    });
+    sortedHistory.forEach(snap => {
       const ts = snap.crawled_at || snap.news_date || '';
       const dateLabel = ts.length >= 10 ? ts.slice(0, 10) : ts;
       const timeLabel = ts.length >= 16 ? ts.slice(11, 16) : '';
       (snap.top_articles || []).forEach(a => {
+        const link = (a.link || '').trim();
+        const title = (a.title || '').trim().toLowerCase().replace(/\s+/g, ' ');
+        if (link && link !== '#' && seenLinks.has(link)) return;
+        if (title && seenTitles.has(title)) return;
+        if (link && link !== '#') seenLinks.add(link);
+        if (title) seenTitles.add(title);
         const topic = a.topic || '기타';
         allArticles.push({
           topic,
           title: a.title || '',
-          link: a.link || '#',
+          link: link || '#',
           summary: (a.summary_lines || []).filter(s => s && !s.startsWith('핵심 이슈:') && !s.includes('Google 뉴스') && !s.includes('원문 링크')).join(' '),
           dateLabel,
           timeLabel,
