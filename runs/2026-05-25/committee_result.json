@@ -1,0 +1,50 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 7847.71pt(+0.41%)로 소폭 상승했으나, 외국인 순매도(-13246억)와 USD/KRW 1516.19의 높은 환율이 리스크 오프 신호를 강화합니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "news"
+      ]
+    },
+    {
+      "point": "5일/20일 누적 KOSPI 상승률이 각각 +5.12%, +22.34%로 단기 과열 구간 진입이 의심되며, VIX(16.7)도 평균 대비 높아 변동성 경계가 필요합니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "섹터 주도주 명확성",
+      "majority": "방어적 대응(리스크 오프) 필요",
+      "minority": "섹터 주도주 불명확, 균형 유지",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "섹터별 차별화가 뚜렷하지 않으면, 단기 변동성 확대 시 시장 전체가 동반 조정될 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 7847.71pt(+0.41%)로 소폭 상승했으나, 외국인 순매도(-13246억)와 높은 환율(USD/KRW 1516.19, -0.77%)이 시장의 리스크 오프 분위기를 주도했습니다. VIX는 16.7로 5일 평균(17.38) 대비 소폭 낮지만, 여전히 변동성 경계 구간입니다. 5일/20일 누적 KOSPI 상승률이 각각 +5.12%, +22.34%로 단기 과열 신호가 뚜렷합니다. 오늘 시장은 [“땡큐! 젠슨 황” 엔비디아 덕에 반등 … 이번주 금통위·연준에 달린 8천피 - 매일경제](https://news.google.com/rss/articles/CBMiUkFVX3lxTE1JWkM2T20xMlhRTk9zLTR6R2dwbTdrUGQzZWI5VWRWN2JITHlqZVozd1BpdWZTM3hwSUpCaHVGSnRuWWhpZHlSYzBlRTVwVWxMMXc?oc=5), [물가·환율·집값 3중고… 한은 기준금리 인상 깜박이 켜나 - IT조선](https://news.google.com/rss/articles/CBMicEFVX3lxTE1raG1pbGNVdF92UkptSDVyOGRGNGZYdndKbHhsZDBRVzY4Wi13MWs5cTdnWkdtRXduV3pHbTJwdXZqeklRQlQ4bjQwN0dzNGxzckdaQ3lUcUpBRTYtOENxRDAtSGFuZk9PaVhZRThZUXjSAXRBVV95cUxPaThMekpOVEJOb2g3WkNtQTJpckpLaERITHQ4MDVfSzJBek9aZmJvQ1FyUkFMTV9RWHFIYi1MY1lCX0N3QThnMHNDR3Q1bHFqNGdZX0YxMmhsODBsQjBweGxBbmxqSEpwbjF6MVowZWRJWU1FWg?oc=5) 등 주요 뉴스에서 확인되듯, 연준·금리·AI·환율 등 거시 불확실성 이슈가 심리를 압박하는 모습입니다.\n\n## [외국인 매도 이유]\n첫째, 최근 5일(+5.12%) 및 20일(+22.34%) 누적 KOSPI 급등에 따른 차익실현 욕구가 커졌습니다. 둘째, 반도체·AI 등 주도 섹터의 비중이 글로벌 벤치마크 한도를 초과하면서 패시브 리밸런싱 매물이 출회되고 있습니다. 셋째, USD/KRW가 1516.19로 여전히 높은 수준을 유지하며, 최근 5일간 0.55% 상승해 환차손 우려와 함께 자금 유출 압력이 동반되고 있습니다. 이 세 가지 요인이 복합적으로 외국인 매도를 자극했습니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자는 AI·반도체 리레이팅 기대와 FOMO(상승 추격 심리), 그리고 국내 성장주 내러티브에 힘입어 외국인 매물을 적극적으로 흡수하고 있습니다. 특히 KOSPI에서 개인 순매수는 +10655억에 달합니다. 그러나 레버리지 활용이 동반된다면, 시장이 3~5%만 조정해도 강제 청산(마진콜) 리스크가 현실화될 수 있습니다. 현재 개인의 매수 흡수 속도는 외국인 매도 규모에 비해 다소 부담스러운 수준으로, 지속 가능성에 대한 경계가 필요합니다.\n\n## [시나리오 판단]\n시나리오 A(기본): 외국인 매도세가 점진적으로 완화되고, 환율이 1500원대 초반에서 안정된다면, 시장은 단기 조정 후 횡보 내지 제한적 반등이 이어질 가능성이 높습니다(확률: 중상). 시나리오 B(강세 지속): AI·반도체 실적 서프라이즈와 함께 연준·한은의 매파적 스탠스 완화, USD/KRW 하락(1500원 하회)이 동반될 경우, 추가 랠리도 가능합니다. 시나리오 C(급락): 미국 PCE 등 인플레 지표가 예상보다 높게 나오거나, 연준의 추가 긴축 시사, 환율 급등(1520원 이상) 등 외부 충격이 발생하면 단기 급락이 불가피합니다. 이번주 금통위·연준 이벤트와 [주가 급등한 델·마블 실적, AI 랠리 정당화할까…PCE 물가지수 주목 - 머니투데이](https://news.google.com/rss/articles/CBMibkFVX3lxTE5IMjFLbEgxendpbjl0WXdia0hfeUxEZWdTYnZNUHZtSndNT1hYay1QSEZHb3V5S2sxMC1ROUN2SFZpV1N1bUgyaGJIWGswVDJkTmREakZrQlJfYzZPRTM4OXc4RVE2RmFwODBUdkNB0gFuQVVfeXFMTkgyMUtsSDF6d2luOXRZd2JrSF95TERlZ1Nidk1Qdm1Kd01PWFhrLVBIRkdvdXlLazEwLVE5Q3ZIVmlXU3VtSDJoYkhYazBUMmROZERqRmtCUl9jNk9FMzg5dzhFUTZGYXA4MFR2Q0E?oc=5) 결과에 주목해야 합니다. 가장 먼저 환율(USD/KRW) 변동을 모니터링해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 비중 축소 또는 현상 유지가 합리적입니다. 신규 진입자는 외국인 매도세 완화, 환율 안정(1500원대 초반), VIX 하락 등 신호가 확인될 때까지 관망이 바람직합니다. 지금은 \"방어적 태도가 생존의 핵심\"임을 명심해야 할 시점입니다."
+}
