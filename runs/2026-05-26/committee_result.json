@@ -1,0 +1,60 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI가 3.45% 급등(8118.37p), 외국인+5027억·기관+5782억 순매수로 강한 상승 모멘텀 확인.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 환율이 1518.78원(-0.51%)로 안정, VIX 16.6으로 변동성도 낮은 구간.",
+      "sources": [
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 주도 섹터 명확성",
+      "majority": "수급·이익·유동성 담당자는 위험자산 선호와 모멘텀 지속을 강조.",
+      "minority": "섹터 담당자는 주도주 불명확성, 균형 유지 필요성 언급.",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "섹터 리더십 부재 시 랠리의 지속성과 확장성에 제약이 생길 수 있음."
+    },
+    {
+      "topic": "거시 환경 해석",
+      "majority": "수급·이익·유동성 담당자는 거시 환경이 우호적이라고 평가.",
+      "minority": "매크로·리스크 담당자는 균형적, 신중 대응을 주문.",
+      "minority_agents": [
+        "macro",
+        "risk"
+      ],
+      "why_it_matters": "거시 불확실성 확대 시 랠리의 속도 조절 및 변동성 확대 가능성."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 8118.37p(+3.45%)로 급등하며, 외국인(+5027억)과 기관(+5782억)의 강한 순매수에 힘입은 모멘텀 랠리가 전개됐습니다. 원/달러 환율은 1518.78원(-0.51%)로 안정세를 보였고, VIX는 16.6으로 변동성도 낮은 구간입니다. 최근 5일간 KOSPI는 +11.82%, 20일 누적 +25.40%로 단기 과열 신호가 감지됩니다. 시장을 움직인 주요 뉴스는 [반도체·AI 유치 공약](https://news.google.com/rss/articles/CBMiVkFVX3lxTE1kWlFvVGM0RXJBa1hfRV9UUXJsQmdoQ1RjWkp2WnJBNjhLVEMyYkVCV3lNdVJ3RkQtdkdBVGFwQXpzRTZrZm1kS0l0R2lFU2dGajZyM1F3?oc=5)과 [코스피 8천피 재도전](https://news.google.com/rss/articles/CBMiUkFVX3lxTE4ySWRfVlBxOFM1RXQxZE1LRkpSang2WWhxdVJOTXk0Z0ZKSGtWMFNFTDNZTjkwYVRBcnNJcWR0RktEN25US2tmMWVzM0hfdWtxTXfSAVNBVV95cUxOcGY1cDNFQzUwWWFCX0o0dUFGVEdCSk1yWXN1RG54M0hNLUtCYkx2WDdHZFlIZG1EMlladGhTdWxpSWRoZG9faC1Wd1hwNVdUY1U4Zw?oc=5) 등 반도체·AI 기대와 국내지수 추가 상승 전망이 투자심리를 자극했습니다. 다만, 섹터 주도주가 불명확하다는 점은 랠리의 확장성에 대한 경계감을 남깁니다.\n\n## [외국인 매도 이유]\n첫째, 최근 5일(+11.82%) 및 20일(+25.40%) 누적 상승에 따른 차익실현 욕구가 자연스럽게 유입됐습니다. 둘째, 반도체·AI 업종 비중이 글로벌 벤치마크 한도를 초과하면서 패시브 펀드의 리밸런싱 수요가 발생했습니다. 셋째, 원/달러 환율이 1518.78원으로 소폭 하락(-0.51%)했으나, 5일 누적으론 +1.27% 상승해 외환 부담이 완전히 해소된 것은 아니며, 환율 변동이 외국인 자금 유출 압력으로 작용할 수 있습니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자는 AI·반도체 업종의 리레이팅 기대와 FOMO(상승 추격 심리), 그리고 국내 성장주 내러티브에 힘입어 외국인·기관 매물을 적극적으로 흡수하고 있습니다. 그러나 최근 개인 순매수는 -9989억(코스피 -7346억, 코스닥 -2643억)으로, 레버리지 활용이 확대되는 구간에서는 시장이 단기 조정 시 강제 청산(마진콜) 리스크가 커질 수 있습니다. 현재 흡수 속도는 외국인·기관 매수세에 비해 다소 과도해 보이며, 지속 가능성에는 유의가 필요합니다.\n\n## [시나리오 판단]\nA. (베이스) 외국인·기관의 순매수와 낮은 변동성(VIX 16.6)이 이어지며, 반도체·AI 기대가 유지되는 한 추가 상승 모멘텀이 유효합니다. 확률상 가장 유력한 시나리오로, 단기 과열 신호에도 불구하고 랠리 지속이 예상됩니다.\nB. (강세 지속) 글로벌 금리·유동성 환경이 추가로 개선되고, 반도체 업종 실적 서프라이즈 또는 정책 지원 뉴스가 추가로 나오면, 코스피는 8,500~9,000선까지 추가 상승이 가능합니다. [코스피 10,400까지 사정권](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBfVjZzUU42ckxVRGhTeE9kUElGallMWTZjVHVRVGR5aTJnWFNzLVlvUGl4TEYyV09jRTBMRTJmdzBWdE82em5KazlRMy1COEVRQ2hlNm5xeGhGanPSAWBBVV95cUxQelJFZUppcjJjRkpLdnpEakxCSXNPUXhaT0FKNFVzRzB3Tjh3VHNEVWtXWkRLWWoxWnQ5NFJQT0tOd2hnU2VtdU5FaUxTUHNRczI5Um1hSjQwS0UzdXJRemI?oc=5) 등 긍정적 전망이 확인되면 강세가 이어질 수 있습니다.\nC. (급락 전환) 단기 과열 부담이 현실화되어 외국인·기관이 순매도로 전환하거나, 환율이 급등(USDKRW 1530 이상)하며 변동성(VIX) 급등이 동반될 경우, 시장은 급격한 조정에 직면할 수 있습니다. 특히 개인 레버리지 청산이 촉발될 수 있으니, 외국인 순매수와 환율 흐름을 최우선 모니터링해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 단기 과열 신호(KOSPI 20일 +25.40%)를 감안해 일부 차익실현 또는 비중 조절을 권고합니다. 신규 진입자는 외국인 순매수세가 둔화되지 않고, USD/KRW 환율이 1520선 이하에서 안정, VIX가 17 이하로 유지되는지 확인 후 분할 매수를 고려해야 합니다. 지금은 \"모멘텀은 강하나, 속도 조절과 리스크 관리가 반드시 병행되어야 하는 구간\"입니다."
+}
