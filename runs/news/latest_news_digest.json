@@ -1,10 +1,14 @@
 {
-  "crawled_at": "2026-05-29T16:42:55.215944+00:00",
+  "crawled_at": "2026-05-29T18:42:37.846265+00:00",
   "news_date": "2026-05-30",
-  "total_collected": 11,
+  "total_collected": 13,
   "topic_counts": [
     [
       "금리/연준",
+      1
+    ],
+    [
+      "환율/달러",
       1
     ],
     [
@@ -13,11 +17,7 @@
     ],
     [
       "반도체/AI",
-      2
-    ],
-    [
-      "국내지수",
-      1
+      3
     ],
     [
       "바이오/헬스케어",
@@ -37,6 +37,17 @@
       ]
     },
     {
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "달러-원, 최종 결정 준비하는 트럼프에 오름폭 축소…1,504.70원 마감 - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9BN05JSEJqMWZRYnkybzlnZThUdzFIekxzRFhXSlV0cVNQLXV4RTAtQ0pOd2dYVWp3am9VX01iVTc4TG9uWExnRllJRW1yTmhldnZMWkdleTRjWGfSAWBBVV95cUxNOXoxNjNDNjRCTm1LakNXdkxRNk1NVEFnTm5zVkhLcGMzN1BhLVZZNENnb09sazlESnFCUjFCOEhkb05JVXRVRWlCSWlZdk1ySFVUZjVOdTlseU1IWjc1Umw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 달러-원, 최종 결정 준비하는 트럼프에 오름폭 축소…1,504.70원 마감 - 연합뉴스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "정책/테마",
       "count": 1,
       "title": "[美특징주]코스트코 \"관세 환급금 고객에 돌려줄 것\" 언급에 하락 - 이데일리",
@@ -49,22 +60,11 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 2,
-      "title": "\"반도체 공급 위기 땐 EU 물량부터 먼저 생산하라\" - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1rNFB4bENDTFdOTHdPcVRmUlV1RTMtdFhOUTRsVnk0ai1QMk01eFViMHFDMmxJQ0ZKZk9qbEU3TTRCbnlWUEtNdXp1b1AwOFJwV0dtelJxN0NnQdIBVEFVX3lxTFB2MG5Nb19VN0g4YWZlaHRUVWRMWW9QdnlsVThXYl91UkRWSU5BOHZUckR3NVVDTTBYenBNVVA4cENDcHhkQmttTWRBd2VrS0RHQ2phZA?oc=5",
+      "count": 3,
+      "title": "삼성-SK, 앤스로픽에 투자… 반도체 공급자서 AI 핵심 파트너로 - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1YdFFUWnVWZDRab3o4TXJCOV9mU21SV3RMQndpNDJLTFU5c2pkMzJDekhGbklVS19pZWlqcklJODJ4Qm1GS0gxNjZPM0NJSTg?oc=5",
       "summary_lines": [
-        "핵심 이슈: \"반도체 공급 위기 땐 EU 물량부터 먼저 생산하라\" - 한국경제",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "국내지수",
-      "count": 1,
-      "title": "KODEX 코스피TR(359210) - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNMEFjQUw3aC0zdW5TQ1BBZmJPRGlxZXJPdWlmM2c4S3lreFJibG9FRlNFZW5WOXBfNHotYmt5dk1yTGxOODQtQmY0RHl3T0NpMG9NaHZtS3NrVjI4azRLbWxTSHM2Nk5hY3pMdl9nZk5idUUtQWV3a1o5VFRJa0M4NjNnLVd1UENnSjZMeVhmbXRiZVRJaUo0?oc=5",
-      "summary_lines": [
-        "핵심 이슈: KODEX 코스피TR(359210) - 매일경제 마켓",
+        "핵심 이슈: 삼성-SK, 앤스로픽에 투자… 반도체 공급자서 AI 핵심 파트너로 - v.daum.net",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,25 +84,31 @@
   "sector_hot_topics": [
     {
       "sector": "IT/반도체",
-      "total_count": 2,
+      "total_count": 3,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 2,
-          "title": "\"반도체 공급 위기 땐 EU 물량부터 먼저 생산하라\" - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1rNFB4bENDTFdOTHdPcVRmUlV1RTMtdFhOUTRsVnk0ai1QMk01eFViMHFDMmxJQ0ZKZk9qbEU3TTRCbnlWUEtNdXp1b1AwOFJwV0dtelJxN0NnQdIBVEFVX3lxTFB2MG5Nb19VN0g4YWZlaHRUVWRMWW9QdnlsVThXYl91UkRWSU5BOHZUckR3NVVDTTBYenBNVVA4cENDcHhkQmttTWRBd2VrS0RHQ2phZA?oc=5"
+          "count": 3,
+          "title": "삼성-SK, 앤스로픽에 투자… 반도체 공급자서 AI 핵심 파트너로 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1YdFFUWnVWZDRab3o4TXJCOV9mU21SV3RMQndpNDJLTFU5c2pkMzJDekhGbklVS19pZWlqcklJODJ4Qm1GS0gxNjZPM0NJSTg?oc=5"
         }
       ]
     },
     {
       "sector": "매크로",
-      "total_count": 1,
+      "total_count": 2,
       "topics": [
         {
           "topic": "금리/연준",
           "count": 1,
           "title": "보먼 “유가發 인플레에 성급한 긴축 안돼”…연준 금리인상론 제동 - 이데일리",
           "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPelZQeUYwakFMNEJOUGM2aHg3bDVTOS00YzBJdUZkV2xuUk95RTFBV0tHTFpkNklPbTdIZVU3N09QbEZGTVU1WDBfTThlLWl5aVVMNHU1Slg2a3pNeFFlMERKU2RJMUJIV2ozSVBnQ1Uxd3dESnhQRlBuT2dQMzNRcA?oc=5"
+        },
+        {
+          "topic": "환율/달러",
+          "count": 1,
+          "title": "달러-원, 최종 결정 준비하는 트럼프에 오름폭 축소…1,504.70원 마감 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9BN05JSEJqMWZRYnkybzlnZThUdzFIekxzRFhXSlV0cVNQLXV4RTAtQ0pOd2dYVWp3am9VX01iVTc4TG9uWExnRllJRW1yTmhldnZMWkdleTRjWGfSAWBBVV95cUxNOXoxNjNDNjRCTm1LakNXdkxRNk1NVEFnTm5zVkhLcGMzN1BhLVZZNENnb09sazlESnFCUjFCOEhkb05JVXRVRWlCSWlZdk1ySFVUZjVOdTlseU1IWjc1Umw?oc=5"
         }
       ]
     },
@@ -115,18 +121,6 @@
           "count": 1,
           "title": "[美특징주]코스트코 \"관세 환급금 고객에 돌려줄 것\" 언급에 하락 - 이데일리",
           "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUDh0Z3ZaMUUtLUhVS1c1NTR5RnNpTkNWM2djTE84M25OVFJfMldZbFhXRG5vZW03YlAzVTctcHExRTVmcldZS1E2ZndENkRNOUdRLWwtUWZYd21LYkN6dXMxbk9EZDZ5SndKN1B5ZTY1UjNWMklyT3pNeEFMN1R2VA?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "국내지수",
-          "count": 1,
-          "title": "KODEX 코스피TR(359210) - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNMEFjQUw3aC0zdW5TQ1BBZmJPRGlxZXJPdWlmM2c4S3lreFJibG9FRlNFZW5WOXBfNHotYmt5dk1yTGxOODQtQmY0RHl3T0NpMG9NaHZtS3NrVjI4azRLbWxTSHM2Nk5hY3pMdl9nZk5idUUtQWV3a1o5VFRJa0M4NjNnLVd1UENnSjZMeVhmbXRiZVRJaUo0?oc=5"
         }
       ]
     },
