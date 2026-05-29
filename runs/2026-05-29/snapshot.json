@@ -1,0 +1,127 @@
+{
+  "market_summary": {
+    "note": "KOSPI 1.73%, USD/KRW 1500.68. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 1.73,
+    "usdkrw": 1500.684943
+  },
+  "flow_summary": {
+    "note": "외국인 -8916억, 기관 +12142억, 개인 -3486억 | KOSPI(외 -7508, 기관 +12405, 개인 -5124) KOSDAQ(외 -1408, 기관 -263, 개인 +1638)",
+    "foreign_net": -8916.0,
+    "institution_net": 12142.0,
+    "retail_net": -3486.0
+  },
+  "korean_market_flow": {
+    "date": "2026-05-29",
+    "market": {
+      "KOSPI": {
+        "individual": -5124,
+        "foreign": -7508,
+        "institution": 12405
+      },
+      "KOSDAQ": {
+        "individual": 1638,
+        "foreign": -1408,
+        "institution": -263
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] 끝나지 않은 인플레…연준 내부서 금리인상론 재부상 - 뉴시스",
+    "[환율/달러] [외환] 원/달러 환율 7.3원 내린 1,495.5원(개장) - 연합뉴스",
+    "[반도체/AI] [AI는 지금] \"추론판 AWS 되겠다\"…엔비디아가 베팅한 바세텐, 몸값 110억 달러 논의 - 지디넷코리아",
+    "[중국/신흥국] [환율] 위안-달러 6.7790위안 … 0.03%↓ - 버핏연구소",
+    "[미국지수] [오늘의 투자전략] 코스피, 미 증시 훈풍에 반등 전망⋯반도체·AI 밸류체인 주도력 주목 - 이투데이"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 8353.27,
+      "kosdaq": 1068.27,
+      "kospi_pct": 1.73,
+      "kosdaq_pct": -3.27
+    },
+    "us": {
+      "sp500": 7563.63,
+      "nasdaq": 26917.47,
+      "dow": 50668.97,
+      "sp500_pct": 0.5753713917950795,
+      "nasdaq_pct": 0.9099847068765552,
+      "dow_pct": 0.04875180375750692
+    },
+    "fx": {
+      "usdkrw": 1500.684943,
+      "usdkrw_pct": 0.4117044564497079
+    },
+    "volatility": {
+      "vix": 15.739999771118164
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.454999923706055,
+      "us2y": 3.5900001525878906,
+      "spread_2_10": 0.8649997711181641,
+      "vix": 15.739999771118164,
+      "dxy": 99.00800323486328,
+      "usdkrw": 1499.97998046875,
+      "vix3m": 19.110000610351562,
+      "vix_term_spread": 3.3700008392333984,
+      "oil_wti": 88.11000061035156,
+      "russell2000": 2936.56982421875,
+      "oil_brent": 92.16000366210938
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 3.9470269087042764,
+      "core_cpi_yoy": 2.9884245755166017,
+      "pce_yoy": 3.7669441141498172,
+      "pmi": null,
+      "retail_sales_mom": 0.49311759162165014,
+      "nfp_change": 115.0,
+      "wage_growth": 37.41,
+      "wage_level": 37.41,
+      "wage_yoy": 3.5714285714285587,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24152.656,
+      "gdp_qoq_annualized": 1.6
+    },
+    "structural": {
+      "fed_funds_rate": 3.64,
+      "real_rate": 2.0649999237060546,
+      "hy_oas": 2.71,
+      "ig_oas": 0.74,
+      "fed_balance_sheet": 6704383.0,
+      "tga_balance": 842660.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -1.281,
+    "liquidity_signal_score": 8.228,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 6.407,
+    "kospi_20d_cum_pct": 29.953,
+    "kosdaq_5d_cum_pct": -3.198,
+    "kospi_abs_move_5d_avg": 1.493,
+    "usdkrw_5d_change_pct": -0.931,
+    "vix_5d_avg": 16.454,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+29.95%, vol20d=3.32, reversal=false"
+  }
+}
