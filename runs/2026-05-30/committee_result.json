@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 3.55% 급등(8476.15p)하며 20일 누적 +30.20%로 과열 신호가 감지됩니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 -1조306억 순매도, 기관은 +2조548억 순매수로 수급 주체 간 방향성이 엇갈립니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 선호 강도",
+      "majority": "중립(NEUTRAL) — 거시, 섹터, 리스크, 브레드스 담당자",
+      "minority": "리스크온(RISK_ON) — 수급, 이익모멘텀, 유동성 담당자",
+      "minority_agents": [
+        "flow",
+        "earnings",
+        "liquidity"
+      ],
+      "why_it_matters": "수급·실적·유동성은 위험 선호를 주장하나, 거시·섹터·리스크는 과열 경계 및 방향성 불확실성을 강조해 투자 전략에 온도차가 발생합니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 3.55% 급등하며 8476.15pt로 마감, 20일 누적 상승률이 무려 +30.20%에 달하는 과열 랠리 국면을 연출했습니다. 반면 코스닥은 -2.68% 하락(1074.8pt)으로 차별화가 뚜렷했습니다. 외국인은 -1조306억 순매도, 기관은 +2조548억 순매수, 개인은 -1조960억 순매도로 수급 주체 간 엇갈림이 두드러졌습니다. 환율은 1498.37원(+0.89%)로 상승, VIX는 15.3으로 안정적입니다. 시장을 움직인 주요 뉴스는 [\"랠리 불안하지만 지속\"…전쟁 끝→반도체 위험?](https://news.google.com/rss/articles/CBMiWkFVX3lxTE9IU0xUU1R1UkxmMWNwUV9wdmU3aFQ0NlJ1SW9EaUhmTUhYWkgyYnp2R2V6emNqVDBMVGtLbTVNdlF1XzktV1o0dmdicktxUnRZNVRUZ3BtZUtId9IBVEFVX3lxTE91WGxEelpkbDJpTmxvOXBBRkszTUo4WTRUZVRlVjFaal9FcUFUNVVxUFhiamdsMktIWExjTEdJa2FiU0xuTDF1NExFNjQxeW42SUZSbA?oc=5), [보먼 “유가發 인플레에 성급한 긴축 안돼”…연준 금리인상론 제동](https://news.google.com/rss/articles/CBMie0FVX3lxTE5rbnpRdnJhazlPbTlxemIxZFVwYmVES2htbGk0Y0pJc244YWVxWDY4UDVYVFVPa01KUE42Tksxc2dfOEhFTllXRXdtcHROTTQtVE9kSlNncFlXMmpBaTB5Q0JOMmNGTTE2SWtNbm90U1NtZVlaUXRXWmRvaw?oc=5) 등으로, AI·반도체 랠리 지속과 미국 금리 경로 불확실성, 환율 변동성 이슈가 시장 심리를 좌우했습니다.\n\n## [외국인 매도 이유]\n첫째, KOSPI가 5일간 +11.37%, 20일간 +30.20% 급등하면서 외국인은 차익 실현에 나섰습니다. 둘째, 반도체·AI 업종의 지수 내 비중이 급격히 확대되며, 패시브 펀드의 리밸런싱 수요가 발생했습니다. 셋째, USD/KRW 환율이 1498.37원으로 0.89% 상승한 점은 외국인 매도가 단순 리밸런싱을 넘어 일부 자금 유출 압력도 작용했음을 시사합니다.\n\n## [개인 매수 이유와 리스크]\n개인은 AI·반도체 업종의 글로벌 리레이팅 기대와 FOMO(놓치기 두려움), 국내 성장주 내러티브에 힘입어 외국인 매물을 적극적으로 흡수하고 있습니다. 그러나 최근 개인 순매수는 -1조960억으로, 레버리지 활용이 동반될 경우 시장 조정 시 강제 청산(마진콜) 리스크가 커집니다. 현재 수급 흡수 속도는 기관 중심으로 유지되고 있으나, 개인의 지속적 매수 여력은 제한적일 수 있습니다.\n\n## [시나리오 판단]\nA안(기본): 단기 과열에도 불구하고 AI·반도체 실적 기대와 미국 금리 동결 기조가 유지된다면, KOSPI는 고점 부근에서 박스권 조정(횡보 내지 완만한 조정) 가능성이 높습니다. 이 시나리오가 가장 유력합니다.\nB안(상승 지속): 미국 증시가 추가 신고가를 경신하고, 외국인 순매도가 진정되며 환율이 1490원대 이하로 안정될 경우, KOSPI는 추가 랠리(상승 탄력 재개)도 가능합니다. 확인 신호는 외국인 순매수 전환과 환율 하락입니다.\nC안(급락 전환): 미국 인플레이션 쇼크, 연준 매파 발언, 환율 급등(1500원 상회) 등 외부 충격이 발생하면, 개인·기관의 매수 여력이 소진되며 급락 전환 위험이 있습니다. 가장 먼저 환율과 외국인 순매도 강도를 주시해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 중립 비중을 유지하되, 단기 급등 종목은 일부 차익 실현을 고려할 시점입니다. 신규 진입자는 외국인 순매도세 완화, 환율 1490원대 안정, VIX 15 이하 등 신호가 확인될 때까지 분할 접근이 바람직합니다. \"과열 랠리 속 신중함이 필요한 구간, 확인된 시그널에만 움직이세요.\""
+}
