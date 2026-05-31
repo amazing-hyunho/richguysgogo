@@ -1,0 +1,126 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "Macro tone is balanced.",
+      "No major shocks.",
+      "Flows are mixed."
+    ],
+    "korean_comment": "거시는 균형적이며 선택적 대응이 적절합니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "외국인+기관 순매수가 강합니다.",
+      "프로 수급이 방향성을 지지합니다.",
+      "위험자산 선호가 강화됩니다."
+    ],
+    "korean_comment": "수급 흐름이 우호적이라 위험 선호가 높아 보입니다.",
+    "raw_response": null,
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.flow_summary.retail_net"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "Sector moves are mixed.",
+      "No clear leader.",
+      "Maintain balance."
+    ],
+    "korean_comment": "섹터 주도주가 불명확해 균형 유지가 낫습니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.sector_moves",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "Risk signals stable.",
+      "No acute stress.",
+      "Maintain discipline."
+    ],
+    "korean_comment": "급격한 리스크는 없어 규율을 유지하세요.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.market_summary.usdkrw",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "실적/가이던스 상향 관련 단서가 우세합니다.",
+      "이익 추정치 개선 기대가 유지됩니다.",
+      "주가 상승의 펀더멘털 정당화 가능성이 있습니다."
+    ],
+    "korean_comment": "이익 모멘텀이 견조해 위험자산 선호를 지지합니다.",
+    "raw_response": null,
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.earnings_signal_score",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "추세 확산과 역추세 신호가 공존합니다.",
+      "기술적 우위가 명확하지 않습니다.",
+      "방향 확정 전까지 균형 비중이 적절합니다."
+    ],
+    "korean_comment": "브레드스 신호가 혼재되어 중립 대응이 합리적입니다.",
+    "raw_response": null,
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.markets.volatility.vix",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "달러 압력이 완화되고 금리 부담이 제한적입니다.",
+      "유동성 환경이 위험자산 회복에 우호적입니다.",
+      "정책 충격 가능성이 낮아 비중 확대 여지가 있습니다."
+    ],
+    "korean_comment": "유동성/정책 환경이 우호적이라 리스크온을 지지합니다.",
+    "raw_response": null,
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.phase_two_signals.liquidity_signal_score",
+      "snapshot.macro.daily.dxy",
+      "snapshot.macro.structural.real_rate",
+      "snapshot.flow_summary.foreign_net"
+    ],
+    "confidence": "MED"
+  }
+]
