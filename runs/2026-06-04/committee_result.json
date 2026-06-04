@@ -1,0 +1,49 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 -1.80% 하락(8,652.91p), 외국인 순매도 -2.3조원, USD/KRW 1,516.87로 변동성 확대가 확인됩니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "5일/20일 누적 KOSPI 상승률이 각각 +5.74%, +15.84%로 단기 과열 이후 차익실현 압력이 커졌습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "섹터 전략",
+      "majority": "방어적 비중 유지(RISK_OFF)",
+      "minority": "섹터 주도주 부재로 균형 유지(NEUTRAL)",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "섹터별 차별화가 약해지면 전체 시장 방향성 신뢰도가 낮아져, 단기 변동성 확대 시 추가 하락 위험이 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 8,652.91p로 -1.80% 급락하며, 최근 20일간 +15.84%의 강한 랠리 이후 첫 번째 뚜렷한 조정 신호를 보였습니다. USD/KRW 환율은 1,516.87원(-0.22%)로 소폭 하락했으나, 여전히 고점권에 머물고 있습니다. VIX는 16.1로 5일 평균(15.98) 대비 소폭 상승하며 변동성 경계가 강화되었습니다. 외국인은 -2.3조원 순매도, 개인은 +2.0조원 순매수로 수급이 극명하게 엇갈렸습니다. 최근 5일/20일 누적 상승률이 각각 +5.74%, +15.84%에 달해 단기 과열 부담이 현실화된 모습입니다. 주요 뉴스는 [달러 강세·국채금리 상승](https://news.google.com/rss/articles/CBMickFVX3lxTE9TdmtaR0E5czJYTGQ4dXhIclkyZjBlSmF6UHA3QUdBdWVSendXU2UtcEsxd01SbS15YjF4cDdxTG5XN2UxY3ZialQ4YUZFSmVxM2x4TE96YzJzWl9PenZzR1RpUGZwT2ZuaGx2QU9rV0tzUQ?oc=5), [연준 베이지북의 물가·경기 상승](https://news.google.com/rss/articles/CBMiUEFVX3lxTE1DTDB1QUwyZ296TG9HdFRSRV9WR0dDTUhpSkJTVU12anBzWnhFdDlSU2dYc2Q2SDRSLU1yc0t0MzlSSmVid201MElCLXNNTmQ2?oc=5), [환율 상방 압력 지속](https://news.google.com/rss/articles/CBMiVEFVX3lxTE03RmRtQzJBUVkzWnVlTGJCaVBvbU4xMThQN29nRERUQkxXVmtxSnNHZHBRRjI0aUItbzdVSnJvenQ3Ym9UOEljY2M3ZWZXM1Z1TTRYZQ?oc=5) 등 거시 불확실성에 집중되어 있습니다. 반도체/AI 관련 호재도 일부 있었으나, 전체 시장 방향을 바꾸기엔 역부족이었습니다.\n\n## [외국인 매도 이유]\n첫째, 최근 5일간 +5.74%, 20일간 +15.84%의 급등세 이후 차익실현 욕구가 커졌습니다. 둘째, 코스피와 반도체 비중이 글로벌 패시브 지수 내 한도를 초과하면서, 외국인 패시브 자금의 리밸런싱 매물이 출회되었습니다. 셋째, USD/KRW가 1,516.87로 여전히 고점권에 머물고 있어, 환차손 방지 목적의 자금 유출 압력이 동반되었습니다. 특히 오늘 외국인 순매도 -2.3조원은 단순 리밸런싱을 넘어, 환율과 연동된 자금 이탈 신호로 해석됩니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자는 AI·반도체 리레이팅 기대, FOMO(상승 추격 심리), 국내 성장주 내러티브에 힘입어 외국인 매물을 적극적으로 받아내고 있습니다. 오늘도 개인 순매수는 +2.0조원에 달했습니다. 하지만 레버리지 활용이 동반된 매수세라면, 시장이 추가로 2~3% 이상 하락할 경우 강제 청산(마진콜) 리스크가 커집니다. 현재 개인의 매수 흡수 속도는 외국인 매도 규모에 비해 빠르지만, 이 추세가 장기 지속될지는 미지수입니다.\n\n## [시나리오 판단]\n시나리오 A(기본): 단기 과열 해소와 외국인 매도 진정이 맞물리며, KOSPI는 8,500p 부근에서 등락을 반복할 가능성이 높습니다. 확률상 가장 유력하며, 변동성 완화와 외국인 매도 축소가 확인되어야 합니다.\n시나리오 B(상승 지속): 반도체/AI 대형주 실적 서프라이즈, 환율 안정(USD/KRW 1,500원 하회), 미국 금리 인하 기대가 동반될 경우 랠리가 재개될 수 있습니다. [현대차그룹·엔비디아 AI거점 뉴스](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5YcU13V1RodkVwOWN2UFo5Q0YxakduQzVJRndQSmhqNElXRUxaTGlCTXduNkVzTmpOWVplSkFoY3Zqc2ZoT1FDYTZXb2E1WVNMQ1NfZkw1VndhUdIBVEFVX3lxTE1Nb3ZVdGk4bVJJQzk5SndjOGpLMWNHd0l4U3RjaVlGaTVfQ045T1J6d0pQVUNjRzEtR2pWUjMyWFl2YUx1WmYtMWJueXJoTFdURjZVWA?oc=5) 등 실적·정책 모멘텀 확인이 필요합니다.\n시나리오 C(급락): 외국인 매도세가 -2조원 이상으로 지속되고, USD/KRW가 1,530원 이상으로 재차 급등할 경우, 개인의 레버리지 청산이 촉발되며 8,300p 이하로 급락할 수 있습니다. 단기적으로 외국인 순매도 규모와 환율 방향이 가장 중요한 모니터링 지표입니다.\n\n## [투자 관점 결론]\n기존 보유자는 비중 축소 또는 현금화 전략을 유지하며, 변동성 완화와 외국인 매도 진정 신호(순매도 -5,000억 이하, USD/KRW 1,500원대 진입, VIX 15 이하) 확인 전까지 추가 매수는 유보가 바람직합니다. 신규 진입자는 외국인 매도세 둔화, 환율 안정, 변동성 하락 등 3가지 신호가 동반될 때까지 관망이 유리합니다. \"과열 뒤 조정은 기회가 아니라, 근거가 확인될 때만 움직여야 한다\"는 점을 명심해야 할 시점입니다."
+}
