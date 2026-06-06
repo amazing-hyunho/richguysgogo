@@ -20,3 +20,6 @@ requests.exceptions.HTTPError: 409 Client Error: Conflict for url: https://api.t
 
 [start_telegram_poller] launching background poller
 [telegram_poll] loop started pid=26484 timeout=10s
+[telegram_poll] processed updates, offset=347964958
+[telegram_poll] processed updates, offset=347964959
+[telegram_poll] loop_error: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=20)

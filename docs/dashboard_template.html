@@ -247,6 +247,26 @@
     .tab-btn.tab-active { color: var(--blue); border-bottom-color: var(--blue); background: rgba(56,189,248,0.06); }
     .tab-pane { display: none; padding-top: 24px; }
     .tab-pane.tab-active { display: block; }
+    /* ── AI 종목분석 탭 ── */
+    .ai-stock-hint { font-size: 13px; color: #94a3b8; line-height: 1.6; margin: 0 0 16px 0; padding: 12px 14px; background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(51, 65, 85, 0.6); border-radius: 10px; }
+    .ai-stock-hint code { font-size: 12px; color: #7dd3fc; }
+    .ai-stock-list { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    @media (min-width: 900px) { .ai-stock-list { grid-template-columns: repeat(2, 1fr); } }
+    .ai-stock-card { background: linear-gradient(150deg, rgba(15, 23, 42, 0.85), rgba(7, 41, 65, 0.35)); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 14px; padding: 16px; min-width: 0; }
+    .ai-stock-card-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; margin-bottom: 12px; }
+    .ai-stock-card-head .ticker { font-size: 18px; font-weight: 800; color: #f8fafc; }
+    .ai-stock-card-head .name { font-size: 14px; color: #cbd5e1; }
+    .ai-stock-consensus { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 14px; padding: 10px 12px; background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(51, 65, 85, 0.55); border-radius: 10px; }
+    .ai-stock-consensus .c-item .c-label { font-size: 11px; color: #64748b; margin-bottom: 3px; }
+    .ai-stock-consensus .c-item .c-val { font-size: 13px; font-weight: 600; color: #e2e8f0; }
+    .ai-stock-news-title { font-size: 12px; font-weight: 800; color: #7dd3fc; letter-spacing: 0.04em; margin: 0 0 8px 0; }
+    .ai-stock-news-list { display: flex; flex-direction: column; gap: 8px; }
+    .ai-stock-news-item { background: rgba(15, 23, 42, 0.55); border: 1px solid rgba(51, 65, 85, 0.55); border-radius: 8px; padding: 9px 11px; }
+    .ai-stock-news-item .title { font-size: 13px; color: #e2e8f0; line-height: 1.45; margin-bottom: 4px; word-break: keep-all; }
+    .ai-stock-news-item .meta { font-size: 11px; color: #64748b; margin-bottom: 4px; }
+    .ai-stock-news-item a { font-size: 11px; color: #7dd3fc; text-decoration: none; border-bottom: 1px dashed rgba(125, 211, 252, 0.4); }
+    .ai-stock-news-item a:hover { color: #bae6fd; }
+    .ai-stock-empty { color: #94a3b8; font-size: 14px; line-height: 1.7; padding: 24px 16px; text-align: center; background: rgba(15, 23, 42, 0.45); border: 1px dashed rgba(51, 65, 85, 0.7); border-radius: 12px; }
     /* 종목탭 - 필터 바 */
     .stock-tab-filter { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 18px; }
     .stock-tab-filter input[type=text] { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: #e2e8f0; font: inherit; font-size: 13px; padding: 7px 12px; width: 200px; outline: none; }
@@ -367,6 +387,7 @@
     <nav class="tab-nav" role="tablist">
       <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
+      <button class="tab-btn" data-tab="ai-stock" role="tab" aria-selected="false">🤖 AI 종목분석</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
       <button class="tab-btn" data-tab="retire" role="tab" aria-selected="false">🏖️ 은퇴 준비</button>
     </nav>
@@ -656,6 +677,25 @@
     </section>
 
     </div><!-- /tab-stocks -->
+
+    <!-- ══ 탭: AI 종목분석 ══════════════════════════════════════ -->
+    <div id="tab-ai-stock" class="tab-pane" role="tabpanel">
+      <section class="section" id="section-ai-stock">
+        <div class="section-head">
+          <h2>🤖 AI 종목분석</h2>
+          <span class="section-meta" id="ai-stock-meta">워치리스트 기준</span>
+        </div>
+        <p class="ai-stock-hint">
+          텔레그램 봇으로 종목을 등록하면 뉴스·컨센서스를 모아 보여줍니다.<br>
+          예) <code>/stock add NVDA</code> · <code>/stock add 005930 삼성전자 KR</code> · <code>/stock list</code>
+        </p>
+        <div class="ai-stock-list" id="ai-stock-list"></div>
+        <div class="ai-stock-empty" id="ai-stock-empty" style="display:none;">
+          등록된 종목이 없습니다.<br>
+          텔레그램에서 <code>/stock add TICKER</code> 로 종목을 추가하세요.
+        </div>
+      </section>
+    </div><!-- /tab-ai-stock -->
 
     <!-- ══ 탭 3: 뉴스 타임라인 ══════════════════════════════════ -->
     <div id="tab-news" class="tab-pane" role="tabpanel">
@@ -3046,6 +3086,108 @@ function renderWatchTop3() {
 
   // 초기 카운트 표시
   filterStockTables();
+
+  // ── AI 종목분석 탭 ────────────────────────────────────────────
+  (function renderAiStockAnalysis() {
+    const listEl = document.getElementById('ai-stock-list');
+    const emptyEl = document.getElementById('ai-stock-empty');
+    const metaEl = document.getElementById('ai-stock-meta');
+    if (!listEl) return;
+
+    const stocks = safeArr((data.stock_news || {}).stocks);
+    const consensusMap = {};
+    safeArr(data.stock_consensus).forEach(r => {
+      const t = String(r.ticker || '').toUpperCase();
+      if (t) consensusMap[t] = r;
+    });
+
+    if (!stocks.length) {
+      listEl.innerHTML = '';
+      if (emptyEl) emptyEl.style.display = '';
+      if (metaEl) metaEl.textContent = '등록 종목 0개';
+      return;
+    }
+    if (emptyEl) emptyEl.style.display = 'none';
+
+    function fmtPrice(v, cur) {
+      if (v === null || v === undefined) return '-';
+      if (cur === 'KRW') return v.toLocaleString('ko-KR', { maximumFractionDigits: 0 }) + '원';
+      if (cur === 'USD') return '$' + Number(v).toFixed(2);
+      return Number(v).toFixed(2);
+    }
+    function fmtRec(key, mean) {
+      const KO = { 'strong buy': '강매수', buy: '매수', hold: '보유', underperform: '약보유', sell: '매도' };
+      const meanLabel = mean !== null && mean !== undefined
+        ? { 1: '강매수', 2: '매수', 3: '보유', 4: '약보유', 5: '매도' }[Math.round(mean)] || Number(mean).toFixed(1)
+        : null;
+      const parts = [];
+      if (key) parts.push(KO[String(key).toLowerCase()] || String(key).toUpperCase());
+      if (meanLabel) parts.push(`(${meanLabel})`);
+      return parts.length ? parts.join(' ') : '-';
+    }
+
+    listEl.innerHTML = stocks.map(stock => {
+      const ticker = String(stock.ticker || '').toUpperCase();
+      const name = String(stock.name || '');
+      const market = String(stock.market || '');
+      const mktBadge = market === 'KR'
+        ? '<span class="mkt-badge-kr">KR</span>'
+        : '<span class="mkt-badge-us">US</span>';
+      const articles = safeArr(stock.articles);
+      const c = consensusMap[ticker];
+
+      let consensusHtml = '<div class="ai-stock-consensus"><div class="c-item"><div class="c-label">컨센서스</div><div class="c-val" style="color:#64748b;">데이터 없음</div></div></div>';
+      if (c) {
+        const cur = c.currency || '';
+        const curPrice = c.current_price;
+        const tp = fmtPrice(c.target_mean_price, cur);
+        const rec = fmtRec(c.recommendation_key, c.recommendation_mean);
+        let upside = '-';
+        if (curPrice && c.target_mean_price && curPrice > 0) {
+          const pct = (c.target_mean_price / curPrice - 1) * 100;
+          const sign = pct >= 0 ? '▲' : '▼';
+          upside = `${sign}${Math.abs(pct).toFixed(1)}%`;
+        }
+        consensusHtml = `<div class="ai-stock-consensus">
+          <div class="c-item"><div class="c-label">현재가</div><div class="c-val">${fmtPrice(curPrice, cur)}</div></div>
+          <div class="c-item"><div class="c-label">목표주가</div><div class="c-val">${tp}</div></div>
+          <div class="c-item"><div class="c-label">괴리율</div><div class="c-val">${upside}</div></div>
+          <div class="c-item"><div class="c-label">투자의견</div><div class="c-val">${escapeHtml(rec)}</div></div>
+        </div>`;
+      }
+
+      const newsHtml = articles.length
+        ? articles.slice(0, 8).map(a => {
+            const title = String(a.title || '').trim() || '(제목 없음)';
+            const link = String(a.link || '').trim();
+            const source = String(a.source || '').trim();
+            const date = String(a.published_at || '').slice(0, 10);
+            const linkHtml = link && link !== '#'
+              ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">원문 보기 →</a>`
+              : '';
+            return `<div class="ai-stock-news-item">
+              <div class="title">${escapeHtml(title)}</div>
+              <div class="meta">${escapeHtml([source, date].filter(Boolean).join(' · '))}</div>
+              ${linkHtml}
+            </div>`;
+          }).join('')
+        : '<div style="font-size:12px;color:#64748b;font-style:italic;">수집된 뉴스가 없습니다.</div>';
+
+      return `<article class="ai-stock-card">
+        <div class="ai-stock-card-head">
+          <span class="ticker">${escapeHtml(ticker)}</span>
+          <span class="name">${escapeHtml(name)}</span>
+          ${mktBadge}
+        </div>
+        ${consensusHtml}
+        <h4 class="ai-stock-news-title">📰 최근 뉴스 (${articles.length}건)</h4>
+        <div class="ai-stock-news-list">${newsHtml}</div>
+      </article>`;
+    }).join('');
+
+    const totalNews = stocks.reduce((sum, s) => sum + safeArr(s.articles).length, 0);
+    if (metaEl) metaEl.textContent = `${stocks.length}개 종목 · 뉴스 ${totalNews}건`;
+  })();
 
   // ── 종목 검색 디렉토리 ────────────────────────────────────────
   (function() {
