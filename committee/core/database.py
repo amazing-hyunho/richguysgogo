@@ -1367,6 +1367,17 @@ def get_stock_news(
         return [dict(row) for row in rows]
 
 
+def count_stock_news(ticker: str, db_path: Path | None = None) -> int:
+    """Return stored article count for one ticker."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        row = conn.execute(
+            "SELECT COUNT(*) AS cnt FROM stock_news WHERE ticker = :ticker;",
+            {"ticker": ticker.strip().upper()},
+        ).fetchone()
+        return int(row["cnt"]) if row else 0
+
+
 def list_stock_news_tickers(db_path: Path | None = None) -> List[str]:
     """Return distinct tickers that have news stored."""
     init_db(db_path)

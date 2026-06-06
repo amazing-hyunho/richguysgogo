@@ -60,6 +60,30 @@ def main() -> None:
         news_digest=news_digest,
     )
     send_report(text)
+    _ensure_telegram_poller_running()
+    _poll_telegram_commands_once()
+
+
+def _ensure_telegram_poller_running() -> None:
+    """Keep a lightweight background poller alive for near-real-time /stock replies."""
+    import subprocess
+
+    script = ROOT_DIR / "scripts" / "start_telegram_poller.py"
+    try:
+        subprocess.run([sys.executable, str(script)], cwd=str(ROOT_DIR), check=False)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[send_morning] telegram_poller_start_failed: {exc}")
+
+
+def _poll_telegram_commands_once() -> None:
+    """Process any queued Telegram commands after sending the morning brief."""
+    import subprocess
+
+    script = ROOT_DIR / "scripts" / "poll_telegram_once.py"
+    try:
+        subprocess.run([sys.executable, str(script)], cwd=str(ROOT_DIR), check=False)
+    except Exception as exc:  # noqa: BLE001
+        print(f"[send_morning] telegram_poll_failed: {exc}")
 
 
 def _latest_run_dir(runs_dir: Path) -> Path | None:
@@ -183,10 +207,14 @@ def _build_morning_brief(
     lines.append("")
 
     # Telegram bot quick help for the AI stock-analysis watchlist.
-    lines.append("🤖 AI 종목분석 명령")
-    lines.append("  /stock add TICKER [회사명] [KR|US]  등록+뉴스수집+대시보드빌드")
-    lines.append("  /stock remove TICKER               등록해제+대시보드빌드")
-    lines.append("  /stock list                        등록목록")
+    lines.append("🤖 AI 종목분석 명령 (텔레그램 봇에 입력)")
+    lines.append("  /stock add TICKER [회사명] [KR|US]")
+    lines.append("    → 등록 + 뉴스수집 + 대시보드빌드")
+    lines.append("    예) /stock add NVDA")
+    lines.append("    예) /stock add 005930 삼성전자 KR")
+    lines.append("  /stock remove TICKER  → 등록해제 + 대시보드빌드")
+    lines.append("    예) /stock remove NVDA")
+    lines.append("  /stock list           → 등록목록 확인")
 
     return "\n".join(lines)
 

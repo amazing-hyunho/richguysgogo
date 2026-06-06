@@ -10,13 +10,14 @@ from pathlib import Path
 import requests
 
 from committee.core.database import (
+    count_stock_news,
     get_last_n_market_flow,
     get_latest_stock_consensus,
-    get_stock_news,
     safe_upsert_stock_news,
 )
 from committee.core.strategy_store import load_latest_strategy, update_strategy
 from committee.core.stock_watchlist import add_stock, get_stocks, remove_stock
+from committee.core.telegram_poll_state import load_offset, save_offset
 from committee.tools.stock_consensus_provider import fetch_stock_consensus
 from committee.tools.stock_news import fetch_stock_news
 
@@ -32,13 +33,15 @@ class TelegramQABot:
 
     def poll_forever(self) -> None:
         print("[run_bot] polling started")
-        offset = None
+        offset = load_offset()
         while True:
             try:
                 updates = self._get_updates(offset)
                 for update in updates:
                     offset = update.get("update_id", 0) + 1
                     self._handle_update(update)
+                    if offset is not None:
+                        save_offset(offset)
             except KeyboardInterrupt:
                 print("[run_bot] stopped by keyboard interrupt")
                 return
@@ -51,6 +54,11 @@ class TelegramQABot:
         if offset is not None:
             payload["offset"] = offset
         response = requests.get(f"{self.base_url}/getUpdates", params=payload, timeout=self.timeout_sec + 10)
+        if response.status_code == 409:
+            # Another process is already calling getUpdates on this bot token.
+            print("[telegram] getUpdates conflict (409): another poller is active")
+            time.sleep(3)
+            return []
         response.raise_for_status()
         body = response.json()
         if not body.get("ok"):
@@ -71,33 +79,74 @@ class TelegramQABot:
         if not chat_id:
             return
         if self.allowed_chat_ids and chat_id not in self.allowed_chat_ids:
+            print(f"[run_bot] ignored chat_id={chat_id} (allowed={sorted(self.allowed_chat_ids)})")
             return
 
-        reply = answer_for_message(text)
-        self._send_message(chat_id, reply)
+        try:
+            reply = answer_for_message(text)
+            if not reply or not reply.strip():
+                reply = "처리 결과가 비어 있습니다. 잠시 후 다시 시도해 주세요."
+            if not self._send_message(chat_id, reply):
+                print(f"[run_bot] send_failed chat_id={chat_id} text={text[:80]!r}")
+        except Exception as exc:  # noqa: BLE001
+            print(f"[run_bot] handle_update_failed chat_id={chat_id} text={text[:80]!r}: {exc}")
+            self._send_message(chat_id, f"처리 중 오류가 발생했습니다: {exc}")
 
-    def _send_message(self, chat_id: str, text: str) -> None:
+    def _send_message(self, chat_id: str, text: str) -> bool:
+        ok = True
         for part in _split_message(text, 3500):
             payload = {"chat_id": chat_id, "text": part}
-            response = requests.post(f"{self.base_url}/sendMessage", json=payload, timeout=15)
+            try:
+                response = requests.post(f"{self.base_url}/sendMessage", json=payload, timeout=15)
+            except Exception as exc:  # noqa: BLE001
+                print(f"telegram_send_exception chat_id={chat_id}: {exc}")
+                return False
             if response.status_code >= 300:
                 print(f"telegram_send_failed[{response.status_code}]: {response.text}")
+                ok = False
+        return ok
+
+    def poll_once(self, offset: int | None = None, timeout_sec: int = 0) -> int | None:
+        """Process one batch of pending updates. Returns next offset."""
+        prev_timeout = self.timeout_sec
+        self.timeout_sec = timeout_sec
+        try:
+            updates = self._get_updates(offset)
+        finally:
+            self.timeout_sec = prev_timeout
+        next_offset = offset
+        for update in updates:
+            next_offset = update.get("update_id", 0) + 1
+            self._handle_update(update)
+        return next_offset
+
+
+def _normalize_command_text(text: str) -> str:
+    """Normalize Telegram commands like `/stock@BotName list` → `/stock list`."""
+    stripped = text.strip()
+    if not stripped.startswith("/"):
+        return stripped
+    parts = stripped.split()
+    if parts:
+        parts[0] = re.sub(r"^(/\w+)@\w+", r"\1", parts[0], flags=re.IGNORECASE)
+    return " ".join(parts)
 
 
 def answer_for_message(text: str) -> str:
-    stripped = text.strip()
+    stripped = _normalize_command_text(text)
     if not stripped:
         return "질문을 입력해 주세요."
 
-    context = _load_latest_context()
-    if stripped.startswith("/strategy"):
-        return _handle_strategy_command(stripped, context)
     if stripped.startswith("/flow"):
         return _handle_flow_command(stripped)
     if stripped.startswith("/consensus"):
         return _handle_consensus_command(stripped)
     if stripped.startswith("/stock"):
         return _handle_stock_command(stripped)
+
+    context = _load_latest_context()
+    if stripped.startswith("/strategy"):
+        return _handle_strategy_command(stripped, context)
     if _is_foreign_flow_trend_question(stripped):
         return _format_foreign_flow_trend()
 
@@ -266,7 +315,7 @@ def _format_stock_list() -> str:
         name = str(s.get("name", ""))
         market = str(s.get("market", ""))
         try:
-            cnt = len(get_stock_news(ticker, limit=999))
+            cnt = count_stock_news(ticker)
         except Exception:
             cnt = 0
         lines.append(f"- {ticker} ({name}/{market}) · 뉴스 {cnt}건")

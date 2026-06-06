@@ -1,0 +1,22 @@
+
+[start_telegram_poller] launching background poller
+[telegram_poll] loop started pid=17208 timeout=10s
+Traceback (most recent call last):
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\poll_telegram_once.py", line 91, in <module>
+    clear_poller_pid()
+    ^^
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\poll_telegram_once.py", line 81, in main
+    offset = load_offset()
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\poll_telegram_once.py", line 30, in _poll_batch
+    next_offset = bot.poll_once(offset=offset, timeout_sec=timeout_sec)
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\committee\adapters\telegram_bot.py", line 109, in poll_once
+    updates = self._get_updates(offset)
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\committee\adapters\telegram_bot.py", line 57, in _get_updates
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\oh390\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.13_qbz5n2kfra8p0\LocalCache\local-packages\Python313\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 409 Client Error: Conflict for url: https://api.telegram.org/bot8599466100:AAEfHWSl8U-RMXliLirjfcLY_8K_7hCdP1k/getUpdates?timeout=10&offset=347964957
+
+[start_telegram_poller] launching background poller
+[telegram_poll] loop started pid=26484 timeout=10s

@@ -85,6 +85,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--skip-ai-report", action="store_true", help="AI 보고서(위원회 파이프라인) 실행 건너뜀")
     p.add_argument("--skip-consensus", action="store_true", help="컨센서스 수집 건너뜀")
     p.add_argument("--skip-us-financials", action="store_true", help="US 재무제표 건너뜀")
+    p.add_argument("--skip-telegram-poll", action="store_true", help="텔레그램 명령 처리 건너뜀")
     p.add_argument("--backfill-macro-all", action="store_true", help="FRED 지표 전체 날짜 재백필 (최초 1회용)")
     p.add_argument(
         "--auto-commit",
@@ -195,6 +196,13 @@ def main() -> None:
         [py, "scripts/build_dashboard.py"],
         skip=args.skip_dashboard,
     )
+
+    # ── 10. 텔레그램 명령 처리 (/stock 등) ───────────────────────
+    if not args.skip_telegram_poll:
+        step("텔레그램 폴링 시작 (start_telegram_poller)", [py, "scripts/start_telegram_poller.py"])
+        step("텔레그램 명령 처리 (poll_telegram_once)", [py, "scripts/poll_telegram_once.py"])
+    else:
+        step("텔레그램 명령 처리 (poll_telegram_once)", [py, "scripts/poll_telegram_once.py"], skip=True)
 
     # ── 결과 요약 ────────────────────────────────────────────────
     print("\n" + "=" * 60)
