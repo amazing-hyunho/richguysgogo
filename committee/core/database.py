@@ -405,6 +405,28 @@ def init_db(db_path: Path | None = None) -> None:
                 column_ddl="TEXT" if _col in {"market", "source", "company_name", "currency", "recommendation_key"} else "REAL" if _col != "num_analysts" else "INTEGER",
             )
 
+        # stock_news: per-ticker news articles for the AI stock-analysis tab.
+        # Primary key: (ticker, link) so the same article is never stored twice.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS stock_news (
+                ticker TEXT,
+                link TEXT,
+                title TEXT,
+                published_at TEXT,
+                source TEXT,
+                company_name TEXT,
+                market TEXT,
+                summary TEXT,
+                collected_at TEXT,
+                PRIMARY KEY (ticker, link)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_stock_news_ticker ON stock_news(ticker);"
+        )
+
 
 def _ensure_column_exists(conn: sqlite3.Connection, *, table: str, column: str, column_ddl: str) -> None:
     """Add a column to an existing table if it's missing (safe migration).
@@ -1267,6 +1289,90 @@ def list_consensus_tickers(db_path: Path | None = None) -> List[str]:
     with connect(db_path) as conn:
         rows = conn.execute(
             "SELECT DISTINCT ticker FROM stock_consensus ORDER BY ticker;"
+        ).fetchall()
+        return [row["ticker"] for row in rows]
+
+
+def upsert_stock_news(
+    *,
+    ticker: str,
+    link: str,
+    title: str,
+    published_at: str | None = None,
+    source: str | None = None,
+    company_name: str | None = None,
+    market: str | None = None,
+    summary: str | None = None,
+    db_path: Path | None = None,
+) -> None:
+    """Upsert one news article into `stock_news` (deduped by ticker+link)."""
+    collected_at = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO stock_news (
+                ticker, link, title, published_at, source,
+                company_name, market, summary, collected_at
+            ) VALUES (
+                :ticker, :link, :title, :published_at, :source,
+                :company_name, :market, :summary, :collected_at
+            )
+            ON CONFLICT(ticker, link) DO UPDATE SET
+                title=excluded.title,
+                published_at=excluded.published_at,
+                source=excluded.source,
+                company_name=excluded.company_name,
+                market=excluded.market,
+                summary=excluded.summary;
+            """,
+            {
+                "ticker": ticker.strip().upper(),
+                "link": link,
+                "title": title,
+                "published_at": published_at,
+                "source": source,
+                "company_name": company_name,
+                "market": market,
+                "summary": summary,
+                "collected_at": collected_at,
+            },
+        )
+
+
+def safe_upsert_stock_news(**kwargs: Any) -> None:
+    """Fail-safe wrapper for `upsert_stock_news`."""
+    try:
+        upsert_stock_news(**kwargs)
+    except Exception as exc:  # noqa: BLE001
+        _log_db_error("upsert_stock_news", exc)
+
+
+def get_stock_news(
+    ticker: str, limit: int = 20, db_path: Path | None = None
+) -> List[Dict[str, Any]]:
+    """Return recent news for a ticker, newest first (by published_at then collected_at)."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT *
+            FROM stock_news
+            WHERE ticker = :ticker
+            ORDER BY COALESCE(published_at, collected_at) DESC
+            LIMIT :limit;
+            """,
+            {"ticker": ticker.strip().upper(), "limit": int(limit)},
+        ).fetchall()
+        return [dict(row) for row in rows]
+
+
+def list_stock_news_tickers(db_path: Path | None = None) -> List[str]:
+    """Return distinct tickers that have news stored."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            "SELECT DISTINCT ticker FROM stock_news ORDER BY ticker;"
         ).fetchall()
         return [row["ticker"] for row in rows]
 

@@ -1,0 +1,20 @@
+{
+  "_comment": "AI 종목분석 대상 워치리스트. ticker=종목코드(KR 6자리/US 심볼), name=뉴스 검색용 회사명, market=KR|US. 종목 추가/삭제는 이 파일을 편집한 뒤 `python scripts/sync_stock_news.py` 실행.",
+  "stocks": [
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR"
+    },
+    {
+      "ticker": "NVDA",
+      "name": "엔비디아",
+      "market": "US"
+    },
+    {
+      "ticker": "AAPL",
+      "name": "애플",
+      "market": "US"
+    }
+  ]
+}

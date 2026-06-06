@@ -2,14 +2,23 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
+import sys
 import time
 from pathlib import Path
 
 import requests
 
-from committee.core.database import get_last_n_market_flow, get_latest_stock_consensus
+from committee.core.database import (
+    get_last_n_market_flow,
+    get_latest_stock_consensus,
+    get_stock_news,
+    safe_upsert_stock_news,
+)
 from committee.core.strategy_store import load_latest_strategy, update_strategy
+from committee.core.stock_watchlist import add_stock, get_stocks, remove_stock
 from committee.tools.stock_consensus_provider import fetch_stock_consensus
+from committee.tools.stock_news import fetch_stock_news
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 
@@ -87,6 +96,8 @@ def answer_for_message(text: str) -> str:
         return _handle_flow_command(stripped)
     if stripped.startswith("/consensus"):
         return _handle_consensus_command(stripped)
+    if stripped.startswith("/stock"):
+        return _handle_stock_command(stripped)
     if _is_foreign_flow_trend_question(stripped):
         return _format_foreign_flow_trend()
 
@@ -140,6 +151,126 @@ def _handle_consensus_command(command: str) -> str:
         return f"{ticker} 컨센서스 데이터를 가져올 수 없습니다."
 
     return _format_consensus(result, stored_date=stored.get("date") if stored else None)
+
+
+def _handle_stock_command(command: str) -> str:
+    """Handle /stock add|remove|list for the AI stock-analysis watchlist.
+
+    Examples
+    --------
+    /stock add NVDA                  → 시장·회사명 자동 판별 후 등록 + 즉시 뉴스 수집
+    /stock add 005930 삼성전자 KR     → 이름/시장 직접 지정
+    /stock remove NVDA               → 등록 해제
+    /stock list                      → 현재 워치리스트
+    """
+    parts = command.strip().split()
+    sub = parts[1].strip().lower() if len(parts) >= 2 else ""
+
+    if sub == "list":
+        return _format_stock_list()
+
+    if sub == "remove":
+        if len(parts) < 3:
+            return "사용법: /stock remove TICKER (예: /stock remove NVDA)"
+        ok, msg = remove_stock(parts[2])
+        if not ok:
+            return "⚠️ " + msg
+        build_ok, build_msg = _rebuild_dashboard()
+        icon = "✅" if build_ok else "⚠️"
+        return f"✅ {msg}\n{icon} {build_msg}"
+
+    if sub == "add":
+        if len(parts) < 3:
+            return "사용법: /stock add TICKER [회사명] [KR|US]\n예) /stock add NVDA\n예) /stock add 005930 삼성전자 KR"
+        ticker = parts[2]
+        name = None
+        market = None
+        # 나머지 토큰: 마지막이 KR/US면 시장, 그 앞은 이름으로 해석.
+        rest = parts[3:]
+        if rest and rest[-1].upper() in {"KR", "US"}:
+            market = rest[-1].upper()
+            rest = rest[:-1]
+        if rest:
+            name = " ".join(rest)
+        added, stock, msg = add_stock(ticker, name=name, market=market)
+        if not added:
+            return "⚠️ " + msg
+        lines = [f"✅ {msg}"]
+
+        # 등록 즉시 뉴스 수집.
+        try:
+            items = fetch_stock_news(
+                ticker=stock["ticker"], name=stock["name"], market=stock["market"], limit=15
+            )
+            for it in items:
+                safe_upsert_stock_news(
+                    ticker=it.ticker,
+                    link=it.link,
+                    title=it.title,
+                    published_at=it.published_at,
+                    source=it.source,
+                    company_name=it.company_name,
+                    market=it.market,
+                )
+            lines.append(f"📰 뉴스 {len(items)}건 수집 완료.")
+        except Exception as exc:  # noqa: BLE001
+            lines.append(f"⚠️ 뉴스 수집은 실패했습니다(나중에 sync로 재시도): {exc}")
+
+        build_ok, build_msg = _rebuild_dashboard()
+        lines.append(("✅ " if build_ok else "⚠️ ") + build_msg)
+        return "\n".join(lines)
+
+    return (
+        "AI 종목분석 워치리스트 명령\n"
+        "/stock add TICKER [회사명] [KR|US] — 등록 + 즉시 뉴스 수집 + 대시보드 빌드\n"
+        "/stock remove TICKER — 등록 해제 + 대시보드 빌드\n"
+        "/stock list — 등록 목록"
+    )
+
+
+def _rebuild_dashboard(timeout_sec: int = 180) -> tuple[bool, str]:
+    """Run the static dashboard build so Telegram watchlist changes show up."""
+    script = ROOT_DIR / "scripts" / "build_dashboard.py"
+    try:
+        result = subprocess.run(
+            [sys.executable, str(script)],
+            cwd=str(ROOT_DIR),
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout_sec,
+            check=False,
+        )
+    except subprocess.TimeoutExpired:
+        return False, f"대시보드 빌드 시간초과({timeout_sec}초)."
+    except Exception as exc:  # noqa: BLE001
+        return False, f"대시보드 빌드 실행 실패: {exc}"
+
+    if result.returncode == 0:
+        return True, "대시보드 빌드 완료."
+
+    detail = (result.stderr or result.stdout or "").strip().replace("\n", " ")
+    if len(detail) > 500:
+        detail = detail[:500] + "..."
+    return False, f"대시보드 빌드 실패(exit={result.returncode}): {detail or 'no output'}"
+
+
+def _format_stock_list() -> str:
+    stocks = get_stocks()
+    if not stocks:
+        return "등록된 종목이 없습니다. /stock add TICKER 로 추가하세요."
+    lines = ["📈 AI 종목분석 워치리스트"]
+    for s in stocks:
+        ticker = str(s.get("ticker", "?"))
+        name = str(s.get("name", ""))
+        market = str(s.get("market", ""))
+        try:
+            cnt = len(get_stock_news(ticker, limit=999))
+        except Exception:
+            cnt = 0
+        lines.append(f"- {ticker} ({name}/{market}) · 뉴스 {cnt}건")
+    return "\n".join(lines)
 
 
 def _format_consensus(r: dict, stored_date: str | None = None) -> str:

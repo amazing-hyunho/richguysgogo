@@ -180,6 +180,13 @@ def _build_morning_brief(
     # ── 대시보드 링크 ─────────────────────────────
     lines.append("🔗 대시보드")
     lines.append("  https://amazing-hyunho.github.io/richguysgogo/")
+    lines.append("")
+
+    # Telegram bot quick help for the AI stock-analysis watchlist.
+    lines.append("🤖 AI 종목분석 명령")
+    lines.append("  /stock add TICKER [회사명] [KR|US]  등록+뉴스수집+대시보드빌드")
+    lines.append("  /stock remove TICKER               등록해제+대시보드빌드")
+    lines.append("  /stock list                        등록목록")
 
     return "\n".join(lines)
 

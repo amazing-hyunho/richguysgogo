@@ -560,6 +560,57 @@ def load_stock_consensus_summary() -> list[dict[str, object]]:
         return []
 
 
+def load_stock_news_summary(per_ticker: int = 15) -> dict[str, object]:
+    """Load per-ticker news for the AI stock-analysis tab.
+
+    Returns a dict keyed by ticker, each with the watchlist meta and a list of
+    recent articles (newest first). The watchlist file drives which tickers and
+    in what display order they appear.
+    """
+    watchlist_path = ROOT_DIR / "config" / "ai_stock_watchlist.json"
+    stocks: list[dict[str, object]] = []
+    if watchlist_path.exists():
+        try:
+            payload = json.loads(watchlist_path.read_text(encoding="utf-8"))
+            if isinstance(payload, dict):
+                stocks = [s for s in payload.get("stocks", []) if isinstance(s, dict) and s.get("ticker")]
+        except Exception:
+            stocks = []
+
+    result: dict[str, object] = {"stocks": []}
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        conn.row_factory = sqlite3.Row
+        try:
+            for stock in stocks:
+                ticker = str(stock.get("ticker", "")).strip().upper()
+                if not ticker:
+                    continue
+                rows = conn.execute(
+                    """
+                    SELECT ticker, link, title, published_at, source, company_name, market, summary
+                    FROM stock_news
+                    WHERE ticker = :ticker
+                    ORDER BY COALESCE(published_at, collected_at) DESC
+                    LIMIT :limit
+                    """,
+                    {"ticker": ticker, "limit": int(per_ticker)},
+                ).fetchall()
+                result["stocks"].append(
+                    {
+                        "ticker": ticker,
+                        "name": stock.get("name", ""),
+                        "market": stock.get("market", ""),
+                        "articles": [dict(r) for r in rows],
+                    }
+                )
+        finally:
+            conn.close()
+    except Exception:
+        pass
+    return result
+
+
 def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     init_db(DB_PATH)
@@ -601,6 +652,7 @@ def main() -> None:
             "stock_consensus": load_stock_consensus_summary(),
             "financial_metrics": load_financial_metrics_summary(),
             "ticker_master": load_ticker_master(),
+            "stock_news": load_stock_news_summary(),
             "fear_greed": _fetch_fear_greed(),
         }
     finally:
