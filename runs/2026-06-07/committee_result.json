@@ -1,0 +1,49 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI가 -5.54% 급락(8160.59p), 외국인 -2.95조원, USD/KRW 1545.29(+1.69%)로 변동성·환율·수급 모두 악화.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "VIX 21.5로 5일 평균(17.3) 대비 급등, 5일 누적 KOSPI -12.63%로 단기 조정폭 확대.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "섹터 전략",
+      "majority": "방어적 비중 유지(리스크 오프)",
+      "minority": "섹터 주도주 불명확, 균형 유지(중립)",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "섹터별 차별화가 약해 전면적 리스크 오프가 과도할 수 있음. 단, 수급·변동성 신호가 강해 중립 의견은 소수에 그침."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 8160.59p로 -5.54% 급락하며, 최근 5일간 누적 -12.63%의 조정폭을 기록했습니다. 코스닥도 -4.5% 하락(1002.44p)했고, USD/KRW 환율은 1545.29원(+1.69%)로 급등, VIX는 21.5로 5일 평균(17.3) 대비 크게 올랐습니다. 외국인 순매도는 -2.95조원, 개인 순매수는 +4.26조원으로 수급 왜곡이 심화되었습니다. 시장 급락의 배경에는 [기준금리 연속 인상?…대출금리 한달새 0.33%p↑ '빚투족' 패닉 - 연합뉴스](https://news.google.com/rss/articles/CBMiW0FVX3lxTE91WEtLOF9qc21OZXpIaDVRazQxYkd0cmJ3N0JocVZ4RDJfTkdhYlJNanNCVVdxQnRVbkJtT0Jack1XZ3NrWXl3V1JPV210RHRqUFVoM1hLR1RyOGM?oc=5), [심상치 않은 코스피 변동성…중동 전쟁 때보다 커 - 이데일리](https://news.google.com/rss/articles/CBMigAFBVV95cUxOX1BiVE1XSGxNdm9GeWJsRHhEcHExbmFWNW9zLUxYR2xYOVB4M1VQbVRCRWtYQmFoVi1TM1FPcmo4czI0NjhpN0Z5UUJMWG1rM1NzdUwxUUltaFFZQW1FN1JIall5Q29DNlYxTFRydHF4QWZhdUNTanlqcG5iQjJtMg?oc=5) 등 금리·인플레이션·지정학 리스크와 AI/반도체 경쟁 심화 이슈가 복합적으로 작용했습니다.\n\n## [외국인 매도 이유]\n첫째, 최근 20일 누적 KOSPI 수익률이 +0.28%로 연초 대비 상승폭이 남아 있어, 외국인은 단기 급등 후 차익실현에 나섰습니다. 둘째, 반도체·AI 업종 비중이 글로벌 지수 내 한도를 초과하면서 패시브 리밸런싱 매물이 출회되었습니다. 셋째, USD/KRW가 1.69% 급등(5일 누적 +1.89%)하며 환차손 우려가 커졌고, 이는 단순 리밸런싱이 아닌 자금 유출 성격의 매도로 연결되었습니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자는 AI·반도체 리레이팅 기대, FOMO(상승 놓칠까 두려움), 국내 성장주 내러티브에 힘입어 외국인 매물을 적극 흡수하고 있습니다. 그러나 신용·레버리지 매수 비중이 높아진 상황에서, 시장이 추가 하락 시 강제 반대매매(마진콜)로 인한 연쇄 매도 위험이 커집니다. 오늘 개인 순매수는 +4.26조원으로 단기 흡수력은 강하지만, 이 속도가 지속 가능할지는 유동성·변동성 환경에 달려 있습니다.\n\n## [시나리오 판단]\nA. 기본 시나리오(확률 우세): 단기 급락 후 변동성 완화와 외국인 매도 진정 시, KOSPI는 8000p 부근에서 기술적 반등을 시도할 수 있습니다. 단, 환율·VIX가 추가 급등하지 않아야 합니다. B. 강세 지속(낙관적): 미 연준의 매파적 스탠스 완화, AI/반도체 업종 실적 서프라이즈, 지정학 리스크 완화 등 긍정적 뉴스가 동반되어야 하며, 외국인 순매도가 멈추고 환율이 안정될 때 확인 가능합니다. C. 급락 심화(비관적): 미·이란 전쟁 확전, 미국 CPI 서프라이즈, 추가 금리 인상 등 악재가 현실화되면, KOSPI 8000p 하회 및 변동성 급등이 이어질 수 있습니다. 가장 먼저 USD/KRW와 외국인 순매도 규모를 주시해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 현금 비중을 확대하고, 변동성 완화 전까지 추가 매수는 자제하는 것이 바람직합니다. 신규 진입자는 외국인 순매도 축소, USD/KRW 환율 안정, VIX 하락 등 신호가 확인될 때까지 관망이 유리합니다. 지금은 \"방어적 태도가 생존의 조건\"임을 명심해야 할 시점입니다."
+}
