@@ -1,0 +1,59 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -6.40% 급락, USD/KRW 1545.53, VIX 21.5로 변동성 급등 및 외국인 -3430억 순매도.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "5일 누적 KOSPI -13.49%로 단기 급락세, 20일 누적은 -0.58%로 중장기 추세는 아직 붕괴 아님.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "수급 해석",
+      "majority": "중립(NEUTRAL) — 방향성 확인 필요",
+      "minority": "리스크온(RISK_ON)",
+      "minority_agents": [
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "기관 순매수와 유동성 환경을 근거로 일부는 저점 매수 기회로 해석하나, 외국인 대규모 매도와 변동성 급등이 상충되어 신중한 접근이 요구됨."
+    },
+    {
+      "topic": "리스크 평가",
+      "majority": "급격한 리스크 없음, 규율 유지",
+      "minority": "브레드스 약화·변동성 상승으로 보수적 대응 필요",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "지수 확산 약화와 VIX 상승이 추세 신뢰도를 떨어뜨려, 추가 하락 시 손절·비중관리 필요성이 커짐."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 -6.40% 급락(7,652.24pt), 코스닥도 -5.82% 하락(944.1pt)하며 변동성(VIX 21.5) 급등과 함께 '검은 월요일' 양상을 보였습니다. 외국인은 -3,430억 순매도, 개인도 -1,229억 순매도, 기관만 +4,547억 순매수로 대응했습니다. 5일 누적 KOSPI는 -13.49%로 단기 급락세가 뚜렷하지만, 20일 누적은 -0.58%로 중장기 추세 붕괴는 아직 확인되지 않습니다. 시장 급락의 배경에는 미국 반도체주 투매([미국증시, 고용 서프라이즈발 금리인상 공포에 반도체 투매 - 버핏연구소](https://news.google.com/rss/articles/CBMiYkFVX3lxTE44WlFOQ3h4Ukt6aVRfbFdvRmRWRFY2UEZVWFAyRTJWc0pjdnRNbXpWWlV6MkNCRzFBLU9BNG5KRVFzTEEwbnl4YzNNQnM3eXFDMU1JbE9yQ0d4MUt5XzBRTVBn?oc=5)), 환율 불안([오늘의 증시]'검은 월요일' 공포…美반도체·환율 악재에 '칠천피' 후퇴하나 - 뉴시스](https://news.google.com/rss/articles/CBMiYEFVX3lxTE55Q242SkpvOVVXSm9yUlJNNFRHbVk5a3NfTjdOcjA2R2QtMTNTSGZmWDlDSEtGVl9zemw1ODBqNUN0ZG44UnR2RTJHQnZ6NGstcW5pbEQ2c1AwRkJrZjNuetIBeEFVX3lxTE9Pam00WE0tbGg3eEczY1dCdFYxOXI1djRVMV9OZUpyQlg2bUhNUXJieFBtMXBlTU55WFNPN1BtaW44ZmdGR3JDVGJtT1BYUTRZdXB2OEk4dlc4V3JidWswTTNONGxabU16RV83ZEpMbXlsSkExS21Ycw?oc=5)), 연준 정책 불확실성([AI 열풍, 금리 움직일까 … 새 연준의장의 첫 FOMC에 쏠린 눈 - 매일경제](https://news.google.com/rss/articles/CBMiVkFVX3lxTE1FbVhaNlFQYUotWUk2cERaWUwzVkJyTjJCTVJ3dmJDaThiMVhTdVdhSjhDbkxBWXAzY2dqdlF2QlJwRFE0ejZBMGFSUy1XQ3kxRlU5SURn?oc=5)) 등 대외 악재가 복합적으로 작용했습니다.\n\n## [외국인 매도 이유]\n첫째, 최근 5일간 KOSPI가 -13.49% 급락하면서 외국인은 단기 급등분에 대한 차익실현에 나섰습니다. 둘째, 반도체·AI 업종 비중이 글로벌 벤치마크 대비 과도하게 상승한 후, 패시브 펀드의 리밸런싱 수요가 발생했습니다. 셋째, USD/KRW가 5일간 1.91% 상승(오늘 1,545.53원)하며 환차손 우려가 커졌고, 이는 단순 리밸런싱이 아닌 자금 유출 신호로 해석됩니다.\n\n## [개인 매수 이유와 리스크]\n개인은 최근 AI·반도체 업종의 리레이팅 기대와 FOMO(상승 놓칠까 두려움), 국내 성장주 내러티브에 힘입어 외국인 매도 물량을 일부 흡수했습니다. 그러나 오늘은 개인도 -1,229억 순매도로 전환, 레버리지 매수세가 둔화된 모습입니다. 만약 개인이 신용·미수 등 레버리지로 매수했다면, 추가 하락 시 강제 청산(마진콜) 리스크가 커집니다. 현재 흡수 속도는 기관 매수에 비해 미약해, 단기 반등 모멘텀은 제한적입니다.\n\n## [시나리오 판단]\n시나리오 A(기본): 단기 급락 이후 변동성 진정과 외국인 매도세 완화가 확인되면, 7,500pt 부근에서 기술적 반등 시도가 나올 수 있습니다. 확률상 가장 유력하나, 환율·미국 증시 추가 충격이 없다는 전제입니다.\n시나리오 B(상승 지속): 미국 반도체주 반등, 연준 완화적 발언, USD/KRW 하락 등 대외 환경이 개선될 경우, 기관·개인 매수세가 힘을 받아 8,000pt 회복 시도가 가능합니다. FOMC 결과, 엔비디아 등 AI 관련 실적 발표가 확인 신호입니다.\n시나리오 C(급락 심화): 미국 증시 추가 급락, 환율 1,560원 돌파, 외국인 매도세 확대 등 악재가 중첩되면 7,000pt 초반까지 추가 하락이 열릴 수 있습니다. 가장 먼저 USD/KRW와 외국인 순매도 규모를 주시해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 비중 축소 없이 중립 유지, 단 추가 매수는 외국인 매도세 완화·환율 안정·VIX 하락 등 신호 확인 후 접근이 바람직합니다. 신규 진입자는 외국인 순매도 축소, USD/KRW 1,540원대 하락, VIX 20 이하 진입 등 확인 전까지 관망이 유리합니다. \"지금은 방향성보다 근거 확인이 먼저인, 신중한 중립 구간입니다.\""
+}
