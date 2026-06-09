@@ -1,27 +1,27 @@
 {
   "market_summary": {
-    "note": "KOSPI 4.14%, USD/KRW 1529.02. Headlines loaded. Flows loaded.",
-    "kospi_change_pct": 4.14,
+    "note": "KOSPI 4.77%, USD/KRW 1529.02. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 4.77,
     "usdkrw": 1529.022781
   },
   "flow_summary": {
-    "note": "외국인 -6493억, 기관 +5179억, 개인 +643억 | KOSPI(외 -7913, 기관 +3189, 개인 +4063) KOSDAQ(외 +1420, 기관 +1990, 개인 -3420)",
-    "foreign_net": -6493.0,
-    "institution_net": 5179.0,
-    "retail_net": 643.0
+    "note": "외국인 -7044억, 기관 +5963억, 개인 +349억 | KOSPI(외 -8495, 기관 +3861, 개인 +3908) KOSDAQ(외 +1451, 기관 +2102, 개인 -3559)",
+    "foreign_net": -7044.0,
+    "institution_net": 5963.0,
+    "retail_net": 349.0
   },
   "korean_market_flow": {
     "date": "2026-06-09",
     "market": {
       "KOSPI": {
-        "individual": 4063,
-        "foreign": -7913,
-        "institution": 3189
+        "individual": 3908,
+        "foreign": -8495,
+        "institution": 3861
       },
       "KOSDAQ": {
-        "individual": -3420,
-        "foreign": 1420,
-        "institution": 1990
+        "individual": -3559,
+        "foreign": 1451,
+        "institution": 2102
       }
     }
   },
@@ -44,10 +44,10 @@
   ],
   "markets": {
     "kr": {
-      "kospi": 7801.85,
-      "kosdaq": 967.74,
-      "kospi_pct": 4.14,
-      "kosdaq_pct": 6.18
+      "kospi": 7841.49,
+      "kosdaq": 969.21,
+      "kospi_pct": 4.77,
+      "kosdaq_pct": 6.34
     },
     "us": {
       "sp500": 7405.73,
@@ -59,7 +59,7 @@
     },
     "fx": {
       "usdkrw": 1529.022781,
-      "usdkrw_pct": -0.5599837571962796
+      "usdkrw_pct": -0.5141371338000897
     },
     "volatility": {
       "vix": 18.920000076293945
@@ -71,13 +71,13 @@
       "us2y": 3.627999782562256,
       "spread_2_10": 0.9240002632141113,
       "vix": 18.920000076293945,
-      "dxy": 99.96600341796875,
-      "usdkrw": 1518.1800537109375,
+      "dxy": 99.97100067138672,
+      "usdkrw": 1518.97998046875,
       "vix3m": 20.790000915527344,
       "vix_term_spread": 1.8700008392333984,
-      "oil_wti": 90.41999816894531,
+      "oil_wti": 90.33000183105469,
       "russell2000": 2855.42431640625,
-      "oil_brent": 93.43000030517578
+      "oil_brent": 93.41000366210938
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -108,20 +108,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": 4.828,
-    "liquidity_signal_score": 5.719,
+    "breadth_signal_score": 5.223,
+    "liquidity_signal_score": 5.718,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
     "lookback_days": 20,
     "sample_count": 20,
-    "kospi_5d_cum_pct": -11.384,
-    "kospi_20d_cum_pct": 3.962,
-    "kosdaq_5d_cum_pct": -7.385,
-    "kospi_abs_move_5d_avg": 3.993,
+    "kospi_5d_cum_pct": -10.754,
+    "kospi_20d_cum_pct": 4.592,
+    "kosdaq_5d_cum_pct": -7.225,
+    "kospi_abs_move_5d_avg": 4.119,
     "usdkrw_5d_change_pct": -0.071,
     "vix_5d_avg": 17.322,
     "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=+3.96%, vol20d=3.79, reversal=false"
+    "note": "rolling_20d: kospi20d=+4.59%, vol20d=3.83, reversal=false"
   }
 }
