@@ -1,0 +1,403 @@
+{
+  "generated_at": "2026-06-09T00:53:34.033128+00:00",
+  "market_date": "2026-06-09",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI 3.52%, USD/KRW 1551.57. Headlines loaded. Flows loaded.",
+      "kospi_change_pct": 3.52,
+      "usdkrw": 1551.572806
+    },
+    "flow_summary": {
+      "note": "외국인 -4140억, 기관 +854억, 개인 +3038억 | KOSPI(외 -5283, 기관 +506, 개인 +4546) KOSDAQ(외 +1143, 기관 +348, 개인 -1508)",
+      "foreign_net": -4140.0,
+      "institution_net": 854.0,
+      "retail_net": 3038.0
+    },
+    "korean_market_flow": {
+      "date": "2026-06-09",
+      "market": {
+        "KOSPI": {
+          "individual": 4546,
+          "foreign": -5283,
+          "institution": 506
+        },
+        "KOSDAQ": {
+          "individual": -1508,
+          "foreign": 1143,
+          "institution": 348
+        }
+      }
+    },
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "[환율/달러] [오늘의 금시세] 달러 강세·금리 부담에 하락…CPI 경계감 속 관망세 확대 - TopStarNews",
+      "[금리/연준] 지표·전문가는 '美금리인상' 가리켰다… 16일 FOMC 주목 - 머니투데이 - 머니투데이",
+      "[경기/성장] 1분기 실질 GDP 성장률 1.8%로 상향…반도체·설비투자가 끌었다 - MTN 머니투데이방송",
+      "[반도체/AI] “젠슨 형, 로보틱스 주가 오르는 거지?”…재계 회장 줄 세운 엔비디아의 옥석 가리기 [오늘 나온 보고서] - 매일경제 마켓",
+      "[미국지수] 뉴욕증시, 반도체 급반등·중동 휴전 모멘텀에 혼조 마감…S&P·나스닥 상승 - 직썰"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi": 7754.0,
+        "kosdaq": 965.12,
+        "kospi_pct": 3.52,
+        "kosdaq_pct": 5.96
+      },
+      "us": {
+        "sp500": 7405.73,
+        "nasdaq": 25929.662,
+        "dow": 50786.01,
+        "sp500_pct": 0.2978165536706301,
+        "nasdaq_pct": 0.8566116902154802,
+        "dow_pct": -0.15878732642403706
+      },
+      "fx": {
+        "usdkrw": 1551.572806,
+        "usdkrw_pct": -0.2842490650563532
+      },
+      "volatility": {
+        "vix": 18.920000076293945
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.552000045776367,
+        "us2y": 3.627999782562256,
+        "spread_2_10": 0.9240002632141113,
+        "vix": 18.920000076293945,
+        "dxy": 100.03399658203125,
+        "usdkrw": 1522.489990234375,
+        "vix3m": 20.790000915527344,
+        "vix_term_spread": 1.8700008392333984,
+        "oil_wti": 90.87999725341797,
+        "russell2000": 2855.42431640625,
+        "oil_brent": 94.02999877929688
+      },
+      "monthly": {
+        "unemployment_rate": 4.3,
+        "cpi_yoy": 3.9470269087042764,
+        "core_cpi_yoy": 2.9884245755166017,
+        "pce_yoy": 3.7669441141498172,
+        "pmi": null,
+        "retail_sales_mom": 0.49311759162165014,
+        "nfp_change": 172.0,
+        "wage_growth": 37.53,
+        "wage_level": 37.53,
+        "wage_yoy": 3.4454244762954778,
+        "export_yoy": null
+      },
+      "quarterly": {
+        "real_gdp": 24152.656,
+        "gdp_qoq_annualized": 1.6
+      },
+      "structural": {
+        "fed_funds_rate": 3.63,
+        "real_rate": 2.202000045776367,
+        "hy_oas": 2.76,
+        "ig_oas": 0.74,
+        "fed_balance_sheet": 6711495.0,
+        "tga_balance": 845722.0,
+        "boj_rate": 0.3
+      }
+    },
+    "phase_two_signals": {
+      "earnings_signal_score": 0.0,
+      "breadth_signal_score": 4.408,
+      "liquidity_signal_score": 5.706,
+      "note": "derived from headlines + markets + macro.daily + macro.structural"
+    },
+    "cumulative_context": {
+      "lookback_days": 20,
+      "sample_count": 20,
+      "kospi_5d_cum_pct": -12.004,
+      "kospi_20d_cum_pct": 3.342,
+      "kosdaq_5d_cum_pct": -7.605,
+      "kospi_abs_move_5d_avg": 3.869,
+      "usdkrw_5d_change_pct": 1.403,
+      "vix_5d_avg": 17.322,
+      "reversal_signal": false,
+      "note": "rolling_20d: kospi20d=+3.34%, vol20d=3.76, reversal=false"
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "Macro tone is cautious.",
+        "Volatility noted.",
+        "Flow demand is weak."
+      ],
+      "korean_comment": "변동성 경고가 있어 방어적 접근이 필요합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "외국인+기관 순매도가 우세합니다.",
+        "수급 역풍이 확대되고 있습니다.",
+        "방어 비중이 유리합니다."
+      ],
+      "korean_comment": "수급 역풍이 커져 방어적 대응이 필요합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.flow_summary.retail_net"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "Sector moves are mixed.",
+        "No clear leader.",
+        "Maintain balance."
+      ],
+      "korean_comment": "섹터 주도주가 불명확해 균형 유지가 낫습니다.",
+      "raw_response": null,
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.sector_moves",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "confidence": "LOW"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "Risk signals elevated.",
+        "Headline risk rising.",
+        "Reduce exposure."
+      ],
+      "korean_comment": "리스크 신호가 높아 노출 축소가 필요합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.market_summary.usdkrw",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "earnings",
+      "core_claims": [
+        "실적/가이던스 하향 신호가 누적됩니다.",
+        "이익 추정치 둔화 가능성이 커졌습니다.",
+        "밸류에이션 리레이팅 압력이 발생할 수 있습니다."
+      ],
+      "korean_comment": "이익 모멘텀이 약해져 방어적 접근이 유리합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.news_headlines"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "breadth",
+      "core_claims": [
+        "지수 확산이 약화되어 추세 신뢰도가 낮습니다.",
+        "변동성 레짐이 위험자산에 불리한 구간입니다.",
+        "손절·비중관리 규칙을 강화할 필요가 있습니다."
+      ],
+      "korean_comment": "브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.markets.volatility.vix",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "liquidity",
+      "core_claims": [
+        "달러·실질금리 환경이 위험자산에 부담으로 작용합니다.",
+        "유동성 여건이 타이트해 밸류에이션 할인 요인이 큽니다.",
+        "정책/금리 민감 자산 비중 축소가 필요합니다."
+      ],
+      "korean_comment": "유동성 여건이 긴축적이라 보수적 운용이 유리합니다.",
+      "raw_response": null,
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.macro.daily.dxy",
+        "snapshot.macro.structural.real_rate",
+        "snapshot.flow_summary.foreign_net"
+      ],
+      "confidence": "MED"
+    }
+  ],
+  "debate_round": {
+    "round_index": 1,
+    "facilitator_note": "오늘은 7명 중 7명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
+    "minutes": [
+      {
+        "speaker": "macro",
+        "speaker_label": "매크로 담당자",
+        "summary": "저는 매크로 담당자 입장에서 '변동성 경고가 있어 방어적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1551.57, kospi_change_pct=+3.52%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.usdkrw",
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      },
+      {
+        "speaker": "flow",
+        "speaker_label": "수급 담당자",
+        "summary": "저는 수급 담당자 입장에서 '수급 역풍이 커져 방어적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-4140억, institution_net=+854억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net",
+          "snapshot.flow_summary.retail_net"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      },
+      {
+        "speaker": "sector",
+        "speaker_label": "섹터 담당자",
+        "summary": "저는 섹터 담당자 입장에서 '섹터 주도주가 불명확해 균형 유지가 낫습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-4140억, institution_net=+854억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.sector_moves",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "risk",
+        "speaker_label": "리스크 담당자",
+        "summary": "저는 리스크 담당자 입장에서 '리스크 신호가 높아 노출 축소가 필요합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1551.57, kospi_change_pct=+3.52%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.usdkrw",
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      },
+      {
+        "speaker": "earnings",
+        "speaker_label": "이익모멘텀 담당자",
+        "summary": "저는 이익모멘텀 담당자 입장에서 '이익 모멘텀이 약해져 방어적 접근이 유리합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-4140억, institution_net=+854억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.phase_two_signals.earnings_signal_score",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net",
+          "snapshot.news_headlines"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      },
+      {
+        "speaker": "breadth",
+        "speaker_label": "브레드스 담당자",
+        "summary": "저는 브레드스 담당자 입장에서 '브레드스 약화와 변동성 상승으로 보수적 대응이 필요합니다.' 의견을 유지합니다. 근거 숫자는 vix=18.9, foreign_net=-4140억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.phase_two_signals.breadth_signal_score",
+          "snapshot.markets.volatility.vix",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      },
+      {
+        "speaker": "liquidity",
+        "speaker_label": "유동성 담당자",
+        "summary": "저는 유동성 담당자 입장에서 '유동성 여건이 긴축적이라 보수적 운용이 유리합니다.' 의견을 유지합니다. 근거 숫자는 dxy=100.03, real_rate=2.20%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.phase_two_signals.liquidity_signal_score",
+          "snapshot.macro.daily.dxy",
+          "snapshot.macro.structural.real_rate",
+          "snapshot.flow_summary.foreign_net"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      }
+    ],
+    "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI +3.52%, USD/KRW 1551.57(-0.28%), VIX 18.9, 외국인 -4140억이고, 뉴스는 반등·회복 기대가 섞인 완화 톤입니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다."
+  },
+  "committee_result": {
+    "consensus": "Committee maintains a neutral posture with selective positioning.",
+    "key_points": [
+      {
+        "point": "Majority regime tag: NEUTRAL.",
+        "sources": [
+          "macro",
+          "flow",
+          "risk",
+          "earnings",
+          "breadth"
+        ]
+      },
+      {
+        "point": "Shared evidence focus: snapshot.flow_summary.foreign_net.",
+        "sources": [
+          "breadth",
+          "earnings",
+          "flow",
+          "liquidity",
+          "macro"
+        ]
+      },
+      {
+        "point": "Stability guardrail applied from confidence-weighted votes and cumulative context.",
+        "sources": [
+          "regime_tuner"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "Regime tags",
+        "majority": "RISK_OFF",
+        "minority": "NEUTRAL",
+        "minority_agents": [
+          "sector"
+        ],
+        "why_it_matters": "Minority risk regime can change positioning boundaries."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "Maintain balanced exposure."
+      },
+      {
+        "level": "CAUTION",
+        "text": "Keep risk limits tight."
+      },
+      {
+        "level": "AVOID",
+        "text": "Avoid aggressive leverage."
+      }
+    ],
+    "sugeup_narrative": null
+  }
+}
