@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-06-09T18:42:37.128547+00:00",
+  "crawled_at": "2026-06-09T19:42:36.848441+00:00",
   "news_date": "2026-06-10",
-  "total_collected": 12,
+  "total_collected": 21,
   "topic_counts": [
     [
       "금리/연준",
       1
+    ],
+    [
+      "인플레이션",
+      3
     ],
     [
       "경기/성장",
@@ -13,14 +17,10 @@
     ],
     [
       "반도체/AI",
-      3
+      5
     ],
     [
-      "국내지수",
-      1
-    ],
-    [
-      "변동성/리스크",
+      "미국지수",
       2
     ]
   ],
@@ -32,6 +32,17 @@
       "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBjVnZHRGpzS3pzWE1FTTFHcml0d29rXzJ6T0V0YTNKX1pZc3lXd0M1SjVvTnNhenhUZF9sS1Q5ZjdaekItQkZId283bk4yZTlCUGhKdDgyMGxEdXV1Y0ttc29vTTJ0ZWdTVWxlVW9Taw?oc=5",
       "summary_lines": [
         "핵심 이슈: 경제학자 70% \"연준, 연말까지 금리 동결\"… 워시 의장 첫 FOMC 주목 - 시애틀코리안데일리",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "인플레이션",
+      "count": 3,
+      "title": "물가·금리 불확실성 확대 속 비트코인 단기 방향성 ‘CPI’ 주목 - 경향게임스",
+      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jT0pPM0ZHQ3NzSmRGeEFWamxqVldWb3JGN3ppdmlwZWIxQUNBN0lhTHdUeUZyM24zQklOb0VIMHdlMXRzNFIwTkpxX1poNV9adFkxSTkzYmhsbmxBWWY5UkhZa2gwdXlqWFNWSQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 물가·금리 불확실성 확대 속 비트코인 단기 방향성 ‘CPI’ 주목 - 경향게임스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -49,33 +60,22 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 3,
-      "title": "“반도체 값 폭등, 美경제 악영향” 경고… 국내 업체 ‘규제 역풍’ 우려 - 동아일보",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBkRWsydWdPTmpyVTV1SS1zckVTUHozbEhwZ2V2Q0FGU1YtVkJlN0lJMGpfQnFPWGRCWmk3cUxKbGI1N2VnTTVBNzIzNE11RzBBY1NKRGdfcy11ZDRBWU1TUG00cHZINmUyWDJzLXk1aFprLUtWQnfSAWZBVV95cUxOalZ1Qlhna2c4NExPY1ZuYW82QkVQUTdBdVRrRDhLWTVZZXpkTzZkdDNVbjNkdGg4X2JTMzBLT25wVXMzYWV5OVBESUJKZTc0TGs0N2ZmZElJTkxXQ1BFem9wZlQ3OEE?oc=5",
+      "count": 5,
+      "title": "반도체 중소형주까지 급반등… 팔천피 탈환 - 머니투데이 - 머니투데이",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ldzFXOVdrcUU1NUlCNjdUVFZYM08xSlI0WE9rbFhHbDdRVTlBS1Y3YjFjSmUyQndkTW9qVmJzRW9abFpPWndaUUU4aHFhdjgya3doYktCNjJGRkhOQW1qai1rSlpYQW9i0gFuQVVfeXFMT29zV1YycVBoOTB2V3AyeGRiVnNJS3pSdlFjTVFYUGs1SDNRWnNaOGstbFRPRFo5ekduUWxCdnJqaC05UEZXNFhUQ2x0SVZiNW8zQXR4RXlYVTJIRXZaV05yRVotTkhmSjZqQmU4d0E?oc=5",
       "summary_lines": [
-        "핵심 이슈: “반도체 값 폭등, 美경제 악영향” 경고… 국내 업체 ‘규제 역풍’ 우려 - 동아일보",
+        "핵심 이슈: 반도체 중소형주까지 급반등… 팔천피 탈환 - 머니투데이 - 머니투데이",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "국내지수",
-      "count": 1,
-      "title": "코스피 하루 만에 급반전‥\"반도체 계속 간다\" - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5MUEtYamgtTmEyS21iRDVnLW1LTXZpNlZCMVBjbjNRaGJhSXZXYkN6M0lqRVZLSHY0QnVZUXVOc0sxTzJnVHVFblJoY3B1eFU?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 코스피 하루 만에 급반전‥\"반도체 계속 간다\" - v.daum.net",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "변동성/리스크",
+      "topic": "미국지수",
       "count": 2,
-      "title": "나스닥 3.45% 장중 폭락…이스라엘 레바논 공습에 CPI 공포 겹쳐 - 더커넥트머니",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1nTVlIWllDampmeHE2MzhBR3JBdkdSdnhtbzJWN1dFM0NZa242ZTFDWllOVnVlcV82WHEzSHA4LTBQMWFtYXNtS1B0bnh6T010RHhpUnRZeUJTODFuU01aTA?oc=5",
+      "title": "달러-원, 증시 급락에 위험 회피 반영…1,532.70원 마감 - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6MU1ld0JGZ0xnbUlIbHhSV1NmWHJ3Sm5mRmtPX014Zi1uVjRlVlVXSE1xYTVaWjdXZzIwMnh5Q05zd1BpQWJKVm8zOGJJYk5JZlpyblZ0MVhJNGvSAWBBVV95cUxQbllXSFMyck9uX3R3VE54UTlWNEdmWTAzOWxqT0JGVWRtS0x3ZkkxT1dZbDFudFJZVlZKdmxfOVFuS0l5UFVCQ2RJcWJJck5pT0ppZjdQZ3VuSWZoWXVxS2E?oc=5",
       "summary_lines": [
-        "핵심 이슈: 나스닥 3.45% 장중 폭락…이스라엘 레바논 공습에 CPI 공포 겹쳐 - 더커넥트머니",
+        "핵심 이슈: 달러-원, 증시 급락에 위험 회피 반영…1,532.70원 마감 - 연합뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -83,21 +83,15 @@
   ],
   "sector_hot_topics": [
     {
-      "sector": "IT/반도체",
-      "total_count": 3,
+      "sector": "매크로",
+      "total_count": 5,
       "topics": [
         {
-          "topic": "반도체/AI",
+          "topic": "인플레이션",
           "count": 3,
-          "title": "“반도체 값 폭등, 美경제 악영향” 경고… 국내 업체 ‘규제 역풍’ 우려 - 동아일보",
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBkRWsydWdPTmpyVTV1SS1zckVTUHozbEhwZ2V2Q0FGU1YtVkJlN0lJMGpfQnFPWGRCWmk3cUxKbGI1N2VnTTVBNzIzNE11RzBBY1NKRGdfcy11ZDRBWU1TUG00cHZINmUyWDJzLXk1aFprLUtWQnfSAWZBVV95cUxOalZ1Qlhna2c4NExPY1ZuYW82QkVQUTdBdVRrRDhLWTVZZXpkTzZkdDNVbjNkdGg4X2JTMzBLT25wVXMzYWV5OVBESUJKZTc0TGs0N2ZmZElJTkxXQ1BFem9wZlQ3OEE?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "매크로",
-      "total_count": 2,
-      "topics": [
+          "title": "물가·금리 불확실성 확대 속 비트코인 단기 방향성 ‘CPI’ 주목 - 경향게임스",
+          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jT0pPM0ZHQ3NzSmRGeEFWamxqVldWb3JGN3ppdmlwZWIxQUNBN0lhTHdUeUZyM24zQklOb0VIMHdlMXRzNFIwTkpxX1poNV9adFkxSTkzYmhsbmxBWWY5UkhZa2gwdXlqWFNWSQ?oc=5"
+        },
         {
           "topic": "금리/연준",
           "count": 1,
@@ -113,26 +107,26 @@
       ]
     },
     {
-      "sector": "리스크",
-      "total_count": 2,
+      "sector": "IT/반도체",
+      "total_count": 5,
       "topics": [
         {
-          "topic": "변동성/리스크",
-          "count": 2,
-          "title": "나스닥 3.45% 장중 폭락…이스라엘 레바논 공습에 CPI 공포 겹쳐 - 더커넥트머니",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1nTVlIWllDampmeHE2MzhBR3JBdkdSdnhtbzJWN1dFM0NZa242ZTFDWllOVnVlcV82WHEzSHA4LTBQMWFtYXNtS1B0bnh6T010RHhpUnRZeUJTODFuU01aTA?oc=5"
+          "topic": "반도체/AI",
+          "count": 5,
+          "title": "반도체 중소형주까지 급반등… 팔천피 탈환 - 머니투데이 - 머니투데이",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ldzFXOVdrcUU1NUlCNjdUVFZYM08xSlI0WE9rbFhHbDdRVTlBS1Y3YjFjSmUyQndkTW9qVmJzRW9abFpPWndaUUU4aHFhdjgya3doYktCNjJGRkhOQW1qai1rSlpYQW9i0gFuQVVfeXFMT29zV1YycVBoOTB2V3AyeGRiVnNJS3pSdlFjTVFYUGs1SDNRWnNaOGstbFRPRFo5ekduUWxCdnJqaC05UEZXNFhUQ2x0SVZiNW8zQXR4RXlYVTJIRXZaV05yRVotTkhmSjZqQmU4d0E?oc=5"
         }
       ]
     },
     {
       "sector": "지수/시장",
-      "total_count": 1,
+      "total_count": 2,
       "topics": [
         {
-          "topic": "국내지수",
-          "count": 1,
-          "title": "코스피 하루 만에 급반전‥\"반도체 계속 간다\" - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5MUEtYamgtTmEyS21iRDVnLW1LTXZpNlZCMVBjbjNRaGJhSXZXYkN6M0lqRVZLSHY0QnVZUXVOc0sxTzJnVHVFblJoY3B1eFU?oc=5"
+          "topic": "미국지수",
+          "count": 2,
+          "title": "달러-원, 증시 급락에 위험 회피 반영…1,532.70원 마감 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB6MU1ld0JGZ0xnbUlIbHhSV1NmWHJ3Sm5mRmtPX014Zi1uVjRlVlVXSE1xYTVaWjdXZzIwMnh5Q05zd1BpQWJKVm8zOGJJYk5JZlpyblZ0MVhJNGvSAWBBVV95cUxQbllXSFMyck9uX3R3VE54UTlWNEdmWTAzOWxqT0JGVWRtS0x3ZkkxT1dZbDFudFJZVlZKdmxfOVFuS0l5UFVCQ2RJcWJJck5pT0ppZjdQZ3VuSWZoWXVxS2E?oc=5"
         }
       ]
     }
