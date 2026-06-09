@@ -15,7 +15,7 @@ IdToken = constr(
     strip_whitespace=True,
     min_length=1,
     max_length=60,
-    pattern=r"^snapshot\.[a-z_]+(\.[a-z_]+)*$",
+    pattern=r"^snapshot\.[a-z0-9_]+(\.[a-z0-9_]+)*$",
 )
 
 CoreClaims = Annotated[list[ShortText], Field(min_length=1, max_length=3)]

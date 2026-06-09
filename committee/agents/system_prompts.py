@@ -27,13 +27,17 @@ AGENT_BASE_SYSTEM_PROMPTS: dict[AgentName, str] = {
     AgentName.FLOW: (
         "You are the FLOW pre-analysis agent specializing in Korean market investor behavior. "
         "Analyze KOSPI/KOSDAQ investor net buying (개인/외국인/기관합계) deeply. "
+        "Do not classify flows from investor numbers alone. Combine flow figures with macro data "
+        "(USD/KRW, DXY, US 10Y/2Y, VIX, oil, credit spreads, real rate) and today's news headlines. "
+        "First extract 2~4 핵심 키워드 from the macro/news context (for example: 고환율, 연준/금리, "
+        "반도체/AI, GDP/성장, 관세/정책 리스크), then use those keywords to explain WHY the flow happened. "
         "For foreign selling: distinguish between (1) profit-taking after large cumulative gains, "
         "(2) portfolio rebalancing when Korea/semiconductor weight exceeds passive fund limits, "
         "(3) FX-driven outflows when USD/KRW rises simultaneously with selling. "
         "For retail buying: assess whether it is fundamentally driven or leverage-fueled chasing. "
         "Consider the 5-day and 20-day cumulative KOSPI context — avoid overreacting to a single day. "
         "In core_claims, state the dominant force, the likely reason behind foreign behavior, "
-        "and whether retail absorption is sustainable. "
+        "and whether retail absorption is sustainable, explicitly naming the relevant 핵심 키워드. "
         "In korean_comment, give one crisp sentence summarizing the supply-demand regime. "
         + COMMON_OUTPUT_RULES
     ),
@@ -74,6 +78,7 @@ def _snapshot_context_block(snapshot: Snapshot) -> str:
     """Build a compact context block: indices + key indicators + headlines."""
 
     m = snapshot.markets
+    macro = snapshot.macro
     top_headlines = snapshot.news_headlines[:20]
     headline_lines = "\n".join([f"- {item}" for item in top_headlines]) if top_headlines else "- (none)"
     cc = snapshot.cumulative_context
@@ -108,8 +113,17 @@ def _snapshot_context_block(snapshot: Snapshot) -> str:
         f"- Flow totals(억원): foreign={snapshot.flow_summary.foreign_net:+.0f}, "
         f"institution={snapshot.flow_summary.institution_net:+.0f}, "
         f"retail={snapshot.flow_summary.retail_net:+.0f}\n"
+        "\nMacro Context for keyword extraction:\n"
+        f"- US10Y: {macro.daily.us10y}, US2Y: {macro.daily.us2y}, 2s10s: {macro.daily.spread_2_10}\n"
+        f"- DXY: {macro.daily.dxy}, USD/KRW(macro): {macro.daily.usdkrw}, VIX: {macro.daily.vix}, VIX3M: {macro.daily.vix3m}\n"
+        f"- Oil WTI: {macro.daily.oil_wti}, HY OAS: {macro.structural.hy_oas}, IG OAS: {macro.structural.ig_oas}\n"
+        f"- Fed funds: {macro.structural.fed_funds_rate}, real rate: {macro.structural.real_rate}, "
+        f"Fed balance sheet: {macro.structural.fed_balance_sheet}\n"
+        f"- CPI YoY: {macro.monthly.cpi_yoy}, Core CPI YoY: {macro.monthly.core_cpi_yoy}, "
+        f"PCE YoY: {macro.monthly.pce_yoy}, NFP: {macro.monthly.nfp_change}, "
+        f"wage YoY: {macro.monthly.wage_yoy}, retail sales MoM: {macro.monthly.retail_sales_mom}\n"
         f"{cumulative_block}"
-        "\nNews Headlines (up to 20):\n"
+        "\nNews Headlines for 핵심 키워드 extraction (up to 20):\n"
         f"{headline_lines}\n"
     )
 
