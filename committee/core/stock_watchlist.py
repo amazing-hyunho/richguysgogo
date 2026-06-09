@@ -29,6 +29,20 @@ def _normalize_ticker(ticker: str) -> str:
     return (ticker or "").strip().upper()
 
 
+def _looks_like_ticker(value: str) -> bool:
+    t = _normalize_ticker(value)
+    return bool(re.fullmatch(r"\d{6}", t) or re.fullmatch(r"[A-Z][A-Z0-9.\-]{0,11}", t))
+
+
+def _normalize_market(market: str, ticker: str) -> str:
+    m = (market or "").strip().upper()
+    if m.startswith("KR"):
+        return "KR"
+    if m.startswith("US"):
+        return "US"
+    return detect_market(ticker)
+
+
 def detect_market(ticker: str) -> str:
     """Infer market from ticker shape: 6-digit numeric → KR, otherwise US."""
     t = _normalize_ticker(ticker)
@@ -52,6 +66,68 @@ def resolve_company_name(ticker: str, market: str) -> str:
     except Exception:
         pass
     return t
+
+
+def resolve_stock_meta(
+    raw_ticker_or_name: str,
+    name: str | None = None,
+    market: str | None = None,
+) -> dict[str, str]:
+    """Resolve a user input into canonical ticker/name/market.
+
+    If the first token is not shaped like a ticker (e.g. "하이닉스"), try
+    ticker_master.company_name lookup and use the canonical ticker.
+    """
+    raw = (raw_ticker_or_name or "").strip()
+    t = _normalize_ticker(raw)
+    mkt = (market or "").strip().upper()
+    nm = (name or "").strip()
+
+    try:
+        init_db()
+        with connect() as conn:
+            if _looks_like_ticker(t):
+                row = conn.execute(
+                    """
+                    SELECT ticker, company_name, market
+                    FROM ticker_master
+                    WHERE ticker = :ticker
+                    LIMIT 1;
+                    """,
+                    {"ticker": t},
+                ).fetchone()
+            else:
+                row = conn.execute(
+                    """
+                    SELECT ticker, company_name, market
+                    FROM ticker_master
+                    WHERE company_name LIKE :keyword
+                    ORDER BY
+                        CASE
+                            WHEN company_name = :exact THEN 0
+                            WHEN company_name LIKE :prefix THEN 1
+                            ELSE 2
+                        END,
+                        LENGTH(company_name)
+                    LIMIT 1;
+                    """,
+                    {"keyword": f"%{raw}%", "exact": raw, "prefix": f"{raw}%"},
+                ).fetchone()
+            if row:
+                canonical_ticker = str(row["ticker"]).strip().upper()
+                return {
+                    "ticker": canonical_ticker,
+                    "name": nm or str(row["company_name"] or canonical_ticker),
+                    "market": _normalize_market(mkt or str(row["market"] or ""), canonical_ticker),
+                }
+    except Exception:
+        pass
+
+    return {
+        "ticker": t,
+        "name": nm or resolve_company_name(t, mkt or detect_market(t)),
+        "market": _normalize_market(mkt, t),
+    }
 
 
 def _read_payload() -> dict:
@@ -83,7 +159,7 @@ def get_stocks() -> list[dict[str, str]]:
 
 
 def find_stock(ticker: str) -> Optional[dict[str, str]]:
-    t = _normalize_ticker(ticker)
+    t = resolve_stock_meta(ticker).get("ticker") or _normalize_ticker(ticker)
     for stock in get_stocks():
         if _normalize_ticker(str(stock.get("ticker", ""))) == t:
             return stock
@@ -100,7 +176,8 @@ def add_stock(
     Returns ``(added, stock, message)``. ``added`` is False if it already exists.
     Market and name are auto-resolved when not provided.
     """
-    t = _normalize_ticker(ticker)
+    resolved = resolve_stock_meta(ticker, name=name, market=market)
+    t = resolved["ticker"]
     if not t:
         return False, {}, "티커가 비어 있습니다."
 
@@ -108,8 +185,8 @@ def add_stock(
     if existing:
         return False, existing, f"{t}는 이미 워치리스트에 있습니다."
 
-    mkt = (market or "").strip().upper() or detect_market(t)
-    nm = (name or "").strip() or resolve_company_name(t, mkt)
+    mkt = resolved["market"]
+    nm = resolved["name"]
     stock = {"ticker": t, "name": nm, "market": mkt}
 
     payload = _read_payload()
@@ -120,7 +197,7 @@ def add_stock(
 
 def remove_stock(ticker: str) -> tuple[bool, str]:
     """Remove a stock from the watchlist. Returns ``(removed, message)``."""
-    t = _normalize_ticker(ticker)
+    t = resolve_stock_meta(ticker).get("ticker") or _normalize_ticker(ticker)
     if not t:
         return False, "티커가 비어 있습니다."
 
