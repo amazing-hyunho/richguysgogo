@@ -1,57 +1,50 @@
 {
-  "consensus": "Committee maintains a neutral posture with selective positioning.",
+  "consensus": "단기 급락 이후 강한 반등이 나왔으나, 외국인 매도와 정책·금리 불확실성으로 중립적 경계 국면이 유지되고 있습니다.",
   "key_points": [
     {
-      "point": "Majority regime tag: NEUTRAL.",
+      "point": "KOSPI는 오늘 4.14% 급등(7801.85p)했으나, 외국인은 -6493억 순매도를 기록하며 반등을 팔았습니다.",
       "sources": [
-        "macro",
-        "flow",
-        "risk",
-        "earnings",
-        "breadth"
+        "CORE_SIGNALS"
       ]
     },
     {
-      "point": "Shared evidence focus: snapshot.flow_summary.foreign_net.",
+      "point": "최근 5일간 KOSPI는 -11.38% 급락 후 20일 누적 +3.96%로 변동성이 극대화된 구간입니다.",
       "sources": [
-        "breadth",
-        "earnings",
-        "flow",
-        "liquidity",
-        "macro"
+        "CORE_SIGNALS"
       ]
     },
     {
-      "point": "Stability guardrail applied from confidence-weighted votes and cumulative context.",
+      "point": "USD/KRW는 1529.02(-0.56%)로 소폭 안정됐으나, 정책·금리 이슈와 함께 시장 경계심이 높아졌습니다.",
       "sources": [
-        "regime_tuner"
+        "CORE_SIGNALS",
+        "news"
       ]
     }
   ],
   "disagreements": [
     {
-      "topic": "Regime tags",
-      "majority": "RISK_OFF",
-      "minority": "NEUTRAL",
+      "topic": "시장 방향성 해석",
+      "majority": "단기 반등에도 불구하고 외국인 매도와 정책 불확실성으로 중립적 대응이 필요",
+      "minority": "유동성 담당자는 위험회피(RISK_OFF) 신호를 강조",
       "minority_agents": [
-        "sector"
+        "liquidity"
       ],
-      "why_it_matters": "Minority risk regime can change positioning boundaries."
+      "why_it_matters": "유동성 환경이 추가 악화될 경우, 단기 반등이 일시적일 수 있어 하락 전환 리스크가 존재"
     }
   ],
   "ops_guidance": [
     {
       "level": "OK",
-      "text": "Maintain balanced exposure."
+      "text": "기존 보유자는 중립 비중 유지, 단기 급락 후 반등이지만 외국인 매도세 지속에 유의"
     },
     {
       "level": "CAUTION",
-      "text": "Keep risk limits tight."
+      "text": "신규 진입은 외국인 매도세 완화, 환율 안정, 변동성(VIX) 하락 확인 후 접근"
     },
     {
       "level": "AVOID",
-      "text": "Avoid aggressive leverage."
+      "text": "레버리지·추격매수는 피하고, 정책/금리 이벤트 전 과도한 베팅 자제"
     }
   ],
-  "sugeup_narrative": null
+  "sugeup_narrative": "## [핵심 판단]\n오늘 코스피는 4.14% 급등(7801.85p), 코스닥은 6.18% 상승(967.74p)하며 단기 급락 이후 강한 반등을 연출했습니다. 하지만 외국인은 -6493억 순매도, 기관은 +5179억 순매수, 개인은 +643억 순매수로 수급이 엇갈렸습니다. 환율(USD/KRW)은 1529.02로 전일 대비 -0.56% 하락하며 소폭 안정됐고, VIX는 18.9로 5일 평균(17.32) 대비 높아진 상태입니다. 최근 5일간 KOSPI는 -11.38% 급락, 20일 누적 +3.96%로 변동성이 극대화된 구간입니다. 시장은 [씨티 “한은, 6월 임시 금통위 열어 기준금리 올릴 수도”](https://news.google.com/rss/articles/CBMiUkFVX3lxTE1EaE9aMW9DVERybjJCc1ZtUWNSMjJRenNocGlQc2hUTnRIX0ZSbU5IM0s0YmExblRkekxlVkhETWpfb1pTZDhjRkdXVWJRbDgtRGfSAVNBVV95cUxPXzYyOFYwYmNHSkhiNnp5MXFYc3QtRGlYdXZkVVpWQ1diZ0tIeUtBcTltODluSDBiLXI4c3JRdGdPUy1DMVNtZEUxV01mVUZlM1Bmaw?oc=5), [달러 강세·금리 부담에 하락…CPI 경계감 속 관망세 확대](https://news.google.com/rss/articles/CBMickFVX3lxTFA3WFlueHpJUFNfRUxrWjFMS1VCakZLQ1JPMTFiQnMweWJxQzFNYUxpbzVhLTlrbVNmXzA0Q044ZzJIVi1LV0VfQTNHdVQ4QWJPLTVnMmduaF9ZcS1sbXZfZ3Z0dldfY21oaE9fcVFCYkhOUQ?oc=5) 등 금리·환율·정책 불확실성 뉴스에 민감하게 반응하며, 반도체/AI, 경기 성장, 지정학 이슈도 주요 변수로 작용했습니다.\n\n## [외국인 매도 이유]\n첫째, 최근 5일간 KOSPI가 -11.38% 급락한 뒤 오늘 4.14% 반등하면서 외국인은 누적 수익 실현 차원에서 매도세를 이어갔습니다. 둘째, 20일 누적 +3.96%로 반도체·AI 업종 중심의 급등에 따라 패시브 펀드 리밸런싱(한국·반도체 비중 초과분 조정) 수요가 발생했습니다. 셋째, 오늘 USD/KRW가 1529.02로 소폭 하락했으나, 여전히 고환율 구간에서 외국인 자금 유출 압력이 남아 있습니다. 환율이 하락했음에도 외국인 매도가 지속된 점은 단순 리밸런싱을 넘어 일부 자금 이탈 신호로 해석됩니다.\n\n## [개인 매수 이유와 리스크]\n개인 투자자는 AI·반도체 업종의 리레이팅 기대와 최근 급락에 따른 저가 매수 심리, 국내 성장률(1분기 GDP 1.8%↑) 등 긍정적 내러티브에 힘입어 외국인 매도 물량을 일부 흡수했습니다. 다만, 오늘 개인 순매수는 +643억(코스피 +4063억, 코스닥 -3420억)으로 과거 대비 소극적이었고, 레버리지 추격매수 비중이 높아질 경우 시장이 추가 하락 시 강제 청산(마진콜) 리스크가 커질 수 있습니다. 현재 개인의 매수 흡수 속도는 외국인 매도 규모에 비해 제한적이어서, 지속성에는 의문이 남습니다.\n\n## [시나리오 판단]\n시나리오 A(기본): 단기 급락 후 기술적 반등이 이어지나, 외국인 매도와 정책·금리 불확실성(임시 금통위, CPI 발표 등)으로 박스권 등락이 지속될 가능성이 높습니다. 확률상 가장 유력하며, 변동성 완화와 외국인 매도세 완화가 확인되어야 추가 상승이 가능합니다.\n시나리오 B(강세 지속): 반도체/AI 업종의 실적 상향, 외국인 매도세 급감, 환율 1520원대 이하로 추가 안정, 정책 불확실성 해소(금통위 동결 등)가 동반될 경우 강세 전환이 가능합니다. [폴라리스AI, 엔비디아 파트너 MDS테크와 산업현장형 AI 인프라 구축](https://news.google.com/rss/articles/CBMiaEFVX3lxTE1pUjNqaUpqMkFac01Lcmt3UDZKVThuRFAyWlRmTmhTbHFyN0R6VHIyOXR0dF94eHUtRE9xQ0JzblRYb0hGUnh0VDg0RjQwdktuSVJvclpaUnFHc1dmb1IzT2ZoVmwzOTUw0gFuQVVfeXFMUEcxbTZyeWxlMzl4eFdIWlZmWGRQa3F2UGtsZU5RaWxKUVgxdl9ad3ZIREM0cFN6RUlFUmRGTzZkQk43ck9pR1JFLUowNnROMGhIMC1aRVlqX3pNWEUyTmVKR2w1aC1HVE50a3VQRUE?oc=5) 등 업종 호재가 확인되면 추가 랠리도 열려 있습니다.\n시나리오 C(급락 재개): 외국인 매도세 확대, 환율 재상승(1530원대 이상), 정책 불확실성 심화(금리 인상, 지정학 리스크 등)가 동반될 경우 단기 반등이 일시적이고, 추가 급락이 재개될 수 있습니다. 가장 먼저 외국인 순매도 규모와 환율 방향성을 주시해야 합니다.\n\n## [투자 관점 결론]\n기존 보유자는 중립 비중을 유지하며, 단기 급락 후 반등이지만 외국인 매도세와 정책 불확실성 해소 전까지 추가 비중 확대는 신중해야 합니다. 신규 진입자는 외국인 순매도 축소, 환율 1520원대 안정, VIX 17 이하 등 위험 신호 완화가 확인될 때까지 관망이 바람직합니다. \"지금은 방향성 베팅보다, 근거를 확인하며 천천히 움직여야 할 때입니다.\""
 }
