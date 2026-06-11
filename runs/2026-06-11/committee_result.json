@@ -1,0 +1,58 @@
+{
+  "consensus": "Committee maintains a neutral posture with selective positioning.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: NEUTRAL.",
+      "sources": [
+        "macro",
+        "flow",
+        "sector",
+        "earnings",
+        "breadth"
+      ]
+    },
+    {
+      "point": "Shared evidence focus: snapshot.flow_summary.foreign_net.",
+      "sources": [
+        "breadth",
+        "earnings",
+        "flow",
+        "liquidity",
+        "macro"
+      ]
+    },
+    {
+      "point": "Shared claim: 외국인 대규모 순매도와 변동성(VIX) 상승이 위험회피 심리를 반영합니다.",
+      "sources": [
+        "macro",
+        "sector"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "Regime tags",
+      "majority": "RISK_OFF",
+      "minority": "RISK_ON",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "Minority risk regime can change positioning boundaries."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Maintain balanced exposure."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Keep risk limits tight."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid aggressive leverage."
+    }
+  ],
+  "sugeup_narrative": null
+}
