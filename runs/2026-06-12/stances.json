@@ -1,0 +1,132 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "KOSPI가 최근 20일간 13% 이상 상승하며 강한 모멘텀을 보임.",
+      "외국인과 기관의 순매수세가 뚜렷하게 유입됨.",
+      "변동성(VIX)은 다소 높으나, 시장 전반의 위험선호가 유지됨."
+    ],
+    "korean_comment": "최근 강한 상승세와 외국인 매수세가 긍정적이지만, 변동성은 주의가 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"KOSPI가 최근 20일간 13% 이상 상승하며 강한 모멘텀을 보임.\",\n    \"외국인과 기관의 순매수세가 뚜렷하게 유입됨.\",\n    \"변동성(VIX)은 다소 높으나, 시장 전반의 위험선호가 유지됨.\"\n  ],\n  \"korean_comment\": \"최근 강한 상승세와 외국인 매수세가 긍정적이지만, 변동성은 주의가 필요합니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.cumulative_context.vix_5d_avg\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.cumulative_context.vix_5d_avg"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "외국인 순매수는 반도체/AI 모멘텀과 연준/금리 완화 기대가 결합된 결과입니다.",
+      "개인 대규모 순매도는 최근 20일간 KOSPI 급등(13.6%)에 따른 차익실현 성격이 강합니다.",
+      "외국인 매수세는 고환율 부담에도 불구하고 AI/반도체 기대감이 우세하여 지속 가능성이 높습니다."
+    ],
+    "korean_comment": "공급(개인)과 수요(외국인/기관) 모두 강하게 충돌하며, AI/반도체 기대가 시장을 주도합니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW_pre_analysis_KR\",\n  \"core_claims\": [\n    \"외국인 순매수는 반도체/AI 모멘텀과 연준/금리 완화 기대가 결합된 결과입니다.\",\n    \"개인 대규모 순매도는 최근 20일간 KOSPI 급등(13.6%)에 따른 차익실현 성격이 강합니다.\",\n    \"외국인 매수세는 고환율 부담에도 불구하고 AI/반도체 기대감이 우세하여 지속 가능성이 높습니다.\"\n  ],\n  \"korean_comment\": \"공급(개인)과 수요(외국인/기관) 모두 강하게 충돌하며, AI/반도체 기대가 시장을 주도합니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.market_summary.usdkrw\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.flow_summary.note",
+      "snapshot.news_headlines",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.market_summary.usdkrw"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "KOSPI는 최근 20일간 13% 이상 상승하며 강한 상승세를 보이고 있습니다.",
+      "외국인과 기관의 순매수세가 뚜렷하게 유입되고 있습니다.",
+      "변동성(VIX)도 안정적인 수준을 유지하고 있습니다."
+    ],
+    "korean_comment": "시장 전반에 강한 매수세와 상승 모멘텀이 지속되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"KOSPI는 최근 20일간 13% 이상 상승하며 강한 상승세를 보이고 있습니다.\",\n    \"외국인과 기관의 순매수세가 뚜렷하게 유입되고 있습니다.\",\n    \"변동성(VIX)도 안정적인 수준을 유지하고 있습니다.\"\n  ],\n  \"korean_comment\": \"시장 전반에 강한 매수세와 상승 모멘텀이 지속되고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.cumulative_context.vix_5d_avg\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.note",
+      "snapshot.cumulative_context.vix_5d_avg"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "KOSPI가 20일간 13% 이상 상승하며 강한 상승세 유지",
+      "외국인과 기관의 순매수세가 뚜렷하게 지속",
+      "변동성(VIX)과 환율도 안정적 흐름"
+    ],
+    "korean_comment": "시장 전반에 뚜렷한 위험 신호는 보이지 않습니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"KOSPI가 20일간 13% 이상 상승하며 강한 상승세 유지\",\n    \"외국인과 기관의 순매수세가 뚜렷하게 지속\",\n    \"변동성(VIX)과 환율도 안정적 흐름\"\n  ],\n  \"korean_comment\": \"시장 전반에 뚜렷한 위험 신호는 보이지 않습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.cumulative_context.usdkrw_5d_change_pct"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "KOSPI 20일 누적 상승은 실적 모멘텀 개선 신호.",
+      "외국인·기관 동반 순매수는 실적 기대감 반영.",
+      "실적 추정치 상향 가능성 높음."
+    ],
+    "korean_comment": "실적 모멘텀과 수급 모두 긍정적으로 해석됩니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"KOSPI 20일 누적 상승은 실적 모멘텀 개선 신호.\",\n    \"외국인·기관 동반 순매수는 실적 기대감 반영.\",\n    \"실적 추정치 상향 가능성 높음.\"\n  ],\n  \"korean_comment\": \"실적 모멘텀과 수급 모두 긍정적으로 해석됩니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.note",
+      "snapshot.cumulative_context.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "KOSPI와 KOSDAQ 모두 최근 20일간 강한 상승세를 보임.",
+      "외국인과 기관의 순매수세가 뚜렷하게 유입됨.",
+      "시장 전반의 확산도와 유동성 지표가 강하게 개선됨."
+    ],
+    "korean_comment": "시장 내부 확산과 수급 모두 긍정적으로 해석됩니다.",
+    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ 모두 최근 20일간 강한 상승세를 보임.\",\n    \"외국인과 기관의 순매수세가 뚜렷하게 유입됨.\",\n    \"시장 전반의 확산도와 유동성 지표가 강하게 개선됨.\"\n  ],\n  \"korean_comment\": \"시장 내부 확산과 수급 모두 긍정적으로 해석됩니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.phase_two_signals.liquidity_signal_score",
+      "snapshot.cumulative_context.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "KOSPI 20일 누적 상승과 외국인 순매수로 유동성 환경이 우호적입니다.",
+      "USD/KRW 변동성 제한적이며, VIX도 안정적 수준입니다.",
+      "정책 불확실성은 있으나, 유동성 측면에서 위험회피 신호는 약합니다."
+    ],
+    "korean_comment": "유동성 환경이 긍정적으로 유지되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"KOSPI 20일 누적 상승과 외국인 순매수로 유동성 환경이 우호적입니다.\",\n    \"USD/KRW 변동성 제한적이며, VIX도 안정적 수준입니다.\",\n    \"정책 불확실성은 있으나, 유동성 측면에서 위험회피 신호는 약합니다.\"\n  ],\n  \"korean_comment\": \"유동성 환경이 긍정적으로 유지되고 있습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.macro.daily.vix\",\n    \"snapshot.macro.structural.fed_funds_rate\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.cumulative_context.usdkrw_5d_change_pct",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.macro.daily.vix",
+      "snapshot.macro.structural.fed_funds_rate",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  }
+]

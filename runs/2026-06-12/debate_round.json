@@ -1,0 +1,95 @@
+{
+  "round_index": 1,
+  "facilitator_note": "오늘은 7명 중 5명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
+  "minutes": [
+    {
+      "speaker": "macro",
+      "speaker_label": "매크로 담당자",
+      "summary": "저는 매크로 담당자 입장에서 '최근 강한 상승세와 외국인 매수세가 긍정적이지만, 변동성은 주의가 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+7395억, institution_net=+7212억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.cumulative_context.vix_5d_avg"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "flow",
+      "speaker_label": "수급 담당자",
+      "summary": "저는 수급 담당자 입장에서 '공급(개인)과 수요(외국인/기관) 모두 강하게 충돌하며, AI/반도체 기대가 시장을 주도합니다.' 의견을 유지합니다. 근거 숫자는 usdkrw=1525.17입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.flow_summary.note",
+        "snapshot.news_headlines",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.market_summary.usdkrw"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "sector",
+      "speaker_label": "섹터 담당자",
+      "summary": "저는 섹터 담당자 입장에서 '시장 전반에 강한 매수세와 상승 모멘텀이 지속되고 있습니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.cumulative_context.vix_5d_avg"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "risk",
+      "speaker_label": "리스크 담당자",
+      "summary": "저는 리스크 담당자 입장에서 '시장 전반에 뚜렷한 위험 신호는 보이지 않습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+7395억, institution_net=+7212억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.cumulative_context.vix_5d_avg",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "earnings",
+      "speaker_label": "이익모멘텀 담당자",
+      "summary": "저는 이익모멘텀 담당자 입장에서 '실적 모멘텀과 수급 모두 긍정적으로 해석됩니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.cumulative_context.note"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "breadth",
+      "speaker_label": "브레드스 담당자",
+      "summary": "저는 브레드스 담당자 입장에서 '시장 내부 확산과 수급 모두 긍정적으로 해석됩니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+7395억, institution_net=+7212억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.phase_two_signals.liquidity_signal_score",
+        "snapshot.cumulative_context.note"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "liquidity",
+      "speaker_label": "유동성 담당자",
+      "summary": "저는 유동성 담당자 입장에서 '유동성 환경이 긍정적으로 유지되고 있습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+7395억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.cumulative_context.vix_5d_avg",
+        "snapshot.macro.daily.vix",
+        "snapshot.macro.structural.fed_funds_rate",
+        "snapshot.news_headlines"
+      ],
+      "internal_regime_tag": "NEUTRAL"
+    }
+  ],
+  "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 온입니다. 근거는 KOSPI +7.97%, USD/KRW 1525.17(+0.07%), VIX 19.4, 외국인 +7395억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 모멘텀이 확인된 구간 위주로 비중을 늘리되 손절 기준은 짧게 가져갑니다."
+}
