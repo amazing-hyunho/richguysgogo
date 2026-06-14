@@ -1,0 +1,52 @@
+{
+  "consensus": "외국인과 기관의 대규모 순매수와 AI/반도체 모멘텀에 힘입어 강한 상승세가 이어지는 위험선호(Risk-On) 장세입니다.",
+  "key_points": [
+    {
+      "point": "KOSPI 4.63% 급등(8123.62), KOSDAQ 3.22% 상승(1029.05) 등 지수 전반에 걸친 강한 랠리와 20일 누적 +14.61%의 모멘텀 확인.",
+      "sources": [
+        "CORE_SIGNALS",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "외국인 +2.5조, 기관 +2.9조 순매수로 수급 주도권 확실, 개인은 -5.3조 차익실현 매도.",
+      "sources": [
+        "CORE_SIGNALS",
+        "flow_data"
+      ]
+    },
+    {
+      "point": "AI/반도체 랠리, 연준/금리 불확실성 완화, 지정학 리스크 완화가 동시 작용하며 위험선호 회복.",
+      "sources": [
+        "news",
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 리스크 평가",
+      "majority": "뚜렷한 위험 신호 없이 위험선호가 강화된 장세로 판단",
+      "minority": "리스크 담당자는 변동성 관리 필요성을 강조하며, 단기 과열 가능성에 주의",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "과열 신호나 변동성 확대 시 단기 조정 위험이 있으므로, 손절 기준을 짧게 가져가야 함"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "AI/반도체 등 모멘텀 강한 업종 중심으로 비중 확대 전략 유효"
+    },
+    {
+      "level": "CAUTION",
+      "text": "단기 급등에 따른 변동성 확대 및 차익실현 매물 출회 가능성에 유의"
+    },
+    {
+      "level": "AVOID",
+      "text": "실적 모멘텀·수급이 약한 업종 및 단기 과열주 신규 진입은 피할 것"
+    }
+  ],
+  "sugeup_narrative": "## 시장 요약 및 주요 지표\n\n오늘(6월 14일) 코스피는 4.63% 급등한 8,123.62pt, 코스닥은 3.22% 오른 1,029.05pt로 마감했습니다. 외국인 순매수는 +24,810억, 기관은 +29,185억, 개인은 -52,590억(코스피: 외 +22,041억, 기관 +22,870억, 개인 -43,174억 / 코스닥: 외 +2,769억, 기관 +6,315억, 개인 -9,416억)으로 집계되었습니다. 원/달러 환율은 1,517.25원(+0.13%), VIX는 17.68로 5일 평균(19.24) 대비 안정적입니다. 최근 5일간 코스피 누적 상승률은 +13.35%, 20일 누적은 +14.61%로 강한 모멘텀이 확인됩니다.\n\n## 수급 주도권: 외국인·기관 강세, 개인 차익실현\n\n오늘 시장은 외국인과 기관의 대규모 순매수가 주도했습니다. 외국인(+2.5조)과 기관(+2.9조)이 동반 매수에 나서며, 최근 5~20일간의 급등세에도 불구하고 추가 상승을 견인했습니다. 반면, 개인은 -5.3조 순매도로 차익실현에 집중하는 모습입니다. 이는 AI/반도체 랠리와 글로벌 위험선호 회복, 연준/금리 불확실성 완화가 맞물리며 외국인·기관의 매수세가 강화된 결과로 해석됩니다. 환율(1,517.25원)과 변동성(VIX 17.68)도 안정적이어서, 수급 환경이 위험선호에 유리하게 작용하고 있습니다.\n\n## 오늘의 핵심 이슈: AI/반도체 랠리, 연준·금리, 지정학 완화\n\n- [AI/반도체] 글로벌 AI·반도체 모멘텀이 국내 시장 랠리를 견인하고 있습니다. 관련 ETF와 대형주에 대한 관심이 집중되며, 외국인 매수세의 핵심 동인으로 작용 중입니다. ([스페이스X·엔비디아 담았다… 우주에 AI까지 핫템 모은 ETF - 머니투데이](https://news.google.com/rss/articles/CBMiaEFVX3lxTE1qd25qUHNNTUtVLVFyQmUwUmU5cE01X0RTM0ZhNG01WGRxVC1UeFFERFhzTWplempqa0ZzQlpaM2RFMVEyQVc5Y1pWc0tHRmxZVi1Eb2JoZmh1S1ppbENKemVUSmpSM1lX0gFuQVVfeXFMTThjLVZ1ZkVleDFFQ0UyQldYT2RGaG1xZEl2X3ZoS0l1WFltVmpTX01kcWUxbXJlQmJfdHd2Tmp6V1BmeWh1YkRBRVIzOWN6ekRiLWg4Ym54OV9xQXd2NnJaa0dfcFByQnVDamd3bEE?oc=5))\n- [연준/금리] 연준의 정책 불확실성 완화와 금리 관련 경계감이 다소 누그러지며, 위험자산 선호가 회복되고 있습니다. ([전쟁 우려 덜고 AI 랠리 재시동…FOMC는 변수 - 뉴스토마토](https://news.google.com/rss/articles/CBMiYEFVX3lxTE5yNlh2Um5yUGNSaXZyNFlnbmNnMzNqcHg3N0p1ZFdLQTdYTGFMRmNtNDdzTHE5X2k3Mi1mRlF2b3ZNWXJtZUY4R0c2ZVVUdWpFdThMdkpsTDhLZ1UteXp3Qg?oc=5))\n- [지정학/경기] 중동발 지정학 리스크 완화와 글로벌 경기 회복 기대감이 시장 심리를 뒷받침하고 있습니다. ([이란전쟁 악재 끝나나…코스피 반등 지속 기대 - 매일경제 마켓](https://news.google.com/rss/articles/CBMiUkFVX3lxTFBYSjZYcDZKRUJVTGVjRUdNNW5uV2RoVGF6TmJ2eUhHZW1YVi1CWFhRaXFVdTQyMUdoZk1NRjR2bF9ObFFLNnlVZ0pHcFNoaHA2aWc?oc=5))\n\n## 전략적 시사점 및 체크포인트\n\n- 단기적으로는 외국인·기관 주도의 강한 랠리가 이어질 가능성이 높으나, 최근 5~20일간의 급등에 따른 변동성 확대와 차익실현 매물 출회 가능성에 유의해야 합니다.\n- 실적 모멘텀과 수급이 강한 업종(특히 AI/반도체) 중심으로 비중 확대 전략이 유효하나, 단기 과열 신호(변동성 급등, 외국인·기관 매수세 둔화 등) 발생 시 신속한 리스크 관리가 필요합니다.\n- 오늘의 상승 추세가 무너질 수 있는 조건은 외국인·기관의 순매수세 급격한 약화, 혹은 지정학/금리 등 대외 리스크의 재부각입니다. 이 경우 전략을 즉시 재점검해야 합니다."
+}
