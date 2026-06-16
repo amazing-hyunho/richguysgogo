@@ -1,0 +1,58 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 8622.15pt(+0.89%)로 마감하며 20일 누적 +19.32%의 강한 랠리를 이어갔습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 순매수(+98억, KOSPI +1697억)와 원/달러 환율 하락(1513.37, -0.09%)이 위험선호 심리를 뒷받침했습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 리스크 평가",
+      "majority": "리스크 온(위험선호) 환경이 지속되고 있다는 의견이 우세",
+      "minority": "리스크 담당자는 뚜렷한 위험 신호는 없으나, 리스크 오프 관점에서 경계 필요성을 언급",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "리스크 신호 부재에도 불구하고, 단기 급등 구간에서 변동성 확대나 외부 변수(금리/지정학) 변화에 민감할 수 있음"
+    },
+    {
+      "topic": "수급 주도 세력",
+      "majority": "외국인 순매수와 원화 강세가 시장을 견인",
+      "minority": "flow 담당자는 외국인 매수세가 제한적이고, 개인이 KOSDAQ에서 추격매수하는 구간임을 강조",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "개인 투자자 중심의 추격매수는 변동성 확대 및 단기 조정 리스크를 높일 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 6월 16일 마감: KOSPI 20일간 19% 급등, 외국인 순매수와 원화 강세 주목\n\n- KOSPI는 오늘 8622.15pt(+0.89%)로 마감하며 20일 누적 +19.32%의 강한 랠리를 이어갔습니다. KOSDAQ은 1020.7pt(-1.23%)로 차별화된 약세를 보였습니다.\n- 원/달러 환율은 1513.37원(-0.09%)으로 추가 하락하며 원화 강세가 지속됐고, VIX(16.2)는 5일 평균(18.59) 대비 낮은 수준을 유지했습니다.\n- 수급은 외국인 +98억(특히 KOSPI +1697억), 기관 -1915억, 개인 +1730억(특히 KOSDAQ +2810억)으로, 외국인 매수와 개인의 추격매수가 뚜렷하게 엇갈렸습니다.\n\n## 수급 해석: 외국인 매수와 개인 추격매수의 엇갈림\n\n- 외국인은 KOSPI에서 강한 순매수(+1697억)를 보이며 원화 강세와 미국 기술주 랠리(반도체/AI) 영향이 반영된 모습입니다.\n- 반면, 개인은 KOSDAQ에서 대규모 순매수(+2810억)로 단기 급등에 추격매수하는 양상입니다. 이는 최근 20일간 KOSPI가 19% 급등한 후행적 유입으로 해석됩니다.\n- 기관은 전반적으로 매도 우위(-1915억)로, 차익실현 및 리밸런싱 성격이 강했습니다.\n\n## 오늘의 핵심 이슈: 금리·환율·AI·지정학\n\n- [일본, 31년 만에 기준금리 1%로 인상…한국은?](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5jMlRQLTh6VjhVd1BJRTAzcE9IZVViTjl4T0ZyQ0d3dzJJRjdPY1VQaWdVb1JtbDhpX3JEanNqdjY5aW52MFotRWRnLTc2VF85c2YwdDNTWk41Z9IBVEFVX3lxTE9TaHAxaXpGVkxnOF8yVmVkQzBEZGVmTlFGWTB2RmlTMWZXY0FMTVNEbFRMdjljNENkVzZUSXdLSFVaRzhFV2t4Z1ZVSWNQMmxFSk5Ibw?oc=5): 일본의 금리 인상은 아시아 통화시장에 변동성을 줄 수 있어, 원화 강세와 외국인 수급에 주목해야 합니다.\n- [엔비디아, 250억달러 회사채 발행 추진…AI 투자 열풍](https://news.google.com/rss/articles/CBMigAFBVV95cUxNRWU3TVY3ZXBWaWZWTWJreldqU2VtWXFmRGJLYUV0bnh2YjVrVnpaWE9mVC00elNtZDQ2X0g4Qk1jU3EzNDc5SWxONnRaM2JVMGVoNzdmbnh5VUxCVHN0X29obTM2UEJSS2wzeFcyaTFBVFVpZ3hYRUFqMGpWNnNueQ?oc=5): 글로벌 AI 투자 열풍이 국내 반도체·IT 대형주에 긍정적으로 작용 중입니다.\n- [‘고점 쳤다’는 원·달러 환율…원화 강세 때 수혜주 따져보니](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5HYzlRTE54MjFOdE5vWEtBMm5DbU9qNVJySExHdHRKZEVVVjZuRzAwNnJDRWM2Z2cyamFOYVh6LWhTM24zbXc3TVlpS2pCemNOcnAtaTVVXzZ5UdIBVEFVX3lxTE5lb3Z5Z2VyYlo1amlPOHpaMWdYWWczWlQ1UGxfVC0yWWNaSW5kQklrU0VIekw4V3JjbWhtYS1tdDd0X1VxVVQ3bng0OThkLV9xMy1YcQ?oc=5): 원화 강세 구간에서 수혜가 예상되는 업종에 관심이 집중되고 있습니다.\n- [미국 인플레이션 고착화, 유가 하락에도 Fed 금리인하 제한](https://news.google.com/rss/articles/CBMiakFVX3lxTE04T1BkZWhLeUNCc21wd2dpVzdpdzE2S3JLbGthenAxRVRKVGlDblF6dW1lejF2QjE4N1ZXc0hPWC00eDZPUHE1anJSVm5mdkZrNEtOUm1ydXJpRHFqQXZ1bXBaR1duSkQ0QXc?oc=5): 미국 인플레이션 고착화와 금리 인하 지연 우려도 시장의 경계심을 자극하고 있습니다.\n\n## 전략적 시사점 및 체크포인트\n\n- KOSPI 중심의 모멘텀 구간에서는 비중 확대 전략이 유효하나, KOSDAQ 등 개인 주도 단기 급등 종목군은 변동성 확대에 유의해야 합니다.\n- 일본 금리 인상, 미국 인플레이션, 지정학 등 외부 변수 변화 시 단기 조정 가능성에 대비해야 합니다.\n- 오늘의 상승 모멘텀을 무력화할 수 있는 조건은 외국인 수급 급반전(대규모 순매도) 또는 환율 급등(원화 약세) 재개입니다. 이 두 가지가 확인될 경우, 전략을 신속히 재점검해야 합니다."
+}
