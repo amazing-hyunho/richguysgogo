@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-06-16T23:43:35.043117+00:00",
+  "crawled_at": "2026-06-17T00:42:50.890371+00:00",
   "news_date": "2026-06-17",
-  "total_collected": 86,
+  "total_collected": 109,
   "topic_counts": [
     [
-      "금리/연준",
-      12
+      "환율/달러",
+      6
+    ],
+    [
+      "미국지수",
+      16
     ],
     [
       "반도체/AI",
@@ -13,11 +17,7 @@
     ],
     [
       "인플레이션",
-      5
-    ],
-    [
-      "환율/달러",
-      6
+      4
     ],
     [
       "경기/성장",
@@ -26,12 +26,23 @@
   ],
   "top_articles": [
     {
-      "topic": "금리/연준",
-      "count": 12,
-      "title": "'왕의 남자' 워시의 FOMC 데뷔...연준 딜레마 상황 시험대 - YTN",
-      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1pVnlvSE92dnJLX2ZWc1NObkJGVEVCX1Z6V0taZlBDVHpWREZMUUZQaXVHaGE4QmhrcTVLdHRjUFdUaXJ5ejQ4aVJOeW1xMUFQR2UxMGpoc21oSG9RNHc?oc=5",
+      "topic": "환율/달러",
+      "count": 6,
+      "title": "원·달러 환율, 0.8원 오른 1512.4원 출발 - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE40dGFyNWRzdHZxUXpwZkkzRzJfMklnREE1elJqcWFZaGs1N29BTnNNMWdSeG9yUjdsS3pTWVUzRFFBOC1adEhoa0xCNFVkVGlWcjZUQUZ4cnJBVUh4R0tGbtIBeEFVX3lxTE9iUi1MY3kzS1RSWHhDNE5vTkJPRDdYcFBPTEkzaVFlZjl4OXROSFI5NUwwVm0ydVk5STl1ZWJEQUVlMDdTS0JENUJONXBRNEhHMHFDMHRhQUJZRXJ3S2pQTy1CMGVzX1RxU0R0dGFhelR1dTBLbTdhYw?oc=5",
       "summary_lines": [
-        "핵심 이슈: '왕의 남자' 워시의 FOMC 데뷔...연준 딜레마 상황 시험대 - YTN",
+        "핵심 이슈: 원·달러 환율, 0.8원 오른 1512.4원 출발 - 뉴시스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "미국지수",
+      "count": 16,
+      "title": "다우존스 지수는 사상 최고치를 경신했고, 나스닥 지수는 연준의 금리 발표를 앞두고 차익 실현 매물에 밀려났습니다. - Vietnam.vn",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPRzc4anN6TFpPM3d2QW1UUk0tdVB6NmYzc1F5aVRMNFlUUTdBYk9JYU1zZzZnVVB5WTFoclFKMHZaN2VxVW93SmF4UlY5RjVpUUloMzhwdG9kamJQNlNwUWNWSXZzOVNERGhiQmdpMmNXVzN2dHlLWWhiYlpSSGRZSVkyU0wxRmd1Sk9nNDlFSDR5X2g5d2lTT1k0ODBRLVUtclBLRW81ZGJQZ3I2dEE?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 다우존스 지수는 사상 최고치를 경신했고, 나스닥 지수는 연준의 금리 발표를 앞두고 차익 실현 매물에 밀려났습니다. - Vietnam.vn",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -49,7 +60,7 @@
     },
     {
       "topic": "인플레이션",
-      "count": 5,
+      "count": 4,
       "title": "워시의 첫 연준 회의 미리보기: 4.2% CPI가 금리 동결을 인플레이션 시험대로 바꾸다 - EBC Financial Group",
       "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9hX0NNU2wtaVBMcW9NZG9XQ25VaUVRMm44SndPTzVocXNrdTBvOEJiTFZ0a3FFb0tHWnkxRzYxTlFfNEN0RjQxYzE3RUVWeGZCRkE?oc=5",
       "summary_lines": [
@@ -59,23 +70,12 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 6,
-      "title": "달러-원, 이란 종전 합의에 위험 선호 유지…1,508.30원 마감 - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Nbk1DU1Z4YTJPU3VrcGhqV2E1dGtlMFFxaEotcUtmZHZFaWdNLWdaVDFLX3VXUHd3TjVhQ1g5MGg0cVlwVmRMajBTVmRxb0VueEdUUGtXa19lOFnSAWBBVV95cUxPTnF1XzhiNlhzLXJlaVdRb3R2MFFITk9VRmVwVTBJVUlxY2ZkLXAwVVFjVVBfRFNZZlhDTVo0MHBxWEc3UndseTZ3UVQ1SXZoNnpmb0d5TkEybl9veUdzd2g?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 달러-원, 이란 종전 합의에 위험 선호 유지…1,508.30원 마감 - 연합뉴스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "경기/성장",
       "count": 6,
-      "title": "이란 전쟁, 글로벌 경제에 회복 어려운 상흔 남겼다-NYT - 뉴시스",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9pVlNWVHVSUFYweG01ZFJjOHdDbHZHc183T0ZIQzJzVDFrMUtNcmgzNHlNeEtKbV9BVThiU2l1ZFMwN05ncDdmM2dSQl95LWpPdXVZWFhlMEY3Y0gyRVc5VdIBeEFVX3lxTFA0Zkw5dlFfTVpiZ0FPN1NQcTV3RHJoSVJ0a09yeEoxVEdKSzROMXNvZEVIM0xnbzdNVEdwMF93SFdNYjBzeVQ2aGZ5eGFkRmlqc1daVm5FX2o0MkFKVHp3RVFXY3piYzl5ZzU0YTE1YnVUTmQwTmtmNw?oc=5",
+      "title": "[데스크 칼럼] 총성 멈춘 중동, 경제전쟁은 지금부터다 - 뉴스핌",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1JOWRtc0s1ZGhwWmJiSG5pbjBaYl84QmJ1TVdDa01ramhSbC1PWmZWYldpNVFJWElQVHVWWUhJOVNxbkdaZmxJaXdwVXoxcWhaX09tRWg5S1BVSlox?oc=5",
       "summary_lines": [
-        "핵심 이슈: 이란 전쟁, 글로벌 경제에 회복 어려운 상흔 남겼다-NYT - 뉴시스",
+        "핵심 이슈: [데스크 칼럼] 총성 멈춘 중동, 경제전쟁은 지금부터다 - 뉴스핌",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,31 +84,37 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 29,
+      "total_count": 16,
       "topics": [
-        {
-          "topic": "금리/연준",
-          "count": 12,
-          "title": "'왕의 남자' 워시의 FOMC 데뷔...연준 딜레마 상황 시험대 - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1pVnlvSE92dnJLX2ZWc1NObkJGVEVCX1Z6V0taZlBDVHpWREZMUUZQaXVHaGE4QmhrcTVLdHRjUFdUaXJ5ejQ4aVJOeW1xMUFQR2UxMGpoc21oSG9RNHc?oc=5"
-        },
         {
           "topic": "환율/달러",
           "count": 6,
-          "title": "달러-원, 이란 종전 합의에 위험 선호 유지…1,508.30원 마감 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Nbk1DU1Z4YTJPU3VrcGhqV2E1dGtlMFFxaEotcUtmZHZFaWdNLWdaVDFLX3VXUHd3TjVhQ1g5MGg0cVlwVmRMajBTVmRxb0VueEdUUGtXa19lOFnSAWBBVV95cUxPTnF1XzhiNlhzLXJlaVdRb3R2MFFITk9VRmVwVTBJVUlxY2ZkLXAwVVFjVVBfRFNZZlhDTVo0MHBxWEc3UndseTZ3UVQ1SXZoNnpmb0d5TkEybl9veUdzd2g?oc=5"
+          "title": "원·달러 환율, 0.8원 오른 1512.4원 출발 - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE40dGFyNWRzdHZxUXpwZkkzRzJfMklnREE1elJqcWFZaGs1N29BTnNNMWdSeG9yUjdsS3pTWVUzRFFBOC1adEhoa0xCNFVkVGlWcjZUQUZ4cnJBVUh4R0tGbtIBeEFVX3lxTE9iUi1MY3kzS1RSWHhDNE5vTkJPRDdYcFBPTEkzaVFlZjl4OXROSFI5NUwwVm0ydVk5STl1ZWJEQUVlMDdTS0JENUJONXBRNEhHMHFDMHRhQUJZRXJ3S2pQTy1CMGVzX1RxU0R0dGFhelR1dTBLbTdhYw?oc=5"
         },
         {
           "topic": "경기/성장",
           "count": 6,
-          "title": "이란 전쟁, 글로벌 경제에 회복 어려운 상흔 남겼다-NYT - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9pVlNWVHVSUFYweG01ZFJjOHdDbHZHc183T0ZIQzJzVDFrMUtNcmgzNHlNeEtKbV9BVThiU2l1ZFMwN05ncDdmM2dSQl95LWpPdXVZWFhlMEY3Y0gyRVc5VdIBeEFVX3lxTFA0Zkw5dlFfTVpiZ0FPN1NQcTV3RHJoSVJ0a09yeEoxVEdKSzROMXNvZEVIM0xnbzdNVEdwMF93SFdNYjBzeVQ2aGZ5eGFkRmlqc1daVm5FX2o0MkFKVHp3RVFXY3piYzl5ZzU0YTE1YnVUTmQwTmtmNw?oc=5"
+          "title": "[데스크 칼럼] 총성 멈춘 중동, 경제전쟁은 지금부터다 - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1JOWRtc0s1ZGhwWmJiSG5pbjBaYl84QmJ1TVdDa01ramhSbC1PWmZWYldpNVFJWElQVHVWWUhJOVNxbkdaZmxJaXdwVXoxcWhaX09tRWg5S1BVSlox?oc=5"
         },
         {
           "topic": "인플레이션",
-          "count": 5,
+          "count": 4,
           "title": "워시의 첫 연준 회의 미리보기: 4.2% CPI가 금리 동결을 인플레이션 시험대로 바꾸다 - EBC Financial Group",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9hX0NNU2wtaVBMcW9NZG9XQ25VaUVRMm44SndPTzVocXNrdTBvOEJiTFZ0a3FFb0tHWnkxRzYxTlFfNEN0RjQxYzE3RUVWeGZCRkE?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "지수/시장",
+      "total_count": 16,
+      "topics": [
+        {
+          "topic": "미국지수",
+          "count": 16,
+          "title": "다우존스 지수는 사상 최고치를 경신했고, 나스닥 지수는 연준의 금리 발표를 앞두고 차익 실현 매물에 밀려났습니다. - Vietnam.vn",
+          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPRzc4anN6TFpPM3d2QW1UUk0tdVB6NmYzc1F5aVRMNFlUUTdBYk9JYU1zZzZnVVB5WTFoclFKMHZaN2VxVW93SmF4UlY5RjVpUUloMzhwdG9kamJQNlNwUWNWSXZzOVNERGhiQmdpMmNXVzN2dHlLWWhiYlpSSGRZSVkyU0wxRmd1Sk9nNDlFSDR5X2g5d2lTT1k0ODBRLVUtclBLRW81ZGJQZ3I2dEE?oc=5"
         }
       ]
     },
