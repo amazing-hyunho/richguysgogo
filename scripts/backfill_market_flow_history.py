@@ -4,7 +4,13 @@ from __future__ import annotations
 
 Policy
 - Fetch KRX first, then Naver fallback (AUTO).
-- If returned flow date != target date, treat as missing and store NULLs.
+- Weekends are skipped entirely (KRX does not trade Sat/Sun).
+- If returned flow date != target date, treat as missing and store NULLs
+  (handles most public holidays via stale-date detection).
+- Holiday heuristic: if fetched values are identical to the previous
+  trading day's values, treat the day as a market holiday and store NULLs.
+  This catches the edge case where a source returns the prior day's data
+  under the holiday's date (i.e., stale-date check passes but data is stale).
 """
 
 import argparse
@@ -46,10 +52,12 @@ def _parse_args() -> argparse.Namespace:
 
 
 def _iter_dates(start_d: date, end_d: date) -> list[date]:
+    """Return weekdays only (Mon–Fri). KRX does not trade on weekends."""
     out: list[date] = []
     cur = start_d
     while cur <= end_d:
-        out.append(cur)
+        if cur.weekday() < 5:  # 0=Mon … 4=Fri; skip Sat=5, Sun=6
+            out.append(cur)
         cur += timedelta(days=1)
     return out
 
@@ -105,21 +113,43 @@ def main() -> None:
     try:
         now_iso = datetime.now(UTC).isoformat().replace("+00:00", "Z")
 
-        # --skip-existing: 이미 값이 있는 날짜 목록 미리 조회
+        # --skip-existing: 이미 값이 있는 날짜의 날짜+수치를 미리 조회.
+        # 수치도 함께 로드해 공휴일 휴리스틱(직전 거래일과 동일 수치 판별)에 활용.
         existing_dates: set[str] = set()
+        existing_values_map: dict[str, tuple[float, float, float]] = {}
         if args.skip_existing:
-            rows = conn.execute(
-                "SELECT date FROM market_flow_daily "
+            ex_rows = conn.execute(
+                "SELECT date, foreign_net, institution_net, retail_net FROM market_flow_daily "
                 "WHERE foreign_net IS NOT NULL OR institution_net IS NOT NULL"
             ).fetchall()
-            existing_dates = {r[0] for r in rows}
+            for r in ex_rows:
+                existing_dates.add(r[0])
+                if r[1] is not None:
+                    existing_values_map[r[0]] = (float(r[1]), float(r[2] or 0), float(r[3] or 0))
+
+        # 공휴일 휴리스틱용: 직전 거래일 수치를 DB에서 초기화
+        # (start_d 이전 마지막 non-NULL 행)
+        _prev_row = conn.execute(
+            "SELECT foreign_net, institution_net, retail_net FROM market_flow_daily "
+            "WHERE foreign_net IS NOT NULL AND date < ? ORDER BY date DESC LIMIT 1",
+            (start_d.isoformat(),),
+        ).fetchone()
+        PrevVals = tuple[float, float, float] | None
+        prev_values: PrevVals = (
+            (float(_prev_row[0]), float(_prev_row[1] or 0), float(_prev_row[2] or 0))
+            if _prev_row else None
+        )
 
         changed = 0
         missing = 0
         skipped = 0
+        holiday_skipped = 0
         for d in _iter_dates(start_d, end_d):
             ds = d.isoformat()
             if ds in existing_dates:
+                # 스킵된 날짜의 수치로 prev_values 갱신 (이후 공휴일 판별 정확도 유지)
+                if ds in existing_values_map:
+                    prev_values = existing_values_map[ds]
                 skipped += 1
                 continue
             flow, reason = _fetch_flow(d, str(args.source))
@@ -131,6 +161,18 @@ def main() -> None:
                 print(f"flow_missing[{ds}]: {reason}")
             else:
                 foreign_net, institution_net, retail_net = _aggregate(flow)
+                curr = (foreign_net, institution_net, retail_net)
+                # 공휴일 휴리스틱: 직전 거래일과 수치가 완전히 동일하면
+                # 소스가 전일 데이터를 그대로 반환한 것으로 간주하고 NULL 처리.
+                if prev_values is not None and curr == prev_values:
+                    foreign_net = None
+                    institution_net = None
+                    retail_net = None
+                    holiday_skipped += 1
+                    missing += 1
+                    print(f"flow_holiday_skip[{ds}]: values identical to prev trading day (market closed?)")
+                else:
+                    prev_values = curr
             if args.dry_run:
                 print(
                     f"{ds} foreign={foreign_net} institution={institution_net} "
@@ -168,7 +210,7 @@ def main() -> None:
             conn.commit()
         print(
             f"backfill_market_flow_done changed={changed} missing={missing} "
-            f"skipped={skipped} "
+            f"skipped={skipped} holiday_skipped={holiday_skipped} "
             f"range={start_d.isoformat()}..{end_d.isoformat()} dry_run={args.dry_run}"
         )
     finally:

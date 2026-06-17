@@ -1,0 +1,52 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -1.07% 하락, 외국인 -9022억·기관 -3622억 순매도, 개인 +12463억 순매수로 단기 조정 신호가 뚜렷합니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 1508.83(+0.34%)로 환율 부담이 외국인 매도세를 자극하고 있습니다.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 신호 해석",
+      "majority": "누적 강세와 단기 조정이 병존하며, 추세 반전 신호는 아직 없음",
+      "minority": "유동성·수급 담당자는 단기적으로 리스크 오프 구간 진입을 주장",
+      "minority_agents": [
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "단기 조정이 추세 전환으로 이어질지 여부가 향후 시장 방향성 결정에 핵심 변수"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 단기 조정: KOSPI 8628.33(-1.07%), 외국인·기관 동반 매도\n\n오늘 KOSPI는 8628.33pt로 -1.07% 하락했고, KOSDAQ도 1015.72pt로 -0.29% 약세를 보였습니다. 원·달러 환율은 1508.83원(+0.34%)로 상승하며 외환시장 불안이 가중되었습니다. 외국인은 -9022억, 기관은 -3622억 순매도했고, 개인은 +12463억 순매수로 대응했습니다. 변동성(VIX)은 16.4로 5일 평균(17.77) 대비 안정적이지만, 단기 변동성 확대 가능성은 열려 있습니다.\n\n## 수급: 외국인 차익실현, 개인 단기 매수세 집중\n\n외국인과 기관이 동반 매도에 나서며 단기 조정 압력이 커졌습니다. 외국인 순매도는 KOSPI -7822억, KOSDAQ -1200억으로 전방위적이었고, 개인은 KOSPI +11162억, KOSDAQ +1301억을 순매수하며 하락을 방어했습니다. 이는 최근 20일간 KOSPI가 +20.34% 급등한 데 따른 차익실현과, 원화 약세(USD/KRW 1508.83) 부담이 복합적으로 작용한 결과입니다. [원·달러 환율, 0.8원 오른 1512.4원 출발 - 뉴시스](https://news.google.com/rss/articles/CBMiYEFVX3lxTE40dGFyNWRzdHZxUXpwZkkzRzJfMklnREE1elJqcWFZaGs1N29BTnNNMWdSeG9yUjdsS3pTWVUzRFFBOC1adEhoa0xCNFVkVGlWcjZUQUZ4cnJBVUh4R0tGbtIBeEFVX3lxTE9iUi1MY3kzS1RSWHhDNE5vTkJPRDdYcFBPTEkzaVFlZjl4OXROSFI5NUwwVm0ydVk5STl1ZWJEQUVlMDdTS0JENUJONXBRNEhHMHFDMHRhQUJZRXJ3S2pQTy1CMGVzX1RxU0R0dGFhelR1dTBLbTdhYw?oc=5) 기사에서도 환율 부담이 부각되고 있습니다.\n\n## 뉴스 이슈: 연준 금리·AI·환율·지정학\n\n오늘 시장은 미국 연준의 금리 발표를 앞둔 경계감, 엔비디아의 대규모 회사채 발행 등 AI 투자 이슈, 그리고 중동 지정학 리스크 완화 이후 경제전쟁 우려 등 다양한 뉴스가 혼재했습니다. [다우존스 지수는 사상 최고치를 경신했고, 나스닥 지수는 연준의 금리 발표를 앞두고 차익 실현 매물에 밀려났습니다. - Vietnam.vn](https://news.google.com/rss/articles/CBMirgFBVV95cUxPRzc4anN6TFpPM3d2QW1UUk0tdVB6NmYzc1F5aVRMNFlUUTdBYk9JYU1zZzZnVVB5WTFoclFKMHZaN2VxVW93SmF4UlY5RjVpUUloMzhwdG9kamJQNlNwUWNWSXZzOVNERGhiQmdpMmNXVzN2dHlLWWhiYlpSSGRZSVkyU0wxRmd1Sk9nNDlFSDR5X2g5d2lTT1k0ODBRLVUtclBLRW81ZGJQZ3I2dEE?oc=5) 기사처럼 미국 증시도 차익실현 매물이 출회되고 있습니다. 엔비디아의 38조원 회사채 발행 소식([엔비디아 \"AI 투자 실탄\" 회사채 38조원 발행 - 머니투데이](https://news.google.com/rss/articles/CBMiaEFVX3lxTE1Rei1ySm1hVmdDd1pYTmhjNFlnbTBqS294NHVpVW1xUUNHVlVxRjZodlRNMU4ycU9PNnlwbWhkZm9FLWtmTGZJLU54b19VbW5MZnNDdUgzMDNvelIxZUR0cDZUNXYtVzh50gFuQVVfeXFMTnRBbFluVGh0TlZRUHZMSXhWNVg3b0xaRlRGOXZ2MGZmZFJ3cjZXa2tEX1hNZmNWTzZHbWhYYlBIOEF2bW10U2VBRzBoZjFGZnRoMmN0OUFkaXVFd2pfX0xFNm9CdExuazIwS0NzSGc?oc=5))도 시장의 테마 변동성을 키웠습니다.\n\n## 전망 및 체크포인트: 추세 반전 신호는 아직, 환율·외국인 매도 지속 여부 주목\n\n누적 강세(20일간 +20.34%)에도 불구하고, 오늘 단기 조정은 외국인·기관 매도와 환율 부담이 복합적으로 작용한 결과입니다. 아직 추세 반전(reversal) 신호는 확인되지 않았으나, 외국인 매도세와 환율 상승이 지속될 경우 중기 조정으로 전환될 수 있습니다. 반대로 외국인 매도세가 진정되고 환율이 안정된다면, 강세 추세가 재개될 수 있습니다. 오늘의 중립적 시각을 깨뜨릴 변수는 '외국인 매도세가 3거래일 이상 연속 확대되고, USD/KRW가 1520원 이상으로 급등할 경우'입니다. 단기 레버리지 추격매수는 피하고, 확인된 신호에만 선별적으로 대응하는 전략이 유효합니다."
+}
