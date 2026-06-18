@@ -1471,21 +1471,23 @@ def get_last_n_market_flow(n: int, db_path: Path | None = None) -> List[Dict[str
 
 
 def calculate_rolling_sum(column: str, n: int, db_path: Path | None = None) -> float | None:
-    """Calculate rolling sum over last N rows for a given flow column.
+    """Calculate rolling sum over last N **trading** days for a given flow column.
 
     Security note:
     - `column` is validated against a fixed allowlist to avoid SQL injection.
 
     NULL semantics:
     - With the NULL-based design, missing data remains NULL in the DB.
-    - To avoid silently turning "missing" into "0.0", this function returns NULL-like behavior:
-      it returns None when there is insufficient non-NULL history in the window.
+    - Returns None when there is insufficient non-NULL history in the window.
+
+    Weekend filter:
+    - Rows where strftime('%w', date) IN ('0','6') are excluded so that the
+      window always spans N KOSPI trading days (Mon–Fri), not calendar days.
     """
     if column not in _ALLOWED_FLOW_COLUMNS:
         raise ValueError(f"Unsupported column for rolling sum: {column}")
     init_db(db_path)
     with connect(db_path) as conn:
-        # Use a subquery to limit last N rows, then sum.
         row = conn.execute(
             f"""
             SELECT
@@ -1494,6 +1496,7 @@ def calculate_rolling_sum(column: str, n: int, db_path: Path | None = None) -> f
             FROM (
                 SELECT {column}
                 FROM market_flow_daily
+                WHERE strftime('%w', date) NOT IN ('0', '6')
                 ORDER BY date DESC
                 LIMIT :n
             );
