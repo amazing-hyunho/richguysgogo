@@ -1,0 +1,60 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 1.22% 상승(8973.86p)하며 20일 누적 +15.79%의 강세를 이어갔으나, 외국인 순매도(-7435억)와 기관 순매도(-238억)가 동반되었습니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "미국 연준의 연내 금리 인상 시사와 인플레이션 우려로 글로벌 증시 변동성이 확대(VIX 18.4)되고, USD/KRW는 1518.88로 고환율 부담이 지속되고 있습니다.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 모멘텀과 리스크 해석",
+      "majority": "누적 상승세와 외국인 매도세, 대외 불확실성으로 중립적 경계 유지",
+      "minority": "시장 내부 확산과 기술적 모멘텀은 아직 긍정적(RISK_ON)",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "기술적 확산 신호가 단기 조정 없이 추가 상승을 유도할 수 있어, 단기 변동성 확대 구간에서 방향성 판단에 신중함이 필요"
+    },
+    {
+      "topic": "유동성 환경 해석",
+      "majority": "정책 불확실성과 외국인 자금 이탈로 유동성 악화(RISK_OFF)",
+      "minority": "시장 강세와 리스크 신호 부재로 중립적 해석 가능(NEUTRAL)",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "유동성 위축이 실제로 실물/주가에 미치는 영향이 지연될 수 있어, 단기 과열 신호와의 괴리 주목 필요"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 단기 급등세 속 외국인 매도와 대외 변수 부담\n\n오늘(6월 18일) KOSPI는 1.22% 상승하며 8973.86pt로 마감, 20일 누적 +15.79%의 강한 랠리를 이어갔습니다. 반면 KOSDAQ은 -2.4% 하락(1007.19pt)으로 차별화된 흐름을 보였습니다. 환율은 USD/KRW 1518.88(-0.09%)로 고환율 부담이 지속되었고, 변동성 지수(VIX)는 18.4로 5일 평균(17.23) 대비 소폭 상승했습니다. 수급 측면에서는 외국인 -7435억, 기관 -238억 순매도, 개인 +7996억 순매수로 개인이 하락 압력을 흡수하는 구조가 이어졌습니다.\n\n## 수급: 외국인·기관 매도, 개인 매수의 한계\n\n외국인은 KOSPI에서 -5979억, KOSDAQ에서 -1456억 순매도를 기록하며 전반적 매도 우위를 보였습니다. 기관도 KOSDAQ에서 -507억 순매도, KOSPI에서는 소폭(+269억) 순매수에 그쳤습니다. 개인은 KOSPI+KOSDAQ 합산 7996억 순매수로 지수 하락 압력을 흡수했으나, 대외 불확실성(미국 금리, 환율, 변동성) 하에서 수급 안정성에는 한계가 있다는 평가가 다수입니다. 수급 담당자는 \"고환율/강달러, 미국금리, 변동성, 반도체/AI 부담 속 개인 흡수만으로는 수급 안정성이 부족하다\"고 지적했습니다.\n\n## 금리·환율·인플레이션: 대외 변수 경계 강화\n\n오늘 시장 뉴스의 핵심 키워드는 연준의 금리 인상 시사와 인플레이션 우려, 그리고 환율 급등입니다. [美연준, 기준금리 3.50~3.75% 동결했지만…연내 인상 가능성 시사 - 동아일보](https://news.google.com/rss/articles/CBMic0FVX3lxTE5VNWVMS2hFZFA4aDZ2bWRqQ3pmQ1B1dDhYd3RidWVKZ3FzWmdJX2NUbTVrbU1TVVUtdXJ1c1J4REc4cTU3ZW55VVVMbldNRUIzbEp3Y2tBb21ldUpNZXV5UHZlaDdXSEktYVp4Vk80TlRwRXPSAWZBVV95cUxOR3ZqUU15MG9iSGZmUTNBZVRoMEtNSS1PRHVsdXRacWdodllfNDlIWkFMa2c5dktQLW1kYVhZQVdFd2hqQzBoVTFEdks5aFN0SEVHT1REWVlrN2NDMWEwaUItbldHRlE?oc=5), [환율, 美 금리 인상 시사에 10.8원 오른 1,524.2원 - 한국경제TV](https://news.google.com/rss/articles/CBMigAFBVV95cUxNWXN4V0tyMUQyMFFWZ3FKUVlSMWtUZHB1S3E2Q3JOWFMxRjZOT3E2R3VueHFTcUtjWFROVWF2eEhnemhyOEoyOGlpVFhzallmZDZ3NXp0bzZ5ZjYyd3oyaWlNd2ZwZDZKWDVWVHl2N24wRm45MVN4d2UwdHVZcUZXSw?oc=5) 등에서 확인되듯, 연준은 기준금리를 동결했으나 연내 추가 인상 가능성을 시사했고, 이에 따라 환율도 1,500원대 초중반으로 상승 압력이 이어졌습니다. 인플레이션 우려도 재부각되며, 글로벌 증시 변동성(VIX 18.4)도 확대되는 모습입니다.\n\n## 시장 내부 확산과 기술적 모멘텀: 긍정 신호와의 괴리\n\n일부에서는 시장 내부 확산과 기술적 모멘텀(20일 누적 +15.79%, 5일 +14.75%)이 여전히 긍정적이라는 의견도 있습니다. 브레드스 담당자는 \"시장 내부 확산과 기술적 모멘텀은 아직 긍정적\"이라고 평가했으나, 다수 의견은 외국인 매도세와 대외 변수 부담이 단기 추가 상승 모멘텀을 약화시킬 수 있다고 봅니다. 실적 모멘텀 역시 아직 뚜렷한 상향 신호는 확인되지 않았습니다.\n\n## 향후 체크포인트 및 전략\n\n당분간은 외국인 매도세와 미국 금리 인상 시사, 고환율 등 대외 변수의 완화 여부가 핵심 체크포인트입니다. 외국인 매도세가 진정되고, USD/KRW가 안정세를 보이거나, 연준의 긴축 우려가 완화될 경우 시장의 추가 상승 모멘텀 회복이 가능하겠습니다. 반대로 외국인 매도세가 심화되거나, 대외 불확실성이 확대될 경우 단기 조정 위험이 커질 수 있습니다. 오늘의 중립적 경계 기조가 깨지는 조건은 \"외국인 순매도세가 축소되고, 환율이 안정되는 신호가 확인될 때\"입니다."
+}
