@@ -624,7 +624,8 @@ def main() -> None:
             "market_flow_daily": fetch_rows(
                 conn,
                 # strftime('%w',...): 0=일요일, 6=토요일 → KOSPI 거래일(월~금)만 포함
-                "SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d "
+                "SELECT date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d, "
+                "kospi_foreign_net, kospi_institution_net, kospi_retail_net "
                 "FROM market_flow_daily "
                 "WHERE strftime('%w', date) NOT IN ('0', '6') "
                 "ORDER BY date",

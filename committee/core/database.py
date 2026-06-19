@@ -108,6 +108,9 @@ def init_db(db_path: Path | None = None) -> None:
                 retail_net REAL,
                 foreign_20d REAL,
                 foreign_60d REAL,
+                kospi_foreign_net REAL,
+                kospi_institution_net REAL,
+                kospi_retail_net REAL,
                 created_at TEXT
             );
             """
@@ -115,6 +118,10 @@ def init_db(db_path: Path | None = None) -> None:
         # Safe schema migrations for investor flow breakdown columns.
         _ensure_column_exists(conn, table="market_flow_daily", column="institution_net", column_ddl="REAL")
         _ensure_column_exists(conn, table="market_flow_daily", column="retail_net", column_ddl="REAL")
+        # KOSPI-only columns (추가 마이그레이션 — 기존 DB 호환).
+        _ensure_column_exists(conn, table="market_flow_daily", column="kospi_foreign_net", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_flow_daily", column="kospi_institution_net", column_ddl="REAL")
+        _ensure_column_exists(conn, table="market_flow_daily", column="kospi_retail_net", column_ddl="REAL")
 
         # domestic_policy_rate_daily: BOK base rate snapshot by market date.
         conn.execute(
@@ -644,12 +651,16 @@ def upsert_market_flow_daily(
     retail_net: float | None = None,
     foreign_20d: float | None = None,
     foreign_60d: float | None = None,
+    kospi_foreign_net: float | None = None,
+    kospi_institution_net: float | None = None,
+    kospi_retail_net: float | None = None,
     db_path: Path | None = None,
 ) -> None:
     """Insert/replace one row into `market_flow_daily`.
 
     If rolling sums are not provided, they remain NULL until updated by
     `update_market_flow_rollings()` or via the safe wrapper below.
+    kospi_* columns store KOSPI-only investor flow (separate from KOSPI+KOSDAQ totals).
     """
     created_at = _utc_now_iso()
     init_db(db_path)
@@ -657,9 +668,15 @@ def upsert_market_flow_daily(
         conn.execute(
             """
             INSERT INTO market_flow_daily (
-                date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d, created_at
+                date, foreign_net, institution_net, retail_net,
+                foreign_20d, foreign_60d,
+                kospi_foreign_net, kospi_institution_net, kospi_retail_net,
+                created_at
             ) VALUES (
-                :date, :foreign_net, :institution_net, :retail_net, :foreign_20d, :foreign_60d, :created_at
+                :date, :foreign_net, :institution_net, :retail_net,
+                :foreign_20d, :foreign_60d,
+                :kospi_foreign_net, :kospi_institution_net, :kospi_retail_net,
+                :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
                 foreign_net=excluded.foreign_net,
@@ -667,16 +684,21 @@ def upsert_market_flow_daily(
                 retail_net=excluded.retail_net,
                 foreign_20d=excluded.foreign_20d,
                 foreign_60d=excluded.foreign_60d,
+                kospi_foreign_net=excluded.kospi_foreign_net,
+                kospi_institution_net=excluded.kospi_institution_net,
+                kospi_retail_net=excluded.kospi_retail_net,
                 created_at=excluded.created_at;
             """,
             {
                 "date": date,
-                # NULL-based missing data: if flows fetch failed/unavailable, store NULL.
                 "foreign_net": None if foreign_net is None else float(foreign_net),
                 "institution_net": None if institution_net is None else float(institution_net),
                 "retail_net": None if retail_net is None else float(retail_net),
                 "foreign_20d": None if foreign_20d is None else float(foreign_20d),
                 "foreign_60d": None if foreign_60d is None else float(foreign_60d),
+                "kospi_foreign_net": None if kospi_foreign_net is None else float(kospi_foreign_net),
+                "kospi_institution_net": None if kospi_institution_net is None else float(kospi_institution_net),
+                "kospi_retail_net": None if kospi_retail_net is None else float(kospi_retail_net),
                 "created_at": created_at,
             },
         )

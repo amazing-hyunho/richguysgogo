@@ -1,0 +1,61 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 2.82% 상승(9,323.34p)하며 20일 누적 +19.23%의 강한 랠리를 이어갔으나, 외국인(-8,602억)·기관(-2,809억) 동반 순매도가 지속되었습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "원/달러 환율은 1,536.24원으로 강달러 기조가 유지되고 있으며, 개인이 1조 1,677억 순매수로 지수 상승을 견인했습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(추세 지속 vs. 경계)",
+      "majority": "단기 급등 이후 변동성 확대와 외국인 이탈에 주의가 필요하다는 중립·경계 의견(매크로, 수급, 이익모멘텀, 브레드스, 유동성)",
+      "minority": "섹터 담당자는 변동성 안정(VIX 16.4)과 강한 상승세를 근거로 추가 상승 여력에 무게",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "지수 급등이 과열 신호 없이 이어질지, 외국인 이탈이 추세 전환 신호가 될지 판단이 엇갈림"
+    },
+    {
+      "topic": "위험 신호 해석",
+      "majority": "외국인·기관 순매도와 고환율을 유동성 리스크로 해석(수급, 유동성, 브레드스)",
+      "minority": "리스크 담당자는 VIX·환율 안정, 단기 반전 신호 부재를 근거로 과도한 위험 신호는 없다고 판단",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "리스크 해석에 따라 방어적/공격적 포지션 전략이 달라질 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## KOSPI 9,323p, 단기 랠리 지속…외국인·기관 동반 매도 속 개인이 지수 견인\n\n오늘(6월 19일) KOSPI는 전일 대비 2.82% 상승한 9,323.34pt로 마감하며 20일 누적 +19.23%의 강한 랠리를 이어갔습니다. 반면 KOSDAQ은 -1.55%(985.45pt)로 차별화된 약세를 보였습니다. 원/달러 환율은 1,536.24원(-0.05%)로 강달러 기조가 유지되고 있습니다. 수급 측면에서는 외국인 -8,602억, 기관 -2,809억 순매도, 개인 +1조 1,677억 순매수로 개인이 지수 상승을 견인했습니다. 변동성(VIX)은 16.4로 5일 평균(16.44)과 유사한 수준을 유지했습니다.\n\n## 수급: 외국인·기관 이탈, 개인 매수 집중…지속성은 불확실\n\n외국인과 기관의 동반 순매도(-8,602억, -2,809억)는 고환율(1,536원대)과 FOMC 여진, 연준 금리 동결 등 대외 불확실성에 기인한 것으로 해석됩니다. 개인 투자자가 1조 원 이상 대규모 매수에 나서며 지수 급등을 견인했으나, [FOMC 여진에 强달러 가속](https://news.google.com/rss/articles/CBMiakFVX3lxTE9DdWhpMlNKSGNhZ3FyaU5EODZzMmtTVzVKeGxBeW1JUUVSWThiSE5jNWZqRHVWa3dSQjdYTVBwd0pxZ01VRUJmVlROejlUSDFkSWFVSVh1ZUJUUjNuT0V1VzBUX2l0TmlvUkE?oc=5) 등 환율 부담이 지속되는 한 개인 매수만으로 수급 안정성을 담보하긴 어렵다는 의견이 우세합니다. KOSDAQ의 상대적 약세와 Breadth(시장 내 확산) 약화도 주목할 필요가 있습니다.\n\n## 오늘의 핵심 이슈: 강달러·연준·AI/반도체·에너지 정책\n\n오늘 뉴스 헤드라인은 [FOMC 여진에 强달러 가속](https://news.google.com/rss/articles/CBMiakFVX3lxTE9DdWhpMlNKSGNhZ3FyaU5EODZzMmtTVzVKeGxBeW1JUUVSWThiSE5jNWZqRHVWa3dSQjdYTVBwd0pxZ01VRUJmVlROejlUSDFkSWFVSVh1ZUJUUjNuT0V1VzBUX2l0TmlvUkE?oc=5), [연준 금리 동결 소화](https://news.google.com/rss/articles/CBMiXEFVX3lxTE1sMnBVb3RNTDBDTWdFcXhjS0NjSHRic21Kdk45ZXJCa202RHBrTDBZejEtTllzWnJOc1FfbWJNSU8yNVJZWDA4UHd5WFh1VG5jMmRteFNQZGllMFp0?oc=5), [AI가 쓸어간 반도체](https://news.google.com/rss/articles/CBMiWkFVX3lxTE1ubXVCZ0lQZDFPSU5ndVRSbXVRVUdCSU1qdHIxS2w1QjR2UF8tLWc3WlZURzVCUmEwX0paX2JJYmJUUnNRTjRueFZqWlpZQUNHNmFrRU5meXh1QdIBVEFVX3lxTFAtdkt6QzdTZTB1T2RqRldWOVZTdEVLdVdKWkJaUTVIdUtkemRTUXFQQUVHdnozNHVwbUR3SnRGdUNTTTdLUnRKNDJHWVpSYU9EUDRIUw?oc=5), [LNG-LPG 무관세 정책](https://news.google.com/rss/articles/CBMidkFVX3lxTE1hWHlJZ0ZCSlR1cVk5OVI2WW5zWkxCSGhyd0xNMlNjM2JkbmdOMjVzN01BbmhsRkJOQ3NaeTduR3pWenBaZDROZjJfWTJqaHd5SUowdExyQjJ5V1lHUW1iNlFaeFlSazBRODdXekVFeURFNWluZ3fSAWZBVV95cUxPdkZzWnljdWtfeldyUkNfbEdZdHlGUXRkd3laUWhjNjJ0d2hkR0hOT2Q1TG8wZjdiZTIyMllLdWkwcWJ4SmstUkRWVVVGSG1JVHhBU2RoN1k2TkpqSElEX1NEV25qUUE?oc=5) 등 대외 변수에 집중되어 있습니다. 미국 나스닥 등 주요 지수의 강세에도 불구하고, 국내 시장은 외국인 이탈과 환율 부담이 부각되는 모습입니다. 반도체/AI 관련주는 실적 모멘텀 기대감이 유지되고 있으나, 정책·금리·환율 등 불확실성이 상존합니다.\n\n## 전망 및 체크포인트: 외국인 매도·환율 안정이 관건\n\n지수는 단기 과열 신호 없이 강세를 이어가고 있으나, 외국인·기관 순매도와 고환율이 지속된다면 개인 매수만으로 랠리 지속은 한계가 있을 수 있습니다. Breadth 약화, KOSDAQ 부진 등 내부 확산 부족도 주목해야 합니다. 향후 외국인 매도세 완화, 환율 안정(1,500원대 복귀)이 확인되면 추가 상승 모멘텀이 강화될 수 있습니다. 반대로 외국인 매도세가 확대되거나 환율이 추가 상승(원화 약세)할 경우, 오늘의 중립적 경계 시나리오가 무너질 수 있으니 유의해야 합니다."
+}

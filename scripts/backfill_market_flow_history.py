@@ -62,14 +62,21 @@ def _iter_dates(start_d: date, end_d: date) -> list[date]:
     return out
 
 
-def _aggregate(flow: dict) -> tuple[float, float, float]:
+def _aggregate(flow: dict) -> tuple[tuple[float, float, float], tuple[float, float, float]]:
+    """Return (total, kospi_only) each as (foreign, institution, retail) in 억원."""
     markets = (flow or {}).get("market", {}) or {}
     kospi = markets.get("KOSPI", {}) or {}
     kosdaq = markets.get("KOSDAQ", {}) or {}
-    foreign_total = int(kospi.get("foreign", 0)) + int(kosdaq.get("foreign", 0))
-    institution_total = int(kospi.get("institution", 0)) + int(kosdaq.get("institution", 0))
-    retail_total = int(kospi.get("individual", 0)) + int(kosdaq.get("individual", 0))
-    return float(foreign_total), float(institution_total), float(retail_total)
+    kospi_f = float(kospi.get("foreign", 0))
+    kospi_i = float(kospi.get("institution", 0))
+    kospi_r = float(kospi.get("individual", 0))
+    total = (
+        kospi_f + float(kosdaq.get("foreign", 0)),
+        kospi_i + float(kosdaq.get("institution", 0)),
+        kospi_r + float(kosdaq.get("individual", 0)),
+    )
+    kospi_only = (kospi_f, kospi_i, kospi_r)
+    return total, kospi_only
 
 
 def _try_source_once(source: str, target: date) -> tuple[dict | None, str | None]:
@@ -157,10 +164,15 @@ def main() -> None:
                 foreign_net = None
                 institution_net = None
                 retail_net = None
+                kospi_foreign_net = None
+                kospi_institution_net = None
+                kospi_retail_net = None
                 missing += 1
                 print(f"flow_missing[{ds}]: {reason}")
             else:
-                foreign_net, institution_net, retail_net = _aggregate(flow)
+                (foreign_net, institution_net, retail_net), (
+                    kospi_foreign_net, kospi_institution_net, kospi_retail_net
+                ) = _aggregate(flow)
                 curr = (foreign_net, institution_net, retail_net)
                 # 공휴일 휴리스틱: 직전 거래일과 수치가 완전히 동일하면
                 # 소스가 전일 데이터를 그대로 반환한 것으로 간주하고 NULL 처리.
@@ -168,6 +180,9 @@ def main() -> None:
                     foreign_net = None
                     institution_net = None
                     retail_net = None
+                    kospi_foreign_net = None
+                    kospi_institution_net = None
+                    kospi_retail_net = None
                     holiday_skipped += 1
                     missing += 1
                     print(f"flow_holiday_skip[{ds}]: values identical to prev trading day (market closed?)")
@@ -175,16 +190,23 @@ def main() -> None:
                     prev_values = curr
             if args.dry_run:
                 print(
-                    f"{ds} foreign={foreign_net} institution={institution_net} "
-                    f"retail={retail_net}"
+                    f"{ds} foreign={foreign_net} institution={institution_net} retail={retail_net} "
+                    f"| kospi_foreign={kospi_foreign_net} kospi_institution={kospi_institution_net} "
+                    f"kospi_retail={kospi_retail_net}"
                 )
             else:
                 conn.execute(
                     """
                     INSERT INTO market_flow_daily (
-                        date, foreign_net, institution_net, retail_net, foreign_20d, foreign_60d, created_at
+                        date, foreign_net, institution_net, retail_net,
+                        foreign_20d, foreign_60d,
+                        kospi_foreign_net, kospi_institution_net, kospi_retail_net,
+                        created_at
                     ) VALUES (
-                        :date, :foreign_net, :institution_net, :retail_net, :foreign_20d, :foreign_60d, :created_at
+                        :date, :foreign_net, :institution_net, :retail_net,
+                        :foreign_20d, :foreign_60d,
+                        :kospi_foreign_net, :kospi_institution_net, :kospi_retail_net,
+                        :created_at
                     )
                     ON CONFLICT(date) DO UPDATE SET
                         foreign_net=excluded.foreign_net,
@@ -192,6 +214,9 @@ def main() -> None:
                         retail_net=excluded.retail_net,
                         foreign_20d=excluded.foreign_20d,
                         foreign_60d=excluded.foreign_60d,
+                        kospi_foreign_net=excluded.kospi_foreign_net,
+                        kospi_institution_net=excluded.kospi_institution_net,
+                        kospi_retail_net=excluded.kospi_retail_net,
                         created_at=excluded.created_at;
                     """,
                     {
@@ -201,6 +226,9 @@ def main() -> None:
                         "retail_net": retail_net,
                         "foreign_20d": None,
                         "foreign_60d": None,
+                        "kospi_foreign_net": kospi_foreign_net,
+                        "kospi_institution_net": kospi_institution_net,
+                        "kospi_retail_net": kospi_retail_net,
                         "created_at": now_iso,
                     },
                 )

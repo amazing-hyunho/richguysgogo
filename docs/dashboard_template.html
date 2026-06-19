@@ -202,6 +202,23 @@
     .state-card .sv.status-neg .status-line { color: var(--red); }
     .state-card .sv.status-neu .status-line { color: #cbd5e1; }
     .state-card .health-derived { display: none; }
+    /* ── 최근 5거래일 수급 패널 ── */
+    .flow5d-panel { margin-top: 16px; padding: 14px 16px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 12px; }
+    .flow5d-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 8px; flex-wrap: wrap; }
+    .flow5d-head-title { font-size: 13px; font-weight: 700; color: #dbe4f0; }
+    .flow5d-head-sub { font-size: 11px; color: var(--muted); }
+    .flow5d-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .flow5d-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 280px; }
+    .flow5d-table th { padding: 5px 10px; text-align: right; color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .flow5d-table th:first-child { text-align: left; }
+    .flow5d-table td { padding: 7px 10px; text-align: right; border-bottom: 1px solid rgba(71,85,105,0.35); font-size: 13px; font-weight: 600; white-space: nowrap; }
+    .flow5d-table td:first-child { text-align: left; color: var(--muted); font-weight: 400; font-size: 12px; }
+    .flow5d-table tbody tr:last-child td { border-bottom: none; }
+    .flow5d-table tfoot td { border-top: 1px solid var(--line); padding-top: 8px; font-size: 12px; font-weight: 700; }
+    .flow5d-table tfoot td:first-child { color: #94a3b8; }
+    .flow5d-pos { color: var(--green); }
+    .flow5d-neg { color: var(--red); }
+    .flow5d-neu { color: #cbd5e1; }
     .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 12px; border-radius: 12px; border: 1px solid var(--line); }
     table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 520px; }
     th, td { border-bottom: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
@@ -476,6 +493,28 @@
           <div class="index-grid" id="equity-us-index-cards"></div>
         </div>
       </div>
+      <!-- ── 최근 5거래일 수급 ── -->
+      <div class="flow5d-panel" id="flow5d-panel" aria-label="최근 5거래일 수급">
+        <div class="flow5d-head">
+          <span class="flow5d-head-title">📊 최근 5거래일 KOSPI 수급 (억원)</span>
+          <span class="flow5d-head-sub">KOSPI 단독 · 순매수(+) / 순매도(-)</span>
+        </div>
+        <div class="flow5d-table-wrap">
+          <table class="flow5d-table" aria-label="5거래일 수급 상세">
+            <thead>
+              <tr>
+                <th>날짜</th>
+                <th>외국인</th>
+                <th>기관</th>
+                <th>개인</th>
+              </tr>
+            </thead>
+            <tbody id="flow5d-body"></tbody>
+            <tfoot id="flow5d-foot"></tfoot>
+          </table>
+        </div>
+      </div>
+
       <div id="market-trend-chart-block" class="market-trend-chart-block" aria-label="지수 추세">
         <h4 class="mtc-title">핵심 추세: KOSPI / 나스닥 (분리 차트)</h4>
         <p class="mtc-sub">거래일 기준 일별 지수 레벨을 모드에 맞게 묶습니다. 일별(1주)=최근 7거래일 그대로, 주별(1달)=최근 30거래일을 약 5거래일마다 대표값, 월별(1년)=최근 365거래일을 월(YYYY-MM)별 말일에 가장 가까운 행으로 요약.</p>
@@ -2443,6 +2482,53 @@ function buildEquityMarketConclusionBullets(md, dm, mode, latestNet, sum5) {
   return [trendKo, riskKo, behave].map(s => clipEquitySummaryLine(s, 160));
 }
 // ══════════════════════════════════════════════════════════════
+// 최근 5거래일 수급 테이블
+// ══════════════════════════════════════════════════════════════
+function buildFlow5dPanel() {
+  const tbody = document.getElementById('flow5d-body');
+  const tfoot = document.getElementById('flow5d-foot');
+  if (!tbody || !tfoot) return;
+  const flowRows = safeArr(data.market_flow_daily);
+  const last5 = flowRows.slice(-5);   // build_dashboard.py가 거래일 필터 적용
+
+  function fmtCell(v) {
+    if (v == null || !Number.isFinite(v)) return { text: '—', cls: 'flow5d-neu' };
+    const sign = v > 0 ? '+' : '';
+    const cls  = v > 0 ? 'flow5d-pos' : v < 0 ? 'flow5d-neg' : 'flow5d-neu';
+    return { text: sign + formatNumberWithComma(v, 0), cls };
+  }
+
+  let sumF = 0, sumI = 0, sumP = 0;
+  // 최신→과거 순(역순)으로 표시
+  const reversed = last5.slice().reverse();
+  tbody.innerHTML = reversed.map(r => {
+    // KOSPI 단독 컬럼 우선, 없으면 '—' 표시
+    const f = typeof r.kospi_foreign_net === 'number' ? r.kospi_foreign_net : null;
+    const i = typeof r.kospi_institution_net === 'number' ? r.kospi_institution_net : null;
+    const p = typeof r.kospi_retail_net === 'number' ? r.kospi_retail_net : null;
+    if (f != null) sumF += f;
+    if (i != null) sumI += i;
+    if (p != null) sumP += p;
+    const cf = fmtCell(f), ci = fmtCell(i), cp = fmtCell(p);
+    const dateLabel = r.date ? r.date.slice(5).replace('-', '/') : '-';
+    return `<tr>
+      <td>${escapeHtml(dateLabel)}</td>
+      <td class="${cf.cls}">${cf.text}</td>
+      <td class="${ci.cls}">${ci.text}</td>
+      <td class="${cp.cls}">${cp.text}</td>
+    </tr>`;
+  }).join('');
+
+  const sf = fmtCell(sumF), si = fmtCell(sumI), sp = fmtCell(sumP);
+  tfoot.innerHTML = `<tr>
+    <td>5일 합계</td>
+    <td class="${sf.cls}">${sf.text}</td>
+    <td class="${si.cls}">${si.text}</td>
+    <td class="${sp.cls}">${sp.text}</td>
+  </tr>`;
+}
+
+// ══════════════════════════════════════════════════════════════
 // Glance Cards: 시장 신호등 · Watch TOP3 · 헤드라인
 // ══════════════════════════════════════════════════════════════
 function buildSignalLights() {
@@ -2736,6 +2822,7 @@ function renderWatchTop3() {
     ].map(indexCardHtml).join('');
   }
 
+  buildFlow5dPanel();
   renderMarketTrendChart('w1m');
   setupMarketTrendToggles();
   renderForeignFlowBlock();
