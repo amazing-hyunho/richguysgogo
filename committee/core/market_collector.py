@@ -58,11 +58,24 @@ def persist_snapshot_metrics(
     foreign_net_db = snapshot.flow_summary.foreign_net if status.get("flows") == "OK" else None
     institution_net_db = snapshot.flow_summary.institution_net if status.get("flows") == "OK" else None
     retail_net_db = snapshot.flow_summary.retail_net if status.get("flows") == "OK" else None
+    # KOSPI 단독 수급 (korean_market_flow.market["KOSPI"])
+    kospi_f_db: float | None = None
+    kospi_i_db: float | None = None
+    kospi_r_db: float | None = None
+    if status.get("flows") == "OK" and snapshot.korean_market_flow is not None:
+        _kospi = snapshot.korean_market_flow.market.get("KOSPI")
+        if _kospi is not None:
+            kospi_f_db = float(_kospi.foreign)
+            kospi_i_db = float(_kospi.institution)
+            kospi_r_db = float(_kospi.individual)
     safe_upsert_market_flow_daily(
         date=market_date.isoformat(),
         foreign_net=foreign_net_db,
         institution_net=institution_net_db,
         retail_net=retail_net_db,
+        kospi_foreign_net=kospi_f_db,
+        kospi_institution_net=kospi_i_db,
+        kospi_retail_net=kospi_r_db,
     )
     rate_check = check_bok_base_rate(market_date=market_date)
     domestic_base_rate = rate_check.value

@@ -233,29 +233,11 @@
     .eco-card h4 { margin: 0 0 8px 0; font-size: 13px; color: #fff; }
     .eco-card .muted { font-size: 11px; color: var(--muted); line-height: 1.4; }
     .empty-state { color: var(--muted); font-size: 13px; padding: 10px 0; }
-    .sector-top-highlights { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 4px; }
-    @media (min-width: 720px) { .sector-top-highlights { grid-template-columns: repeat(3, 1fr); } }
-    .sector-top-card { background: linear-gradient(145deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.85)); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 14px; padding: 14px; min-width: 0; box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.5); }
-    .sector-top-card.rank-1 { border-color: rgba(52, 211, 153, 0.45); box-shadow: 0 0 24px rgba(52, 211, 153, 0.12); }
-    .sector-top-card.rank-2, .sector-top-card.rank-3 { border-color: rgba(56, 189, 248, 0.35); }
-    .sector-top-card .rank-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
-    .sector-top-card .sector-name { font-size: 15px; font-weight: 700; color: #f8fafc; line-height: 1.3; word-break: break-word; }
-    .sector-top-card .meta-row { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-    .sector-top-card .score-pill { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); color: #7dd3fc; }
-    .sector-summary-block { margin-top: 16px; padding: 14px 16px; background: var(--panel-soft); border: 1px solid var(--line); border-radius: 14px; }
-    .sector-summary-block #sector-focus-now { font-size: 15px; font-weight: 700; line-height: 1.5; color: #f1f5f9; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid rgba(51, 65, 85, 0.7); }
-    .sector-summary-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
-    @media (min-width: 640px) { .sector-summary-grid { grid-template-columns: 1fr 1fr; } }
-    .sector-summary-grid .sum-item .sum-h { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
-    .sector-summary-grid .sum-item .sum-body { font-size: 13px; line-height: 1.55; color: #cbd5e1; word-break: break-word; }
     .trend-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; display: inline-block; white-space: nowrap; }
     .trend-badge.strong { background: rgba(52, 211, 153, 0.18); color: #6ee7b7; border: 1px solid rgba(52, 211, 153, 0.45); }
     .trend-badge.neutral { background: rgba(245, 158, 11, 0.12); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.35); }
     .trend-badge.weak { background: rgba(248, 113, 113, 0.12); color: #fca5a5; border: 1px solid rgba(248, 113, 113, 0.35); }
     .driver-badge { font-size: 11px; padding: 2px 8px; border-radius: 8px; border: 1px solid rgba(148, 163, 184, 0.35); color: #cbd5e1; display: inline-block; white-space: nowrap; }
-    tr.sector-row-top td { background: rgba(56, 189, 248, 0.06); }
-    tr.sector-row-top td:first-child { box-shadow: inset 3px 0 0 0 rgba(52, 211, 153, 0.65); }
-    #section-sector .table-wrap table { min-width: 640px; }
     #section-stock .table-wrap table { min-width: 640px; }
     /* ── 탭 네비게이션 ── */
     .tab-nav { display: flex; gap: 2px; margin-bottom: 0; border-bottom: 1px solid var(--line); padding-bottom: 0; flex-wrap: wrap; }
@@ -556,30 +538,6 @@
       </div>
       <div class="agent-grid equity-agent-grid-deemph" id="equity-agent-cards"></div>
       <div class="synth-line" id="equity-synth"><strong>시장 결론:</strong> -</div>
-    </section>
-
-    <section class="section" id="section-sector" aria-labelledby="heading-sector">
-      <div class="section-head">
-        <h2 id="heading-sector">4. Sector</h2>
-        <span class="section-meta" id="sector-digest-meta"></span>
-      </div>
-      <p style="font-size:13px;color:var(--muted);margin:0 0 12px 0;line-height:1.5;">지금 어디에 집중할까? 상위 섹터·Trend·Reason을 한눈에 보고, 약한 섹터는 피합니다.</p>
-      <div id="sector-top-highlights" class="sector-top-highlights" aria-label="상위 섹터 하이라이트"></div>
-      <div id="sector-summary" class="sector-summary-block">
-        <div id="sector-focus-now" role="status">-</div>
-        <div class="sector-summary-grid">
-          <div class="sum-item">
-            <div class="sum-h">자금·수급이 기우는 곳</div>
-            <div id="sector-flow-summary" class="sum-body">-</div>
-          </div>
-          <div class="sum-item">
-            <div class="sum-h">지금은 피하는 편이 나은 섹터</div>
-            <div id="sector-avoid-summary" class="sum-body">-</div>
-          </div>
-        </div>
-      </div>
-      <h3 style="font-size:13px;margin:20px 0 8px 0;color:var(--muted);font-weight:600;">섹터 생태계 (참고)</h3>
-      <div class="eco-grid" id="sector-ecosystem"></div>
     </section>
 
     </div><!-- /tab-market -->
@@ -2888,30 +2846,6 @@ function renderWatchTop3() {
 
   const eqConclusion = buildEquityMarketConclusionBullets(md, dm, mode, eqLatestForeign, eqSum5Foreign);
   document.getElementById('equity-synth').innerHTML = renderSynthBulletsHtml('시장 결론:', eqConclusion, 3);
-
-  document.getElementById('sector-digest-meta').textContent =
-    `뉴스일 ${digest.news_date || '-'} · 수집 ${digest.total_collected || 0}건`;
-
-  renderSectorTopHighlights(sectorRanked);
-  renderSectorSummaries(sectorRanked);
-
-  const eco = document.getElementById('sector-ecosystem');
-  const hotBlocks = safeArr(digest.sector_hot_topics);
-  if (!hotBlocks.length) {
-    eco.innerHTML = '<div class="empty-state">섹터 생태계 카드: 핫토픽 데이터가 없습니다.</div>';
-  } else {
-    eco.innerHTML = hotBlocks.slice(0, 6).map(block => {
-      const top = safeArr(block.topics).slice(0, 2).map(t => t.topic).join(', ');
-      const sample = safeArr(digest.top_articles).find(a => (a.topic || '').indexOf(String(block.sector || '')) !== -1) || safeArr(digest.top_articles)[0];
-      const leaders = extractNamesFromText(sample && (sample.title || sample.topic));
-      return `
-        <div class="eco-card">
-          <h4>${escapeHtml(block.sector || '섹터')}</h4>
-          <div class="muted">핵심 토픽: ${escapeHtml(top || '-')}</div>
-          <div class="muted" style="margin-top:6px;">관련 이름(추정): ${escapeHtml(leaders)}</div>
-        </div>`;
-    }).join('');
-  }
 
   // ── 탭 전환 ──────────────────────────────────────────────────
   document.querySelectorAll('.tab-btn').forEach(btn => {
