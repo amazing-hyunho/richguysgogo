@@ -1,27 +1,27 @@
 {
   "market_summary": {
-    "note": "KOSPI 2.82%, USD/KRW 1536.24. Headlines loaded. Flows loaded.",
-    "kospi_change_pct": 2.82,
+    "note": "KOSPI 0.51%, USD/KRW 1536.24. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 0.51,
     "usdkrw": 1536.236338
   },
   "flow_summary": {
-    "note": "외국인 -8602억, 기관 -2809억, 개인 +11677억 | KOSPI(외 -8267, 기관 -1361, 개인 +9875) KOSDAQ(외 -335, 기관 -1448, 개인 +1802)",
-    "foreign_net": -8602.0,
-    "institution_net": -2809.0,
-    "retail_net": 11677.0
+    "note": "외국인 +404억, 기관 -10154억, 개인 +10010억 | KOSPI(외 -406, 기관 -6997, 개인 +7773) KOSDAQ(외 +810, 기관 -3157, 개인 +2237)",
+    "foreign_net": 404.0,
+    "institution_net": -10154.0,
+    "retail_net": 10010.0
   },
   "korean_market_flow": {
     "date": "2026-06-19",
     "market": {
       "KOSPI": {
-        "individual": 9875,
-        "foreign": -8267,
-        "institution": -1361
+        "individual": 7773,
+        "foreign": -406,
+        "institution": -6997
       },
       "KOSDAQ": {
-        "individual": 1802,
-        "foreign": -335,
-        "institution": -1448
+        "individual": 2237,
+        "foreign": 810,
+        "institution": -3157
       }
     }
   },
@@ -31,11 +31,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "[환율/달러] FOMC 여진에 强달러 가속···원·달러 환율, 1530원대 출발 - 서울파이낸스",
-    "[금리/연준] 유럽증시, 미·이란 MOU 체결과 연준 금리 동결 소화하며 혼조세 마감 - 뉴스핌",
+    "[환율/달러] 달러인덱스 1년여 만에 최고…환율 1,537원 개장 - 연합뉴스TV",
+    "[금리/연준] [뉴욕 금가격] 연준 금리 인상 시사에 3%대 급락…銀은 6대%↓ - 연합인포맥스",
+    "[인플레이션] [다음주 경제일정] 美 1분기 GDP·5월 PCE 주목…마이크론 실적 '반도체주' 변수 - biz.sbs.co.kr.",
     "[미국지수] 나스닥은 급등했는데 코인은 왜 떨어졌나…연준 충격에 비트코인 6만3,000달러 공방 - 코인리더스",
-    "[반도체/AI] AI가 쓸어간 반도체…아이폰·갤럭시 등 고사양 전자기기 값 밀어 올린다 [프라이스&] - 한국경제",
-    "[에너지/원자재] 연말까지 LNG-LPG 무관세… 물가잡기 총력전 - 동아일보"
+    "[반도체/AI] 트럼프 “애플, 인텔과 협력… 미국서 반도체 생산할 것” - 동아일보"
   ],
   "watchlist": [
     "SPY",
@@ -44,10 +44,10 @@
   ],
   "markets": {
     "kr": {
-      "kospi": 9323.34,
-      "kosdaq": 985.45,
-      "kospi_pct": 2.82,
-      "kosdaq_pct": -1.55
+      "kospi": 9104.68,
+      "kosdaq": 961.1,
+      "kospi_pct": 0.51,
+      "kosdaq_pct": -3.98
     },
     "us": {
       "sp500": 7500.58,
@@ -59,7 +59,7 @@
     },
     "fx": {
       "usdkrw": 1536.236338,
-      "usdkrw_pct": -0.046786361775544204
+      "usdkrw_pct": -0.007797726962598088
     },
     "volatility": {
       "vix": 16.399999618530273
@@ -71,13 +71,13 @@
       "us2y": 3.6580002307891846,
       "spread_2_10": 0.7929995059967041,
       "vix": 16.399999618530273,
-      "dxy": 100.79100036621094,
-      "usdkrw": 1537.47998046875,
+      "dxy": 100.93000030517578,
+      "usdkrw": 1538.8299560546875,
       "vix3m": 19.56999969482422,
       "vix_term_spread": 3.1700000762939453,
-      "oil_wti": 75.18000030517578,
+      "oil_wti": 75.5999984741211,
       "russell2000": 2979.765380859375,
-      "oil_brent": 79.02999877929688
+      "oil_brent": 79.5199966430664
     },
     "monthly": {
       "unemployment_rate": 4.3,
@@ -108,20 +108,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": -0.409,
-    "liquidity_signal_score": 7.381,
+    "breadth_signal_score": -2.779,
+    "liquidity_signal_score": 7.353,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
     "lookback_days": 20,
     "sample_count": 20,
-    "kospi_5d_cum_pct": 13.96,
-    "kospi_20d_cum_pct": 19.23,
-    "kosdaq_5d_cum_pct": -4.257,
-    "kospi_abs_move_5d_avg": 2.792,
+    "kospi_5d_cum_pct": 11.65,
+    "kospi_20d_cum_pct": 16.92,
+    "kosdaq_5d_cum_pct": -6.687,
+    "kospi_abs_move_5d_avg": 2.33,
     "usdkrw_5d_change_pct": 1.515,
     "vix_5d_avg": 16.44,
     "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=+19.23%, vol20d=3.73, reversal=false"
+    "note": "rolling_20d: kospi20d=+16.92%, vol20d=3.71, reversal=false"
   }
 }
