@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import List
 
 from committee.core.report_renderer import Report, build_report_markdown
+from committee.agents.greed_pot import GreedPotResult
 from committee.schemas.committee_result import CommitteeResult
 from committee.schemas.debate import DebateRound
 from committee.schemas.snapshot import Snapshot
@@ -22,6 +23,7 @@ def save_run(
     committee_result: CommitteeResult,
     report: Report,
     debate_round: DebateRound | None = None,
+    greed_pot: GreedPotResult | None = None,
 ) -> Path:
     """Persist run artifacts to a date-based folder."""
     run_dir = base_dir / market_date.isoformat()
@@ -32,6 +34,8 @@ def save_run(
     if debate_round is not None:
         _write_json(run_dir / "debate_round.json", debate_round.model_dump())
     _write_json(run_dir / "committee_result.json", committee_result.model_dump())
+    if greed_pot is not None:
+        _write_json(run_dir / "greed_pot.json", greed_pot.model_dump())
 
     report_md = build_report_markdown(report)
     (run_dir / "report.md").write_text(report_md, encoding="utf-8")

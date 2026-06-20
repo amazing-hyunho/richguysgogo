@@ -24,7 +24,14 @@ from committee.core.thesis_monitor import update_thesis_signals
 
 def _build_dashboard() -> None:
     command = [sys.executable, str(ROOT_DIR / "scripts" / "build_dashboard.py")]
-    result = subprocess.run(command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    result = subprocess.run(
+        command,
+        cwd=str(ROOT_DIR),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or "dashboard_build_failed")
     if result.stdout.strip():

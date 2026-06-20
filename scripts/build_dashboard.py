@@ -380,6 +380,27 @@ def load_latest_korean_market_flow_breakdown() -> dict[str, object]:
     }
 
 
+def load_latest_greed_pot() -> dict[str, object]:
+    """Load latest 탐욕의 항아리 LLM output from date-based run artifacts."""
+    latest_path = max(list_run_paths(), default=None)
+    if latest_path is None:
+        return {"market_date": "-", "available": False}
+    payload = load_run_payload(latest_path) or {}
+    market_date = str(payload.get("market_date", latest_path.stem))
+    pot_path = RUNS_DIR / market_date / "greed_pot.json"
+    if not pot_path.exists():
+        return {"market_date": market_date, "available": False}
+    try:
+        pot = json.loads(pot_path.read_text(encoding="utf-8"))
+        if isinstance(pot, dict):
+            pot["market_date"] = market_date
+            pot["available"] = True
+            return pot
+    except Exception as exc:
+        return {"market_date": market_date, "available": False, "error": str(exc)}
+    return {"market_date": market_date, "available": False}
+
+
 def load_korean_market_flow_compare() -> dict[str, object]:
     """Load current/previous Korean market flow snapshots for day-over-day comparison."""
     run_paths = list_run_paths()
@@ -662,6 +683,7 @@ def main() -> None:
             "latest_news_digest": load_latest_news_digest(),
             "news_history": load_news_history(),
             "latest_korean_market_flow": load_latest_korean_market_flow_breakdown(),
+            "greed_pot": load_latest_greed_pot(),
             "korean_market_flow_compare": load_korean_market_flow_compare(),
             "latest_policy_rates": load_latest_policy_rates(),
             "stock_consensus": load_stock_consensus_summary(),

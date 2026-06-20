@@ -9,6 +9,7 @@ from typing import List
 import os
 
 from committee.agents.flow_stub import FlowStub
+from committee.agents.greed_pot import GreedPotAgent
 from committee.agents.debate_stub import DebateStub
 from committee.agents.earnings_stub import EarningsStub
 from committee.agents.breadth_stub import BreadthStub
@@ -121,7 +122,11 @@ class DailyPipeline:
         committee_result = run_committee(snapshot, stances, debate_round=debate_round)
         trace.log("pipeline_stage", {"stage": "committee_result_built", "consensus": committee_result.consensus})
 
-        print("[pipeline] stage 5/6: build report")
+        print("[pipeline] stage 5/7: run greed pot")
+        greed_pot = GreedPotAgent().run(snapshot, stances)
+        trace.log("pipeline_stage", {"stage": "greed_pot_built", "fallback_used": greed_pot.fallback_used})
+
+        print("[pipeline] stage 6/7: build report")
         report = build_report(
             market_date=market_date.isoformat(),
             snapshot=snapshot,
@@ -131,8 +136,17 @@ class DailyPipeline:
         )
 
         output_path = output_dir / f"{market_date.isoformat()}.json"
-        print("[pipeline] stage 6/6: persist artifacts")
+        print("[pipeline] stage 7/7: persist artifacts")
         render_report(report, output_path)
-        run_dir = save_run(output_dir, market_date, snapshot, stances, committee_result, report, debate_round=debate_round)
+        run_dir = save_run(
+            output_dir,
+            market_date,
+            snapshot,
+            stances,
+            committee_result,
+            report,
+            debate_round=debate_round,
+            greed_pot=greed_pot,
+        )
         trace.log("pipeline_stage", {"stage": "artifacts_saved", "run_dir": str(run_dir), "report_json": str(output_path)})
         return report

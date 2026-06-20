@@ -300,6 +300,27 @@
     .ai-stock-news-item a { font-size: 11px; color: #7dd3fc; text-decoration: none; border-bottom: 1px dashed rgba(125, 211, 252, 0.4); }
     .ai-stock-news-item a:hover { color: #bae6fd; }
     .ai-stock-empty { color: #94a3b8; font-size: 14px; line-height: 1.7; padding: 24px 16px; text-align: center; background: rgba(15, 23, 42, 0.45); border: 1px dashed rgba(51, 65, 85, 0.7); border-radius: 12px; }
+    /* ── 탐욕의 항아리 탭 ── */
+    .greed-hero { padding: 18px 20px; margin-bottom: 18px; border-radius: 16px; background: radial-gradient(circle at 12% 0%, rgba(245, 158, 11, 0.22), transparent 28%), linear-gradient(135deg, rgba(88, 28, 135, 0.55), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(245, 158, 11, 0.28); box-shadow: 0 18px 42px rgba(15, 23, 42, 0.35); }
+    .greed-hero-title { font-size: 22px; font-weight: 900; color: #fde68a; margin: 0 0 6px 0; letter-spacing: -0.01em; }
+    .greed-hero-sub { font-size: 13px; color: #d8b4fe; line-height: 1.6; margin: 0; }
+    .greed-story { font-size: 14px; line-height: 1.75; color: #f8fafc; padding: 14px 16px; border-radius: 12px; background: rgba(15, 23, 42, 0.58); border: 1px solid rgba(168, 85, 247, 0.28); margin-bottom: 14px; }
+    .greed-chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 18px; }
+    .greed-chip { font-size: 12px; font-weight: 800; color: #fde68a; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 999px; padding: 5px 10px; }
+    .greed-hypothesis-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-bottom: 18px; }
+    @media (min-width: 980px) { .greed-hypothesis-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .greed-card { background: linear-gradient(150deg, rgba(30, 41, 59, 0.92), rgba(88, 28, 135, 0.22)); border: 1px solid rgba(168, 85, 247, 0.28); border-radius: 14px; padding: 16px; min-width: 0; }
+    .greed-card h3 { margin: 0 0 8px; color: #fef3c7; font-size: 15px; line-height: 1.35; }
+    .greed-card .greed-conf { display: inline-flex; margin-bottom: 10px; padding: 3px 8px; border-radius: 999px; font-size: 11px; font-weight: 900; color: #111827; background: #fbbf24; }
+    .greed-card .greed-label { font-size: 11px; color: #c084fc; font-weight: 800; margin-top: 10px; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.04em; }
+    .greed-card .greed-text { font-size: 13px; color: #dbe4f0; line-height: 1.58; word-break: keep-all; overflow-wrap: anywhere; }
+    .greed-candidates { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .greed-candidate { font-size: 12px; color: #bae6fd; background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.22); border-radius: 999px; padding: 4px 8px; }
+    .greed-bottom-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 760px) { .greed-bottom-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    .greed-note { background: var(--panel-soft); border: 1px solid rgba(168, 85, 247, 0.22); border-radius: 12px; padding: 13px 14px; }
+    .greed-note h4 { margin: 0 0 8px; color: #d8b4fe; font-size: 13px; }
+    .greed-note p { margin: 0; color: #cbd5e1; font-size: 13px; line-height: 1.6; }
     /* 종목탭 - 필터 바 */
     .stock-tab-filter { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; margin-bottom: 18px; }
     .stock-tab-filter input[type=text] { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; color: #e2e8f0; font: inherit; font-size: 13px; padding: 7px 12px; width: 200px; outline: none; }
@@ -421,6 +442,7 @@
       <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
       <button class="tab-btn" data-tab="ai-stock" role="tab" aria-selected="false">🤖 AI 종목분석</button>
+      <button class="tab-btn" data-tab="greed-pot" role="tab" aria-selected="false">🏺 탐욕의 항아리</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
       <button class="tab-btn" data-tab="thesis" role="tab" aria-selected="false">🧭 Thesis Monitor</button>
       <button class="tab-btn" data-tab="retire" role="tab" aria-selected="false">🏖️ 은퇴 준비</button>
@@ -728,6 +750,24 @@
         </div>
       </section>
     </div><!-- /tab-ai-stock -->
+
+    <!-- ══ 탭: 탐욕의 항아리 ════════════════════════════════════ -->
+    <div id="tab-greed-pot" class="tab-pane" role="tabpanel">
+      <section class="section" id="section-greed-pot">
+        <div class="section-head">
+          <h2>🏺 탐욕의 항아리</h2>
+          <span class="section-meta" id="greed-pot-meta">수급·뉴스·거시 재료 기반 상상 시나리오</span>
+        </div>
+        <div class="greed-hero">
+          <p class="greed-hero-title">항아리가 끓으면, 시장의 그림자가 먼저 떠오릅니다.</p>
+          <p class="greed-hero-sub">
+            이 탭은 투자 추천이 아니라 LLM의 비주류 가설 생성기입니다.
+            수집된 지표를 재료로 다음 수혜 가능성을 장난스럽게, 하지만 검증 가능하게 속삭입니다.
+          </p>
+        </div>
+        <div id="greed-pot-body"></div>
+      </section>
+    </div><!-- /tab-greed-pot -->
 
     <!-- ══ 탭 3: 뉴스 타임라인 ══════════════════════════════════ -->
     <div id="tab-news" class="tab-pane" role="tabpanel">
@@ -3324,6 +3364,65 @@ function renderWatchTop3() {
 
   // 초기 카운트 표시
   filterStockTables();
+
+  // ── 탐욕의 항아리 탭 ─────────────────────────────────────────
+  (function renderGreedPot() {
+    const body = document.getElementById('greed-pot-body');
+    const meta = document.getElementById('greed-pot-meta');
+    if (!body) return;
+    const pot = data.greed_pot || {};
+    const available = !!pot.available && safeArr(pot.hypotheses).length > 0;
+    if (meta) {
+      const date = pot.market_date || '-';
+      const fb = pot.fallback_used ? ' · 예비 모드' : '';
+      meta.textContent = `${date} 기준 · 수급/뉴스/거시 재료 기반${fb}`;
+    }
+    if (!available) {
+      body.innerHTML = `
+        <div class="greed-story">
+          항아리가 아직 비어 있습니다. <code>python scripts/run_nightly.py</code> 실행 후
+          <code>runs/YYYY-MM-DD/greed_pot.json</code>이 생기면 악마가 속삭이기 시작합니다.
+        </div>`;
+      return;
+    }
+    const themes = safeArr(pot.hidden_themes).map(t => `<span class="greed-chip">${escapeHtml(t)}</span>`).join('');
+    const cards = safeArr(pot.hypotheses).map((h, idx) => {
+      const candidates = safeArr(h.candidate_stocks).map(s => `<span class="greed-candidate">${escapeHtml(s)}</span>`).join('');
+      const conf = h.confidence || 'LOW';
+      return `
+        <article class="greed-card">
+          <h3>${idx + 1}. ${escapeHtml(h.theme || '이름 없는 욕망')}</h3>
+          <span class="greed-conf">CONFIDENCE ${escapeHtml(conf)}</span>
+          <div class="greed-label">겉으로 보이는 승자</div>
+          <div class="greed-text">${escapeHtml(h.visible_winner || '-')}</div>
+          <div class="greed-label">항아리가 보는 그림자 수혜자</div>
+          <div class="greed-text">${escapeHtml(h.hidden_beneficiary || '-')}</div>
+          <div class="greed-label">감시 후보</div>
+          <div class="greed-candidates">${candidates || '<span class="greed-candidate">관찰 필요</span>'}</div>
+          <div class="greed-label">속삭임</div>
+          <div class="greed-text">${escapeHtml(h.narrative || '-')}</div>
+          <div class="greed-label">갑자기 불 붙는 촉매</div>
+          <div class="greed-text">${escapeHtml(h.possible_catalyst || '-')}</div>
+          <div class="greed-label">시장이 놓칠 수 있는 이유</div>
+          <div class="greed-text">${escapeHtml(h.why_market_may_miss_it || '-')}</div>
+          <div class="greed-label">깨지는 조건</div>
+          <div class="greed-text">${escapeHtml(h.invalidation_condition || '-')}</div>
+        </article>`;
+    }).join('');
+    const err = pot.fallback_used && pot.error
+      ? `<div class="greed-note"><h4>항아리 상태</h4><p>${escapeHtml(String(pot.error).slice(0, 220))}</p></div>`
+      : '';
+    body.innerHTML = `
+      <div class="greed-story">${escapeHtml(pot.market_story || '항아리가 조용합니다.')}</div>
+      <div class="greed-chip-row">${themes}</div>
+      <div class="greed-hypothesis-grid">${cards}</div>
+      <div class="greed-bottom-grid">
+        <div class="greed-note"><h4>삐딱한 결론</h4><p>${escapeHtml(pot.contrarian_view || '-')}</p></div>
+        <div class="greed-note"><h4>와일드카드</h4><p>${escapeHtml(pot.wildcard_scenario || '-')}</p></div>
+        <div class="greed-note"><h4>현실 체크</h4><p>${escapeHtml(pot.reality_check || '-')}</p></div>
+        ${err}
+      </div>`;
+  })();
 
   // ── AI 종목분석 탭 ────────────────────────────────────────────
   (function renderAiStockAnalysis() {
