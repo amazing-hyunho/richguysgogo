@@ -3512,6 +3512,52 @@ function renderWatchTop3() {
       });
       return `<div class="stock-thesis-links"><strong>연결된 활성 가설</strong><br>${escapeHtml(lines.join('\n'))}</div>`;
     }
+    function normalizeSectorText(text) {
+      return String(text || '').toLowerCase().replace(/[\s_\-·/]+/g, '');
+    }
+    const observedSectors = safeArr(data.latest_news_digest && data.latest_news_digest.sector_hot_topics);
+    function mapToObservedSector(userSector, stockName, ticker) {
+      const query = normalizeSectorText([userSector, stockName, ticker].filter(Boolean).join(' '));
+      if (!query || !observedSectors.length) return null;
+      let best = null;
+      let bestScore = 0;
+      observedSectors.forEach(block => {
+        const sector = String(block.sector || '');
+        const topics = safeArr(block.topics);
+        const haystack = normalizeSectorText([
+          sector,
+          ...topics.map(t => t.topic),
+          ...topics.map(t => t.title),
+        ].join(' '));
+        let score = 0;
+        if (sector && query.includes(normalizeSectorText(sector))) score += 5;
+        if (haystack && haystack.includes(query)) score += 4;
+        const tokens = String(userSector || '').split(/[\s,./·_-]+/).filter(Boolean);
+        tokens.forEach(tok => {
+          const n = normalizeSectorText(tok);
+          if (n && haystack.includes(n)) score += 2;
+        });
+        if (score > bestScore) {
+          bestScore = score;
+          best = { sector, total_count: block.total_count || 0, topics: topics.slice(0, 3), score };
+        }
+      });
+      return bestScore > 0 ? best : null;
+    }
+    function sectorMappingHtml(stock) {
+      const ticker = String(stock.ticker || '').toUpperCase();
+      const name = String(stock.name || '');
+      const sector = String(stock.sector || '').trim();
+      if (!sector) {
+        return `<div class="stock-thesis-links"><strong>섹터 매핑</strong><br>섹터 미지정 · <code>/stock add ${escapeHtml(ticker)} ${escapeHtml(name)} ${escapeHtml(stock.market || '')} 섹터명</code> 형태로 추가하면 현재 관찰 섹터와 연결됩니다.</div>`;
+      }
+      const mapped = mapToObservedSector(sector, name, ticker);
+      if (!mapped) {
+        return `<div class="stock-thesis-links"><strong>섹터 매핑</strong><br>사용자 지정: ${escapeHtml(sector)} · 현재 뉴스에서 매칭되는 관찰 섹터 없음</div>`;
+      }
+      const topicText = safeArr(mapped.topics).map(t => `${t.topic}(${t.count || 0})`).join(', ');
+      return `<div class="stock-thesis-links"><strong>섹터 매핑</strong><br>사용자 지정: ${escapeHtml(sector)} → 관찰 섹터: ${escapeHtml(mapped.sector)} · ${escapeHtml(topicText || '토픽 없음')}</div>`;
+    }
 
     listEl.innerHTML = stocks.map(stock => {
       const ticker = String(stock.ticker || '').toUpperCase();
@@ -3524,6 +3570,7 @@ function renderWatchTop3() {
       const articles = safeArr(stock.articles);
       const c = consensusMap[ticker];
       const thesisHtml = thesisLinksForTicker(ticker);
+      const sectorMapHtml = sectorMappingHtml(stock);
 
       let consensusHtml = '<div class="ai-stock-consensus"><div class="c-item"><div class="c-label">컨센서스</div><div class="c-val" style="color:#64748b;">데이터 없음</div></div></div>';
       if (c) {
@@ -3570,6 +3617,7 @@ function renderWatchTop3() {
           ${sector ? `<span class="thesis-pill">${escapeHtml(sector)}</span>` : ''}
         </div>
         ${consensusHtml}
+        ${sectorMapHtml}
         ${thesisHtml}
         <h4 class="ai-stock-news-title">📰 최근 뉴스 (${articles.length}건)</h4>
         <div class="ai-stock-news-list">${newsHtml}</div>
