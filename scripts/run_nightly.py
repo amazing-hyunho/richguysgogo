@@ -44,7 +44,6 @@ def _auto_commit(market_date: date, include_dashboard: bool) -> bool:
     targets = [
         f"runs/{date_s}.json",
         f"runs/{date_s}",
-        "data/investment.db",
     ]
     if include_dashboard:
         targets.append("docs/dashboard.html")
