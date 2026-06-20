@@ -603,6 +603,7 @@ def load_stock_news_summary(per_ticker: int = 15) -> dict[str, object]:
                         "ticker": ticker,
                         "name": stock.get("name", ""),
                         "market": stock.get("market", ""),
+                        "sector": stock.get("sector", ""),
                         "articles": [dict(r) for r in rows],
                     }
                 )

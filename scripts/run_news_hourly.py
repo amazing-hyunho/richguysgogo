@@ -16,6 +16,7 @@ if str(ROOT_DIR) not in sys.path:
 from committee.tools.news_digest import build_topic_digest, recommended_topic_queries
 from committee.core.market_collector import persist_snapshot_metrics
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
+from committee.core.thesis_monitor import update_thesis_signals
 
 
 def _digest_signature(payload: dict[str, object]) -> dict[str, object]:
@@ -72,6 +73,17 @@ def _build_dashboard() -> None:
     if result.returncode != 0:
         raise RuntimeError(result.stderr.strip() or "dashboard_build_failed")
     print(result.stdout.strip())
+
+
+def _sync_stock_news(limit: int) -> None:
+    print("[news_hourly] stock news sync: start")
+    command = [sys.executable, str(ROOT_DIR / "scripts" / "sync_stock_news.py"), "--limit", str(limit)]
+    result = subprocess.run(command, cwd=str(ROOT_DIR), capture_output=True, text=True)
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or "stock_news_sync_failed")
+    if result.stdout.strip():
+        print(result.stdout.strip())
+    print("[news_hourly] stock news sync: done")
 
 
 def _collect_indicators(market_date: date) -> None:
@@ -179,6 +191,13 @@ def main() -> None:
         help="실행 후 대시보드 재생성 (기본: 켬)",
     )
     parser.add_argument(
+        "--sync-stock-news",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="뉴스 실행 시 워치리스트 종목 뉴스도 함께 갱신 (기본: 켬)",
+    )
+    parser.add_argument("--stock-news-limit", type=int, default=15, help="종목당 수집할 뉴스 수")
+    parser.add_argument(
         "--auto-commit",
         action=argparse.BooleanOptionalAction,
         default=True,
@@ -203,14 +222,22 @@ def main() -> None:
     payload["recommended_topics"] = recommended_topic_queries()
     digest_saved = _save_digest(payload)
 
+    stock_news_synced = False
+    if args.sync_stock_news:
+        _sync_stock_news(limit=args.stock_news_limit)
+        stock_news_synced = True
+
+    thesis_changed = update_thesis_signals(str(args.market_date), db_path=ROOT_DIR / "data" / "investment.db")
+    print(f"[news_hourly] thesis monitor: signals updated ({thesis_changed})")
+
     # Rebuild dashboard only if digest changed or indicators were updated.
-    if args.build_dashboard and (digest_saved or args.collect_indicators):
+    if args.build_dashboard and (digest_saved or args.collect_indicators or stock_news_synced or thesis_changed):
         _build_dashboard()
 
     if args.auto_commit:
         committed = _auto_commit(
             include_dashboard=args.build_dashboard,
-            include_indicator_db=args.collect_indicators,
+            include_indicator_db=args.collect_indicators or stock_news_synced or thesis_changed > 0,
         )
         if committed and args.auto_push:
             _auto_push()

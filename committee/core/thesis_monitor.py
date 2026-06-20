@@ -14,6 +14,7 @@ import json
 import sqlite3
 
 from committee.core.database import connect, get_db_path, init_db
+from committee.core.stock_watchlist import get_stocks
 
 
 ACTION_LABELS = {
@@ -300,6 +301,109 @@ def _fetch_rows(conn: sqlite3.Connection, query: str, params: dict[str, Any] | N
     return [dict(r) for r in rows]
 
 
+def _list_from_json(value: Any) -> list[str]:
+    if isinstance(value, list):
+        return [str(v).strip() for v in value if str(v).strip()]
+    if not value:
+        return []
+    try:
+        parsed = json.loads(str(value))
+        if isinstance(parsed, list):
+            return [str(v).strip() for v in parsed if str(v).strip()]
+    except Exception:
+        pass
+    return [v.strip() for v in str(value).split(",") if v.strip()]
+
+
+def _text_tokens(*parts: Any) -> set[str]:
+    text = " ".join(str(p or "") for p in parts).lower()
+    tokens: set[str] = set()
+    for raw in text.replace("/", " ").replace(",", " ").split():
+        token = raw.strip().strip("()[]{}'\"")
+        if len(token) >= 2:
+            tokens.add(token)
+    return tokens
+
+
+def _related_watchlist_stocks(
+    thesis: dict[str, Any],
+    asset_rows: list[dict[str, Any]],
+    watchlist: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    explicit = {
+        str(row.get("ticker") or row.get("asset_id") or "").strip().upper()
+        for row in asset_rows
+        if int(row.get("thesis_id") or 0) == int(thesis.get("id") or 0)
+    }
+    thesis_tokens = _text_tokens(
+        thesis.get("title"),
+        thesis.get("summary"),
+        thesis.get("core_claim"),
+        thesis.get("raw_study_text"),
+        thesis.get("thesis_type"),
+        *_list_from_json(thesis.get("news_keywords_json")),
+        *_list_from_json(thesis.get("beneficiaries_json")),
+    )
+    out: list[dict[str, Any]] = []
+    for stock in watchlist:
+        ticker = str(stock.get("ticker") or "").strip().upper()
+        sector = str(stock.get("sector") or "").strip()
+        name = str(stock.get("name") or "").strip()
+        stock_tokens = _text_tokens(ticker, name, sector)
+        if ticker in explicit or (sector and thesis_tokens.intersection(stock_tokens)):
+            out.append(dict(stock))
+    return out
+
+
+def _stock_context_for_thesis(
+    thesis: dict[str, Any],
+    *,
+    asset_rows: list[dict[str, Any]],
+    watchlist: list[dict[str, Any]],
+    stock_news: list[dict[str, Any]],
+    stock_consensus: list[dict[str, Any]],
+) -> dict[str, Any]:
+    related = _related_watchlist_stocks(thesis, asset_rows, watchlist)
+    tickers = {str(s.get("ticker") or "").strip().upper() for s in related}
+    news = [n for n in stock_news if str(n.get("ticker") or "").strip().upper() in tickers]
+    latest_consensus = {
+        str(c.get("ticker") or "").strip().upper(): c
+        for c in stock_consensus
+        if str(c.get("ticker") or "").strip().upper() in tickers
+    }
+    score = 0.0
+    reasons: list[str] = []
+    for stock in related:
+        ticker = str(stock.get("ticker") or "").strip().upper()
+        c = latest_consensus.get(ticker)
+        if not c:
+            continue
+        rec = str(c.get("recommendation_key") or "").lower()
+        mean = _num(c.get("recommendation_mean"))
+        current = _num(c.get("current_price"))
+        target = _num(c.get("target_mean_price"))
+        if rec in {"strong buy", "buy"} or (mean is not None and mean <= 2.2):
+            score += 4
+            reasons.append(f"{ticker} 컨센서스 우호")
+        if current not in (None, 0) and target is not None:
+            upside = (target / current - 1.0) * 100.0
+            if upside >= 10:
+                score += 3
+                reasons.append(f"{ticker} 목표가 괴리율 +{upside:.0f}%")
+            elif upside <= -10:
+                score -= 3
+                reasons.append(f"{ticker} 목표가 부담")
+    if news:
+        score += min(6.0, len(news) * 0.5)
+        reasons.append(f"연결 종목 뉴스 {len(news)}건 갱신")
+    return {
+        "related_stocks": related,
+        "recent_news_count": len(news),
+        "stock_context_score": clamp(score, -15, 15),
+        "reasons": reasons[:6],
+    }
+
+
 def load_thesis_monitor_data(db_path: Path | None = None) -> dict[str, Any]:
     """Load dashboard-ready Thesis Monitor data from SQLite."""
     init_db(db_path)
@@ -309,6 +413,19 @@ def load_thesis_monitor_data(db_path: Path | None = None) -> dict[str, Any]:
         assets = _fetch_rows(conn, "SELECT * FROM thesis_asset_map ORDER BY thesis_id, relation_type, asset_id")
         evidence = _fetch_rows(conn, "SELECT * FROM thesis_evidence_daily ORDER BY date DESC, id DESC LIMIT 200")
         signals = _fetch_rows(conn, "SELECT * FROM thesis_signal_daily ORDER BY date DESC, thesis_id")
+        stock_news = _fetch_rows(conn, "SELECT ticker, title, published_at, source, link FROM stock_news ORDER BY COALESCE(published_at, collected_at) DESC LIMIT 500")
+        stock_consensus = _fetch_rows(
+            conn,
+            """
+            SELECT s.*
+            FROM stock_consensus s
+            INNER JOIN (
+                SELECT ticker, MAX(date) AS max_date
+                FROM stock_consensus
+                GROUP BY ticker
+            ) latest ON s.ticker = latest.ticker AND s.date = latest.max_date
+            """,
+        )
         daily_macro = _fetch_rows(conn, "SELECT * FROM daily_macro ORDER BY date")
         market_daily = _fetch_rows(conn, "SELECT * FROM market_daily ORDER BY date")
         market_flow = _fetch_rows(conn, "SELECT * FROM market_flow_daily ORDER BY date")
@@ -317,11 +434,24 @@ def load_thesis_monitor_data(db_path: Path | None = None) -> dict[str, Any]:
             market_daily=market_daily,
             market_flow_daily=market_flow,
         )
+        watchlist = get_stocks()
+        stock_context = {
+            str(t.get("id")): _stock_context_for_thesis(
+                t,
+                asset_rows=assets,
+                watchlist=watchlist,
+                stock_news=stock_news,
+                stock_consensus=stock_consensus,
+            )
+            for t in theses
+        }
     return {
         "market_regime": regime,
         "theses": theses,
         "indicator_map": indicators,
         "asset_map": assets,
+        "watchlist_stocks": watchlist,
+        "stock_context": stock_context,
         "evidence": evidence,
         "signals": signals,
         "action_labels": ACTION_LABELS,
@@ -437,13 +567,36 @@ def update_thesis_signals(date: str, db_path: Path | None = None) -> int:
         if not theses:
             return 0
         indicators = _fetch_rows(conn, "SELECT * FROM thesis_indicator_map")
+        assets = _fetch_rows(conn, "SELECT * FROM thesis_asset_map")
         evidence = _fetch_rows(conn, "SELECT * FROM thesis_evidence_daily WHERE date <= :date", {"date": date})
         prior_signals = _fetch_rows(conn, "SELECT * FROM thesis_signal_daily WHERE date < :date ORDER BY date", {"date": date})
+        stock_news = _fetch_rows(
+            conn,
+            "SELECT ticker, title, published_at, source, link FROM stock_news "
+            "WHERE substr(COALESCE(published_at, collected_at, ''), 1, 10) <= :date "
+            "ORDER BY COALESCE(published_at, collected_at) DESC LIMIT 500",
+            {"date": date},
+        )
+        stock_consensus = _fetch_rows(
+            conn,
+            """
+            SELECT s.*
+            FROM stock_consensus s
+            INNER JOIN (
+                SELECT ticker, MAX(date) AS max_date
+                FROM stock_consensus
+                WHERE date <= :date
+                GROUP BY ticker
+            ) latest ON s.ticker = latest.ticker AND s.date = latest.max_date
+            """,
+            {"date": date},
+        )
         daily_macro = filter_point_in_time_rows(_fetch_rows(conn, "SELECT * FROM daily_macro ORDER BY date"), date)
         monthly_macro = filter_point_in_time_rows(_fetch_rows(conn, "SELECT * FROM monthly_macro ORDER BY date"), date)
         market_daily = _fetch_rows(conn, "SELECT * FROM market_daily WHERE date <= :date ORDER BY date", {"date": date})
         market_flow = _fetch_rows(conn, "SELECT * FROM market_flow_daily WHERE date <= :date ORDER BY date", {"date": date})
         regime = score_market_regime(daily_macro=daily_macro, market_daily=market_daily, market_flow_daily=market_flow)
+        watchlist = get_stocks()
 
         changed = 0
         for thesis in theses:
@@ -460,6 +613,18 @@ def update_thesis_signals(date: str, db_path: Path | None = None) -> int:
                 monthly_macro=monthly_macro,
                 market_daily=market_daily,
                 market_flow=market_flow,
+            )
+            stock_context = _stock_context_for_thesis(
+                thesis,
+                asset_rows=assets,
+                watchlist=watchlist,
+                stock_news=stock_news,
+                stock_consensus=stock_consensus,
+            )
+            confirmations["price_confirmation_score"] = clamp(
+                confirmations["price_confirmation_score"] + float(stock_context["stock_context_score"]),
+                -35,
+                35,
             )
             priors = [s for s in prior_signals if int(s.get("thesis_id") or 0) == tid]
             recent_5d_delta = 0.0
@@ -488,7 +653,9 @@ def update_thesis_signals(date: str, db_path: Path | None = None) -> int:
                 f"macro {confirmations['macro_confirmation_score']:.1f}, "
                 f"flow {confirmations['flow_confirmation_score']:.1f}, "
                 f"price {confirmations['price_confirmation_score']:.1f}, "
-                f"risk {confirmations['risk_score']:.1f}, regime {regime['regime']}"
+                f"stock {float(stock_context['stock_context_score']):.1f}, "
+                f"risk {confirmations['risk_score']:.1f}, regime {regime['regime']}. "
+                + "; ".join(stock_context["reasons"])
             )
             conn.execute(
                 """

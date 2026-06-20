@@ -208,7 +208,7 @@ def _handle_stock_command(command: str) -> str:
     Examples
     --------
     /stock add NVDA                  → 시장·회사명 자동 판별 후 등록 + 즉시 뉴스 수집
-    /stock add 005930 삼성전자 KR     → 이름/시장 직접 지정
+    /stock add 005930 삼성전자 KR 반도체 → 이름/시장/섹터 직접 지정
     /stock remove NVDA               → 등록 해제
     /stock list                      → 현재 워치리스트
     """
@@ -230,18 +230,27 @@ def _handle_stock_command(command: str) -> str:
 
     if sub == "add":
         if len(parts) < 3:
-            return "사용법: /stock add TICKER [회사명] [KR|US]\n예) /stock add NVDA\n예) /stock add 005930 삼성전자 KR"
+            return "사용법: /stock add TICKER [회사명] [KR|US] [섹터]\n예) /stock add NVDA\n예) /stock add 005930 삼성전자 KR 반도체"
         ticker = parts[2]
         name = None
         market = None
-        # 나머지 토큰: 마지막이 KR/US면 시장, 그 앞은 이름으로 해석.
+        sector = None
         rest = parts[3:]
-        if rest and rest[-1].upper() in {"KR", "US"}:
-            market = rest[-1].upper()
+        # 나머지 토큰: KR/US 토큰 앞은 이름, 뒤는 섹터로 해석.
+        market_idx = next((i for i, token in enumerate(rest) if token.upper() in {"KR", "US"}), None)
+        if market_idx is not None:
+            market = rest[market_idx].upper()
+            name_tokens = rest[:market_idx]
+            sector_tokens = rest[market_idx + 1 :]
+            rest = name_tokens
+            if sector_tokens:
+                sector = " ".join(sector_tokens)
+        elif rest and rest[-1].startswith("sector="):
+            sector = rest[-1].split("=", 1)[1].strip()
             rest = rest[:-1]
         if rest:
             name = " ".join(rest)
-        added, stock, msg = add_stock(ticker, name=name, market=market)
+        added, stock, msg = add_stock(ticker, name=name, market=market, sector=sector)
         if not added:
             return "⚠️ " + msg
         lines = [f"✅ {msg}"]
@@ -271,7 +280,7 @@ def _handle_stock_command(command: str) -> str:
 
     return (
         "AI 종목분석 워치리스트 명령\n"
-        "/stock add TICKER [회사명] [KR|US] — 등록 + 즉시 뉴스 수집 + 대시보드 빌드\n"
+        "/stock add TICKER [회사명] [KR|US] [섹터] — 등록 + 즉시 뉴스 수집 + 대시보드 빌드\n"
         "/stock remove TICKER — 등록 해제 + 대시보드 빌드\n"
         "/stock list — 등록 목록"
     )
@@ -314,11 +323,13 @@ def _format_stock_list() -> str:
         ticker = str(s.get("ticker", "?"))
         name = str(s.get("name", ""))
         market = str(s.get("market", ""))
+        sector = str(s.get("sector", "")).strip()
         try:
             cnt = count_stock_news(ticker)
         except Exception:
             cnt = 0
-        lines.append(f"- {ticker} ({name}/{market}) · 뉴스 {cnt}건")
+        sector_part = f" · {sector}" if sector else ""
+        lines.append(f"- {ticker} ({name}/{market}){sector_part} · 뉴스 {cnt}건")
     return "\n".join(lines)
 
 

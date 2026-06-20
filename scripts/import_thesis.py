@@ -9,6 +9,7 @@ Usage:
 import argparse
 import json
 from pathlib import Path
+import re
 import sys
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
@@ -35,10 +36,87 @@ def _json_text(value: object) -> str | None:
     return json.dumps(value, ensure_ascii=False)
 
 
+def _infer_thesis_type(text: str) -> str:
+    lower = text.lower()
+    if re.search(r"금리|채권|yield|rate|fed|연준", lower):
+        return "rates"
+    if re.search(r"환율|원달러|달러|usd|dxy|currency", lower):
+        return "currency"
+    if re.search(r"물가|인플레|cpi|pce", lower):
+        return "inflation"
+    if re.search(r"신용|스프레드|oas|하이일드|credit", lower):
+        return "credit"
+    if re.search(r"실적|eps|영업이익|마진|earnings", lower):
+        return "earnings"
+    if re.search(r"수급|외국인|기관|liquidity|유동성", lower):
+        return "liquidity"
+    if re.search(r"섹터|업종|cycle|사이클", lower):
+        return "sector_cycle"
+    return "macro"
+
+
+def _infer_indicators(text: str) -> list[dict[str, object]]:
+    lower = text.lower()
+    out: list[dict[str, object]] = []
+
+    def add(key: str, direction: str, weight: float = 1.0, description: str = "") -> None:
+        if not any(item["indicator_key"] == key for item in out):
+            out.append(
+                {
+                    "indicator_key": key,
+                    "expected_direction": direction,
+                    "weight": weight,
+                    "lookback_days": 20,
+                    "description": description,
+                }
+            )
+
+    if re.search(r"환율|원달러|usdkrw", lower):
+        add("usdkrw", "down", 1.0, "원화 안정 여부")
+    if re.search(r"달러|dxy", lower):
+        add("dxy", "down", 1.0, "달러 강세 완화 여부")
+    if re.search(r"금리|yield|채권|fed|연준", lower):
+        add("us_10y_yield", "down", 0.8, "장기금리 부담")
+        add("us_real_10y_yield", "down", 0.8, "실질금리 부담")
+    if re.search(r"변동성|공포|vix|리스크", lower):
+        add("vix", "down", 1.0, "시장 스트레스 완화")
+    if re.search(r"신용|스프레드|oas|하이일드", lower):
+        add("hy_oas", "down", 1.0, "신용위험 완화")
+    if re.search(r"외국인|수급|코스피", lower):
+        add("foreign_flow_kospi_20d", "up", 1.2, "외국인 KOSPI 수급 확인")
+    if re.search(r"수출|반도체|한국", lower):
+        add("korea_export_yoy", "up", 1.0, "한국 수출 모멘텀")
+    if re.search(r"물가|인플레|cpi", lower):
+        add("cpi_yoy", "down", 0.8, "물가 압력 완화")
+    if re.search(r"pce", lower):
+        add("pce_yoy", "down", 0.8, "PCE 압력 완화")
+    if re.search(r"경기|제조|pmi", lower):
+        add("pmi", "up", 0.8, "제조업 경기 확인")
+    if re.search(r"나스닥|ai|반도체|성장주|테크", lower):
+        add("nasdaq_return_20d", "up", 1.0, "성장주 가격 확인")
+    if re.search(r"코스피|한국주식|국내증시", lower):
+        add("kospi_return_20d", "up", 1.0, "국내 지수 가격 확인")
+    if not out:
+        add("vix", "down", 0.7, "시장 위험도")
+        add("dxy", "down", 0.7, "달러 유동성")
+        add("foreign_flow_kospi_20d", "up", 1.0, "국내 수급 확인")
+        add("kospi_return_20d", "up", 0.8, "가격 확인")
+    return out
+
+
 def main() -> None:
     args = _parse_args()
     path = Path(args.json_path)
     payload = json.loads(path.read_text(encoding="utf-8"))
+    text_for_inference = "\n".join([str(payload.get("title") or ""), str(payload.get("raw_study_text") or "")])
+    if not payload.get("thesis_type") or payload.get("thesis_type") == "auto":
+        payload["thesis_type"] = _infer_thesis_type(text_for_inference)
+    if not payload.get("indicators"):
+        payload["indicators"] = _infer_indicators(text_for_inference)
+    if not payload.get("watch_indicators"):
+        payload["watch_indicators"] = [item["indicator_key"] for item in payload["indicators"]]
+    if not payload.get("news_keywords"):
+        payload["news_keywords"] = list(dict.fromkeys(re.findall(r"[A-Za-z]{2,}|[가-힣]{2,}", text_for_inference)))[:12]
     init_db(DB_PATH)
     with connect(DB_PATH) as conn:
         cur = conn.execute(
@@ -64,7 +142,7 @@ def main() -> None:
                 "core_claim": payload.get("core_claim") or payload.get("summary"),
                 "thesis_type": payload.get("thesis_type") or "macro",
                 "horizon": payload.get("horizon") or "medium",
-                "status": payload.get("status") or "Draft",
+                "status": payload.get("status") or "Active",
                 "initial_confidence": float(payload.get("initial_confidence") or 50),
                 "current_confidence": float(payload.get("current_confidence") or payload.get("initial_confidence") or 50),
                 "user_position_view": payload.get("user_position_view") or "watch",

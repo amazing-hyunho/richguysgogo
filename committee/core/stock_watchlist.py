@@ -20,7 +20,7 @@ WATCHLIST_PATH = ROOT_DIR / "config" / "ai_stock_watchlist.json"
 
 _DEFAULT_COMMENT = (
     "AI 종목분석 대상 워치리스트. ticker=종목코드(KR 6자리/US 심볼), "
-    "name=뉴스 검색용 회사명, market=KR|US. 텔레그램 /stock add 또는 "
+    "name=뉴스 검색용 회사명, market=KR|US, sector=선택 섹터. 텔레그램 /stock add 또는 "
     "`python scripts/sync_stock_news.py`로 갱신됩니다."
 )
 
@@ -170,6 +170,7 @@ def add_stock(
     ticker: str,
     name: str | None = None,
     market: str | None = None,
+    sector: str | None = None,
 ) -> tuple[bool, dict[str, str], str]:
     """Add a stock to the watchlist.
 
@@ -188,6 +189,9 @@ def add_stock(
     mkt = resolved["market"]
     nm = resolved["name"]
     stock = {"ticker": t, "name": nm, "market": mkt}
+    sec = (sector or "").strip()
+    if sec:
+        stock["sector"] = sec
 
     payload = _read_payload()
     payload.setdefault("stocks", []).append(stock)

@@ -784,40 +784,41 @@
       </section>
       <section class="section" id="section-thesis-editor">
         <div class="section-head">
-          <h2>Thesis 생성 / 수정 Draft</h2>
-          <span class="section-meta">브라우저 임시 저장 · JSON 내보내기</span>
+          <h2>스터디 입력</h2>
+          <span class="section-meta">주제 + 조사 내용만 넣으면 됩니다</span>
         </div>
         <p style="font-size:13px;color:var(--muted);line-height:1.55;margin-top:0;">
-          현재 대시보드는 정적 HTML이라 브라우저에서 SQLite에 직접 저장할 수 없습니다. 아래 입력값은 localStorage에 임시 저장되며, JSON으로 내보낸 뒤 DB helper/API에 연결할 수 있도록 같은 필드 구조를 사용합니다.
+          세부 지표를 직접 고르지 않아도 됩니다. 스터디 주제와 조사 내용을 넣으면, 시스템이 기본 관찰 지표를 자동 추정하고 이후 내부 데이터와 연결 종목 뉴스로 강세/약세/반증 여부를 체크합니다.
         </p>
-        <div class="thesis-form-grid">
-          <input class="thesis-input" id="thesis-form-title" placeholder="제목">
-          <select class="thesis-select" id="thesis-form-horizon">
-            <option value="short">단기</option><option value="medium">중기</option><option value="long">장기</option>
-          </select>
-          <input class="thesis-input" id="thesis-form-confidence" type="number" min="0" max="100" value="50" placeholder="초기 확신도">
-          <select class="thesis-select" id="thesis-form-status">
-            <option value="Draft">Draft</option><option value="Active">Active</option><option value="Archived">Archived</option>
-          </select>
-          <select class="thesis-select" id="thesis-form-type">
-            <option value="macro">macro</option><option value="liquidity">liquidity</option><option value="rates">rates</option>
-            <option value="currency">currency</option><option value="inflation">inflation</option><option value="credit">credit</option>
-            <option value="business_cycle">business_cycle</option><option value="sector_cycle">sector_cycle</option>
-            <option value="earnings">earnings</option><option value="valuation">valuation</option><option value="event_driven">event_driven</option>
-            <option value="technical">technical</option>
-          </select>
-          <select class="thesis-select" id="thesis-form-view">
-            <option value="watch">관망</option><option value="buy_review">매수 검토</option><option value="scale_in">분할매수</option>
-            <option value="no_new_buy">신규매수 보류</option><option value="reduce">비중 축소</option><option value="sell_review">매도 검토</option>
-          </select>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
-          <textarea class="thesis-textarea" id="thesis-form-raw" placeholder="스터디 원문 / 자유 메모"></textarea>
-          <textarea class="thesis-textarea" id="thesis-form-structured" placeholder="핵심 가설, 관찰 지표, 촉매, 반증 조건, 관련 키워드"></textarea>
-        </div>
+        <input class="thesis-input" id="thesis-form-title" placeholder="스터디 주제 예) AI 반도체 투자 사이클은 아직 살아있는가?">
+        <textarea class="thesis-textarea" id="thesis-form-raw" style="min-height:180px;margin-top:10px;" placeholder="조사한 내용, 리포트 요약, 내 생각을 자유롭게 붙여넣으세요."></textarea>
+        <details style="margin-top:10px;">
+          <summary style="cursor:pointer;color:#94a3b8;font-size:13px;font-weight:700;">고급 옵션 열기 (선택)</summary>
+          <div class="thesis-form-grid" style="margin-top:10px;">
+            <select class="thesis-select" id="thesis-form-horizon">
+              <option value="medium">중기</option><option value="short">단기</option><option value="long">장기</option>
+            </select>
+            <input class="thesis-input" id="thesis-form-confidence" type="number" min="0" max="100" value="60" placeholder="초기 확신도">
+            <select class="thesis-select" id="thesis-form-status">
+              <option value="Active">Active</option><option value="Draft">Draft</option><option value="Archived">Archived</option>
+            </select>
+            <select class="thesis-select" id="thesis-form-type">
+              <option value="auto">auto</option>
+              <option value="macro">macro</option><option value="liquidity">liquidity</option><option value="rates">rates</option>
+              <option value="currency">currency</option><option value="inflation">inflation</option><option value="credit">credit</option>
+              <option value="business_cycle">business_cycle</option><option value="sector_cycle">sector_cycle</option>
+              <option value="earnings">earnings</option><option value="valuation">valuation</option><option value="event_driven">event_driven</option>
+              <option value="technical">technical</option>
+            </select>
+            <select class="thesis-select" id="thesis-form-view">
+              <option value="watch">관망</option><option value="buy_review">매수 검토</option><option value="scale_in">분할매수</option>
+              <option value="no_new_buy">신규매수 보류</option><option value="reduce">비중 축소</option><option value="sell_review">매도 검토</option>
+            </select>
+          </div>
+          <textarea class="thesis-textarea" id="thesis-form-structured" style="margin-top:10px;" placeholder="선택 입력: 시스템이 관찰해야 할 지표/반증 조건을 직접 보정하고 싶을 때만 작성"></textarea>
+        </details>
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-          <button class="thesis-btn" type="button" onclick="saveThesisDraft()">Draft 저장</button>
-          <button class="thesis-btn secondary" type="button" onclick="downloadThesisDraftJson()">JSON 내보내기</button>
+          <button class="thesis-btn" type="button" onclick="saveThesisDraft()">입력 내용 임시 저장</button>
           <span id="thesis-form-msg" style="font-size:12px;color:var(--muted);align-self:center;"></span>
         </div>
       </section>
@@ -2999,6 +3000,8 @@ function renderWatchTop3() {
     const signal = latestSignalForThesis(thesis.id) || {};
     const ind = indicators.filter(x => Number(x.thesis_id) === Number(thesis.id));
     const ast = assets.filter(x => Number(x.thesis_id) === Number(thesis.id));
+    const stockCtx = (data.thesis_monitor && data.thesis_monitor.stock_context && data.thesis_monitor.stock_context[String(thesis.id)]) || {};
+    const relatedStocks = safeArr(stockCtx.related_stocks);
     const ben = ast.filter(x => x.relation_type === 'beneficiary').map(x => x.ticker || x.asset_id).filter(Boolean);
     const vic = ast.filter(x => x.relation_type === 'victim').map(x => x.ticker || x.asset_id).filter(Boolean);
     const catalysts = parseMaybeJsonList(thesis.catalysts_json);
@@ -3007,6 +3010,9 @@ function renderWatchTop3() {
     const indicatorHtml = ind.length
       ? ind.map(x => `<span class="thesis-pill">${escapeHtml(x.indicator_key)} ${escapeHtml(x.expected_direction || '')}</span>`).join(' ')
       : parseMaybeJsonList(thesis.watch_indicators_json).map(x => `<span class="thesis-pill">${escapeHtml(x)}</span>`).join(' ') || '-';
+    const stockHtml = relatedStocks.length
+      ? relatedStocks.map(s => `<span class="thesis-pill">${escapeHtml(s.ticker || '')} ${escapeHtml(s.name || '')}${s.sector ? ' · ' + escapeHtml(s.sector) : ''}</span>`).join(' ')
+      : '-';
     return `
       <div class="thesis-detail-grid">
         <div class="thesis-box"><div class="h">현재 점수 / 추세</div><div class="b">${escapeHtml(formatMetric(signal.thesis_score))} · <span class="thesis-pill ${escapeHtml(signal.thesis_trend || 'stable')}">${escapeHtml(signal.thesis_trend || 'stable')}</span></div></div>
@@ -3019,6 +3025,7 @@ function renderWatchTop3() {
         <div class="thesis-box"><div class="h">관련 뉴스 키워드</div><div class="b">${escapeHtml(keywords.join(', ') || '-')}</div></div>
         <div class="thesis-box"><div class="h">수혜 자산</div><div class="b">${escapeHtml(ben.join(', ') || '-')}</div></div>
         <div class="thesis-box"><div class="h">피해 자산</div><div class="b">${escapeHtml(vic.join(', ') || '-')}</div></div>
+        <div class="thesis-box" style="grid-column:1/-1;"><div class="h">섹터 기준 연결 종목</div><div class="b">${stockHtml}</div></div>
         <div class="thesis-box" style="grid-column:1/-1;"><div class="h">원문 스터디 노트</div><div class="b">${escapeHtml(thesis.raw_study_text || '-')}</div></div>
         <div class="thesis-box" style="grid-column:1/-1;"><div class="h">점수 산식 근거</div><div class="b">${escapeHtml(signal.reason_summary || '아직 일별 신호가 없습니다. 증거/지표 연결 후 계산됩니다.')}</div></div>
       </div>`;
@@ -3028,8 +3035,10 @@ function renderWatchTop3() {
     if (!thesis) return '<div class="empty-state">선택된 가설이 없습니다.</div>';
     const ev = evidenceForThesis(thesis.id).slice(0, 12);
     const signal = latestSignalForThesis(thesis.id) || {};
+    const stockCtx = (data.thesis_monitor && data.thesis_monitor.stock_context && data.thesis_monitor.stock_context[String(thesis.id)]) || {};
     const support = ev.filter(e => e.direction === 'support').length;
     const contradict = ev.filter(e => e.direction === 'contradict').length;
+    const stockReasons = safeArr(stockCtx.reasons);
     const rows = ev.length ? ev.map(e => `
       <div class="thesis-evidence ${escapeHtml(e.direction || 'neutral')}">
         <div class="eh">${escapeHtml(e.date || '-')} · ${escapeHtml(e.evidence_type || '-')} · impact ${escapeHtml(formatMetric(e.impact_score))}</div>
@@ -3039,7 +3048,11 @@ function renderWatchTop3() {
     return `
       <div class="thesis-box" style="margin-bottom:10px;">
         <div class="h">오늘 요약</div>
-        <div class="b">강화 근거 ${support}개 · 약화 근거 ${contradict}개 · 제안: ${escapeHtml(thesisActionLabel(signal.recommended_action))}</div>
+        <div class="b">강화 근거 ${support}개 · 약화 근거 ${contradict}개 · 연결 종목 뉴스 ${escapeHtml(String(stockCtx.recent_news_count || 0))}건 · 제안: ${escapeHtml(thesisActionLabel(signal.recommended_action))}</div>
+      </div>
+      <div class="thesis-box" style="margin-bottom:10px;">
+        <div class="h">연결 종목 판단 근거</div>
+        <div class="b">${escapeHtml(stockReasons.join('\n') || '연결된 섹터 종목의 신규 뉴스/컨센서스 근거가 아직 없습니다.')}</div>
       </div>
       <div class="thesis-timeline">${rows}</div>`;
   }
@@ -3091,17 +3104,73 @@ function renderWatchTop3() {
     loadThesisDraft();
   }
 
+  function inferThesisTypeFromText(text) {
+    const t = String(text || '').toLowerCase();
+    if (/금리|채권|yield|rate|fed|연준/.test(t)) return 'rates';
+    if (/환율|원달러|달러|usd|dxy|currency/.test(t)) return 'currency';
+    if (/물가|인플레|cpi|pce/.test(t)) return 'inflation';
+    if (/신용|스프레드|oas|하이일드|credit/.test(t)) return 'credit';
+    if (/실적|eps|영업이익|마진|earnings/.test(t)) return 'earnings';
+    if (/per|밸류|valuation|저평가|고평가/.test(t)) return 'valuation';
+    if (/수급|외국인|기관|liquidity|유동성/.test(t)) return 'liquidity';
+    if (/섹터|업종|cycle|사이클/.test(t)) return 'sector_cycle';
+    return 'macro';
+  }
+
+  function inferIndicatorsFromText(text) {
+    const t = String(text || '').toLowerCase();
+    const out = [];
+    const add = (indicator_key, expected_direction, weight = 1, description = '') => {
+      if (!out.some(x => x.indicator_key === indicator_key)) {
+        out.push({ indicator_key, expected_direction, weight, lookback_days: 20, description });
+      }
+    };
+    if (/환율|원달러|usdkrw/.test(t)) add('usdkrw', 'down', 1, '원화 안정 여부');
+    if (/달러|dxy/.test(t)) add('dxy', 'down', 1, '달러 강세 완화 여부');
+    if (/금리|yield|채권|fed|연준/.test(t)) {
+      add('us_10y_yield', 'down', 0.8, '장기금리 부담');
+      add('us_real_10y_yield', 'down', 0.8, '실질금리 부담');
+    }
+    if (/변동성|공포|vix|리스크/.test(t)) add('vix', 'down', 1, '시장 스트레스 완화');
+    if (/신용|스프레드|oas|하이일드/.test(t)) add('hy_oas', 'down', 1, '신용위험 완화');
+    if (/외국인|수급|코스피/.test(t)) add('foreign_flow_kospi_20d', 'up', 1.2, '외국인 KOSPI 수급 확인');
+    if (/수출|반도체|한국/.test(t)) add('korea_export_yoy', 'up', 1, '한국 수출 모멘텀');
+    if (/물가|인플레|cpi/.test(t)) add('cpi_yoy', 'down', 0.8, '물가 압력 완화');
+    if (/pce/.test(t)) add('pce_yoy', 'down', 0.8, 'PCE 압력 완화');
+    if (/경기|제조|pmi/.test(t)) add('pmi', 'up', 0.8, '제조업 경기 확인');
+    if (/나스닥|ai|반도체|성장주|테크/.test(t)) add('nasdaq_return_20d', 'up', 1, '성장주 가격 확인');
+    if (/코스피|한국주식|국내증시/.test(t)) add('kospi_return_20d', 'up', 1, '국내 지수 가격 확인');
+    if (!out.length) {
+      add('vix', 'down', 0.7, '시장 위험도');
+      add('dxy', 'down', 0.7, '달러 유동성');
+      add('foreign_flow_kospi_20d', 'up', 1, '국내 수급 확인');
+      add('kospi_return_20d', 'up', 0.8, '가격 확인');
+    }
+    return out;
+  }
+
   function collectThesisDraft() {
+    const raw = document.getElementById('thesis-form-raw')?.value || '';
+    const title = document.getElementById('thesis-form-title')?.value || '';
+    const joined = `${title}\n${raw}`;
+    const typeValue = document.getElementById('thesis-form-type')?.value || 'auto';
+    const indicators = inferIndicatorsFromText(joined);
+    const watchIndicators = indicators.map(x => x.indicator_key);
+    const structured = document.getElementById('thesis-form-structured')?.value || '';
     return {
-      title: document.getElementById('thesis-form-title')?.value || '',
-      raw_study_text: document.getElementById('thesis-form-raw')?.value || '',
-      summary: document.getElementById('thesis-form-structured')?.value || '',
-      thesis_type: document.getElementById('thesis-form-type')?.value || 'macro',
+      title,
+      raw_study_text: raw,
+      summary: structured || raw.slice(0, 500),
+      core_claim: structured || title || raw.split('\n').find(Boolean) || '',
+      thesis_type: typeValue === 'auto' ? inferThesisTypeFromText(joined) : typeValue,
       horizon: document.getElementById('thesis-form-horizon')?.value || 'medium',
       status: document.getElementById('thesis-form-status')?.value || 'Draft',
       initial_confidence: Number(document.getElementById('thesis-form-confidence')?.value || 50),
       current_confidence: Number(document.getElementById('thesis-form-confidence')?.value || 50),
       user_position_view: document.getElementById('thesis-form-view')?.value || 'watch',
+      watch_indicators: watchIndicators,
+      indicators,
+      news_keywords: Array.from(new Set(joined.match(/[A-Za-z]{2,}|[가-힣]{2,}/g) || [])).slice(0, 12),
     };
   }
 
@@ -3127,16 +3196,6 @@ function renderWatchTop3() {
     localStorage.setItem('thesis_monitor_draft', JSON.stringify(draft));
     const msg = document.getElementById('thesis-form-msg');
     if (msg) msg.textContent = 'Draft 저장됨';
-  };
-
-  window.downloadThesisDraftJson = function downloadThesisDraftJson() {
-    const draft = collectThesisDraft();
-    const blob = new Blob([JSON.stringify(draft, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `investment_thesis_${new Date().toISOString().slice(0,10)}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
   };
 
   buildThesisMonitor();
@@ -3458,6 +3517,7 @@ function renderWatchTop3() {
       const ticker = String(stock.ticker || '').toUpperCase();
       const name = String(stock.name || '');
       const market = String(stock.market || '');
+      const sector = String(stock.sector || '').trim();
       const mktBadge = market === 'KR'
         ? '<span class="mkt-badge-kr">KR</span>'
         : '<span class="mkt-badge-us">US</span>';
@@ -3507,6 +3567,7 @@ function renderWatchTop3() {
           <span class="ticker">${escapeHtml(ticker)}</span>
           <span class="name">${escapeHtml(name)}</span>
           ${mktBadge}
+          ${sector ? `<span class="thesis-pill">${escapeHtml(sector)}</span>` : ''}
         </div>
         ${consensusHtml}
         ${thesisHtml}
