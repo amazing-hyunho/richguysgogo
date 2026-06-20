@@ -17,7 +17,7 @@ COMMON_OUTPUT_RULES = (
     "korean_comment must be one short Korean line. "
     "regime_tag must be one of RISK_ON/NEUTRAL/RISK_OFF. "
     "confidence must be one of LOW/MED/HIGH. "
-    "evidence_ids must use allowed snapshot paths only."
+    "evidence_ids must use allowed snapshot paths only and contain 1~10 items."
 )
 
 AGENT_BASE_SYSTEM_PROMPTS: dict[AgentName, str] = {

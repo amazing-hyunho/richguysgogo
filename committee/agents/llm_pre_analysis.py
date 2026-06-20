@@ -67,7 +67,7 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
             if response_text is None:
                 raise RuntimeError(f"openai_model_resolution_failed: {last_error}")
 
-            parsed = json.loads(response_text)
+            parsed = self._normalize_parsed_response(json.loads(response_text))
             parsed["raw_response"] = response_text
             parsed["agent_name"] = self.agent_name.value
             stance = Stance.model_validate(parsed)
@@ -116,6 +116,16 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
         message = str(error)
         return "openai_http_403" in message and "does not have access to model" in message
 
+    @staticmethod
+    def _normalize_parsed_response(parsed: object) -> dict:
+        """Clamp minor LLM schema drift before strict Pydantic validation."""
+        if not isinstance(parsed, dict):
+            raise TypeError("llm_response_not_json_object")
+        evidence_ids = parsed.get("evidence_ids")
+        if isinstance(evidence_ids, list) and len(evidence_ids) > 10:
+            parsed["evidence_ids"] = evidence_ids[:10]
+        return parsed
+
     def _build_user_prompt(self, snapshot: Snapshot) -> str:
         return json.dumps(
             {
@@ -124,7 +134,8 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                     "Generate one stance JSON for this agent. "
                     "All natural-language text must be in Korean. "
                     "Include a one-line Korean comment in korean_comment. "
-                    "Do not rely only on one-day moves; use cumulative_context for multi-day judgement."
+                    "Do not rely only on one-day moves; use cumulative_context for multi-day judgement. "
+                    "Return 1 to 10 evidence_ids only."
                 ),
                 "allowed_evidence_ids": [
                     "snapshot.market_summary.note",

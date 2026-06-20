@@ -299,7 +299,8 @@ def _handle_thesis_command(command: str) -> str:
     /thesis add AI 반도체 사이클
     섹터: 반도체
     종목: 000660,NVDA
-    조사내용...
+    키워드: HBM, AI capex, Nvidia
+    내용: 조사내용...
     """
     first_line, *body_lines = command.splitlines()
     parts = first_line.strip().split(maxsplit=2)
@@ -308,10 +309,15 @@ def _handle_thesis_command(command: str) -> str:
     if sub in {"", "help"}:
         return (
             "Thesis Monitor 명령\n"
-            "/thesis add 제목\\n섹터: 반도체\\n종목: 000660,NVDA\\n조사 내용...\n"
+            "고정 양식으로만 등록됩니다:\n"
+            "/thesis add 제목\n"
+            "섹터: 반도체\n"
+            "종목: 000660,NVDA\n"
+            "키워드: HBM, AI capex, Nvidia\n"
+            "내용: 조사 내용...\n\n"
             "/thesis list — 등록 가설 목록\n"
             "/thesis remove ID — 가설 보관 처리\n\n"
-            "입력은 제목과 조사 내용만 있어도 됩니다. 섹터/종목은 선택입니다."
+            "섹터/종목/키워드/내용 중 하나라도 빠지면 등록하지 않습니다."
         )
 
     if sub == "list":
@@ -341,53 +347,81 @@ def _handle_thesis_command(command: str) -> str:
     if sub == "add":
         if len(parts) < 3:
             return (
-                "사용법:\n"
+                "형식 오류: 제목이 필요합니다.\n\n사용법:\n"
                 "/thesis add 제목\n"
                 "섹터: 반도체\n"
                 "종목: 000660,NVDA\n"
-                "조사 내용..."
+                "키워드: HBM, AI capex, Nvidia\n"
+                "내용: 조사 내용..."
             )
         title = parts[2].strip()
         sector: str | None = None
         tickers: list[str] = []
+        user_keywords: list[str] = []
         study_lines: list[str] = []
+        in_content = False
         for line in body_lines:
             stripped = line.strip()
             lowered = stripped.lower()
+            if lowered.startswith(("내용:", "content:", "본문:", "메모:")):
+                in_content = True
+                after = stripped.split(":", 1)[1].strip()
+                if after:
+                    study_lines.append(after)
+                continue
+            if in_content:
+                study_lines.append(line)
+                continue
             if lowered.startswith(("섹터:", "sector:")):
                 sector = stripped.split(":", 1)[1].strip()
-                continue
-            if lowered.startswith(("섹터=", "sector=")):
-                sector = stripped.split("=", 1)[1].strip()
                 continue
             if lowered.startswith(("종목:", "tickers:", "ticker:")):
                 raw = stripped.split(":", 1)[1]
                 tickers.extend([t.strip().upper() for t in re.split(r"[,\\s]+", raw) if t.strip()])
                 continue
-            if lowered.startswith(("종목=", "tickers=", "ticker=")):
-                raw = stripped.split("=", 1)[1]
-                tickers.extend([t.strip().upper() for t in re.split(r"[,\\s]+", raw) if t.strip()])
+            if lowered.startswith(("키워드:", "keywords:", "keyword:")):
+                raw = stripped.split(":", 1)[1]
+                user_keywords.extend([k.strip() for k in re.split(r"[,;]+", raw) if k.strip()])
                 continue
-            study_lines.append(line)
-        raw_study_text = "\n".join(study_lines).strip() or title
+        raw_study_text = "\n".join(study_lines).strip()
+        missing = []
+        if not sector:
+            missing.append("섹터")
+        if not tickers:
+            missing.append("종목")
+        if not user_keywords:
+            missing.append("키워드")
+        if not raw_study_text:
+            missing.append("내용")
+        if missing:
+            return (
+                "형식 오류: " + ", ".join(missing) + " 항목이 없습니다. 등록하지 않았습니다.\n\n"
+                "고정 양식:\n"
+                "/thesis add 제목\n"
+                "섹터: 조선\n"
+                "종목: 329180,010140,010620\n"
+                "키워드: LNG선, 탱커, 신조선가, Clarksons, orderbook\n"
+                "내용: 조사 내용..."
+            )
         created = create_thesis_from_text(
             title=title,
             raw_study_text=raw_study_text,
             sector=sector,
             related_tickers=tickers,
+            news_keywords=user_keywords,
         )
         changed = update_thesis_signals(date.today().isoformat(), db_path=ROOT_DIR / "data" / "investment.db")
         build_ok, build_msg = _rebuild_dashboard()
         icon = "✅" if build_ok else "⚠️"
         indicators = ", ".join(str(i.get("indicator_key")) for i in created.get("indicators", [])[:6])
-        keywords = ", ".join(created.get("keywords", [])[:8])
+        keywords = ", ".join(created.get("keywords", [])[:10])
         return (
             f"✅ Thesis 등록 완료: #{created['id']} {created['title']}\n"
             f"- 유형: {created['thesis_type']}\n"
             f"- 섹터: {created.get('sector') or '-'}\n"
             f"- 연결 종목: {', '.join(tickers) if tickers else '-'}\n"
             f"- 관찰 지표: {indicators or '-'}\n"
-            f"- 뉴스 키워드: {keywords or '-'}\n"
+            f"- 뉴스 검색 키워드(사용자 입력만): {keywords or '-'}\n"
             f"- signal 갱신: {changed}건\n"
             f"{icon} {build_msg}"
         )

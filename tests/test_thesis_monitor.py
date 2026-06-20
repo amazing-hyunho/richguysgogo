@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
 from committee.core.database import init_db
 from committee.core.thesis_monitor import (
     calculate_thesis_score,
+    create_thesis_from_text,
     filter_point_in_time_rows,
     insert_thesis_evidence,
     parse_news_evidence_json,
@@ -109,6 +110,19 @@ class ThesisMonitorTests(unittest.TestCase):
             market_flow_daily=[{"foreign_20d": -40000}],
         )
         self.assertIn(regime["regime"], {"risk_off", "stress"})
+
+    def test_user_keywords_are_preserved_first(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            db_path = Path(td) / "investment.db"
+            created = create_thesis_from_text(
+                title="조선업 슈퍼사이클",
+                raw_study_text="LNG선과 신조선가를 관찰",
+                sector="조선",
+                related_tickers=["329180"],
+                news_keywords=["LNG선", "Clarksons", "orderbook"],
+                db_path=db_path,
+            )
+            self.assertEqual(created["keywords"], ["LNG선", "Clarksons", "orderbook"])
 
 
 if __name__ == "__main__":

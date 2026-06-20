@@ -11,7 +11,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 import json
-import re
 import sqlite3
 
 from committee.core.database import connect, get_db_path, init_db
@@ -26,83 +25,6 @@ ACTION_LABELS = {
     "reduce": "비중 축소",
     "sell_or_hedge": "매도 / 헤지 검토",
 }
-
-
-def infer_thesis_type(text: str) -> str:
-    lower = text.lower()
-    if re.search(r"금리|채권|yield|rate|fed|연준", lower):
-        return "rates"
-    if re.search(r"환율|원달러|달러|usd|dxy|currency", lower):
-        return "currency"
-    if re.search(r"물가|인플레|cpi|pce", lower):
-        return "inflation"
-    if re.search(r"신용|스프레드|oas|하이일드|credit", lower):
-        return "credit"
-    if re.search(r"실적|eps|영업이익|마진|earnings", lower):
-        return "earnings"
-    if re.search(r"수급|외국인|기관|liquidity|유동성", lower):
-        return "liquidity"
-    if re.search(r"섹터|업종|cycle|사이클|반도체|바이오|자동차", lower):
-        return "sector_cycle"
-    return "macro"
-
-
-def infer_indicators_from_text(text: str) -> list[dict[str, object]]:
-    lower = text.lower()
-    out: list[dict[str, object]] = []
-
-    def add(key: str, direction: str, weight: float = 1.0, description: str = "") -> None:
-        if not any(item["indicator_key"] == key for item in out):
-            out.append(
-                {
-                    "indicator_key": key,
-                    "expected_direction": direction,
-                    "weight": weight,
-                    "lookback_days": 20,
-                    "description": description,
-                }
-            )
-
-    if re.search(r"환율|원달러|usdkrw", lower):
-        add("usdkrw", "down", 1.0, "원화 안정 여부")
-    if re.search(r"달러|dxy", lower):
-        add("dxy", "down", 1.0, "달러 강세 완화 여부")
-    if re.search(r"금리|yield|채권|fed|연준", lower):
-        add("us_10y_yield", "down", 0.8, "장기금리 부담")
-        add("us_real_10y_yield", "down", 0.8, "실질금리 부담")
-    if re.search(r"변동성|공포|vix|리스크", lower):
-        add("vix", "down", 1.0, "시장 스트레스 완화")
-    if re.search(r"신용|스프레드|oas|하이일드", lower):
-        add("hy_oas", "down", 1.0, "신용위험 완화")
-    if re.search(r"외국인|수급|코스피", lower):
-        add("foreign_flow_kospi_20d", "up", 1.2, "외국인 KOSPI 수급 확인")
-    if re.search(r"수출|반도체|한국", lower):
-        add("korea_export_yoy", "up", 1.0, "한국 수출 모멘텀")
-    if re.search(r"물가|인플레|cpi", lower):
-        add("cpi_yoy", "down", 0.8, "물가 압력 완화")
-    if re.search(r"pce", lower):
-        add("pce_yoy", "down", 0.8, "PCE 압력 완화")
-    if re.search(r"경기|제조|pmi", lower):
-        add("pmi", "up", 0.8, "제조업 경기 확인")
-    if re.search(r"나스닥|ai|반도체|성장주|테크", lower):
-        add("nasdaq_return_20d", "up", 1.0, "성장주 가격 확인")
-    if re.search(r"코스피|한국주식|국내증시", lower):
-        add("kospi_return_20d", "up", 1.0, "국내 지수 가격 확인")
-    if not out:
-        add("vix", "down", 0.7, "시장 위험도")
-        add("dxy", "down", 0.7, "달러 유동성")
-        add("foreign_flow_kospi_20d", "up", 1.0, "국내 수급 확인")
-        add("kospi_return_20d", "up", 0.8, "가격 확인")
-    return out
-
-
-def infer_keywords_from_text(text: str, limit: int = 12) -> list[str]:
-    words = re.findall(r"[A-Za-z]{2,}|[가-힣]{2,}", text)
-    seen: dict[str, None] = {}
-    for word in words:
-        seen.setdefault(word, None)
-    return list(seen.keys())[:limit]
-
 
 def _utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -379,6 +301,7 @@ def create_thesis_from_text(
     raw_study_text: str,
     sector: str | None = None,
     related_tickers: list[str] | None = None,
+    news_keywords: list[str] | None = None,
     horizon: str = "medium",
     initial_confidence: float = 60.0,
     user_position_view: str = "watch",
@@ -387,10 +310,38 @@ def create_thesis_from_text(
     """Create an Active thesis from a simple Telegram/user text input."""
     title = (title or "").strip() or "Untitled Thesis"
     raw_study_text = (raw_study_text or "").strip()
-    joined = f"{title}\n{raw_study_text}\n{sector or ''}"
-    thesis_type = infer_thesis_type(joined)
-    indicators = infer_indicators_from_text(joined)
-    keywords = infer_keywords_from_text(joined)
+    thesis_type = "sector_cycle" if sector else "macro"
+    indicators = [
+        {
+            "indicator_key": "vix",
+            "expected_direction": "down",
+            "weight": 0.7,
+            "lookback_days": 20,
+            "description": "시장 위험도",
+        },
+        {
+            "indicator_key": "dxy",
+            "expected_direction": "down",
+            "weight": 0.7,
+            "lookback_days": 20,
+            "description": "달러 유동성",
+        },
+        {
+            "indicator_key": "foreign_flow_kospi_20d",
+            "expected_direction": "up",
+            "weight": 1.0,
+            "lookback_days": 20,
+            "description": "국내 수급 확인",
+        },
+        {
+            "indicator_key": "kospi_return_20d",
+            "expected_direction": "up",
+            "weight": 0.8,
+            "lookback_days": 20,
+            "description": "가격 확인",
+        },
+    ]
+    keywords = [str(k).strip() for k in (news_keywords or []) if str(k).strip()]
     now = _utc_now_iso()
     init_db(db_path)
     with connect(db_path or get_db_path()) as conn:
@@ -484,6 +435,7 @@ def create_thesis_from_text(
         "thesis_type": thesis_type,
         "sector": sector,
         "keywords": keywords,
+        "user_keywords": news_keywords or [],
         "indicators": indicators,
     }
 
@@ -525,6 +477,31 @@ def archive_thesis(thesis_id: int, db_path: Path | None = None) -> bool:
             {"id": int(thesis_id), "now": _utc_now_iso()},
         )
         return cur.rowcount > 0
+
+
+def load_active_thesis_news_queries(db_path: Path | None = None, *, max_queries_per_thesis: int = 12) -> dict[str, list[str]]:
+    """Return Google News query groups from user-provided Active Thesis keywords only."""
+    init_db(db_path)
+    out: dict[str, list[str]] = {}
+    with connect(db_path or get_db_path()) as conn:
+        rows = _fetch_rows(
+            conn,
+            """
+            SELECT id, title, raw_study_text, thesis_type, beneficiaries_json, news_keywords_json
+            FROM investment_thesis
+            WHERE LOWER(COALESCE(status, '')) = 'active'
+            ORDER BY updated_at DESC, id DESC
+            LIMIT 20
+            """,
+        )
+    for row in rows:
+        tid = int(row.get("id") or 0)
+        keywords = _list_from_json(row.get("news_keywords_json"))
+        queries = list(dict.fromkeys([k for k in keywords if k]))[:max_queries_per_thesis]
+        if queries:
+            title = str(row.get("title") or f"Thesis {tid}")[:24]
+            out[f"Thesis #{tid} {title}"] = queries
+    return out
 
 
 def _fetch_rows(conn: sqlite3.Connection, query: str, params: dict[str, Any] | None = None) -> list[dict[str, Any]]:

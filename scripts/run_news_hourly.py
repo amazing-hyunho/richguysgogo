@@ -16,7 +16,7 @@ if str(ROOT_DIR) not in sys.path:
 from committee.tools.news_digest import build_topic_digest, recommended_topic_queries
 from committee.core.market_collector import persist_snapshot_metrics
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
-from committee.core.thesis_monitor import update_thesis_signals
+from committee.core.thesis_monitor import load_active_thesis_news_queries, update_thesis_signals
 
 
 def _digest_signature(payload: dict[str, object]) -> dict[str, object]:
@@ -84,6 +84,18 @@ def _sync_stock_news(limit: int) -> None:
     if result.stdout.strip():
         print(result.stdout.strip())
     print("[news_hourly] stock news sync: done")
+
+
+def _build_topic_queries_with_theses() -> dict[str, list[str]]:
+    topic_queries = recommended_topic_queries()
+    thesis_queries = load_active_thesis_news_queries(ROOT_DIR / "data" / "investment.db")
+    if thesis_queries:
+        topic_queries = {**topic_queries, **thesis_queries}
+        total = sum(len(v) for v in thesis_queries.values())
+        print(f"[news_hourly] thesis news queries: groups={len(thesis_queries)} queries={total}")
+    else:
+        print("[news_hourly] thesis news queries: none")
+    return topic_queries
 
 
 def _collect_indicators(market_date: date) -> None:
@@ -214,12 +226,13 @@ def main() -> None:
     if args.collect_indicators:
         _collect_indicators(market_date=date.fromisoformat(args.market_date))
 
-    digest, reason = build_topic_digest(target_total=args.target_total, top_n=args.top_n)
+    topic_queries = _build_topic_queries_with_theses()
+    digest, reason = build_topic_digest(target_total=args.target_total, top_n=args.top_n, topic_queries=topic_queries)
     if digest is None:
         raise RuntimeError(f"news_topic_digest_failed: {reason}")
 
     payload = asdict(digest)
-    payload["recommended_topics"] = recommended_topic_queries()
+    payload["recommended_topics"] = topic_queries
     digest_saved = _save_digest(payload)
 
     stock_news_synced = False
