@@ -8,13 +8,13 @@
       ]
     },
     {
-      "point": "KOSPI는 -0.13%로 소폭 하락, KOSDAQ은 -3.43% 급락하며 단기 조정 신호가 뚜렷하게 나타났습니다.",
+      "point": "KOSPI는 -0.13%로 소폭 하락, KOSDAQ은 -3.43% 급락하며 단기 변동성 확대가 확인됨.",
       "sources": [
         "CORE_SIGNALS"
       ]
     },
     {
-      "point": "외국인은 전체적으로 1,422억 순매수이나, KOSPI에서는 매도(-3,555억), KOSDAQ에서는 매수(+4,977억)로 시장 내 수급 불균형이 지속되고 있습니다.",
+      "point": "외국인은 전체적으로 +1422억 순매수이나, KOSPI에서는 순매도(-3555억), KOSDAQ에서는 순매수(+4977억)로 시장 내 수급 방향성이 엇갈림.",
       "sources": [
         "CORE_SIGNALS"
       ]
@@ -22,22 +22,13 @@
   ],
   "disagreements": [
     {
-      "topic": "실적 모멘텀과 시장 방향성",
-      "majority": "단기 조정 및 관망세, 추가 상승 모멘텀 제한",
-      "minority": "실적 추정치 상향 압력 지속, 추세 변화 미약",
-      "minority_agents": [
-        "earnings"
-      ],
-      "why_it_matters": "실적 모멘텀이 유지된다면 단기 조정이 깊지 않을 수 있으나, 수급·정책 불확실성이 크면 하락세가 확대될 수 있음"
-    },
-    {
       "topic": "유동성 환경 해석",
-      "majority": "정책·환율 불확실성으로 신중한 접근 필요",
-      "minority": "누적 위험 신호는 제한적, 급격한 위험회피는 아님",
+      "majority": "중립(NEUTRAL): 단기 변동성 확대와 관망세, 즉각적 위험 신호는 제한적.",
+      "minority": "RISK_OFF: 정책 불확실성과 환율 불안이 유동성 위축을 유발.",
       "minority_agents": [
-        "risk"
+        "liquidity"
       ],
-      "why_it_matters": "유동성 악화가 본격화되면 시장 변동성이 급격히 확대될 수 있음"
+      "why_it_matters": "유동성 위축이 실제로 심화될 경우, 단기 조정이 아니라 중기 하락 전환 가능성까지 열릴 수 있음."
     }
   ],
   "ops_guidance": [
@@ -54,5 +45,5 @@
       "text": "Avoid chasing overstretched breakouts."
     }
   ],
-  "sugeup_narrative": "## 단기 조정 진입: KOSPI 소폭 하락, KOSDAQ 급락\n\n2026년 6월 20일 KOSPI는 9,052.42pt(-0.13%), KOSDAQ은 966.59pt(-3.43%)로 마감했습니다. 원/달러 환율은 1,530.44원(-0.59%)로 소폭 하락했으나, 여전히 고환율 부담이 지속되고 있습니다. 변동성 지수(VIX)는 16.78로 5일 평균(16.61)과 유사한 수준입니다. 수급 측면에서는 외국인 +1,422억 순매수(코스피 -3,555억, 코스닥 +4,977억), 기관 -18,082억 순매도, 개인 +17,228억 순매수로, 개인의 추격매수와 기관의 대규모 매도가 두드러졌습니다.\n\n## 수급 해석: 외국인 KOSDAQ 매수, 기관 대규모 매도\n\n오늘 시장은 외국인의 KOSDAQ 집중 매수(+4,977억)와 기관의 대규모 순매도(-18,082억)가 특징적입니다. KOSPI에서는 외국인과 기관 모두 매도 우위, 개인이 대규모 매수(+16,478억)로 대응했습니다. 이는 최근 20일간 KOSPI가 15.74% 급등한 데 따른 개인의 추격매수 성격이 강하며, 수급 불안정이 지속되고 있음을 시사합니다. 외국인 매수세가 KOSDAQ에 집중된 점은 반도체/AI 등 성장 테마에 대한 선별적 접근이 이어지고 있음을 보여줍니다.\n\n## 금리·환율·정책: 불확실성 확대와 투자 전략 변화\n\n뉴스 헤드라인에서는 연준의 긴축 강화 전망과 달러 강세, 환율 불안정이 핵심 이슈로 부각되고 있습니다. [\"하반기 연준 긴축 강해질 듯…달러 요인으로 환율 안정 어려워\" - KB Think](https://news.google.com/rss/articles/CBMickFVX3lxTE9td2xxQzJwa045eEIzUnpoZndlRGRSOEtqc1JjeVFFb2ZmeGR2MmNFTC14bTdPeDNqNzU5NGV0VzBOUVM4SEpCZ0FjWVpJTnlxR1hVRURfTWFaZWUwbEo0WFJweXZfcDBiNnpWLVpLYVZkQQ?oc=5), [금리 오르고 환율 흔들리고…하반기 투자 전략 바뀐다 - 마켓인](https://news.google.com/rss/articles/CBMic0FVX3lxTE41UHVWa2JGV3Q2STFGdWNzVXpRVTlQVzFDYS0wRklNZTVMZTNhLWxXdWx6MERhMTdYWTdPOE9XS2w5d3Q0ekdua2JQSUx3ZG1QcURCZGJTS2VZRFFlajB0akJ5UWVnRDNSM1pfMEJlaVBuNTQ?oc=5) 등에서 확인되듯, 하반기 투자 전략의 변화가 불가피하다는 경계감이 커지고 있습니다. 또한, [車 수출 ‘흔들’… 美 관세에 중동발 운임 상승 겹쳐 부진 - 조선일보](https://news.google.com/rss/articles/CBMijgFBVV95cUxOM3pTS3ZIRHV4cDJJUHlQQ2F6WExVUjZPTnc2YmdER2RNZnduNHZiMGdEdmZWWVduWDlrYVlSbHB5S1pNRE9md0lsbDhzaVpIM1ZvNUlsQjVHaFZ4d0trLXZwWFpvYXJPUlRGSlNVUlljSGw1TUJ1b25adlpvQ3lsLW8yaEVGUURGM0lmWVFR?oc=5) 등 정책·수출 변수도 부담 요인입니다.\n\n## 반도체/AI와 시장 Breadth: 성장 테마 선별, 확산 약화\n\n반도체/AI 관련 이슈([조의준 대표 \"中, 엔비디아 없이도 간다…최종 승자 장담 못해\" - MTN](https://news.google.com/rss/articles/CBMiZEFVX3lxTE5XNDltbXNUWkZLVWFDSmZ5ZU1Sdkx5ZmJuaF9UclZQUVNXV0NhSU4zcW40ckNsc0NzX1B0UzRZTDlaZE1DN1BaUmFmaXVkU1RtOHkweFo5d2RyU2o3dUdTTGsyXzQ?oc=5))가 시장 내 선별적 매수로 이어지고 있으나, KOSDAQ 급락과 기관·외국인 매도세는 시장 내부 확산(breadth) 약화로 연결되고 있습니다. 이는 단기적으로 시장의 추가 상승 모멘텀이 제한적임을 시사합니다.\n\n## 향후 체크포인트 및 전략\n\n20일 누적 상승세(15.74%)와 단기 조정 신호가 공존하는 구간입니다. 외국인 매수세가 KOSPI로 복귀하거나, 환율·정책 불확실성이 완화될 경우 상승 추세가 재개될 수 있습니다. 반대로, 기관 매도세가 지속되고 KOSDAQ 변동성이 확대된다면 추가 조정 위험이 커질 수 있습니다. 오늘의 중립적 관망 기조는 외국인 수급 방향성 변화 또는 정책 불확실성 완화가 확인될 때까지 유지해야 합니다.\n\n**오늘 논지의 무효화 조건:** 외국인 순매수가 KOSPI로 전환되고, 기관 매도세가 급격히 둔화될 경우 단기 조정 국면이 조기 종료될 수 있습니다."
+  "sugeup_narrative": "## 단기 변동성 확대와 관망세: KOSPI 9052.42, KOSDAQ 966.59 급락\n\n오늘(6월 20일) 국내 증시는 최근 20일간의 강한 상승세(+15.74%) 이후 단기 변동성 확대와 관망세가 공존하는 모습을 보였습니다. KOSPI는 9052.42pt(-0.13%)로 소폭 하락했고, KOSDAQ은 966.59pt(-3.43%)로 급락하며 중소형주 중심의 조정이 두드러졌습니다. 환율은 USD/KRW 1530.44(-0.59%)로 소폭 하락했으나, 여전히 고환율 구간에 머물고 있습니다. VIX는 16.78로 5일 평균(16.61)과 유사해 극단적 공포는 아니지만, 변동성 경계가 유지되고 있습니다. 수급 측면에서는 외국인 전체 순매수(+1422억)이나, KOSPI에서는 순매도(-3555억), KOSDAQ에서는 순매수(+4977억)로 시장 내 수급 방향성이 엇갈렸습니다. 기관은 전반적으로 -1.8조원 순매도, 개인은 +1.7조원 순매수로 나타났습니다.\n\n## 수급 해석: 외국인 KOSDAQ 매수 vs. 개인 KOSPI 추격매수\n\n오늘 수급의 핵심은 외국인의 KOSDAQ 집중 매수와 개인의 KOSPI 추격매수입니다. 외국인은 KOSPI에서 차익실현 및 리밸런싱 성격의 매도를 보인 반면, KOSDAQ에서는 적극적으로 매수에 나섰습니다. 이는 [\"하반기 연준 긴축 강해질 듯…달러 요인으로 환율 안정 어려워\" - KB Think](https://news.google.com/rss/articles/CBMickFVX3lxTE9td2xxQzJwa045eEIzUnpoZndlRGRSOEtqc1JjeVFFb2ZmeGR2MmNFTC14bTdPeDNqNzU5NGV0VzBOUVM4SEpCZ0FjWVpJTnlxR1hVRURfTWFaZWUwbEo0WFJweXZfcDBiNnpWLVpLYVZkQQ?oc=5) 등 금리·환율 불확실성 뉴스와 맞물려, 외국인 자금이 변동성 높은 중소형주로 이동했음을 시사합니다. 개인은 최근 20일간의 급등세에 힘입어 KOSPI 대형주에 추격매수로 대응했으나, 지속성은 낮을 수 있습니다. 기관은 전반적으로 대규모 매도를 지속하며 관망 또는 리스크 관리에 집중하는 모습입니다.\n\n## 오늘의 핵심 이슈: 금리·환율·정책 불확실성\n\n오늘 뉴스 키워드는 금리/연준, 환율/달러, 정책/관세, 경기/성장 등입니다. [금리 오르고 환율 흔들리고…하반기 투자 전략 바뀐다 - 마켓인](https://news.google.com/rss/articles/CBMic0FVX3lxTE41UHVWa2JGV3Q2STFGdWNzVXpRVTlQVzFDYS0wRklNZTVMZTNhLWxXdWx6MERhMTdYWTdPOE9XS2w5d3Q0ekdua2JQSUx3ZG1QcURCZGJTS2VZRFFlajB0akJ5UWVnRDNSM1pfMEJlaVBuNTQ?oc=5) 기사처럼, 연준의 긴축 기조 강화와 달러 강세가 하반기 투자 전략에 영향을 주고 있습니다. 또한 [車 수출 ‘흔들’… 美 관세에 중동발 운임 상승 겹쳐 부진 - 조선일보](https://news.google.com/rss/articles/CBMijgFBVV95cUxOM3pTS3ZIRHV4cDJJUHlQQ2F6WExVUjZPTnc2YmdER2RNZnduNHZiMGdEdmZWWVduWDlrYVlSbHB5S1pNRE9md0lsbDhzaVpIM1ZvNUlsQjVHaFZ4d0trLXZwWFpvYXJPUlRGSlNVUlljSGw1TUJ1b25adlpvQ3lsLW8yaEVGUURGM0lmWVFR?oc=5) 등 정책·관세 리스크도 수출주에 부담을 주고 있습니다. 미국 증시가 강세(S&P500 +1.08%, 나스닥 +1.91%)를 보였음에도, 국내 시장은 환율·정책 불확실성에 더 민감하게 반응하는 모습입니다.\n\n## 향후 체크포인트 및 전략: 변동성 확대 구간, 선별적 대응 필요\n\n단기적으로는 KOSPI의 누적 상승 피로와 변동성 확대, 그리고 금리·환율·정책 불확실성 등 외부 변수에 대한 경계가 필요합니다. 유동성 담당자의 소수의견(RISK_OFF)처럼, 만약 환율이 추가 급등하거나 외국인 수급이 급격히 악화될 경우, 중립 시나리오가 깨질 수 있습니다. 따라서 KOSPI 대형주 중 실적·수급이 뚜렷한 종목에 한해 선별적 접근을 권고하며, KOSDAQ 및 변동성 높은 테마주는 비중 축소가 바람직합니다. 정책 불확실성 노출 업종과 환율·금리 민감주는 신규 진입을 자제해야 합니다. 오늘의 중립 시나리오가 무너지는 조건은 외국인 대규모 순매도 전환 및 환율 급등(USDKRW 1550 이상)입니다."
 }
