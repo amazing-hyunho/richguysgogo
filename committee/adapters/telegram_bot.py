@@ -167,10 +167,10 @@ def _format_help_message() -> str:
         "📊 시장/수급\n"
         "/flow 또는 /flow trend — 최근 외국인 순매수 추이\n\n"
         "🏢 AI 종목분석 워치리스트\n"
-        "/stock add TICKER [회사명] [KR|US] [섹터] — 등록 + 뉴스수집 + 대시보드 빌드\n"
+        "/stock add TICKER [회사명] [KR|US] [섹터] — 등록 + 뉴스수집 + 빌드/커밋/푸시\n"
         "  예) /stock add NVDA\n"
         "  예) /stock add 005930 삼성전자 KR 반도체\n"
-        "/stock remove TICKER — 등록 해제 + 대시보드 빌드\n"
+        "/stock remove TICKER — 등록 해제 + 빌드/커밋/푸시\n"
         "/stock list — 등록 종목 목록\n\n"
         "📈 컨센서스\n"
         "/consensus TICKER — 애널리스트 컨센서스 조회\n"
@@ -182,7 +182,7 @@ def _format_help_message() -> str:
         "/thesis remove ID — 가설 보관 처리\n\n"
         "🧩 전략 메모\n"
         "/strategy show — 최신 전략 보기\n"
-        "/strategy set KEY=VALUE — 전략 값 저장\n"
+        "/strategy set KEY=VALUE — 전략 값 저장 + 빌드/커밋/푸시\n"
         "  예) /strategy set RISK=CAUTION\n\n"
         "💬 자연어 질문\n"
         "명령어가 아니어도 최근 위원회 결과/수급/뉴스에 대해 질문할 수 있습니다."
@@ -260,9 +260,12 @@ def _handle_stock_command(command: str) -> str:
         ok, msg = remove_stock(parts[2])
         if not ok:
             return "⚠️ " + msg
-        build_ok, build_msg = _rebuild_dashboard()
-        icon = "✅" if build_ok else "⚠️"
-        return f"✅ {msg}\n{icon} {build_msg}"
+        publish_ok, publish_msg = _publish_dashboard_update(
+            "stock-remove",
+            extra_targets=["config/ai_stock_watchlist.json"],
+        )
+        icon = "✅" if publish_ok else "⚠️"
+        return f"✅ {msg}\n{icon} {publish_msg}"
 
     if sub == "add":
         if len(parts) < 3:
@@ -310,14 +313,17 @@ def _handle_stock_command(command: str) -> str:
         except Exception as exc:  # noqa: BLE001
             lines.append(f"⚠️ 뉴스 수집은 실패했습니다(나중에 sync로 재시도): {exc}")
 
-        build_ok, build_msg = _rebuild_dashboard()
-        lines.append(("✅ " if build_ok else "⚠️ ") + build_msg)
+        publish_ok, publish_msg = _publish_dashboard_update(
+            "stock-add",
+            extra_targets=["config/ai_stock_watchlist.json"],
+        )
+        lines.append(("✅ " if publish_ok else "⚠️ ") + publish_msg)
         return "\n".join(lines)
 
     return (
         "AI 종목분석 워치리스트 명령\n"
-        "/stock add TICKER [회사명] [KR|US] [섹터] — 등록 + 즉시 뉴스 수집 + 대시보드 빌드\n"
-        "/stock remove TICKER — 등록 해제 + 대시보드 빌드\n"
+        "/stock add TICKER [회사명] [KR|US] [섹터] — 등록 + 즉시 뉴스 수집 + 빌드/커밋/푸시\n"
+        "/stock remove TICKER — 등록 해제 + 빌드/커밋/푸시\n"
         "/stock list — 등록 목록"
     )
 
@@ -371,9 +377,11 @@ def _handle_thesis_command(command: str) -> str:
             return "사용법: /thesis remove ID (예: /thesis remove 3)"
         thesis_id = int(parts[2].strip())
         ok = archive_thesis(thesis_id)
-        build_ok, build_msg = _rebuild_dashboard()
-        icon = "✅" if build_ok else "⚠️"
-        return (f"✅ Thesis #{thesis_id} 보관 처리 완료.\n" if ok else f"⚠️ Thesis #{thesis_id}를 찾지 못했습니다.\n") + f"{icon} {build_msg}"
+        if not ok:
+            return f"⚠️ Thesis #{thesis_id}를 찾지 못했습니다."
+        publish_ok, publish_msg = _publish_dashboard_update("thesis-remove")
+        icon = "✅" if publish_ok else "⚠️"
+        return f"✅ Thesis #{thesis_id} 보관 처리 완료.\n{icon} {publish_msg}"
 
     if sub == "add":
         if len(parts) < 3:
@@ -442,8 +450,8 @@ def _handle_thesis_command(command: str) -> str:
             news_keywords=user_keywords,
         )
         changed = update_thesis_signals(date.today().isoformat(), db_path=ROOT_DIR / "data" / "investment.db")
-        build_ok, build_msg = _rebuild_dashboard()
-        icon = "✅" if build_ok else "⚠️"
+        publish_ok, publish_msg = _publish_dashboard_update("thesis-add")
+        icon = "✅" if publish_ok else "⚠️"
         indicators = ", ".join(str(i.get("indicator_key")) for i in created.get("indicators", [])[:6])
         keywords = ", ".join(created.get("keywords", [])[:10])
         return (
@@ -454,7 +462,7 @@ def _handle_thesis_command(command: str) -> str:
             f"- 관찰 지표: {indicators or '-'}\n"
             f"- 뉴스 검색 키워드(사용자 입력만): {keywords or '-'}\n"
             f"- signal 갱신: {changed}건\n"
-            f"{icon} {build_msg}"
+            f"{icon} {publish_msg}"
         )
 
     return "지원 커맨드: /thesis add, /thesis list, /thesis remove"
@@ -486,6 +494,71 @@ def _rebuild_dashboard(timeout_sec: int = 180) -> tuple[bool, str]:
     if len(detail) > 500:
         detail = detail[:500] + "..."
     return False, f"대시보드 빌드 실패(exit={result.returncode}): {detail or 'no output'}"
+
+
+def _publish_dashboard_update(reason: str, extra_targets: list[str] | None = None) -> tuple[bool, str]:
+    """Build dashboard, commit the generated static artifact, and push it."""
+    build_ok, build_msg = _rebuild_dashboard()
+    if not build_ok:
+        return False, build_msg
+
+    targets = ["docs/dashboard.html", *(extra_targets or [])]
+    commit_ok, commit_msg, committed = _commit_publish_targets(targets, reason)
+    if not commit_ok:
+        return False, f"{build_msg} / {commit_msg}"
+    if not committed:
+        return True, f"{build_msg} / {commit_msg}"
+
+    push_ok, push_msg = _push_current_head()
+    if not push_ok:
+        return False, f"{build_msg} / {commit_msg} / {push_msg}"
+    return True, f"{build_msg} / {commit_msg} / {push_msg}"
+
+
+def _commit_publish_targets(targets: list[str], reason: str) -> tuple[bool, str, bool]:
+    deduped_targets = list(dict.fromkeys(targets))
+    add_result = _run_git(["add", *deduped_targets])
+    if add_result.returncode != 0:
+        return False, f"git add 실패: {_compact_process_output(add_result)}", False
+
+    diff_result = _run_git(["diff", "--cached", "--quiet", "--", *deduped_targets])
+    if diff_result.returncode == 0:
+        return True, "변경 없음(커밋 생략).", False
+    if diff_result.returncode != 1:
+        return False, f"git diff 확인 실패: {_compact_process_output(diff_result)}", False
+
+    commit_message = f"chore(telegram): publish dashboard update ({reason})"
+    commit_result = _run_git(["commit", "-m", commit_message, "--", *deduped_targets])
+    if commit_result.returncode != 0:
+        return False, f"git commit 실패: {_compact_process_output(commit_result)}", False
+    summary = _compact_process_output(commit_result)
+    return True, f"커밋 완료: {summary or commit_message}", True
+
+
+def _push_current_head() -> tuple[bool, str]:
+    push_result = _run_git(["push", "origin", "HEAD"])
+    if push_result.returncode == 0:
+        return True, "push 완료."
+    return False, f"push 실패: {_compact_process_output(push_result)}"
+
+
+def _run_git(args: list[str]) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(
+        ["git", *args],
+        cwd=str(ROOT_DIR),
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=False,
+    )
+
+
+def _compact_process_output(result: subprocess.CompletedProcess[str], limit: int = 300) -> str:
+    detail = (result.stderr or result.stdout or "").strip().replace("\n", " ")
+    if len(detail) > limit:
+        return detail[:limit] + "..."
+    return detail
 
 
 def _format_stock_list() -> str:
@@ -635,7 +708,13 @@ def _handle_strategy_command(command: str, context: dict) -> str:
             version, strategy = update_strategy(parsed, source="telegram")
         except Exception as exc:  # noqa: BLE001
             return f"전략 저장 실패(안전 fallback): {exc}"
-        return _format_strategy(strategy=strategy, header=f"전략 저장 완료 v{version}")
+        publish_ok, publish_msg = _publish_dashboard_update("strategy-set")
+        icon = "✅" if publish_ok else "⚠️"
+        return _format_strategy(
+            strategy=strategy,
+            header=f"전략 저장 완료 v{version}",
+            footer=f"{icon} {publish_msg}",
+        )
 
     return "지원 커맨드: /strategy set KEY=VALUE, /strategy show"
 
