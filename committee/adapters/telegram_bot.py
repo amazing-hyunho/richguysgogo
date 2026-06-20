@@ -5,6 +5,7 @@ import re
 import subprocess
 import sys
 import time
+from datetime import date
 from pathlib import Path
 
 import requests
@@ -18,6 +19,7 @@ from committee.core.database import (
 from committee.core.strategy_store import load_latest_strategy, update_strategy
 from committee.core.stock_watchlist import add_stock, get_stocks, remove_stock
 from committee.core.telegram_poll_state import load_offset, save_offset
+from committee.core.thesis_monitor import archive_thesis, create_thesis_from_text, list_theses, update_thesis_signals
 from committee.tools.stock_consensus_provider import fetch_stock_consensus
 from committee.tools.stock_news import fetch_stock_news
 
@@ -126,10 +128,11 @@ def _normalize_command_text(text: str) -> str:
     stripped = text.strip()
     if not stripped.startswith("/"):
         return stripped
-    parts = stripped.split()
-    if parts:
-        parts[0] = re.sub(r"^(/\w+)@\w+", r"\1", parts[0], flags=re.IGNORECASE)
-    return " ".join(parts)
+    match = re.match(r"^(\S+)(.*)$", stripped, flags=re.DOTALL)
+    if not match:
+        return stripped
+    command = re.sub(r"^(/\w+)@\w+", r"\1", match.group(1), flags=re.IGNORECASE)
+    return command + match.group(2)
 
 
 def answer_for_message(text: str) -> str:
@@ -143,6 +146,8 @@ def answer_for_message(text: str) -> str:
         return _handle_consensus_command(stripped)
     if stripped.startswith("/stock"):
         return _handle_stock_command(stripped)
+    if stripped.startswith("/thesis"):
+        return _handle_thesis_command(stripped)
 
     context = _load_latest_context()
     if stripped.startswith("/strategy"):
@@ -284,6 +289,110 @@ def _handle_stock_command(command: str) -> str:
         "/stock remove TICKER — 등록 해제 + 대시보드 빌드\n"
         "/stock list — 등록 목록"
     )
+
+
+def _handle_thesis_command(command: str) -> str:
+    """Handle Thesis Monitor commands from Telegram.
+
+    Examples
+    --------
+    /thesis add AI 반도체 사이클
+    섹터: 반도체
+    종목: 000660,NVDA
+    조사내용...
+    """
+    first_line, *body_lines = command.splitlines()
+    parts = first_line.strip().split(maxsplit=2)
+    sub = parts[1].strip().lower() if len(parts) >= 2 else ""
+
+    if sub in {"", "help"}:
+        return (
+            "Thesis Monitor 명령\n"
+            "/thesis add 제목\\n섹터: 반도체\\n종목: 000660,NVDA\\n조사 내용...\n"
+            "/thesis list — 등록 가설 목록\n"
+            "/thesis remove ID — 가설 보관 처리\n\n"
+            "입력은 제목과 조사 내용만 있어도 됩니다. 섹터/종목은 선택입니다."
+        )
+
+    if sub == "list":
+        rows = list_theses()
+        if not rows:
+            return "등록된 Thesis가 없습니다. /thesis add 로 추가하세요."
+        lines = ["🧭 Thesis Monitor 목록"]
+        for row in rows:
+            score = row.get("thesis_score")
+            score_s = "-" if score is None else f"{float(score):+.1f}"
+            action = row.get("recommended_action") or "-"
+            lines.append(
+                f"- #{row.get('id')} {row.get('title')} · {row.get('status')} · "
+                f"score {score_s} · {row.get('thesis_trend') or '-'} · {action}"
+            )
+        return "\n".join(lines)
+
+    if sub in {"remove", "archive"}:
+        if len(parts) < 3 or not parts[2].strip().isdigit():
+            return "사용법: /thesis remove ID (예: /thesis remove 3)"
+        thesis_id = int(parts[2].strip())
+        ok = archive_thesis(thesis_id)
+        build_ok, build_msg = _rebuild_dashboard()
+        icon = "✅" if build_ok else "⚠️"
+        return (f"✅ Thesis #{thesis_id} 보관 처리 완료.\n" if ok else f"⚠️ Thesis #{thesis_id}를 찾지 못했습니다.\n") + f"{icon} {build_msg}"
+
+    if sub == "add":
+        if len(parts) < 3:
+            return (
+                "사용법:\n"
+                "/thesis add 제목\n"
+                "섹터: 반도체\n"
+                "종목: 000660,NVDA\n"
+                "조사 내용..."
+            )
+        title = parts[2].strip()
+        sector: str | None = None
+        tickers: list[str] = []
+        study_lines: list[str] = []
+        for line in body_lines:
+            stripped = line.strip()
+            lowered = stripped.lower()
+            if lowered.startswith(("섹터:", "sector:")):
+                sector = stripped.split(":", 1)[1].strip()
+                continue
+            if lowered.startswith(("섹터=", "sector=")):
+                sector = stripped.split("=", 1)[1].strip()
+                continue
+            if lowered.startswith(("종목:", "tickers:", "ticker:")):
+                raw = stripped.split(":", 1)[1]
+                tickers.extend([t.strip().upper() for t in re.split(r"[,\\s]+", raw) if t.strip()])
+                continue
+            if lowered.startswith(("종목=", "tickers=", "ticker=")):
+                raw = stripped.split("=", 1)[1]
+                tickers.extend([t.strip().upper() for t in re.split(r"[,\\s]+", raw) if t.strip()])
+                continue
+            study_lines.append(line)
+        raw_study_text = "\n".join(study_lines).strip() or title
+        created = create_thesis_from_text(
+            title=title,
+            raw_study_text=raw_study_text,
+            sector=sector,
+            related_tickers=tickers,
+        )
+        changed = update_thesis_signals(date.today().isoformat(), db_path=ROOT_DIR / "data" / "investment.db")
+        build_ok, build_msg = _rebuild_dashboard()
+        icon = "✅" if build_ok else "⚠️"
+        indicators = ", ".join(str(i.get("indicator_key")) for i in created.get("indicators", [])[:6])
+        keywords = ", ".join(created.get("keywords", [])[:8])
+        return (
+            f"✅ Thesis 등록 완료: #{created['id']} {created['title']}\n"
+            f"- 유형: {created['thesis_type']}\n"
+            f"- 섹터: {created.get('sector') or '-'}\n"
+            f"- 연결 종목: {', '.join(tickers) if tickers else '-'}\n"
+            f"- 관찰 지표: {indicators or '-'}\n"
+            f"- 뉴스 키워드: {keywords or '-'}\n"
+            f"- signal 갱신: {changed}건\n"
+            f"{icon} {build_msg}"
+        )
+
+    return "지원 커맨드: /thesis add, /thesis list, /thesis remove"
 
 
 def _rebuild_dashboard(timeout_sec: int = 180) -> tuple[bool, str]:

@@ -11,6 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 import json
+import re
 import sqlite3
 
 from committee.core.database import connect, get_db_path, init_db
@@ -25,6 +26,82 @@ ACTION_LABELS = {
     "reduce": "비중 축소",
     "sell_or_hedge": "매도 / 헤지 검토",
 }
+
+
+def infer_thesis_type(text: str) -> str:
+    lower = text.lower()
+    if re.search(r"금리|채권|yield|rate|fed|연준", lower):
+        return "rates"
+    if re.search(r"환율|원달러|달러|usd|dxy|currency", lower):
+        return "currency"
+    if re.search(r"물가|인플레|cpi|pce", lower):
+        return "inflation"
+    if re.search(r"신용|스프레드|oas|하이일드|credit", lower):
+        return "credit"
+    if re.search(r"실적|eps|영업이익|마진|earnings", lower):
+        return "earnings"
+    if re.search(r"수급|외국인|기관|liquidity|유동성", lower):
+        return "liquidity"
+    if re.search(r"섹터|업종|cycle|사이클|반도체|바이오|자동차", lower):
+        return "sector_cycle"
+    return "macro"
+
+
+def infer_indicators_from_text(text: str) -> list[dict[str, object]]:
+    lower = text.lower()
+    out: list[dict[str, object]] = []
+
+    def add(key: str, direction: str, weight: float = 1.0, description: str = "") -> None:
+        if not any(item["indicator_key"] == key for item in out):
+            out.append(
+                {
+                    "indicator_key": key,
+                    "expected_direction": direction,
+                    "weight": weight,
+                    "lookback_days": 20,
+                    "description": description,
+                }
+            )
+
+    if re.search(r"환율|원달러|usdkrw", lower):
+        add("usdkrw", "down", 1.0, "원화 안정 여부")
+    if re.search(r"달러|dxy", lower):
+        add("dxy", "down", 1.0, "달러 강세 완화 여부")
+    if re.search(r"금리|yield|채권|fed|연준", lower):
+        add("us_10y_yield", "down", 0.8, "장기금리 부담")
+        add("us_real_10y_yield", "down", 0.8, "실질금리 부담")
+    if re.search(r"변동성|공포|vix|리스크", lower):
+        add("vix", "down", 1.0, "시장 스트레스 완화")
+    if re.search(r"신용|스프레드|oas|하이일드", lower):
+        add("hy_oas", "down", 1.0, "신용위험 완화")
+    if re.search(r"외국인|수급|코스피", lower):
+        add("foreign_flow_kospi_20d", "up", 1.2, "외국인 KOSPI 수급 확인")
+    if re.search(r"수출|반도체|한국", lower):
+        add("korea_export_yoy", "up", 1.0, "한국 수출 모멘텀")
+    if re.search(r"물가|인플레|cpi", lower):
+        add("cpi_yoy", "down", 0.8, "물가 압력 완화")
+    if re.search(r"pce", lower):
+        add("pce_yoy", "down", 0.8, "PCE 압력 완화")
+    if re.search(r"경기|제조|pmi", lower):
+        add("pmi", "up", 0.8, "제조업 경기 확인")
+    if re.search(r"나스닥|ai|반도체|성장주|테크", lower):
+        add("nasdaq_return_20d", "up", 1.0, "성장주 가격 확인")
+    if re.search(r"코스피|한국주식|국내증시", lower):
+        add("kospi_return_20d", "up", 1.0, "국내 지수 가격 확인")
+    if not out:
+        add("vix", "down", 0.7, "시장 위험도")
+        add("dxy", "down", 0.7, "달러 유동성")
+        add("foreign_flow_kospi_20d", "up", 1.0, "국내 수급 확인")
+        add("kospi_return_20d", "up", 0.8, "가격 확인")
+    return out
+
+
+def infer_keywords_from_text(text: str, limit: int = 12) -> list[str]:
+    words = re.findall(r"[A-Za-z]{2,}|[가-힣]{2,}", text)
+    seen: dict[str, None] = {}
+    for word in words:
+        seen.setdefault(word, None)
+    return list(seen.keys())[:limit]
 
 
 def _utc_now_iso() -> str:
@@ -294,6 +371,160 @@ def insert_thesis_evidence(
             },
         )
         return int(cur.lastrowid)
+
+
+def create_thesis_from_text(
+    *,
+    title: str,
+    raw_study_text: str,
+    sector: str | None = None,
+    related_tickers: list[str] | None = None,
+    horizon: str = "medium",
+    initial_confidence: float = 60.0,
+    user_position_view: str = "watch",
+    db_path: Path | None = None,
+) -> dict[str, Any]:
+    """Create an Active thesis from a simple Telegram/user text input."""
+    title = (title or "").strip() or "Untitled Thesis"
+    raw_study_text = (raw_study_text or "").strip()
+    joined = f"{title}\n{raw_study_text}\n{sector or ''}"
+    thesis_type = infer_thesis_type(joined)
+    indicators = infer_indicators_from_text(joined)
+    keywords = infer_keywords_from_text(joined)
+    now = _utc_now_iso()
+    init_db(db_path)
+    with connect(db_path or get_db_path()) as conn:
+        cur = conn.execute(
+            """
+            INSERT INTO investment_thesis (
+                title, raw_study_text, summary, core_claim, thesis_type, horizon, status,
+                initial_confidence, current_confidence, user_position_view,
+                beneficiaries_json, watch_indicators_json, catalysts_json,
+                invalidation_conditions_json, news_keywords_json,
+                created_at, updated_at
+            ) VALUES (
+                :title, :raw_study_text, :summary, :core_claim, :thesis_type, :horizon, 'Active',
+                :initial_confidence, :current_confidence, :user_position_view,
+                :beneficiaries_json, :watch_indicators_json, :catalysts_json,
+                :invalidation_conditions_json, :news_keywords_json,
+                :created_at, :updated_at
+            );
+            """,
+            {
+                "title": title,
+                "raw_study_text": raw_study_text,
+                "summary": raw_study_text[:500] if raw_study_text else title,
+                "core_claim": title,
+                "thesis_type": thesis_type,
+                "horizon": horizon,
+                "initial_confidence": float(initial_confidence),
+                "current_confidence": float(initial_confidence),
+                "user_position_view": user_position_view,
+                "beneficiaries_json": json.dumps([sector], ensure_ascii=False) if sector else None,
+                "watch_indicators_json": json.dumps([i["indicator_key"] for i in indicators], ensure_ascii=False),
+                "catalysts_json": None,
+                "invalidation_conditions_json": None,
+                "news_keywords_json": json.dumps(keywords, ensure_ascii=False),
+                "created_at": now,
+                "updated_at": now,
+            },
+        )
+        thesis_id = int(cur.lastrowid)
+        for item in indicators:
+            conn.execute(
+                """
+                INSERT INTO thesis_indicator_map (
+                    thesis_id, indicator_key, expected_direction, weight, lookback_days,
+                    trigger_type, threshold, description, created_at, updated_at
+                ) VALUES (
+                    :thesis_id, :indicator_key, :expected_direction, :weight, :lookback_days,
+                    :trigger_type, :threshold, :description, :created_at, :updated_at
+                );
+                """,
+                {
+                    "thesis_id": thesis_id,
+                    "indicator_key": item["indicator_key"],
+                    "expected_direction": item.get("expected_direction") or "neutral",
+                    "weight": float(item.get("weight") or 1.0),
+                    "lookback_days": int(item.get("lookback_days") or 20),
+                    "trigger_type": item.get("trigger_type"),
+                    "threshold": item.get("threshold"),
+                    "description": item.get("description"),
+                    "created_at": now,
+                    "updated_at": now,
+                },
+            )
+        for ticker in related_tickers or []:
+            t = str(ticker or "").strip().upper()
+            if not t:
+                continue
+            conn.execute(
+                """
+                INSERT INTO thesis_asset_map (
+                    thesis_id, asset_type, asset_id, ticker, relation_type,
+                    sensitivity, confidence, note, created_at, updated_at
+                ) VALUES (
+                    :thesis_id, 'stock', :asset_id, :ticker, 'watchlist',
+                    1.0, :confidence, :note, :created_at, :updated_at
+                );
+                """,
+                {
+                    "thesis_id": thesis_id,
+                    "asset_id": t,
+                    "ticker": t,
+                    "confidence": float(initial_confidence),
+                    "note": f"telegram sector={sector}" if sector else "telegram",
+                    "created_at": now,
+                    "updated_at": now,
+                },
+            )
+    return {
+        "id": thesis_id,
+        "title": title,
+        "thesis_type": thesis_type,
+        "sector": sector,
+        "keywords": keywords,
+        "indicators": indicators,
+    }
+
+
+def list_theses(*, include_archived: bool = False, db_path: Path | None = None) -> list[dict[str, Any]]:
+    init_db(db_path)
+    where = "" if include_archived else "WHERE LOWER(COALESCE(status, '')) != 'archived'"
+    with connect(db_path or get_db_path()) as conn:
+        return _fetch_rows(
+            conn,
+            f"""
+            SELECT t.*, s.thesis_score, s.thesis_trend, s.recommended_action
+            FROM investment_thesis t
+            LEFT JOIN (
+                SELECT s1.*
+                FROM thesis_signal_daily s1
+                INNER JOIN (
+                    SELECT thesis_id, MAX(date) AS max_date
+                    FROM thesis_signal_daily
+                    GROUP BY thesis_id
+                ) latest ON s1.thesis_id = latest.thesis_id AND s1.date = latest.max_date
+            ) s ON s.thesis_id = t.id
+            {where}
+            ORDER BY t.updated_at DESC, t.id DESC
+            LIMIT 20
+            """,
+        )
+
+
+def archive_thesis(thesis_id: int, db_path: Path | None = None) -> bool:
+    init_db(db_path)
+    with connect(db_path or get_db_path()) as conn:
+        cur = conn.execute(
+            """
+            UPDATE investment_thesis
+            SET status='Archived', archived_at=:now, updated_at=:now
+            WHERE id=:id AND LOWER(COALESCE(status, '')) != 'archived'
+            """,
+            {"id": int(thesis_id), "now": _utc_now_iso()},
+        )
+        return cur.rowcount > 0
 
 
 def _fetch_rows(conn: sqlite3.Connection, query: str, params: dict[str, Any] | None = None) -> list[dict[str, Any]]:
