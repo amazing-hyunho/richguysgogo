@@ -206,15 +206,9 @@ def _build_morning_brief(
     lines.append("  https://amazing-hyunho.github.io/richguysgogo/")
     lines.append("")
 
-    # Telegram bot quick help for the AI stock-analysis watchlist.
-    lines.append("🤖 AI 종목분석 명령 (텔레그램 봇에 입력)")
-    lines.append("  /stock add TICKER [회사명] [KR|US]")
-    lines.append("    → 등록 + 뉴스수집 + 대시보드빌드")
-    lines.append("    예) /stock add NVDA")
-    lines.append("    예) /stock add 005930 삼성전자 KR")
-    lines.append("  /stock remove TICKER  → 등록해제 + 대시보드빌드")
-    lines.append("    예) /stock remove NVDA")
-    lines.append("  /stock list           → 등록목록 확인")
+    # Telegram bot quick help entry point.
+    lines.append("🤖 텔레그램 명령어")
+    lines.append("  /help  → 종목등록·수급·컨센서스·Thesis 명령어 전체 보기")
 
     return "\n".join(lines)
 

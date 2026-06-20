@@ -140,6 +140,8 @@ def answer_for_message(text: str) -> str:
     if not stripped:
         return "질문을 입력해 주세요."
 
+    if stripped in {"/help", "/start", "/commands"}:
+        return _format_help_message()
     if stripped.startswith("/flow"):
         return _handle_flow_command(stripped)
     if stripped.startswith("/consensus"):
@@ -156,6 +158,35 @@ def answer_for_message(text: str) -> str:
         return _format_foreign_flow_trend()
 
     return _build_answer_from_context(stripped, context)
+
+
+def _format_help_message() -> str:
+    """Return a compact command index for Telegram users."""
+    return (
+        "🤖 AI 투자위원회 명령어 종합\n\n"
+        "📊 시장/수급\n"
+        "/flow 또는 /flow trend — 최근 외국인 순매수 추이\n\n"
+        "🏢 AI 종목분석 워치리스트\n"
+        "/stock add TICKER [회사명] [KR|US] [섹터] — 등록 + 뉴스수집 + 대시보드 빌드\n"
+        "  예) /stock add NVDA\n"
+        "  예) /stock add 005930 삼성전자 KR 반도체\n"
+        "/stock remove TICKER — 등록 해제 + 대시보드 빌드\n"
+        "/stock list — 등록 종목 목록\n\n"
+        "📈 컨센서스\n"
+        "/consensus TICKER — 애널리스트 컨센서스 조회\n"
+        "  예) /consensus AAPL\n"
+        "  예) /consensus 005930\n\n"
+        "🧭 Thesis Monitor\n"
+        "/thesis help — 등록 양식 보기\n"
+        "/thesis list — 등록 가설 목록\n"
+        "/thesis remove ID — 가설 보관 처리\n\n"
+        "🧩 전략 메모\n"
+        "/strategy show — 최신 전략 보기\n"
+        "/strategy set KEY=VALUE — 전략 값 저장\n"
+        "  예) /strategy set RISK=CAUTION\n\n"
+        "💬 자연어 질문\n"
+        "명령어가 아니어도 최근 위원회 결과/수급/뉴스에 대해 질문할 수 있습니다."
+    )
 
 
 def _handle_flow_command(command: str) -> str:
