@@ -119,8 +119,13 @@ class Markets(BaseModel):
 class MacroDaily(BaseModel):
     """Phase 1: Daily macro indicators (best-effort; missing values are NULL)."""
     us10y: Optional[float] = None
-    us2y: Optional[float] = None
+    us2y: Optional[float] = None  # compatibility alias; historically held ^IRX short-rate proxy
     spread_2_10: Optional[float] = None
+    us_3m_yield: Optional[float] = None
+    us_2y_yield: Optional[float] = None
+    us_10y_yield: Optional[float] = None
+    spread_10y_2y: Optional[float] = None
+    spread_10y_3m: Optional[float] = None
     vix: Optional[float] = None
     dxy: Optional[float] = None
     usdkrw: Optional[float] = None

@@ -314,6 +314,15 @@ def init_db(db_path: Path | None = None) -> None:
         _ensure_column_exists(conn, table="daily_macro", column="oil_brent", column_ddl="REAL")
         _ensure_column_exists(conn, table="daily_macro", column="tga_balance", column_ddl="REAL")
         _ensure_column_exists(conn, table="daily_macro", column="boj_rate", column_ddl="REAL")
+        # Explicit Treasury curve columns. Keep legacy us10y/us2y/spread_2_10 for compatibility.
+        _ensure_column_exists(conn, table="daily_macro", column="us_3m_yield", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="us_2y_yield", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="us_10y_yield", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="spread_10y_2y", column_ddl="REAL")
+        _ensure_column_exists(conn, table="daily_macro", column="spread_10y_3m", column_ddl="REAL")
+        # Point-in-time metadata for future leakage-safe analysis.
+        for _col in ["data_date", "published_at", "observed_at", "revised_at"]:
+            _ensure_column_exists(conn, table="daily_macro", column=_col, column_ddl="TEXT")
 
         # Phase 2: monthly_macro table (NULL-based; no 0.0 placeholders).
         conn.execute(
@@ -349,6 +358,8 @@ def init_db(db_path: Path | None = None) -> None:
             "export_yoy",
         ]:
             _ensure_column_exists(conn, table="monthly_macro", column=col, column_ddl="REAL")
+        for _col in ["data_date", "published_at", "observed_at", "revised_at"]:
+            _ensure_column_exists(conn, table="monthly_macro", column=_col, column_ddl="TEXT")
 
         # Clean schema migration: remove redundant/ambiguous `wage_growth` by rebuilding table.
         # Why: we now store wage as (wage_level, wage_yoy). A `wage_growth` column is ambiguous:
@@ -368,6 +379,129 @@ def init_db(db_path: Path | None = None) -> None:
         )
         for col in ["real_gdp", "gdp_qoq_annualized"]:
             _ensure_column_exists(conn, table="quarterly_macro", column=col, column_ddl="REAL")
+        for _col in ["data_date", "published_at", "observed_at", "revised_at"]:
+            _ensure_column_exists(conn, table="quarterly_macro", column=_col, column_ddl="TEXT")
+
+        # --- Thesis Monitor tables ---
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS investment_thesis (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                raw_study_text TEXT NOT NULL,
+                summary TEXT,
+                thesis_type TEXT,
+                horizon TEXT,
+                status TEXT,
+                initial_confidence REAL,
+                current_confidence REAL,
+                user_position_view TEXT,
+                created_at TEXT,
+                updated_at TEXT,
+                archived_at TEXT
+            );
+            """
+        )
+        for _col, _ddl in [
+            ("core_claim", "TEXT"),
+            ("beneficiaries_json", "TEXT"),
+            ("victims_json", "TEXT"),
+            ("watch_indicators_json", "TEXT"),
+            ("indicator_directions_json", "TEXT"),
+            ("catalysts_json", "TEXT"),
+            ("invalidation_conditions_json", "TEXT"),
+            ("news_keywords_json", "TEXT"),
+        ]:
+            _ensure_column_exists(conn, table="investment_thesis", column=_col, column_ddl=_ddl)
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_investment_thesis_status ON investment_thesis(status);")
+
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS thesis_indicator_map (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                thesis_id INTEGER NOT NULL,
+                indicator_key TEXT NOT NULL,
+                expected_direction TEXT,
+                weight REAL,
+                lookback_days INTEGER,
+                trigger_type TEXT,
+                threshold REAL,
+                description TEXT,
+                created_at TEXT,
+                updated_at TEXT,
+                FOREIGN KEY(thesis_id) REFERENCES investment_thesis(id)
+            );
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_thesis_indicator_map_thesis ON thesis_indicator_map(thesis_id);")
+
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS thesis_asset_map (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                thesis_id INTEGER NOT NULL,
+                asset_type TEXT,
+                asset_id TEXT,
+                ticker TEXT,
+                relation_type TEXT,
+                sensitivity REAL,
+                confidence REAL,
+                note TEXT,
+                created_at TEXT,
+                updated_at TEXT,
+                FOREIGN KEY(thesis_id) REFERENCES investment_thesis(id)
+            );
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_thesis_asset_map_ticker ON thesis_asset_map(ticker);")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_thesis_asset_map_thesis ON thesis_asset_map(thesis_id);")
+
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS thesis_evidence_daily (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT NOT NULL,
+                thesis_id INTEGER NOT NULL,
+                evidence_type TEXT,
+                source_id TEXT,
+                direction TEXT,
+                strength REAL,
+                novelty REAL,
+                reliability REAL,
+                impact_score REAL,
+                summary TEXT,
+                reasoning TEXT,
+                created_at TEXT,
+                FOREIGN KEY(thesis_id) REFERENCES investment_thesis(id)
+            );
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_thesis_evidence_daily_thesis_date ON thesis_evidence_daily(thesis_id, date);")
+
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS thesis_signal_daily (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                date TEXT NOT NULL,
+                thesis_id INTEGER NOT NULL,
+                thesis_score REAL,
+                thesis_trend TEXT,
+                evidence_support_score REAL,
+                evidence_contradiction_score REAL,
+                macro_confirmation_score REAL,
+                flow_confirmation_score REAL,
+                price_confirmation_score REAL,
+                risk_score REAL,
+                recommended_action TEXT,
+                position_multiplier REAL,
+                reason_summary TEXT,
+                created_at TEXT,
+                UNIQUE(date, thesis_id),
+                FOREIGN KEY(thesis_id) REFERENCES investment_thesis(id)
+            );
+            """
+        )
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_thesis_signal_daily_thesis_date ON thesis_signal_daily(thesis_id, date);")
 
         # stock_consensus: analyst consensus per ticker (updated periodically, not daily).
         # Primary key: (ticker, date) — store the snapshot date so history is preserved.
@@ -727,6 +861,11 @@ def upsert_daily_macro(
     us10y: float | None = None,
     us2y: float | None = None,
     spread_2_10: float | None = None,
+    us_3m_yield: float | None = None,
+    us_2y_yield: float | None = None,
+    us_10y_yield: float | None = None,
+    spread_10y_2y: float | None = None,
+    spread_10y_3m: float | None = None,
     vix: float | None = None,
     dxy: float | None = None,
     usdkrw: float | None = None,
@@ -742,27 +881,48 @@ def upsert_daily_macro(
     oil_brent: float | None = None,
     tga_balance: float | None = None,
     boj_rate: float | None = None,
+    data_date: str | None = None,
+    published_at: str | None = None,
+    observed_at: str | None = None,
+    revised_at: str | None = None,
     db_path: Path | None = None,
 ) -> None:
     """Upsert one row into `daily_macro` (NULL-based missing data)."""
     created_at = _utc_now_iso()
+    us_10y_yield = us10y if us_10y_yield is None else us_10y_yield
+    # Backward compatibility: legacy `us2y` currently stores the ^IRX short-rate proxy.
+    us_3m_yield = us2y if us_3m_yield is None else us_3m_yield
+    spread_10y_3m = spread_2_10 if spread_10y_3m is None else spread_10y_3m
+    if spread_10y_2y is None and us_10y_yield is not None and us_2y_yield is not None:
+        spread_10y_2y = float(us_10y_yield) - float(us_2y_yield)
     init_db(db_path)
     with connect(db_path) as conn:
         conn.execute(
             """
             INSERT INTO daily_macro (
-                date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate,
+                date, us10y, us2y, spread_2_10,
+                us_3m_yield, us_2y_yield, us_10y_yield, spread_10y_2y, spread_10y_3m,
+                vix, dxy, usdkrw, fed_funds_rate, real_rate,
                 vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet,
-                russell2000, oil_brent, tga_balance, boj_rate, created_at
+                russell2000, oil_brent, tga_balance, boj_rate,
+                data_date, published_at, observed_at, revised_at, created_at
             ) VALUES (
-                :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate,
+                :date, :us10y, :us2y, :spread_2_10,
+                :us_3m_yield, :us_2y_yield, :us_10y_yield, :spread_10y_2y, :spread_10y_3m,
+                :vix, :dxy, :usdkrw, :fed_funds_rate, :real_rate,
                 :vix3m, :vix_term_spread, :oil_wti, :hy_oas, :ig_oas, :fed_balance_sheet,
-                :russell2000, :oil_brent, :tga_balance, :boj_rate, :created_at
+                :russell2000, :oil_brent, :tga_balance, :boj_rate,
+                :data_date, :published_at, :observed_at, :revised_at, :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
                 us10y=COALESCE(excluded.us10y, daily_macro.us10y),
                 us2y=COALESCE(excluded.us2y, daily_macro.us2y),
                 spread_2_10=COALESCE(excluded.spread_2_10, daily_macro.spread_2_10),
+                us_3m_yield=COALESCE(excluded.us_3m_yield, daily_macro.us_3m_yield),
+                us_2y_yield=COALESCE(excluded.us_2y_yield, daily_macro.us_2y_yield),
+                us_10y_yield=COALESCE(excluded.us_10y_yield, daily_macro.us_10y_yield),
+                spread_10y_2y=COALESCE(excluded.spread_10y_2y, daily_macro.spread_10y_2y),
+                spread_10y_3m=COALESCE(excluded.spread_10y_3m, daily_macro.spread_10y_3m),
                 vix=COALESCE(excluded.vix, daily_macro.vix),
                 dxy=COALESCE(excluded.dxy, daily_macro.dxy),
                 usdkrw=COALESCE(excluded.usdkrw, daily_macro.usdkrw),
@@ -778,6 +938,10 @@ def upsert_daily_macro(
                 oil_brent=COALESCE(excluded.oil_brent, daily_macro.oil_brent),
                 tga_balance=COALESCE(excluded.tga_balance, daily_macro.tga_balance),
                 boj_rate=COALESCE(excluded.boj_rate, daily_macro.boj_rate),
+                data_date=COALESCE(excluded.data_date, daily_macro.data_date),
+                published_at=COALESCE(excluded.published_at, daily_macro.published_at),
+                observed_at=COALESCE(excluded.observed_at, daily_macro.observed_at),
+                revised_at=COALESCE(excluded.revised_at, daily_macro.revised_at),
                 created_at=excluded.created_at;
             """,
             {
@@ -785,6 +949,11 @@ def upsert_daily_macro(
                 "us10y": None if us10y is None else float(us10y),
                 "us2y": None if us2y is None else float(us2y),
                 "spread_2_10": None if spread_2_10 is None else float(spread_2_10),
+                "us_3m_yield": None if us_3m_yield is None else float(us_3m_yield),
+                "us_2y_yield": None if us_2y_yield is None else float(us_2y_yield),
+                "us_10y_yield": None if us_10y_yield is None else float(us_10y_yield),
+                "spread_10y_2y": None if spread_10y_2y is None else float(spread_10y_2y),
+                "spread_10y_3m": None if spread_10y_3m is None else float(spread_10y_3m),
                 "vix": None if vix is None else float(vix),
                 "dxy": None if dxy is None else float(dxy),
                 "usdkrw": None if usdkrw is None else float(usdkrw),
@@ -800,6 +969,10 @@ def upsert_daily_macro(
                 "oil_brent": None if oil_brent is None else float(oil_brent),
                 "tga_balance": None if tga_balance is None else float(tga_balance),
                 "boj_rate": None if boj_rate is None else float(boj_rate),
+                "data_date": data_date or date,
+                "published_at": published_at,
+                "observed_at": observed_at or created_at,
+                "revised_at": revised_at,
                 "created_at": created_at,
             },
         )

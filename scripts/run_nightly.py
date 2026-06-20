@@ -19,6 +19,7 @@ from committee.agents.model_profiles import get_agent_model_map, parse_backend
 from committee.core.env_loader import load_project_env
 from committee.core.pipeline import DailyPipeline
 from committee.core.snapshot_builder import get_last_snapshot_status
+from committee.core.thesis_monitor import update_thesis_signals
 
 
 def _build_dashboard() -> None:
@@ -177,6 +178,9 @@ def main() -> None:
         print("snapshot sources status: " + ", ".join([f"{k}={status.get(k,'FAIL')}" for k in keys]))
 
     if args.build_dashboard:
+        print("[run_nightly] thesis monitor: updating signals")
+        changed = update_thesis_signals(market_date.isoformat(), db_path=ROOT_DIR / "data" / "investment.db")
+        print(f"[run_nightly] thesis monitor: signals updated ({changed})")
         print("[run_nightly] dashboard build: start")
         _build_dashboard()
         print("[run_nightly] dashboard build: done")

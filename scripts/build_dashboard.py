@@ -87,10 +87,12 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 
 try:
     from committee.core.database import init_db
+    from committee.core.thesis_monitor import load_thesis_monitor_data
 except ModuleNotFoundError:
     import sys
     sys.path.insert(0, str(ROOT_DIR))
     from committee.core.database import init_db
+    from committee.core.thesis_monitor import load_thesis_monitor_data
 DB_PATH = ROOT_DIR / "data" / "investment.db"
 RUNS_DIR = ROOT_DIR / "runs"
 OUTPUT_PATH = ROOT_DIR / "docs" / "dashboard.html"
@@ -633,16 +635,23 @@ def main() -> None:
             "daily_macro": fetch_rows(
                 conn,
                 "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, "
+                "us_3m_yield, us_2y_yield, us_10y_yield, spread_10y_2y, spread_10y_3m, "
                 "vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet, "
-                "russell2000, oil_brent, tga_balance, boj_rate "
+                "russell2000, oil_brent, tga_balance, boj_rate, "
+                "data_date, published_at, observed_at, revised_at "
                 "FROM daily_macro ORDER BY date",
             ),
             "monthly_macro": fetch_rows(
                 conn,
                 "SELECT date, unemployment_rate, cpi_yoy, core_cpi_yoy, pce_yoy, pmi, "
-                "retail_sales_mom, nfp_change, wage_level, wage_yoy, export_yoy FROM monthly_macro ORDER BY date",
+                "retail_sales_mom, nfp_change, wage_level, wage_yoy, export_yoy, "
+                "data_date, published_at, observed_at, revised_at FROM monthly_macro ORDER BY date",
             ),
-            "quarterly_macro": fetch_rows(conn, "SELECT date, real_gdp, gdp_qoq_annualized FROM quarterly_macro ORDER BY date"),
+            "quarterly_macro": fetch_rows(
+                conn,
+                "SELECT date, real_gdp, gdp_qoq_annualized, data_date, published_at, observed_at, revised_at "
+                "FROM quarterly_macro ORDER BY date",
+            ),
             "committee_history": load_committee_history(),
             "latest_stances": load_latest_stances(),
             "latest_debate_minutes": load_latest_debate_minutes(),
@@ -658,6 +667,7 @@ def main() -> None:
             "financial_metrics": load_financial_metrics_summary(),
             "ticker_master": load_ticker_master(),
             "stock_news": load_stock_news_summary(),
+            "thesis_monitor": load_thesis_monitor_data(DB_PATH),
             "fear_greed": _fetch_fear_greed(),
         }
     finally:

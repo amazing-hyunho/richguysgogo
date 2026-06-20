@@ -12,6 +12,8 @@ Rules (per spec)
 - Never return 0.0 placeholders from providers.
 """
 
+from committee.tools.fred_common import fetch_fred_latest
+
 
 def _import_yfinance():
     try:
@@ -57,10 +59,15 @@ def fetch_us10y() -> float | None:
     return None if v is None else _scale_tnx(v)
 
 
-def fetch_us2y() -> float | None:
-    """US 2Y proxy per Phase 1 spec (uses ^IRX as the chosen proxy)."""
+def fetch_us3m() -> float | None:
+    """US 3M/T-bill proxy from Yahoo (^IRX)."""
     v = _fetch_latest_close("^IRX")
     return None if v is None else _scale_tnx(v)
+
+
+def fetch_us2y() -> float | None:
+    """US 2Y Treasury yield (FRED: DGS2). Falls back to None on failure."""
+    return fetch_fred_latest("DGS2")
 
 
 def fetch_vix() -> float | None:

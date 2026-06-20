@@ -23,6 +23,7 @@ from committee.tools.macro_daily_provider import (
     fetch_oil_brent,
     fetch_oil_wti,
     fetch_russell2000,
+    fetch_us3m,
     fetch_us10y,
     fetch_us2y,
     fetch_usdkrw,
@@ -124,6 +125,7 @@ def build_snapshot_real(
 
     # Phase 1: daily macro (yfinance only). Missing values are None -> DB NULL.
     us10y = fetch_us10y()
+    us3m = fetch_us3m()
     us2y = fetch_us2y()
     vix_value = fetch_vix()
     dxy = fetch_dxy()
@@ -134,8 +136,10 @@ def build_snapshot_real(
     oil_brent = fetch_oil_brent()
     russell2000 = fetch_russell2000()
 
-    # Spread calculation: only when both yields are available.
-    spread_2_10 = (us10y - us2y) if (us10y is not None and us2y is not None) else None
+    # Legacy spread_2_10 is kept as 10Y-3M because legacy us2y was a ^IRX short-rate proxy.
+    spread_2_10 = (us10y - us3m) if (us10y is not None and us3m is not None) else None
+    spread_10y_2y = (us10y - us2y) if (us10y is not None and us2y is not None) else None
+    spread_10y_3m = spread_2_10
 
     # Phase 2: monthly macro (FRED). Missing FRED key -> None for all values.
     unemployment_rate = fetch_unemployment_rate()
@@ -218,6 +222,7 @@ def build_snapshot_real(
     # Phase 1 macro status updates (daily only).
     status["us10y"] = "OK" if us10y is not None else "FAIL"
     status["us2y"] = "OK" if us2y is not None else "FAIL"
+    status["us3m"] = "OK" if us3m is not None else "FAIL"
     status["dxy"] = "OK" if dxy is not None else "FAIL"
     status["usdkrw_macro"] = "OK" if usdkrw_macro is not None else "FAIL"
     status["spread_2_10"] = "OK" if spread_2_10 is not None else "FAIL"
@@ -357,8 +362,13 @@ def build_snapshot_real(
         macro={
             "daily": {
                 "us10y": us10y,
-                "us2y": us2y,
+                "us2y": us3m,
                 "spread_2_10": spread_2_10,
+                "us_3m_yield": us3m,
+                "us_2y_yield": us2y,
+                "us_10y_yield": us10y,
+                "spread_10y_2y": spread_10y_2y,
+                "spread_10y_3m": spread_10y_3m,
                 "vix": float(vix_value) if vix_value is not None else None,
                 "dxy": dxy,
                 "usdkrw": usdkrw_macro,

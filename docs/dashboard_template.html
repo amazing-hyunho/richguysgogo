@@ -244,6 +244,40 @@
     .tab-btn { padding: 10px 22px; background: none; border: none; border-bottom: 2px solid transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: -1px; border-radius: 8px 8px 0 0; transition: color 0.15s, background 0.15s; letter-spacing: 0.01em; }
     .tab-btn:hover { color: #e2e8f0; background: rgba(255,255,255,0.04); }
     .tab-btn.tab-active { color: var(--blue); border-bottom-color: var(--blue); background: rgba(56,189,248,0.06); }
+    .thesis-kpi-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:12px; margin-bottom:16px; }
+    .thesis-kpi { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px; }
+    .thesis-kpi .k { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px; }
+    .thesis-kpi .v { font-size:18px; font-weight:800; color:#f8fafc; }
+    .thesis-layout { display:grid; grid-template-columns: minmax(220px,.85fr) minmax(320px,1.4fr) minmax(260px,1fr); gap:14px; align-items:start; }
+    @media (max-width: 1080px) { .thesis-layout { grid-template-columns: 1fr; } }
+    .thesis-panel { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:14px; min-width:0; }
+    .thesis-panel h3 { margin:0 0 10px 0; font-size:14px; color:#e2e8f0; }
+    .thesis-list { display:flex; flex-direction:column; gap:8px; }
+    .thesis-item { border:1px solid rgba(71,85,105,.75); background:rgba(15,23,42,.5); border-radius:10px; padding:10px; cursor:pointer; text-align:left; color:inherit; }
+    .thesis-item:hover, .thesis-item.active { border-color:rgba(56,189,248,.7); background:rgba(56,189,248,.08); }
+    .thesis-item .t { font-size:13px; font-weight:800; margin-bottom:6px; }
+    .thesis-item .m { display:flex; gap:6px; flex-wrap:wrap; font-size:11px; color:var(--muted); }
+    .thesis-pill { display:inline-block; border-radius:999px; padding:3px 8px; font-size:11px; font-weight:700; border:1px solid rgba(148,163,184,.3); color:#cbd5e1; }
+    .thesis-pill.strengthening { color:#6ee7b7; border-color:rgba(52,211,153,.45); background:rgba(52,211,153,.1); }
+    .thesis-pill.weakening, .thesis-pill.invalidated { color:#fca5a5; border-color:rgba(248,113,113,.45); background:rgba(248,113,113,.1); }
+    .thesis-pill.stable { color:#fcd34d; border-color:rgba(245,158,11,.35); background:rgba(245,158,11,.08); }
+    .thesis-detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    @media (max-width: 720px) { .thesis-detail-grid { grid-template-columns: 1fr; } }
+    .thesis-box { background:rgba(15,23,42,.45); border:1px solid rgba(71,85,105,.55); border-radius:10px; padding:10px; }
+    .thesis-box .h { font-size:11px; color:var(--muted); margin-bottom:6px; font-weight:700; }
+    .thesis-box .b { font-size:13px; line-height:1.55; color:#dbe4f0; white-space:pre-wrap; }
+    .thesis-timeline { display:flex; flex-direction:column; gap:8px; max-height:420px; overflow:auto; }
+    .thesis-evidence { border-left:3px solid #64748b; background:rgba(15,23,42,.45); border-radius:8px; padding:9px 10px; }
+    .thesis-evidence.support { border-left-color:#34d399; }
+    .thesis-evidence.contradict { border-left-color:#f87171; }
+    .thesis-evidence .eh { font-size:12px; color:#94a3b8; margin-bottom:4px; }
+    .thesis-evidence .eb { font-size:13px; color:#e2e8f0; line-height:1.45; }
+    .thesis-form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; }
+    .thesis-input, .thesis-select, .thesis-textarea { width:100%; box-sizing:border-box; background:var(--bg); border:1px solid var(--line); border-radius:8px; color:var(--text); padding:8px 10px; font:inherit; font-size:13px; }
+    .thesis-textarea { min-height:110px; resize:vertical; }
+    .thesis-btn { background:rgba(56,189,248,.12); border:1px solid rgba(56,189,248,.4); color:#7dd3fc; border-radius:8px; padding:8px 12px; font-weight:800; cursor:pointer; }
+    .thesis-btn.secondary { background:rgba(148,163,184,.1); border-color:rgba(148,163,184,.3); color:#cbd5e1; }
+    .stock-thesis-links { margin-top:10px; padding:10px; border:1px solid rgba(56,189,248,.25); border-radius:10px; background:rgba(56,189,248,.06); font-size:12px; color:#cbd5e1; }
     .tab-pane { display: none; padding-top: 24px; }
     .tab-pane.tab-active { display: block; }
     /* ── AI 종목분석 탭 ── */
@@ -388,6 +422,7 @@
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
       <button class="tab-btn" data-tab="ai-stock" role="tab" aria-selected="false">🤖 AI 종목분석</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
+      <button class="tab-btn" data-tab="thesis" role="tab" aria-selected="false">🧭 Thesis Monitor</button>
       <button class="tab-btn" data-tab="retire" role="tab" aria-selected="false">🏖️ 은퇴 준비</button>
     </nav>
 
@@ -723,6 +758,70 @@
         </div>
       </section>
     </div><!-- /tab-news -->
+
+    <!-- ══ 탭: Thesis Monitor ════════════════════════════════════ -->
+    <div id="tab-thesis" class="tab-pane" role="tabpanel">
+      <section class="section" id="section-thesis-monitor">
+        <div class="section-head">
+          <h2>🧭 Thesis Monitor</h2>
+          <span class="section-meta">투자 가설 추적 · 의사결정 보조</span>
+        </div>
+        <div class="thesis-kpi-grid" id="thesis-kpis"></div>
+        <div class="thesis-layout">
+          <div class="thesis-panel">
+            <h3>Active Thesis</h3>
+            <div class="thesis-list" id="thesis-list"></div>
+          </div>
+          <div class="thesis-panel">
+            <h3>선택 가설 상세</h3>
+            <div id="thesis-detail"></div>
+          </div>
+          <div class="thesis-panel">
+            <h3>오늘의 근거 / 행동 제안</h3>
+            <div id="thesis-today"></div>
+          </div>
+        </div>
+      </section>
+      <section class="section" id="section-thesis-editor">
+        <div class="section-head">
+          <h2>Thesis 생성 / 수정 Draft</h2>
+          <span class="section-meta">브라우저 임시 저장 · JSON 내보내기</span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);line-height:1.55;margin-top:0;">
+          현재 대시보드는 정적 HTML이라 브라우저에서 SQLite에 직접 저장할 수 없습니다. 아래 입력값은 localStorage에 임시 저장되며, JSON으로 내보낸 뒤 DB helper/API에 연결할 수 있도록 같은 필드 구조를 사용합니다.
+        </p>
+        <div class="thesis-form-grid">
+          <input class="thesis-input" id="thesis-form-title" placeholder="제목">
+          <select class="thesis-select" id="thesis-form-horizon">
+            <option value="short">단기</option><option value="medium">중기</option><option value="long">장기</option>
+          </select>
+          <input class="thesis-input" id="thesis-form-confidence" type="number" min="0" max="100" value="50" placeholder="초기 확신도">
+          <select class="thesis-select" id="thesis-form-status">
+            <option value="Draft">Draft</option><option value="Active">Active</option><option value="Archived">Archived</option>
+          </select>
+          <select class="thesis-select" id="thesis-form-type">
+            <option value="macro">macro</option><option value="liquidity">liquidity</option><option value="rates">rates</option>
+            <option value="currency">currency</option><option value="inflation">inflation</option><option value="credit">credit</option>
+            <option value="business_cycle">business_cycle</option><option value="sector_cycle">sector_cycle</option>
+            <option value="earnings">earnings</option><option value="valuation">valuation</option><option value="event_driven">event_driven</option>
+            <option value="technical">technical</option>
+          </select>
+          <select class="thesis-select" id="thesis-form-view">
+            <option value="watch">관망</option><option value="buy_review">매수 검토</option><option value="scale_in">분할매수</option>
+            <option value="no_new_buy">신규매수 보류</option><option value="reduce">비중 축소</option><option value="sell_review">매도 검토</option>
+          </select>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+          <textarea class="thesis-textarea" id="thesis-form-raw" placeholder="스터디 원문 / 자유 메모"></textarea>
+          <textarea class="thesis-textarea" id="thesis-form-structured" placeholder="핵심 가설, 관찰 지표, 촉매, 반증 조건, 관련 키워드"></textarea>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+          <button class="thesis-btn" type="button" onclick="saveThesisDraft()">Draft 저장</button>
+          <button class="thesis-btn secondary" type="button" onclick="downloadThesisDraftJson()">JSON 내보내기</button>
+          <span id="thesis-form-msg" style="font-size:12px;color:var(--muted);align-self:center;"></span>
+        </div>
+      </section>
+    </div><!-- /tab-thesis -->
 
     <!-- ══ 탭 4: 은퇴 준비 ══════════════════════════════════════ -->
     <div id="tab-retire" class="tab-pane" role="tabpanel">
@@ -2847,6 +2946,201 @@ function renderWatchTop3() {
   const eqConclusion = buildEquityMarketConclusionBullets(md, dm, mode, eqLatestForeign, eqSum5Foreign);
   document.getElementById('equity-synth').innerHTML = renderSynthBulletsHtml('시장 결론:', eqConclusion, 3);
 
+  function parseMaybeJsonList(value) {
+    if (Array.isArray(value)) return value;
+    if (!value) return [];
+    try {
+      const parsed = JSON.parse(value);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (_) {
+      return String(value).split(',').map(s => s.trim()).filter(Boolean);
+    }
+  }
+
+  function latestSignalForThesis(thesisId) {
+    const sigs = safeArr(data.thesis_monitor && data.thesis_monitor.signals).filter(s => Number(s.thesis_id) === Number(thesisId));
+    return sigs.length ? sigs[0] : null;
+  }
+
+  function evidenceForThesis(thesisId) {
+    return safeArr(data.thesis_monitor && data.thesis_monitor.evidence)
+      .filter(e => Number(e.thesis_id) === Number(thesisId));
+  }
+
+  function thesisActionLabel(action) {
+    const labels = (data.thesis_monitor && data.thesis_monitor.action_labels) || {};
+    return labels[action] || action || '-';
+  }
+
+  function renderThesisKpis(theses, signals, regime) {
+    const latestById = {};
+    safeArr(signals).forEach(s => { if (!latestById[s.thesis_id]) latestById[s.thesis_id] = s; });
+    const strongest = Object.values(latestById).sort((a, b) => (b.thesis_score || 0) - (a.thesis_score || 0))[0];
+    const weakest = Object.values(latestById).sort((a, b) => (a.thesis_score || 0) - (b.thesis_score || 0))[0];
+    const invalids = Object.values(latestById).filter(s => s.thesis_trend === 'invalidated').length;
+    const titleOf = sig => {
+      if (!sig) return '-';
+      const t = theses.find(x => Number(x.id) === Number(sig.thesis_id));
+      return t ? t.title : `#${sig.thesis_id}`;
+    };
+    return [
+      ['Market Regime', regime.regime || 'neutral'],
+      ['Risk Appetite', `${formatNumberWithComma(regime.risk_appetite_score || 0, 1)} / 100`],
+      ['오늘 강화', titleOf(strongest)],
+      ['오늘 약화', titleOf(weakest)],
+      ['반증 경고', `${invalids}개`],
+    ].map(([k, v]) => `<div class="thesis-kpi"><div class="k">${escapeHtml(k)}</div><div class="v">${escapeHtml(String(v))}</div></div>`).join('');
+  }
+
+  function renderThesisDetail(thesis, indicators, assets) {
+    if (!thesis) {
+      return '<div class="empty-state">저장된 가설이 없습니다. 아래 Draft 입력으로 먼저 구조화해보세요.</div>';
+    }
+    const signal = latestSignalForThesis(thesis.id) || {};
+    const ind = indicators.filter(x => Number(x.thesis_id) === Number(thesis.id));
+    const ast = assets.filter(x => Number(x.thesis_id) === Number(thesis.id));
+    const ben = ast.filter(x => x.relation_type === 'beneficiary').map(x => x.ticker || x.asset_id).filter(Boolean);
+    const vic = ast.filter(x => x.relation_type === 'victim').map(x => x.ticker || x.asset_id).filter(Boolean);
+    const catalysts = parseMaybeJsonList(thesis.catalysts_json);
+    const invalids = parseMaybeJsonList(thesis.invalidation_conditions_json);
+    const keywords = parseMaybeJsonList(thesis.news_keywords_json);
+    const indicatorHtml = ind.length
+      ? ind.map(x => `<span class="thesis-pill">${escapeHtml(x.indicator_key)} ${escapeHtml(x.expected_direction || '')}</span>`).join(' ')
+      : parseMaybeJsonList(thesis.watch_indicators_json).map(x => `<span class="thesis-pill">${escapeHtml(x)}</span>`).join(' ') || '-';
+    return `
+      <div class="thesis-detail-grid">
+        <div class="thesis-box"><div class="h">현재 점수 / 추세</div><div class="b">${escapeHtml(formatMetric(signal.thesis_score))} · <span class="thesis-pill ${escapeHtml(signal.thesis_trend || 'stable')}">${escapeHtml(signal.thesis_trend || 'stable')}</span></div></div>
+        <div class="thesis-box"><div class="h">행동 제안</div><div class="b">${escapeHtml(thesisActionLabel(signal.recommended_action))}</div></div>
+        <div class="thesis-box"><div class="h">핵심 투자 가설</div><div class="b">${escapeHtml(thesis.core_claim || thesis.summary || '-')}</div></div>
+        <div class="thesis-box"><div class="h">사용자 현재 의견</div><div class="b">${escapeHtml(thesis.user_position_view || '-')}</div></div>
+        <div class="thesis-box"><div class="h">관찰 지표</div><div class="b">${indicatorHtml}</div></div>
+        <div class="thesis-box"><div class="h">촉매 이벤트</div><div class="b">${escapeHtml(catalysts.join(', ') || '-')}</div></div>
+        <div class="thesis-box"><div class="h">반증 조건</div><div class="b">${escapeHtml(invalids.join('\n') || '-')}</div></div>
+        <div class="thesis-box"><div class="h">관련 뉴스 키워드</div><div class="b">${escapeHtml(keywords.join(', ') || '-')}</div></div>
+        <div class="thesis-box"><div class="h">수혜 자산</div><div class="b">${escapeHtml(ben.join(', ') || '-')}</div></div>
+        <div class="thesis-box"><div class="h">피해 자산</div><div class="b">${escapeHtml(vic.join(', ') || '-')}</div></div>
+        <div class="thesis-box" style="grid-column:1/-1;"><div class="h">원문 스터디 노트</div><div class="b">${escapeHtml(thesis.raw_study_text || '-')}</div></div>
+        <div class="thesis-box" style="grid-column:1/-1;"><div class="h">점수 산식 근거</div><div class="b">${escapeHtml(signal.reason_summary || '아직 일별 신호가 없습니다. 증거/지표 연결 후 계산됩니다.')}</div></div>
+      </div>`;
+  }
+
+  function renderThesisToday(thesis) {
+    if (!thesis) return '<div class="empty-state">선택된 가설이 없습니다.</div>';
+    const ev = evidenceForThesis(thesis.id).slice(0, 12);
+    const signal = latestSignalForThesis(thesis.id) || {};
+    const support = ev.filter(e => e.direction === 'support').length;
+    const contradict = ev.filter(e => e.direction === 'contradict').length;
+    const rows = ev.length ? ev.map(e => `
+      <div class="thesis-evidence ${escapeHtml(e.direction || 'neutral')}">
+        <div class="eh">${escapeHtml(e.date || '-')} · ${escapeHtml(e.evidence_type || '-')} · impact ${escapeHtml(formatMetric(e.impact_score))}</div>
+        <div class="eb"><strong>${escapeHtml(e.direction || 'neutral')}</strong> — ${escapeHtml(e.summary || '-')}</div>
+        <div class="eh" style="margin-top:4px;">${escapeHtml(e.reasoning || '')}</div>
+      </div>`).join('') : '<div class="empty-state">최근 증거가 없습니다.</div>';
+    return `
+      <div class="thesis-box" style="margin-bottom:10px;">
+        <div class="h">오늘 요약</div>
+        <div class="b">강화 근거 ${support}개 · 약화 근거 ${contradict}개 · 제안: ${escapeHtml(thesisActionLabel(signal.recommended_action))}</div>
+      </div>
+      <div class="thesis-timeline">${rows}</div>`;
+  }
+
+  function buildThesisMonitor() {
+    const tm = data.thesis_monitor || {};
+    const theses = safeArr(tm.theses);
+    const active = theses.filter(t => String(t.status || '').toLowerCase() !== 'archived');
+    const indicators = safeArr(tm.indicator_map);
+    const assets = safeArr(tm.asset_map);
+    const signals = safeArr(tm.signals);
+    const regime = tm.market_regime || { regime: 'neutral', risk_appetite_score: 0, reasons: [] };
+    const kpis = document.getElementById('thesis-kpis');
+    const list = document.getElementById('thesis-list');
+    const detail = document.getElementById('thesis-detail');
+    const today = document.getElementById('thesis-today');
+    if (!kpis || !list || !detail || !today) return;
+    kpis.innerHTML = renderThesisKpis(active, signals, regime);
+    if (!active.length) {
+      list.innerHTML = '<div class="empty-state">Active Thesis가 없습니다.</div>';
+      detail.innerHTML = renderThesisDetail(null, [], []);
+      today.innerHTML = renderThesisToday(null);
+      loadThesisDraft();
+      return;
+    }
+    let selectedId = Number(active[0].id);
+    function renderSelected() {
+      const selected = active.find(t => Number(t.id) === selectedId) || active[0];
+      detail.innerHTML = renderThesisDetail(selected, indicators, assets);
+      today.innerHTML = renderThesisToday(selected);
+      list.querySelectorAll('.thesis-item').forEach(btn => btn.classList.toggle('active', Number(btn.dataset.id) === Number(selected.id)));
+    }
+    list.innerHTML = active.map(t => {
+      const s = latestSignalForThesis(t.id) || {};
+      return `<button type="button" class="thesis-item" data-id="${escapeHtml(String(t.id))}">
+        <div class="t">${escapeHtml(t.title || `Thesis #${t.id}`)}</div>
+        <div class="m">
+          <span class="thesis-pill ${escapeHtml(s.thesis_trend || 'stable')}">${escapeHtml(s.thesis_trend || 'stable')}</span>
+          <span>score ${escapeHtml(formatMetric(s.thesis_score))}</span>
+          <span>${escapeHtml(t.thesis_type || '-')}</span>
+        </div>
+      </button>`;
+    }).join('');
+    list.querySelectorAll('.thesis-item').forEach(btn => btn.addEventListener('click', () => {
+      selectedId = Number(btn.dataset.id);
+      renderSelected();
+    }));
+    renderSelected();
+    loadThesisDraft();
+  }
+
+  function collectThesisDraft() {
+    return {
+      title: document.getElementById('thesis-form-title')?.value || '',
+      raw_study_text: document.getElementById('thesis-form-raw')?.value || '',
+      summary: document.getElementById('thesis-form-structured')?.value || '',
+      thesis_type: document.getElementById('thesis-form-type')?.value || 'macro',
+      horizon: document.getElementById('thesis-form-horizon')?.value || 'medium',
+      status: document.getElementById('thesis-form-status')?.value || 'Draft',
+      initial_confidence: Number(document.getElementById('thesis-form-confidence')?.value || 50),
+      current_confidence: Number(document.getElementById('thesis-form-confidence')?.value || 50),
+      user_position_view: document.getElementById('thesis-form-view')?.value || 'watch',
+    };
+  }
+
+  function loadThesisDraft() {
+    try {
+      const raw = localStorage.getItem('thesis_monitor_draft');
+      if (!raw) return;
+      const d = JSON.parse(raw);
+      const set = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.value = v; };
+      set('thesis-form-title', d.title);
+      set('thesis-form-raw', d.raw_study_text);
+      set('thesis-form-structured', d.summary);
+      set('thesis-form-type', d.thesis_type);
+      set('thesis-form-horizon', d.horizon);
+      set('thesis-form-status', d.status);
+      set('thesis-form-confidence', d.initial_confidence);
+      set('thesis-form-view', d.user_position_view);
+    } catch (_) {}
+  }
+
+  window.saveThesisDraft = function saveThesisDraft() {
+    const draft = collectThesisDraft();
+    localStorage.setItem('thesis_monitor_draft', JSON.stringify(draft));
+    const msg = document.getElementById('thesis-form-msg');
+    if (msg) msg.textContent = 'Draft 저장됨';
+  };
+
+  window.downloadThesisDraftJson = function downloadThesisDraftJson() {
+    const draft = collectThesisDraft();
+    const blob = new Blob([JSON.stringify(draft, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `investment_thesis_${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  };
+
+  buildThesisMonitor();
+
   // ── 탭 전환 ──────────────────────────────────────────────────
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -3146,6 +3440,19 @@ function renderWatchTop3() {
       if (meanLabel) parts.push(`(${meanLabel})`);
       return parts.length ? parts.join(' ') : '-';
     }
+    function thesisLinksForTicker(ticker) {
+      const assets = safeArr(data.thesis_monitor && data.thesis_monitor.asset_map)
+        .filter(a => String(a.ticker || a.asset_id || '').toUpperCase() === ticker);
+      if (!assets.length) return '';
+      const theses = safeArr(data.thesis_monitor && data.thesis_monitor.theses);
+      const lines = assets.slice(0, 4).map(a => {
+        const t = theses.find(x => Number(x.id) === Number(a.thesis_id));
+        const sig = t ? latestSignalForThesis(t.id) : null;
+        const rel = a.relation_type === 'beneficiary' ? '유리' : a.relation_type === 'victim' ? '불리' : a.relation_type || '연결';
+        return `${rel}: ${t ? t.title : `Thesis #${a.thesis_id}`} (${thesisActionLabel(sig && sig.recommended_action)})`;
+      });
+      return `<div class="stock-thesis-links"><strong>연결된 활성 가설</strong><br>${escapeHtml(lines.join('\n'))}</div>`;
+    }
 
     listEl.innerHTML = stocks.map(stock => {
       const ticker = String(stock.ticker || '').toUpperCase();
@@ -3156,6 +3463,7 @@ function renderWatchTop3() {
         : '<span class="mkt-badge-us">US</span>';
       const articles = safeArr(stock.articles);
       const c = consensusMap[ticker];
+      const thesisHtml = thesisLinksForTicker(ticker);
 
       let consensusHtml = '<div class="ai-stock-consensus"><div class="c-item"><div class="c-label">컨센서스</div><div class="c-val" style="color:#64748b;">데이터 없음</div></div></div>';
       if (c) {
@@ -3201,6 +3509,7 @@ function renderWatchTop3() {
           ${mktBadge}
         </div>
         ${consensusHtml}
+        ${thesisHtml}
         <h4 class="ai-stock-news-title">📰 최근 뉴스 (${articles.length}건)</h4>
         <div class="ai-stock-news-list">${newsHtml}</div>
       </article>`;
