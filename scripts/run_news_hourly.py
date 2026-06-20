@@ -132,7 +132,6 @@ def _auto_commit(include_dashboard: bool, include_indicator_db: bool) -> bool:
     ]
     if include_indicator_db:
         _checkpoint_db()
-        targets.append("data/investment.db")
     if include_dashboard:
         targets.append("docs/dashboard.html")
 
