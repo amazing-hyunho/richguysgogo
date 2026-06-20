@@ -24,6 +24,7 @@ Important:
 from dataclasses import dataclass
 from datetime import date, timedelta
 from typing import Any, Dict, Iterable, Tuple
+import os
 import re
 
 import requests
@@ -134,7 +135,11 @@ def _krx_payload_candidates(
             # NOTE: KRX can reject requests when Referer page doesn't match the bld.
             yield bld, payload, page
 
-    # 2) Discover bld(s) from HTML only if needed (slower, but more resilient).
+    # 2) Discover bld(s) from HTML only when explicitly enabled.
+    # KRX pages can hang on slow TLS reads; the static bld list is the fast path
+    # and Naver fallback is safer than blocking nightly runs on discovery.
+    if os.getenv("KRX_FLOW_DISCOVERY", "0").strip() != "1":
+        return
     for page in candidate_pages:
         try:
             for bld in _discover_blds_from_page(page, session=session):
@@ -192,7 +197,7 @@ def _discover_blds_from_page(page_url: str, session: requests.Session) -> list[s
         "User-Agent": "DailyAIInvestmentCommittee/1.0",
         "Referer": "https://data.krx.co.kr/",
     }
-    resp = session.get(page_url, headers=headers, timeout=10)
+    resp = session.get(page_url, headers=headers, timeout=(3, 4))
     if resp.status_code != 200:
         raise RuntimeError(f"page_http_status_{resp.status_code}")
     html = resp.text or ""
@@ -234,7 +239,7 @@ def _get_page_defaults(page_url: str, session: requests.Session) -> dict[str, st
         "Referer": "https://data.krx.co.kr/",
     }
     try:
-        resp = session.get(page_url, headers=headers, timeout=10)
+        resp = session.get(page_url, headers=headers, timeout=(3, 4))
     except Exception:
         _PAGE_DEFAULTS_CACHE[page_url] = {}
         return {}
@@ -270,7 +275,7 @@ def _krx_get_json(session: requests.Session, bld: str, payload: Dict[str, str], 
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
     }
     data = {"bld": bld, **payload}
-    resp = session.post(url, data=data, headers=headers, timeout=10)
+    resp = session.post(url, data=data, headers=headers, timeout=(3, 5))
     if resp.status_code != 200:
         raise RuntimeError(f"http_status_{resp.status_code}")
     try:

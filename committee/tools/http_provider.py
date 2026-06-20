@@ -188,7 +188,7 @@ class HttpProvider(IDataProvider):
         """Fetch Korean market flows (investor net buying).
 
         Source policy:
-        - KOREAN_FLOW_SOURCE=AUTO (default): try KRX first, then Naver crawl fallback
+        - KOREAN_FLOW_SOURCE=AUTO (default): try Naver first, then KRX fallback
         - KOREAN_FLOW_SOURCE=KRX: KRX only
         - KOREAN_FLOW_SOURCE=NAVER: Naver only
         - KOREAN_FLOW_SOURCE=NONE/OFF: disabled
@@ -204,15 +204,16 @@ class HttpProvider(IDataProvider):
         if source != "AUTO":
             return None, f"unavailable(source={source})"
 
-        # AUTO: best effort with fallback order.
-        krx_data, krx_reason = _fetch_flows_from_krx()
-        if krx_data is not None:
-            return krx_data, None
-
+        # AUTO: Naver first. KRX is useful but can hang on page discovery/TLS reads,
+        # so keep it as a fallback instead of blocking nightly runs.
         naver_data, naver_reason = _fetch_flows_from_naver()
         if naver_data is not None:
             return naver_data, None
-        return None, f"krx_then_naver_unavailable: {krx_reason}; {naver_reason}"
+
+        krx_data, krx_reason = _fetch_flows_from_krx()
+        if krx_data is not None:
+            return krx_data, None
+        return None, f"naver_then_krx_unavailable: {naver_reason}; {krx_reason}"
 
     def get_headlines(self, limit: int) -> Tuple[List[str] | None, str | None]:
         """Fetch headlines for agents.
