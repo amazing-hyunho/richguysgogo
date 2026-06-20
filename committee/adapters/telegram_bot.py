@@ -140,7 +140,7 @@ def answer_for_message(text: str) -> str:
     if not stripped:
         return "질문을 입력해 주세요."
 
-    if stripped in {"/help", "/start", "/commands"}:
+    if stripped.split(maxsplit=1)[0].lower() in {"/help", "/start", "/commands"}:
         return _format_help_message()
     if stripped.startswith("/flow"):
         return _handle_flow_command(stripped)
