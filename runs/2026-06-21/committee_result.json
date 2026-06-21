@@ -1,0 +1,49 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "코스피는 -0.13%(9052.42)로 소폭 하락, 코스닥은 -3.43%(966.59)로 급락하며 단기 변동성 확대가 확인됨.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 전체적으로 +1422억 순매수이나, KOSPI에서는 -3555억 순매도, KOSDAQ에서는 +4977억 순매수로 시장 내 수급 양극화가 뚜렷.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "유동성 환경 해석",
+      "majority": "중립적 관망세(NEUTRAL)",
+      "minority": "위험회피(RISK_OFF)",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "유동성 담당자는 달러 강세와 금리 인상 기조를 근거로 위험회피 신호를 강조, 시장 변동성 확대 시 추가 하락 리스크가 존재함."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 요약 및 주요 지표\n\n- 코스피는 9052.42(-0.13%), 코스닥은 966.59(-3.43%)로 마감하며, 코스닥 중심의 단기 변동성 확대가 두드러졌습니다.\n- USD/KRW 환율은 1531.00원(-0.59%)로 강달러 구간이 지속되고 있습니다.\n- VIX는 16.4로 5일 평균(16.53)과 유사한 수준을 유지했습니다.\n- 수급은 외국인 +1422억, 기관 -18082억, 개인 +17228억(코스피: 외 -3555억, 기관 -12244억, 개인 +16478억 / 코스닥: 외 +4977억, 기관 -5838억, 개인 +750억)으로 집계되었습니다.\n\n## 수급 양극화와 레버리지 매수의 의미\n\n- 외국인은 KOSPI에서 차익실현 및 리밸런싱 성격의 매도(-3555억), KOSDAQ에서는 AI/반도체 테마 중심의 매수(+4977억)가 집중되었습니다.\n- 기관은 대규모 순매도(-18082억)로 전반적 관망 및 리스크 관리에 나선 모습입니다.\n- 개인은 최근 20일간 +15.7% 급등세에 힘입어 레버리지 추격매수(+17228억, 코스피 +16478억)로 대응했으나, 지속성에는 의문이 제기됩니다.\n- 수급 담당자와 섹터 담당자 모두 \"단기 조정 가능성\"과 \"수급 양극화\"를 강조하며, 성급한 방향 전환보다는 근거 확인 후 대응을 권고했습니다.\n\n## 오늘의 핵심 이슈: 환율, 금리, 반도체/AI, 인플레이션\n\n- [전쟁 프리미엄 걷혀도 강달러 벽…1500원대 버티기](https://news.google.com/rss/articles/CBMigAFBVV95cUxNQ0JxVGdvdklZUnpvTEsxMlNCeFNBNDBJNlBrb08tZDBVdDA5YWRMUnhCaWV2TGwwY0JCOTl3ejhZVTM5V19zRDRZU25lYlBrbFJwWVp4OU5MOEs0RzY5YVhQNmU0bGY4MW5qNlNTNXcxbUg2OTdodTF0QXE0dXFJSg?oc=5): 환율은 전쟁 프리미엄이 일부 해소됐음에도 1500원대 강달러 구간을 유지, 외국인 수급에 부담 요인으로 작용.\n- [글로벌 기준금리 인상기조 시작...한은도 연내 두 차례 인상 가능성↑](https://news.google.com/rss/articles/CBMihAFBVV95cUxPQ1U3QlFIeHBKdmdOaVd4dmFrR3ZYNjJ2aUlxZVdaRTl2R09peWU3YlgycE0zZW1lYkxYa0h4c0JVLUtoeVpoVlpaNS0zcDJZWTJsNlpvOXB2YVREZlFmcGVpb1l5WkxSOEEyYXNuNExRMmhGZGRxUElTYlp6bUJxc2d5OXg?oc=5): 글로벌 금리 인상 기조와 한은의 추가 인상 가능성이 부각되며, 유동성 환경이 보수적으로 전환 중.\n- [AI 데이터센터 투자전쟁⋯ 빅테크, 금리 민감도↑](https://news.google.com/rss/articles/CBMiWkFVX3lxTFA1WnhzTVV0eW9SUGlrUEJCem91dndGbVFHQVh6Y1AtMGtWMEhuYXRmTWQ4NjNBUjRJUmV3aXVKLTg3bnZkWXFyLWlOSjVHNTk0OVRzdkdTVEtKQQ?oc=5): AI/반도체 테마는 여전히 시장 내 주요 모멘텀이나, 금리 민감도 상승이 부담.\n- 인플레이션 및 25일 PCE 발표 등 대외 변수도 단기 변동성 확대 요인으로 작용할 전망.\n\n## 향후 체크포인트 및 전략적 시사점\n\n- 코스피는 20일 누적 +15.7% 강세에도 불구하고, 단기적으로 기관 매도와 코스닥 급락, 개인 레버리지 매수 집중 등 과열 신호가 일부 감지됩니다.\n- 유동성 담당자는 달러 강세와 금리 인상 기조를 근거로 위험회피 신호를 강조, 단기 변동성 확대 시 추가 하락 리스크에 유의해야 합니다.\n- 중장기 실적 모멘텀은 견조하나, 단기 신규 비중 확대는 신중히 접근해야 하며, 테마 추격매수는 피하고 확인된 신호에서만 선별 대응이 필요합니다.\n- 오늘의 중립적 관망 기조가 무너지는 조건은 \"기관 매도세가 완화되지 않고, 코스닥 변동성이 추가 확대될 경우\"입니다. 이 경우 단기 하락 전환에 대비한 리스크 관리가 필요합니다."
+}
