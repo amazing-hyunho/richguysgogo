@@ -1,0 +1,65 @@
+{
+  "consensus": "KOSPI가 4% 넘게 급등했으나, 외국인 대규모 순매도와 고환율, 변동성 확대 등 위험 신호가 여전해 신중한 대응이 필요합니다.",
+  "key_points": [
+    {
+      "point": "KOSPI 4.10% 급등(8,539.98), KOSDAQ 2.12% 상승(910.37)에도 불구하고 외국인 -6,732억 순매도, 개인 +7,182억 순매수로 수급 불균형이 심화.",
+      "sources": [
+        "flow_data",
+        "macro_daily",
+        "news"
+      ]
+    },
+    {
+      "point": "USD/KRW 1,534.53(+0.27%)로 환율이 장중 1,540원 돌파하며 달러 강세 심화, VIX 19.5로 변동성도 확대.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    },
+    {
+      "point": "미국 기술주 조정(나스닥 -2.21%)과 연준 추가 금리 인상 전망 등 대외 불확실성 지속, 단기 반등의 지속성에 의문.",
+      "sources": [
+        "news",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(추세 전환 vs. 단기 반등)",
+      "majority": "단기 급등에도 불구하고 외국인 매도와 고환율, 변동성 확대 등 위험 신호가 우세하므로 신중 대응 필요",
+      "minority": "20일 누적 상승세(KOSPI 20d +5.87%)를 근거로 일부는 중기 상승 모멘텀 가능성 언급",
+      "minority_agents": [
+        "sector",
+        "risk",
+        "earnings",
+        "breadth"
+      ],
+      "why_it_matters": "단기 반등이 추세 전환 신호인지, 일시적 기술적 반등인지에 따라 투자 전략이 크게 달라짐"
+    },
+    {
+      "topic": "개인 매수세의 지속성",
+      "majority": "개인 매수세는 단기 반등 기대감에 따른 레버리지 추격매수로 지속성에 의문",
+      "minority": "일부는 개인의 저가 매수세가 단기적으로 시장 하방을 방어할 수 있다고 평가",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "개인 매수세가 시장 하방을 방어할 수 있을지 여부가 단기 변동성에 영향"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "단기 트레이딩은 변동성 활용 가능하나, 확실한 근거 있는 종목에 한정해 선별 대응 권고"
+    },
+    {
+      "level": "CAUTION",
+      "text": "외국인 매도세와 고환율, 대외 금리 불확실성 지속에 따라 신규 비중 확대는 신중히 접근"
+    },
+    {
+      "level": "AVOID",
+      "text": "레버리지·테마주 등 변동성 높은 종목 무분별 추격매수는 피할 것"
+    }
+  ],
+  "sugeup_narrative": "## 단기 급등 속 수급 불균형…KOSPI 8,539.98(+4.10%), 환율 1,534.53원\n\n오늘 KOSPI는 4.10% 급등하며 8,539.98pt, KOSDAQ은 2.12% 상승한 910.37pt로 마감했습니다. USD/KRW 환율은 1,534.53원(+0.27%)로 장중 1,540원 돌파 기록, VIX는 19.5로 변동성도 확대되었습니다. 수급 측면에서는 외국인 -6,732억, 기관 -1,040억 순매도, 개인 +7,182억 순매수로 개인이 대규모 매수세를 주도했습니다. KOSPI 5일 누적 수익률은 -3.08%로 최근 조정 이후 단기 반등이 나타난 모습입니다.\n\n## 외국인 매도와 고환율, 개인이 반등 주도…수급 해석\n\n외국인은 KOSPI에서 -5,873억, KOSDAQ에서 -859억 순매도하며 전반적으로 자금 이탈이 두드러졌습니다. 이는 [달러 강세 현상 심화에 환율 장중 1540원 돌파 - 동아일보](https://news.google.com/rss/articles/CBMiZkFVX3lxTFBJcDR4Q0JTa2h4M3g2ZC1RMDNhSDUzWWpkeXZRODZISWZUd0JCQVd1aUNQeDJZcGZ0M3kzUU8xczRrN0wweHI5NTFFSVRRWVZjVXNxcGxhbDloUGxNQmhtQ053QWxpQdIBZkFVX3lxTFBJcDR4Q0JTa2h4M3g2ZC1RMDNhSDUzWWpkeXZRODZISWZUd0JCQVd1aUNQeDJZcGZ0M3kzUU8xczRrN0wweHI5NTFFSVRRWVZjVXNxcGxhbDloUGxNQmhtQ053QWxpQQ?oc=5)와 같이 환율 급등 및 달러 강세, [기준금리 입장 뒤집은 월가…“연준, 올해 최대 3번 더 올린다” - 서울경제](https://news.google.com/rss/articles/CBMiUkFVX3lxTE8tRng1bHM1NDBURmVJUW4wRkRkRW8tNlFvRFVETWNJVnJPamg4aGY1dUVUdG1Id2N0SmxTLWRmcE42Z2hHSW96RHdkc2JxRmJWUFHSAVNBVV95cUxQWGFDMnAtQ0RiTEtKd0VnUm1QUnBDZ3ZIWmpLSXl4M3hDUV9jSUpmM2toeGhMTGhIYnBBUUkyQmhzUXVoOGctbWtpRUd0STZOd3ZMUQ?oc=5) 등 연준의 추가 금리 인상 전망이 복합적으로 작용한 결과입니다. 반면, 개인은 단기 급락 후 반등 기대감에 대규모 매수세로 대응했으나, 이 매수세의 지속성에는 의문이 제기되고 있습니다.\n\n## 글로벌 이슈: 금리·환율·반도체/AI 조정\n\n미국 나스닥은 -2.21% 급락하며 기술주 조정이 심화됐고, [AI 투자 부담에 반도체주 급락…나스닥 2.21% 하락 - 한국경제](https://news.google.com/rss/articles/CBMiWkFVX3lxTE4wbDVaVzFYdm1Yb3IxMUZpOWExcjh4WFE4cWotTmdyVFVMNHBQVUpiNGprRkp2TUQxSzR2aTJXQXlHbUpxbnJ5VVBzck15MTljWFllQ2p6M09BZ9IBVEFVX3lxTE0yVWlKenFWTXBwbFV2MjMyME5oM0ZHWFZJZXJMcXZhQkUxNDN4b2FzMDROYUtDOUl2d2hQMXJlQ1B4U3djMEl3eXJ6RWEtUUpCUFZzQQ?oc=5) 등 반도체/AI 섹터의 글로벌 조정이 국내 투자심리에도 영향을 주고 있습니다. 또한, [마이크론, 기술주 조정에 13% ↓...국제 유가는 전쟁 이전 수준 회복 - 서울경제](https://news.google.com/rss/articles/CBMiUkFVX3lxTE9JZW5tQ3pqY0xoU0s2d3cyTnZoUXZDcm1fZ0NJNDQtN1Rvb09pRjUwc0hqbW9TMllPdkdybGpMWkZ2NF9ib1FnbjRfX0VPUmtJUlHSAVNBVV95cUxQdGxTZjZUX2RLaDhZZUp1SFljRndmWFh1VlBYOUlpNTFUS2Z3YVJEY08zZ0pPV3ZVakQ1bTFid0ZBNkJTdEM5bHpPOHIyTzN1Q3hOMA?oc=5) 등 에너지·원자재 가격 안정도 확인됩니다. 국내 20일 누적 KOSPI 상승률은 +5.87%로 중기 모멘텀은 유지되나, 5일 누적은 -3.08%로 단기 변동성 확대가 뚜렷합니다.\n\n## 향후 체크포인트 및 전략: 반등 지속성 검증 필요\n\n오늘 급등에도 불구하고 외국인 매도, 고환율, 대외 금리 불확실성 등 위험 신호가 해소되지 않았습니다. 단기 반등이 추세 전환으로 이어지려면 외국인 수급 개선과 환율 안정, 미국 기술주 반등 등 추가 확인이 필요합니다. 만약 외국인 매도세가 지속되고 환율이 추가 상승(1,540원 상회)할 경우, 단기 반등은 일시적일 수 있으니 비중 확대는 신중히 접근해야 합니다. 반대로 외국인 순매수 전환 및 환율 안정이 확인된다면, 중기 모멘텀 강화로 전략 수정이 필요합니다.\n"
+}
