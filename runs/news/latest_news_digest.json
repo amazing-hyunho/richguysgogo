@@ -1,33 +1,33 @@
 {
-  "crawled_at": "2026-06-24T23:42:41.057762+00:00",
+  "crawled_at": "2026-06-25T00:42:22.878256+00:00",
   "news_date": "2026-06-25",
-  "total_collected": 96,
+  "total_collected": 126,
   "topic_counts": [
     [
       "인플레이션",
-      5
+      7
     ],
     [
       "금리/연준",
-      6
-    ],
-    [
-      "반도체/AI",
-      12
-    ],
-    [
-      "경기/성장",
       7
     ],
     [
       "환율/달러",
+      8
+    ],
+    [
+      "반도체/AI",
+      17
+    ],
+    [
+      "경기/성장",
       7
     ]
   ],
   "top_articles": [
     {
       "topic": "인플레이션",
-      "count": 5,
+      "count": 7,
       "title": "여전한 달러 강세 속 'PCE 대기모드'…환율 1540원대서 방향성 탐색[외환브리핑] - 이데일리",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWG1pYkIyWWpoaFNHUE9DcElJbml3RWt1SjhQSEZvY1Jnbk5Nb3U5TUgyV2lrRzNael9VaU5Fa3lxUzN1Rk5nLXczMHBhclB3MGpJQ3JqWE5ZUUZOOEg2N25lcE9yYkR4SzNIcDI2dTNQbEg1YkwyV1dGcHU5cEd0dw?oc=5",
       "summary_lines": [
@@ -38,22 +38,33 @@
     },
     {
       "topic": "금리/연준",
-      "count": 6,
-      "title": "[채권/외환] 美 국채금리 하락에도 달러는 13개월 최고…연준 매파 기조에 시장 긴장 - 뉴스핌",
-      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA0TUx0ZHEyWmI4YWVVNFUySGhsbEV3ZkdxcU9FRjlXTl9PWGt3MmFEYTBzUzNhYXFZQmY2VDBQYml3Rl9lTHo2M0RSZXYzTTNiOHJUWTcwU1hBNVJh?oc=5",
+      "count": 7,
+      "title": "“금리 앞에선 금도 못버텨”…4천달러 붕괴하며 3년 강세장 마감 - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFByaDhDdlZ1cUphMlBJQ3JkMENLWnNMTVVJVjFKUERxX0pHY2ljQ3lyQlkwdFhwVkNPNEpXNjNpXy01OEV2WnpkemhncTViV1BOdUE?oc=5",
       "summary_lines": [
-        "핵심 이슈: [채권/외환] 美 국채금리 하락에도 달러는 13개월 최고…연준 매파 기조에 시장 긴장 - 뉴스핌",
+        "핵심 이슈: “금리 앞에선 금도 못버텨”…4천달러 붕괴하며 3년 강세장 마감 - 매일경제 마켓",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "환율/달러",
+      "count": 8,
+      "title": "[외환] 원/달러 환율 1.2원 오른 1,543.0원(개장) - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9paFB5WkZROVd0MmtYN0U4M256N0JzbDdpQXlnOW5OZFBqT1R4dW45dm05aE1FbmZpSVFWcGpUNTBKMERKX2ZFUU5haTduMnlWNWZBQ01iRlhiMXPSAWBBVV95cUxOcW9VaGlGRjlVQ1IwTWFLUTlYNnlXUmUyTmE5dmZMQTRCSHBtVHctU3hoNWVETnRLUUVTVnlucmtLUXV0dWtxb1JCMW9PYUN4WG1sZnJncTg4eXdSc0l5aks?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [외환] 원/달러 환율 1.2원 오른 1,543.0원(개장) - 연합뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "반도체/AI",
-      "count": 12,
-      "title": "[비즈톡톡] 틱톡 키운 바이트댄스, 中 반도체 자립 견인… 엔비디아 막히자 중국산 AI칩 도입 - 조선비즈 - Chosunbiz",
-      "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxON0MxUFNEX1lQb25nMGpzUmczb1I2b2pXelVGbHJubTB4dUxCVWVNVVdpNkRGRVRqMnRwSW9od1NvSWc5ZkZ0dWotVmJlVTV3c1I0a0VLSnhPMzItVktZTU1ISjRTamU1MzVYTFdhNUdEVUlnMFJXOFFRTjBOSW1Dekh30gGWAUFVX3lxTE1MakRWVS1KSDVGZ0lYWWxBdE8zeEMzMS1SaFlSMzNSeVJWMVByMmwzZ3lNM0xGdjNOck5uUzdTNFRuc3hOM2RsRnpaMTZudHowMDBpZktUZ3hZMUIzSkJBa283a2EwTjVidngtNnhDV2xMR3hEcjRyLVg3dkxxbXp0c1lOY1ZCWXV5dlQ1VFhiSzFDS2xDZw?oc=5",
+      "count": 17,
+      "title": "“AI 투자 열풍, 준버블 붕괴 조짐”…노벨경제학상 수상자, 반도체주 급락 경고 - 미주중앙일보",
+      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1hem9qazY0RlZZR1NFMlA1a0M1NkRib1BTNVNpVWtjekh0RDVkUnN2QVNkclpDYnBCQVRWVW1RSE8yaWo0WlV3VFdUeGVXQno5QkM3eHZoQjlwSThJejJUV2pB?oc=5",
       "summary_lines": [
-        "핵심 이슈: [비즈톡톡] 틱톡 키운 바이트댄스, 中 반도체 자립 견인… 엔비디아 막히자 중국산 AI칩 도입 - 조선비즈 - Chosunbiz",
+        "핵심 이슈: “AI 투자 열풍, 준버블 붕괴 조짐”…노벨경제학상 수상자, 반도체주 급락 경고 - 미주중앙일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -68,59 +79,48 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "환율/달러",
-      "count": 7,
-      "title": "환율 1,540원도 뚫어… 금융위기 이후 최고 - 연합뉴스 한민족센터",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBCRHdOWTVwRjVOOG5RQ25iTE5OajZGc3prR29sQjlzNC03Zks4TWtGSzIxQ2pzQktYUVFUY0c2R1JqbmhwQ1RaVlFmZ1poMFJOVlV3T0VVMjd1ZTNGWTA0c3NpUDctcEtBSm0ycVhoUnE2aV9t?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 환율 1,540원도 뚫어… 금융위기 이후 최고 - 연합뉴스 한민족센터",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 25,
+      "total_count": 29,
       "topics": [
+        {
+          "topic": "환율/달러",
+          "count": 8,
+          "title": "[외환] 원/달러 환율 1.2원 오른 1,543.0원(개장) - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9paFB5WkZROVd0MmtYN0U4M256N0JzbDdpQXlnOW5OZFBqT1R4dW45dm05aE1FbmZpSVFWcGpUNTBKMERKX2ZFUU5haTduMnlWNWZBQ01iRlhiMXPSAWBBVV95cUxOcW9VaGlGRjlVQ1IwTWFLUTlYNnlXUmUyTmE5dmZMQTRCSHBtVHctU3hoNWVETnRLUUVTVnlucmtLUXV0dWtxb1JCMW9PYUN4WG1sZnJncTg4eXdSc0l5aks?oc=5"
+        },
+        {
+          "topic": "인플레이션",
+          "count": 7,
+          "title": "여전한 달러 강세 속 'PCE 대기모드'…환율 1540원대서 방향성 탐색[외환브리핑] - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWG1pYkIyWWpoaFNHUE9DcElJbml3RWt1SjhQSEZvY1Jnbk5Nb3U5TUgyV2lrRzNael9VaU5Fa3lxUzN1Rk5nLXczMHBhclB3MGpJQ3JqWE5ZUUZOOEg2N25lcE9yYkR4SzNIcDI2dTNQbEg1YkwyV1dGcHU5cEd0dw?oc=5"
+        },
+        {
+          "topic": "금리/연준",
+          "count": 7,
+          "title": "“금리 앞에선 금도 못버텨”…4천달러 붕괴하며 3년 강세장 마감 - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFByaDhDdlZ1cUphMlBJQ3JkMENLWnNMTVVJVjFKUERxX0pHY2ljQ3lyQlkwdFhwVkNPNEpXNjNpXy01OEV2WnpkemhncTViV1BOdUE?oc=5"
+        },
         {
           "topic": "경기/성장",
           "count": 7,
           "title": "美연준 \"미 대형은행들, 심각한 경기침체 견딜 체력 갖춰\" - 연합뉴스",
           "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9PRG5OTGFPNDdoUmstZkFBNWQ1YWtpRXB3LTRDYjFob0pFb2RITnh5ODRDLUZlQW5hTm9DMC02QkdDMGZWYVhmSHExN3BuQXVEbnlBM3pxZUt3dGvSAWBBVV95cUxPc0JJUTBjOFl0a2FlTzdYLTMyR1pzYldxeDZJcW80X0pURHIyeThrZWU0eGswMGxlUm5Ec3ZyaUlxOVU2Z2J4dUYzeFRuMWZPMDFOMzFfNlozQ25TWmxaRS0?oc=5"
-        },
-        {
-          "topic": "환율/달러",
-          "count": 7,
-          "title": "환율 1,540원도 뚫어… 금융위기 이후 최고 - 연합뉴스 한민족센터",
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBCRHdOWTVwRjVOOG5RQ25iTE5OajZGc3prR29sQjlzNC03Zks4TWtGSzIxQ2pzQktYUVFUY0c2R1JqbmhwQ1RaVlFmZ1poMFJOVlV3T0VVMjd1ZTNGWTA0c3NpUDctcEtBSm0ycVhoUnE2aV9t?oc=5"
-        },
-        {
-          "topic": "금리/연준",
-          "count": 6,
-          "title": "[채권/외환] 美 국채금리 하락에도 달러는 13개월 최고…연준 매파 기조에 시장 긴장 - 뉴스핌",
-          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFA0TUx0ZHEyWmI4YWVVNFUySGhsbEV3ZkdxcU9FRjlXTl9PWGt3MmFEYTBzUzNhYXFZQmY2VDBQYml3Rl9lTHo2M0RSZXYzTTNiOHJUWTcwU1hBNVJh?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 5,
-          "title": "여전한 달러 강세 속 'PCE 대기모드'…환율 1540원대서 방향성 탐색[외환브리핑] - 이데일리",
-          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWG1pYkIyWWpoaFNHUE9DcElJbml3RWt1SjhQSEZvY1Jnbk5Nb3U5TUgyV2lrRzNael9VaU5Fa3lxUzN1Rk5nLXczMHBhclB3MGpJQ3JqWE5ZUUZOOEg2N25lcE9yYkR4SzNIcDI2dTNQbEg1YkwyV1dGcHU5cEd0dw?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 12,
+      "total_count": 17,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 12,
-          "title": "[비즈톡톡] 틱톡 키운 바이트댄스, 中 반도체 자립 견인… 엔비디아 막히자 중국산 AI칩 도입 - 조선비즈 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMiggFBVV95cUxON0MxUFNEX1lQb25nMGpzUmczb1I2b2pXelVGbHJubTB4dUxCVWVNVVdpNkRGRVRqMnRwSW9od1NvSWc5ZkZ0dWotVmJlVTV3c1I0a0VLSnhPMzItVktZTU1ISjRTamU1MzVYTFdhNUdEVUlnMFJXOFFRTjBOSW1Dekh30gGWAUFVX3lxTE1MakRWVS1KSDVGZ0lYWWxBdE8zeEMzMS1SaFlSMzNSeVJWMVByMmwzZ3lNM0xGdjNOck5uUzdTNFRuc3hOM2RsRnpaMTZudHowMDBpZktUZ3hZMUIzSkJBa283a2EwTjVidngtNnhDV2xMR3hEcjRyLVg3dkxxbXp0c1lOY1ZCWXV5dlQ1VFhiSzFDS2xDZw?oc=5"
+          "count": 17,
+          "title": "“AI 투자 열풍, 준버블 붕괴 조짐”…노벨경제학상 수상자, 반도체주 급락 경고 - 미주중앙일보",
+          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1hem9qazY0RlZZR1NFMlA1a0M1NkRib1BTNVNpVWtjekh0RDVkUnN2QVNkclpDYnBCQVRWVW1RSE8yaWo0WlV3VFdUeGVXQno5QkM3eHZoQjlwSThJejJUV2pB?oc=5"
         }
       ]
     }
