@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 4.48% 급등하며 8850.37pt를 기록했으나, 외국인 순매도(-12,686억)와 원/달러 환율 상승(+0.70%)이 동반되었습니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily",
+        "news"
+      ]
+    },
+    {
+      "point": "20일 누적 KOSPI 상승률이 +10.04%로 강세를 보였으나, 최근 5일간은 -1.69%로 단기 과열 이후 조정 신호가 감지됩니다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 신호 해석",
+      "majority": "단기 급등 이후 조정 가능성에 유의하되, 뚜렷한 위험 신호는 아직 없음",
+      "minority": "유동성 담당자 등 일부는 달러 강세와 외국인 매도세로 위험 회피 심리가 강화됐다고 판단",
+      "minority_agents": [
+        "liquidity",
+        "macro",
+        "flow"
+      ],
+      "why_it_matters": "위험 신호 해석에 따라 포지션 관리와 추가 매수/매도 전략이 달라질 수 있음"
+    },
+    {
+      "topic": "개인 매수의 지속성",
+      "majority": "개인 매수는 단기 추격매수 성격이 강해 지속성에 한계",
+      "minority": "일부는 개인 매수가 시장 하방을 단기적으로 방어할 수 있다고 평가",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "개인 매수의 지속성 여부에 따라 단기 변동성 확대 가능성"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## KOSPI 단기 급등, 외국인 대규모 매도와 고환율 부담\n\n오늘(6월 25일) KOSPI는 4.48% 급등하며 8,850.37pt로 마감했습니다. 반면 KOSDAQ은 -0.11% 하락(908.28pt)으로 차별화가 두드러졌습니다. 원/달러 환율은 1,543.26원(+0.70%)로 연고점을 경신하며, 외환시장 불안이 지속되고 있습니다. 외국인은 -12,686억 순매도(코스피 -11,571억, 코스닥 -1,115억), 기관은 +7,265억 순매수, 개인은 +5,410억 순매수로 집계됐습니다. VIX는 18.63으로 5일 평균(18.07) 대비 소폭 상승했습니다.\n\n## 수급: 외국인 매도, 개인 단기 추격매수…고환율·AI 불확실성 영향\n\n외국인 대규모 순매도는 고환율(USD/KRW 1,543.26)과 AI/반도체 관련 불확실성, 그리고 달러 강세 영향이 복합적으로 작용한 결과입니다. [여전한 달러 강세 속 'PCE 대기모드'](https://news.google.com/rss/articles/CBMigAFBVV95cUxQWG1pYkIyWWpoaFNHUE9DcElJbml3RWt1SjhQSEZvY1Jnbk5Nb3U5TUgyV2lrRzNael9VaU5Fa3lxUzN1Rk5nLXczMHBhclB3MGpJQ3JqWE5ZUUZOOEg2N25lcE9yYkR4SzNIcDI2dTNQbEg1YkwyV1dGcHU5cEd0dw?oc=5)와 [AI 투자 열풍, 준버블 붕괴 조짐](https://news.google.com/rss/articles/CBMiYkFVX3lxTE1hem9qazY0RlZZR1NFMlA1a0M1NkRib1BTNVNpVWtjekh0RDVkUnN2QVNkclpDYnBCQVRWVW1RSE8yaWo0WlV3VFdUeGVXQno5QkM3eHZoQjlwSThJejJUV2pB?oc=5) 등 뉴스 이슈가 수급에 직접 반영됐습니다. 기관은 방어적 매수에 나섰고, 개인은 단기 레버리지 추격매수로 외국인 매도 물량을 흡수했습니다. 그러나 개인 매수의 지속성에는 한계가 있다는 의견이 다수입니다.\n\n## 오늘의 핵심 이슈: 환율·달러, AI/반도체, 금리/연준\n\n- **환율/달러**: 원/달러 환율이 1,543원대까지 상승하며 외국인 자금 유출 압력을 키웠습니다. [원/달러 환율 1.2원 오른 1,543.0원(개장)](https://news.google.com/rss/articles/CBMiW0FVX3lxTE9paFB5WkZROVd0MmtYN0U4M256N0JzbDdpQXlnOW5OZFBqT1R4dW45dm05aE1FbmZpSVFWcGpUNTBKMERKX2ZFUU5haTduMnlWNWZBQ01iRlhiMXPSAWBBVV95cUxOcW9VaGlGRjlVQ1IwTWFLUTlYNnlXUmUyTmE5dmZMQTRCSHBtVHctU3hoNWVETnRLUUVTVnlucmtLUXV0dWtxb1JCMW9PYUN4WG1sZnJncTg4eXdSc0l5aks?oc=5)\n- **AI/반도체**: AI 투자 열풍에 대한 버블 경고와 반도체주 급락 우려가 부각됐습니다.\n- **금리/연준**: 미국 금리와 달러 강세가 글로벌 위험자산에 부담을 주는 가운데, 연준의 긴축 기조가 이어지고 있습니다. [금리 앞에선 금도 못버텨](https://news.google.com/rss/articles/CBMiUkFVX3lxTFByaDhDdlZ1cUphMlBJQ3JkMENLWnNMTVVJVjFKUERxX0pHY2ljQ3lyQlkwdFhwVkNPNEpXNjNpXy01OEV2WnpkemhncTViV1BOdUE?oc=5)\n\n## 중기 강세 피로 누적…추가 상승 제한, 관망 구간 진입\n\nKOSPI는 20일 누적 +10.04%로 강한 랠리를 보였으나, 최근 5일간은 -1.69%로 단기 피로가 누적되고 있습니다. 외국인 매도세와 고환율, AI/반도체 불확실성 등 복합적 부담이 단기 추가 상승을 제한할 수 있습니다. 시장 내부 확산(브레드스)도 약한 편으로, KOSDAQ은 오히려 약세를 보였습니다.\n\n## 전략적 시사점 및 체크포인트\n\n- 중립 비중 유지, 단기 급등 구간에서 확인된 신호에만 선별 대응이 권고됩니다.\n- 외국인 매도세와 고환율이 지속될 경우 추가 상승은 제한적일 수 있으므로, 변동성 확대와 수급 변화에 주의해야 합니다.\n- AI/반도체 등 단기 과열주, 레버리지 추격매수는 피하고, 환율·수급 변화 모니터링이 필요합니다.\n\n**오늘 논지의 무효화 조건:** 외국인 순매수 전환 및 원/달러 환율의 1,530원대 하락 복귀가 확인될 경우, 단기 조정 우려는 완화될 수 있습니다."
+}
