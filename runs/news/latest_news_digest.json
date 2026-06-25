@@ -1,44 +1,33 @@
 {
-  "crawled_at": "2026-06-25T08:42:14.191708+00:00",
+  "crawled_at": "2026-06-25T09:42:25.197495+00:00",
   "news_date": "2026-06-25",
-  "total_collected": 265,
+  "total_collected": 272,
   "topic_counts": [
     [
-      "금리/연준",
-      14
-    ],
-    [
       "인플레이션",
-      19
+      21
     ],
     [
-      "환율/달러",
-      22
+      "금리/연준",
+      13
     ],
     [
       "경기/성장",
       14
     ],
     [
-      "반도체/AI",
-      27
+      "환율/달러",
+      19
+    ],
+    [
+      "정책/테마",
+      23
     ]
   ],
   "top_articles": [
     {
-      "topic": "금리/연준",
-      "count": 14,
-      "title": "올해 말 금리 오를까 내릴까? 연준이 공개한 '점도표'에 힌트 있대요 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPRldaMk9sTTY4bzRld1BrQ01nbmg3Y1ZKUjlSeDNTSnRzSWtsNkl6MlkzRUZzcUZjWjZXcWlJa1I5dzZyU2N5Q1gtSXRVc1JzUlpQbGhERV9JUkJfcXBDV1ZSbk03bG80Q296WU02R0tsaEdzb2ZlcXkySWxqT0w5ell0ekNubi1nbXJ0WnNweTdtTHY4?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 올해 말 금리 오를까 내릴까? 연준이 공개한 '점도표'에 힌트 있대요 - 조선일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "인플레이션",
-      "count": 19,
+      "count": 21,
       "title": "여전한 달러 강세 속 'PCE 대기모드'…환율 1540원대서 방향성 탐색[외환브리핑] - 이데일리",
       "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWG1pYkIyWWpoaFNHUE9DcElJbml3RWt1SjhQSEZvY1Jnbk5Nb3U5TUgyV2lrRzNael9VaU5Fa3lxUzN1Rk5nLXczMHBhclB3MGpJQ3JqWE5ZUUZOOEg2N25lcE9yYkR4SzNIcDI2dTNQbEg1YkwyV1dGcHU5cEd0dw?oc=5",
       "summary_lines": [
@@ -48,12 +37,12 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 22,
-      "title": "PCE 대기 속 강달러 지속…환율 1540원대 오름세 - 아주경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBVT0t2M3dnSFM1anQxaGdEcVF1azhyMWdTQjhYQk0wbU9MSkR2bnJ6WmYwMlZXMEtxQXVIM2lFMm5Xa2lMXzY5Um0yeUZWUVV3YTBidjY3MGNiZ9IBWEFVX3lxTFBNQXMzelYtalRaeGhaZUF5QmJtTXY3cmdDLXFaSVk5SlBLMURXRmRZTlNobDVzQ3BTbG8tV1FkUmtTYkpzSXRlVHdzZXlnZ3BEYkpmN212cFM?oc=5",
+      "topic": "금리/연준",
+      "count": 13,
+      "title": "올해 말 금리 오를까 내릴까? 연준이 공개한 '점도표'에 힌트 있대요 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPRldaMk9sTTY4bzRld1BrQ01nbmg3Y1ZKUjlSeDNTSnRzSWtsNkl6MlkzRUZzcUZjWjZXcWlJa1I5dzZyU2N5Q1gtSXRVc1JzUlpQbGhERV9JUkJfcXBDV1ZSbk03bG80Q296WU02R0tsaEdzb2ZlcXkySWxqT0w5ell0ekNubi1nbXJ0WnNweTdtTHY4?oc=5",
       "summary_lines": [
-        "핵심 이슈: PCE 대기 속 강달러 지속…환율 1540원대 오름세 - 아주경제",
+        "핵심 이슈: 올해 말 금리 오를까 내릴까? 연준이 공개한 '점도표'에 힌트 있대요 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -70,12 +59,23 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 27,
-      "title": "엔비디아·테슬라 만난 'K-피지컬 AI'…실리콘밸리서 협력 논의 - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5QOGxQZFYwSHNGaWhKb05rMlNNNmk2ZnRfbWRQdm90LXgxZ05mVXE2ZWhhNzNqZklhVS1zZklzUmxrRkxncUZxbmxKUmJ3ZzJhM1U3NjdpUExid9IBVEFVX3lxTE1hZ2FrWHZkalhZWDlSTG9VR3Nib1U5Y3pjZEtYN016alZnZVVmVmhlalA0NTVnVnhOcDdjZW43R1I4c042SkpZMEpZTklfTy1hUUx2Xw?oc=5",
+      "topic": "환율/달러",
+      "count": 19,
+      "title": "연준 인상론·강달러 직격탄… 금·은·비트코인 ‘트리플 붕괴’ 쇼크 - 블록체인투데이",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9pb2lqYU0xQ2hITkJ3Z0xPNlgyNmV3Z1l0RU1hZlNuV0ZOR2xiWUZnMjVpQVR0bTFaeFNUd280ZmVTWnNhR2ExT0RxNmJQY2lwalVJSXpYa3FvNWxtN1Zia1pYdWlJZE1JdjZiaDg1NFM?oc=5",
       "summary_lines": [
-        "핵심 이슈: 엔비디아·테슬라 만난 'K-피지컬 AI'…실리콘밸리서 협력 논의 - 한국경제",
+        "핵심 이슈: 연준 인상론·강달러 직격탄… 금·은·비트코인 ‘트리플 붕괴’ 쇼크 - 블록체인투데이",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "정책/테마",
+      "count": 23,
+      "title": "관세도 유가도 아닌 AI가 물가 올린다 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNX3NxT2dWQzZla25aalBRdG9HZUtWRE9KQjJRdkZJQ1pqanRPZ3ppaVJqYi1od1RneUFFeE10eXk2dFJmOTFnT1RkTExlRlBOZHFfTE4wTVpMcHZIZjFBRy15UWRHOVZnNi15M0FwTUJoc2xRakVmZWpBNW5HbDBLdg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 관세도 유가도 아닌 AI가 물가 올린다 - 이데일리",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,43 +84,43 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 69,
+      "total_count": 67,
       "topics": [
         {
-          "topic": "환율/달러",
-          "count": 22,
-          "title": "PCE 대기 속 강달러 지속…환율 1540원대 오름세 - 아주경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBVT0t2M3dnSFM1anQxaGdEcVF1azhyMWdTQjhYQk0wbU9MSkR2bnJ6WmYwMlZXMEtxQXVIM2lFMm5Xa2lMXzY5Um0yeUZWUVV3YTBidjY3MGNiZ9IBWEFVX3lxTFBNQXMzelYtalRaeGhaZUF5QmJtTXY3cmdDLXFaSVk5SlBLMURXRmRZTlNobDVzQ3BTbG8tV1FkUmtTYkpzSXRlVHdzZXlnZ3BEYkpmN212cFM?oc=5"
-        },
-        {
           "topic": "인플레이션",
-          "count": 19,
+          "count": 21,
           "title": "여전한 달러 강세 속 'PCE 대기모드'…환율 1540원대서 방향성 탐색[외환브리핑] - 이데일리",
           "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQWG1pYkIyWWpoaFNHUE9DcElJbml3RWt1SjhQSEZvY1Jnbk5Nb3U5TUgyV2lrRzNael9VaU5Fa3lxUzN1Rk5nLXczMHBhclB3MGpJQ3JqWE5ZUUZOOEg2N25lcE9yYkR4SzNIcDI2dTNQbEg1YkwyV1dGcHU5cEd0dw?oc=5"
         },
         {
-          "topic": "금리/연준",
-          "count": 14,
-          "title": "올해 말 금리 오를까 내릴까? 연준이 공개한 '점도표'에 힌트 있대요 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPRldaMk9sTTY4bzRld1BrQ01nbmg3Y1ZKUjlSeDNTSnRzSWtsNkl6MlkzRUZzcUZjWjZXcWlJa1I5dzZyU2N5Q1gtSXRVc1JzUlpQbGhERV9JUkJfcXBDV1ZSbk03bG80Q296WU02R0tsaEdzb2ZlcXkySWxqT0w5ell0ekNubi1nbXJ0WnNweTdtTHY4?oc=5"
+          "topic": "환율/달러",
+          "count": 19,
+          "title": "연준 인상론·강달러 직격탄… 금·은·비트코인 ‘트리플 붕괴’ 쇼크 - 블록체인투데이",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9pb2lqYU0xQ2hITkJ3Z0xPNlgyNmV3Z1l0RU1hZlNuV0ZOR2xiWUZnMjVpQVR0bTFaeFNUd280ZmVTWnNhR2ExT0RxNmJQY2lwalVJSXpYa3FvNWxtN1Zia1pYdWlJZE1JdjZiaDg1NFM?oc=5"
         },
         {
           "topic": "경기/성장",
           "count": 14,
           "title": "“하반기 세계경제 완만한 회복·달러 강세...유가·고금리가 변수” - 서울경제",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9KR2x0bDlJTEh2OUFwNDk5ZVBZdUtvUlVnaWRpdEZWbGRpWFBaZWdKVXhoUXFLTFFMZTEwMGZHWmZCcnd3VDRvMXZVRlV6RHF3LWfSAVNBVV95cUxNdGlxekVhUG42cHZRSzlEU0laM0k5QjZXaEcwRHJidW9yNGZrN3BrZ09waFl4MzZINzZTVEtoNjVrU3QzRVI1YTF5R3lqbGEtNGpUUQ?oc=5"
+        },
+        {
+          "topic": "금리/연준",
+          "count": 13,
+          "title": "올해 말 금리 오를까 내릴까? 연준이 공개한 '점도표'에 힌트 있대요 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPRldaMk9sTTY4bzRld1BrQ01nbmg3Y1ZKUjlSeDNTSnRzSWtsNkl6MlkzRUZzcUZjWjZXcWlJa1I5dzZyU2N5Q1gtSXRVc1JzUlpQbGhERV9JUkJfcXBDV1ZSbk03bG80Q296WU02R0tsaEdzb2ZlcXkySWxqT0w5ell0ekNubi1nbXJ0WnNweTdtTHY4?oc=5"
         }
       ]
     },
     {
-      "sector": "IT/반도체",
-      "total_count": 27,
+      "sector": "정책/테마",
+      "total_count": 23,
       "topics": [
         {
-          "topic": "반도체/AI",
-          "count": 27,
-          "title": "엔비디아·테슬라 만난 'K-피지컬 AI'…실리콘밸리서 협력 논의 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5QOGxQZFYwSHNGaWhKb05rMlNNNmk2ZnRfbWRQdm90LXgxZ05mVXE2ZWhhNzNqZklhVS1zZklzUmxrRkxncUZxbmxKUmJ3ZzJhM1U3NjdpUExid9IBVEFVX3lxTE1hZ2FrWHZkalhZWDlSTG9VR3Nib1U5Y3pjZEtYN016alZnZVVmVmhlalA0NTVnVnhOcDdjZW43R1I4c042SkpZMEpZTklfTy1hUUx2Xw?oc=5"
+          "topic": "정책/테마",
+          "count": 23,
+          "title": "관세도 유가도 아닌 AI가 물가 올린다 - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNX3NxT2dWQzZla25aalBRdG9HZUtWRE9KQjJRdkZJQ1pqanRPZ3ppaVJqYi1od1RneUFFeE10eXk2dFJmOTFnT1RkTExlRlBOZHFfTE4wTVpMcHZIZjFBRy15UWRHOVZnNi15M0FwTUJoc2xRakVmZWpBNW5HbDBLdg?oc=5"
         }
       ]
     }
