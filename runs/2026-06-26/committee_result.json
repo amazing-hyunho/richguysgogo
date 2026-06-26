@@ -1,0 +1,50 @@
+{
+  "consensus": "오늘 국내 증시는 외국인 대규모 순매도와 고환율, 금리 불확실성에 따른 위험회피 심리가 강하게 작용한 리스크 오프 국면입니다.",
+  "key_points": [
+    {
+      "point": "KOSPI -3.05%, KOSDAQ -2.38% 급락과 외국인 -1.4조 순매도, USD/KRW 1543.58로 원화 약세 심화.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "금리·인플레이션·환율 등 대외 불확실성 이슈가 시장 변동성 확대와 투자심리 위축을 유발.",
+      "sources": [
+        "CORE_SIGNALS",
+        "news_digest"
+      ]
+    },
+    {
+      "point": "개인은 대규모 저가매수에 나섰으나, 이는 레버리지 추격매수 성격이 강해 단기 반등 신호로 해석하기 어려움.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 급락의 구조적 위험 여부",
+      "majority": "단기 리스크 오프, 구조적 위험 신호는 아직 없음",
+      "minority": "단기 조정이지만 구조적 위험은 확인되지 않음",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "단기 급락이 구조적 하락 전환 신호인지, 일시적 조정인지에 따라 투자 전략이 달라짐"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "방어적 포트폴리오 유지, 현금 비중 확대 및 변동성 완화 확인 전까지 신규 공격적 매수 자제"
+    },
+    {
+      "level": "CAUTION",
+      "text": "외국인 매도세 지속 및 환율·금리 불확실성에 따른 추가 변동성 확대 가능성 주의"
+    },
+    {
+      "level": "AVOID",
+      "text": "레버리지·고위험 단기 추격매수 및 환율 민감주 단기 저점매수는 피할 것"
+    }
+  ],
+  "sugeup_narrative": "## 외국인 대규모 매도와 급락: 시장 전반 위험회피 심리 강화\n\n오늘(6월 26일) KOSPI는 8,660.21pt(-3.05%), KOSDAQ은 867.58pt(-2.38%)로 급락 마감했습니다. 원/달러 환율은 1,543.58원(+0.18%)로 연고점 부근에서 마감하며 원화 약세가 심화되었습니다. VIX는 18.89로 5일 평균(18.56) 대비 소폭 상승했습니다. 수급 측면에서는 외국인이 -14,147억 순매도(코스피 -14,332억, 코스닥 +185억), 기관은 +1,355억, 개인은 +12,602억 순매수로 집계되었습니다.\n\n## 수급 해석: 외국인 매도, 개인 저가매수…공급우위 장세\n\n외국인은 KOSPI에서 대규모 순매도를 기록하며 시장 하락을 주도했습니다. 이는 [달러-원, 완만한 PCE에 숨고르기…1,543.10원 마감 - 연합뉴스](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1lZmh4aTZxTzNBLVBseWdyR0pGdlVWZEFkcDExcV9QLVBldkxNNWxfYkdhdlBmNHZXaTFkeUg0YXVrOTI1d2VxYm1ZZFY5a0hjcnJGVFZjVXhRRHfSAWBBVV95cUxOdHEyS0hocnZPc01ZN0RTZ1pMNmQyRVFQU0pBNjY1OEVBQjZBZnN6RE9wZTlQRXVRS0JpNTdFakVGR18wSFpoZExQa1UwQktyZVlVZXFRSXllWTc2WXliQ1o?oc=5) 기사에서 언급된 환율 급등과 연준 금리 불확실성, 인플레이션 우려 등 대외 변수에 기인합니다. 개인은 1.3조원 이상 저가매수에 나섰으나, 이는 단기 반등 기대보다는 레버리지 추격매수 성격이 강해 단기 저점 신호로 해석하기 어렵습니다.\n\n## 오늘의 핵심 이슈: 금리·환율·인플레이션·반도체\n\n- [美연준 선호하는 근원물가 3.4%로 껑충…9월 금리인상에 무게 - 이데일리](https://news.google.com/rss/articles/CBMigAFBVV95cUxPX3lCZnp5NjkxTlp2YklJcy1aRGh5X1RlWUdEeHNGS3dVbWNfdXZmUUxVdjh3Wmxac1lBYmxtUWtzRGQ1c204SFFLOUpmcVNGRndFZ3R3WF8zSW1fcFczWUFVeVREUHNGclA0ZldUTjYtOENfa3BvN0QzdHRpSVkxdg?oc=5): 미국 근원물가(PCE) 급등과 9월 금리인상 가능성 부각\n- [韓 경제 물류비에 흔들…‘인플레이션’은 이제부터 - 데일리안](https://news.google.com/rss/articles/CBMiV0FVX3lxTFAyTnFDZGJGTldIX2dickJacDY2dWFRNVFxWWVMbFBaRWxmc0RqNFdfMXhGV3BkeEF1eTVnNXgwbURtSkFNR2xkaDF4N3ZtRmVoaWZoR0J0TdIBpgJBVV95cUxOSUlrdThOX0sxcXlpdU5WbHRYWHU4MlFQX2l5ckJDX2toYlVGX3ZpWXN3WUQxcHZYNXQ0NWlnNlVMVWhMak5TQ0lDNjBXb1RCYjE1ZnpOSkN5dk5tbURaczNHaDBscklyYXhvQ3JqUzY4cWJlS0NrbXNtR2xmaGFtTUlCcWhMdjY3bjVKQW5WcVZDdFdhaVp1WHRaVGtxX1JZdlZNQ3FQSjVzQnFIQ29xNVhRdDViSFFMN2syNmMxbDUzemptY2wzYmVKNE0tbXpCQ1VZWnRnSlJTcC1YV1I3bExOYnlBSTBkRDlzX3hLV1NuSlVhcnZmZDNMREdxNS1oejhjOXJrZlh4a0paNmpJY1dLbGV0NUZ5aWNWMW15ck5DUHBkUEE?oc=5): 국내외 인플레이션 압력 재부각\n- 반도체/AI 관련 뉴스도 있었으나, 오늘은 대외 매크로 이슈가 시장 방향성을 압도\n\n## 향후 체크포인트 및 전략\n\n- 외국인 매도세와 환율 급등이 진정되는지, 미국 금리 인상 시그널이 완화되는지 확인 전까지 방어적 포지션 유지 필요\n- 단기 급락이 구조적 하락 전환 신호로 이어질지, 아니면 일시적 조정에 그칠지 추가 데이터 모니터링 필요\n- 오늘 리스크 오프 국면의 무효화 조건: 외국인 순매수 전환 및 환율 안정, 미국 금리 불확실성 완화 신호 확인 시\n\n"
+}
