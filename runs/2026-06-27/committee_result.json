@@ -1,0 +1,49 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -5.81%, KOSDAQ -4.10%로 5일 누적 -12.93% 급락, 투자심리 극도로 위축.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 -39,396억, 기관 -38,140억 순매도, 개인 +75,231억 순매수로 수급 불균형 심화.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 구조적 위험 신호 해석",
+      "majority": "리스크 오프(위험회피) 국면이 지속된다는 의견(6/7명)",
+      "minority": "리스크 담당자는 구조적 위험 신호가 뚜렷하나, 단기 반전 가능성도 배제하지 않음",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "구조적 위험 신호가 단기 반전으로 전환될 경우, 시장 방향성 판단이 달라질 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 급락과 수급 불균형: 6월 27일 국내 증시 리뷰\n\n오늘 KOSPI는 8,411.21pt(-5.81%), KOSDAQ은 851.37pt(-4.10%)로 마감하며, 5일 누적 하락률이 -12.93%에 달했습니다. 환율(USD/KRW)은 1,536.01원으로 고점에 머물렀고, VIX는 18.41로 변동성도 높은 수준을 유지했습니다. 외국인 -39,396억, 기관 -38,140억 순매도에 맞서 개인이 +75,231억을 순매수했으나, 수급 불균형이 심화된 하루였습니다.\n\n## 외국인·기관 매도, 개인 저가매수: 수급 해석\n\n오늘 시장은 외국인과 기관의 대규모 매도세가 주도했습니다. KOSPI에서 외국인 -42,906억, 기관 -41,224억, 개인 +81,919억으로, 개인이 급락을 저가매수로 대응했으나 외국인·기관 매도 강도에 비해 흡수력이 제한적이었습니다. 이는 최근 5일간 누적 하락(-12.93%)과 맞물려 투자심리 위축, 위험회피 심리가 극대화된 결과입니다. 환율이 1,536원으로 고점에 머물고, 변동성(VIX)도 18선을 유지해 글로벌 불확실성(금리·연준, 달러 강세, AI/반도체 이슈 등)이 국내 수급에 직접적으로 반영되고 있습니다.\n\n## 오늘의 핵심 이슈: 금리·연준, 환율, AI/반도체, 인플레이션\n\n- [IMF 수석 이코노미스트, 연준의 금리 가이던스 축소 방침 지지](https://news.google.com/rss/articles/CBMiakFVX3lxTE5Lb21aZVNPMHpmTW93azRWVXdFS3NwbE0xdFdyazRtMVo0SUxlVTNVS1FmT2hoN0cxR1l2TzlNYWlrX0ROY1czUE8weW5TckZsdkIxR0hmT280SnRJS3JlbmxXR0N3ZVJDSEE?oc=5): 연준의 정책 불확실성이 글로벌 자금 흐름에 영향을 주며, 외국인 매도세를 자극.\n- [유가는 되돌렸는데 달러는 강세…환율, 결국 금리의 문제](https://news.google.com/rss/articles/CBMicEFVX3lxTE1fTExYWnJCa1c5cGIzMlR3TW1QWnExYk5LY0N2bDRIN1J2VHRkNFNnbWYtcmVaM1hBM0wwY011aDVtZGhJWXQwQV8xZHdDc1BTVUh0SkRHdUpocTd4eTEwaVBlZVM2elVfX0Z3VloyYjQ?oc=5): 유가 하락에도 불구하고 달러 강세와 고환율이 지속, 외국인 자금 이탈 압력 강화.\n- [AI가 물가도 밀어올린다...‘AI플레이션’ 현실화 조짐](https://news.google.com/rss/articles/CBMiUkFVX3lxTE5faDRiaGNiQzZyc2hrMXFYbDhaTmlBX1E1UzRUU0UzTTQ0SmFaYmpzbU1RdFQ1bm5JeE1PTHdiVjdCV3VwSWFLekZZZzhaSkM4YlHSAVNBVV95cUxQVm5sLUNyZGlKNy1kQkhoQmVwUmtNc2VEOXh5a29mN3Zwcy1lSmJkbDRFeWwzbTF2QTMwU1V2aWpiQUV6UkhvX21RM0FPVXpQTXQyaw?oc=5): AI/반도체 관련 이슈와 인플레이션 우려가 시장 변동성 확대에 기여.\n\n## 향후 체크포인트 및 전략: 변동성 완화 전까지 방어적 유지\n\n오늘 시장은 구조적 위험 신호와 수급 불균형이 동시에 심화된 전형적 리스크 오프 국면입니다. 외국인·기관 매도세가 멈추거나, 환율·금리 불확실성이 완화되는 신호가 확인되기 전까지 공격적 매수는 자제해야 합니다. 단기 반전 신호(수급 전환, 변동성 급락 등)가 나타나지 않는 한, 방어적 포트폴리오와 현금 비중 확대가 유효합니다. 만약 외국인·기관 매도세가 급격히 둔화되고, 환율이 안정세로 전환된다면 오늘의 리스크 오프 시나리오는 무효화될 수 있습니다."
+}
