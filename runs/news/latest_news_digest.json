@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-06-28T17:42:27.341140+00:00",
+  "crawled_at": "2026-06-28T18:42:35.043432+00:00",
   "news_date": "2026-06-29",
-  "total_collected": 9,
+  "total_collected": 11,
   "topic_counts": [
     [
       "인플레이션",
@@ -12,15 +12,15 @@
       1
     ],
     [
-      "변동성/리스크",
-      1
+      "경기/성장",
+      3
     ],
     [
       "에너지/원자재",
       1
     ],
     [
-      "정책/테마",
+      "변동성/리스크",
       1
     ]
   ],
@@ -48,12 +48,12 @@
       ]
     },
     {
-      "topic": "변동성/리스크",
-      "count": 1,
-      "title": "[김대호 진단] VIX 공포지수 \"한국과 미국의 차이\" - 글로벌이코노믹",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVWlOTVh1b3R2dGVQZkx2Y3RfaHZ6V253bU1oNERiSUcwdWVkaTllQXRaSk1wU050Y2hVSTlJMGhBM2hJTEVCdmRaTm5XTmR4amxzSWp5NThwREEzbHdsLWQxck5WZ3Q2bkJBY1V3enl5ODhMdnlkdlZnN0F0YUpzV08zV2FuUTlI?oc=5",
+      "topic": "경기/성장",
+      "count": 3,
+      "title": "GDP 넘는 진보지표가 필요하다 - 한국AI부동산신문",
+      "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9CWE40T2lXaG5LQy1tNkx0V0FDNUdLaXdBN2lOSjRrRU1NZF9hOFcxeC12NGVacEt1OVRELUVaem5JMGxKNTVsTEtZWjY?oc=5",
       "summary_lines": [
-        "핵심 이슈: [김대호 진단] VIX 공포지수 \"한국과 미국의 차이\" - 글로벌이코노믹",
+        "핵심 이슈: GDP 넘는 진보지표가 필요하다 - 한국AI부동산신문",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -70,12 +70,12 @@
       ]
     },
     {
-      "topic": "정책/테마",
+      "topic": "변동성/리스크",
       "count": 1,
-      "title": "AI 3대 강국의 꿈 - gonggam.korea.kr",
-      "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQTF9PVWhLQWhGcDIzcXlfdVNMdEEzc0NBY1ZyNUNycjc4Z2xmbFk3aHAxcXhDRmhYT2FrSUg4Rlc5WmpxbngzbndaT1dxa2NGd2xQb2RXclFIbVd5cDlvTnFKN1BUR0p0YlRYel9ZcWtQRl93RjBEd3FWTml6SEJBQlFwUXJBZmZ5TmlCQ3VvYXhabVVFRWhobWctSjZDRW44WHRrYWJxWHF4bVpsakdjeWJYNEFiWm16OHE2LTRpWlRmd1JEQmktVnFYWGJfSEd1TUNFQXFvcTRteXNKNXo4V3hYNzdQT3lIOHB1alBkZnBQTEV1dV9wc2Zn?oc=5",
+      "title": "[김대호 진단] VIX 공포지수 \"한국과 미국의 차이\" - 글로벌이코노믹",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVWlOTVh1b3R2dGVQZkx2Y3RfaHZ6V253bU1oNERiSUcwdWVkaTllQXRaSk1wU050Y2hVSTlJMGhBM2hJTEVCdmRaTm5XTmR4amxzSWp5NThwREEzbHdsLWQxck5WZ3Q2bkJBY1V3enl5ODhMdnlkdlZnN0F0YUpzV08zV2FuUTlI?oc=5",
       "summary_lines": [
-        "핵심 이슈: AI 3대 강국의 꿈 - gonggam.korea.kr",
+        "핵심 이슈: [김대호 진단] VIX 공포지수 \"한국과 미국의 차이\" - 글로벌이코노믹",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,8 +84,14 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 2,
+      "total_count": 5,
       "topics": [
+        {
+          "topic": "경기/성장",
+          "count": 3,
+          "title": "GDP 넘는 진보지표가 필요하다 - 한국AI부동산신문",
+          "link": "https://news.google.com/rss/articles/CBMiTEFVX3lxTE9CWE40T2lXaG5LQy1tNkx0V0FDNUdLaXdBN2lOSjRrRU1NZF9hOFcxeC12NGVacEt1OVRELUVaem5JMGxKNTVsTEtZWjY?oc=5"
+        },
         {
           "topic": "인플레이션",
           "count": 1,
@@ -97,18 +103,6 @@
           "count": 1,
           "title": "2분기 환율 1500원 넘어… 외환위기 이후 처음 - 서울신문",
           "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9NZ002RkNDUmJkb0R5NENSQVZZQUNvWGZDWjZPV3dOS2Foc3hLMjRSb2pCMm9WUG16ZlN5N1R6ajJUYUp3b01XRWhBWTcwUjlZR05RR0hTbGZ1WkkyU3JpeVQ4ZUlET2NieU5zaWVMOA?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "리스크",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "변동성/리스크",
-          "count": 1,
-          "title": "[김대호 진단] VIX 공포지수 \"한국과 미국의 차이\" - 글로벌이코노믹",
-          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVWlOTVh1b3R2dGVQZkx2Y3RfaHZ6V253bU1oNERiSUcwdWVkaTllQXRaSk1wU050Y2hVSTlJMGhBM2hJTEVCdmRaTm5XTmR4amxzSWp5NThwREEzbHdsLWQxck5WZ3Q2bkJBY1V3enl5ODhMdnlkdlZnN0F0YUpzV08zV2FuUTlI?oc=5"
         }
       ]
     },
@@ -125,14 +119,14 @@
       ]
     },
     {
-      "sector": "정책/테마",
+      "sector": "리스크",
       "total_count": 1,
       "topics": [
         {
-          "topic": "정책/테마",
+          "topic": "변동성/리스크",
           "count": 1,
-          "title": "AI 3대 강국의 꿈 - gonggam.korea.kr",
-          "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQTF9PVWhLQWhGcDIzcXlfdVNMdEEzc0NBY1ZyNUNycjc4Z2xmbFk3aHAxcXhDRmhYT2FrSUg4Rlc5WmpxbngzbndaT1dxa2NGd2xQb2RXclFIbVd5cDlvTnFKN1BUR0p0YlRYel9ZcWtQRl93RjBEd3FWTml6SEJBQlFwUXJBZmZ5TmlCQ3VvYXhabVVFRWhobWctSjZDRW44WHRrYWJxWHF4bVpsakdjeWJYNEFiWm16OHE2LTRpWlRmd1JEQmktVnFYWGJfSEd1TUNFQXFvcTRteXNKNXo4V3hYNzdQT3lIOHB1alBkZnBQTEV1dV9wc2Zn?oc=5"
+          "title": "[김대호 진단] VIX 공포지수 \"한국과 미국의 차이\" - 글로벌이코노믹",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPVWlOTVh1b3R2dGVQZkx2Y3RfaHZ6V253bU1oNERiSUcwdWVkaTllQXRaSk1wU050Y2hVSTlJMGhBM2hJTEVCdmRaTm5XTmR4amxzSWp5NThwREEzbHdsLWQxck5WZ3Q2bkJBY1V3enl5ODhMdnlkdlZnN0F0YUpzV08zV2FuUTlI?oc=5"
         }
       ]
     }
