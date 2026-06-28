@@ -1,0 +1,159 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "KOSPI와 KOSDAQ이 최근 5일간 큰 폭으로 하락했습니다.",
+      "외국인과 기관의 대규모 순매도가 지속되고 있습니다.",
+      "환율과 변동성 지표도 불안정한 모습을 보이고 있습니다."
+    ],
+    "korean_comment": "시장 전반에 걸쳐 위험회피 심리가 강하게 나타나고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ이 최근 5일간 큰 폭으로 하락했습니다.\",\n    \"외국인과 기관의 대규모 순매도가 지속되고 있습니다.\",\n    \"환율과 변동성 지표도 불안정한 모습을 보이고 있습니다.\"\n  ],\n  \"korean_comment\": \"시장 전반에 걸쳐 위험회피 심리가 강하게 나타나고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_abs_move_5d_avg\",\n    \"snapshot.markets.fx.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.note",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_abs_move_5d_avg",
+      "snapshot.markets.fx.usdkrw",
+      "snapshot.markets.volatility.vix",
+      "snapshot.news_headlines",
+      "snapshot.cumulative_context.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "외국인 대규모 매도는 고환율(USD/KRW), 연준/금리, 반도체/AI 불확실성 등 복합적 요인에 기인.",
+      "KOSPI 중심 외국인 매도세는 FX-driven 성격이 강하며, 단기 포트폴리오 리밸런싱과 이익실현도 일부 혼재.",
+      "개인 대규모 순매수는 레버리지 추격매수 성격이 강해 지속성에 의문, 수급 불균형 심화."
+    ],
+    "korean_comment": "외국인 매도와 개인 추격매수로 수급 불균형이 극심하게 나타난 하루.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW Pre-Analysis Agent (Korean Market)\",\n  \"core_claims\": [\n    \"외국인 대규모 매도는 고환율(USD/KRW), 연준/금리, 반도체/AI 불확실성 등 복합적 요인에 기인.\",\n    \"KOSPI 중심 외국인 매도세는 FX-driven 성격이 강하며, 단기 포트폴리오 리밸런싱과 이익실현도 일부 혼재.\",\n    \"개인 대규모 순매수는 레버리지 추격매수 성격이 강해 지속성에 의문, 수급 불균형 심화.\"\n  ],\n  \"korean_comment\": \"외국인 매도와 개인 추격매수로 수급 불균형이 극심하게 나타난 하루.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.korean_market_flow\",\n    \"snapshot.news_headlines\",\n    \"snapshot.macro.daily.usdkrw\",\n    \"snapshot.macro.daily.dxy\",\n    \"snapshot.macro.daily.us10y\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.flow_summary.note",
+      "snapshot.korean_market_flow",
+      "snapshot.news_headlines",
+      "snapshot.macro.daily.usdkrw",
+      "snapshot.macro.daily.dxy",
+      "snapshot.macro.daily.us10y",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.vix_5d_avg"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "KOSPI와 KOSDAQ이 최근 5일간 급락하며 투자심리가 크게 위축됨.",
+      "외국인과 기관의 대규모 순매도, 강달러 및 연준 긴축 전망이 시장에 부담.",
+      "단기 반등 신호는 없으며, 변동성도 높은 상태가 지속됨."
+    ],
+    "korean_comment": "시장 전반에 걸쳐 위험회피 심리가 강하게 나타나고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ이 최근 5일간 급락하며 투자심리가 크게 위축됨.\",\n    \"외국인과 기관의 대규모 순매도, 강달러 및 연준 긴축 전망이 시장에 부담.\",\n    \"단기 반등 신호는 없으며, 변동성도 높은 상태가 지속됨.\"\n  ],\n  \"korean_comment\": \"시장 전반에 걸쳐 위험회피 심리가 강하게 나타나고 있습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.note\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.cumulative_context.reversal_signal\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.note",
+      "snapshot.flow_summary.note",
+      "snapshot.news_headlines",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.cumulative_context.reversal_signal"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "KOSPI와 KOSDAQ이 단기간에 큰 폭으로 하락함",
+      "외국인과 기관의 대규모 순매도 지속",
+      "누적 하락폭이 단기 노이즈를 넘어 구조적 위험 신호"
+    ],
+    "korean_comment": "시장 전반에 걸쳐 구조적 위험이 뚜렷하게 나타나고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ이 단기간에 큰 폭으로 하락함\",\n    \"외국인과 기관의 대규모 순매도 지속\",\n    \"누적 하락폭이 단기 노이즈를 넘어 구조적 위험 신호\"\n  ],\n  \"korean_comment\": \"시장 전반에 걸쳐 구조적 위험이 뚜렷하게 나타나고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_abs_move_5d_avg\",\n    \"snapshot.cumulative_context.note\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_abs_move_5d_avg",
+      "snapshot.cumulative_context.note",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "KOSPI 5일 누적 급락과 외국인 대규모 순매도는 실적 모멘텀 약화 신호.",
+      "실적 추정치 하향 압력 지속, 단기 반등 신호 없음.",
+      "환율 불안과 실적 불확실성으로 가이던스도 보수적 전환."
+    ],
+    "korean_comment": "실적 모멘텀 약화가 단기적이 아닌 구조적으로 이어질 가능성이 높습니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"KOSPI 5일 누적 급락과 외국인 대규모 순매도는 실적 모멘텀 약화 신호.\",\n    \"실적 추정치 하향 압력 지속, 단기 반등 신호 없음.\",\n    \"환율 불안과 실적 불확실성으로 가이던스도 보수적 전환.\"\n  ],\n  \"korean_comment\": \"실적 모멘텀 약화가 단기적이 아닌 구조적으로 이어질 가능성이 높습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.news_headlines",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.cumulative_context.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "시장 전반에 걸친 급격한 하락과 확산이 뚜렷하다.",
+      "수급과 변동성, 누적 하락폭 모두 위험 신호를 보인다.",
+      "단기 반전 신호는 아직 감지되지 않는다."
+    ],
+    "korean_comment": "시장 내부 확산 약화와 하락세가 매우 뚜렷합니다.",
+    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"시장 전반에 걸친 급격한 하락과 확산이 뚜렷하다.\",\n    \"수급과 변동성, 누적 하락폭 모두 위험 신호를 보인다.\",\n    \"단기 반전 신호는 아직 감지되지 않는다.\"\n  ],\n  \"korean_comment\": \"시장 내부 확산 약화와 하락세가 매우 뚜렷합니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_abs_move_5d_avg\",\n    \"snapshot.cumulative_context.reversal_signal\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.flow_summary.retail_net\",\n    \"snapshot.markets.kr.kospi_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_abs_move_5d_avg",
+      "snapshot.cumulative_context.reversal_signal",
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.flow_summary.retail_net",
+      "snapshot.markets.kr.kospi_pct",
+      "snapshot.markets.kr.kosdaq_pct"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "KOSPI와 KOSDAQ 모두 단기 급락과 외국인 대규모 순매도 발생.",
+      "환율은 1536원대 강달러 유지, 정책 불확실성 지속.",
+      "변동성(VIX)도 높고, 유동성 신호는 악화됨."
+    ],
+    "korean_comment": "정책 및 유동성 환경이 위험회피로 전환되었습니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ 모두 단기 급락과 외국인 대규모 순매도 발생.\",\n    \"환율은 1536원대 강달러 유지, 정책 불확실성 지속.\",\n    \"변동성(VIX)도 높고, 유동성 신호는 악화됨.\"\n  ],\n  \"korean_comment\": \"정책 및 유동성 환경이 위험회피로 전환되었습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.phase_two_signals.liquidity_signal_score\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.news_headlines",
+      "snapshot.markets.volatility.vix",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.phase_two_signals.liquidity_signal_score"
+    ],
+    "confidence": "HIGH"
+  }
+]

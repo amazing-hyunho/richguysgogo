@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -5.81%, USD/KRW 1536.48. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -5.81,
+    "usdkrw": 1536.480737
+  },
+  "flow_summary": {
+    "note": "외국인 -39396억, 기관 -38140억, 개인 +75231억 | KOSPI(외 -42906, 기관 -41224, 개인 +81919) KOSDAQ(외 +3510, 기관 +3084, 개인 -6688)",
+    "foreign_net": -39396.0,
+    "institution_net": -38140.0,
+    "retail_net": 75231.0
+  },
+  "korean_market_flow": {
+    "date": "2026-06-28",
+    "market": {
+      "KOSPI": {
+        "individual": 81919,
+        "foreign": -42906,
+        "institution": -41224
+      },
+      "KOSDAQ": {
+        "individual": -6688,
+        "foreign": 3510,
+        "institution": 3084
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[환율/달러] [이번주 환율] 강달러에 1540원대 재진입…외국인 매도·연준 긴축 전망에 '1500원대 고착' - 오피니언뉴스",
+    "[금리/연준] '롤러코스피' 만든 반도체 쏠림…7월은 실적·FOMC에 촉각 - 메트로신문",
+    "[Thesis #1 AI 인프라 확장 사이클의 최대 수혜주 (N] 엑스맥스(XMAX), 2500만 달러 AI API 계약…GPU 서비스까지 ‘인프라 확장’ - tokenpost.kr",
+    "[반도체/AI] 엔비디아 시총 5조달러 아래로…AI 독주 시험대 - 글로벌이코노믹",
+    "[인플레이션] 메모리반도체 가격 상승이 모두에게 'AI 세금' 부과, 글로벌 인플레이션 주범으로 떠올라 - 비즈니스포스트"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 8411.21,
+      "kosdaq": 851.37,
+      "kospi_pct": -5.81,
+      "kosdaq_pct": -4.1
+    },
+    "us": {
+      "sp500": 7354.02,
+      "nasdaq": 25297.617,
+      "dow": 51876.11,
+      "sp500_pct": -0.04716282319105219,
+      "nasdaq_pct": -0.24049825455691878,
+      "dow_pct": -0.08572701943852372
+    },
+    "fx": {
+      "usdkrw": 1536.480737,
+      "usdkrw_pct": -0.6137988190199949
+    },
+    "volatility": {
+      "vix": 18.40999984741211
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.372000217437744,
+      "us2y": 3.6630001068115234,
+      "spread_2_10": 0.7090001106262207,
+      "us_3m_yield": 3.6630001068115234,
+      "us_2y_yield": 4.09,
+      "us_10y_yield": 4.372000217437744,
+      "spread_10y_2y": 0.2820002174377443,
+      "spread_10y_3m": 0.7090001106262207,
+      "vix": 18.40999984741211,
+      "dxy": 101.36000061035156,
+      "usdkrw": 1535.0,
+      "vix3m": 20.1299991607666,
+      "vix_term_spread": 1.7199993133544922,
+      "oil_wti": 69.2300033569336,
+      "russell2000": 3010.080078125,
+      "oil_brent": 71.98999786376953
+    },
+    "monthly": {
+      "unemployment_rate": 4.3,
+      "cpi_yoy": 4.270032656680245,
+      "core_cpi_yoy": 2.9571135826898187,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.8809356490312226,
+      "nfp_change": 172.0,
+      "wage_growth": 37.53,
+      "wage_level": 37.53,
+      "wage_yoy": 3.4454244762954778,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.172000217437744,
+      "hy_oas": 2.78,
+      "ig_oas": 0.76,
+      "fed_balance_sheet": 6735645.0,
+      "tga_balance": 901845.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -4.831,
+    "liquidity_signal_score": 4.787,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -12.936,
+    "kospi_20d_cum_pct": -7.881,
+    "kosdaq_5d_cum_pct": -16.512,
+    "kospi_abs_move_5d_avg": 6.059,
+    "usdkrw_5d_change_pct": 0.08,
+    "vix_5d_avg": 18.904,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-7.88%, vol20d=4.77, reversal=false"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -5.81%, KOSDAQ -4.10% 급락과 외국인 -3.9조, 기관 -3.8조 순매도 등 수급 불균형이 극심하게 전개됨.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 1536.48로 강달러 지속, 변동성(VIX) 18.4로 위험회피 심리 강화.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 구조적 위험 해석",
+      "majority": "단기 급락 및 수급 불균형에 기반한 위험회피(Risk-off) 국면 진단",
+      "minority": "구조적 위험 신호가 이미 뚜렷하게 나타나며, 단순 단기 노이즈가 아님",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "구조적 위험이 현실화될 경우 단기 반등 기대는 무의미해지고, 추가 하락 위험이 커짐"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 급락장세: KOSPI -5.81%, 외국인·기관 대규모 매도\n\n오늘(6월 28일) 국내 증시는 KOSPI가 8411.21pt(-5.81%), KOSDAQ이 851.37pt(-4.10%)로 급락하며, 최근 5일간 누적 하락률도 -12.94%에 달했습니다. 외국인 -3.9조원, 기관 -3.8조원 순매도(개인 +7.5조원 순매수)로 수급 불균형이 극심하게 나타났습니다. 환율은 USD/KRW 1536.48로 강달러가 지속됐고, VIX는 18.4로 위험회피 심리가 강화되었습니다. [환율/달러 관련 기사](https://news.google.com/rss/articles/CBMicEFVX3lxTE5QM0owdWNKQ1hESk94a0tld3VwN1R0ZUZYbF9xaWxUREdBUXo5cV94U0wzeEFMeWlIYk1PTmtmSGg1UjQxXzVYeWRVdFJTaUc3bmpwdV9ZN0tFd2FhS0RzNFBqR3BXQkhUdjhubTFzLU0?oc=5)에서도 1540원대 재진입과 외국인 매도 심화가 주요 이슈로 부각됐습니다.\n\n## 수급 해석: 외국인·기관 매도, 개인 추격매수 심화\n\n외국인은 KOSPI에서 -4.3조원, 기관은 -4.1조원 순매도를 기록하며, 수급 주도권을 완전히 내주었습니다. 반면 개인은 KOSPI에서 +8.2조원, 전체 시장에서 +7.5조원 순매수로 대규모 추격매수에 나섰으나, 이는 레버리지 성격이 강해 지속성에 의문이 제기됩니다. 수급 담당자와 브레드스 담당자 모두 \"수급 불균형이 극심하다\"고 평가했으며, 이는 고환율(USD/KRW 1536.48)과 연준 긴축 전망, 반도체/AI 불확실성 등 대외 변수와 맞물려 있습니다.\n\n## 대외 변수: 환율·연준·AI/반도체 불확실성 집중\n\n오늘 뉴스 헤드라인은 [강달러와 외국인 매도, 연준 긴축 전망](https://news.google.com/rss/articles/CBMicEFVX3lxTE5QM0owdWNKQ1hESk94a0tld3VwN1R0ZUZYbF9xaWxUREdBUXo5cV94U0wzeEFMeWlIYk1PTmtmSGg1UjQxXzVYeWRVdFJTaUc3bmpwdV9ZN0tFd2FhS0RzNFBqR3BXQkhUdjhubTFzLU0?oc=5), [반도체/AI 업황 불확실성](https://news.google.com/rss/articles/CBMiiAFBVV95cUxOdlY3TExOQzRXR0xhZGVWbW9IMWV2UlBSd1J3dERxYy1YbU5GSnQyM0Q3RDZNLVlwVUpNZzhBU1dJYzctaDJGWnQzLWdaSWM4N05XcGw1bVB5cUVVWF9ueWdOUHdZNTFMekY2Z2trZHlOSTNVVG9OeWgxSXQwbzZxcXVHUE40SFd2?oc=5), 인플레이션 우려 등으로 요약됩니다. 특히 엔비디아 등 글로벌 AI/반도체 주도주 약세와 메모리 가격 상승에 따른 인플레이션 압력도 시장 불안 요인으로 작용했습니다.\n\n## 전망 및 체크포인트: 변동성 완화 전까지 방어적 전략 유지\n\n오늘 시장은 단기 노이즈를 넘어 구조적 위험 신호가 일부 감지되고 있습니다. 다만, 다수 위원은 \"성급한 방향 전환보다 근거 확인 후 대응\"을 강조했습니다. 변동성(VIX) 완화, 외국인 매도세 진정, 환율 안정 등 확인 전까지는 현금 비중 확대와 방어적 포트폴리오 유지가 바람직합니다. 만약 외국인 매도세가 멈추고, 환율이 1500원대 초반 이하로 안정될 경우, 위험회피 국면이 완화될 수 있습니다. 반대로, 외국인 매도세가 지속되고 환율이 추가 상승한다면 추가 하락 위험에 대비해야 합니다.\n\n**오늘 리스크 오프 국면의 핵심 인과관계는 외국인·기관 매도 → 지수 급락 → 개인 추격매수 → 변동성 확대입니다.**\n\n### 오늘 뷰가 깨지는 조건: 외국인 매도세가 멈추고 환율이 1500원대 초반 이하로 안정될 경우, 위험회피 국면이 완화될 수 있음."
+}
