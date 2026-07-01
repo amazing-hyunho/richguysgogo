@@ -1,0 +1,54 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 -0.39% 하락(8443.05p), 외국인 순매도 -6275억, 원/달러 환율 1548.63(+0.57%)로 위험회피 심리가 우세합니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily",
+        "news"
+      ]
+    },
+    {
+      "point": "KOSDAQ은 4.08% 급등(953.55p)했으나, 시장 전반 확산세는 제한적이며 외국인 매도세가 지속되고 있습니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 전반의 위험 인식",
+      "majority": "리스크 오프(방어적) 기조 유지",
+      "minority": "중립(NEUTRAL) 의견: 단기 위험 신호는 뚜렷하지 않으나 누적 약세 주의",
+      "minority_agents": [
+        "sector",
+        "risk",
+        "breadth"
+      ],
+      "why_it_matters": "단기 반등(특히 KOSDAQ)에도 불구하고, 외국인 매도와 고환율이 지속될 경우 시장 전체의 하락 압력이 이어질 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 개요: 외국인 매도와 고환율, KOSDAQ 급등\n\n2026년 7월 1일, KOSPI는 8443.05p로 -0.39% 하락하며 방어적 흐름을 보였습니다. 반면 KOSDAQ은 953.55p로 4.08% 급등해 대조적인 모습을 연출했습니다. 원/달러 환율은 1548.63원(+0.57%)으로 연중 고점권을 유지하며, 외국인 순매도는 -6275억(코스피 -5756억, 코스닥 -519억)으로 집계됐습니다. 기관은 +5258억 순매수, 개인은 +1535억 순매수로 대응했습니다. VIX는 16.5로 5일 평균(18.1) 대비 소폭 하락했으나, 변동성 완화 신호로 보기엔 이릅니다.\n\n## 수급 해석: 외국인 매도 우위, 개인·기관 방어적 대응\n\n오늘 시장의 가장 두드러진 특징은 외국인 매도세입니다. 외국인은 코스피에서 -5756억, 코스닥에서 -519억을 순매도하며, 최근 20일 누적 약세(-1.99%)와 맞물려 위험회피 심리를 강화했습니다. 원/달러 환율이 1548.63원까지 상승한 점이 외국인 자금 유출의 주요 배경으로 지목됩니다([원·달러 환율, 0.4원 오른 1549.8원 출발 - 뉴시스](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9wQkJxcUpUeUhwNzAzeFlQRm5sdGp2OVd4RG9JeEFxR3NwbkFBT1BVX3VsMkV3eFN2VTlUSFZvbDU2eFU0OGJJMlFrQ21SZUJzR09TZ2JYYXh3UFZUZHgtWNIBeEFVX3lxTE9iNV8wVzFhN3VoZlNUdU83cXJxTVI5ajB4V3lvczJ0bGJYVlVyM2ZJM3NSTnlwUkp1QTBBRWFCQUF0cERFNFF3enlBa0VIYm1udVZtNGtZaEpRSjhUcEZkbG5CRjRRVzF0WUlPbS0wSWQyYXRfM3gxYQ?oc=5)). 기관과 개인은 각각 +3569억, +2433억(코스피 기준) 순매수로 방어적 대응에 나섰으나, 개인의 매수 지속성은 제한적이라는 평가가 우세합니다.\n\n## 날짜별 핵심 이슈: 반도체 수출·연준 금리·환율\n\n1. **반도체/AI**: 6월 수출이 사상 최초 1천억 달러를 돌파했고, 반도체 수출은 전년 대비 199% 급증했습니다([6월 수출 사상 최초 1천억 달러 돌파…반도체 수출 199% 늘어 - KBS 뉴스](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBaTW43VHJJMnhQVEE5MWtGSTg0eU5CX0IxcDRFWWNFSGdqYW1NOUFkNjFxT0dhR0s1YWU3c0RRS0J2RnhEZDl1OER4MGhIcm00cXBrb09WeEk1UGs?oc=5)). 이는 KOSDAQ의 단기 급등을 견인했으나, 시장 전체로의 확산은 제한적입니다.\n2. **금리/연준**: 연준 위원들은 인플레이션 지속 시 추가 금리 인상 가능성을 시사하며 정책 불확실성을 높였습니다([인플레이션 지속 시 금리 인상 가능성 시사한 연준 해맥 - Investing.com 한국어](https://news.google.com/rss/articles/CBMiakFVX3lxTFBTOUtuOXNmcVlydk85Y1JpcmxBUHlYbVdBYk5LdnAwcnNKbzd0WVprZUstLUJDSjMzQV9FMGZ1SVZ1VWk4LTN4N2xWMGxTSFN0dngtYUxjT0dnSWhKY194SjVsdXFURlZvZ3c?oc=5)).\n3. **환율/달러**: 원화 약세가 지속되며 외국인 자금 유출 압력이 높아졌습니다.\n\n## 향후 관전 포인트 및 전략: 변동성 완화·외국인 수급 전환 확인 전까지 방어적\n\n시장 전반은 외국인 매도와 고환율, 실적 모멘텀 약화로 방어적 기조가 강화되고 있습니다. KOSDAQ의 단기 급등에도 불구하고, 외국인 수급과 환율이 안정되지 않는 한 시장 전체의 방향성 전환을 기대하긴 이릅니다. 향후 외국인 순매수 전환, 환율 안정, 변동성(VIX) 추가 하락 등이 확인되기 전까지는 방어적 포트폴리오 유지가 권고됩니다. \n\n**오늘 논리의 무효화 조건:** 외국인 순매수 전환과 원/달러 환율의 의미 있는 하락(예: 1520원대 복귀)이 동반될 경우, 시장 기조는 공격적으로 전환될 수 있습니다."
+}
