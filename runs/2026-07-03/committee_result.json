@@ -1,0 +1,49 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -1.99%, KOSDAQ -4.12% 급락 및 외국인 순매도 -1조775억으로 위험회피(Risk-off) 심리 강화.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "최근 5일간 KOSPI 누적 -11.15% 하락, 단기 반등(reversal) 신호 부재로 추가 하락 경계 필요.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 국면(Risk-on/off) 해석",
+      "majority": "RISK_OFF: 외국인 대규모 순매도와 누적 하락폭, 단기 반등 신호 부재로 위험회피 심리 강조",
+      "minority": "RISK_ON: 단기 및 중기 모두 위험 신호가 명확하나, 일부는 과도한 하락에 따른 기술적 반등 가능성 언급",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "과도한 하락 후 기술적 반등 가능성에 대한 이견이 있으나, 현재는 위험회피가 우세함을 확인해야 함"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 급락과 외국인 대규모 매도: 위험회피 심리 확산\n\n오늘(7월 3일) 코스피는 7,481.29pt(-1.99%), 코스닥은 830.37pt(-4.12%)로 마감하며 동반 급락했습니다. 외국인은 -10,775억 원 순매도(코스피 -10,367억, 코스닥 -408억), 기관은 +4,156억, 개인은 +6,033억 순매수로 집계되었습니다. 원/달러 환율은 1,543.91원(변동률 0.00%)로 고점에서 정체, VIX는 16.15로 중립 수준을 유지했습니다. 최근 5일간 코스피 누적 하락률은 -11.15%로, 단기 낙폭이 매우 큽니다.\n\n## 수급: 외국인 이탈, 개인 저가매수…그러나 불안 지속\n\n외국인 대규모 순매도가 시장 하락을 주도했습니다. 이는 미국 반도체/AI 섹터 차익실현과 연동된 글로벌 리스크 오프 흐름, 그리고 최근 누적 하락에 따른 포트폴리오 리밸런싱 영향이 복합적으로 작용한 결과입니다. 개인은 단기 반등 기대감에 저가매수에 나섰으나, 누적 하락폭이 커 추가 흡수 여력은 제한적입니다. 기관은 방어적 매수에 그쳤습니다. 수급 불안이 해소되지 않은 가운데, 단기 반전(reversal) 신호는 아직 감지되지 않습니다.\n\n## 대외 변수: 연준·고용·환율, 그리고 반도체/AI 이슈\n\n오늘 시장에는 대외 불확실성이 크게 작용했습니다. 미국 고용 부진과 연준 금리인상 기대 급감이 주요 이슈로 부각되며, 달러 약세와 미 국채 강세가 동반되었습니다([연준 금리인상 기대 급감에 美국채 강세·달러 약세 - 연합뉴스](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1kZGs3Z3ZRYUw4ZVVkT040OHdObkExUEhXeTMxSzJfU2xRQllBclphTUdNcnVBSk5LbzZlSFYxVnR1bWVVLVV4NG81bWsyZEhWdk9Fby1BXzAwTVnSAWBBVV95cUxORjJUNThIc3R5ZmttTUgyQXNBb1lkMHFiUkUwYk5xa0FpcC1QMnY5ek56MjB1amhsdTFXTHVlU2RjYkJpZXJGX1FjbGtnZnBGdkVWWVJpZ0RVMUxZNG4xSmg?oc=5), [美 고용 부진에 연준 금리인상 기대 급감 - 오피니언뉴스](https://news.google.com/rss/articles/CBMicEFVX3lxTE9HYWs1MUx5R2JDdkdoS19YbmNPU1ZfRWhnYnpyLTd2M0t3R29zckx6eGROQ0RPU1ZUUFUxdXpXTkVhYlZoYlUzbzFKU2J2aEJMUFo3UlVWVnEzaW1zYTVUdERvbXZjMVZSSzN2Q3E4M3A?oc=5)). 미국 나스닥은 반도체 차익실현 영향으로 약세(-0.80%)를 보였고, 이는 국내 반도체/AI 섹터에도 부정적으로 작용했습니다([‘셀 반도체’에 나스닥 약세...고용악화에 다우는 사상 최고 - 매일경제](https://news.google.com/rss/articles/CBMiVEFVX3lxTE9vRjVSeXhjUEU0R2hHOXY3UFFMZjMycGZLdi1IRDRRSXNJYW5rQnYtaG55M1l4MHgzU0pkbzNCSlJManJyZnhha3BRZnZhUXJHcHFydA?oc=5)).\n\n## 향후 체크포인트 및 전략: 변동성 완화 전까지 방어적 유지\n\n단기적으로는 외국인 매도세와 누적 하락폭, 대외 불확실성(미국 고용·금리·반도체/AI 이슈)이 해소되기 전까지 공격적 매수는 자제해야 합니다. 기술적 반등 가능성에 대한 일부 이견이 있으나, 단기 반전(reversal) 신호가 확인되기 전까지는 방어적 포트폴리오 유지가 바람직합니다. 만약 외국인 매도세가 급격히 둔화되고, 대외 변수(특히 미국 고용·금리·환율)가 안정세로 전환된다면 오늘의 위험회피 국면은 무효화될 수 있습니다.\n"
+}
