@@ -1,0 +1,61 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 8088.34pt(+5.76%)로 급등하며 20일 누적 +15.66%의 강한 랠리를 이어갔습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "외국인은 -2.2조원 순매도(기관 +4.3조원 순매수)로 차익실현 및 리밸런싱에 나섰으나, 기관 매수로 수급 균형이 유지됐습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 인식",
+      "majority": "중립~강세(기관 매수, 변동성 안정, 랠리 지속)",
+      "minority": "리스크오프(외국인 이탈, 단기 급등 부담)",
+      "minority_agents": [
+        "macro",
+        "liquidity"
+      ],
+      "why_it_matters": "외국인 대규모 매도와 고환율이 지속될 경우, 단기 랠리의 피로 누적 및 조정 가능성에 유의해야 합니다."
+    },
+    {
+      "topic": "실적 모멘텀",
+      "majority": "실적 기대 반영, 기관 매수 중심의 긍정적 흐름",
+      "minority": "실적 추정치 상향은 제한적",
+      "minority_agents": [
+        "earnings"
+      ],
+      "why_it_matters": "실적 상향이 본격화되지 않으면 랠리의 지속성에 한계가 있을 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## KOSPI 8000 돌파, 기관 매수와 외국인 이탈의 수급 줄다리기\n\n오늘(7월 4일) KOSPI는 8088.34pt(+5.76%)로 사상 최고치 랠리를 이어갔습니다. KOSDAQ도 868.41pt(+0.19%)로 소폭 상승했습니다. 원/달러 환율은 1531.72원(-0.51%)로 1500원대에 머물렀고, VIX는 15.81로 5일 평균(16.22)보다 낮아 단기 변동성은 제한적이었습니다. 수급 측면에서는 외국인 -2.2조원, 기관 +4.3조원, 개인 -2.2조원의 대규모 매매가 교차하며 시장의 균형을 이뤘습니다.\n\n## 수급 해석: 기관 매수 vs 외국인 차익실현\n\n외국인은 KOSPI에서 -2.2조원, KOSDAQ에서 -202억원 순매도를 기록하며 차익실현 및 리밸런싱에 나섰습니다. 이는 최근 20일간 KOSPI가 +15.66% 급등한 데 따른 이익실현 성격이 강합니다. 반면 기관은 KOSPI에서 +4.4조원 순매수로 시장 랠리를 견인하며 수급 균형을 유지했습니다. 개인은 KOSPI에서 대규모 매도, KOSDAQ에서는 소폭 매수로 전환점 모색에 나서는 모습입니다. [\"해외주식 사느라 달러 수요 커졌다\"…환율 1500원대 고착 우려 - 한국경제](https://news.google.com/rss/articles/CBMiWkFVX3lxTE83ZUxJa1NkU2RueXZKVmQxMlNXUjRTNkx5UTBVX0tncVpvWE9yUXFVV3RNc2hkRHRwcUJ6X3dSdnRDZ1ZuelBfNERfaUNRZm81Z0dibktPd0w2QdIBVEFVX3lxTE9FdjdFVS13ZmxOSWRhYTdqUDQ0Nlhkcko3bHdJYWRvNmlsV2VPUXRDYm5wZVJacDdLVl9tekdZN0NNNllCaXNLQl81SDBtVFp3dzZwRQ?oc=5) 기사에서도 달러 수요와 환율 고착 우려가 언급됩니다.\n\n## 오늘의 핵심 이슈: 반도체 기대, 환율, 연준 관망\n\n오늘 시장을 움직인 주요 뉴스는 크게 세 가지로 요약됩니다. 첫째, [“집값 오르는 소리가 여기까지”…800조 반도체 기대감에 들썩이는 광주 - 매일경제](https://news.google.com/rss/articles/CBMiWEFVX3lxTE5GOEJMRFBvVGdibEJzV1dyeXNEVEhTWloyOTJTWmtORWRHRWNQeF9WVFBzdWJYMi13cUF6dGNwTmQ0U2FyRk53YUJmZDg2d0ZTMnM5SkhhU2o?oc=5) 기사처럼 반도체/AI 투자 기대가 여전히 시장 심리를 지지합니다. 둘째, 환율 1500원대 고착 우려와 외국인 자금 이탈이 수급 불안 요인으로 부각되고 있습니다. 셋째, 연준(FOMC) 의사록 발표를 앞두고 금리 방향성에 대한 관망 심리가 확대되고 있습니다. 시장은 실적 시즌(삼성전자 등)과 글로벌 정책 변수에 촉각을 곤두세우고 있습니다.\n\n## 전망 및 체크포인트: 랠리 지속 조건과 리스크\n\n기관 매수와 변동성 안정, 반도체 기대감이 당분간 시장을 지지할 전망입니다. 다만 외국인 매도세가 추가 확대되거나, 실적 모멘텀 약화 신호가 확인될 경우 단기 랠리의 피로 누적 및 조정 가능성에 유의해야 합니다. 랠리의 지속 조건은 (1) 외국인 매도세 진정, (2) 실적 상향 본격화, (3) 환율 1500원대 안정 여부입니다. 이 중 하나라도 무너질 경우, 특히 외국인 매도세가 확대될 경우 오늘의 중립~강세 시나리오는 즉시 무력화될 수 있습니다."
+}
