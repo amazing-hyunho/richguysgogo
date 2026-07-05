@@ -1,0 +1,29 @@
+{
+  "agent_name": "탐욕의 항아리",
+  "market_story": "항아리가 아직 제대로 끓지 않았습니다. LLM 호출이 실패해 오늘은 보수적인 예비 가설만 남깁니다.",
+  "hidden_themes": [
+    "수급 데이터",
+    "뉴스 헤드라인",
+    "거시 변수"
+  ],
+  "hypotheses": [
+    {
+      "theme": "항아리 예열 실패",
+      "visible_winner": "명확한 주도주 판단 보류",
+      "hidden_beneficiary": "데이터가 더 쌓인 뒤 재평가할 2차 수혜군",
+      "candidate_stocks": [
+        "관찰 필요"
+      ],
+      "narrative": "오늘의 트리거는 '[금리/연준] 한은 7월 금리 인상 예고 속 연준은 '동결'…한미 금리차에 환율 촉각 - 뉴시안'이지만, 악마가 속삭이기엔 재료 검증이 덜 됐습니다.",
+      "possible_catalyst": "다음 LLM 실행 성공 또는 뉴스/수급 데이터 추가 축적",
+      "why_market_may_miss_it": "지금은 추정보다 관찰이 우선인 구간입니다.",
+      "invalidation_condition": "LLM 결과가 정상 생성되면 이 예비 가설은 폐기합니다.",
+      "confidence": "LOW"
+    }
+  ],
+  "contrarian_view": "탐욕은 급할수록 헛것을 봅니다. 오늘은 항아리를 다시 데우는 편이 낫습니다.",
+  "wildcard_scenario": "뉴스가 한 종목이 아니라 공급망 주변부로 번질 때 항아리가 다시 끓을 수 있습니다.",
+  "reality_check": "이 화면은 투자 추천이 아니라 상상 기반 시나리오입니다. 숫자와 공시로 반드시 재검증해야 합니다.",
+  "fallback_used": true,
+  "error": "1 validation error for GreedPotResult\nreality_check\n  Input should be a valid string [type=string_type, input_value=['이 모든 가설은 ...을 잃을 수 있다.\"], input_type=list]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_type"
+}
