@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI 2.34%, USD/KRW 1530.98. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 2.34,
+    "usdkrw": 1530.98389
+  },
+  "flow_summary": {
+    "note": "외국인 -2715억, 기관 -2372억, 개인 +4758억 | KOSPI(외 -1099, 기관 -1982, 개인 +2717) KOSDAQ(외 -1616, 기관 -390, 개인 +2041)",
+    "foreign_net": -2715.0,
+    "institution_net": -2372.0,
+    "retail_net": 4758.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-06",
+    "market": {
+      "KOSPI": {
+        "individual": 2717,
+        "foreign": -1099,
+        "institution": -1982
+      },
+      "KOSDAQ": {
+        "individual": 2041,
+        "foreign": -1616,
+        "institution": -390
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] '전쟁발 에너지 충격'에 무너진 금리 정석…유럽·일본 '긴축' 속 미 연준의 선택은? [글로벌 IB리포트] - 한국경제TV",
+    "[Thesis #1 AI 인프라 확장 사이클의 최대 수혜주 (N] AI 데이터센터 경쟁에 美 전력업계 M&A 2000억달러 돌파 - 한국경제",
+    "[환율/달러] 외환시장 24시간 시대 열려…첫날 달러 대비 원화 환율 1530원대 - 조선일보",
+    "[인플레이션] 불안한 휴전 속 '물가와 전쟁'...AI 발 인플레까지 - YTN",
+    "[반도체/AI] [에듀플러스]성균관대 김정래 교수 연구팀, AI 반도체 올림픽 'ISCA 2026'서 대한민국 최초 최우수 논문상 쾌거 - 전자신문"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 8277.7,
+      "kosdaq": 853.51,
+      "kospi_pct": 2.34,
+      "kosdaq_pct": -1.72
+    },
+    "us": {
+      "sp500": 7483.24,
+      "nasdaq": 25832.672,
+      "dow": 52900.07,
+      "sp500_pct": 0.00013363213478963335,
+      "nasdaq_pct": -0.7961904761904814,
+      "dow_pct": 1.1373056598579159
+    },
+    "fx": {
+      "usdkrw": 1530.98389,
+      "usdkrw_pct": -0.05032186386955408
+    },
+    "volatility": {
+      "vix": 16.149999618530273
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.485000133514404,
+      "us2y": 3.6679999828338623,
+      "spread_2_10": 0.817000150680542,
+      "us_3m_yield": 3.6679999828338623,
+      "us_2y_yield": 4.17,
+      "us_10y_yield": 4.485000133514404,
+      "spread_10y_2y": 0.31500013351440437,
+      "spread_10y_3m": 0.817000150680542,
+      "vix": 16.149999618530273,
+      "dxy": 100.85700225830078,
+      "usdkrw": 1529.6800537109375,
+      "vix3m": 19.040000915527344,
+      "vix_term_spread": 2.8900012969970703,
+      "oil_wti": 68.33999633789062,
+      "russell2000": 2996.110107421875,
+      "oil_brent": 71.66000366210938
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 4.270032656680245,
+      "core_cpi_yoy": 2.9571135826898187,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.8809356490312226,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.2550001335144043,
+      "hy_oas": 2.75,
+      "ig_oas": 0.75,
+      "fed_balance_sheet": 6724564.0,
+      "tga_balance": 807359.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 0.196,
+    "liquidity_signal_score": 6.81,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -0.863,
+    "kospi_20d_cum_pct": 12.24,
+    "kosdaq_5d_cum_pct": -7.304,
+    "kospi_abs_move_5d_avg": 3.801,
+    "usdkrw_5d_change_pct": -1.138,
+    "vix_5d_avg": 16.29,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+12.24%, vol20d=4.59, reversal=false"
+  }
+}
