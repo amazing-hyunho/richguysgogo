@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-07-06T03:42:14.464028+00:00",
+  "crawled_at": "2026-07-06T04:42:41.931140+00:00",
   "news_date": "2026-07-06",
-  "total_collected": 210,
+  "total_collected": 215,
   "topic_counts": [
     [
       "금리/연준",
@@ -13,11 +13,11 @@
     ],
     [
       "인플레이션",
-      8
+      10
     ],
     [
-      "정책/테마",
-      19
+      "에너지/원자재",
+      20
     ],
     [
       "경기/성장",
@@ -49,7 +49,7 @@
     },
     {
       "topic": "인플레이션",
-      "count": 8,
+      "count": 10,
       "title": "불안한 휴전 속 '물가와 전쟁'...AI 발 인플레이션까지 - YTN",
       "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1PSV9RdEtHS3Z0elA1WVVjeUZBQU96SkFKekl5VUFlUmJFNWUweGMzWWJ6WTFfOVlHUThjdFVrQlNCSExFaERnRmJ3eTNDWGNORjFQVm9nQjBfcUdwOVE?oc=5",
       "summary_lines": [
@@ -59,12 +59,12 @@
       ]
     },
     {
-      "topic": "정책/테마",
-      "count": 19,
-      "title": "관세 폭탄 터뜨리고 우량주 싹쓸이?…트럼프 주식 투자 의혹 - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9udUFXRFBBQ2Y3OWllUDJoR3JUREwzYTZNdWs0UFFWdjVDNmVia2Mtd2c4b2dDNkV3LWVGWUJQQzdESXNCTUlxbG90MDRSbkl4LUhJM1BDT2NEQdIBVEFVX3lxTE9PSW5fVzRpXzBISmRoMkU4VElhelpJc0Q0TFNLakJ2cTN3Tk1pYzE1ekt1OGNvRGgtcGNlMmNUcUdxQjRCTDBoSVBlRHl3T0E4dkdNZg?oc=5",
+      "topic": "에너지/원자재",
+      "count": 20,
+      "title": "전쟁 전으로 복귀한 유가, 이제는 공급 과잉 우려…버핏의 정유주도 하락, 국내 석유주도 하락 출발 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNdGx2QjdlNS1RUW5nVHo0bE1SUkEtdmJwM1lFemgyRVl0NzlRNlFzSGtaOFg0TTZBeWVmaUdhRFFuYjBFRi1QdlBNUGdscU5tWEdIOXdtV1hveVJKMVlXS0FiLVljekNVSzlONDVpWm5NZXlLZl9vVVRVeEpWbW5nSQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: 관세 폭탄 터뜨리고 우량주 싹쓸이?…트럼프 주식 투자 의혹 - 한국경제",
+        "핵심 이슈: 전쟁 전으로 복귀한 유가, 이제는 공급 과잉 우려…버핏의 정유주도 하락, 국내 석유주도 하락 출발 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,13 +84,19 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 41,
+      "total_count": 43,
       "topics": [
         {
           "topic": "금리/연준",
           "count": 14,
           "title": "'전쟁발 에너지 충격'에 무너진 금리 정석…유럽·일본 '긴축' 속 미 연준의 선택은? [글로벌 IB리포트] - 한국경제TV",
           "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE82S0dka3J2Rld5UzVaWW1JZVh2UEQwQlNOc0JLVWZRX3k1aHNQWjZEWm00NUZZcUpvMkZVLUZkX1JYd3R5dzNzM1BwYkc5Y0xIVzJXQld5czBDUXoxLUVxVnBjc2NPSFNQNllVTlV2Qm1BTnk1Z0Jn?oc=5"
+        },
+        {
+          "topic": "인플레이션",
+          "count": 10,
+          "title": "불안한 휴전 속 '물가와 전쟁'...AI 발 인플레이션까지 - YTN",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1PSV9RdEtHS3Z0elA1WVVjeUZBQU96SkFKekl5VUFlUmJFNWUweGMzWWJ6WTFfOVlHUThjdFVrQlNCSExFaERnRmJ3eTNDWGNORjFQVm9nQjBfcUdwOVE?oc=5"
         },
         {
           "topic": "경기/성장",
@@ -103,24 +109,18 @@
           "count": 9,
           "title": "외환시장 24시간 시대 열려…첫날 달러 대비 원화 환율 1530원대 - 조선일보",
           "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOdExSQ3Byc0g4TDItMmlodl9HX3QxeWY3RVFDbEY1VU13NEhCZ19fNXlVbnRqajk0Y3p2Qk5BY1VWVWNJVHplLTIyOG42LW9ObTlHVDd3Y0NJRFFKQlhfTDN0dG1rakNJLU0xREdjQUsyVGUxYmZWZTlXTmE2UUVuZllQNFFTQXRrOWVQYy1n?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 8,
-          "title": "불안한 휴전 속 '물가와 전쟁'...AI 발 인플레이션까지 - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1PSV9RdEtHS3Z0elA1WVVjeUZBQU96SkFKekl5VUFlUmJFNWUweGMzWWJ6WTFfOVlHUThjdFVrQlNCSExFaERnRmJ3eTNDWGNORjFQVm9nQjBfcUdwOVE?oc=5"
         }
       ]
     },
     {
-      "sector": "정책/테마",
-      "total_count": 19,
+      "sector": "에너지/소재",
+      "total_count": 20,
       "topics": [
         {
-          "topic": "정책/테마",
-          "count": 19,
-          "title": "관세 폭탄 터뜨리고 우량주 싹쓸이?…트럼프 주식 투자 의혹 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9udUFXRFBBQ2Y3OWllUDJoR3JUREwzYTZNdWs0UFFWdjVDNmVia2Mtd2c4b2dDNkV3LWVGWUJQQzdESXNCTUlxbG90MDRSbkl4LUhJM1BDT2NEQdIBVEFVX3lxTE9PSW5fVzRpXzBISmRoMkU4VElhelpJc0Q0TFNLakJ2cTN3Tk1pYzE1ekt1OGNvRGgtcGNlMmNUcUdxQjRCTDBoSVBlRHl3T0E4dkdNZg?oc=5"
+          "topic": "에너지/원자재",
+          "count": 20,
+          "title": "전쟁 전으로 복귀한 유가, 이제는 공급 과잉 우려…버핏의 정유주도 하락, 국내 석유주도 하락 출발 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNdGx2QjdlNS1RUW5nVHo0bE1SUkEtdmJwM1lFemgyRVl0NzlRNlFzSGtaOFg0TTZBeWVmaUdhRFFuYjBFRi1QdlBNUGdscU5tWEdIOXdtV1hveVJKMVlXS0FiLVljekNVSzlONDVpWm5NZXlLZl9vVVRVeEpWbW5nSQ?oc=5"
         }
       ]
     }
