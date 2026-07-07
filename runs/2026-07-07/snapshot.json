@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -4.16%, USD/KRW 1530.80. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -4.16,
+    "usdkrw": 1530.802794
+  },
+  "flow_summary": {
+    "note": "외국인 -6832억, 기관 -1436억, 개인 +8183억 | KOSPI(외 -7052, 기관 -2685, 개인 +9633) KOSDAQ(외 +220, 기관 +1249, 개인 -1450)",
+    "foreign_net": -6832.0,
+    "institution_net": -1436.0,
+    "retail_net": 8183.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-07",
+    "market": {
+      "KOSPI": {
+        "individual": 9633,
+        "foreign": -7052,
+        "institution": -2685
+      },
+      "KOSDAQ": {
+        "individual": -1450,
+        "foreign": 220,
+        "institution": 1249
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] [뉴욕 금·채권·달러] 달러·금리 내리고 금값 랠리…시선은 FOMC 의사록으로 - 블록미디어",
+    "[환율/달러] 원·달러 환율, 오전 9시 1530원대 등락 - 뉴시스",
+    "[반도체/AI] \"엔비디아, 차세대 AI서버 '카이버' 출시 1년 지연…제조 난관\" - 연합뉴스",
+    "[미국지수] S&P 500(SPX)는 오르는데...국채 금리, 증시 최고가 행진 속 4.46% 돌파 경고 - 코인리더스",
+    "[Thesis #1 AI 인프라 확장 사이클의 최대 수혜주 (N] 엔비디아(NVDA), 200달러 붕괴가 매수 찬스?...전문가 \"보수적으로 봐도 50% 폭등\" - 코인리더스"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 7735.66,
+      "kosdaq": 846.91,
+      "kospi_pct": -4.16,
+      "kosdaq_pct": -0.02
+    },
+    "us": {
+      "sp500": 7537.43,
+      "nasdaq": 26121.16,
+      "dow": 53055.91,
+      "sp500_pct": 0.7241515707100201,
+      "nasdaq_pct": 1.1167563308975594,
+      "dow_pct": 0.2945931829579881
+    },
+    "fx": {
+      "usdkrw": 1530.802794,
+      "usdkrw_pct": -0.18023430459597417
+    },
+    "volatility": {
+      "vix": 15.569999694824219
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.479000091552734,
+      "us2y": 3.690000057220459,
+      "spread_2_10": 0.7890000343322754,
+      "us_3m_yield": 3.690000057220459,
+      "us_2y_yield": 4.14,
+      "us_10y_yield": 4.479000091552734,
+      "spread_10y_2y": 0.3390000915527347,
+      "spread_10y_3m": 0.7890000343322754,
+      "vix": 15.569999694824219,
+      "dxy": 100.9000015258789,
+      "usdkrw": 1528.6800537109375,
+      "vix3m": 18.780000686645508,
+      "vix_term_spread": 3.210000991821289,
+      "oil_wti": 68.81999969482422,
+      "russell2000": 3009.541259765625,
+      "oil_brent": 72.26000213623047
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 4.270032656680245,
+      "core_cpi_yoy": 2.9571135826898187,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.8809356490312226,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.239000091552734,
+      "hy_oas": 2.74,
+      "ig_oas": 0.75,
+      "fed_balance_sheet": 6724564.0,
+      "tga_balance": 807359.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -2.802,
+    "liquidity_signal_score": 7.251,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -8.798,
+    "kospi_20d_cum_pct": -2.904,
+    "kosdaq_5d_cum_pct": -7.587,
+    "kospi_abs_move_5d_avg": 4.062,
+    "usdkrw_5d_change_pct": -1.354,
+    "vix_5d_avg": 15.964,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-2.90%, vol20d=4.32, reversal=false"
+  }
+}
