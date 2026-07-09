@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI 3.54%, USD/KRW 1505.96. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 3.54,
+    "usdkrw": 1505.956952
+  },
+  "flow_summary": {
+    "note": "외국인 +3066억, 기관 +7025억, 개인 -9582억 | KOSPI(외 +3287, 기관 +6122, 개인 -8890) KOSDAQ(외 -221, 기관 +903, 개인 -692)",
+    "foreign_net": 3066.0,
+    "institution_net": 7025.0,
+    "retail_net": -9582.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-09",
+    "market": {
+      "KOSPI": {
+        "individual": -8890,
+        "foreign": 3287,
+        "institution": 6122
+      },
+      "KOSDAQ": {
+        "individual": -692,
+        "foreign": -221,
+        "institution": 903
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] 6월 FOMC 의사록 \"몇몇 위원, 금리인상 검토 언급\"…인플레 경계 - 연합뉴스",
+    "[환율/달러] 원·달러 환율, 1504.96원…중동 리스크 재부각에 상승 전망 - 조세일보",
+    "[반도체/AI] 中, AI기업 반도체 부족에 결국 \"美 엔비디아칩 사용 허용 방침\"…엔비디아 주가 급등 By The Guru - Investing.com 한국어",
+    "[인플레이션] 연준 \"인플레이션 여전히 높다\"…AI·중동·관세가 금리 발목(FOMC 의사록) - 블록미디어",
+    "[미국지수] [마켓뷰] '반도체 고점' 우려에 연이틀 급락 코스피, 반등 나서나 - 연합뉴스"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 7471.64,
+      "kosdaq": 809.58,
+      "kospi_pct": 3.54,
+      "kosdaq_pct": 3.13
+    },
+    "us": {
+      "sp500": 7482.71,
+      "nasdaq": 25870.652,
+      "dow": 52348.39,
+      "sp500_pct": -0.2817220493480057,
+      "nasdaq_pct": 0.20125730623823104,
+      "dow_pct": -1.0897654517748216
+    },
+    "fx": {
+      "usdkrw": 1505.956952,
+      "usdkrw_pct": -0.025903810516938613
+    },
+    "volatility": {
+      "vix": 16.899999618530273
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.568999767303467,
+      "us2y": 3.7230000495910645,
+      "spread_2_10": 0.8459997177124023,
+      "us_3m_yield": 3.7230000495910645,
+      "us_2y_yield": 4.19,
+      "us_10y_yield": 4.568999767303467,
+      "spread_10y_2y": 0.3789997673034664,
+      "spread_10y_3m": 0.8459997177124023,
+      "vix": 16.899999618530273,
+      "dxy": 100.95899963378906,
+      "usdkrw": 1505.780029296875,
+      "vix3m": 19.459999084472656,
+      "vix_term_spread": 2.559999465942383,
+      "oil_wti": 74.2300033569336,
+      "russell2000": 2956.388671875,
+      "oil_brent": 78.79000091552734
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 4.270032656680245,
+      "core_cpi_yoy": 2.9571135826898187,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.8809356490312226,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.318999767303467,
+      "hy_oas": 2.67,
+      "ig_oas": 0.76,
+      "fed_balance_sheet": 6724564.0,
+      "tga_balance": 807359.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 3.725,
+    "liquidity_signal_score": 6.361,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -1.416,
+    "kospi_20d_cum_pct": -1.364,
+    "kosdaq_5d_cum_pct": -6.562,
+    "kospi_abs_move_5d_avg": 4.002,
+    "usdkrw_5d_change_pct": -1.581,
+    "vix_5d_avg": 16.538,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-1.36%, vol20d=4.47, reversal=false"
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "generated_at": "2026-07-09T00:53:47.868047+00:00",
+  "market_date": "2026-07-09",
+  "snapshot": {
+    "market_summary": {
+      "note": "KOSPI 3.54%, USD/KRW 1505.96. Headlines loaded. Flows loaded.",
+      "kospi_change_pct": 3.54,
+      "usdkrw": 1505.956952
+    },
+    "flow_summary": {
+      "note": "외국인 +3066억, 기관 +7025억, 개인 -9582억 | KOSPI(외 +3287, 기관 +6122, 개인 -8890) KOSDAQ(외 -221, 기관 +903, 개인 -692)",
+      "foreign_net": 3066.0,
+      "institution_net": 7025.0,
+      "retail_net": -9582.0
+    },
+    "korean_market_flow": {
+      "date": "2026-07-09",
+      "market": {
+        "KOSPI": {
+          "individual": -8890,
+          "foreign": 3287,
+          "institution": 6122
+        },
+        "KOSDAQ": {
+          "individual": -692,
+          "foreign": -221,
+          "institution": 903
+        }
+      }
+    },
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "[금리/연준] 6월 FOMC 의사록 \"몇몇 위원, 금리인상 검토 언급\"…인플레 경계 - 연합뉴스",
+      "[환율/달러] 원·달러 환율, 1504.96원…중동 리스크 재부각에 상승 전망 - 조세일보",
+      "[반도체/AI] 中, AI기업 반도체 부족에 결국 \"美 엔비디아칩 사용 허용 방침\"…엔비디아 주가 급등 By The Guru - Investing.com 한국어",
+      "[인플레이션] 연준 \"인플레이션 여전히 높다\"…AI·중동·관세가 금리 발목(FOMC 의사록) - 블록미디어",
+      "[미국지수] [마켓뷰] '반도체 고점' 우려에 연이틀 급락 코스피, 반등 나서나 - 연합뉴스"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi": 7471.64,
+        "kosdaq": 809.58,
+        "kospi_pct": 3.54,
+        "kosdaq_pct": 3.13
+      },
+      "us": {
+        "sp500": 7482.71,
+        "nasdaq": 25870.652,
+        "dow": 52348.39,
+        "sp500_pct": -0.2817220493480057,
+        "nasdaq_pct": 0.20125730623823104,
+        "dow_pct": -1.0897654517748216
+      },
+      "fx": {
+        "usdkrw": 1505.956952,
+        "usdkrw_pct": -0.025903810516938613
+      },
+      "volatility": {
+        "vix": 16.899999618530273
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 4.568999767303467,
+        "us2y": 3.7230000495910645,
+        "spread_2_10": 0.8459997177124023,
+        "us_3m_yield": 3.7230000495910645,
+        "us_2y_yield": 4.19,
+        "us_10y_yield": 4.568999767303467,
+        "spread_10y_2y": 0.3789997673034664,
+        "spread_10y_3m": 0.8459997177124023,
+        "vix": 16.899999618530273,
+        "dxy": 100.95899963378906,
+        "usdkrw": 1505.780029296875,
+        "vix3m": 19.459999084472656,
+        "vix_term_spread": 2.559999465942383,
+        "oil_wti": 74.2300033569336,
+        "russell2000": 2956.388671875,
+        "oil_brent": 78.79000091552734
+      },
+      "monthly": {
+        "unemployment_rate": 4.2,
+        "cpi_yoy": 4.270032656680245,
+        "core_cpi_yoy": 2.9571135826898187,
+        "pce_yoy": 4.072638075644863,
+        "pmi": null,
+        "retail_sales_mom": 0.8809356490312226,
+        "nfp_change": 57.0,
+        "wage_growth": 37.64,
+        "wage_level": 37.64,
+        "wage_yoy": 3.5203520352035333,
+        "export_yoy": null
+      },
+      "quarterly": {
+        "real_gdp": 24180.419,
+        "gdp_qoq_annualized": 2.1
+      },
+      "structural": {
+        "fed_funds_rate": 3.63,
+        "real_rate": 2.318999767303467,
+        "hy_oas": 2.67,
+        "ig_oas": 0.76,
+        "fed_balance_sheet": 6724564.0,
+        "tga_balance": 807359.0,
+        "boj_rate": 0.3
+      }
+    },
+    "phase_two_signals": {
+      "earnings_signal_score": 0.0,
+      "breadth_signal_score": 3.725,
+      "liquidity_signal_score": 6.361,
+      "note": "derived from headlines + markets + macro.daily + macro.structural"
+    },
+    "cumulative_context": {
+      "lookback_days": 20,
+      "sample_count": 20,
+      "kospi_5d_cum_pct": -1.416,
+      "kospi_20d_cum_pct": -1.364,
+      "kosdaq_5d_cum_pct": -6.562,
+      "kospi_abs_move_5d_avg": 4.002,
+      "usdkrw_5d_change_pct": -1.581,
+      "vix_5d_avg": 16.538,
+      "reversal_signal": false,
+      "note": "rolling_20d: kospi20d=-1.36%, vol20d=4.47, reversal=false"
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "KOSPI가 단기 급등했으나 20일 누적 수익률은 여전히 부진합니다.",
+        "외국인과 기관의 순매수는 긍정적이지만, 거시 불확실성은 여전합니다."
+      ],
+      "korean_comment": "단기 반등에도 불구하고 중기적 방향성은 아직 불확실합니다.",
+      "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"KOSPI가 단기 급등했으나 20일 누적 수익률은 여전히 부진합니다.\",\n    \"외국인과 기관의 순매수는 긍정적이지만, 거시 불확실성은 여전합니다.\"\n  ],\n  \"korean_comment\": \"단기 반등에도 불구하고 중기적 방향성은 아직 불확실합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.markets.volatility.vix\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.note",
+        "snapshot.news_headlines",
+        "snapshot.markets.volatility.vix"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "외국인은 KOSPI 중심으로 순매수 전환, 반도체/AI 모멘텀과 USD/KRW 안정이 주요 배경.",
+        "기관도 대규모 순매수로 시장 반등 주도, 개인은 대규모 차익실현성 매도.",
+        "고환율 안정, 반도체/AI, 연준/금리 불확실성 등 핵심 키워드가 외국인 매수세에 영향."
+      ],
+      "korean_comment": "외국인과 기관의 동반 매수세가 KOSPI 반등을 견인하며, 개인은 차익실현에 나섬.",
+      "raw_response": "{\n  \"agent_name\": \"FLOW_pre-analysis_KR\",\n  \"core_claims\": [\n    \"외국인은 KOSPI 중심으로 순매수 전환, 반도체/AI 모멘텀과 USD/KRW 안정이 주요 배경.\",\n    \"기관도 대규모 순매수로 시장 반등 주도, 개인은 대규모 차익실현성 매도.\",\n    \"고환율 안정, 반도체/AI, 연준/금리 불확실성 등 핵심 키워드가 외국인 매수세에 영향.\"\n  ],\n  \"korean_comment\": \"외국인과 기관의 동반 매수세가 KOSPI 반등을 견인하며, 개인은 차익실현에 나섬.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"confidence\": \"HIGH\",\n  \"evidence_ids\": [\n    \"snapshot.flow_summary.note\",\n    \"snapshot.korean_market_flow\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.news_headlines\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.macro.daily.dxy\",\n    \"snapshot.macro.daily.us10y\"\n  ]\n}",
+      "regime_tag": "RISK_ON",
+      "evidence_ids": [
+        "snapshot.flow_summary.note",
+        "snapshot.korean_market_flow",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.market_summary.usdkrw",
+        "snapshot.news_headlines",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.macro.daily.dxy",
+        "snapshot.macro.daily.us10y"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "KOSPI가 단기 급등했으나 20일 누적 수익률은 여전히 부진하다.",
+        "외국인과 기관의 강한 순매수세가 유입되고 있다.",
+        "시장 변동성은 낮은 수준을 유지하고 있다."
+      ],
+      "korean_comment": "단기 반등에도 불구하고 중기적으로는 신중한 접근이 필요합니다.",
+      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"KOSPI가 단기 급등했으나 20일 누적 수익률은 여전히 부진하다.\",\n    \"외국인과 기관의 강한 순매수세가 유입되고 있다.\",\n    \"시장 변동성은 낮은 수준을 유지하고 있다.\"\n  ],\n  \"korean_comment\": \"단기 반등에도 불구하고 중기적으로는 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.vix_5d_avg"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "KOSPI가 단기 급등했으나 20일 누적 수익률은 여전히 부진함",
+        "외국인과 기관의 순매수세가 강하게 유입됨",
+        "시장 변동성(VIX)과 환율은 안정적임"
+      ],
+      "korean_comment": "단기 반등에도 불구하고 누적 흐름은 아직 뚜렷한 위험 신호가 없습니다.",
+      "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"KOSPI가 단기 급등했으나 20일 누적 수익률은 여전히 부진함\",\n    \"외국인과 기관의 순매수세가 강하게 유입됨\",\n    \"시장 변동성(VIX)과 환율은 안정적임\"\n  ],\n  \"korean_comment\": \"단기 반등에도 불구하고 누적 흐름은 아직 뚜렷한 위험 신호가 없습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.markets.fx.usdkrw\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.markets.volatility.vix",
+        "snapshot.markets.fx.usdkrw",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.note"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "earnings",
+      "core_claims": [
+        "실적 모멘텀 변화 신호는 아직 미약함",
+        "외국인·기관 매수세는 단기 반등에 불과",
+        "20일 누적 수익률 부진, 실적 상향 전환 신호 없음"
+      ],
+      "korean_comment": "실적 추정치 상향 조정 신호는 아직 확인되지 않습니다.",
+      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 변화 신호는 아직 미약함\",\n    \"외국인·기관 매수세는 단기 반등에 불과\",\n    \"20일 누적 수익률 부진, 실적 상향 전환 신호 없음\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 조정 신호는 아직 확인되지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"confidence\": \"MED\",\n  \"evidence_ids\": [\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.note\"\n  ]\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.news_headlines",
+        "snapshot.market_summary.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "breadth",
+      "core_claims": [
+        "KOSPI와 KOSDAQ 모두 강한 반등이 나타났음.",
+        "외국인과 기관의 동반 순매수로 시장 내부 확산 양호.",
+        "단기 누적 수익률은 아직 부진하지만, 시장 흐름 개선 신호."
+      ],
+      "korean_comment": "시장 내부 확산과 수급 개선이 확인됩니다.",
+      "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"KOSPI와 KOSDAQ 모두 강한 반등이 나타났음.\",\n    \"외국인과 기관의 동반 순매수로 시장 내부 확산 양호.\",\n    \"단기 누적 수익률은 아직 부진하지만, 시장 흐름 개선 신호.\"\n  ],\n  \"korean_comment\": \"시장 내부 확산과 수급 개선이 확인됩니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.kr.kosdaq_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.markets.kr.kosdaq_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "liquidity",
+      "core_claims": [
+        "유동성은 단기적으로 개선되었으나 정책 불확실성 지속.",
+        "환율과 변동성은 안정적이나, 누적 수급과 정책 리스크는 경계 필요."
+      ],
+      "korean_comment": "단기 반등에도 정책 및 누적 흐름상 보수적 접근이 필요합니다.",
+      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"유동성은 단기적으로 개선되었으나 정책 불확실성 지속.\",\n    \"환율과 변동성은 안정적이나, 누적 수급과 정책 리스크는 경계 필요.\"\n  ],\n  \"korean_comment\": \"단기 반등에도 정책 및 누적 흐름상 보수적 접근이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.markets.fx.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.markets.fx.usdkrw",
+        "snapshot.markets.volatility.vix",
+        "snapshot.news_headlines",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.cumulative_context.vix_5d_avg",
+        "snapshot.cumulative_context.note"
+      ],
+      "confidence": "MED"
+    }
+  ],
+  "debate_round": {
+    "round_index": 1,
+    "facilitator_note": "오늘은 7명 중 6명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
+    "minutes": [
+      {
+        "speaker": "macro",
+        "speaker_label": "매크로 담당자",
+        "summary": "저는 매크로 담당자 입장에서 '단기 반등에도 불구하고 중기적 방향성은 아직 불확실합니다.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=+3.54%, vix=16.9입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.flow_summary.note",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.note",
+          "snapshot.news_headlines",
+          "snapshot.markets.volatility.vix"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "flow",
+        "speaker_label": "수급 담당자",
+        "summary": "저는 수급 담당자 입장에서 '외국인과 기관의 동반 매수세가 KOSPI 반등을 견인하며, 개인은 차익실현에 나섬.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=+3.54%, usdkrw=1505.96입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.flow_summary.note",
+          "snapshot.korean_market_flow",
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.market_summary.usdkrw",
+          "snapshot.news_headlines",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.usdkrw_5d_change_pct"
+        ],
+        "internal_regime_tag": "RISK_ON"
+      },
+      {
+        "speaker": "sector",
+        "speaker_label": "섹터 담당자",
+        "summary": "저는 섹터 담당자 입장에서 '단기 반등에도 불구하고 중기적으로는 신중한 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=+3.54%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.flow_summary.note",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.vix_5d_avg"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "risk",
+        "speaker_label": "리스크 담당자",
+        "summary": "저는 리스크 담당자 입장에서 '단기 반등에도 불구하고 누적 흐름은 아직 뚜렷한 위험 신호가 없습니다.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=+3.54%, foreign_net=+3066억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.flow_summary.institution_net",
+          "snapshot.markets.volatility.vix",
+          "snapshot.markets.fx.usdkrw",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.note"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "earnings",
+        "speaker_label": "이익모멘텀 담당자",
+        "summary": "저는 이익모멘텀 담당자 입장에서 '실적 추정치 상향 조정 신호는 아직 확인되지 않습니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.phase_two_signals.earnings_signal_score",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.flow_summary.note",
+          "snapshot.news_headlines",
+          "snapshot.market_summary.note"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "breadth",
+        "speaker_label": "브레드스 담당자",
+        "summary": "저는 브레드스 담당자 입장에서 '시장 내부 확산과 수급 개선이 확인됩니다.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=+3.54%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.markets.kr.kosdaq_pct",
+          "snapshot.flow_summary.note",
+          "snapshot.phase_two_signals.breadth_signal_score",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.note"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "liquidity",
+        "speaker_label": "유동성 담당자",
+        "summary": "저는 유동성 담당자 입장에서 '단기 반등에도 정책 및 누적 흐름상 보수적 접근이 필요합니다.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=+3.54%, foreign_net=+3066억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.markets.fx.usdkrw",
+          "snapshot.markets.volatility.vix",
+          "snapshot.news_headlines",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.usdkrw_5d_change_pct",
+          "snapshot.cumulative_context.vix_5d_avg"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      }
+    ],
+    "round_conclusion": "의장 정리: 오늘 다수 의견은 중립입니다. 근거는 KOSPI +3.54%, USD/KRW 1505.96(-0.03%), VIX 16.9, 외국인 +3066억이고, 뉴스는 방향성이 엇갈려 단정하기 어렵습니다. 따라서 중립 비중을 유지하면서 확인된 시그널에서만 선별 대응합니다."
+  },
+  "committee_result": {
+    "consensus": "KOSPI가 단기 급등(+3.54%)했으나, 중기 방향성은 여전히 불확실하여 중립적 대응이 필요합니다.",
+    "key_points": [
+      {
+        "point": "외국인(+3066억)과 기관(+7025억)의 동반 순매수로 KOSPI가 3.54% 급등하며 단기 반등세를 보였습니다.",
+        "sources": [
+          "flow_data",
+          "macro_daily"
+        ]
+      },
+      {
+        "point": "USD/KRW 환율은 1505.96원(-0.03%)으로 안정적이며, VIX(16.9)도 낮은 수준을 유지해 시장 변동성은 제한적입니다.",
+        "sources": [
+          "macro_daily"
+        ]
+      },
+      {
+        "point": "20일 누적 KOSPI 수익률(-1.36%)은 여전히 부진해, 단기 반등에도 중기적 추세 전환 신호는 확인되지 않았습니다.",
+        "sources": [
+          "macro_daily"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "단기 반등의 지속성",
+        "majority": "단기 반등에도 불구하고 중기 방향성은 불확실하므로 신중한 접근이 필요하다는 의견이 우세",
+        "minority": "수급 담당자는 외국인·기관 동반 매수세에 근거해 단기 모멘텀을 긍정적으로 평가",
+        "minority_agents": [
+          "flow"
+        ],
+        "why_it_matters": "수급 주도 반등이 추세 전환으로 이어질지 여부는 향후 시장 대응 전략에 핵심"
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "외국인·기관 매수세가 유입된 대형주 중심 단기 트레이딩은 가능"
+      },
+      {
+        "level": "CAUTION",
+        "text": "20일 누적 수익률 부진, 실적 모멘텀 부재 등 중기 방향성 불확실성에 유의"
+      },
+      {
+        "level": "AVOID",
+        "text": "개인 투자자 단기 추격매수, 실적·정책 불확실성 높은 종목은 피할 것"
+      }
+    ],
+    "sugeup_narrative": "## 단기 급등: KOSPI 3.54% 반등, 외국인·기관 동반 매수\n\n오늘(7월 9일) KOSPI는 7471.64pt(+3.54%), KOSDAQ은 809.58pt(+3.13%)로 강한 반등을 기록했습니다. 외국인 순매수는 +3066억, 기관은 +7025억, 개인은 -9582억(코스피: 외 +3287, 기관 +6122, 개인 -8890)으로, 외국인과 기관의 동반 매수세가 시장을 견인했습니다. USD/KRW 환율은 1505.96원(-0.03%)으로 안정적이었고, VIX는 16.9로 낮은 수준을 유지했습니다.\n\n## 수급 해석: 외국인·기관 매수, 개인 차익실현\n\n오늘 시장의 주도권은 명확히 외국인과 기관에 있었습니다. 외국인은 KOSPI에서 +3287억 순매수로 돌아섰고, 기관도 +6122억을 쏟아부었습니다. 반면 개인은 -8890억(코스닥 포함 -9582억)으로 대규모 차익실현에 나섰습니다. 이는 최근 반도체/AI 관련 뉴스와 환율 안정, 그리고 연준 금리 불확실성 완화가 외국인 매수세를 자극한 것으로 해석됩니다. [中, AI기업 반도체 부족에 결국 \"美 엔비디아칩 사용 허용 방침\"](https://news.google.com/rss/articles/CBMicEFVX3lxTE5WQ3RsaEZRblRDYUh1a3NFaFl6N3hCS1VuYkF1X3o4S25tOENMcEhnaU45My00WUVqcjVKQXZIT196VmpCSWc0Z1YxZGR0anZ2b25PekptYnFfTDlwM3VOb3AySGt3TDl2ZkFSdUUwM3Q?oc=5) 등 AI/반도체 모멘텀 뉴스가 긍정적으로 작용했습니다.\n\n## 핵심 이슈: 금리·환율·반도체/AI 뉴스 집중\n\n오늘 뉴스 키워드는 금리/연준, 환율/달러, 반도체/AI, 인플레이션, 미국지수입니다. [6월 FOMC 의사록 \"몇몇 위원, 금리인상 검토 언급\"](https://news.google.com/rss/articles/CBMiW0FVX3lxTE94NVNFeHRYN1hBaThxaF9jTHN4WFlxb1l1Z3NFV1dzaXBfVjczVnhmY0NGRmpQZHdqcXlESkVSb25HWFlFd0VkTGVPYWpuY1RSUUF0cWE0Z3A1bEHSAWBBVV95cUxOSFZOYTlTbkZLVDhmeTlyVHZ5U1RRUHVhX1kyMllrM2JfaXRocmlOX21hOEh2WEs2SmRTX3FFTjF3OFlCbTFWcDdFLTJLN1lMcVVnOWhXZEFvb01QTXNqcXA?oc=5) 등 연준의 매파적 시그널이 있었으나, 시장은 오히려 환율 안정과 AI/반도체 호재에 더 민감하게 반응했습니다. 다만 20일 누적 KOSPI 수익률은 -1.36%로 여전히 부진해, 단기 반등이 추세 전환으로 이어질지는 미지수입니다.\n\n## 중기 방향성: 신중한 접근, 실적·정책 변수 주시\n\n오늘 반등에도 불구하고, 실적 모멘텀(상향 조정 신호)이나 정책 불확실성 해소는 확인되지 않았습니다. 20일 누적 수익률 부진, 연준의 금리 경계, 중동 리스크 등은 여전히 시장의 발목을 잡고 있습니다. 단기 트레이딩은 가능하나, 중기적 비중 확대는 실적·정책 변수 확인 후 접근이 필요합니다.\n\n## 체크포인트 및 무효화 조건\n\n향후 외국인·기관 매수세가 약화되거나, 환율·금리 등 거시 변수에서 부정적 변화가 확인될 경우 오늘의 단기 반등 논리는 무력화될 수 있습니다. 특히 실적 상향 신호가 동반되지 않는다면, 추가 상승은 제한적일 수 있습니다."
+  }
+}
