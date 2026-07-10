@@ -1,0 +1,60 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 2.77%, KOSDAQ 4.26% 급등에도 불구하고 20일 누적 수익률은 -6.14%로 중기 약세가 지속되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 -6491억 순매도, 기관 +8055억 순매수로 수급 불균형이 뚜렷하며, USD/KRW 환율은 1505.96원으로 추가 변동성에 유의해야 합니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(단기 반등 vs. 중기 약세)",
+      "majority": "단기 반등에도 불구하고 중기 약세가 지속된다는 의견이 우세",
+      "minority": "일부(매크로, 유동성 담당자)는 위험회피 심리가 여전히 강하다고 강조",
+      "minority_agents": [
+        "macro",
+        "liquidity"
+      ],
+      "why_it_matters": "단기 반등에 성급히 추격매수할 경우, 중기 약세가 재차 부각될 수 있어 신중한 접근이 필요"
+    },
+    {
+      "topic": "수급 해석(외국인 매도 vs. 기관 매수)",
+      "majority": "외국인 매도세가 시장 부담으로 작용",
+      "minority": "기관의 저점매수와 일부 개인의 저가매수에 주목",
+      "minority_agents": [
+        "flow",
+        "sector"
+      ],
+      "why_it_matters": "기관 매수세가 단기 반등을 이끌었으나, 외국인 매도세가 지속될 경우 반등의 지속성에 의문"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 단기 급등 속 신중론: KOSPI 2.77%·KOSDAQ 4.26% 급등, 외국인 매도 지속\n\n오늘(7월 10일) 코스피는 2.77% 상승한 7,494.09pt, 코스닥은 4.26% 급등한 827.86pt로 마감했습니다. 원/달러 환율은 1,505.96원(+0.16%)로 소폭 상승했고, VIX는 15.84로 안정적입니다. 수급 측면에서는 외국인 -6,491억 순매도, 기관 +8,055억 순매수, 개인 -1,201억 순매도로 집계되었습니다. KOSPI 5일 누적 수익률은 -7.32%, 20일 누적은 -6.14%로, 단기 반등에도 중기 약세가 뚜렷합니다.\n\n## 수급: 외국인 매도 vs. 기관 저점매수, 불균형 지속\n\n외국인은 KOSPI에서 -6,677억, KOSDAQ에서 +186억으로 KOSPI 중심의 대규모 순매도를 이어갔습니다. 기관은 KOSPI +7,103억, KOSDAQ +952억으로 저점매수에 나섰으나, 외국인 매도세를 완전히 상쇄하지는 못했습니다. 개인은 KOSDAQ에서만 소폭 매수(-1,114억)했으나, 전반적으로 관망세가 우세했습니다. 이는 최근 5일간 KOSPI -7.3% 누적 하락과 맞물려, 패시브 리밸런싱 및 환율(USD/KRW 1,505.96) 영향이 복합적으로 작용한 결과로 해석됩니다.\n\n## AI·반도체 모멘텀과 뉴스 이슈: 단기 반등의 배경\n\n오늘 시장 반등의 배경에는 미국 반도체주 급등과 AI 관련 뉴스가 자리잡고 있습니다. [반도체주 급등에 S&P500·나스닥 상승…중동 긴장보다 AI·실적에 집중](https://news.google.com/rss/articles/CBMigAFBVV95cUxQbThuQlZ0X2hUWmdtWEhXSHAyT1pQQUlrTFMzT2d0dDZlbFNZeDNNak1aUWRtWDl1cU9yaFgwY1RMSTVuelNOdnY5OXhvUmJjU3ZJS0JRZkRuTjBmbmVxWGNpVzl1a25aNkFLS3lwVU1nbDVsN1R6bGtHY0lCamtEMw?oc=5), [ARM홀딩스, AI 추론 칩 스타트업 포지트론 투자로 AI 반도체 생태계 입지 강화](https://news.google.com/rss/articles/CBMiUkFVX3lxTE13dndzeGtCOE83cjZnb0tfZ21iMWtnUXBaRUtENG82a2lIYnBGdlFfMEdENmt3bUpqUkV4aFEzUGs5M01CNmtMeW5ja0NQbmhPVUE?oc=5) 등 AI·반도체 관련 글로벌 모멘텀이 단기 랠리를 이끌었습니다. 하지만 [한은 총재 \"적절한 시기에 기준금리 인상 필요\"](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1PTlVOM1o0M0lhallyajhScnUtZXZubEx0aTgwMHl3UjJSUm1VMFhsVTlXaWtuaEYxWTNZV21MNXpUVGZBdXFSRTFwQTlCdWYyM0l2a2ZNczNvX3FqZGhqa2drNEg0bkk?oc=5) 등 정책 불확실성도 상존합니다. 실적 모멘텀 개선 신호는 아직 뚜렷하지 않으며, 단기 반등이 추세 전환으로 이어질지는 추가 확인이 필요합니다.\n\n## 중기 약세와 리스크 요인: 외국인 매도, 환율, 정책 불확실성\n\n20일 누적 KOSPI 수익률 -6.14%, 외국인 대규모 순매도, 원/달러 환율 1,500원대 고착 등은 시장의 중기적 부담 요인입니다. VIX(15.84)는 안정적이지만, 정책(한은 기준금리 인상 시사) 및 글로벌 유동성 환경이 보수적으로 변하고 있어, 단기 랠리의 지속성에는 의문이 남습니다.\n\n## 전략적 시사점 및 체크포인트\n\n- AI·반도체 등 글로벌 모멘텀 관련 대형주에 한해 선별적 접근은 가능하나, 단기 급등에 추격매수는 자제해야 합니다.\n- 외국인 매도세가 진정되고, 실적 모멘텀 개선 신호가 확인될 때까지 중립 비중 유지가 바람직합니다.\n- 오늘의 중립 시각을 깨는 조건은 외국인 순매도세가 급격히 진정되고, 실적 상향 조정이 동반될 때입니다.\n"
+}
