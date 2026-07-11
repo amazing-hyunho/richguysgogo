@@ -1,0 +1,59 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 2.52%, KOSDAQ 5.47% 급등에도 20일 누적 하락(-9.07%)과 외국인 순매도(-4791억)가 지속되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "기관이 대규모 순매수(+1조7139억)로 반등을 주도했으나, 외국인·개인은 각각 -4791억, -1조2018억 순매도하며 리스크 회피 기조를 유지했습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(추세 전환 vs. 단기 반등)",
+      "majority": "단기 반등에도 불구하고 중기 약세 및 외국인 매도세 지속",
+      "minority": "기관 매수 주도에 따른 추세 전환 가능성",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "기관 매수세가 추세 전환 신호로 해석될 경우, 시장 대응 전략이 달라질 수 있음"
+    },
+    {
+      "topic": "유동성 환경 평가",
+      "majority": "정책 불확실성과 외국인 매도세로 보수적 접근 필요",
+      "minority": "달러 약세와 VIX 하락으로 단기 리스크 완화 가능성",
+      "minority_agents": [
+        "flow",
+        "risk"
+      ],
+      "why_it_matters": "유동성 환경에 대한 해석에 따라 위험자산 선호도가 달라질 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 단기 반등, 누적 약세 속 신중론 유지\n\n오늘(7월 11일) 코스피는 2.52%(7,475.94p), 코스닥은 5.47%(837.43p) 급등하며 강한 반등세를 보였습니다. 환율은 USD/KRW 1,508.29원(-0.51%)로 안정세를 보였고, VIX는 15.03으로 전일 대비 하락하며 변동성도 다소 진정되었습니다. 수급 측면에서는 외국인 -4,791억, 기관 +17,139억, 개인 -12,018억 순매도가 집계되었습니다. 특히 코스피에서 외국인 -3,228억, 기관 +11,314억, 개인 -7,805억, 코스닥에서 외국인 -1,563억, 기관 +5,825억, 개인 -4,213억으로 기관이 전면에 나서며 반등을 주도했습니다.\n\n## 수급 해석: 기관 매수 vs. 외국인·개인 매도\n\n오늘 시장의 반등은 전적으로 기관의 대규모 매수(+1조7천억)에서 비롯되었습니다. 외국인은 환율 안정과 반도체/AI 기대에도 불구하고 -4,791억 순매도를 이어갔으며, 개인 역시 단기 반등 구간에서 차익실현에 나섰습니다. 이는 연준의 매파적 기조와 금리 인상 전망 등 대외 불확실성에 따른 리밸런싱 성격이 강하다는 해석이 우세합니다. 20일 누적 KOSPI 하락률이 -9.07%에 달하는 등, 단기 반등에도 불구하고 중기 약세 흐름이 여전히 뚜렷합니다.\n\n## 오늘의 핵심 이슈: 연준·금리, 반도체/AI, 실적 모멘텀\n\n- [연준 매파 기조 강화…일부 IB 연내 최대 3회 금리인상 전망](https://news.google.com/rss/articles/CBMiVEFVX3lxTE1zc3hidUpFYnJ1d2dPRmlSSHJFYTY1d2YyUlo5YWpnVmVTT1hLcGF3WkI1aW5sVFJlbXhCNEJtamlQemZPSG9XakdWZm1VekxnX2NsRtIBWEFVX3lxTE1TMUVXSnZrbU5aeVdNcGlMZm9IWWZ3Zlk5YXZBdmdnREI2WURVRUIwSF94SzExYWItMGotdlVVUk5KWDB2eDJ2MTRxa3B2dlJxNm03NTNwZU0?oc=5): 연준의 매파적 스탠스와 금리 인상 전망이 시장 전반에 부담을 주고 있습니다.\n- [최태원 \"AI분야 수백억달러 투자…HBM 수요 기하급수적 증가\"](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1laXl1QkktMy03Ty1NNmxIbUhEcGJTMzQteFAwcTdPY3FyMkVBQTU3WnlkbGZ4VzR2bXJoNnpNRHl3VVFVMk1qMVhGcm15enBFWW45WWlsNTNndjDSAWBBVV95cUxOSTRYdW1ySnk1TWh6NXhTWFNKZ3ROSzRWazk0MGUwbXJ4R19TcDFUMGkyNC1ka3hIZ08tYnJaV3p5Q091VEMwY3Axa1Y5Z2NIbVVtVjhteE1icVdIMGlNNnc?oc=5): 반도체/AI 업종에 대한 구조적 성장 기대가 부각되었으나, 외국인 매수세로 연결되지는 못했습니다.\n- [SK하이닉스, 나스닥 첫날 168달러로 급등마감…공모가대비 13%↑](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBsYjh0Qy1BLVpvZko1MXFyUTc5LWRUNjdmWFdVOEFha3NMSUtlR25DSVB6aDdpbmQ3NnVZbVcybWg3OE1hN3RheDdIbWEzVFF5WEpuRlR6dGQtYmPSAWBBVV95cUxOM3YwY2Zub0gweHExM0Zfc3dJb1NobzlhNDdROFA1c2t1TEhtOUJvdnozS3FQc291a1dDSzQyUE8wZ29BNEhvVHlJRGxGNkZ3Z0JfSlkyRnZpTlo2WVRpTl8?oc=5): AI/반도체 관련 글로벌 모멘텀에도 불구, 국내 시장에서는 외국인 매도세가 우세했습니다.\n\n## 향후 체크포인트 및 전략\n\n오늘의 반등은 기관 매수에 의존한 단기적 현상으로, 외국인 순매도와 20일 누적 약세, 연준의 매파적 기조 등 구조적 리스크가 해소되지 않은 상황입니다. 실적 모멘텀 회복 신호도 아직 미약하므로, 대형주·AI/반도체 중심의 제한적 트레이딩만 허용하고, 비중 확대는 신중히 접근해야 합니다. 만약 외국인 순매수가 강하게 전환되거나, 연준의 정책 스탠스가 완화로 전환될 경우 오늘의 신중론은 무력화될 수 있으니, 이 두 가지 변화를 최우선 모니터링해야 합니다."
+}
