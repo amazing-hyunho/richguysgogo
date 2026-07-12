@@ -1,0 +1,53 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 2.52%, KOSDAQ 5.47% 급등에도 20일 누적 하락률 -9.07%로 중기 약세가 지속되고 있습니다.",
+      "sources": [
+        "macro_daily",
+        "flow_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "외국인 -4791억 순매도, 기관 +1.7조 순매수로 수급 주도권이 기관에 넘어갔으나, 외국인 매도세는 지속되고 있습니다.",
+      "sources": [
+        "flow_data",
+        "korean_market_flow_breakdown"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성 전환 여부",
+      "majority": "단기 반등에도 중기 약세 신호가 우세하므로 성급한 방향 전환은 경계",
+      "minority": "일부(매크로, 유동성 담당자)는 정책 불확실성 및 외국인 매도세를 근거로 위험회피(RISK_OFF) 강조",
+      "minority_agents": [
+        "macro",
+        "liquidity"
+      ],
+      "why_it_matters": "정책 이벤트(금리 인상 등)와 외국인 매도세가 지속될 경우, 단기 반등이 추세 전환으로 이어지지 않을 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 단기 반등, 중기 약세 속 신중론: KOSPI 7475.94(+2.52%), KOSDAQ 837.43(+5.47%)\n\n오늘 코스피는 7475.94pt(+2.52%), 코스닥은 837.43pt(+5.47%)로 강한 반등을 기록했습니다. 환율(USD/KRW)은 1502.98원(-0.51%)로 안정세를 보였고, VIX는 15.03으로 5일 평균(16.26) 대비 낮아졌습니다. 수급 측면에서는 외국인 -4791억, 기관 +1.7조, 개인 -1.2조(억원 단위)로 기관이 주도권을 잡았으나, 외국인 매도세가 여전히 뚜렷합니다. 20일 누적 KOSPI 하락률은 -9.07%로, 단기 반등에도 중기 약세가 이어지고 있습니다.\n\n## 수급: 기관 주도 반등, 외국인 매도 지속\n\n기관은 KOSPI에서 +1.1조, KOSDAQ에서 +0.6조 순매수하며 단기 반등을 이끌었습니다. 반면 외국인은 KOSPI -3228억, KOSDAQ -1563억 등 전 시장에서 동반 매도세를 보였습니다. 개인은 -1.2조 순매도로, 최근 하락장(-9%/20일) 이후 반등 추격 매수에서 이탈하는 모습입니다. 외국인 매도세는 금리 인상 우려, 환율 불확실성 등 거시 환경과 맞물려 있습니다.\n\n## 오늘의 핵심 이슈: 금리·연준, 반도체/AI, 환율/달러, 인플레이션\n\n- [통화정책 긴축 전환하나…이번주 기준금리 인상 예고 - 연합뉴스TV](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9wT2lvNzBEVjNpbXo0aklDbjZSXy02VVlxU3M2b25wNVIxZ1Z6SUQ4dXhSelE1WVkxY1hHUk5oOE4ydUFyZjVfSDFZRF80eW9HVTVHRFVvOW5IWFR3UXBvbGsza3kzUlU?oc=5): 금리 인상 가능성 부각으로 정책 불확실성 확대\n- [피크아웃 공포 덮친 반도체…증권가는 \"지금이 기회\" - 한국경제](https://news.google.com/rss/articles/CBMiWkFVX3lxTE9FbmxLbzNrdE93RkNiSEk1Q2ZqWVlTcFhwYnJZazYxcFJYcVlONkJmNnRhdzd4MWxDd2tvQ0JWSEE3MGZPaC1JejVESENNYklZZ1drRWphX2swZ9IBVEFVX3lxTE1BVTlPUmN6dU4yaERiaXdOM1QySWN3TVRld2k2emlJRkxnY2prbFFIeG53Rm8wRmdDeTd3RC1aUDhMa28zMmtsX25fTW5WUkQ0dVk1Rg?oc=5): 반도체/AI 업종의 단기 변동성 확대와 투자심리 변화\n- [환율 구원투수 드디어 등판…SK하이닉스 단비에 외환시장 들썩 - 한국경제TV](https://news.google.com/rss/articles/CBMid0FVX3lxTE5ZaUhsSU5hSkQtNHFBNDJvRjRkdmJvUXU3emY5dk5uWHRIaVN1bEswM19pQjJvUVlYUDJMbzJOZUZWb01nLTFIeEd5R1MtRlQ3bVRrdzBWeE0yYzNORm5EQ3J4bW8xbEtiQXNJVEV3OUdJdHhPSGpj?oc=5): 환율 안정에도 외국인 매도세는 지속\n- [美 국채금리, 소비자물가지수 발표 앞두고 상승 - 글로벌이코노믹](https://news.google.com/rss/articles/CBMiiAFBVV95cUxPeG11QXNsOFBBZktUWEtUQlBrVkpwOEFPNDlnU1FSSXB5RjFSbDRtaDBqOEtTUmlXcnh1ZUYtSUY4emlNRTlXaXBuOURuZDdSbGVxbWttSWs4VkJKVUp0cTlRbXpoV1I4dzFZV01HZ29oNlJZeDl1T2hJbzRXamhKUzhVMVQ1TVp0?oc=5): 인플레이션 및 미국 금리 변수도 시장 불확실성 요인\n\n## 전망 및 체크포인트: 추세 전환 신호는 제한적, 정책 이벤트 주시\n\n오늘 반등은 기관 주도 단기 수급에 기반했으나, 외국인 매도세와 20일 누적 하락세, 정책 불확실성(금리 인상 등)이 여전히 부담입니다. 단기 반등이 추세 전환으로 이어지려면 외국인 매도세 완화와 실적·정책 변수의 명확한 개선이 필요합니다. 만약 외국인 매도세가 심화되거나, 정책 이벤트(금리 인상 등)로 변동성이 재확대된다면 오늘의 반등은 일시적일 수 있습니다. 다음 주 금통위, 미국 CPI 등 주요 이벤트에 주목해야 하며, 외국인 수급 전환이 확인되기 전까지는 신중한 대응이 요구됩니다."
+}
