@@ -1,0 +1,50 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 -1.79% 하락(7342.24p), 20일 누적 -13.4%로 약세가 심화되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 -2049억 순매도, USD/KRW 1501.59(+0.33%)로 환율 부담이 수급 악화에 직접 작용했습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 신호 해석",
+      "majority": "RISK_OFF: 외국인 매도와 누적 하락폭을 근거로 위험회피 심리 강조",
+      "minority": "NEUTRAL: 추가 위험 신호는 제한적이라고 판단",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "미국 증시 견조, 국내만 약세라는 점에서 단기 반등 가능성도 배제할 수 없어, 변동성 완화 여부가 관건"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 요약 및 주요 지표\n\n오늘(7월 13일) KOSPI는 7342.24p로 -1.79% 급락하며 20일 누적 -13.4% 하락폭을 기록했습니다. KOSDAQ은 857.53p로 2.4% 반등했으나, 외국인 매도세가 집중되었습니다. USD/KRW 환율은 1501.59원(+0.33%)로 연고점 부근을 유지했고, VIX는 15.03으로 5일 평균(16.26) 대비 소폭 하락했으나 여전히 경계 구간입니다. 수급 측면에서는 외국인 -2049억, 기관 -152억 순매도, 개인 +2130억 순매수로 개인 저가매수세가 두드러졌습니다.\n\n## 외국인 매도와 환율: 수급 불안의 핵심\n\n외국인 투자자는 KOSPI(-719억), KOSDAQ(-1330억) 모두에서 대규모 순매도를 기록했습니다. 이는 최근 20일간 KOSPI -13.4% 급락과 맞물려 위험회피 심리가 극대화된 결과입니다. 환율(USD/KRW 1501.59원) 상승과 [호르무즈 해협 긴장, 달러 강세, 국채금리 상승](https://news.google.com/rss/articles/CBMickFVX3lxTFBDVGVqM2tueWRlSzJvSHF6bEFGZHk0LU9kYUJtWmVpeUhLRlRaY2FaWWh1SDlZTkdQclQ4QVQ5YmItU1hpU1lubXE1WDc0VzFFYnZoZVc0SVlPQXZlT3NCU0tmbzBrbWxITkRLdkdYeDdPQQ?oc=5) 등 대외 불확실성이 외국인 자금 이탈을 가속화했습니다. 개인 투자자는 +2130억 순매수로 저가매수에 나섰으나, 시장 반전의 신호로 보기는 어렵습니다.\n\n## 오늘의 핵심 이슈: 금리·인플레이션·반도체·미국 증시\n\n- [연준의 인플레이션 경계](https://news.google.com/rss/articles/CBMiY0FVX3lxTE5YNzlSaDZzMnk4cHY4WVFGN20yd0lLTmhYRWE5WTRJMnV0V0std2VjdWVUNEZuODY3MWN5QzdTN0h5a2MzZjcxNnI4ODhKTEVJaXBQRXg4LTlIMWVKQjgzcGlUSQ?oc=5)와 국내 기준금리 인상 전망이 투자심리 위축에 영향을 주고 있습니다.\n- [반도체 수출 호조](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9STlpBUm96c19GdzdEN0dEemxGMXNPYXE2MFdYYnljekpGSTN4azh4TWZmaDRmaDRpaUY0S1d1cFh0WXUxUlZIQ051VDMtLWM4elR4ZEVpdXVob08zY2lRb9IBeEFVX3lxTE4xWXdDWGtsTDcydU5XaHpYcGRUcE82THN6aWZxY3QxdW11XzVqclU2blJvcmZGdEhIaGxrLVJCNlk0SnhqanhCcnd3OGdiaUtRY2xfVGx5Z0JXajRremN5MllnbkhZMVYwaTZtU29MVjhQT00tQWlBRA?oc=5)에도 불구하고, 실적 상향 모멘텀은 제한적입니다.\n- 미국 증시는 견조하게 마감했으나, 국내 시장만 약세를 보이며 글로벌-로컬 디커플링이 심화되고 있습니다.\n\n## 향후 체크포인트 및 전략\n\n- 외국인 매도세와 환율 상승이 진정되는지 여부가 단기 반등의 전제조건입니다.\n- 연준 및 한국은행의 금리 정책, 인플레이션 지표, 지정학 이슈(호르무즈 등) 변화에 주목해야 합니다.\n- 시장 반전 신호(외국인 순매수 전환, 변동성 완화, 환율 안정)가 확인되기 전까지 공격적 비중 확대는 피하고, 방어적 포트폴리오 유지가 바람직합니다.\n\n### 오늘 뷰가 깨지는 조건\n외국인 순매수 전환과 USD/KRW 환율 1500원 하회, 변동성(VIX) 13 이하 진입 시 시장 반전 가능성 재점검 필요."
+}
