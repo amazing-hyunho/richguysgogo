@@ -1,0 +1,58 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 0.06% 소폭 상승(6810.78pt)했으나, 20일 누적 -22.6% 급락으로 약세장이 지속되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 전체 -482억 순매도(특히 KOSDAQ -1126억), 기관은 +1.4조 순매수로 수급 안정 시도, 개인은 대규모 매도 전환.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 리스크 국면 해석",
+      "majority": "RISK_OFF(방어적 접근 필요)",
+      "minority": "RISK_ON(단기 반등 가능성)",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "단기 반등 신호에 대한 해석 차이로, 공격적 베팅 여부와 변동성 대응 전략에 영향."
+    },
+    {
+      "topic": "수급 안정성 평가",
+      "majority": "기관 중심의 수급 안정, 외국인 매도 지속",
+      "minority": "외국인 매도에도 단기 저가매수 기회 존재",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "외국인 매도세가 지속될 경우, 기관 매수만으로 시장 반전이 어려울 수 있음."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 개요 및 주요 지표\n\n- KOSPI는 0.06% 상승한 6810.78pt로 마감하며 소폭 반등에 그쳤습니다. KOSDAQ은 -1.91% 하락(784.08pt)으로 약세가 이어졌습니다.\n- 원/달러 환율은 1501.33원(-0.00%)으로 변동성은 제한적이었으나, 여전히 고환율 구간입니다.\n- VIX(변동성지수)는 17.16으로 5일 평균(16.65) 대비 소폭 상승, 시장 불안 심리가 반영되고 있습니다.\n- 수급은 외국인 -482억, 기관 +1조4,263억, 개인 -1조3,567억(억 원 기준)으로, 기관 중심의 방어적 매수와 외국인·개인 매도세가 뚜렷합니다.\n\n## 수급 해석: 기관 방어, 외국인 KOSDAQ 매도 집중\n\n- 오늘 수급은 기관의 대규모 순매수(+1.4조)가 KOSPI(+1.4조)에서 집중되며 시장 하락을 방어했습니다.\n- 외국인은 전체적으로 -482억 순매도, 특히 KOSDAQ에서 -1,126억 매도하며 성장주에 대한 경계심을 드러냈습니다.\n- 개인은 최근 급락장(-11%/5일, -22.6%/20일) 이후 저가매수 시도에서 대규모 매도로 전환, 단기 반등 기대감이 약화된 모습입니다.\n- 수급 구조상 기관의 방어적 매수만으로는 시장 반전 동력이 부족하며, 외국인 매도세가 지속될 경우 추가 하락 리스크가 상존합니다.\n\n## 금리·환율·미국증시: 대외 불확실성 심화\n\n- [윌러 연준이사 \"근원 물가 높으면 금리인상 검토해야\"](https://news.google.com/rss/articles/CBMiZ0FVX3lxTFB2bkJ4dmdpa2VZeG5RU2ZaZnEybTRqcTdqT2NBYzFUSTVZTTZsQ1FYVFREVGNWRWRGZ2JreHhlclZwOUl5bmF1MXNsUGVKTUxXWWt1ZkxNSVBQSGtHcjcyUzZDUUt5Rnc?oc=5) 등 연준의 추가 긴축 시사 발언이 시장에 부담을 주고 있습니다.\n- [미국증시, 유가·10년물 금리 급등에 나스닥·반도체주 급락](https://news.google.com/rss/articles/CBMickFVX3lxTFBIS1lidDJEZ2tiOGFnRFlneG5WNnpFODdlM1g5aW1VR0JEbGp3WG15djNQcXZqN0RzZnJqS3p3NXdwczRwWVpEQjAwSzdhZzZ3VWxnbDhaeERaU2oxakZMWWQtZzQxVW9sc2gwRlYwRnpfUQ?oc=5) 등 미국증시 급락(S&P500 -0.79%, 나스닥 -1.55%)과 10년물 금리 급등(4.61%)이 위험회피 심리를 자극했습니다.\n- 달러지수(DXY) 101.26, 원/달러 1501.33원 등 환율 변동성은 제한적이나, 고환율 구간이 지속되고 있습니다.\n\n## 누적 하락과 시장 심리: 반등 신호 부재\n\n- KOSPI 20일 누적 수익률은 -22.6%로, 약세장이 장기화되고 있습니다. 5일 누적도 -11%로 단기 반등 신호(reversal)는 확인되지 않았습니다.\n- 변동성(VIX)과 미국 금리, 글로벌 증시 약세가 복합적으로 작용하며, 시장 내 불안 심리가 확산되고 있습니다.\n- 실적 모멘텀, 기술적 반등 신호, 시장 확산도 모두 약화된 상황으로, 공격적 저점매수는 시기상조라는 의견이 우세합니다.\n\n## 전략적 시사점 및 체크포인트\n\n- 현 시점에서는 방어적 포트폴리오 유지와 변동성 완화 확인 전까지 공격적 비중 확대는 유보가 바람직합니다.\n- 외국인 매도세가 진정되고, 대외 금리·환율 변수(특히 연준 정책 방향)에서 불확실성 완화 신호가 확인될 때까지 관망 전략이 유효합니다.\n- 오늘 제시된 전략의 무효화 조건은 \"외국인 순매수 전환 및 글로벌 금리·환율 불확실성 완화\"입니다. 이 조건이 충족될 경우, 시장 반등 신호로 전략 재점검이 필요합니다."
+}
