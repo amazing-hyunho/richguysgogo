@@ -1,0 +1,50 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 -6.14% 급락(6823.34p), KOSDAQ도 -3.83% 하락(798.2p)하며 20일 누적 -25.65%로 구조적 약세가 지속되고 있습니다.",
+      "sources": [
+        "macro_daily",
+        "flow_data"
+      ]
+    },
+    {
+      "point": "외국인 -8359억, 기관 -4401억 순매도, 개인 +12511억 순매수로 수급은 위험회피 성격이 뚜렷합니다.",
+      "sources": [
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 구조적 하락 vs. 단기 반등 가능성",
+      "majority": "구조적 하락세 지속, 단기 반등 신호 부재(Risk-off)",
+      "minority": "일부(리스크 담당자)는 구조적 하락임을 인정하나, 내부 태그는 Risk-on으로 표기",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "단기 반등 신호가 없다는 점은 대다수 의견과 일치하나, 리스크 담당자의 태그 표기는 해석상 혼선을 줄 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 급락: KOSPI -6.14%, 외국인·기관 대규모 순매도\n\n오늘(7월 16일) 국내 증시는 극심한 변동성 속에 급락세를 기록했습니다. KOSPI는 -6.14% 하락한 6823.34p, KOSDAQ도 -3.83% 내린 798.2p로 마감했습니다. 외국인 -8359억, 기관 -4401억 순매도, 개인 +12511억 순매수로 수급은 위험회피 성격이 뚜렷하게 나타났습니다. 환율(USD/KRW)은 1490.48로 전일 대비 -0.02% 소폭 하락하며 비교적 안정적이었으나, 시장 전반의 불안 심리를 완화시키기엔 역부족이었습니다. VIX는 15.67로 5일 평균(16.08) 대비 소폭 하락했으나, KOSPI 5일 평균 변동폭(4.92%)과 20일 누적 하락률(-25.65%)은 구조적 약세를 시사합니다.\n\n## 수급 해석: 외국인·기관 매도, 개인 저가매수 흡수\n\n오늘 시장의 주도적 흐름은 외국인과 기관의 대규모 순매도였습니다. 외국인은 KOSPI에서 -7044억, KOSDAQ에서 -1315억을 순매도하며 전반적인 위험회피(Risk-off) 심리를 강화했습니다. 이는 [한은 기준금리 인상 예고](https://news.google.com/rss/articles/CBMiW0FVX3lxTE5VN0p3VG9UNzY4MDNRQjlubkVvTEpXTjBuUHpnbjlMVmVSVVZiS3VFaWdZVm1GR1hUTDN6Z1BFV3RPT2RqdXNRcF9wTWFXd25hQWRST1VqYTZ4Y2PSAWBBVV95cUxPUklyMjRQcl9aLWVvOEh0TzlRMXlGQVdjZEZDSVhGT0tXVUJsZTJoM2s3SGlwY2hUanZVQnUtVzhPcDlZaHlHUGQ2Y1ZJQmUtNnMxc05FZ2hxZWRXQk95ZGo?oc=5), [고물가·인플레이션 우려](https://news.google.com/rss/articles/CBMiYEFVX3lxTE14OEhHRUJVcXJZdGU3T0pRbXBGaHhQdjFabHUxZUxmS0NKRGZ0OGdkVWZlcjRsMkpZTHV0bFpEVFhneHFEWXh4bHdpeVBJZGJkU1Btckk2NEZnMkpYNEVKTNIBeEFVX3lxTE5qak9uMzBjd1VzSGwzenFxQ25lY1dZSWtNMVlSdzQ2R2hFSy11cm5vYlVBbldRQjh5THVsWlR1dmpMaDY4empwcW54TWg2YS1GQTdwVm8wamhwX3BqQ2lzb0hMWm5IRld4aDROVlhnU0F2T1FXVV9hYg?oc=5) 등 정책 리스크와 맞물려 환율·금리 불확실성에 따른 자금 이탈로 해석됩니다. 개인은 대형주 중심 저가매수에 나섰으나, 최근 누적 하락폭과 변동성 확대를 감안할 때 지속성에는 한계가 있다는 평가입니다.\n\n## 오늘의 핵심 이슈: 금리 인상, 인플레이션, 반도체, 환율\n\n오늘 시장을 압도한 뉴스 키워드는 '금리/연준', '인플레이션', '반도체/AI', '환율/달러'였습니다. [한은의 기준금리 인상 예고](https://news.google.com/rss/articles/CBMiW0FVX3lxTE5VN0p3VG9UNzY4MDNRQjlubkVvTEpXTjBuUHpnbjlMVmVSVVZiS3VFaWdZVm1GR1hUTDN6Z1BFV3RPT2RqdXNRcF9wTWFXd25hQWRST1VqYTZ4Y2PSAWBBVV95cUxPUklyMjRQcl9aLWVvOEh0TzlRMXlGQVdjZEZDSVhGT0tXVUJsZTJoM2s3SGlwY2hUanZVQnUtVzhPcDlZaHlHUGQ2Y1ZJQmUtNnMxc05FZ2hxZWRXQk95ZGo?oc=5), [고물가 우려](https://news.google.com/rss/articles/CBMiYEFVX3lxTE14OEhHRUJVcXJZdGU3T0pRbXBGaHhQdjFabHUxZUxmS0NKRGZ0OGdkVWZlcjRsMkpZTHV0bFpEVFhneHFEWXh4bHdpeVBJZGJkU1Btckk2NEZnMkpYNEVKTNIBeEFVX3lxTE5qak9uMzBjd1VzSGwzenFxQ25lY1dZSWtNMVlSdzQ2R2hFSy11cm5vYlVBbldRQjh5THVsWlR1dmpMaDY4empwcW54TWg2YS1GQTdwVm8wamhwX3BqQ2lzb0hMWm5IRld4aDROVlhnU0F2T1FXVV9hYg?oc=5), [반도체 업황 전망](https://news.google.com/rss/articles/CBMigAFBVV95cUxQb3JBd1hYSkVndFg4STN0ZEhiNThLaTd3dWY1OXV3VTF5UXhXYXFZcjIwWWY0SXh2c1NmZE9BVnNGWkRzOG5DVnJZUnNVMEs3YmwxZWt2V2lGOF9ENk5HYi1xZ0JKdmtuM2dfSW5XSVpDSmpnbjlkNjFsWHJYaFVXSw?oc=5) 등은 모두 시장에 부정적 영향을 미쳤습니다. 특히 금리 인상과 인플레이션 압력은 외국인 자금 이탈의 직접적 배경으로 작용했습니다. 환율은 단기적으로 안정적이나, 정책 불확실성은 여전히 상존합니다.\n\n## 향후 전망 및 체크포인트: 변동성 완화 전까지 방어적 전략 유지\n\n현재 시장은 구조적 약세와 위험회피 심리가 지배적입니다. 단기 반등 신호(리버설)는 확인되지 않았으며, 외국인·기관 매도세가 진정되지 않는 한 공격적 비중 확대는 시기상조입니다. 향후 한은의 실제 금리 결정, 글로벌 인플레이션 및 환율 변동, 외국인 수급 변화가 핵심 체크포인트입니다. 만약 외국인 순매도가 멈추고, KOSPI가 5일 평균 변동폭 이하로 안정화된다면 오늘의 약세 논리가 무력화될 수 있습니다."
+}
