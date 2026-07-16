@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-07-16T18:42:16.196392+00:00",
+  "crawled_at": "2026-07-16T19:42:07.252368+00:00",
   "news_date": "2026-07-17",
-  "total_collected": 14,
+  "total_collected": 18,
   "topic_counts": [
     [
       "금리/연준",
@@ -13,15 +13,15 @@
     ],
     [
       "인플레이션",
+      2
+    ],
+    [
+      "바이오/헬스케어",
       1
     ],
     [
       "정책/테마",
       3
-    ],
-    [
-      "Thesis #2 전력, 초전도체, 데이터센터",
-      1
     ]
   ],
   "top_articles": [
@@ -49,11 +49,22 @@
     },
     {
       "topic": "인플레이션",
-      "count": 1,
+      "count": 2,
       "title": "CPI 3.5%로 둔화했지만 2020년 대비 28.5% 상승, 실질 이득은 사라져 - Investing.com 한국어",
       "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5QNTgwSjh5YUhoQ3N4VTI3LUdTWkVwUEgycTdOQlBJU1lLZ08tSmg4ZWtMSGhlSEsxemg4T3phSHVXOFJMd0FNMnVGLXVXdC05blpPaEItOGx6SUhUSzVxdU5QbnBGbTBBaTJlY3BSeS1nMXNwUlhr?oc=5",
       "summary_lines": [
         "핵심 이슈: CPI 3.5%로 둔화했지만 2020년 대비 28.5% 상승, 실질 이득은 사라져 - Investing.com 한국어",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "바이오/헬스케어",
+      "count": 1,
+      "title": "[美특징주]머크앤코, 경구용 콜레스테롤 치료제 美 승인…주가 4%↑ - edaily.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSk9aZjkzdkpSZUtBVnZzcE5ScVVqR2MwQU5FRklWZ0FmU1dvVjFTTUNXNmxFQkxTdEpzdHU5TlJ4SmZBUFB2NF9TdnAwWDdsaTVydGFnMy1OcnViUmdPbXg4OWE3UGlSSXJrcEw5eHJTcFJIXzJ4TXEzYWhNcnlmYw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [美특징주]머크앤코, 경구용 콜레스테롤 치료제 美 승인…주가 4%↑ - edaily.co.kr",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -68,23 +79,12 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "Thesis #2 전력, 초전도체, 데이터센터",
-      "count": 1,
-      "title": "“소양강변에 AI 데이터센터 유치… 풍부한 물, 수도권 접근성 갖춰” - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE44UFh5dFVicjBFekotN3IyYVJxTzM0Z1NkMF9NdG91V0U5T2JaR04zbmZXdmoyU1pMcEdiQmFXbTJkTWY1OFRvSVVaLTFiSUU?oc=5",
-      "summary_lines": [
-        "핵심 이슈: “소양강변에 AI 데이터센터 유치… 풍부한 물, 수도권 접근성 갖춰” - v.daum.net",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 4,
+      "total_count": 5,
       "topics": [
         {
           "topic": "금리/연준",
@@ -94,7 +94,7 @@
         },
         {
           "topic": "인플레이션",
-          "count": 1,
+          "count": 2,
           "title": "CPI 3.5%로 둔화했지만 2020년 대비 28.5% 상승, 실질 이득은 사라져 - Investing.com 한국어",
           "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5QNTgwSjh5YUhoQ3N4VTI3LUdTWkVwUEgycTdOQlBJU1lLZ08tSmg4ZWtMSGhlSEsxemg4T3phSHVXOFJMd0FNMnVGLXVXdC05blpPaEItOGx6SUhUSzVxdU5QbnBGbTBBaTJlY3BSeS1nMXNwUlhr?oc=5"
         }
@@ -125,14 +125,14 @@
       ]
     },
     {
-      "sector": "기타",
+      "sector": "헬스케어",
       "total_count": 1,
       "topics": [
         {
-          "topic": "Thesis #2 전력, 초전도체, 데이터센터",
+          "topic": "바이오/헬스케어",
           "count": 1,
-          "title": "“소양강변에 AI 데이터센터 유치… 풍부한 물, 수도권 접근성 갖춰” - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE44UFh5dFVicjBFekotN3IyYVJxTzM0Z1NkMF9NdG91V0U5T2JaR04zbmZXdmoyU1pMcEdiQmFXbTJkTWY1OFRvSVVaLTFiSUU?oc=5"
+          "title": "[美특징주]머크앤코, 경구용 콜레스테롤 치료제 美 승인…주가 4%↑ - edaily.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPSk9aZjkzdkpSZUtBVnZzcE5ScVVqR2MwQU5FRklWZ0FmU1dvVjFTTUNXNmxFQkxTdEpzdHU5TlJ4SmZBUFB2NF9TdnAwWDdsaTVydGFnMy1OcnViUmdPbXg4OWE3UGlSSXJrcEw5eHJTcFJIXzJ4TXEzYWhNcnlmYw?oc=5"
         }
       ]
     }
