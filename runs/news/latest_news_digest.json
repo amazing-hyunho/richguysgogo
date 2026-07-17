@@ -1,33 +1,44 @@
 {
-  "crawled_at": "2026-07-17T19:42:06.058434+00:00",
+  "crawled_at": "2026-07-17T20:42:21.976930+00:00",
   "news_date": "2026-07-18",
-  "total_collected": 12,
+  "total_collected": 24,
   "topic_counts": [
     [
+      "인플레이션",
+      1
+    ],
+    [
       "반도체/AI",
-      5
+      7
     ],
     [
-      "환율/달러",
-      1
-    ],
-    [
-      "에너지/원자재",
-      1
+      "미국지수",
+      3
     ],
     [
       "정책/테마",
-      1
+      4
     ],
     [
-      "국내지수",
-      1
+      "환율/달러",
+      2
     ]
   ],
   "top_articles": [
     {
+      "topic": "인플레이션",
+      "count": 1,
+      "title": "7월 美소비자심리지수 개선...중동 재충돌 전 상황 반영 - 서울경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBmR0pDTWRpVE1xRDNEd3Vra094OEUwcDJDd1IxQU9jRURkRU9jbWJtbUY3aWVRbHR4ZEJyQXFTZHlMang4QVV3b2htSkNRUGxlbmfSAVNBVV95cUxNVjBvS1R4M2VZdDlPQUllSEtfLTBsU1F2cGg1cVdjeG5mZFBCRTVaT0xMd29ZeV8yWkhKeF9WTGdlblVscjBtWEtvd2tJSkM0RlhGRQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 7월 美소비자심리지수 개선...중동 재충돌 전 상황 반영 - 서울경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "반도체/AI",
-      "count": 5,
+      "count": 7,
       "title": "‘피크아웃’ 공포 덮친 반도체, 주가 줄줄이 급락 - 동아일보",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBHU3R5SUtzR3JQaWxmTTYxLVdLaFV4M2tQdnB0Z1o2bWs2MXNIeDVhX0FNa2d2ak02UmRDTWFXN1FqUTJqVnFOaUtwS0dMOWNTdHBteTcycERBbWUycnJaVlNVOFpGaUwzZmUwY3JKQWFPcWVIZmfSAWZBVV95cUxPWjA0NTJUakJJLTlKYVBsYUJDNVdFRTZXSnRyOC1kMDIxRUxkT0Nuc3VyZFVEbWJxQTA3OWpzN3Z3WkU4SnRxbnh2eHJ0c1RpbjVNdEpmVHk0NEM5N2haQmFieU1IMnc?oc=5",
       "summary_lines": [
@@ -37,45 +48,34 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 1,
-      "title": "달러-원, 국제유가 급등 속 위험 회피에 급등…1,490원 돌파 - KB Think",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9jalNxUW5lc2F1SVNjMUhzaF9WSXhINThLRGhDQjJqb2RxbElNSXRVdXZma21EQnFSa1I1d1hFYnYya3Uzemh3UHNnUTZwcXF4RU5zVTlGS1hPbzNibWFFOGM3RkhUQ0lqaTd4M0VVcXl2Zw?oc=5",
+      "topic": "미국지수",
+      "count": 3,
+      "title": "뉴욕증시, 반도체 매도세 지속에 하락…나스닥 1.4%↓ - 연합뉴스 한민족센터",
+      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1TWkhxeDRqMmZwWEp5QUZxWm9JcFJSYWh1SWppaHFiLXJpOGVINzBnWEtvMmFCLWdJVzBvWEJPQ3p3VEZ1RUgxQzJVV3hkcWViZmlaWUlBb1RsOGc4ajBwRkVpVGhEZ2l1Zko4MThmQXVqYkI5?oc=5",
       "summary_lines": [
-        "핵심 이슈: 달러-원, 국제유가 급등 속 위험 회피에 급등…1,490원 돌파 - KB Think",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "에너지/원자재",
-      "count": 1,
-      "title": "[美특징주]알코아, 2Q '깜짝 실적'에도 원자재 생산 가이던스 하향 조정에 주가 3%↓ - edaily.co.kr",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUmR0aG1LalBoUUVSSTM3TUlPNDhmV3RUYlRpZ2lSWkp2VHdfdFphZzVRZGl0Y1MycXF0SFlsbUk3eG53UFJkaEVRVXp0azc2RUVnYlg2djBOTnZvbXJEVzNLNXdsZ1BWOW03bDlQVzJFc0hCVVRWc3QxcXRmSFhhdw?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [美특징주]알코아, 2Q '깜짝 실적'에도 원자재 생산 가이던스 하향 조정에 주가 3%↓ - edaily.co.kr",
+        "핵심 이슈: 뉴욕증시, 반도체 매도세 지속에 하락…나스닥 1.4%↓ - 연합뉴스 한민족센터",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "정책/테마",
-      "count": 1,
-      "title": "안양시, AI 정책 자문단 출범… 인공지능 행정·산업 혁신 본격화 - 천지일보",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ObUgxd3Y2XzY0ejlJNmtpa09Uc3I2c1JrdkwyWElUQmNPM2V4U2VLeXQ2SXJYV3FxMEVMY1NkR2Z4a3lPY1ZickRhSzF0Qms3MFlfT3dsSnVBYXVmMHBodG5tUGU2LXBocHc?oc=5",
+      "count": 4,
+      "title": "캐나다 산불 연기에도 미국 관세를?…트럼프 \"대기오염비 가산돼야\" - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9WalREV09MUTk0OC0tOERsalh3bExHS2Job2djd1NPeWtNNjJVeDNNcko2bXJxVnVheXdpSGxKeG9pOVlKdlZpUG9fMDZXME0?oc=5",
       "summary_lines": [
-        "핵심 이슈: 안양시, AI 정책 자문단 출범… 인공지능 행정·산업 혁신 본격화 - 천지일보",
+        "핵심 이슈: 캐나다 산불 연기에도 미국 관세를?…트럼프 \"대기오염비 가산돼야\" - v.daum.net",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "국내지수",
-      "count": 1,
-      "title": "알테오젠, 코스피 이전상장 잠정 유보 결정 : 네이버 블로그 - Naver Blog",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOaGgyd0w5Z25VSmdNNlplWHRrYjRmUHpha2ZWV1AxTGNydFBLYmlMbGJnWEt3d3o3cGI1LXluOWpJcXZfQkNfNjV2SnFDTEw4UFJZRGNZaDlPUm1GLWRpRV9fSFA1VGh4VnVhdENHS0lvN2lGTlJZTHBxZmJTWldjYU5KcnBVaXVyV25pZHlIYw?oc=5",
+      "topic": "환율/달러",
+      "count": 2,
+      "title": "[뉴욕환시] 달러 약보합…증시 기술주 투매 진정에 '전강후약' - KB Think",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9iQWdJZ2o5OXdGNXpGV2txRk91VFBMTlRqdFFlaGg1cUZVbWZtcmgya05TWl9uRzVZXzNNb3lvVTl6RVU1M3dZODYyOWs2N0tRS2hjODRhMjJMZG1VX2FaMXpRQXJGRjVINEwyUXpHb0tkQQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: 알테오젠, 코스피 이전상장 잠정 유보 결정 : 네이버 블로그 - Naver Blog",
+        "핵심 이슈: [뉴욕환시] 달러 약보합…증시 기술주 투매 진정에 '전강후약' - KB Think",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,61 +84,55 @@
   "sector_hot_topics": [
     {
       "sector": "IT/반도체",
-      "total_count": 5,
+      "total_count": 7,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 5,
+          "count": 7,
           "title": "‘피크아웃’ 공포 덮친 반도체, 주가 줄줄이 급락 - 동아일보",
           "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBHU3R5SUtzR3JQaWxmTTYxLVdLaFV4M2tQdnB0Z1o2bWs2MXNIeDVhX0FNa2d2ak02UmRDTWFXN1FqUTJqVnFOaUtwS0dMOWNTdHBteTcycERBbWUycnJaVlNVOFpGaUwzZmUwY3JKQWFPcWVIZmfSAWZBVV95cUxPWjA0NTJUakJJLTlKYVBsYUJDNVdFRTZXSnRyOC1kMDIxRUxkT0Nuc3VyZFVEbWJxQTA3OWpzN3Z3WkU4SnRxbnh2eHJ0c1RpbjVNdEpmVHk0NEM5N2haQmFieU1IMnc?oc=5"
         }
       ]
     },
     {
-      "sector": "매크로",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "환율/달러",
-          "count": 1,
-          "title": "달러-원, 국제유가 급등 속 위험 회피에 급등…1,490원 돌파 - KB Think",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9jalNxUW5lc2F1SVNjMUhzaF9WSXhINThLRGhDQjJqb2RxbElNSXRVdXZma21EQnFSa1I1d1hFYnYya3Uzemh3UHNnUTZwcXF4RU5zVTlGS1hPbzNibWFFOGM3RkhUQ0lqaTd4M0VVcXl2Zw?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "에너지/소재",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "에너지/원자재",
-          "count": 1,
-          "title": "[美특징주]알코아, 2Q '깜짝 실적'에도 원자재 생산 가이던스 하향 조정에 주가 3%↓ - edaily.co.kr",
-          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUmR0aG1LalBoUUVSSTM3TUlPNDhmV3RUYlRpZ2lSWkp2VHdfdFphZzVRZGl0Y1MycXF0SFlsbUk3eG53UFJkaEVRVXp0azc2RUVnYlg2djBOTnZvbXJEVzNLNXdsZ1BWOW03bDlQVzJFc0hCVVRWc3QxcXRmSFhhdw?oc=5"
-        }
-      ]
-    },
-    {
       "sector": "정책/테마",
-      "total_count": 1,
+      "total_count": 4,
       "topics": [
         {
           "topic": "정책/테마",
+          "count": 4,
+          "title": "캐나다 산불 연기에도 미국 관세를?…트럼프 \"대기오염비 가산돼야\" - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9WalREV09MUTk0OC0tOERsalh3bExHS2Job2djd1NPeWtNNjJVeDNNcko2bXJxVnVheXdpSGxKeG9pOVlKdlZpUG9fMDZXME0?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "매크로",
+      "total_count": 3,
+      "topics": [
+        {
+          "topic": "환율/달러",
+          "count": 2,
+          "title": "[뉴욕환시] 달러 약보합…증시 기술주 투매 진정에 '전강후약' - KB Think",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9iQWdJZ2o5OXdGNXpGV2txRk91VFBMTlRqdFFlaGg1cUZVbWZtcmgya05TWl9uRzVZXzNNb3lvVTl6RVU1M3dZODYyOWs2N0tRS2hjODRhMjJMZG1VX2FaMXpRQXJGRjVINEwyUXpHb0tkQQ?oc=5"
+        },
+        {
+          "topic": "인플레이션",
           "count": 1,
-          "title": "안양시, AI 정책 자문단 출범… 인공지능 행정·산업 혁신 본격화 - 천지일보",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE1ObUgxd3Y2XzY0ejlJNmtpa09Uc3I2c1JrdkwyWElUQmNPM2V4U2VLeXQ2SXJYV3FxMEVMY1NkR2Z4a3lPY1ZickRhSzF0Qms3MFlfT3dsSnVBYXVmMHBodG5tUGU2LXBocHc?oc=5"
+          "title": "7월 美소비자심리지수 개선...중동 재충돌 전 상황 반영 - 서울경제",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBmR0pDTWRpVE1xRDNEd3Vra094OEUwcDJDd1IxQU9jRURkRU9jbWJtbUY3aWVRbHR4ZEJyQXFTZHlMang4QVV3b2htSkNRUGxlbmfSAVNBVV95cUxNVjBvS1R4M2VZdDlPQUllSEtfLTBsU1F2cGg1cVdjeG5mZFBCRTVaT0xMd29ZeV8yWkhKeF9WTGdlblVscjBtWEtvd2tJSkM0RlhGRQ?oc=5"
         }
       ]
     },
     {
       "sector": "지수/시장",
-      "total_count": 1,
+      "total_count": 3,
       "topics": [
         {
-          "topic": "국내지수",
-          "count": 1,
-          "title": "알테오젠, 코스피 이전상장 잠정 유보 결정 : 네이버 블로그 - Naver Blog",
-          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOaGgyd0w5Z25VSmdNNlplWHRrYjRmUHpha2ZWV1AxTGNydFBLYmlMbGJnWEt3d3o3cGI1LXluOWpJcXZfQkNfNjV2SnFDTEw4UFJZRGNZaDlPUm1GLWRpRV9fSFA1VGh4VnVhdENHS0lvN2lGTlJZTHBxZmJTWldjYU5KcnBVaXVyV25pZHlIYw?oc=5"
+          "topic": "미국지수",
+          "count": 3,
+          "title": "뉴욕증시, 반도체 매도세 지속에 하락…나스닥 1.4%↓ - 연합뉴스 한민족센터",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1TWkhxeDRqMmZwWEp5QUZxWm9JcFJSYWh1SWppaHFiLXJpOGVINzBnWEtvMmFCLWdJVzBvWEJPQ3p3VEZ1RUgxQzJVV3hkcWViZmlaWUlBb1RsOGc4ajBwRkVpVGhEZ2l1Zko4MThmQXVqYkI5?oc=5"
         }
       ]
     }
