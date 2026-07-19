@@ -1,0 +1,49 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -6.37%, KOSDAQ -4.53% 급락 및 20일 누적 -39.18%로 극심한 약세장 진입.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 -1.7조, 기관 -2.5조 순매도, 개인 +4.1조 순매수로 수급 왜곡 심화.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 구조적 위험 해석",
+      "majority": "RISK_OFF: 위험회피 심리 강화, 보수적 대응 필요",
+      "minority": "RISK_ON: 구조적 위험이 매우 높아진 상황",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "대부분은 위험회피(RISK_OFF)로 해석하나, 일부는 구조적 위험(RISK_ON)으로 더 심각하게 인식해 추가 하락 가능성에 주목함."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 극심한 하락세: KOSPI -6.37%, 외국인·기관 대규모 이탈\n\n오늘(7월 19일) 국내 증시는 KOSPI 6,820.6pt(-6.37%), KOSDAQ 791.84pt(-4.53%)로 폭락하며 20일 누적 -39.18%라는 극단적 약세장에 진입했습니다. 외국인 -16,584억, 기관 -25,384억 순매도, 개인 +40,831억 순매수로 수급 왜곡이 심화되었습니다. 환율은 USD/KRW 1,486.87(+0.62%)로 연고점 부근을 재차 경신했고, VIX(18.8)는 5일 평균(17.1) 대비 상승하며 변동성 리스크가 확대되었습니다.\n\n## 수급: 외국인·기관 매도, 개인 저점매수…방향성은 여전히 위험회피\n\n외국인과 기관의 대규모 동반 순매도는 고환율(USD/KRW 급등), 연준/금리 불확실성, 글로벌 변동성 확대 등 복합적 요인에 기인합니다. 개인은 4.1조원에 달하는 대규모 순매수로 저점 인식에 따른 레버리지 추격매수에 나섰으나, 펀더멘털 개선 신호는 미약합니다. [올해 1인당 GDP 3만9천달러 추산…5년만에 최대폭 증가 - 매일경제 마켓](https://news.google.com/rss/articles/CBMiUkFVX3lxTE01R1JpcVNlQlZZUFNpNTN6NHBVMWQ2ME9MUFRVY0Q2ajVfX3RWYkF4U01fV1FubThGTmVoOEg3WjNoeFB6WEVkTzQySHk1R3lVMHc?oc=5) 등 일부 긍정적 지표에도 불구, 시장은 위험회피 심리가 지배적입니다.\n\n## 오늘의 핵심 이슈: 금리·환율·반도체·지정학 불확실성\n\n- [다음주 2분기 GDP 발표… 기준금리 향방 가를 ‘분수령’ - 천지일보](https://news.google.com/rss/articles/CBMiakFVX3lxTE9rWFYybjZ3cWRaQ01zX2k2bWgwUHNBVkk2SjlyelluVEFYZFFFQ0loSi1pSFNkcGpyZTBHLTZmb2hjZFBTcXJvemhNaTNDc003OGticEJqQlBnaDNXYUZZMmpyNUtQYVRrMGc?oc=5): 연준의 금리 정책과 2분기 GDP 발표를 앞두고 불확실성이 극대화.\n- [AI 투자 시험대 오른 시장…알파벳·중동 갈등 주목 - 연합뉴스](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1VUW1kMHdzRVZYYkNhQzFZZ0QtSW8ySHdmdWRRbVdIRFVzTmpKS2EwSjY0UmQ5X1k2MGtkWkVTWFJOSkI2cU5TYkpkNmtoMFgtUV9XNm0wM0VRazjSAWBBVV95cUxQbjJ1dmlZbEwzUzVpQ1I2dE9jd1k5bDlVY1BXVl9ZNUNialdxWWZHVlRRamE0Z2ZiSUMwZmJRSllLcnRNZy1qc3Y1bzQtN3hxd0dfeTBTdlNPNGRrR2hpRzA?oc=5): 반도체·AI 관련 기대에도 지정학 리스크와 글로벌 투자심리 위축이 동반.\n- 상반기 방산주 강세 이후 차익실현 및 전쟁 장기화 부담 등 국내지수 내 섹터별 변동성도 확대.\n\n## 전망 및 체크포인트: 변동성 완화 전까지 방어적 전략 고수\n\n시장 내부 확산 약화, 실적 모멘텀 둔화, 유동성 악화 등 모든 핵심 지표가 위험회피를 지지합니다. 단기 저점매수는 변동성 완화 및 외국인 수급 개선 확인 전까지 신중히 접근해야 하며, 공격적 레버리지 신규 진입은 피하는 것이 바람직합니다. \n\n### 오늘 논의의 무효화 조건\n만약 외국인 순매수 전환과 USD/KRW 환율 안정, 변동성(VIX) 급락이 동반될 경우, 위험회피(RISK_OFF) 시나리오는 즉시 재점검이 필요합니다."
+}
