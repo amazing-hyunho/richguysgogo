@@ -1,0 +1,50 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 -0.91%(6,758.29p), KOSDAQ은 -2.36%(773.15p)로 마감하며 20일 누적 -33.7%의 급락세가 이어졌습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 KOSPI에서 +4,165억 순매수, 개인은 -5,197억 순매도하며 수급 불균형이 심화되었습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(리스크 오프 vs. 중립)",
+      "majority": "RISK_OFF(방어적, 추가 하락 경계)",
+      "minority": "NEUTRAL(외국인 매수와 환율 안정에 주목)",
+      "minority_agents": [
+        "flow",
+        "risk"
+      ],
+      "why_it_matters": "외국인 저가 매수와 환율 안정이 단기 반등 신호로 해석될 수 있으나, 누적 하락폭과 변동성 확대로 인해 다수는 여전히 리스크 오프를 유지함."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 개요 및 주요 지표\n\n오늘(7월 20일) KOSPI는 -0.91% 하락한 6,758.29pt, KOSDAQ은 -2.36% 급락한 773.15pt로 마감했습니다. 20일 누적 하락률은 -33.7%로, 최근 급격한 조정세가 이어지고 있습니다. 원/달러 환율은 1,486.12원(-0.03%)로 소폭 안정세를 보였으나, VIX(18.8)는 5일 평균(17.1) 대비 높아진 상태입니다. 수급 측면에서는 외국인 +3,410억(특히 KOSPI +4,165억), 기관 +895억, 개인 -4,379억 순매도(특히 KOSPI -5,197억)로, 외국인 저가 매수세와 개인의 대규모 매도세가 맞물렸습니다.\n\n## 수급 해석: 외국인 저가 매수 vs. 개인 매도\n\n외국인은 KOSPI에서 대규모 순매수(+4,165억)를 보이며 최근 20일간 과도한 낙폭(-33.7%)에 대한 저가 매수세가 유입되었습니다. 반면, 개인은 -5,197억 순매도로 레버리지 청산성 매도 가능성이 높아 보입니다. 기관도 소폭 순매수(+933억)로 방어적 태도를 유지했습니다. 이러한 수급 불균형은 시장의 단기 반등 가능성을 일부 시사하지만, 변동성(VIX)과 지정학·금리 이슈로 인해 뚜렷한 방향 전환 신호는 확인되지 않습니다.\n\n## 오늘의 핵심 이슈: 금리·지정학·AI/반도체\n\n- [중국 AI 쇼크·중동 불안에 휘청인 미 증시… 엔비디아, 애플 추격 따돌리고 시총 1위 사수](https://news.google.com/rss/articles/CBMid0FVX3lxTE54Vy1raWVyUFlXSTBPeVZVX2VpaGJ0dzRia2dfMTlObGwtMTRGUWJ4ckpmd3dObm16eFNUcVRtUWZNUWlKSmpsMjVWQ0JYekZWcld0c3VPTUdHNDZGMTRfc1pvdEtOSXQ0TzBhUDlhbzJxTmtUTUhN?oc=5): 글로벌 반도체/AI 섹터 변동성 확대, 지정학 리스크 부각\n- [한국은행 기준금리 연 2.75%로↑…추가 인상 예고](https://news.google.com/rss/articles/CBMiY0FVX3lxTFBFZUNRWHdtb1gzNEd2UUtyU3g4MTJ0WHNRZGFfZ09yQWpmSUNvVWxrOS1VamFoc3lFZXZ4YWNXXzJHeXlzQmlNZmc2ejd6Umxodzg5QkJvMVRFSXNtR2l4UzFMQQ?oc=5): 정책금리 인상과 추가 인상 예고로 유동성 위축 우려\n- [금시세 분석] 오늘 20일 중동 긴장·Fed 긴축→달러·금리 상승…금값 동반 하락](https://news.google.com/rss/articles/CBMickFVX3lxTE9pd2djd1RSZ3RvMEMtRVNzNTlnbkNtcFU3RDBPR1lSQ2FvXzk0d0ZnbzZaQVAzYm85aFJWWmlaOFROSlIwdlNRTzRaT1owaW5GMWUwQ2tLMHZxN0N4UUpQelQwWWZBTWFSRVNFSnNHU1JzUQ?oc=5): 달러 강세와 금리 상승, 중동발 지정학 리스크가 시장 심리 위축에 영향\n\n## 전략적 시사점 및 체크포인트\n\n시장 전반은 여전히 방어적 리스크 오프 국면입니다. 외국인 저가 매수세가 단기 반등의 단초가 될 수 있으나, 누적 하락폭(-33.7%)과 변동성(VIX 18.8), 정책금리 인상 등 불확실성 요인이 해소되기 전까지 공격적 비중 확대는 미룹니다. 향후 변동성(VIX) 하락, 외국인 매수세 지속, 지정학·금리 이슈 완화가 확인될 때까지 보수적 대응이 필요합니다.\n\n### 오늘 뷰가 깨지는 조건\n외국인 매수세가 급격히 약화되거나, VIX가 추가 급등(20 이상)하며 환율이 재차 불안해질 경우, 단기 반등 기대감도 약화될 수 있으니 주의가 필요합니다."
+}
