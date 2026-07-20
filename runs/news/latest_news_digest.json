@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-07-20T22:42:08.764539+00:00",
+  "crawled_at": "2026-07-20T23:42:19.531823+00:00",
   "news_date": "2026-07-21",
-  "total_collected": 85,
+  "total_collected": 110,
   "topic_counts": [
+    [
+      "환율/달러",
+      8
+    ],
     [
       "금리/연준",
       5
@@ -12,19 +16,26 @@
       13
     ],
     [
-      "환율/달러",
-      6
-    ],
-    [
       "인플레이션",
-      4
+      7
     ],
     [
-      "바이오/헬스케어",
-      8
+      "미국지수",
+      15
     ]
   ],
   "top_articles": [
+    {
+      "topic": "환율/달러",
+      "count": 8,
+      "title": "[뉴욕 금·채권·달러] 중동 불안에 달러·금리 쑥…금 4000달러선 턱걸이 - 블록미디어",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBBRU1IX3NsUERRZ1ljbkd0ZzJNekZrclh0clZsYnlXSmd6VjlBdERpTDF1MmdhQXF0LWJwdWZBMDRLRWotQmhUcnZTN0pzWlRxRGx2WEtMNTA?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [뉴욕 금·채권·달러] 중동 불안에 달러·금리 쑥…금 4000달러선 턱걸이 - 블록미디어",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "금리/연준",
       "count": 5,
@@ -48,19 +59,8 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 6,
-      "title": "[뉴욕 금·채권·달러] 중동 불안에 달러·금리 쑥…금 4000달러선 턱걸이 - 블록미디어",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBBRU1IX3NsUERRZ1ljbkd0ZzJNekZrclh0clZsYnlXSmd6VjlBdERpTDF1MmdhQXF0LWJwdWZBMDRLRWotQmhUcnZTN0pzWlRxRGx2WEtMNTA?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [뉴욕 금·채권·달러] 중동 불안에 달러·금리 쑥…금 4000달러선 턱걸이 - 블록미디어",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "인플레이션",
-      "count": 4,
+      "count": 7,
       "title": "인플레이션 둔화에 캐나다 달러 약세, 금리 인상 베팅 감소 - Investing.com 한국어",
       "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE00VDRYYVlYQjRSYmIySEFsamtucUJ6ejljS0lmZXZMU1MwTW4tdTkwaUphdkVJX1J5VU8zQUlsVVVzMVJlaUNnbk14RDJoZlVuNGJnMnFPdF81cm1hVEZzdldOOVdYdTQzQnI4alpR?oc=5",
       "summary_lines": [
@@ -70,12 +70,12 @@
       ]
     },
     {
-      "topic": "바이오/헬스케어",
-      "count": 8,
-      "title": "반도체 시장 ‘쩐의 전쟁’… 헬스케어도 ‘폭풍 성장’ - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVGpZMWhNbjBMamxGUF9ybFZMaEpBTmw3VGNZTjVyaGU3bGw4V29waGJ3aXlhcWRVWGhPZGk4b3ZGQmRwSUp2T0d1Y1pJZldabXJYQklMcHZiSjl2TkszRS15ZnJCRktyVFUwbHhoNVMySmpHWG42Nk13dVNrWk1MUQ?oc=5",
+      "topic": "미국지수",
+      "count": 15,
+      "title": "[3분증시] 중동 불안·유가 상승에 뉴욕증시 하락 - 연합뉴스TV",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5YUDR5WjhNMFJIbmwxRVBORFM2NlNQamI1RmRtUkg4VFJ5OVFWVWhXRVdyMFE2Um1JMXFZMVFCXzR0WmhXaHRjMm05eFNaeEZHa1VXVTZTRzItWUR2RWpyZUViQy1iMm8?oc=5",
       "summary_lines": [
-        "핵심 이슈: 반도체 시장 ‘쩐의 전쟁’… 헬스케어도 ‘폭풍 성장’ - 조선일보",
+        "핵심 이슈: [3분증시] 중동 불안·유가 상승에 뉴욕증시 하락 - 연합뉴스TV",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,25 +84,37 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 15,
+      "total_count": 20,
       "topics": [
         {
           "topic": "환율/달러",
-          "count": 6,
+          "count": 8,
           "title": "[뉴욕 금·채권·달러] 중동 불안에 달러·금리 쑥…금 4000달러선 턱걸이 - 블록미디어",
           "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBBRU1IX3NsUERRZ1ljbkd0ZzJNekZrclh0clZsYnlXSmd6VjlBdERpTDF1MmdhQXF0LWJwdWZBMDRLRWotQmhUcnZTN0pzWlRxRGx2WEtMNTA?oc=5"
+        },
+        {
+          "topic": "인플레이션",
+          "count": 7,
+          "title": "인플레이션 둔화에 캐나다 달러 약세, 금리 인상 베팅 감소 - Investing.com 한국어",
+          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE00VDRYYVlYQjRSYmIySEFsamtucUJ6ejljS0lmZXZMU1MwTW4tdTkwaUphdkVJX1J5VU8zQUlsVVVzMVJlaUNnbk14RDJoZlVuNGJnMnFPdF81cm1hVEZzdldOOVdYdTQzQnI4alpR?oc=5"
         },
         {
           "topic": "금리/연준",
           "count": 5,
           "title": "기준금리 인상 기조에… 저축銀 수신경쟁 '데자뷔' - 머니투데이 - 머니투데이",
           "link": "https://news.google.com/rss/articles/CBMia0FVX3lxTFAtM2Foa21FVlB4Z3VmMEJzRGpQY2ZKbjBfdjNkbE11Z05BdXZJbzBIQTNTOXhpWWsxRGlDUy1IVHU5WmREbWppclFNMTZRUi1ubW5WQkR5OTdZUzFfcXNOeTdrMWg0RThyQksw0gFwQVVfeXFMTi1oVkhkenIxdGRGUV9KaS1RcjlCRWt4cnA3M3JUSnZQU21sNHNmaWVkZ1dQajJGWGhPTFRqZlhJcHB4NzJwS0VwY2pTMnZ0MGd0d0RMMHhmWFhibzJ1cS1BZ1ZwUlNnMElPY1hJQkJrOQ?oc=5"
-        },
+        }
+      ]
+    },
+    {
+      "sector": "지수/시장",
+      "total_count": 15,
+      "topics": [
         {
-          "topic": "인플레이션",
-          "count": 4,
-          "title": "인플레이션 둔화에 캐나다 달러 약세, 금리 인상 베팅 감소 - Investing.com 한국어",
-          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE00VDRYYVlYQjRSYmIySEFsamtucUJ6ejljS0lmZXZMU1MwTW4tdTkwaUphdkVJX1J5VU8zQUlsVVVzMVJlaUNnbk14RDJoZlVuNGJnMnFPdF81cm1hVEZzdldOOVdYdTQzQnI4alpR?oc=5"
+          "topic": "미국지수",
+          "count": 15,
+          "title": "[3분증시] 중동 불안·유가 상승에 뉴욕증시 하락 - 연합뉴스TV",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5YUDR5WjhNMFJIbmwxRVBORFM2NlNQamI1RmRtUkg4VFJ5OVFWVWhXRVdyMFE2Um1JMXFZMVFCXzR0WmhXaHRjMm05eFNaeEZHa1VXVTZTRzItWUR2RWpyZUViQy1iMm8?oc=5"
         }
       ]
     },
@@ -115,18 +127,6 @@
           "count": 13,
           "title": "MS, 클라우드 '애저'에 AMD AI랙 대거 도입…엔비디아 독주 견제 - 연합뉴스",
           "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBFMlo1c1IzRm12VVhKRUxVMG9UcS1TMDRYWmpXbWNybFdxNV8yUnJCbEtuTWZtWVZPWERSdUFBRDBpMVJ0ekZCQlpma3ZrX2FEX2hld185VmtkQU3SAWBBVV95cUxPVDZGY2ZwSl9uZE1KckxlamdHcWVGcHU3eUtweGN0akQ3WHMwMkw4M1FpbDcwX3lyY2RLdHA3SmFzQTdhZm5qS2owMHJwOWhPSjBVYkJpVG8wRnhxaFR6b3M?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "헬스케어",
-      "total_count": 8,
-      "topics": [
-        {
-          "topic": "바이오/헬스케어",
-          "count": 8,
-          "title": "반도체 시장 ‘쩐의 전쟁’… 헬스케어도 ‘폭풍 성장’ - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQVGpZMWhNbjBMamxGUF9ybFZMaEpBTmw3VGNZTjVyaGU3bGw4V29waGJ3aXlhcWRVWGhPZGk4b3ZGQmRwSUp2T0d1Y1pJZldabXJYQklMcHZiSjl2TkszRS15ZnJCRktyVFUwbHhoNVMySmpHWG42Nk13dVNrWk1MUQ?oc=5"
         }
       ]
     }
