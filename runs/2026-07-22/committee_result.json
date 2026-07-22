@@ -1,0 +1,60 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 5.15% 급등, 외국인 순매수 +1.4조원(코스피 기준)으로 단기 저가 매수세가 시장 반등을 견인.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "20일 누적 KOSPI -21.83%로 중기 약세 지속, 단기 반등에도 추세 전환 신호는 부재.",
+      "sources": [
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성 전환 신호",
+      "majority": "단기 반등에도 중기 약세 및 추세 전환 신호 부재",
+      "minority": "외국인 저가 매수세를 근거로 일부 단기 저점 인식",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "방향성 전환 신호가 확인되면 전략적 비중 확대가 가능하나, 아직은 신중 대응 필요"
+    },
+    {
+      "topic": "수급 주도 세력 해석",
+      "majority": "외국인 저가 매수 중심, 개인은 차익실현 및 레버리지 청산",
+      "minority": "일부는 외국인 매수세의 지속성에 의문",
+      "minority_agents": [
+        "liquidity",
+        "breadth"
+      ],
+      "why_it_matters": "외국인 매수세가 일시적일 경우 반등 지속성에 한계"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 단기 급등 속 중기 약세: KOSPI 7,095p, 외국인 저가 매수 주도\n\n오늘 KOSPI는 7,095.72p(+5.15%), KOSDAQ은 770.73p(+2.26%)로 강한 반등을 기록했습니다. 외국인은 코스피에서 +14,672억, 코스닥에서 -904억 순매수(전체 시장 +13,768억)로 저가 매수세를 주도했고, 기관(-5,920억)과 개인(-7,897억)은 차익실현 및 레버리지 청산에 나섰습니다. USD/KRW 환율은 1,478.63원(+0.01%)로 고점 부근에서 추가 상승 없이 안정적이었고, VIX(17.05)는 5일 평균(17.34)과 유사해 변동성도 제한적이었습니다.\n\n## 외국인 저가 매수, 개인 차익실현: 수급 해석\n\n수급 측면에서는 외국인 대규모 순매수가 단기 반등을 견인했습니다. 최근 20일간 KOSPI 누적 하락률이 -21.83%에 달하면서, 반도체/AI 기대감과 함께 저가 매수세가 유입된 것으로 해석됩니다. 반면, 개인은 단기 반등을 활용한 차익실현과 레버리지 청산에 집중했습니다. 기관 역시 순매도 기조를 보였습니다. 환율이 고점에서 추가 상승 없이 안정된 점도 외국인 유입에 긍정적으로 작용했습니다.\n\n## 오늘의 핵심 이슈: 금리·환율·반도체 집중\n\n- [중동 정세에 엔/달러 환율 163엔 돌파…약 40년 만](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9LOEZ0WF9jV0o3czc4QXI5WUlEQUdDWGYtZUd5ZElCSTJpZG9CNXZlcFBKWDFmdWNfX2ZUV2tFRHVZVHZiNG55Ty1SU0k5Ymc1cFNjb0ZrZ2cxVUl2cU1jbNIBeEFVX3lxTE82MUJHUGZXRXdYNXJHUmRBM01CMUZFZUdMWnBJRWVvX3U5b3AxblpkS3YtaFlXeXVGN1p1eTNRN25SajZGX1hCTVNyZ2ZDWmUybkVoT2hnZmg2dG9WNGpLX1BMLS1vdm5PYnk2U0VRSTRrby1TQ2lBZg?oc=5): 지정학적 불확실성에 환율 변동성 확대 우려\n- [기준금리 인상에 예금금리도 들썩…은행 3%대·저축은행 4%대](https://news.google.com/rss/articles/CBMiYEFVX3lxTE5GVzJCUVd1MnE4Y2g4MjcyRzdha3ZEQ0pOcEl3bzJLbXAtSm15OVlNUWY1cE5UTkhvZGhzUk4tNkhEWW5jVnpEWVdmb0ZfaEpVcGF2VG5CNDhiYmpfQ2RVcdIBeEFVX3lxTFB1cmxVaDhYQzJYMlFLaE9Da08yWnhKMHdUSGNQM2thNEt1OUNmZGRQNzJ5Sy1EMDJIUnNVWDdlUTN2TjdHNE5xbUdBSS1JejcwSFZnY0V1Y25KVXJFclZhcDFxaWh2SEV1MU41emlzU0NZU3d3TVMwQw?oc=5): 금리 인상 기조 지속, 유동성 환경 경계\n- [GDP 제조업 비중 27%, 10년간 최고…반도체 쏠림도 심화](https://news.google.com/rss/articles/CBMiW0FVX3lxTE9LZDdsOXRjb0YydkJfOVRGYnRpR1JyaUlWazlscUlpYnlxeENFR2tHd0VDQ2doWFpHekpfcmpsUERGMTZla0RfN3R2SGo4YzljR0psWWozclVlYm_SAWBBVV95cUxOeTBsdUdCQmRGLWpGT2k4QWJEamZDamNxZjk0Z0JTVEJjQnQ2RXhiWVUyN2hHNkFQQkxscnBOOUtXS1N0ZHB1TEhnTVBDU3h3bDcwQTNBMk9JWElmNlV0V2o?oc=5): 반도체/AI 기대감이 단기 반등의 배경\n\n## 중기 약세 지속, 전략적 대응과 체크포인트\n\n오늘 단기 급등에도 불구하고 20일 누적 하락(-21.8%)과 실적·유동성 신호 부재, 시장 확산력 미약 등 중기 약세 신호가 여전합니다. 외국인 매수세가 지속될지, 실적 상향·정책 변화 등 추가 모멘텀이 확인되어야 방향성 전환이 가능합니다. 만약 외국인 매수세가 하루 만에 소멸하거나, 환율·금리·지정학 리스크가 재부각될 경우 오늘의 반등은 일시적일 수 있습니다. 실적 시즌, 정책 변화, 환율 급등 등 변동성 재확대가 확인되면 전략을 재점검해야 합니다."
+}
