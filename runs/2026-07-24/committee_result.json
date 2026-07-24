@@ -1,0 +1,53 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -3.41%, KOSDAQ -3.0% 급락과 외국인 -9448억 순매도, 기관도 동반 매도하며 개인만 대규모 매수로 대응.",
+      "sources": [
+        "CORE_SIGNALS",
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 1478.49로 고환율 지속, VIX 18.7로 변동성 확대, 20일 누적 KOSPI -24.86%로 하락세 심화.",
+      "sources": [
+        "CORE_SIGNALS",
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 구조적 위험 신호 해석",
+      "majority": "RISK_OFF: 외국인 매도와 누적 하락, 변동성 확대에 따라 위험회피 국면 진입.",
+      "minority": "RISK_ON: 구조적 위험 신호가 뚜렷하나, 단기 반전 신호 부재로 즉각적 방향 전환은 유보.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "구조적 위험 신호 해석에 따라 추가 하락 대비 전략과 저점 매수 시점 판단이 달라질 수 있음."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 급락과 수급 변화: 외국인 대규모 매도, 개인만 매수\n\n오늘(7월 24일) KOSPI는 6,871.75pt(-3.41%), KOSDAQ은 766.58pt(-3.0%)로 동반 급락했습니다. 원/달러 환율은 1,478.49원으로 고환율이 지속되었고, VIX(변동성지수)는 18.7로 5일 평균(18.13) 대비 소폭 상승하며 시장 불안 심리를 반영했습니다. 수급 측면에서는 외국인 -9,448억, 기관 -4,468억 순매도에 개인만 +14,099억 순매수로 대응했습니다. KOSPI 기준 외국인 -8,330억, 기관 -3,382억, 개인 +11,818억이었고, KOSDAQ도 외국인·기관 동반 매도에 개인만 매수세를 보였습니다.\n\n## 수급 해석: 외국인·기관 매도, 개인 단기 흡수의 불안정 구간\n\n외국인 대규모 순매도는 고환율(USD/KRW 1,478.49), 연준/금리 불확실성, 경기 둔화 우려, 지정학 리스크 등 복합 악재가 작용한 결과입니다. 기관도 동반 매도하며 수급 불안이 심화됐고, 개인만이 대규모 매수로 하락을 흡수하는 구조입니다. 하지만 20일 누적 KOSPI -24.86% 하락, 외국인 연속 이탈, 변동성 확대(VIX 18.7) 등으로 개인 매수의 지속성에는 의문이 제기됩니다. [중동전쟁 확전 우려에···원·달러 환율, 1470원 재돌파 - 서울파이낸스](https://news.google.com/rss/articles/CBMiakFVX3lxTE5LQzBlRGhzc2V6TUFJTkQ2bnBFcUozdWdBS2Q3TWVMcS1uenZEMC1mR3FXVDNEdDZ0bzlEMnB3ZWVST29lR0FhNjQxNmZHWFhQY1RsbWdiV0dleE10SjZDQWhlaGloNkxaV2c?oc=5) 등 환율 관련 뉴스가 수급에 직접적 영향을 주고 있습니다.\n\n## 오늘의 핵심 이슈: 금리·환율·경기·지정학 복합 악재\n\n- [日 기준금리, 31년 만에 1%대로 올라섰다 - 한국경제](https://news.google.com/rss/articles/CBMiWkFVX3lxTE12YlRBd05FTlBxcExGbjZGRHg4aGVSWWtSbkxqVkE2WXpSUkh2TC1kWEhqbjg2WC1obU85LU9BZkd5NWppYVQ2VGlCVzVXSkRxSGxfU1o5UDY4QQ?oc=5): 일본 금리 인상은 글로벌 자금 흐름에 부담을 주고, 엔화 차입 기업에 리스크를 가중시킴.\n- [AI 거품 꺼지면 실물 경기 폭망한다 - 뉴시스](https://news.google.com/rss/articles/CBMiYEFVX3lxTFBZT2IyejNodEoyeXc3ekZJaVNwOF9ZUWE3aFpESDEtUHBnT09EZENlS21KOUZVdVRMc1NvN0VzMTJ5SnNOeUg2OE5UQXNhcXRnZTQzMm4zTHVhWlRYUkdEQtIBeEFVX3lxTE5PZHhxTC1jb2xuQ203Z3J5UXV3MVJSQVlkUnljYXU5T3FndlhxOUtVY3dxcnFoaEhfUHlZRkliUDNISmhyLWZ5eEhPaDNsY2kwOU1ZTTJxMmlQdlZQU1VaMmZ5clh6WGNhWjdDSVotZVRmYUtyQWxiWA?oc=5): AI·반도체 테마의 거품 논란과 실물 경기 둔화 경고가 투자심리 위축에 기여.\n- 미국 새 관세 발표 임박, 지정학 리스크 부각 등도 시장 불안 요인으로 작용.\n\n## 향후 체크포인트 및 전략: 변동성 완화·외국인 수급 전환이 관건\n\n20일 누적 하락(-24.86%)과 외국인·기관 동반 매도, 고환율·변동성 확대 등으로 시장은 명확한 위험회피 구간입니다. 단기 반전(reversal) 신호는 아직 확인되지 않았으며, 개인 매수의 지속성도 불확실합니다. 향후 외국인 수급 전환, 환율 안정, 변동성(VIX) 하락이 확인되기 전까지 공격적 매수는 유보해야 합니다. 만약 외국인 순매수가 재개되고, KOSPI가 변동성 축소와 함께 5일 연속 반등에 성공한다면 오늘의 위험회피 시나리오는 무효화될 수 있습니다."
+}
