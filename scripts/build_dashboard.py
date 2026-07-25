@@ -651,6 +651,7 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
             candidate_repository,
             cycle_model_config,
             cycle_repository,
+            factor_repository,
             insight_repository,
             repository as industry_repository,
             stock_model_config,
@@ -672,6 +673,22 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
     except Exception:
         candidate_model_version = None
 
+    # Price-only factors can be reconstructed point-in-time from the daily
+    # price archive, unlike fundamentals/news that were not historically
+    # snapshotted.  Load them once and expose the honest back-history as
+    # separate components instead of pretending they are old cycle scores.
+    try:
+        price_factor_rows = [
+            row
+            for row in factor_repository.list_factor_weekly(db_path=DB_PATH)
+            if row.get("model_version") == "price_only_v1"
+        ]
+    except Exception:
+        price_factor_rows = []
+    price_rows_by_industry: dict[str, list[dict[str, object]]] = {}
+    for row in price_factor_rows:
+        price_rows_by_industry.setdefault(str(row.get("industry_id") or ""), []).append(row)
+
     try:
         industries = industry_repository.list_industries(active_only=True, db_path=DB_PATH)
     except Exception as exc:
@@ -692,6 +709,27 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
         # A newly-started installation will naturally return only the weeks
         # collected so far; the UI labels the actual available period.
         history = signals[-260:]
+        grouped_price_history: dict[str, list[dict[str, object]]] = {}
+        for row in price_rows_by_industry.get(str(industry_id), []):
+            grouped_price_history.setdefault(str(row.get("as_of") or ""), []).append(row)
+        price_history: list[dict[str, object]] = []
+        price_component_keys = (
+            "relative_strength_score", "trend_score", "overheat_score", "price_risk_score"
+        )
+        for price_as_of in sorted(grouped_price_history):
+            rows_for_week = grouped_price_history[price_as_of]
+            point: dict[str, object] = {
+                "as_of": price_as_of,
+                "source_asset_count": len({row.get("asset_id") for row in rows_for_week}),
+            }
+            for key in price_component_keys:
+                values = [
+                    float(row[key]) for row in rows_for_week
+                    if isinstance(row.get(key), (int, float))
+                ]
+                point[key] = round(sum(values) / len(values), 2) if values else None
+            price_history.append(point)
+        price_history = price_history[-260:]
 
         all_reasons: list[dict[str, object]] = []
         if latest:
@@ -756,6 +794,7 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
                 "country_scope": industry.get("country_scope", []),
                 "latest_signal": latest,
                 "history": history,
+                "price_history": price_history,
                 "top_reasons": all_reasons[:5],
                 "all_reasons": all_reasons,
                 "candidates": candidates,
@@ -766,6 +805,9 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
                     "asset_count": len(asset_mappings),
                     "indicator_count": len(indicator_mappings),
                     "has_cycle_signal": bool(latest),
+                    "price_history_weeks": len(price_history),
+                    "price_history_from": price_history[0]["as_of"] if price_history else None,
+                    "price_history_to": price_history[-1]["as_of"] if price_history else None,
                     "missing": [
                         label
                         for present, label in (

@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
 from committee.industry_cycle import (
     candidate_repository,
     cycle_repository,
+    factor_repository,
     repository as industry_repository,
     virtual_portfolio_repository,
 )
@@ -92,6 +93,37 @@ class LoadIndustryCycleDashboardDataTests(unittest.TestCase):
         self.assertIsNone(data["industries"][0]["latest_signal"])
         self.assertEqual(data["industries"][0]["coverage"]["readiness"], "NEEDS_DATA")
         self.assertIn("대표 자산", data["industries"][0]["coverage"]["missing"])
+
+    def test_price_only_backdata_is_exposed_without_fabricating_cycle_history(self) -> None:
+        industry_repository.upsert_industry_master(
+            industry_id="semiconductors", name_kr="반도체", db_path=self.db_path
+        )
+        for as_of, trend, strength in (
+            ("2023-01-06", 42.0, 47.0),
+            ("2023-01-13", 55.0, 61.0),
+        ):
+            factor_repository.upsert_industry_factor_weekly(
+                {
+                    "industry_id": "semiconductors",
+                    "market": "US",
+                    "asset_id": "SOXX",
+                    "as_of": as_of,
+                    "model_version": "price_only_v1",
+                    "data_cutoff_at": as_of,
+                    "trend_score": trend,
+                    "relative_strength_score": strength,
+                    "overheat_score": 20.0,
+                    "price_risk_score": 30.0,
+                },
+                db_path=self.db_path,
+            )
+
+        item = build_dashboard.load_industry_cycle_dashboard_data()["industries"][0]
+        self.assertEqual(item["history"], [])
+        self.assertEqual(len(item["price_history"]), 2)
+        self.assertEqual(item["price_history"][1]["trend_score"], 55.0)
+        self.assertEqual(item["coverage"]["price_history_weeks"], 2)
+        self.assertEqual(item["coverage"]["price_history_from"], "2023-01-06")
 
     def test_virtual_portfolio_summary_reflects_open_position(self) -> None:
         virtual_portfolio_repository.open_position(

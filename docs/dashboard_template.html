@@ -3409,7 +3409,12 @@ function renderWatchTop3() {
               <div class="meaning">${escapeHtml(indicatorMeaning(key))}</div>
             </div>`).join('');
           const history = safeArr(item.history).filter(h => typeof h.cycle_score === 'number');
+          const priceHistory = safeArr(item.price_history).filter(h =>
+            typeof h.trend_score === 'number' || typeof h.relative_strength_score === 'number'
+          );
           const availableWeeks = history.length;
+          const chartWeeks = history.length > 1 ? history.length : priceHistory.length;
+          const usesPriceBackdata = history.length <= 1 && priceHistory.length > 0;
           const coverage = item.coverage || {};
           const coverageText = coverage.has_cycle_signal
             ? `대표 자산 ${coverage.asset_count || 0}개 · 업황 지표 ${coverage.indicator_count || 0}개`
@@ -3433,16 +3438,16 @@ function renderWatchTop3() {
             <div class="ic-detail-top">
               <div>
                 <h3 class="ic-detail-title">${escapeHtml(item.name_kr || item.industry_id)} · ${escapeHtml(action.label)}</h3>
-                <div class="ic-detail-sub">${escapeHtml(state.label)} ${sig.consecutive_weeks ? `${sig.consecutive_weeks}주째` : ''} · 기준일 ${escapeHtml(sig.as_of || '-')} · 실제 이력 ${availableWeeks}주</div>
+                <div class="ic-detail-sub">${escapeHtml(state.label)} ${sig.consecutive_weeks ? `${sig.consecutive_weeks}주째` : ''} · 기준일 ${escapeHtml(sig.as_of || '-')} · ${usesPriceBackdata ? `가격 백데이터 ${chartWeeks}주` : `종합 이력 ${availableWeeks}주`}</div>
                 <div class="ic-detail-sub">${escapeHtml(coverageText)}</div>
               </div>
               <button type="button" class="ic-close" aria-label="상세보기 닫기">×</button>
             </div>
             <div class="ic-detail-grid">
               <div class="ic-panel">
-                <h4>사이클 흐름과 향후 6개월 시나리오</h4>
-                ${availableWeeks ? '<div class="ic-chart-wrap"><canvas id="ic-cycle-chart"></canvas></div>' : '<div class="empty-state">아직 계산된 사이클 이력이 없습니다. 대표 자산 또는 업황 지표가 연결되면 그래프가 자동 생성됩니다.</div>'}
-                ${availableWeeks ? '<div class="ic-chart-note">실선은 실제 주간 관측값입니다. 점선과 음영은 최근 추세를 제한적으로 연장한 규칙 기반 시나리오이며 통계적 수익률 예측이 아닙니다.</div>' : ''}
+                <h4>${usesPriceBackdata ? '가격 기반 사이클 흐름' : '종합 사이클 흐름'}</h4>
+                ${chartWeeks ? '<div class="ic-chart-wrap"><canvas id="ic-cycle-chart"></canvas></div>' : '<div class="empty-state">아직 계산된 사이클 이력이 없습니다. 대표 자산 또는 업황 지표가 연결되면 그래프가 자동 생성됩니다.</div>'}
+                ${usesPriceBackdata ? '<div class="ic-chart-note">2023년부터 당시 시점에 실제로 알 수 있었던 가격만으로 계산한 주간 이력입니다. 추세·시장 대비 강도·과열도를 보여주며, 실적과 뉴스가 포함된 종합 사이클 점수를 과거로 소급한 값은 아닙니다.</div>' : (chartWeeks ? '<div class="ic-chart-note">실선은 실제 주간 종합 관측값입니다. 충분한 이력이 쌓이기 전에는 예측선을 표시하지 않습니다.</div>' : '')}
               </div>
               <div class="ic-panel">
                 <h4>왜 ${escapeHtml(action.label)}인가?</h4>
@@ -3474,32 +3479,26 @@ function renderWatchTop3() {
           });
           if (cycleDetailChart) cycleDetailChart.destroy();
           const ctx = document.getElementById('ic-cycle-chart');
-          if (ctx && availableWeeks && typeof Chart !== 'undefined') {
-            const actualLabels = history.map(h => h.as_of);
-            const actual = history.map(h => h.cycle_score);
-            const current = actual.length ? actual[actual.length - 1] : Number(sig.cycle_score || 50);
-            const lookback = actual.slice(-5);
-            const trend = lookback.length >= 2 ? Math.max(-8, Math.min(8, lookback[lookback.length - 1] - lookback[0])) : 0;
-            const futureLabels = ['+1개월','+2개월','+3개월','+4개월','+5개월','+6개월'];
-            const baseFuture = futureLabels.map((_, i) => Math.max(0, Math.min(100, current + trend * ((i + 1) / 6))));
-            const lower = baseFuture.map((v, i) => Math.max(0, v - (4 + i * 1.6)));
-            const upper = baseFuture.map((v, i) => Math.min(100, v + (4 + i * 1.6)));
-            const pad = Array(actual.length - 1).fill(null);
+          if (ctx && chartWeeks && typeof Chart !== 'undefined') {
+            const chartRows = usesPriceBackdata ? priceHistory : history;
+            const actualLabels = chartRows.map(h => h.as_of);
+            const datasets = usesPriceBackdata ? [
+              { label:'가격 추세', data:chartRows.map(h => h.trend_score), borderColor:'#38bdf8', backgroundColor:'rgba(56,189,248,.12)', borderWidth:2.5, pointRadius:chartRows.length > 40 ? 0 : 2, tension:.28 },
+              { label:'시장 대비 강도', data:chartRows.map(h => h.relative_strength_score), borderColor:'#6ee7b7', borderWidth:2, pointRadius:0, tension:.28 },
+              { label:'단기 과열', data:chartRows.map(h => h.overheat_score), borderColor:'#fbbf24', borderDash:[6,5], borderWidth:1.7, pointRadius:0, tension:.28 }
+            ] : [
+              { label:'실제 종합 사이클 점수', data:chartRows.map(h => h.cycle_score), borderColor:'#38bdf8', backgroundColor:'rgba(56,189,248,.12)', borderWidth:2.5, pointRadius:chartRows.length > 40 ? 0 : 2, tension:.28 }
+            ];
             cycleDetailChart = new Chart(ctx.getContext('2d'), {
               type:'line',
               data:{
-                labels:[...actualLabels, ...futureLabels],
-                datasets:[
-                  { label:'실제 사이클 점수', data:[...actual, ...Array(6).fill(null)], borderColor:'#38bdf8', backgroundColor:'rgba(56,189,248,.12)', borderWidth:2.5, pointRadius:actual.length > 40 ? 0 : 2, tension:.28 },
-                  { label:'기본 시나리오', data:[...pad,current,...baseFuture], borderColor:'#fbbf24', borderDash:[6,5], borderWidth:2, pointRadius:0, tension:.3 },
-                  { label:'시나리오 상단', data:[...pad,current,...upper], borderColor:'rgba(148,163,184,.25)', backgroundColor:'rgba(148,163,184,.12)', borderWidth:0, pointRadius:0, fill:'+1', tension:.3 },
-                  { label:'시나리오 하단', data:[...pad,current,...lower], borderColor:'rgba(148,163,184,.25)', borderWidth:0, pointRadius:0, tension:.3 },
-                ]
+                labels:actualLabels,
+                datasets
               },
               options:{
                 maintainAspectRatio:false,
                 interaction:{mode:'index',intersect:false},
-                plugins:{legend:{labels:{color:'#cbd5e1',filter:item=>!item.text.includes('상단')&&!item.text.includes('하단')}}},
+                plugins:{legend:{labels:{color:'#cbd5e1'}}},
                 scales:{
                   x:{ticks:{color:'#64748b',maxTicksLimit:12},grid:{color:'rgba(51,65,85,.35)'}},
                   y:{min:0,max:100,ticks:{color:'#64748b'},grid:{color:'rgba(51,65,85,.35)'}}
