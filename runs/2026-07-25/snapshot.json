@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -5.72%, USD/KRW 1474.52. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -5.72,
+    "usdkrw": 1474.516703
+  },
+  "flow_summary": {
+    "note": "외국인 -33998억, 기관 -23094억, 개인 +56663억 | KOSPI(외 -32683, 기관 -19514, 개인 +51782) KOSDAQ(외 -1315, 기관 -3580, 개인 +4881)",
+    "foreign_net": -33998.0,
+    "institution_net": -23094.0,
+    "retail_net": 56663.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-25",
+    "market": {
+      "KOSPI": {
+        "individual": 51782,
+        "foreign": -32683,
+        "institution": -19514
+      },
+      "KOSDAQ": {
+        "individual": 4881,
+        "foreign": -1315,
+        "institution": -3580
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[반도체/AI] [속보] 네이버 이해진 \"엔비디아·브룩필드서 100억달러 거금 투자\" - 한국경제",
+    "[금리/연준] 다음주 美 연준 FOMC 개최…'금리 동결' 유력하나 '중동 변수' 관건 - 뉴스웍스",
+    "[미국지수] 뉴욕증시, 유가 하락에도 반도체 약세에 혼조…나스닥 0.6%↓(종합) - 연합뉴스",
+    "[정책/테마] \"물가 안정되나 했는데…\" 트럼프 새 관세, 美경제도 위협 - 매일경제 마켓",
+    "[Thesis #1 AI 인프라 확장 사이클의 최대 수혜주 (N] 구글이 다시 당긴 AI 투자 방아쇠…M7 실적서 확인할 ‘쩐의 전쟁’ - edaily.co.kr"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6690.62,
+      "kosdaq": 748.22,
+      "kospi_pct": -5.72,
+      "kosdaq_pct": -5.32
+    },
+    "us": {
+      "sp500": 7411.98,
+      "nasdaq": 24975.824,
+      "dow": 51947.25,
+      "sp500_pct": 0.04967401428127076,
+      "nasdaq_pct": -0.6439294170710048,
+      "dow_pct": 0.4556033311642512
+    },
+    "fx": {
+      "usdkrw": 1474.516703,
+      "usdkrw_pct": -0.9978767137226727
+    },
+    "volatility": {
+      "vix": 18.579999923706055
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.678999900817871,
+      "us2y": 3.804999828338623,
+      "spread_2_10": 0.874000072479248,
+      "us_3m_yield": 3.804999828338623,
+      "us_2y_yield": 4.37,
+      "us_10y_yield": 4.678999900817871,
+      "spread_10y_2y": 0.308999900817871,
+      "spread_10y_3m": 0.874000072479248,
+      "vix": 18.579999923706055,
+      "dxy": 101.46499633789062,
+      "usdkrw": 1459.4200439453125,
+      "vix3m": 20.510000228881836,
+      "vix_term_spread": 1.9300003051757812,
+      "oil_wti": 90.47000122070312,
+      "russell2000": 2929.998779296875,
+      "oil_brent": 98.37999725341797
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 3.7265298484186804,
+      "core_cpi_yoy": 2.80581107579545,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.2186794214449339,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.4189999008178713,
+      "hy_oas": 2.77,
+      "ig_oas": 0.79,
+      "fed_balance_sheet": 6747378.0,
+      "tga_balance": 835417.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -5.474,
+    "liquidity_signal_score": 5.153,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -2.746,
+    "kospi_20d_cum_pct": -32.694,
+    "kosdaq_5d_cum_pct": -5.227,
+    "kospi_abs_move_5d_avg": 4.027,
+    "usdkrw_5d_change_pct": -0.352,
+    "vix_5d_avg": 18.174,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-32.69%, vol20d=4.61, reversal=false"
+  }
+}
