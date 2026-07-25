@@ -651,6 +651,7 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
             candidate_repository,
             cycle_model_config,
             cycle_repository,
+            insight_repository,
             repository as industry_repository,
             stock_model_config,
             virtual_portfolio,
@@ -686,24 +687,23 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
             )
         except Exception:
             signals = []
-        if not signals:
-            continue
-        latest = signals[-1]
+        latest = signals[-1] if signals else None
         # Keep up to five years of weekly observations for the detail chart.
         # A newly-started installation will naturally return only the weeks
         # collected so far; the UI labels the actual available period.
         history = signals[-260:]
 
         all_reasons: list[dict[str, object]] = []
-        try:
-            all_reasons = cycle_repository.list_signal_reasons(
-                industry_id, latest["as_of"], model_version, db_path=DB_PATH
-            )
-        except Exception:
-            all_reasons = []
+        if latest:
+            try:
+                all_reasons = cycle_repository.list_signal_reasons(
+                    industry_id, latest["as_of"], model_version, db_path=DB_PATH
+                )
+            except Exception:
+                all_reasons = []
 
         candidates: dict[str, list[dict[str, object]]] = {"etf": [], "stock": []}
-        if candidate_model_version:
+        if candidate_model_version and latest:
             try:
                 rows = candidate_repository.list_industry_candidates(
                     industry_id, latest["as_of"], candidate_model_version, include_excluded=False, db_path=DB_PATH
@@ -712,6 +712,41 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
                 candidates["stock"] = [r for r in rows if r.get("asset_type") == "STOCK"][:3]
             except Exception:
                 candidates = {"etf": [], "stock": []}
+
+        ai_opinion = None
+        try:
+            if latest:
+                ai_opinion = insight_repository.get_industry_ai_opinion(
+                    industry_id, latest["as_of"], model_version, db_path=DB_PATH
+                )
+            else:
+                ai_opinion = insight_repository.get_latest_industry_ai_opinion(
+                    industry_id, model_version, db_path=DB_PATH
+                )
+        except Exception:
+            ai_opinion = None
+        try:
+            recent_news = insight_repository.list_industry_news(
+                industry_id, limit=8, db_path=DB_PATH
+            )
+        except Exception:
+            recent_news = []
+        try:
+            asset_mappings = industry_repository.list_industry_assets(industry_id, db_path=DB_PATH)
+        except Exception:
+            asset_mappings = []
+        try:
+            indicator_mappings = industry_repository.list_industry_indicators(industry_id, db_path=DB_PATH)
+        except Exception:
+            indicator_mappings = []
+        if latest:
+            readiness = "ACTIVE"
+        elif indicator_mappings:
+            readiness = "FUNDAMENTALS_ONLY"
+        elif asset_mappings:
+            readiness = "PRICE_SETUP"
+        else:
+            readiness = "NEEDS_DATA"
 
         result_industries.append(
             {
@@ -724,6 +759,23 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
                 "top_reasons": all_reasons[:5],
                 "all_reasons": all_reasons,
                 "candidates": candidates,
+                "ai_opinion": ai_opinion,
+                "recent_news": recent_news,
+                "coverage": {
+                    "readiness": readiness,
+                    "asset_count": len(asset_mappings),
+                    "indicator_count": len(indicator_mappings),
+                    "has_cycle_signal": bool(latest),
+                    "missing": [
+                        label
+                        for present, label in (
+                            (bool(asset_mappings), "대표 자산"),
+                            (bool(indicator_mappings), "업황 지표"),
+                            (bool(latest), "사이클 신호"),
+                        )
+                        if not present
+                    ],
+                },
             }
         )
 

@@ -568,6 +568,60 @@ def init_db(db_path: Path | None = None) -> None:
             "CREATE INDEX IF NOT EXISTS idx_stock_news_ticker ON stock_news(ticker);"
         )
 
+        # industry_news: recent articles collected for one industry-cycle
+        # universe member.  We intentionally store metadata and a short
+        # title only, not copyrighted article bodies.  The same source
+        # article may be relevant to more than one industry.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_news (
+                industry_id TEXT NOT NULL,
+                link TEXT NOT NULL,
+                title TEXT NOT NULL,
+                source TEXT,
+                published_at TEXT,
+                query TEXT,
+                collected_at TEXT,
+                PRIMARY KEY (industry_id, link),
+                FOREIGN KEY(industry_id) REFERENCES industry_master(industry_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_news_recent "
+            "ON industry_news(industry_id, published_at);"
+        )
+
+        # industry_ai_opinion: LLM commentary is deliberately separate from
+        # industry_cycle_signal.  It can explain and flag news risks, but
+        # never overwrites the deterministic score or action signal.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_ai_opinion (
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                cycle_model_version TEXT NOT NULL,
+                llm_model TEXT,
+                opinion TEXT,
+                news_assessment TEXT,
+                catalysts_json TEXT,
+                risks_json TEXT,
+                cited_links_json TEXT,
+                confidence TEXT,
+                overall_summary TEXT,
+                input_tokens INTEGER,
+                output_tokens INTEGER,
+                created_at TEXT,
+                PRIMARY KEY (industry_id, as_of, cycle_model_version),
+                FOREIGN KEY(industry_id) REFERENCES industry_master(industry_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_ai_opinion_as_of "
+            "ON industry_ai_opinion(as_of, cycle_model_version);"
+        )
+
         # --- Industry cycle tracker tables (Phase 0) ---
         # Structural tables only: internal taxonomy, external-classification
         # aliases, industry-asset mapping, theme-industry mapping, indicator

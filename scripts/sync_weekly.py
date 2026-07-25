@@ -136,6 +136,14 @@ def _parse_args() -> argparse.Namespace:
         help="대시보드 빌드 건너뜀",
     )
     p.add_argument(
+        "--skip-industry-cycle", action="store_true",
+        help="산업 사이클 주간 파이프라인 전체 건너뜀",
+    )
+    p.add_argument(
+        "--skip-industry-llm", action="store_true",
+        help="산업 뉴스는 수집하되 AI 종합의견 생성은 건너뜀",
+    )
+    p.add_argument(
         "--us-sp500", action="store_true",
         help="US 종목 마스터: S&P 500 포함 (기본 포함)",
     )
@@ -243,7 +251,62 @@ def main() -> None:
                 kr_cmd.append("--quarterly")
             step(f"KR 재무제표 {args.year}년 (DART)", kr_cmd)
 
-    # ── 7. 대시보드 빌드 ──────────────────────────────────────────
+    # ── 7. 산업 사이클 전체 주간 파이프라인 ───────────────────────
+    # 기존 Windows 예약 작업이 이 sync_weekly.py를 실행하므로 별도
+    # cron/task를 만들지 않는다. 모든 단계는 개별 스크립트의 격리·
+    # upsert 계약을 사용하며, AI 의견은 정량 신호를 변경하지 않는다.
+    industry_as_of = date.today().isoformat()
+    industry_price_start = (date.today() - timedelta(days=21)).isoformat()
+    if args.skip_industry_cycle:
+        print("\n[sync_weekly] ⏭  SKIP  산업 사이클 전체 파이프라인")
+    else:
+        step(
+            "산업 분류·자산·지표 설정 동기화",
+            [py, "scripts/sync_industry_master.py", "--execute"],
+        )
+        step(
+            "산업 대표자산 최근 가격 갱신 (21일)",
+            [
+                py, "scripts/backfill_industry_prices.py",
+                "--start-date", industry_price_start,
+                "--end-date", industry_as_of,
+                "--execute",
+            ],
+        )
+        step(
+            "산업 업황 지표 갱신",
+            [py, "scripts/backfill_industry_indicators.py", "--execute"],
+        )
+        step(
+            "산업 가격·상대강도·과열 계산",
+            [py, "scripts/run_industry_price_factors.py", "--as-of", industry_as_of, "--execute"],
+        )
+        step(
+            "산업 펀더멘털 점수 계산",
+            [py, "scripts/run_industry_fundamentals_factors.py", "--as-of", industry_as_of, "--execute"],
+        )
+        step(
+            "산업 ETF·종목 후보 순위 계산",
+            [py, "scripts/run_industry_candidates.py", "--as-of", industry_as_of, "--execute"],
+        )
+        step(
+            "산업 사이클 최종 신호 계산",
+            [py, "scripts/run_industry_cycle_weekly.py", "--as-of", industry_as_of, "--execute"],
+        )
+        insight_cmd = [
+            py, "scripts/run_industry_weekly_insights.py",
+            "--as-of", industry_as_of,
+            "--execute",
+        ]
+        if args.skip_industry_llm:
+            insight_cmd.append("--skip-llm")
+        step("산업 뉴스·AI 종합의견 생성", insight_cmd)
+        step(
+            "산업 가상 포트폴리오 갱신",
+            [py, "scripts/run_industry_virtual_portfolio.py", "--as-of", industry_as_of, "--execute"],
+        )
+
+    # ── 8. 대시보드 빌드 ──────────────────────────────────────────
     step(
         "대시보드 빌드 (docs/dashboard.html)",
         [py, "scripts/build_dashboard.py"],

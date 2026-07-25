@@ -321,6 +321,16 @@
     .ic-expand { width:100%; margin-top:10px; padding:8px; border-radius:9px; border:1px solid var(--line); background:rgba(30,41,59,.45); color:#cbd5e1; cursor:pointer; }
     .ic-ai-placeholder { line-height:1.6; color:#94a3b8; font-size:12px; }
     .ic-detail-wide { grid-column:1/-1; }
+    .ic-entry-section { margin-top:14px; padding:15px; border:1px solid rgba(52,211,153,.25); border-radius:15px; background:linear-gradient(145deg,rgba(6,78,59,.14),rgba(15,23,42,.8)); }
+    .ic-entry-head { display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:10px; }
+    .ic-entry-head h3 { margin:0; font-size:16px; color:#ecfdf5; }
+    .ic-entry-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:9px; }
+    .ic-entry-card { padding:12px; border:1px solid rgba(51,65,85,.9); border-radius:11px; background:rgba(15,23,42,.78); }
+    .ic-entry-rank { font-size:11px; font-weight:900; color:#fbbf24; }
+    .ic-entry-name { margin-top:3px; font-size:14px; font-weight:800; color:#f8fafc; }
+    .ic-entry-reason { margin-top:6px; font-size:11px; line-height:1.45; color:#94a3b8; }
+    .ic-entry-assets { margin-top:8px; display:flex; flex-wrap:wrap; gap:5px; }
+    .ic-entry-asset { padding:3px 7px; border-radius:7px; font-size:10px; color:#7dd3fc; border:1px solid rgba(56,189,248,.28); }
     @media (max-width:840px) {
       .ic-detail-grid { grid-template-columns:1fr; }
       .ic-chart-wrap { height:250px; }
@@ -862,6 +872,13 @@
           <span class="section-meta" id="ic-meta">모델 버전 · 기준일 로딩 중</span>
         </div>
         <div class="thesis-kpi-grid" id="ic-kpis"></div>
+        <div class="ic-entry-section" id="ic-entry-section">
+          <div class="ic-entry-head">
+            <h3>이번 주 신규 진입 후보</h3>
+            <span class="section-meta">회복 초입 우선 · 과열·긴급 위험 제외</span>
+          </div>
+          <div class="ic-entry-list" id="ic-entry-list"></div>
+        </div>
         <div id="ic-empty" class="empty-state" style="display:none;">아직 계산된 산업 사이클 신호가 없습니다. 주간 배치(run_industry_cycle_weekly.py --execute)를 먼저 실행하세요.</div>
         <div class="ic-card-grid" id="ic-industry-cards"></div>
         <div class="ic-detail" id="ic-detail" aria-live="polite"></div>
@@ -3213,6 +3230,9 @@ function renderWatchTop3() {
     }
     function actionMeta(sig) {
       const state = sig.confirmed_state || sig.raw_state;
+      if (!state || typeof sig.cycle_score !== 'number') {
+        return { cls:'watch', label:'데이터 준비 중', warning:'점수 미생성' };
+      }
       const urgent = safeArr(sig.urgent_flags).length > 0;
       const overheat = typeof sig.overheat_score === 'number' ? sig.overheat_score : null;
       const confidence = typeof sig.confidence === 'number' ? sig.confidence : 0;
@@ -3234,7 +3254,36 @@ function renderWatchTop3() {
       }
       return { cls:'watch', label:'관찰', warning:sig.confirmation_status === 'first_observation' ? '추가 확인 필요' : '' };
     }
+    function entryPriority(item) {
+      const sig = item.latest_signal || {};
+      const action = actionMeta(sig);
+      const state = sig.confirmed_state || sig.raw_state;
+      const candidates = [...safeArr((item.candidates || {}).etf), ...safeArr((item.candidates || {}).stock)];
+      const urgent = safeArr(sig.urgent_flags).length > 0;
+      const overheat = typeof sig.overheat_score === 'number' ? sig.overheat_score : 0;
+      const excluded = !state || urgent || overheat >= 65 ||
+        ['CYCLE_OVERHEATED','CYCLE_SLOWING','CYCLE_RECESSION'].includes(state) ||
+        action.cls === 'hold' || !candidates.length;
+      if (excluded) return { eligible:false, priority:-999, action, candidates };
+      const actionWeight = action.cls === 'aggressive' ? 400 : action.cls === 'scale-in' ? 300 : 100;
+      const phaseWeight = state === 'CYCLE_RECOVERY_EARLY' ? 140 : state === 'CYCLE_EXPANSION' ? 45 : 0;
+      const confirmationWeight = sig.confirmation_status === 'confirmed' ? 35 : 0;
+      const confidenceWeight = Number(sig.confidence || 0) * 35;
+      const completenessWeight = Number(sig.data_completeness || 0) * 20;
+      const candidateWeight = Math.max(...candidates.map(c => Number(c.score || 0))) * .25;
+      const earlyZonePenalty = typeof sig.cycle_score === 'number' ? Math.abs(sig.cycle_score - 56) * .6 : 30;
+      return {
+        eligible:true,
+        priority:actionWeight + phaseWeight + confirmationWeight + confidenceWeight + completenessWeight + candidateWeight - earlyZonePenalty,
+        action,
+        candidates,
+      };
+    }
     function shortSummary(item, sig, action) {
+      if (!(item.coverage || {}).has_cycle_signal) {
+        const missing = safeArr((item.coverage || {}).missing);
+        return missing.length ? `현재 부족: ${missing.join('·')}. 데이터 연결 후 자동 분석됩니다.` : '데이터 연결 후 자동 분석됩니다.';
+      }
       const positive = safeArr(item.top_reasons).filter(r => r.direction === 'positive').slice(0, 2)
         .map(r => indicatorLabel(r.component_key));
       const base = positive.length ? `${positive.join('·')} 개선 신호` : '현재 확보된 지표를 종합한 판정';
@@ -3256,17 +3305,49 @@ function renderWatchTop3() {
       const overheatWarning = industries.filter(x => (x.latest_signal || {}).raw_state === 'CYCLE_OVERHEATED').length;
       const deterioration = industries.filter(x => ['CYCLE_SLOWING', 'CYCLE_RECESSION'].includes((x.latest_signal || {}).confirmed_state)).length;
       const urgentCount = industries.filter(x => safeArr((x.latest_signal || {}).urgent_flags).length > 0).length;
+      const preparingCount = industries.filter(x => !(x.coverage || {}).has_cycle_signal).length;
       if (kpiEl) {
         kpiEl.innerHTML = [
           { k: '회복 초입 확정', v: recoveryConfirmed },
           { k: '과열 경고', v: overheatWarning },
           { k: '둔화·침체 확정', v: deterioration },
+          { k: '데이터 준비 중', v: preparingCount },
           { k: '긴급 알림 발생', v: urgentCount },
         ].map(x => `<div class="thesis-kpi"><div class="k">${escapeHtml(x.k)}</div><div class="v">${escapeHtml(String(x.v))}</div></div>`).join('');
       }
 
+      const rankedEntries = industries
+        .map(item => ({ item, rank:entryPriority(item) }))
+        .filter(x => x.rank.eligible)
+        .sort((a,b) => b.rank.priority - a.rank.priority);
+      const entryList = document.getElementById('ic-entry-list');
+      if (entryList) {
+        entryList.innerHTML = rankedEntries.length ? rankedEntries.slice(0, 5).map((row, index) => {
+          const item = row.item;
+          const sig = item.latest_signal || {};
+          const state = stateMeta(sig.confirmed_state || sig.raw_state);
+          const assets = row.rank.candidates.slice().sort((a,b) => Number(b.score || 0) - Number(a.score || 0)).slice(0, 4);
+          const statusText = row.rank.action.cls === 'watch' ? '초입 확인 중 · 관찰 후보' : `${row.rank.action.label} 검토`;
+          const confidenceText = typeof sig.confidence === 'number' ? `${(sig.confidence * 100).toFixed(0)}%` : '데이터 없음';
+          const overheatText = typeof sig.overheat_score === 'number' ? sig.overheat_score.toFixed(1) : '데이터 없음';
+          return `<div class="ic-entry-card">
+            <div class="ic-entry-rank">TOP ${index + 1} · ${escapeHtml(statusText)}</div>
+            <div class="ic-entry-name">${escapeHtml(item.name_kr || item.industry_id)} · ${escapeHtml(state.label)}</div>
+            <div class="ic-entry-reason">신뢰도 ${escapeHtml(confidenceText)} · 과열 ${escapeHtml(overheatText)} · 긴급 경고 없음</div>
+            <div class="ic-entry-assets">${assets.map(a => `<span class="ic-entry-asset">${escapeHtml(a.asset_id || '')} ${typeof a.score === 'number' ? escapeHtml(a.score.toFixed(0)) : ''}</span>`).join('')}</div>
+          </div>`;
+        }).join('') : '<div class="empty-state" style="grid-column:1/-1;">이번 주에는 과열·긴급 위험 조건을 통과한 신규 진입 후보가 없습니다. 조건을 완화해 억지 후보를 만들지 않습니다.</div>';
+      }
+
       if (cardGrid) {
-        cardGrid.innerHTML = industries.map(item => {
+        const orderedIndustries = industries.slice().sort((a,b) => {
+          const pa = entryPriority(a);
+          const pb = entryPriority(b);
+          if (pa.eligible !== pb.eligible) return pa.eligible ? -1 : 1;
+          if (pa.priority !== pb.priority) return pb.priority - pa.priority;
+          return String(a.name_kr || a.industry_id).localeCompare(String(b.name_kr || b.industry_id), 'ko');
+        });
+        cardGrid.innerHTML = orderedIndustries.map(item => {
           const sig = item.latest_signal || {};
           const meta2 = stateMeta(sig.confirmed_state || sig.raw_state);
           const action = actionMeta(sig);
@@ -3329,19 +3410,39 @@ function renderWatchTop3() {
             </div>`).join('');
           const history = safeArr(item.history).filter(h => typeof h.cycle_score === 'number');
           const availableWeeks = history.length;
+          const coverage = item.coverage || {};
+          const coverageText = coverage.has_cycle_signal
+            ? `대표 자산 ${coverage.asset_count || 0}개 · 업황 지표 ${coverage.indicator_count || 0}개`
+            : `준비 상태 · 대표 자산 ${coverage.asset_count || 0}개 · 업황 지표 ${coverage.indicator_count || 0}개 · 부족: ${safeArr(coverage.missing).join(', ') || '확인 중'}`;
+          const ai = item.ai_opinion || null;
+          const newsRows = safeArr(item.recent_news);
+          const aiHtml = ai ? `
+            <div class="ic-ai-placeholder" style="color:#cbd5e1;">
+              <div style="font-weight:800;color:#f1f5f9;margin-bottom:6px;">${escapeHtml(ai.opinion || 'AI 의견 없음')}</div>
+              ${ai.news_assessment ? `<div style="margin-bottom:8px;">뉴스 해석: ${escapeHtml(ai.news_assessment)}</div>` : ''}
+              ${safeArr(ai.catalysts).length ? `<div><b style="color:#6ee7b7;">강화 근거</b> · ${safeArr(ai.catalysts).map(escapeHtml).join(' · ')}</div>` : ''}
+              ${safeArr(ai.risks).length ? `<div><b style="color:#fca5a5;">주의 요인</b> · ${safeArr(ai.risks).map(escapeHtml).join(' · ')}</div>` : ''}
+              <div style="margin-top:7px;color:#64748b;">AI 의견 신뢰도 ${escapeHtml(ai.confidence || '낮음')} · 모델 ${escapeHtml(ai.llm_model || '-')}</div>
+            </div>` :
+            '<div class="ic-ai-placeholder">아직 생성된 주간 AI 종합의견이 없습니다. 정량 추천 등급은 그대로 유지됩니다.</div>';
+          const newsHtml = newsRows.length ? `
+            <div style="display:grid;gap:7px;margin-top:12px;">
+              ${newsRows.slice(0, 6).map(n => `<a href="${escapeHtml(n.link || '#')}" target="_blank" rel="noopener noreferrer" style="color:#7dd3fc;font-size:11px;text-decoration:none;">${escapeHtml(n.title || '기사')} <span style="color:#64748b;">· ${escapeHtml(n.source || '')} ${escapeHtml((n.published_at || '').slice(0,10))}</span></a>`).join('')}
+            </div>` : '<div style="margin-top:10px;color:#64748b;font-size:11px;">수집된 산업 뉴스가 없습니다.</div>';
           detailEl.innerHTML = `
             <div class="ic-detail-top">
               <div>
                 <h3 class="ic-detail-title">${escapeHtml(item.name_kr || item.industry_id)} · ${escapeHtml(action.label)}</h3>
                 <div class="ic-detail-sub">${escapeHtml(state.label)} ${sig.consecutive_weeks ? `${sig.consecutive_weeks}주째` : ''} · 기준일 ${escapeHtml(sig.as_of || '-')} · 실제 이력 ${availableWeeks}주</div>
+                <div class="ic-detail-sub">${escapeHtml(coverageText)}</div>
               </div>
               <button type="button" class="ic-close" aria-label="상세보기 닫기">×</button>
             </div>
             <div class="ic-detail-grid">
               <div class="ic-panel">
                 <h4>사이클 흐름과 향후 6개월 시나리오</h4>
-                <div class="ic-chart-wrap"><canvas id="ic-cycle-chart"></canvas></div>
-                <div class="ic-chart-note">실선은 실제 주간 관측값입니다. 점선과 음영은 최근 추세를 제한적으로 연장한 규칙 기반 시나리오이며 통계적 수익률 예측이 아닙니다.</div>
+                ${availableWeeks ? '<div class="ic-chart-wrap"><canvas id="ic-cycle-chart"></canvas></div>' : '<div class="empty-state">아직 계산된 사이클 이력이 없습니다. 대표 자산 또는 업황 지표가 연결되면 그래프가 자동 생성됩니다.</div>'}
+                ${availableWeeks ? '<div class="ic-chart-note">실선은 실제 주간 관측값입니다. 점선과 음영은 최근 추세를 제한적으로 연장한 규칙 기반 시나리오이며 통계적 수익률 예측이 아닙니다.</div>' : ''}
               </div>
               <div class="ic-panel">
                 <h4>왜 ${escapeHtml(action.label)}인가?</h4>
@@ -3354,7 +3455,8 @@ function renderWatchTop3() {
               </div>
               <div class="ic-panel ic-detail-wide">
                 <h4>AI 종합의견 · 뉴스 근거</h4>
-                <div class="ic-ai-placeholder">LLM 주간 종합의견과 참조 뉴스가 생성되면 이 영역에 표시됩니다. 정량 추천 등급은 변경하지 않고 정책 리스크·공급 충격·근거 강화 같은 보조 판단만 제공합니다.</div>
+                ${aiHtml}
+                ${newsHtml}
               </div>
             </div>`;
           detailEl.classList.add('open');
@@ -3372,7 +3474,7 @@ function renderWatchTop3() {
           });
           if (cycleDetailChart) cycleDetailChart.destroy();
           const ctx = document.getElementById('ic-cycle-chart');
-          if (ctx && typeof Chart !== 'undefined') {
+          if (ctx && availableWeeks && typeof Chart !== 'undefined') {
             const actualLabels = history.map(h => h.as_of);
             const actual = history.map(h => h.cycle_score);
             const current = actual.length ? actual[actual.length - 1] : Number(sig.cycle_score || 50);

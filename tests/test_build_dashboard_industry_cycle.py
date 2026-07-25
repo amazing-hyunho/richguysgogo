@@ -85,10 +85,13 @@ class LoadIndustryCycleDashboardDataTests(unittest.TestCase):
         self.assertEqual(item["top_reasons"][0]["component_key"], "fundamentals_score")
         self.assertEqual(len(item["history"]), 1)
 
-    def test_industry_without_any_signal_is_excluded_not_shown_as_broken(self) -> None:
+    def test_industry_without_signal_is_shown_as_data_preparing(self) -> None:
         industry_repository.upsert_industry_master(industry_id="banks", name_kr="은행", db_path=self.db_path)
         data = build_dashboard.load_industry_cycle_dashboard_data()
-        self.assertEqual(data["industries"], [])
+        self.assertEqual(len(data["industries"]), 1)
+        self.assertIsNone(data["industries"][0]["latest_signal"])
+        self.assertEqual(data["industries"][0]["coverage"]["readiness"], "NEEDS_DATA")
+        self.assertIn("대표 자산", data["industries"][0]["coverage"]["missing"])
 
     def test_virtual_portfolio_summary_reflects_open_position(self) -> None:
         virtual_portfolio_repository.open_position(
