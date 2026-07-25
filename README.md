@@ -94,8 +94,12 @@ python scripts/sync_all.py --backfill-macro-all
 
 ### 🗓️ 주간 실행 (`sync_weekly.py`) — 약 2~4시간
 
-종목 마스터 갱신 · 전체 종목 컨센서스 · US 재무제표 · 대시보드 빌드  
+종목 마스터 갱신 · 전체 종목 컨센서스 · US 재무제표 · 산업 사이클/가상 포트폴리오 · 주간 LLM 해설 · 대시보드 빌드
 매주 1~2회 실행 권장 (종목 데이터가 빠르게 바뀌지 않으므로 매일 불필요)
+
+주간 LLM은 같은 기준일의 산업 사이클 신호가 있는 산업만 분석합니다.
+모델 사전학습 지식은 시점 비의존 산업 구조 설명에만 사용하며, 현재 투자
+관점은 저장된 정량 신호와 최근 뉴스에만 근거합니다.
 
 ```bash
 # 기본 (KR 전체 종목 컨센서스 + 마스터 갱신, 주 1회 권장)
@@ -289,6 +293,7 @@ docs/          # 대시보드 HTML
 - `USE_AGENT_DEBATE=1` : 토론 라운드 활성화
 - `AGENT_MODEL_BACKEND` : 모델 백엔드 선택
 - `LLM_TEMPERATURE` / `CHAIR_LLM_TEMPERATURE`
+- `INDUSTRY_LLM_MODEL` : 주간 산업 해설 모델 (기본 `gpt-4.1`)
 - `RUNS_BASE_DIR` : 과거 runs 기준 경로
 
 ## 운영 메모

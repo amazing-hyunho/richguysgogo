@@ -29,7 +29,12 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from committee.adapters.telegram_sender import send_report
-from committee.industry_cycle import candidate_repository, cycle_repository, telegram_dispatch_repository
+from committee.industry_cycle import (
+    candidate_repository,
+    cycle_repository,
+    insight_repository,
+    telegram_dispatch_repository,
+)
 from committee.industry_cycle.cycle_state_machine import (
     CYCLE_INSUFFICIENT_DATA,
     CYCLE_OVERHEATED,
@@ -127,11 +132,20 @@ def compose_weekly_message(
     as_of: str,
     weeks_required_recovery: int,
     candidate_model_version: Optional[str] = None,
+    ai_summary: Optional[str] = None,
     db_path: Path | None = None,
 ) -> str:
     """Compose the one combined weekly Telegram digest (pure formatting over `signals`)."""
     groups = classify_weekly_groups(signals, weeks_required_recovery=weeks_required_recovery)
     lines = [f"[산업 사이클 주간 리포트] {as_of}"]
+    if ai_summary:
+        lines.extend(
+            [
+                "\n[AI 조건부 해설]",
+                ai_summary[:700],
+                "  ※ 정량 신호를 변경하지 않는 참고 해설입니다.",
+            ]
+        )
 
     def _industry_line(signal: Dict[str, Any], *, with_candidates: bool) -> List[str]:
         industry_id = signal["industry_id"]
@@ -208,9 +222,12 @@ def send_weekly_digest(
     if not signals:
         return None
 
+    ai_summary = insight_repository.get_weekly_overall_summary(
+        as_of, model_version, db_path=db_path
+    )
     message = compose_weekly_message(
         signals, as_of=as_of, weeks_required_recovery=weeks_required_recovery,
-        candidate_model_version=candidate_model_version, db_path=db_path,
+        candidate_model_version=candidate_model_version, ai_summary=ai_summary, db_path=db_path,
     )
     if dry_run:
         return message

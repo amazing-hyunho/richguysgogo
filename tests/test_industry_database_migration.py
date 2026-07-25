@@ -22,6 +22,7 @@ EXPECTED_TABLES = [
     "indicator_observation",
     "data_quality_event",
     "asset_price_daily",
+    "industry_ai_run",
 ]
 
 
@@ -57,6 +58,26 @@ class IndustryDatabaseMigrationTests(unittest.TestCase):
             ).fetchone()[0]
             conn.close()
             self.assertEqual(count, 1)
+
+    def test_industry_ai_opinion_has_weekly_context_columns(self) -> None:
+        with tempfile.TemporaryDirectory() as td:
+            db_path = self._fresh_db(td)
+            with connect(db_path) as conn:
+                cols = {
+                    row[1]
+                    for row in conn.execute(
+                        "PRAGMA table_info(industry_ai_opinion);"
+                    ).fetchall()
+                }
+            self.assertTrue(
+                {
+                    "prompt_version",
+                    "input_hash",
+                    "investment_view",
+                    "weekly_change",
+                    "structural_context",
+                }.issubset(cols)
+            )
 
     def test_init_db_does_not_touch_preexisting_tables(self) -> None:
         """Safety net: new migrations must not drop/alter unrelated existing tables."""

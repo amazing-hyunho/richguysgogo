@@ -93,7 +93,8 @@ def _has_dart_key() -> bool:
     return bool(os.getenv("DART_API_KEY", "").strip())
 
 
-def _parse_args() -> argparse.Namespace:
+def _parse_args(run_date: date | None = None) -> argparse.Namespace:
+    reference_date = run_date or date.today()
     p = argparse.ArgumentParser(description="주간·정기 무거운 데이터 동기화")
     p.add_argument(
         "--top", type=int, default=0,
@@ -108,7 +109,7 @@ def _parse_args() -> argparse.Namespace:
         help="KR 재무제표 수집 건너뜀 (기본: DART_API_KEY 있으면 자동 수집)",
     )
     p.add_argument(
-        "--year", type=int, default=date.today().year - 1,
+        "--year", type=int, default=reference_date.year - 1,
         help="KR 재무제표 연도 (기본: 전년도)",
     )
     p.add_argument(
@@ -159,7 +160,10 @@ def _parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
-    args = _parse_args()
+    # Freeze the logical run date once. Long full-universe batches can cross
+    # midnight; every downstream cutoff must still belong to one weekly run.
+    run_date = date.today()
+    args = _parse_args(run_date)
     py = sys.executable
     results: list[tuple[str, bool]] = []
 
@@ -169,7 +173,7 @@ def main() -> None:
 
     print("=" * 62)
     print("  sync_weekly: 주간·정기 데이터 동기화 시작")
-    print(f"  날짜: {date.today().isoformat()}")
+    print(f"  날짜: {run_date.isoformat()}")
     print("=" * 62)
 
     # ── 1. 종목 마스터 갱신 ──────────────────────────────────────
@@ -192,12 +196,12 @@ def main() -> None:
 
     # ── 2. 수급 전체 백필 (외국인/기관/개인, 2년치) ──────────────
     # sync_all.py 에서는 최근 7일만 처리하므로, 주간 실행에서 누락 없이 채움.
-    _flow_start = (date.today() - timedelta(days=365 * 2)).isoformat()
+    _flow_start = (run_date - timedelta(days=365 * 2)).isoformat()
     step(
         "외국인/기관/개인 수급 전체 백필 (market_flow_daily, 2년치)",
         [py, "scripts/backfill_market_flow_history.py",
          "--start-date", _flow_start,
-         "--end-date", date.today().isoformat(),
+         "--end-date", run_date.isoformat(),
          "--source", "NAVER",
          "--skip-existing"],
         skip=args.skip_stocks,
@@ -255,8 +259,8 @@ def main() -> None:
     # 기존 Windows 예약 작업이 이 sync_weekly.py를 실행하므로 별도
     # cron/task를 만들지 않는다. 모든 단계는 개별 스크립트의 격리·
     # upsert 계약을 사용하며, AI 의견은 정량 신호를 변경하지 않는다.
-    industry_as_of = date.today().isoformat()
-    industry_price_start = (date.today() - timedelta(days=21)).isoformat()
+    industry_as_of = run_date.isoformat()
+    industry_price_start = (run_date - timedelta(days=21)).isoformat()
     if args.skip_industry_cycle:
         print("\n[sync_weekly] ⏭  SKIP  산업 사이클 전체 파이프라인")
     else:
@@ -293,6 +297,10 @@ def main() -> None:
             "산업 사이클 최종 신호 계산",
             [py, "scripts/run_industry_cycle_weekly.py", "--as-of", industry_as_of, "--execute"],
         )
+        step(
+            "산업 가상 포트폴리오 갱신",
+            [py, "scripts/run_industry_virtual_portfolio.py", "--as-of", industry_as_of, "--execute"],
+        )
         insight_cmd = [
             py, "scripts/run_industry_weekly_insights.py",
             "--as-of", industry_as_of,
@@ -301,10 +309,6 @@ def main() -> None:
         if args.skip_industry_llm:
             insight_cmd.append("--skip-llm")
         step("산업 뉴스·AI 종합의견 생성", insight_cmd)
-        step(
-            "산업 가상 포트폴리오 갱신",
-            [py, "scripts/run_industry_virtual_portfolio.py", "--as-of", industry_as_of, "--execute"],
-        )
 
     # ── 8. 대시보드 빌드 ──────────────────────────────────────────
     step(

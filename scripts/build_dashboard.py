@@ -757,10 +757,6 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
                 ai_opinion = insight_repository.get_industry_ai_opinion(
                     industry_id, latest["as_of"], model_version, db_path=DB_PATH
                 )
-            else:
-                ai_opinion = insight_repository.get_latest_industry_ai_opinion(
-                    industry_id, model_version, db_path=DB_PATH
-                )
         except Exception:
             ai_opinion = None
         try:

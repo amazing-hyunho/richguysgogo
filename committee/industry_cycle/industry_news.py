@@ -61,8 +61,10 @@ def collect_industry_news(
     seen_links: set[str] = set()
     normalized_titles: list[str] = []
     for title, link, published_at in raw:
-        if published_at is not None and published_at.astimezone(timezone.utc) < cutoff:
-            continue
+        if published_at is not None:
+            published_utc = published_at.astimezone(timezone.utc)
+            if published_utc < cutoff or published_utc > now_utc:
+                continue
         canonical = _canonical_link(link)
         normalized = _normalize_headline(title)
         if not canonical or not normalized or canonical in seen_links:
@@ -92,6 +94,7 @@ def collect_and_store_industry_news(
     lookback_days: int = 14,
     limit_per_industry: int = 8,
     dry_run: bool = True,
+    now: datetime | None = None,
     db_path: Path | None = None,
     fetcher: Callable[..., list[tuple[str, str, datetime | None]]] = fetch_google_news_items,
 ) -> dict[str, object]:
@@ -105,6 +108,7 @@ def collect_and_store_industry_news(
                 industry,
                 lookback_days=lookback_days,
                 limit=limit_per_industry,
+                now=now,
                 fetcher=fetcher,
             )
             collected[industry_id] = items
@@ -117,4 +121,3 @@ def collect_and_store_industry_news(
             collected[industry_id] = []
             counts[industry_id] = 0
     return {"counts": counts, "errors": errors, "collected": collected}
-

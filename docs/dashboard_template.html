@@ -3423,10 +3423,13 @@ function renderWatchTop3() {
           const newsRows = safeArr(item.recent_news);
           const aiHtml = ai ? `
             <div class="ic-ai-placeholder" style="color:#cbd5e1;">
+              ${ai.investment_view ? `<div style="margin-bottom:7px;"><b style="color:#fbbf24;">조건부 투자 관점</b> · ${escapeHtml(ai.investment_view)}</div>` : ''}
               <div style="font-weight:800;color:#f1f5f9;margin-bottom:6px;">${escapeHtml(ai.opinion || 'AI 의견 없음')}</div>
+              ${ai.weekly_change ? `<div style="margin-bottom:8px;"><b style="color:#93c5fd;">전주 대비</b> · ${escapeHtml(ai.weekly_change)}</div>` : ''}
               ${ai.news_assessment ? `<div style="margin-bottom:8px;">뉴스 해석: ${escapeHtml(ai.news_assessment)}</div>` : ''}
               ${safeArr(ai.catalysts).length ? `<div><b style="color:#6ee7b7;">강화 근거</b> · ${safeArr(ai.catalysts).map(escapeHtml).join(' · ')}</div>` : ''}
               ${safeArr(ai.risks).length ? `<div><b style="color:#fca5a5;">주의 요인</b> · ${safeArr(ai.risks).map(escapeHtml).join(' · ')}</div>` : ''}
+              ${ai.structural_context ? `<div style="margin-top:9px;padding-top:8px;border-top:1px solid rgba(148,163,184,.18);color:#94a3b8;"><b>산업 구조 일반론</b> · ${escapeHtml(ai.structural_context)}<br><span style="color:#64748b;">모델 사전학습 기반 배경 설명이며 현재 사실의 근거가 아닙니다.</span></div>` : ''}
               <div style="margin-top:7px;color:#64748b;">AI 의견 신뢰도 ${escapeHtml(ai.confidence || '낮음')} · 모델 ${escapeHtml(ai.llm_model || '-')}</div>
             </div>` :
             '<div class="ic-ai-placeholder">아직 생성된 주간 AI 종합의견이 없습니다. 정량 추천 등급은 그대로 유지됩니다.</div>';

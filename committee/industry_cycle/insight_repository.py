@@ -50,6 +50,7 @@ def list_industry_news(
     industry_id: str,
     *,
     published_since: str | None = None,
+    published_before: str | None = None,
     limit: int = 20,
     db_path: Path | None = None,
 ) -> list[dict[str, Any]]:
@@ -59,6 +60,10 @@ def list_industry_news(
     if published_since:
         since_clause = "AND COALESCE(published_at, collected_at) >= :published_since"
         params["published_since"] = published_since
+    before_clause = ""
+    if published_before:
+        before_clause = "AND COALESCE(published_at, collected_at) < :published_before"
+        params["published_before"] = published_before
     with connect(db_path) as conn:
         rows = conn.execute(
             f"""
@@ -66,6 +71,7 @@ def list_industry_news(
             FROM industry_news
             WHERE industry_id = :industry_id
               {since_clause}
+              {before_clause}
             ORDER BY COALESCE(published_at, collected_at) DESC
             LIMIT :limit;
             """,
@@ -83,19 +89,26 @@ def upsert_industry_ai_opinion(record: dict[str, Any], db_path: Path | None = No
         conn.execute(
             """
             INSERT INTO industry_ai_opinion (
-                industry_id, as_of, cycle_model_version, llm_model,
-                opinion, news_assessment, catalysts_json, risks_json,
+                industry_id, as_of, cycle_model_version, llm_model, prompt_version, input_hash,
+                investment_view, opinion, weekly_change, structural_context,
+                news_assessment, catalysts_json, risks_json,
                 cited_links_json, confidence, overall_summary,
                 input_tokens, output_tokens, created_at
             ) VALUES (
-                :industry_id, :as_of, :cycle_model_version, :llm_model,
-                :opinion, :news_assessment, :catalysts_json, :risks_json,
+                :industry_id, :as_of, :cycle_model_version, :llm_model, :prompt_version, :input_hash,
+                :investment_view, :opinion, :weekly_change, :structural_context,
+                :news_assessment, :catalysts_json, :risks_json,
                 :cited_links_json, :confidence, :overall_summary,
                 :input_tokens, :output_tokens, :created_at
             )
             ON CONFLICT(industry_id, as_of, cycle_model_version) DO UPDATE SET
                 llm_model=excluded.llm_model,
+                prompt_version=excluded.prompt_version,
+                input_hash=excluded.input_hash,
+                investment_view=excluded.investment_view,
                 opinion=excluded.opinion,
+                weekly_change=excluded.weekly_change,
+                structural_context=excluded.structural_context,
                 news_assessment=excluded.news_assessment,
                 catalysts_json=excluded.catalysts_json,
                 risks_json=excluded.risks_json,
@@ -111,12 +124,57 @@ def upsert_industry_ai_opinion(record: dict[str, Any], db_path: Path | None = No
                 "as_of": record["as_of"],
                 "cycle_model_version": record["cycle_model_version"],
                 "llm_model": record.get("llm_model"),
+                "prompt_version": record.get("prompt_version"),
+                "input_hash": record.get("input_hash"),
+                "investment_view": record.get("investment_view"),
                 "opinion": record.get("opinion"),
+                "weekly_change": record.get("weekly_change"),
+                "structural_context": record.get("structural_context"),
                 "news_assessment": record.get("news_assessment"),
                 "catalysts_json": json.dumps(record.get("catalysts") or [], ensure_ascii=False),
                 "risks_json": json.dumps(record.get("risks") or [], ensure_ascii=False),
                 "cited_links_json": json.dumps(record.get("cited_links") or [], ensure_ascii=False),
                 "confidence": record.get("confidence"),
+                "overall_summary": record.get("overall_summary"),
+                "input_tokens": record.get("input_tokens"),
+                "output_tokens": record.get("output_tokens"),
+                "created_at": record.get("created_at") or _now_iso(),
+            },
+        )
+
+
+def upsert_industry_ai_run(record: dict[str, Any], db_path: Path | None = None) -> None:
+    for key in ("as_of", "cycle_model_version", "llm_model", "prompt_version"):
+        if not str(record.get(key) or "").strip():
+            raise ValueError(f"industry_ai_run missing required field '{key}'")
+    init_db(db_path)
+    with connect(db_path) as conn:
+        conn.execute(
+            """
+            INSERT INTO industry_ai_run (
+                as_of, cycle_model_version, llm_model, prompt_version,
+                input_hash, industry_count, overall_summary,
+                input_tokens, output_tokens, created_at
+            ) VALUES (
+                :as_of, :cycle_model_version, :llm_model, :prompt_version,
+                :input_hash, :industry_count, :overall_summary,
+                :input_tokens, :output_tokens, :created_at
+            )
+            ON CONFLICT(as_of, cycle_model_version, llm_model, prompt_version) DO UPDATE SET
+                input_hash=excluded.input_hash,
+                industry_count=excluded.industry_count,
+                overall_summary=excluded.overall_summary,
+                input_tokens=excluded.input_tokens,
+                output_tokens=excluded.output_tokens,
+                created_at=excluded.created_at;
+            """,
+            {
+                "as_of": record["as_of"],
+                "cycle_model_version": record["cycle_model_version"],
+                "llm_model": record["llm_model"],
+                "prompt_version": record["prompt_version"],
+                "input_hash": record.get("input_hash"),
+                "industry_count": int(record.get("industry_count") or 0),
                 "overall_summary": record.get("overall_summary"),
                 "input_tokens": record.get("input_tokens"),
                 "output_tokens": record.get("output_tokens"),
@@ -191,3 +249,26 @@ def get_latest_industry_ai_opinion(
         except (TypeError, ValueError):
             result[output_key] = []
     return result
+
+
+def get_weekly_overall_summary(
+    as_of: str,
+    cycle_model_version: str,
+    db_path: Path | None = None,
+) -> str | None:
+    """Return the one batch-level summary duplicated on this week's opinion rows."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        row = conn.execute(
+            """
+            SELECT overall_summary
+            FROM industry_ai_opinion
+            WHERE as_of = :as_of
+              AND cycle_model_version = :cycle_model_version
+              AND COALESCE(overall_summary, '') <> ''
+            ORDER BY created_at DESC
+            LIMIT 1;
+            """,
+            {"as_of": as_of, "cycle_model_version": cycle_model_version},
+        ).fetchone()
+    return str(row["overall_summary"]) if row is not None else None

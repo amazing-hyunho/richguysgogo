@@ -17,6 +17,14 @@ class OpenAIConfig:
     base_url: str = "https://api.openai.com/v1"
 
 
+@dataclass(frozen=True)
+class ChatCompletionResult:
+    content: str
+    model: str | None
+    input_tokens: int | None
+    output_tokens: int | None
+
+
 def load_openai_config() -> OpenAIConfig:
     """Load OpenAI config from environment variables."""
 
@@ -37,6 +45,26 @@ def chat_completion(
     timeout: int = 30,
 ) -> str:
     """Call chat completions and return text content."""
+    return chat_completion_with_metadata(
+        config=config,
+        model=model,
+        system_prompt=system_prompt,
+        user_prompt=user_prompt,
+        temperature=temperature,
+        timeout=timeout,
+    ).content
+
+
+def chat_completion_with_metadata(
+    *,
+    config: OpenAIConfig,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+    temperature: float = 0.1,
+    timeout: int = 30,
+) -> ChatCompletionResult:
+    """Call chat completions and retain model/usage metadata for audit."""
 
     url = f"{config.base_url.rstrip('/')}/chat/completions"
     payload = {
@@ -68,4 +96,14 @@ def chat_completion(
     content = message.get("content")
     if not content:
         raise RuntimeError("openai_empty_content")
-    return str(content)
+    usage = body.get("usage") if isinstance(body.get("usage"), dict) else {}
+    return ChatCompletionResult(
+        content=str(content),
+        model=str(body.get("model")) if body.get("model") else None,
+        input_tokens=(
+            int(usage["prompt_tokens"]) if usage.get("prompt_tokens") is not None else None
+        ),
+        output_tokens=(
+            int(usage["completion_tokens"]) if usage.get("completion_tokens") is not None else None
+        ),
+    )

@@ -602,7 +602,12 @@ def init_db(db_path: Path | None = None) -> None:
                 as_of TEXT NOT NULL,
                 cycle_model_version TEXT NOT NULL,
                 llm_model TEXT,
+                prompt_version TEXT,
+                input_hash TEXT,
+                investment_view TEXT,
                 opinion TEXT,
+                weekly_change TEXT,
+                structural_context TEXT,
                 news_assessment TEXT,
                 catalysts_json TEXT,
                 risks_json TEXT,
@@ -617,9 +622,36 @@ def init_db(db_path: Path | None = None) -> None:
             );
             """
         )
+        for column in (
+            "prompt_version",
+            "input_hash",
+            "investment_view",
+            "weekly_change",
+            "structural_context",
+        ):
+            _ensure_column_exists(
+                conn, table="industry_ai_opinion", column=column, column_ddl="TEXT"
+            )
         conn.execute(
             "CREATE INDEX IF NOT EXISTS idx_industry_ai_opinion_as_of "
             "ON industry_ai_opinion(as_of, cycle_model_version);"
+        )
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_ai_run (
+                as_of TEXT NOT NULL,
+                cycle_model_version TEXT NOT NULL,
+                llm_model TEXT NOT NULL,
+                prompt_version TEXT NOT NULL,
+                input_hash TEXT,
+                industry_count INTEGER NOT NULL,
+                overall_summary TEXT,
+                input_tokens INTEGER,
+                output_tokens INTEGER,
+                created_at TEXT,
+                PRIMARY KEY (as_of, cycle_model_version, llm_model, prompt_version)
+            );
+            """
         )
 
         # --- Industry cycle tracker tables (Phase 0) ---

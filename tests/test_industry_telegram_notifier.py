@@ -101,6 +101,16 @@ class ComposeMessageTests(unittest.TestCase):
         self.assertIn("EARNINGS_SHOCK", msg)
         self.assertIn("semiconductors", msg)
 
+    def test_compose_weekly_message_labels_ai_summary_as_non_authoritative(self) -> None:
+        msg = telegram_notifier.compose_weekly_message(
+            [_signal("semiconductors")],
+            as_of="2026-07-25",
+            weeks_required_recovery=2,
+            ai_summary="산업 전반의 정량 신호는 혼조입니다.",
+        )
+        self.assertIn("[AI 조건부 해설]", msg)
+        self.assertIn("정량 신호를 변경하지 않는", msg)
+
 
 class SendWeeklyDigestTests(unittest.TestCase):
     def setUp(self) -> None:
