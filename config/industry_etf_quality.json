@@ -1,0 +1,32 @@
+{
+  "_comment": "Phase 3 ETF static-attribute catalog (docs/industry_cycle_mvp_design.md section 8.1 'ETF 필터': 대표성/거래대금/순자산/보수/레버리지-인버스/산업외노출/상장이력). These fields change slowly (unlike price), so they are hand-curated here rather than fetched live on every run. Where a real free source could supply a value it was fetched via yfinance .info on the date in `source` (see committee.industry_cycle.etf_quality module docstring); fields yfinance could not supply for a given ETF are left `null` (never fabricated) so committee.industry_cycle.etf_quality reports them as an explicit 'unknown_checks' data gap instead of silently passing or failing that filter.",
+  "version": 1,
+  "etfs": [
+    {
+      "asset_id": "SOXX",
+      "market": "US",
+      "industry_id": "semiconductors",
+      "name": "iShares Semiconductor ETF",
+      "aum_usd_equivalent": 47824830464,
+      "expense_ratio": 0.0034,
+      "bid_ask_spread_bp": null,
+      "is_leveraged_or_inverse": false,
+      "listing_date": "2001-07-09",
+      "industry_purity_pct": 1.0,
+      "source": "yfinance_info_fetched_2026-07-25"
+    },
+    {
+      "asset_id": "091160.KS",
+      "market": "KR",
+      "industry_id": "semiconductors",
+      "name": "Kodex Semicon",
+      "aum_usd_equivalent": null,
+      "expense_ratio": null,
+      "bid_ask_spread_bp": null,
+      "is_leveraged_or_inverse": false,
+      "listing_date": null,
+      "industry_purity_pct": 1.0,
+      "source": "yfinance_info_fetched_2026-07-25_partial_no_aum_or_expense_ratio_available"
+    }
+  ]
+}

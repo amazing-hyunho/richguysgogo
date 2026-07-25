@@ -568,6 +568,686 @@ def init_db(db_path: Path | None = None) -> None:
             "CREATE INDEX IF NOT EXISTS idx_stock_news_ticker ON stock_news(ticker);"
         )
 
+        # --- Industry cycle tracker tables (Phase 0) ---
+        # Structural tables only: internal taxonomy, external-classification
+        # aliases, industry-asset mapping, theme-industry mapping, indicator
+        # catalog, point-in-time indicator observations, and data-quality
+        # events. NULL-based design applies throughout (never 0.0 for missing
+        # values). Scoring/signal/price tables belong to Phase 1+ and are
+        # intentionally NOT created here.
+        # See docs/industry_cycle_mvp_design.md sections 5.1, 9, 12.
+
+        # industry_master: internal industry standard. `industry_id` is the
+        # only stable key; external classification codes are never used
+        # directly (see industry_alias below).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_master (
+                industry_id TEXT PRIMARY KEY,
+                name_kr TEXT,
+                name_en TEXT,
+                country_scope TEXT,
+                coverage_status TEXT,
+                active INTEGER,
+                notes TEXT,
+                created_at TEXT,
+                updated_at TEXT
+            );
+            """
+        )
+
+        # industry_alias: external classification code -> internal industry_id,
+        # with a validity window so classification-scheme changes don't erase
+        # history.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_alias (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                provider TEXT NOT NULL,
+                external_code TEXT NOT NULL,
+                industry_id TEXT NOT NULL,
+                valid_from TEXT,
+                valid_to TEXT,
+                created_at TEXT,
+                UNIQUE(provider, external_code, valid_from),
+                FOREIGN KEY(industry_id) REFERENCES industry_master(industry_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_alias_industry ON industry_alias(industry_id);"
+        )
+
+        # industry_asset_map: ETF/stock -> industry_id, with weight and a
+        # validity window (an asset's industry classification can change).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_asset_map (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                asset_id TEXT NOT NULL,
+                asset_type TEXT,
+                market TEXT,
+                industry_id TEXT NOT NULL,
+                weight REAL,
+                valid_from TEXT,
+                valid_to TEXT,
+                created_at TEXT,
+                UNIQUE(asset_id, industry_id, valid_from),
+                FOREIGN KEY(industry_id) REFERENCES industry_master(industry_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_asset_map_industry ON industry_asset_map(industry_id);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_asset_map_asset ON industry_asset_map(asset_id);"
+        )
+
+        # theme_industry_map: theme (e.g. HBM, robotics) -> parent industry_id.
+        # Themes never get their own score in the MVP (design doc 6.2).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS theme_industry_map (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                theme_id TEXT NOT NULL,
+                industry_id TEXT NOT NULL,
+                valid_from TEXT,
+                valid_to TEXT,
+                created_at TEXT,
+                UNIQUE(theme_id, industry_id, valid_from),
+                FOREIGN KEY(industry_id) REFERENCES industry_master(industry_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_theme_industry_map_industry ON theme_industry_map(industry_id);"
+        )
+
+        # indicator_catalog: definition of one indicator series (provider,
+        # source series id, unit/frequency/transform). Observations live in
+        # indicator_observation below, keyed by indicator_id.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS indicator_catalog (
+                indicator_id TEXT PRIMARY KEY,
+                provider TEXT,
+                series_id TEXT,
+                unit TEXT,
+                frequency TEXT,
+                transform TEXT,
+                description TEXT,
+                baseline REAL,
+                created_at TEXT,
+                updated_at TEXT
+            );
+            """
+        )
+        # Phase 2 addition: `baseline` (the indicator's neutral/typical raw
+        # value, e.g. 50 for a diffusion index like PMI; NULL/0.0-equivalent
+        # for already-zero-centered transforms like yoy_pct). Safe migration
+        # for DBs created before this column existed.
+        _ensure_column_exists(conn, table="indicator_catalog", column="baseline", column_ddl="REAL")
+
+        # industry_indicator_map: which indicators feed which industry's
+        # fundamentals_score, with a direction (does a higher indicator value
+        # raise or lower the industry's outlook) and weight, plus a validity
+        # window since an industry's indicator composition can change over
+        # time (design doc section 9). References both industry_master and
+        # indicator_catalog, both already created above.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_indicator_map (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                indicator_id TEXT NOT NULL,
+                direction TEXT,
+                weight REAL,
+                valid_from TEXT,
+                valid_to TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, indicator_id, valid_from),
+                FOREIGN KEY(industry_id) REFERENCES industry_master(industry_id),
+                FOREIGN KEY(indicator_id) REFERENCES indicator_catalog(indicator_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_indicator_map_industry "
+            "ON industry_indicator_map(industry_id);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_indicator_map_indicator "
+            "ON industry_indicator_map(indicator_id);"
+        )
+
+        # indicator_observation: point-in-time observation contract.
+        # - observed_at: reference period/date the value describes.
+        # - published_at: first official release date (nullable).
+        # - known_at: when our system became aware of/collected the value;
+        #   backtests must gate on known_at <= signal_date.
+        # - vintage_at: identifies which revision of observed_at this row is,
+        #   so revisions are stored as new rows, never overwritten in place.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS indicator_observation (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                indicator_id TEXT NOT NULL,
+                observed_at TEXT NOT NULL,
+                value REAL,
+                published_at TEXT,
+                known_at TEXT,
+                vintage_at TEXT,
+                source_ref TEXT,
+                created_at TEXT,
+                UNIQUE(indicator_id, observed_at, vintage_at),
+                FOREIGN KEY(indicator_id) REFERENCES indicator_catalog(indicator_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_indicator_observation_lookup "
+            "ON indicator_observation(indicator_id, observed_at);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_indicator_observation_known_at "
+            "ON indicator_observation(indicator_id, known_at);"
+        )
+
+        # data_quality_event: missing/lag/revision/anomaly findings, so data
+        # problems are recorded rather than silently ignored (design doc 9, 14).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS data_quality_event (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                provider TEXT,
+                target TEXT,
+                event_type TEXT NOT NULL,
+                severity TEXT,
+                status TEXT,
+                message TEXT,
+                detected_at TEXT,
+                resolved_at TEXT,
+                created_at TEXT
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_data_quality_event_status "
+            "ON data_quality_event(event_type, status);"
+        )
+
+        # --- Industry cycle tracker tables (Phase 1-A) ---
+        # asset_price_daily: common KR/US stock+ETF daily price contract.
+        # - close_price is the raw/unadjusted close; adj_close_price is the
+        #   corporate-action-adjusted close. Both are kept so callers can tell
+        #   which series they are using (design doc 5.1: "주가와 ETF 가격은
+        #   분할·배당 등 기업행동 조정 여부를 명시한다").
+        # - adjustment_status makes that distinction explicit per row rather
+        #   than relying on callers to infer it from column presence alone.
+        # - available_at / collected_at (point-in-time contract, revised):
+        #   `available_at` is when the price became available in the market
+        #   (a deterministic function of `trade_date` + provider policy —
+        #   see `YahooChartPriceProvider`), and is what `get_prices_as_of()`
+        #   gates on together with `trade_date`. `collected_at` is when our
+        #   system actually fetched the row and is audit/freshness-only,
+        #   never used for leakage gating.
+        #   This replaces a single `known_at` column that was set to
+        #   fetch-time `now()`: backfilling 2015 prices in 2026 stamped
+        #   `known_at=2026-...`, so every as-of query before 2026 excluded
+        #   all 2015 rows, and re-collecting the same day overwrote
+        #   `known_at` with an even later time — collapsing point-in-time
+        #   queryability entirely. See `_migrate_asset_price_daily_split_known_at`.
+        # - UNIQUE(asset_id, trade_date) plus upsert-on-conflict ensures
+        #   re-collecting the same day's price never creates a duplicate row,
+        #   and the upsert never overwrites an existing `available_at` (only
+        #   `collected_at` refreshes on re-collection).
+        # Scoring/signal tables (industry_factor_weekly, industry_cycle_signal,
+        # etc.) are intentionally NOT created here — they belong to Phase 1-B+.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS asset_price_daily (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                asset_id TEXT NOT NULL,
+                market TEXT NOT NULL,
+                currency TEXT NOT NULL,
+                trade_date TEXT NOT NULL,
+                open_price REAL,
+                high_price REAL,
+                low_price REAL,
+                close_price REAL,
+                adj_close_price REAL,
+                volume REAL,
+                adjustment_status TEXT,
+                source TEXT,
+                source_ref TEXT,
+                available_at TEXT,
+                collected_at TEXT,
+                created_at TEXT,
+                UNIQUE(asset_id, trade_date)
+            );
+            """
+        )
+        _migrate_asset_price_daily_split_known_at(conn)
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_asset_price_daily_asset_date "
+            "ON asset_price_daily(asset_id, trade_date);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_asset_price_daily_available_at "
+            "ON asset_price_daily(available_at);"
+        )
+
+        # --- Industry cycle tracker tables (Phase 1-B) ---
+        # Price-only weekly factor/state/backtest tables. "PRICE_ONLY" /
+        # "provisional" naming is deliberate throughout: these are NOT the
+        # final industry cycle judgment (docs/industry_cycle_mvp_design.md
+        # section 7.3, which additionally needs fundamentals/earnings/flow/
+        # macro/breadth inputs from Phase 2+). See
+        # `committee.industry_cycle.price_state_machine` module docstring.
+        #
+        # industry_factor_weekly: one row per (industry_id, asset_id, as_of,
+        # model_version) storing every raw price feature and the four
+        # 0~100 price-only scores plus their full component breakdown
+        # (score_breakdown_json). model_version is part of the UNIQUE key
+        # (not just a column) so re-running under a NEW model_version never
+        # overwrites a prior version's historical row (design doc section 9:
+        # "model_version별 결과 재현"), while re-running the SAME
+        # (industry_id, asset_id, as_of, model_version) is an idempotent
+        # upsert-in-place (task: "동일 날짜 재실행 멱등성").
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_factor_weekly (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                market TEXT NOT NULL,
+                asset_id TEXT NOT NULL,
+                benchmark_asset_id TEXT,
+                as_of TEXT NOT NULL,
+                price_trade_date TEXT,
+                model_version TEXT NOT NULL,
+                data_cutoff_at TEXT NOT NULL,
+                data_completeness REAL,
+                price_field_used TEXT,
+                return_1m REAL,
+                return_3m REAL,
+                return_6m REAL,
+                return_12m REAL,
+                rel_return_3m REAL,
+                rel_return_6m REAL,
+                rel_return_12m REAL,
+                ma20 REAL,
+                ma60 REAL,
+                ma120 REAL,
+                ma200 REAL,
+                drawdown_from_52w_high REAL,
+                vol_20d REAL,
+                vol_60d REAL,
+                volume_change REAL,
+                relative_strength_score REAL,
+                trend_score REAL,
+                overheat_score REAL,
+                price_risk_score REAL,
+                score_breakdown_json TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, asset_id, as_of, model_version)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_factor_weekly_asset "
+            "ON industry_factor_weekly(asset_id, as_of);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_factor_weekly_industry "
+            "ON industry_factor_weekly(industry_id, as_of);"
+        )
+
+        # industry_price_state_weekly: PRICE_ONLY_* provisional regime per
+        # (industry_id, asset_id, as_of, model_version), with the 2-week
+        # confirmation bookkeeping (consecutive_weeks, previous_state) and
+        # an explainable reason/contributing_factors_json. Never the final
+        # industry_cycle_signal (Phase 2+).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_price_state_weekly (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                market TEXT NOT NULL,
+                asset_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                price_only_state TEXT NOT NULL,
+                confirmation_status TEXT,
+                action_signal TEXT,
+                consecutive_weeks INTEGER,
+                previous_state TEXT,
+                data_completeness REAL,
+                reason TEXT,
+                contributing_factors_json TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, asset_id, as_of, model_version)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_price_state_weekly_asset "
+            "ON industry_price_state_weekly(asset_id, as_of);"
+        )
+
+        # industry_price_signal_performance: post-hoc backtest metrics for a
+        # PRICE_ONLY signal (one row per horizon). Populated only by
+        # explicit backtest calls, never by the weekly factor/state run --
+        # future prices are used here on purpose (design doc section 2), but
+        # this table is never read back into signal generation.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_price_signal_performance (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                market TEXT NOT NULL,
+                asset_id TEXT NOT NULL,
+                benchmark_asset_id TEXT,
+                signal_at TEXT NOT NULL,
+                signal_state TEXT,
+                model_version TEXT NOT NULL,
+                horizon_label TEXT NOT NULL,
+                horizon_trading_days INTEGER,
+                asset_return REAL,
+                benchmark_return REAL,
+                excess_return REAL,
+                mfe REAL,
+                mae REAL,
+                evaluated_at TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, asset_id, signal_at, model_version, horizon_label)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_price_signal_performance_asset "
+            "ON industry_price_signal_performance(asset_id, signal_at);"
+        )
+
+        # --- Industry cycle tracker tables (Phase 2) ---
+        # industry_fundamentals_weekly: one row per (industry_id, as_of,
+        # model_version) storing the 0~100 `fundamentals_score` computed from
+        # FRED/KOSIS industry indicators (committee.industry_cycle.
+        # fundamentals_scoring), its full per-indicator evidence breakdown
+        # (indicators_used_json), and data_completeness/staleness bookkeeping.
+        # This is industry-level (no asset_id) because fundamentals indicators
+        # describe the industry as a whole, not one specific ETF/stock --
+        # distinct from the asset-level `industry_factor_weekly` (Phase 1-B,
+        # price-only). Deliberately NOT named to collide with the design
+        # doc's full 6-factor `industry_factor_weekly` table, since that name
+        # was already committed to the Phase 1-B price-only schema; the full
+        # cycle_score combining price + fundamentals + earnings/flow/macro/
+        # breadth remains a later-phase integration point, not implemented
+        # here. model_version is part of the UNIQUE key for the same
+        # reproducibility reason as the price tables.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_fundamentals_weekly (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                data_cutoff_at TEXT NOT NULL,
+                data_completeness REAL,
+                fundamentals_score REAL,
+                weighted_sum REAL,
+                reason TEXT,
+                indicators_used_json TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, as_of, model_version)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_fundamentals_weekly_industry "
+            "ON industry_fundamentals_weekly(industry_id, as_of);"
+        )
+
+        # --- Industry cycle tracker tables (Phase 3) ---
+        # industry_earnings_breadth_weekly: one row per (industry_id, as_of,
+        # model_version) storing the two remaining INDUSTRY-level sub-scores
+        # from design doc section 7.1 not yet covered by Phase 1-B/2 --
+        # `earnings_revision_score` and `breadth_score` -- computed by
+        # committee.industry_cycle.industry_breadth_scoring from per-stock
+        # financial_metric/stock_consensus/asset_price_daily aggregates.
+        # Evidence (per-ticker breakdown) is stored as JSON for the same
+        # explainability contract as industry_fundamentals_weekly.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_earnings_breadth_weekly (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                data_cutoff_at TEXT NOT NULL,
+                earnings_revision_score REAL,
+                earnings_revision_weighted_sum REAL,
+                earnings_revision_reason TEXT,
+                earnings_revision_data_completeness REAL,
+                earnings_revision_evidence_json TEXT,
+                breadth_score REAL,
+                breadth_weighted_sum REAL,
+                breadth_reason TEXT,
+                breadth_data_completeness REAL,
+                breadth_evidence_json TEXT,
+                n_tickers_considered INTEGER,
+                created_at TEXT,
+                UNIQUE(industry_id, as_of, model_version)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_earnings_breadth_weekly_industry "
+            "ON industry_earnings_breadth_weekly(industry_id, as_of);"
+        )
+
+        # industry_candidate: one row per (industry_id, as_of, model_version,
+        # asset_id) -- design doc section 9's `industry_candidate` table
+        # ("ETF·종목 후보 | 신호, 자산, 순위, 점수, 제외 사유"). Covers BOTH
+        # ETF and STOCK candidates (asset_type distinguishes them) so ETF
+        # quality filtering and stock ranking share one queryable table, per
+        # Phase 3's completion criterion: "산업, ETF, 종목 점수가 분리되고
+        # 모든 제외 사유가 조회된다". `rank` is NULL for excluded assets
+        # (never given a rank number) so a query can trivially separate
+        # "ranked candidates" from "excluded, with reasons" without parsing
+        # excluded_reasons_json.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_candidate (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                data_cutoff_at TEXT NOT NULL,
+                asset_id TEXT NOT NULL,
+                asset_type TEXT NOT NULL,
+                market TEXT,
+                score REAL,
+                rank INTEGER,
+                excluded INTEGER NOT NULL DEFAULT 0,
+                exclusion_reasons_json TEXT,
+                unknown_checks_json TEXT,
+                sub_scores_json TEXT,
+                data_completeness REAL,
+                created_at TEXT,
+                UNIQUE(industry_id, as_of, model_version, asset_id)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_candidate_industry "
+            "ON industry_candidate(industry_id, as_of);"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_candidate_asset "
+            "ON industry_candidate(asset_id, as_of);"
+        )
+
+        # --- Industry cycle signal tables (Phase 4) ---
+        # industry_cycle_signal: the FINAL top-level regime call from design
+        # doc section 7.1/7.3 -- one row per (industry_id, as_of,
+        # model_version) combining `cycle_score` (weighted sum of
+        # fundamentals_score/earnings_revision_score/relative_strength_score/
+        # flow_score/macro_fit_score/breadth_score, via
+        # committee.industry_cycle.cycle_scoring), the 2-week-confirmation
+        # state machine (committee.industry_cycle.cycle_state_machine,
+        # generalizing price_state_machine's PRICE_ONLY_* pattern to the
+        # design doc's 5 real states: 회복 초입/확장/과열/둔화/침체), and the
+        # `confidence = signal_strength * data_completeness *
+        # history_reliability * model_agreement` formula. Distinct from the
+        # Phase 1-B `industry_price_state_weekly` (price-only, asset-level,
+        # provisional) -- this table is the one downstream dashboard/
+        # Telegram/monthly-report consumers should read. model_version is
+        # part of the UNIQUE key for the same reproducibility reason as every
+        # other weekly table.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_cycle_signal (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                data_cutoff_at TEXT NOT NULL,
+                cycle_score REAL,
+                cycle_weighted_sum REAL,
+                cycle_score_reason TEXT,
+                data_completeness REAL,
+                representative_asset_id TEXT,
+                representative_market TEXT,
+                relative_strength_score REAL,
+                trend_score REAL,
+                overheat_score REAL,
+                risk_score REAL,
+                fundamentals_score REAL,
+                earnings_revision_score REAL,
+                breadth_score REAL,
+                flow_score REAL,
+                macro_fit_score REAL,
+                raw_state TEXT,
+                confirmed_state TEXT,
+                confirmation_status TEXT,
+                action_signal TEXT,
+                consecutive_weeks INTEGER,
+                previous_confirmed_state TEXT,
+                signal_strength REAL,
+                history_reliability REAL,
+                model_agreement REAL,
+                confidence REAL,
+                is_actionable INTEGER NOT NULL DEFAULT 0,
+                urgent_flags_json TEXT,
+                score_breakdown_json TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, as_of, model_version)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_cycle_signal_industry "
+            "ON industry_cycle_signal(industry_id, as_of);"
+        )
+
+        # industry_signal_reason: explainable per-component contribution rows
+        # for one industry_cycle_signal row (design doc section 9:
+        # "신호, 지표, 기여점수, 근거"). One row per
+        # (industry_id, as_of, model_version, component_key).
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_signal_reason (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                component_key TEXT NOT NULL,
+                raw_value REAL,
+                weight REAL,
+                contribution REAL,
+                direction TEXT,
+                note TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, as_of, model_version, component_key)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_signal_reason_signal "
+            "ON industry_signal_reason(industry_id, as_of, model_version);"
+        )
+
+        # industry_alert_dispatch_log: dedup record for
+        # `committee.industry_cycle.telegram_notifier` (design doc section
+        # 13 integration test: "텔레그램 중복 알림 방지"). `industry_id` is
+        # the literal string '__WEEKLY__' for the one combined weekly digest
+        # message, or the real industry_id for a per-industry urgent alert
+        # (`alert_type` is one of `urgent_alerts.VALID_URGENT_FLAGS`). A
+        # UNIQUE constraint (not just app-level checking) is the actual
+        # dedup guarantee -- a second attempt to log the same key raises
+        # instead of silently double-sending.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_alert_dispatch_log (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                alert_type TEXT NOT NULL,
+                dispatched_at TEXT,
+                UNIQUE(industry_id, as_of, model_version, alert_type)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_alert_dispatch_log_key "
+            "ON industry_alert_dispatch_log(industry_id, as_of, model_version);"
+        )
+
+        # industry_virtual_position: Phase 4 "가상 포트폴리오" paper-trading
+        # ledger (design doc section 12 Phase 4 item 4, section 2 "성과가
+        # 검증되기 전에는 실전 매매 시스템으로 취급하지 않는다" -- this table
+        # only ever records what a rule-based paper position WOULD have
+        # done; `committee.industry_cycle.virtual_portfolio` never places a
+        # real order. A position opens on a newly-confirmed 회복 초입 signal
+        # and closes on a confirmed 둔화/침체 signal or an urgent risk flag.
+        # UNIQUE(industry_id, model_version, entry_as_of) makes "open on this
+        # week's signal" idempotent across re-runs; once a row exists it is
+        # only ever transitioned OPEN -> CLOSED in place, never re-opened or
+        # deleted, so past signals are never overwritten (completion
+        # criterion: "과거 신호를 덮어쓰지 않고 매주 성과가 누적된다").
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_virtual_position (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                entry_as_of TEXT NOT NULL,
+                entry_trade_date TEXT,
+                asset_id TEXT NOT NULL,
+                asset_market TEXT,
+                entry_price REAL,
+                entry_state TEXT,
+                benchmark_asset_id TEXT,
+                benchmark_entry_price REAL,
+                status TEXT NOT NULL DEFAULT 'OPEN',
+                exit_as_of TEXT,
+                exit_trade_date TEXT,
+                exit_price REAL,
+                exit_reason TEXT,
+                benchmark_exit_price REAL,
+                created_at TEXT,
+                updated_at TEXT,
+                UNIQUE(industry_id, model_version, entry_as_of)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_virtual_position_industry "
+            "ON industry_virtual_position(industry_id, model_version, status);"
+        )
+
 
 def _ensure_column_exists(conn: sqlite3.Connection, *, table: str, column: str, column_ddl: str) -> None:
     """Add a column to an existing table if it's missing (safe migration).
@@ -697,6 +1377,82 @@ def _migrate_monthly_macro_drop_wage_growth(conn: sqlite3.Connection) -> None:
         conn.execute("ALTER TABLE monthly_macro_new RENAME TO monthly_macro;")
     except Exception as exc:  # noqa: BLE001
         print(f"db_schema_migration_failed[monthly_macro_drop_wage_growth]: {exc}")
+
+
+def _migrate_asset_price_daily_split_known_at(conn: sqlite3.Connection) -> None:
+    """Rebuild `asset_price_daily` to split the old single `known_at` column
+    into `available_at` (point-in-time gating) and `collected_at` (audit
+    only). See the long comment above the `CREATE TABLE asset_price_daily`
+    statement in `init_db()` for why this was necessary.
+
+    Decision (documented per Phase 1-A time-contract fix): `known_at` is
+    dropped rather than kept alongside the new columns, because keeping an
+    unused, semantically-wrong column around would invite future code to
+    accidentally read it again (exactly the ambiguity that motivated
+    `_migrate_monthly_macro_drop_wage_growth` above). No real backfill had
+    been run against this table yet at the time of this migration, so the
+    safe fallback below is a precaution rather than a data-loss risk in
+    practice: legacy rows are seeded with `available_at = collected_at =
+    known_at`, which is exactly as leakage-safe (or unsafe) as the old
+    `known_at` value already was — this migration does not make historical
+    rows any less correct than they were before, it only stops the bug from
+    reproducing going forward. A full re-backfill of any such legacy rows
+    would give them a properly policy-computed `available_at`.
+
+    Idempotent (no-op) once `known_at` is gone — including on a fresh DB,
+    since `CREATE TABLE IF NOT EXISTS` above already creates the new schema
+    directly and this function only acts when the old column is found.
+    """
+    try:
+        cols = _table_columns(conn, "asset_price_daily")
+        if not cols or "known_at" not in cols:
+            return
+
+        conn.execute("DROP TABLE IF EXISTS asset_price_daily_new;")
+        conn.execute(
+            """
+            CREATE TABLE asset_price_daily_new (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                asset_id TEXT NOT NULL,
+                market TEXT NOT NULL,
+                currency TEXT NOT NULL,
+                trade_date TEXT NOT NULL,
+                open_price REAL,
+                high_price REAL,
+                low_price REAL,
+                close_price REAL,
+                adj_close_price REAL,
+                volume REAL,
+                adjustment_status TEXT,
+                source TEXT,
+                source_ref TEXT,
+                available_at TEXT,
+                collected_at TEXT,
+                created_at TEXT,
+                UNIQUE(asset_id, trade_date)
+            );
+            """
+        )
+        conn.execute(
+            """
+            INSERT INTO asset_price_daily_new (
+                id, asset_id, market, currency, trade_date,
+                open_price, high_price, low_price, close_price, adj_close_price,
+                volume, adjustment_status, source, source_ref,
+                available_at, collected_at, created_at
+            )
+            SELECT
+                id, asset_id, market, currency, trade_date,
+                open_price, high_price, low_price, close_price, adj_close_price,
+                volume, adjustment_status, source, source_ref,
+                known_at, known_at, created_at
+            FROM asset_price_daily;
+            """
+        )
+        conn.execute("DROP TABLE asset_price_daily;")
+        conn.execute("ALTER TABLE asset_price_daily_new RENAME TO asset_price_daily;")
+    except Exception as exc:  # noqa: BLE001
+        print(f"db_schema_migration_failed[asset_price_daily_split_known_at]: {exc}")
 
 
 def upsert_market_daily(

@@ -1,0 +1,126 @@
+{
+  "_comment": "Phase 3 stock/ETF candidate model (docs/industry_cycle_mvp_design.md section 8.2 stock_score formula + section 12 Phase 3). Every sub-score group below (earnings_quality, estimate_revision, relative_strength, financial_health, liquidity) is its own weighted_logistic_score computation over small, naturally-centered raw ratios (returns, growth rates, margins). Their resulting 0~100 outputs are then re-combined -- baseline-centered at 50 -- into the top-level `stock_score` group, mirroring how price_scoring.py's sub-scores compose. `industry_earnings_revision`/`industry_breadth` are separate INDUSTRY-level (not per-stock) score groups for design doc section 7.1's `earnings_revision_score`/`breadth_score`.",
+  "model_version": "stock_candidate_v1",
+
+  "earnings_quality": {
+    "scale_k": 6.0,
+    "min_components": 1,
+    "components": {
+      "revenue_growth_yoy": 0.35,
+      "operating_margin_trend": 0.35,
+      "roe": 0.30
+    },
+    "baselines": { "roe": 0.08 }
+  },
+  "estimate_revision": {
+    "scale_k": 5.0,
+    "min_components": 1,
+    "components": {
+      "target_price_change_pct": 0.5,
+      "recommendation_change": 0.3,
+      "analyst_count_change_pct": 0.2
+    }
+  },
+  "relative_strength": {
+    "scale_k": 3.0,
+    "min_components": 1,
+    "components": {
+      "rel_return_3m": 0.3,
+      "rel_return_6m": 0.4,
+      "rel_return_12m": 0.3
+    }
+  },
+  "financial_health": {
+    "scale_k": 2.5,
+    "min_components": 1,
+    "components": {
+      "debt_ratio_inverse": 0.4,
+      "net_margin": 0.35,
+      "fcf_margin": 0.25
+    }
+  },
+  "liquidity": {
+    "_comment": "turnover_level's raw input is log10(avg 20d $ volume), naturally centered around ~6 (≈$1M/day) rather than 0, so it needs a baseline like fundamentals' PMI-style indicators do.",
+    "scale_k": 3.0,
+    "min_components": 1,
+    "components": {
+      "volume_change": 0.6,
+      "turnover_level": 0.4
+    },
+    "baselines": { "turnover_level": 6.0 }
+  },
+
+  "stock_score": {
+    "scale_k": 0.08,
+    "min_components": 2,
+    "components": {
+      "earnings_quality": 0.30,
+      "estimate_revision": 0.25,
+      "relative_strength": 0.20,
+      "financial_health": 0.15,
+      "liquidity": 0.10
+    },
+    "baselines": {
+      "earnings_quality": 50.0,
+      "estimate_revision": 50.0,
+      "relative_strength": 50.0,
+      "financial_health": 50.0,
+      "liquidity": 50.0
+    }
+  },
+
+  "risk_penalty": {
+    "high_debt_ratio_threshold": 3.0,
+    "high_debt_ratio_points": 8.0,
+    "sustained_loss_points": 12.0,
+    "excessive_short_term_surge_points": 10.0,
+    "max_total_points": 30.0
+  },
+
+  "exclusion": {
+    "min_data_completeness_for_score": 0.34,
+    "sustained_loss_periods": 2,
+    "excessive_short_term_surge_pct_3m": 0.60,
+    "min_history_periods_financial": 2,
+    "min_history_snapshots_consensus": 5,
+    "min_liquidity_percentile": 0.10,
+    "min_listing_days_stock": 180
+  },
+
+  "industry_earnings_revision": {
+    "scale_k": 4.0,
+    "min_components": 1,
+    "components": {
+      "pct_improving_earnings": 0.5,
+      "consensus_target_price_change": 0.3,
+      "consensus_recommendation_improve_pct": 0.2
+    },
+    "baselines": {
+      "pct_improving_earnings": 0.5,
+      "consensus_recommendation_improve_pct": 0.5
+    }
+  },
+  "industry_breadth": {
+    "scale_k": 4.0,
+    "min_components": 1,
+    "components": {
+      "pct_positive_relative_strength": 0.5,
+      "pct_above_200ma": 0.5
+    },
+    "baselines": {
+      "pct_positive_relative_strength": 0.5,
+      "pct_above_200ma": 0.5
+    }
+  },
+
+  "etf_quality": {
+    "min_aum_usd_equivalent": 50000000,
+    "max_expense_ratio": 0.0075,
+    "max_spread_bp": 50,
+    "exclude_leveraged_inverse": true,
+    "min_listing_days": 180,
+    "min_industry_purity_pct": 0.5
+  },
+
+  "consensus_revision_lookback_days": 60
+}

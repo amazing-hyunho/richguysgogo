@@ -1,0 +1,197 @@
+{
+  "_comment": "Phase 1-A price backfill universe (docs/industry_cycle_mvp_design.md section 12, Phase 1 item 1 and section 15 recommendation 4: '한국·미국 대표 산업 ETF 소규모 샘플'). 'benchmarks' are the two country benchmarks used for relative-strength comparisons later (design doc section 2: KOSPI / S&P 500). 'assets' is intentionally a SMALL sample (semiconductors only, matching config/industry_etfs.json's Phase 0 sample) to validate the asset_price_daily contract end-to-end before any real backfill is executed. provider/symbol let committee.industry_cycle.price_backfill resolve which IndustryPriceProvider to call and what symbol to request from it; asset_id is the internal identifier stored in asset_price_daily and may differ from the provider symbol for non-ticker ids like benchmarks.",
+  "version": 1,
+  "benchmarks": [
+    {
+      "asset_id": "KOSPI",
+      "market": "KR",
+      "currency": "KRW",
+      "role": "benchmark",
+      "provider": "yahoo_chart",
+      "symbol": "^KS11",
+      "name_kr": "코스피"
+    },
+    {
+      "asset_id": "SP500",
+      "market": "US",
+      "currency": "USD",
+      "role": "benchmark",
+      "provider": "yahoo_chart",
+      "symbol": "^GSPC",
+      "name_kr": "S&P500"
+    }
+  ],
+  "assets": [
+    {
+      "asset_id": "091160.KS",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "ETF",
+      "industry_id": "semiconductors",
+      "provider": "yahoo_chart",
+      "symbol": "091160.KS",
+      "name_kr": "KODEX 반도체"
+    },
+    {
+      "asset_id": "SOXX",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "ETF",
+      "industry_id": "semiconductors",
+      "provider": "yahoo_chart",
+      "symbol": "SOXX",
+      "name_kr": "iShares Semiconductor ETF"
+    },
+    {
+      "_comment": "Phase 3 (docs/industry_cycle_mvp_design.md section 12, Phase 3 item 1/3): small real-data stock sample chosen because these exact tickers already have real financial_metric/stock_consensus rows in the production DB, so stock_score/relative_strength/breadth can be verified with real numbers instead of only synthetic test data. asset_id stays the bare ticker (matches financial_metric.ticker/stock_consensus.ticker for easy joins); symbol carries the Yahoo Finance suffix.",
+      "asset_id": "005930",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "semiconductors",
+      "provider": "yahoo_chart",
+      "symbol": "005930.KS",
+      "name_kr": "삼성전자"
+    },
+    {
+      "asset_id": "000660",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "semiconductors",
+      "provider": "yahoo_chart",
+      "symbol": "000660.KS",
+      "name_kr": "SK하이닉스"
+    },
+    {
+      "asset_id": "035420",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "software_cloud",
+      "provider": "yahoo_chart",
+      "symbol": "035420.KS",
+      "name_kr": "NAVER"
+    },
+    {
+      "asset_id": "035720",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "software_cloud",
+      "provider": "yahoo_chart",
+      "symbol": "035720.KS",
+      "name_kr": "카카오"
+    },
+    {
+      "asset_id": "005380",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "auto_parts",
+      "provider": "yahoo_chart",
+      "symbol": "005380.KS",
+      "name_kr": "현대차"
+    },
+    {
+      "asset_id": "000270",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "auto_parts",
+      "provider": "yahoo_chart",
+      "symbol": "000270.KS",
+      "name_kr": "기아"
+    },
+    {
+      "asset_id": "005490",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "steel_nonferrous",
+      "provider": "yahoo_chart",
+      "symbol": "005490.KS",
+      "name_kr": "POSCO홀딩스"
+    },
+    {
+      "asset_id": "006400",
+      "market": "KR",
+      "currency": "KRW",
+      "asset_type": "STOCK",
+      "industry_id": "hardware_components",
+      "provider": "yahoo_chart",
+      "symbol": "006400.KS",
+      "name_kr": "삼성SDI"
+    },
+    {
+      "asset_id": "NVDA",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "semiconductors",
+      "provider": "yahoo_chart",
+      "symbol": "NVDA",
+      "name_kr": "엔비디아"
+    },
+    {
+      "asset_id": "AVGO",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "semiconductors",
+      "provider": "yahoo_chart",
+      "symbol": "AVGO",
+      "name_kr": "브로드컴"
+    },
+    {
+      "asset_id": "GOOGL",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "software_cloud",
+      "provider": "yahoo_chart",
+      "symbol": "GOOGL",
+      "name_kr": "알파벳"
+    },
+    {
+      "asset_id": "MSFT",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "software_cloud",
+      "provider": "yahoo_chart",
+      "symbol": "MSFT",
+      "name_kr": "마이크로소프트"
+    },
+    {
+      "asset_id": "TSLA",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "auto_parts",
+      "provider": "yahoo_chart",
+      "symbol": "TSLA",
+      "name_kr": "테슬라"
+    },
+    {
+      "asset_id": "AAPL",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "hardware_components",
+      "provider": "yahoo_chart",
+      "symbol": "AAPL",
+      "name_kr": "애플"
+    },
+    {
+      "asset_id": "JPM",
+      "market": "US",
+      "currency": "USD",
+      "asset_type": "STOCK",
+      "industry_id": "banks",
+      "provider": "yahoo_chart",
+      "symbol": "JPM",
+      "name_kr": "JP모건"
+    }
+  ]
+}

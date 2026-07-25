@@ -1,0 +1,169 @@
+{
+  "_comment": "Phase 0 format sample for industry_asset_map (docs/industry_cycle_mvp_design.md section 9). This confirms the ETF/stock -> industry_id mapping FORMAT only; it is NOT a backfilled universe (that is Phase 1 item 1: 'ETF/종목 소규모 샘플'). Entries here are illustrative and intentionally few. asset_type is 'ETF' or 'STOCK'; market is 'KR' or 'US'; weight expresses representativeness within the industry (1.0 = sole/primary representative), not a portfolio weight.",
+  "version": 1,
+  "mappings": [
+    {
+      "asset_id": "091160.KS",
+      "asset_type": "ETF",
+      "market": "KR",
+      "industry_id": "semiconductors",
+      "weight": 1.0,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "SOXX",
+      "asset_type": "ETF",
+      "market": "US",
+      "industry_id": "semiconductors",
+      "weight": 1.0,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "005930",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "semiconductors",
+      "weight": 0.6,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "105560",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "banks",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "_comment": "Phase 3 real-data stock sample -- see config/industry_price_universe.json for the matching price-backfill entries and rationale (tickers chosen to already have real financial_metric/stock_consensus rows).",
+      "asset_id": "000660",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "semiconductors",
+      "weight": 0.4,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "035420",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "software_cloud",
+      "weight": 0.5,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "035720",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "software_cloud",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "005380",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "auto_parts",
+      "weight": 0.5,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "000270",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "auto_parts",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "005490",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "steel_nonferrous",
+      "weight": 0.5,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "006400",
+      "asset_type": "STOCK",
+      "market": "KR",
+      "industry_id": "hardware_components",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "NVDA",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "semiconductors",
+      "weight": 0.5,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "AVGO",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "semiconductors",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "GOOGL",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "software_cloud",
+      "weight": 0.4,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "MSFT",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "software_cloud",
+      "weight": 0.4,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "TSLA",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "auto_parts",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "AAPL",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "hardware_components",
+      "weight": 0.5,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "asset_id": "JPM",
+      "asset_type": "STOCK",
+      "market": "US",
+      "industry_id": "banks",
+      "weight": 0.4,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    }
+  ]
+}

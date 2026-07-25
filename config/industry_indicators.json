@@ -1,0 +1,102 @@
+{
+  "_comment": "Phase 0 catalog format + Phase 2 real free-source indicators (docs/industry_cycle_mvp_design.md section 9/12). 'indicators' are indicator_catalog definitions (provider, source series id, unit, frequency, transform -- how the RAW series is converted before storage: 'level' stores as-is, 'yoy_pct'/'mom_pct' are computed by committee.industry_cycle.fundamentals_ingest from the provider's raw history) plus an optional 'baseline' (that SERIES' own neutral/typical raw value, e.g. 50 for a diffusion index like PMI; defaults to 0.0 when omitted, correct for already-zero-centered transforms like yoy_pct/mom_pct). 'industry_indicator_mappings' says which indicators feed which industry's fundamentals_score, with 'direction' ('positive': rising value raises outlook, 'negative': rising value lowers it) and 'weight'. Only a deliberately small, verifiable set of real FRED series is populated here for Phase 2 -- per task constraint '산업 수를 억지로 채우지 않으며' / '기준 미달 산업을 추천하지 말 것', most industries in industry_taxonomy.json stay coverage_status=INSUFFICIENT rather than being force-mapped to indicators that don't really represent them. Loaded/validated via committee.industry_cycle.indicator_catalog.load_indicator_config().",
+  "version": 2,
+  "indicators": [
+    {
+      "indicator_id": "us_ism_manufacturing_pmi",
+      "provider": "FRED",
+      "series_id": "NAPM",
+      "unit": "index",
+      "frequency": "monthly",
+      "transform": "level",
+      "baseline": 50.0,
+      "description": "US ISM Manufacturing PMI (leading indicator for industrial activity; neutral=50). NOTE (verified live 2026-07-25): NAPM does not exist in ALFRED ('series does not exist in ALFRED but may exist in FRED' -- ISM's PMI is proprietary and not vintage-tracked on FRED, matching the existing scrape-fallback in committee/tools/fred_monthly_provider.py). fundamentals_ingest.ingest_indicator correctly isolates this as status=skipped/provider_unavailable rather than failing; industries mapped to this indicator fall back to fewer available components (and, if below min_components, to INSUFFICIENT_DATA) until a vintage-aware PMI substitute is found."
+    },
+    {
+      "indicator_id": "us_industrial_production_index",
+      "provider": "FRED",
+      "series_id": "INDPRO",
+      "unit": "index",
+      "frequency": "monthly",
+      "transform": "yoy_pct",
+      "description": "US Industrial Production Index, YoY %% change (FRED: INDPRO)."
+    },
+    {
+      "indicator_id": "us_manufacturers_new_orders",
+      "provider": "FRED",
+      "series_id": "AMTMNO",
+      "unit": "USD millions",
+      "frequency": "monthly",
+      "transform": "yoy_pct",
+      "description": "US Manufacturers' New Orders, YoY %% change (FRED: AMTMNO) -- proxy for order/backlog momentum."
+    },
+    {
+      "indicator_id": "us_manufacturers_inventories",
+      "provider": "FRED",
+      "series_id": "AMTMTI",
+      "unit": "USD millions",
+      "frequency": "monthly",
+      "transform": "yoy_pct",
+      "description": "US Manufacturers' Total Inventories, YoY %% change (FRED: AMTMTI). Direction is negative for most industries: inventory build-up faster than demand is a bearish signal."
+    },
+    {
+      "indicator_id": "kr_semiconductor_production_index",
+      "provider": "KOSIS",
+      "series_id": "TBD",
+      "unit": "index",
+      "frequency": "monthly",
+      "transform": "yoy_pct",
+      "description": "Korea semiconductor manufacturing production index, YoY change. series_id (orgId:tblId:itmId) to be confirmed against the KOSIS statistical table catalog once KOSIS_API_KEY is available -- see committee.tools.kosis_industry_provider module docstring for why this cannot be resolved without a live key."
+    }
+  ],
+  "industry_indicator_mappings": [
+    {
+      "industry_id": "semiconductors",
+      "indicator_id": "us_ism_manufacturing_pmi",
+      "direction": "positive",
+      "weight": 0.34,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "industry_id": "semiconductors",
+      "indicator_id": "us_manufacturers_new_orders",
+      "direction": "positive",
+      "weight": 0.33,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "industry_id": "semiconductors",
+      "indicator_id": "kr_semiconductor_production_index",
+      "direction": "positive",
+      "weight": 0.33,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "industry_id": "machinery_industrials",
+      "indicator_id": "us_ism_manufacturing_pmi",
+      "direction": "positive",
+      "weight": 0.4,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "industry_id": "machinery_industrials",
+      "indicator_id": "us_industrial_production_index",
+      "direction": "positive",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    },
+    {
+      "industry_id": "machinery_industrials",
+      "indicator_id": "us_manufacturers_inventories",
+      "direction": "negative",
+      "weight": 0.3,
+      "valid_from": "2026-07-25",
+      "valid_to": null
+    }
+  ]
+}

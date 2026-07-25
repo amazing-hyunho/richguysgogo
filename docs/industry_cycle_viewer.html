@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>산업 사이클 추적기 MVP 설계</title>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4f7fb;
+      --paper: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --line: #dce3ed;
+      --accent: #2457d6;
+      --code: #f1f4f9;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Pretendard, "Noto Sans KR", system-ui, -apple-system, sans-serif;
+      line-height: 1.72;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(10px);
+    }
+    header strong { font-size: 15px; }
+    header span { color: var(--muted); font-size: 13px; }
+    main {
+      width: min(1080px, calc(100% - 32px));
+      margin: 32px auto 72px;
+      padding: clamp(24px, 5vw, 64px);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--paper);
+      box-shadow: 0 18px 60px rgba(31, 49, 84, 0.08);
+    }
+    h1, h2, h3 { line-height: 1.3; scroll-margin-top: 76px; }
+    h1 { margin-top: 0; font-size: clamp(30px, 5vw, 46px); }
+    h2 {
+      margin-top: 2.2em;
+      padding-bottom: 0.35em;
+      border-bottom: 2px solid var(--line);
+      font-size: 25px;
+    }
+    h3 { margin-top: 1.8em; font-size: 19px; }
+    a { color: var(--accent); }
+    blockquote {
+      margin: 20px 0;
+      padding: 10px 18px;
+      border-left: 4px solid var(--accent);
+      background: #f5f8ff;
+      color: #344054;
+    }
+    table {
+      display: block;
+      width: 100%;
+      overflow-x: auto;
+      border-collapse: collapse;
+      margin: 18px 0 26px;
+      font-size: 14px;
+    }
+    th, td {
+      min-width: 140px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #edf3ff; }
+    code {
+      padding: 0.15em 0.35em;
+      border-radius: 5px;
+      background: var(--code);
+      font-family: "Cascadia Code", Consolas, monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      overflow-x: auto;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #111827;
+      color: #e5e7eb;
+    }
+    pre code { padding: 0; background: transparent; }
+    #error {
+      display: none;
+      padding: 16px;
+      border: 1px solid #f2b8b5;
+      border-radius: 8px;
+      background: #fff1f0;
+      color: #8a1c17;
+    }
+    @media (max-width: 640px) {
+      header { padding: 10px 16px; }
+      header span { display: none; }
+      main { width: 100%; margin: 0; border: 0; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>산업 사이클 추적기</strong>
+    <span>원본: industry_cycle_mvp_design.md</span>
+  </header>
+  <main>
+    <div id="error"></div>
+    <article id="content">문서를 불러오는 중입니다…</article>
+  </main>
+  <script>
+    async function renderDocument() {
+      const content = document.querySelector("#content");
+      const error = document.querySelector("#error");
+      try {
+        const response = await fetch("./industry_cycle_mvp_design.md", { cache: "no-store" });
+        if (!response.ok) throw new Error(`문서 요청 실패 (${response.status})`);
+        const source = await response.text();
+        marked.setOptions({ gfm: true, breaks: false });
+        content.innerHTML = marked.parse(source);
+      } catch (reason) {
+        content.textContent = "";
+        error.style.display = "block";
+        error.textContent = `Markdown을 표시하지 못했습니다: ${reason.message}`;
+      }
+    }
+    renderDocument();
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{
+  "_comment": "Phase 1-B price-only scoring model config (docs/industry_cycle_mvp_design.md section 7.1/7.2/7.3 applied to price-only inputs; section 12 Phase 1 item 4: '과열·추세 훼손 점수 계산'). Every weight/threshold used by committee.industry_cycle.price_scoring and price_state_machine lives here, never hardcoded in code, so tuning the model never requires a code change (only a new model_version). Changing this file's values without bumping model_version will make old industry_factor_weekly/industry_price_state_weekly rows non-reproducible from the current config -- always bump model_version when the numbers below change.",
+  "model_version": "price_only_v1",
+  "return_windows_trading_days": {
+    "1m": 21,
+    "3m": 63,
+    "6m": 126,
+    "12m": 252
+  },
+  "moving_average_windows": [20, 60, 120, 200],
+  "volatility_windows": [20, 60],
+  "week_52_window_trading_days": 252,
+  "volume_change_windows": {
+    "recent": 20,
+    "prior": 60
+  },
+  "score_weights": {
+    "relative_strength": {
+      "_comment": "Higher scale_k makes the logistic squash steeper (a smaller weighted relative-return moves the score further from 50). components are decimal fractions (0.05 == +5%).",
+      "components": {
+        "rel_return_3m": 0.3,
+        "rel_return_6m": 0.4,
+        "rel_return_12m": 0.3
+      },
+      "scale_k": 4.0,
+      "min_components": 1
+    },
+    "trend": {
+      "_comment": "components are (price / moving_average - 1); longer MAs weigh more because they confirm a more durable trend.",
+      "components": {
+        "ma20_gap": 0.15,
+        "ma60_gap": 0.25,
+        "ma120_gap": 0.3,
+        "ma200_gap": 0.3
+      },
+      "scale_k": 6.0,
+      "min_components": 2
+    },
+    "overheat": {
+      "_comment": "ma200_gap reused as a long-term extension proxy; return_1m captures short-term acceleration; volume_change captures a turnover surge.",
+      "components": {
+        "ma200_gap": 0.3,
+        "return_1m": 0.4,
+        "volume_change": 0.3
+      },
+      "scale_k": 6.0,
+      "min_components": 2
+    },
+    "price_risk": {
+      "_comment": "drawdown_severity = -(drawdown_from_52w_high), always >= 0. vol_60d's weight is set much higher than drawdown/below_ma_ratio because its natural magnitude (~0.01-0.05) is roughly 10x smaller; this is a deliberate scale-compensation choice of a rule-based v1 model, not a statistically normalized one -- see price_scoring.py module docstring. Unlike the other three score groups (whose raw inputs are already centered at 0), every price_risk raw component is >= 0 by construction, so 'baselines' defines what a NEUTRAL/typical value looks like for each -- subtracted before weighting so the score can also signal below-average risk (score < 50), not just above-average.",
+      "components": {
+        "drawdown_severity": 1.0,
+        "vol_60d": 10.0,
+        "below_ma_ratio": 1.0
+      },
+      "baselines": {
+        "drawdown_severity": 0.10,
+        "vol_60d": 0.02,
+        "below_ma_ratio": 0.5
+      },
+      "scale_k": 5.0,
+      "min_components": 2
+    }
+  },
+  "state_thresholds": {
+    "overheat_score_min": 70,
+    "risk_score_min_for_deteriorating": 60,
+    "deteriorating_trend_max": 40,
+    "expansion_relative_strength_min": 60,
+    "expansion_trend_min": 60,
+    "recovery_relative_strength_min": 35,
+    "recovery_relative_strength_max": 60,
+    "recovery_trend_min": 50,
+    "weak_relative_strength_max": 35,
+    "weak_trend_max": 40,
+    "neutral_relative_strength_midpoint": 50
+  },
+  "confirmation": {
+    "weeks_required_recovery": 2,
+    "weeks_required_overheat_warning": 2,
+    "weeks_required_deteriorating_confirmed": 2
+  },
+  "min_data_completeness_for_state": 0.5
+}

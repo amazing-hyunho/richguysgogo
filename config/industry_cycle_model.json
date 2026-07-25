@@ -1,0 +1,55 @@
+{
+  "_comment": "Phase 4 (docs/industry_cycle_mvp_design.md section 7.1/7.3, section 9 cycle_model_config): top-level cycle_score combining the 6 industry sub-scores from Phase 1-B/2/3, the final 5-state regime machine, and the confidence formula. flow_score/macro_fit_score are currently ALWAYS None (see committee/industry_cycle/cycle_scoring.py module docstring for why -- no per-industry flow or macro-sensitivity data source is built yet), so cycle_score is computed from the 4 available components with weight renormalization (scoring_common.weighted_logistic_score).",
+  "model_version": "cycle_v1",
+  "cycle_score": {
+    "scale_k": 0.06,
+    "min_components": 2,
+    "components": {
+      "fundamentals_score": 0.25,
+      "earnings_revision_score": 0.20,
+      "relative_strength_score": 0.20,
+      "flow_score": 0.15,
+      "macro_fit_score": 0.10,
+      "breadth_score": 0.10
+    },
+    "baselines": {
+      "fundamentals_score": 50.0,
+      "earnings_revision_score": 50.0,
+      "relative_strength_score": 50.0,
+      "flow_score": 50.0,
+      "macro_fit_score": 50.0,
+      "breadth_score": 50.0
+    }
+  },
+  "state_thresholds": {
+    "recovery_cycle_score_min": 45.0,
+    "recovery_cycle_score_max": 62.0,
+    "recovery_change_min": 1.5,
+    "expansion_cycle_score_min": 62.0,
+    "expansion_change_min": -1.0,
+    "overheat_cycle_score_min": 60.0,
+    "overheat_score_min": 65.0,
+    "deteriorating_change_max": -1.5,
+    "recession_cycle_score_max": 40.0,
+    "neutral_cycle_score_midpoint": 50.0
+  },
+  "confirmation": {
+    "weeks_required_recovery": 2,
+    "weeks_required_overheat_warning": 2,
+    "weeks_required_deteriorating_confirmed": 2
+  },
+  "confidence": {
+    "signal_strength_scale": 15.0,
+    "min_listing_days_full_history_reliability": 504,
+    "unknown_history_reliability_default": 0.5,
+    "model_agreement_conflict_penalty": 0.6,
+    "model_agreement_unknown_value": 0.85,
+    "min_confidence_for_action": 0.35
+  },
+  "urgent_alert": {
+    "earnings_shock_score_drop_min": 15.0,
+    "price_crash_return_1m_max": -0.15,
+    "breadth_collapse_score_max": 15.0,
+    "confidence_drop_min": 0.30
+  }
+}

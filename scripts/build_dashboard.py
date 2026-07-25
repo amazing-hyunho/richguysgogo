@@ -635,6 +635,117 @@ def load_stock_news_summary(per_ticker: int = 15) -> dict[str, object]:
     return result
 
 
+def load_industry_cycle_dashboard_data() -> dict[str, object]:
+    """Phase 4 industry-cycle dashboard tab payload (design doc section 11.1
+    items 1-6, 8-9; item 7 is included as an empty-until-real-time-elapses
+    per-industry history since MVP has only just started collecting weekly
+    signals).
+
+    Read-only; every sub-lookup is wrapped so a Phase 4 table being absent or
+    empty (e.g. before the first weekly run) renders a clean empty state
+    instead of raising (design doc integration test: "대시보드 데이터가
+    없어도 빈 상태를 정상 렌더링").
+    """
+    try:
+        from committee.industry_cycle import (
+            candidate_repository,
+            cycle_model_config,
+            cycle_repository,
+            repository as industry_repository,
+            stock_model_config,
+            virtual_portfolio,
+        )
+    except Exception as exc:
+        print(f"industry_cycle_dashboard_import_failed: {exc}")
+        return {"model_version": None, "as_of": None, "industries": [], "virtual_portfolio": None}
+
+    try:
+        cfg = cycle_model_config.load_cycle_model_config()
+        model_version = cfg["model_version"]
+    except Exception as exc:
+        print(f"industry_cycle_dashboard_config_failed: {exc}")
+        return {"model_version": None, "as_of": None, "industries": [], "virtual_portfolio": None}
+
+    try:
+        candidate_model_version = stock_model_config.load_stock_model_config()["model_version"]
+    except Exception:
+        candidate_model_version = None
+
+    try:
+        industries = industry_repository.list_industries(active_only=True, db_path=DB_PATH)
+    except Exception as exc:
+        print(f"industry_cycle_dashboard_industries_failed: {exc}")
+        industries = []
+
+    result_industries: list[dict[str, object]] = []
+    for industry in industries:
+        industry_id = industry.get("industry_id")
+        try:
+            signals = cycle_repository.list_cycle_signals(
+                industry_id=industry_id, model_version=model_version, db_path=DB_PATH
+            )
+        except Exception:
+            signals = []
+        if not signals:
+            continue
+        latest = signals[-1]
+        # Keep up to five years of weekly observations for the detail chart.
+        # A newly-started installation will naturally return only the weeks
+        # collected so far; the UI labels the actual available period.
+        history = signals[-260:]
+
+        all_reasons: list[dict[str, object]] = []
+        try:
+            all_reasons = cycle_repository.list_signal_reasons(
+                industry_id, latest["as_of"], model_version, db_path=DB_PATH
+            )
+        except Exception:
+            all_reasons = []
+
+        candidates: dict[str, list[dict[str, object]]] = {"etf": [], "stock": []}
+        if candidate_model_version:
+            try:
+                rows = candidate_repository.list_industry_candidates(
+                    industry_id, latest["as_of"], candidate_model_version, include_excluded=False, db_path=DB_PATH
+                )
+                candidates["etf"] = [r for r in rows if r.get("asset_type") == "ETF"][:2]
+                candidates["stock"] = [r for r in rows if r.get("asset_type") == "STOCK"][:3]
+            except Exception:
+                candidates = {"etf": [], "stock": []}
+
+        result_industries.append(
+            {
+                "industry_id": industry_id,
+                "name_kr": industry.get("name_kr"),
+                "name_en": industry.get("name_en"),
+                "country_scope": industry.get("country_scope", []),
+                "latest_signal": latest,
+                "history": history,
+                "top_reasons": all_reasons[:5],
+                "all_reasons": all_reasons,
+                "candidates": candidates,
+            }
+        )
+
+    as_of_values = [item["latest_signal"]["as_of"] for item in result_industries if item.get("latest_signal")]
+    latest_as_of = max(as_of_values) if as_of_values else None
+
+    try:
+        vp_summary = virtual_portfolio.summarize_portfolio_performance(
+            model_version, today=date.today().isoformat(), db_path=DB_PATH
+        )
+    except Exception as exc:
+        print(f"industry_cycle_dashboard_virtual_portfolio_failed: {exc}")
+        vp_summary = None
+
+    return {
+        "model_version": model_version,
+        "as_of": latest_as_of,
+        "industries": result_industries,
+        "virtual_portfolio": vp_summary,
+    }
+
+
 def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     init_db(DB_PATH)
@@ -692,6 +803,7 @@ def main() -> None:
             "stock_news": load_stock_news_summary(),
             "thesis_monitor": load_thesis_monitor_data(DB_PATH),
             "fear_greed": _fetch_fear_greed(),
+            "industry_cycle": load_industry_cycle_dashboard_data(),
         }
     finally:
         conn.close()

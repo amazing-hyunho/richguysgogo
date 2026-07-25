@@ -39,6 +39,11 @@ def _fred_key() -> str | None:
     return key
 
 
+def fred_api_key() -> str | None:
+    """Public accessor for the configured `FRED_API_KEY` (trimmed/quote-stripped), or None."""
+    return _fred_key()
+
+
 def _warn_no_key_once() -> None:
     global _WARNED_NO_KEY  # noqa: PLW0603
     if _WARNED_NO_KEY:

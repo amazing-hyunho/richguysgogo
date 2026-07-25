@@ -1,0 +1,208 @@
+{
+  "_comment": "Phase 0 internal industry taxonomy (docs/industry_cycle_mvp_design.md section 6.1). industry_id is the stable internal key; external classification codes are attached via 'aliases' and synced into industry_alias, never used as the primary key directly. coverage_status starts as INSUFFICIENT for every industry until representative ETFs/data are verified in Phase 1+ (per section 6.1: '대표 ETF나 핵심 데이터가 없는 산업은 coverage_status=INSUFFICIENT로 둔다').",
+  "version": 1,
+  "industries": [
+    {
+      "industry_id": "semiconductors",
+      "name_kr": "반도체",
+      "name_en": "Semiconductors",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": [
+        {"provider": "GICS", "external_code": "453010", "valid_from": "2026-07-25", "valid_to": null}
+      ]
+    },
+    {
+      "industry_id": "hardware_components",
+      "name_kr": "하드웨어·전자부품",
+      "name_en": "Hardware & Electronic Components",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "software_cloud",
+      "name_kr": "소프트웨어·클라우드",
+      "name_en": "Software & Cloud",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "telecom_services",
+      "name_kr": "통신서비스",
+      "name_en": "Telecom Services",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "auto_parts",
+      "name_kr": "자동차·부품",
+      "name_en": "Automobiles & Parts",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "shipbuilding",
+      "name_kr": "조선",
+      "name_en": "Shipbuilding",
+      "country_scope": ["KR"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "machinery_industrials",
+      "name_kr": "기계·산업재",
+      "name_en": "Machinery & Industrials",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "aerospace_defense",
+      "name_kr": "항공·방산",
+      "name_en": "Aerospace & Defense",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "transport_logistics",
+      "name_kr": "운송·물류",
+      "name_en": "Transportation & Logistics",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "chemicals",
+      "name_kr": "화학",
+      "name_en": "Chemicals",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "steel_nonferrous",
+      "name_kr": "철강·비철금속",
+      "name_en": "Steel & Non-ferrous Metals",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "construction_materials",
+      "name_kr": "건설·건자재",
+      "name_en": "Construction & Building Materials",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "power_utilities",
+      "name_kr": "전력·유틸리티",
+      "name_en": "Power & Utilities",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "energy",
+      "name_kr": "에너지",
+      "name_en": "Energy",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "banks",
+      "name_kr": "은행",
+      "name_en": "Banks",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": [
+        {"provider": "GICS", "external_code": "4010", "valid_from": "2026-07-25", "valid_to": null}
+      ]
+    },
+    {
+      "industry_id": "insurance",
+      "name_kr": "보험",
+      "name_en": "Insurance",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "securities",
+      "name_kr": "증권",
+      "name_en": "Securities & Brokerage",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "real_estate",
+      "name_kr": "부동산",
+      "name_en": "Real Estate",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "healthcare_bio",
+      "name_kr": "헬스케어·바이오",
+      "name_en": "Healthcare & Biotech",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "consumer_staples",
+      "name_kr": "필수소비재",
+      "name_en": "Consumer Staples",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "consumer_discretionary",
+      "name_kr": "경기소비재",
+      "name_en": "Consumer Discretionary",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    },
+    {
+      "industry_id": "media_entertainment",
+      "name_kr": "미디어·엔터테인먼트",
+      "name_en": "Media & Entertainment",
+      "country_scope": ["KR", "US"],
+      "active": true,
+      "coverage_status": "INSUFFICIENT",
+      "aliases": []
+    }
+  ]
+}
