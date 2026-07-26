@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -5.72%, USD/KRW 1462.59. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -5.72,
+    "usdkrw": 1462.593384
+  },
+  "flow_summary": {
+    "note": "외국인 -33998억, 기관 -23094억, 개인 +56663억 | KOSPI(외 -32683, 기관 -19514, 개인 +51782) KOSDAQ(외 -1315, 기관 -3580, 개인 +4881)",
+    "foreign_net": -33998.0,
+    "institution_net": -23094.0,
+    "retail_net": 56663.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-26",
+    "market": {
+      "KOSPI": {
+        "individual": 51782,
+        "foreign": -32683,
+        "institution": -19514
+      },
+      "KOSDAQ": {
+        "individual": 4881,
+        "foreign": -1315,
+        "institution": -3580
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] [주末머니]美 국채금리 상승…\"AI주 줄이고 금융·방어주 늘릴 때\" - 네이트",
+    "[환율/달러] 뛰는 유가에 물가 불안 우려…금리·관세·환율도 '경고등' - 연합뉴스",
+    "[인플레이션] 유가 폭등에 트럼프 2기 美 국채 금리 최고치…이란 전쟁 재발에 세계 금융시장 요동 - 글로벌이코노믹",
+    "[에너지/원자재] 제이알·중앙 사태에 유가 급등까지…회사채 금리 2년8개월만에 최고 - 머니투데이 - 머니투데이",
+    "[정책/테마] 美무역법 301조 절반은 관세 안물었다…'과잉생산' 협상력 관건 - 매일경제 마켓"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6690.62,
+      "kosdaq": 748.22,
+      "kospi_pct": -5.72,
+      "kosdaq_pct": -5.32
+    },
+    "us": {
+      "sp500": 7411.98,
+      "nasdaq": 24975.824,
+      "dow": 51947.25,
+      "sp500_pct": 0.04967401428127076,
+      "nasdaq_pct": -0.6439294170710048,
+      "dow_pct": 0.4556033311642512
+    },
+    "fx": {
+      "usdkrw": 1462.593384,
+      "usdkrw_pct": -0.8160745660152225
+    },
+    "volatility": {
+      "vix": 18.579999923706055
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.678999900817871,
+      "us2y": 3.805000066757202,
+      "spread_2_10": 0.873999834060669,
+      "us_3m_yield": 3.805000066757202,
+      "us_2y_yield": 4.37,
+      "us_10y_yield": 4.678999900817871,
+      "spread_10y_2y": 0.308999900817871,
+      "spread_10y_3m": 0.873999834060669,
+      "vix": 18.579999923706055,
+      "dxy": 101.47000122070312,
+      "usdkrw": 1462.0999755859375,
+      "vix3m": 20.510000228881836,
+      "vix_term_spread": 1.9300003051757812,
+      "oil_wti": 89.30999755859375,
+      "russell2000": 2930.0,
+      "oil_brent": 96.77999877929688
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 3.7265298484186804,
+      "core_cpi_yoy": 2.80581107579545,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.2186794214449339,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.4189999008178713,
+      "hy_oas": 2.77,
+      "ig_oas": 0.79,
+      "fed_balance_sheet": 6747378.0,
+      "tga_balance": 835417.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -5.474,
+    "liquidity_signal_score": 5.152,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -2.751,
+    "kospi_20d_cum_pct": -32.699,
+    "kosdaq_5d_cum_pct": -5.23,
+    "kospi_abs_move_5d_avg": 4.028,
+    "usdkrw_5d_change_pct": -1.157,
+    "vix_5d_avg": 18.174,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-32.70%, vol20d=4.61, reversal=false"
+  }
+}
