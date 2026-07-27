@@ -1,0 +1,58 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 0.84% 상승(6776.98), KOSDAQ은 4.03% 급등(778.34)했으나, 최근 20일 누적 하락률은 -26.14%로 중기적 약세가 뚜렷합니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 -7770억 순매도(특히 KOSPI -8274억), 개인은 +7675억 순매수로 외국인 매도 물량을 흡수하는 구도입니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 인식",
+      "majority": "단기 반등에도 불구하고 중기적 위험 신호가 우세하므로 방어적 대응이 필요하다.",
+      "minority": "일부(리스크 담당자)는 단기 반등을 근거로 위험 신호가 완화될 수 있다고 주장.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "단기 반등이 추세 전환 신호인지, 일시적 기술적 반등인지에 따라 투자 전략이 달라질 수 있음."
+    },
+    {
+      "topic": "시장 Breadth 해석",
+      "majority": "시장 내부 확산이 제한적이므로 반등의 지속성에 의문이 있다.",
+      "minority": "브레드스 담당자는 단기적으로는 반등 확산이 일부 확인된다고 평가.",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "시장 Breadth가 확산될 경우 단기 반등이 추세 전환으로 이어질 수 있음."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 요약: 단기 반등 속 외국인 매도와 고환율 부담\n\n- KOSPI는 6776.98pt(+0.84%), KOSDAQ은 778.34pt(+4.03%)로 동반 반등했습니다. \n- USD/KRW 환율은 1462.79원(+0.24%)로 고환율 부담이 지속되고 있습니다.\n- VIX는 18.6으로 변동성 경계감이 여전합니다.\n- 수급 측면에서는 외국인 -7770억, 기관 -121억, 개인 +7675억 순매수(특히 KOSPI 외국인 -8274억, 개인 +8872억)로, 외국인 매도세가 두드러졌습니다.\n\n## 수급 해석: 외국인 매도, 개인 흡수 구도\n\n- 외국인은 KOSPI에서 대규모 순매도(-8274억)를 기록하며, 최근 20일 누적 하락(-26.14%)과 맞물려 위험회피 심리가 강하게 작동하고 있습니다.\n- 개인은 단기 반등에 힘입어 대규모 순매수(+8872억)로 외국인 매도 물량을 흡수했으나, 이는 추격매수 성격이 강해 중기적 리스크를 완전히 해소하지 못합니다.\n- 기관은 소폭 순매도(-830억)로 중립적 입장을 보였습니다.\n\n## 오늘의 핵심 이슈: 반도체/AI, 연준/금리, 환율\n\n- [엔비디아, 네이버에 10억 달러 유증…“글로벌 AI팩토리 구축 추진”](https://news.google.com/rss/articles/CBMidkFVX3lxTE5xbEJUb2wzZGFlQTlzT0FGVUVUQTZjVzdhbGFJNGpfdlBDU3cyQlJCcU9hdkpJWEtIUkpUSzdKSW9aUEo1dDlWbUl6OW8tVEExNThmZnAwR3o1blhFUm0zbk1RaGhUTTlEODd1NlR5UlVaOC1jdlHSAWZBVV95cUxQallZNXJCYzd0UlRHX1VwSTVSSGtaTktsdEJ4NFJnX3FkYThBRnVKZVhHUU9yWkFWNUF6QVF3VUh3Y0Z0MExrZDQ2c2YwV1paZVlmaTBuTEtEenZ4TTdEclhvem9nMFE?oc=5) 등 반도체/AI 관련 뉴스가 시장 심리에 긍정적 영향을 주었으나, 실적 모멘텀 개선 신호는 확인 불가(제공 데이터 기준)입니다.\n- [FOMC·빅테크·반도체 ’슈퍼위크’…코스피 6700~7600선 향방 가른다](https://news.google.com/rss/articles/CBMicEFVX3lxTE1OYkEzMWFzcU5FNzdCWFdZNmY2MVJlWEFZdnJwVFFLdjY2cExyUW1FLTdLTFBGakhQUEZGOHBScUc2RWpGbTQ4dmtXRVo3bHMtUS01NkpnMllRU3htc3BvQnF1MTZTTDhMVU5wUERkZlM?oc=5) 등 연준 금리결정, 빅테크 실적, 환율 변동 등 대외 변수에 대한 경계감이 여전합니다.\n- [원·달러 환율, 오전 9시 1450원대 후반 등락](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9NR3pZemtsOFd5OWxmN3p0bGZ1Sjk0OFRFeElFUFFBMllBSDdOV0YweUctQkdqUkJYWFFMbjE4UXlOTGQ4RVJlbWVlNkdBZEM4S0dZUTl6RDE0YXhCZkx6bNIBeEFVX3lxTFBxcFRzdjZIOXNUVUFrODNDUTZVWnd2QlRxZGc3NDhnQnpDX2ZVT2p5UW5XRThFSl96SEw1cDREYjJOSGVkY3l0ZUFoUVFRbElKZEJkcE93d08zd2otSHZ1MUlWbG45eXZfdXVGbS1YbXl3enNQN3hwNQ?oc=5) 등 고환율 이슈도 외국인 수급에 부담을 주는 요인입니다.\n\n## 중기 리스크와 관전 포인트: 추세 전환 신호는 아직\n\n- 최근 5일간 KOSPI는 3.81% 반등했으나, 20일 누적 -26.14% 하락으로 중기 약세가 뚜렷합니다.\n- 외국인 매도세와 고환율, 변동성(VIX 18.6) 등 위험 신호가 완화되지 않은 상황에서, 단기 반등에 성급히 추격매수하기보다는 방어적 포지션 유지가 필요합니다.\n- 단기 반등이 추세 전환으로 이어지려면 외국인 수급 개선, 환율 안정, 실적 모멘텀 회복 등 추가 확인이 필요합니다.\n- 오늘 제시된 전략의 무효화 조건: 외국인 순매수 전환 및 환율 안정(USD/KRW 1450원 이하)이 확인될 경우, 방어적 전략을 재점검해야 합니다."
+}

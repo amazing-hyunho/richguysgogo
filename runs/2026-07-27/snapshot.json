@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI 0.84%, USD/KRW 1462.79. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": 0.84,
+    "usdkrw": 1462.793681
+  },
+  "flow_summary": {
+    "note": "외국인 -7770억, 기관 -121억, 개인 +7675억 | KOSPI(외 -8274, 기관 -830, 개인 +8872) KOSDAQ(외 +504, 기관 +709, 개인 -1197)",
+    "foreign_net": -7770.0,
+    "institution_net": -121.0,
+    "retail_net": 7675.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-27",
+    "market": {
+      "KOSPI": {
+        "individual": 8872,
+        "foreign": -8274,
+        "institution": -830
+      },
+      "KOSDAQ": {
+        "individual": -1197,
+        "foreign": 504,
+        "institution": 709
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[반도체/AI] 엔비디아, 네이버에 10억 달러 유증…“글로벌 AI팩토리 구축 추진” - 동아일보",
+    "[금리/연준] [주간뉴욕증시] M7 가운데 4곳 실적 발표…美연준 금리결정도 - 뉴시스",
+    "[환율/달러] 원·달러 환율, 오전 9시 1450원대 후반 등락 - 뉴시스",
+    "[국내지수] FOMC·빅테크·반도체 ’슈퍼위크’…코스피 6700~7600선 향방 가른다 By EBN - Investing.com 한국어",
+    "[인플레이션] 야르데니, 워시 연준 의장의 인플레이션 타깃은 무엇인가? - Investing.com 한국어"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6776.98,
+      "kosdaq": 778.34,
+      "kospi_pct": 0.84,
+      "kosdaq_pct": 4.03
+    },
+    "us": {
+      "sp500": 7411.98,
+      "nasdaq": 24975.824,
+      "dow": 51947.25,
+      "sp500_pct": 0.04967401428127076,
+      "nasdaq_pct": -0.6439570843792399,
+      "dow_pct": 0.4557004617919412
+    },
+    "fx": {
+      "usdkrw": 1462.793681,
+      "usdkrw_pct": 0.23913609516109202
+    },
+    "volatility": {
+      "vix": 18.579999923706055
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.678999900817871,
+      "us2y": 3.805000066757202,
+      "spread_2_10": 0.873999834060669,
+      "us_3m_yield": 3.805000066757202,
+      "us_2y_yield": 4.37,
+      "us_10y_yield": 4.678999900817871,
+      "spread_10y_2y": 0.308999900817871,
+      "spread_10y_3m": 0.873999834060669,
+      "vix": 18.579999923706055,
+      "dxy": 101.18800354003906,
+      "usdkrw": 1464.1800537109375,
+      "vix3m": 20.510000228881836,
+      "vix_term_spread": 1.9300003051757812,
+      "oil_wti": 84.4800033569336,
+      "russell2000": 2930.0,
+      "oil_brent": 91.7699966430664
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 3.7265298484186804,
+      "core_cpi_yoy": 2.80581107579545,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.2186794214449339,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.4189999008178713,
+      "hy_oas": 2.77,
+      "ig_oas": 0.79,
+      "fed_balance_sheet": 6747378.0,
+      "tga_balance": 835417.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 2.481,
+    "liquidity_signal_score": 5.209,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": 3.809,
+    "kospi_20d_cum_pct": -26.139,
+    "kosdaq_5d_cum_pct": 4.12,
+    "kospi_abs_move_5d_avg": 3.052,
+    "usdkrw_5d_change_pct": -1.144,
+    "vix_5d_avg": 18.174,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-26.14%, vol20d=4.54, reversal=false"
+  }
+}
