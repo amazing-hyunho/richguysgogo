@@ -1,12 +1,12 @@
 {
   "_comment": "Phase 2 fundamentals-score model config (docs/industry_cycle_mvp_design.md section 7.1 'fundamentals_score' applied to production/shipment/inventory/orders/export style indicators). Every weight/threshold used by committee.industry_cycle.fundamentals_scoring lives here, never hardcoded in code -- tuning always means editing this file and bumping model_version, never editing scoring code. Per-indicator weight/direction come from industry_indicator_map (config/industry_indicators.json), not from here; this file only holds the scoring-function knobs (scale_k, min_components) and staleness/completeness policy shared across all industries.",
-  "model_version": "fundamentals_only_v1",
-  "scale_k": 4.0,
+  "model_version": "fundamentals_free_api_v2",
+  "scale_k": 0.12,
   "min_components": 2,
   "_comment_staleness": "staleness_max_periods_by_frequency: how many whole periods (of the indicator's own frequency) an observation's observed_at may lag behind as_of before it is treated as stale and excluded (not averaged in as 0, per NULL policy) from fundamentals_score. E.g. frequency=monthly, max=3 means an observation more than 3 months old relative to as_of is excluded.",
   "staleness_max_periods_by_frequency": {
-    "monthly": 3,
-    "quarterly": 2,
+    "monthly": 6,
+    "quarterly": 3,
     "daily": 10,
     "weekly": 4,
     "annual": 2

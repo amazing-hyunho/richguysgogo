@@ -42,6 +42,12 @@ def _parse_args() -> argparse.Namespace:
         help="Optional inclusive start date (YYYY-MM-DD) for provider history fetches.",
     )
     parser.add_argument(
+        "--indicator-id",
+        action="append",
+        default=[],
+        help="Collect only this indicator_id (repeatable). Default: every active indicator.",
+    )
+    parser.add_argument(
         "--execute",
         action="store_true",
         help=(
@@ -55,7 +61,14 @@ def _parse_args() -> argparse.Namespace:
 def main() -> None:
     args = _parse_args()
     config = indicator_catalog.load_indicator_config(Path(args.indicators_config))
-    entries = config.get("indicators", [])
+    entries = [
+        entry
+        for entry in config.get("indicators", [])
+        if entry.get("active", True)
+    ]
+    if args.indicator_id:
+        selected = {str(indicator_id).strip() for indicator_id in args.indicator_id}
+        entries = [entry for entry in entries if entry.get("indicator_id") in selected]
 
     print(f"backfill_industry_indicators_plan indicators={len(entries)} execute={args.execute}")
     for entry in entries:

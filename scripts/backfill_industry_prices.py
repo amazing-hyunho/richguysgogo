@@ -52,6 +52,12 @@ def _parse_args() -> argparse.Namespace:
         help="Path to industry_price_universe.json.",
     )
     parser.add_argument(
+        "--asset-id",
+        action="append",
+        default=[],
+        help="Collect only this asset_id (repeatable). Default: the full universe.",
+    )
+    parser.add_argument(
         "--execute",
         action="store_true",
         help=(
@@ -66,6 +72,9 @@ def main() -> None:
     args = _parse_args()
     universe = price_universe.load_price_universe(Path(args.universe))
     targets = price_backfill.build_targets_from_universe(universe)
+    if args.asset_id:
+        selected = {str(asset_id).strip() for asset_id in args.asset_id}
+        targets = [target for target in targets if target.asset_id in selected]
 
     print(
         f"backfill_industry_prices_plan targets={len(targets)} "

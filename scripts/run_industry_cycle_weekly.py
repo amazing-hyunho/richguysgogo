@@ -28,6 +28,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 from committee.industry_cycle import (
+    candidate_ranking,
     cycle_model_config,
     cycle_runner,
     fundamentals_model_config,
@@ -76,7 +77,15 @@ def main() -> None:
     args = _parse_args()
     cfg = cycle_model_config.load_cycle_model_config(Path(args.cycle_model_config))
 
-    all_mappings = repository.list_industry_assets(db_path=DB_PATH)
+    active_ids = {
+        str(row["industry_id"])
+        for row in repository.list_industries(active_only=True, db_path=DB_PATH)
+    }
+    all_mappings = [
+        mapping
+        for mapping in repository.list_industry_assets(db_path=DB_PATH)
+        if mapping["industry_id"] in active_ids and candidate_ranking.is_valid_at(mapping, args.as_of)
+    ]
     industry_ids = sorted({m["industry_id"] for m in all_mappings})
 
     print(

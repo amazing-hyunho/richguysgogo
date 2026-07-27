@@ -25,7 +25,8 @@ class LoadRealConfigTests(unittest.TestCase):
         ids = price_universe.list_asset_ids()
         self.assertIn("KOSPI", ids)
         self.assertIn("SP500", ids)
-        self.assertIn("SOXX", ids)
+        self.assertIn("NVDA", ids)
+        self.assertIn("005930", ids)
 
 
 class ValidatePriceUniverseTests(unittest.TestCase):

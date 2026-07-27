@@ -13,6 +13,20 @@ from scripts import run_industry_weekly_insights
 
 
 class IndustryNewsTests(unittest.TestCase):
+    def test_query_combines_industry_specific_and_common_cycle_terms(self) -> None:
+        query = industry_news.build_industry_news_query(
+            {
+                "industry_id": "ai_infrastructure",
+                "name_kr": "AI 인프라",
+                "name_en": "AI Infrastructure",
+                "news_keywords": ["AI 서버", "GPU", "HBM"],
+            }
+        )
+        self.assertIn('"AI 서버" OR "GPU" OR "HBM"', query)
+        self.assertIn('"주문"', query)
+        self.assertIn('"capacity expansion"', query)
+        self.assertIn("-관련주", query)
+
     def test_recent_news_is_filtered_and_near_duplicates_are_removed(self) -> None:
         now = datetime(2026, 7, 25, tzinfo=timezone.utc)
 
@@ -33,6 +47,25 @@ class IndustryNewsTests(unittest.TestCase):
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0].source, "매체A")
         self.assertNotIn("utm_source", rows[0].link)
+
+    def test_empty_detailed_search_retries_with_short_fallback_query(self) -> None:
+        now = datetime(2026, 7, 25, tzinfo=timezone.utc)
+        queries = []
+
+        def fake_fetcher(**kwargs):
+            queries.append(kwargs["query"])
+            if len(queries) == 1:
+                return []
+            return [("조선 수주 증가 - 매체", "https://example.com/ship", now)]
+
+        rows = industry_news.collect_industry_news(
+            {"industry_id": "shipbuilding", "name_kr": "조선", "name_en": "Shipbuilding"},
+            now=now,
+            fetcher=fake_fetcher,
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(len(queries), 2)
+        self.assertIn('"조선"', queries[1])
 
 
 class IndustryInsightRepositoryTests(unittest.TestCase):

@@ -92,7 +92,16 @@ def main() -> None:
     etf_quality_catalog = etf_quality.load_etf_quality_catalog(Path(args.etf_quality_config))
     price_universe_payload = price_universe.load_price_universe(Path(args.price_universe))
 
-    all_mappings = repository.list_industry_assets(db_path=DB_PATH)
+    active_ids = {
+        str(entry["industry_id"])
+        for entry in taxonomy_config.get("industries", [])
+        if entry.get("active", True)
+    }
+    all_mappings = [
+        mapping
+        for mapping in repository.list_industry_assets(db_path=DB_PATH)
+        if mapping["industry_id"] in active_ids and candidate_ranking.is_valid_at(mapping, args.as_of)
+    ]
     industry_ids_with_assets = sorted({m["industry_id"] for m in all_mappings})
 
     print(
@@ -117,7 +126,11 @@ def main() -> None:
     repository.sync_industry_assets_from_config(assets_payload, db_path=DB_PATH)
 
     # Re-derive the industry list post-sync in case the sync just added new mappings.
-    all_mappings = repository.list_industry_assets(db_path=DB_PATH)
+    all_mappings = [
+        mapping
+        for mapping in repository.list_industry_assets(db_path=DB_PATH)
+        if mapping["industry_id"] in active_ids and candidate_ranking.is_valid_at(mapping, args.as_of)
+    ]
     industry_ids_with_assets = sorted({m["industry_id"] for m in all_mappings})
 
     ok = 0

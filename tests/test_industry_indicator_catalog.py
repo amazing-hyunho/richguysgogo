@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import sys
 import unittest
 
@@ -39,6 +40,28 @@ class RealIndicatorConfigTests(unittest.TestCase):
         for mapping in payload["industry_indicator_mappings"]:
             self.assertIn(mapping["indicator_id"], catalog_ids)
             self.assertIn(mapping.get("direction"), {"positive", "negative", None})
+
+    def test_every_active_industry_has_three_current_free_kpi_mappings(self) -> None:
+        payload = load_indicator_config()
+        taxonomy_payload = json.loads(
+            (ROOT / "config" / "industry_taxonomy.json").read_text(encoding="utf-8")
+        )
+        active_ids = {
+            row["industry_id"]
+            for row in taxonomy_payload["industries"]
+            if row.get("active", True)
+        }
+        current = [
+            row
+            for row in payload["industry_indicator_mappings"]
+            if row.get("valid_to") is None
+        ]
+        for industry_id in active_ids:
+            self.assertEqual(
+                sum(1 for row in current if row["industry_id"] == industry_id),
+                3,
+                industry_id,
+            )
 
 
 class ValidateIndicatorCatalogTests(unittest.TestCase):

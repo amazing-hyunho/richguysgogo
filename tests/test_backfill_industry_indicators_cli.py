@@ -46,6 +46,7 @@ class BackfillIndustryIndicatorsCliDryRunTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, msg=result.stderr)
         self.assertIn("--execute", result.stdout)
+        self.assertIn("--indicator-id", result.stdout)
 
 
 if __name__ == "__main__":

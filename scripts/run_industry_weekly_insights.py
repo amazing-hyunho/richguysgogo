@@ -21,6 +21,7 @@ from committee.industry_cycle import (
     insight_repository,
     repository,
     stock_model_config,
+    taxonomy,
     virtual_portfolio_repository,
 )
 from committee.core.env_loader import load_project_env
@@ -34,6 +35,12 @@ def _parse_args() -> argparse.Namespace:
     parser.add_argument("--as-of", default=date.today().isoformat())
     parser.add_argument("--lookback-days", type=int, default=14)
     parser.add_argument("--news-limit", type=int, default=8)
+    parser.add_argument(
+        "--industry-id",
+        action="append",
+        default=[],
+        help="Collect/analyze only this industry_id (repeatable). Default: all active industries.",
+    )
     parser.add_argument("--model", default=os.getenv("INDUSTRY_LLM_MODEL", "gpt-4.1"))
     parser.add_argument("--skip-llm", action="store_true", help="뉴스만 수집하고 LLM 의견은 생성하지 않음")
     parser.add_argument("--execute", action="store_true", help="네트워크 호출 및 DB 저장 실행")
@@ -128,7 +135,15 @@ def main() -> None:
     candidate_model_version = str(
         stock_model_config.load_stock_model_config()["model_version"]
     )
-    industries = repository.list_industries(active_only=True, db_path=DB_PATH)
+    taxonomy_payload = taxonomy.load_taxonomy()
+    industries = [
+        dict(entry)
+        for entry in taxonomy_payload.get("industries", [])
+        if entry.get("active", True)
+    ]
+    if args.industry_id:
+        selected = {str(industry_id).strip() for industry_id in args.industry_id}
+        industries = [entry for entry in industries if entry["industry_id"] in selected]
     print(
         f"industry_weekly_insights_plan as_of={args.as_of} industries={len(industries)} "
         f"lookback_days={args.lookback_days} model={args.model} execute={args.execute}"

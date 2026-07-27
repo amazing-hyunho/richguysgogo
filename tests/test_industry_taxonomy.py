@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import sys
 import unittest
 
@@ -36,6 +37,28 @@ class IndustryTaxonomyConfigTests(unittest.TestCase):
             self.assertTrue(entry["name_kr"])
             self.assertTrue(entry["country_scope"])
             self.assertIn(entry.get("coverage_status"), {"OK", "INSUFFICIENT", None})
+
+    def test_exactly_25_industries_are_active_and_have_one_to_three_stocks(self) -> None:
+        payload = load_taxonomy()
+        active_ids = {
+            entry["industry_id"]
+            for entry in payload["industries"]
+            if entry.get("active", True)
+        }
+        self.assertEqual(len(active_ids), 25)
+
+        assets = json.loads((ROOT / "config" / "industry_etfs.json").read_text(encoding="utf-8"))
+        current_stocks = [
+            row
+            for row in assets["mappings"]
+            if row.get("asset_type") == "STOCK"
+            and row.get("valid_to") is None
+            and row["industry_id"] in active_ids
+        ]
+        for industry_id in active_ids:
+            count = sum(1 for row in current_stocks if row["industry_id"] == industry_id)
+            self.assertGreaterEqual(count, 1, industry_id)
+            self.assertLessEqual(count, 3, industry_id)
 
 
 class IndustryTaxonomyValidationTests(unittest.TestCase):
