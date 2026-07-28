@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -7.59%, KOSDAQ -6.0% 급락과 외국인 -1.4조원 순매도, 개인 +1.6조원 순매수로 극단적 수급 불균형이 발생했습니다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 1459.60(+0.21%)로 원화 약세가 심화되며 외국인 자금 유출 압력이 가중되고 있습니다.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 국면 해석",
+      "majority": "RISK_OFF: 외국인 대규모 순매도, 고환율, 변동성 확대 등으로 위험회피 심리가 지배적이라는 의견(6명)",
+      "minority": "RISK_ON: 구조적 위험 신호가 명확하나, 일부는 단기 반등 가능성도 배제하지 않음(1명, risk)",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "소수 의견은 극단적 하락 이후 기술적 반등 가능성을 시사하나, 대다수는 추가 하락 리스크에 더 무게를 둠."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 극단적 변동성 속 위험회피 심화: KOSPI -7.59%, 외국인 -1.4조원 순매도\n\n오늘(7월 28일) 국내 증시는 KOSPI 6,243.19pt(-7.59%), KOSDAQ 719.0pt(-6.0%)로 폭락세를 기록했습니다. 원/달러 환율은 1,459.60원(+0.21%)까지 급등하며, 외국인 -14,197억, 기관 -1,968억 순매도, 개인 +16,168억 순매수로 수급이 극단적으로 쏠렸습니다. VIX는 18.67로 변동성도 높게 유지되고 있습니다. 최근 5일간 KOSPI 누적 -7.21%, 20일 누적 -34.57%로 구조적 약세가 심화되고 있습니다.\n\n## 수급: 외국인 환차손 회피성 매도, 개인 저가 매수세 충돌\n\n외국인은 KOSPI에서만 -13,803억, KOSDAQ -394억 순매도를 기록하며, 고환율과 글로벌 불확실성(연준/금리, 성장 둔화) 속 자금 유출이 가속화되었습니다. 이는 [원·달러 환율, 오전 9시 1460원대 후반 등락 - 뉴시스](https://news.google.com/rss/articles/CBMiYEFVX3lxTFBoRXhKWTZvZ3FBSXMtMmYzanVkX19CT0ZZQ2pMZzQ1V29LRWVNUVJNWDIxc096Z2doQnk1dFBhQ3pBbDJoQzdrMjh6TkR5aXV3QXEzaEt2VmkxVjUzUnM0T9IBeEFVX3lxTE1Lc2p4QWVOQmZTOVhuZ2N6cFBacmhILWppbzFLT0RxWjhFOHdhTFFXMXdHNVZ3OG9mblYyUmRDUXhyN1EyQXVlTkVSaThtSGxHaHduc2tteUt2ZjQ5YVlpVjE1dzRTeHluN0NlTG5BYzFMUlFBTU45dQ?oc=5) 등 환율 뉴스와 맞물려 있습니다. 개인은 대규모 저가 매수에 나섰으나, 외국인 매도 물량을 온전히 흡수하기엔 역부족인 모습입니다.\n\n## 오늘의 핵심 이슈: 금리/연준, 반도체/AI, 환율, 성장\n\n- [트럼프, FOMC 앞 또 금리인하 압박…\"세계에서 가장 낮아야\" - 연합뉴스](https://news.google.com/rss/articles/CBMiW0FVX3lxTE8tYUFxZ2NfQ0JMdGxRdEltR2lsbFIyWk5iSVJBUzVRNTRZVFNQSmxZcVgxNUl6am94VmRpVXg0WnNXR0NBVUlpS2s3SWNJT0psdGJlNm43TnFMXzDSAWBBVV95cUxPTVVlZFFxclphQ0drSS1sczFuVFQtLW96US1iTkNqVTAxUUJYWEwxUWpQRjMxSm9WbHNLbUo0Skh2TTBxVXFLaHZxemVlLWl3RDg4eUg5R2JFSjAxUzBpSE0?oc=5): 트럼프의 연준 금리인하 압박이 재차 부각되며, 글로벌 금리 정책 불확실성이 확대되고 있습니다.\n- [엔비디아, 오픈AI에 2500억달러 보증… ‘순환 금융’ 논란도 - 조선일보](https://news.google.com/rss/articles/CBMigwFBVV95cUxObEhoT1lQM2dpcjlRZFNZTGNRa2htdlcxYjF6MlduSzhxR2hrT25zelhKS1Fhd0l2WHFJWndKVmZxTFltOWt0VmwzZGtNOGhmQnFxYmNfOU5wWjUxRU1SS0JxS202MjNTWVkzWWZXNEZYM0g3ZlYzX0NmeGU1Vm1mcnd6MA?oc=5): 글로벌 AI/반도체 이슈가 국내 시장에도 불확실성 요인으로 작용.\n- 경기/성장 둔화 우려와 함께, 외국인 매도세가 실적 모멘텀 약화로 이어질 수 있다는 점도 부담입니다.\n\n## 전망 및 체크포인트: 변동성 완화 전까지 방어적 전략 유지\n\n시장 내부에서는 \"성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자\"는 의견이 다수입니다. 외국인 매도세와 환율 급등, 변동성 확대가 완화되지 않는 한 공격적 매수는 자제해야 합니다. 단기 반등 가능성(일부 소수 의견)이 있으나, 변동성(VIX)과 외국인 수급, 환율이 진정되는지 반드시 확인해야 합니다. \n\n**오늘의 뷰가 깨지는 조건:** 외국인 순매수 전환, 환율 급락(원화 강세), 변동성(VIX) 급락 등 수급·심리 안정 신호가 동반될 때만 전략적 태세 전환을 검토할 수 있습니다."
+}

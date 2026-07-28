@@ -1,0 +1,670 @@
+==============================================================
+  sync_weekly: 주간·정기 데이터 동기화 시작
+  날짜: 2026-07-27
+==============================================================
+
+[sync_weekly] ▶  KR 종목 마스터 (ticker_master, KOSPI+KOSDAQ)
+KR: DART API 사용
+  KR 수집 완료: 3979개
+
+sync_stock_master_fetched=3979
+sync_stock_master_done total=3979 success=3979 failed=0
+[sync_weekly] ✓  KR 종목 마스터 (ticker_master, KOSPI+KOSDAQ) (exit=0)
+
+[sync_weekly] ▶  US 종목 마스터 (ticker_master, S&P500 + NASDAQ100)
+US: S&P 500 종목 수집 (Wikipedia)...
+  S&P 500 수집 완료: 501개
+US: NASDAQ 100 종목 수집 (Wikipedia)...
+  NASDAQ 100 수집 완료: 0개
+
+sync_stock_master_fetched=501
+sync_stock_master_done total=501 success=501 failed=0
+[sync_weekly] ✓  US 종목 마스터 (ticker_master, S&P500 + NASDAQ100) (exit=0)
+[sync_weekly] ⏭  SKIP  외국인/기관/개인 수급 전체 백필 (market_flow_daily, 2년치)
+
+[sync_weekly] --skip-stocks 모드: 컨센서스·재무제표 건너뜀
+
+[sync_weekly] ▶  산업 분류·자산·지표 설정 동기화
+sync_industry_master_plan industries=35 etf_mappings=82 indicators=54 indicator_mappings=81 execute=True
+sync_industry_master_done industries=35 etf_mappings=82 indicators=54 indicator_mappings=81
+[sync_weekly] ✓  산업 분류·자산·지표 설정 동기화 (exit=0)
+
+[sync_weekly] ▶  산업 대표자산 최근 가격 갱신 (21일)
+backfill_industry_prices_plan targets=74 start=2026-07-06 end=2026-07-27 execute=True
+  target asset_id=KOSPI market=KR currency=KRW provider=yahoo_chart symbol=^KS11 asset_type=BENCHMARK
+  target asset_id=SP500 market=US currency=USD provider=yahoo_chart symbol=^GSPC asset_type=BENCHMARK
+  target asset_id=NVDA market=US currency=USD provider=yahoo_chart symbol=NVDA asset_type=STOCK
+  target asset_id=AVGO market=US currency=USD provider=yahoo_chart symbol=AVGO asset_type=STOCK
+  target asset_id=VRT market=US currency=USD provider=yahoo_chart symbol=VRT asset_type=STOCK
+  target asset_id=EQIX market=US currency=USD provider=yahoo_chart symbol=EQIX asset_type=STOCK
+  target asset_id=DLR market=US currency=USD provider=yahoo_chart symbol=DLR asset_type=STOCK
+  target asset_id=005930 market=KR currency=KRW provider=yahoo_chart symbol=005930.KS asset_type=STOCK
+  target asset_id=000660 market=KR currency=KRW provider=yahoo_chart symbol=000660.KS asset_type=STOCK
+  target asset_id=MU market=US currency=USD provider=yahoo_chart symbol=MU asset_type=STOCK
+  target asset_id=ASML market=US currency=USD provider=yahoo_chart symbol=ASML asset_type=STOCK
+  target asset_id=AMAT market=US currency=USD provider=yahoo_chart symbol=AMAT asset_type=STOCK
+  target asset_id=LRCX market=US currency=USD provider=yahoo_chart symbol=LRCX asset_type=STOCK
+  target asset_id=005290 market=KR currency=KRW provider=yahoo_chart symbol=005290.KQ asset_type=STOCK
+  target asset_id=357780 market=KR currency=KRW provider=yahoo_chart symbol=357780.KQ asset_type=STOCK
+  target asset_id=APD market=US currency=USD provider=yahoo_chart symbol=APD asset_type=STOCK
+  target asset_id=AAPL market=US currency=USD provider=yahoo_chart symbol=AAPL asset_type=STOCK
+  target asset_id=006400 market=KR currency=KRW provider=yahoo_chart symbol=006400.KS asset_type=STOCK
+  target asset_id=DELL market=US currency=USD provider=yahoo_chart symbol=DELL asset_type=STOCK
+  target asset_id=MSFT market=US currency=USD provider=yahoo_chart symbol=MSFT asset_type=STOCK
+  target asset_id=GOOGL market=US currency=USD provider=yahoo_chart symbol=GOOGL asset_type=STOCK
+  target asset_id=ORCL market=US currency=USD provider=yahoo_chart symbol=ORCL asset_type=STOCK
+  target asset_id=005380 market=KR currency=KRW provider=yahoo_chart symbol=005380.KS asset_type=STOCK
+  target asset_id=000270 market=KR currency=KRW provider=yahoo_chart symbol=000270.KS asset_type=STOCK
+  target asset_id=TSLA market=US currency=USD provider=yahoo_chart symbol=TSLA asset_type=STOCK
+  target asset_id=012330 market=KR currency=KRW provider=yahoo_chart symbol=012330.KS asset_type=STOCK
+  target asset_id=APTV market=US currency=USD provider=yahoo_chart symbol=APTV asset_type=STOCK
+  target asset_id=009540 market=KR currency=KRW provider=yahoo_chart symbol=009540.KS asset_type=STOCK
+  target asset_id=010140 market=KR currency=KRW provider=yahoo_chart symbol=010140.KS asset_type=STOCK
+  target asset_id=329180 market=KR currency=KRW provider=yahoo_chart symbol=329180.KS asset_type=STOCK
+  target asset_id=267250 market=KR currency=KRW provider=yahoo_chart symbol=267250.KS asset_type=STOCK
+  target asset_id=CAT market=US currency=USD provider=yahoo_chart symbol=CAT asset_type=STOCK
+  target asset_id=DE market=US currency=USD provider=yahoo_chart symbol=DE asset_type=STOCK
+  target asset_id=005490 market=KR currency=KRW provider=yahoo_chart symbol=005490.KS asset_type=STOCK
+  target asset_id=NUE market=US currency=USD provider=yahoo_chart symbol=NUE asset_type=STOCK
+  target asset_id=STLD market=US currency=USD provider=yahoo_chart symbol=STLD asset_type=STOCK
+  target asset_id=051910 market=KR currency=KRW provider=yahoo_chart symbol=051910.KS asset_type=STOCK
+  target asset_id=DOW market=US currency=USD provider=yahoo_chart symbol=DOW asset_type=STOCK
+  target asset_id=LYB market=US currency=USD provider=yahoo_chart symbol=LYB asset_type=STOCK
+  target asset_id=010130 market=KR currency=KRW provider=yahoo_chart symbol=010130.KS asset_type=STOCK
+  target asset_id=FCX market=US currency=USD provider=yahoo_chart symbol=FCX asset_type=STOCK
+  target asset_id=096770 market=KR currency=KRW provider=yahoo_chart symbol=096770.KS asset_type=STOCK
+  target asset_id=VLO market=US currency=USD provider=yahoo_chart symbol=VLO asset_type=STOCK
+  target asset_id=PSX market=US currency=USD provider=yahoo_chart symbol=PSX asset_type=STOCK
+  target asset_id=KMI market=US currency=USD provider=yahoo_chart symbol=KMI asset_type=STOCK
+  target asset_id=WMB market=US currency=USD provider=yahoo_chart symbol=WMB asset_type=STOCK
+  target asset_id=XOM market=US currency=USD provider=yahoo_chart symbol=XOM asset_type=STOCK
+  target asset_id=267260 market=KR currency=KRW provider=yahoo_chart symbol=267260.KS asset_type=STOCK
+  target asset_id=ETN market=US currency=USD provider=yahoo_chart symbol=ETN asset_type=STOCK
+  target asset_id=GEV market=US currency=USD provider=yahoo_chart symbol=GEV asset_type=STOCK
+  target asset_id=034020 market=KR currency=KRW provider=yahoo_chart symbol=034020.KS asset_type=STOCK
+  target asset_id=CEG market=US currency=USD provider=yahoo_chart symbol=CEG asset_type=STOCK
+  target asset_id=VST market=US currency=USD provider=yahoo_chart symbol=VST asset_type=STOCK
+  target asset_id=011200 market=KR currency=KRW provider=yahoo_chart symbol=011200.KS asset_type=STOCK
+  target asset_id=028670 market=KR currency=KRW provider=yahoo_chart symbol=028670.KS asset_type=STOCK
+  target asset_id=005880 market=KR currency=KRW provider=yahoo_chart symbol=005880.KS asset_type=STOCK
+  target asset_id=003490 market=KR currency=KRW provider=yahoo_chart symbol=003490.KS asset_type=STOCK
+  target asset_id=DAL market=US currency=USD provider=yahoo_chart symbol=DAL asset_type=STOCK
+  target asset_id=UAL market=US currency=USD provider=yahoo_chart symbol=UAL asset_type=STOCK
+  target asset_id=000720 market=KR currency=KRW provider=yahoo_chart symbol=000720.KS asset_type=STOCK
+  target asset_id=028050 market=KR currency=KRW provider=yahoo_chart symbol=028050.KS asset_type=STOCK
+  target asset_id=PWR market=US currency=USD provider=yahoo_chart symbol=PWR asset_type=STOCK
+  target asset_id=AMZN market=US currency=USD provider=yahoo_chart symbol=AMZN asset_type=STOCK
+  target asset_id=HD market=US currency=USD provider=yahoo_chart symbol=HD asset_type=STOCK
+  target asset_id=NKE market=US currency=USD provider=yahoo_chart symbol=NKE asset_type=STOCK
+  target asset_id=105560 market=KR currency=KRW provider=yahoo_chart symbol=105560.KS asset_type=STOCK
+  target asset_id=JPM market=US currency=USD provider=yahoo_chart symbol=JPM asset_type=STOCK
+  target asset_id=BAC market=US currency=USD provider=yahoo_chart symbol=BAC asset_type=STOCK
+  target asset_id=006800 market=KR currency=KRW provider=yahoo_chart symbol=006800.KS asset_type=STOCK
+  target asset_id=GS market=US currency=USD provider=yahoo_chart symbol=GS asset_type=STOCK
+  target asset_id=MS market=US currency=USD provider=yahoo_chart symbol=MS asset_type=STOCK
+  target asset_id=207940 market=KR currency=KRW provider=yahoo_chart symbol=207940.KS asset_type=STOCK
+  target asset_id=LLY market=US currency=USD provider=yahoo_chart symbol=LLY asset_type=STOCK
+  target asset_id=UNH market=US currency=USD provider=yahoo_chart symbol=UNH asset_type=STOCK
+result asset_id=KOSPI status=ok fetched=15 written=15 error=None
+result asset_id=SP500 status=ok fetched=15 written=15 error=None
+result asset_id=NVDA status=ok fetched=15 written=15 error=None
+result asset_id=AVGO status=ok fetched=15 written=15 error=None
+result asset_id=VRT status=ok fetched=15 written=15 error=None
+result asset_id=EQIX status=ok fetched=15 written=15 error=None
+result asset_id=DLR status=ok fetched=15 written=15 error=None
+result asset_id=005930 status=ok fetched=15 written=15 error=None
+result asset_id=000660 status=ok fetched=15 written=15 error=None
+result asset_id=MU status=ok fetched=15 written=15 error=None
+result asset_id=ASML status=ok fetched=15 written=15 error=None
+result asset_id=AMAT status=ok fetched=15 written=15 error=None
+result asset_id=LRCX status=ok fetched=15 written=15 error=None
+result asset_id=005290 status=ok fetched=15 written=15 error=None
+result asset_id=357780 status=ok fetched=15 written=15 error=None
+result asset_id=APD status=ok fetched=15 written=15 error=None
+result asset_id=AAPL status=ok fetched=15 written=15 error=None
+result asset_id=006400 status=ok fetched=15 written=15 error=None
+result asset_id=DELL status=ok fetched=15 written=15 error=None
+result asset_id=MSFT status=ok fetched=15 written=15 error=None
+result asset_id=GOOGL status=ok fetched=15 written=15 error=None
+result asset_id=ORCL status=ok fetched=15 written=15 error=None
+result asset_id=005380 status=ok fetched=15 written=15 error=None
+result asset_id=000270 status=ok fetched=15 written=15 error=None
+result asset_id=TSLA status=ok fetched=15 written=15 error=None
+result asset_id=012330 status=ok fetched=15 written=15 error=None
+result asset_id=APTV status=ok fetched=15 written=15 error=None
+result asset_id=009540 status=ok fetched=15 written=15 error=None
+result asset_id=010140 status=ok fetched=15 written=15 error=None
+result asset_id=329180 status=ok fetched=15 written=15 error=None
+result asset_id=267250 status=ok fetched=15 written=15 error=None
+result asset_id=CAT status=ok fetched=15 written=15 error=None
+result asset_id=DE status=ok fetched=15 written=15 error=None
+result asset_id=005490 status=ok fetched=15 written=15 error=None
+result asset_id=NUE status=ok fetched=15 written=15 error=None
+result asset_id=STLD status=ok fetched=15 written=15 error=None
+result asset_id=051910 status=ok fetched=15 written=15 error=None
+result asset_id=DOW status=ok fetched=15 written=15 error=None
+result asset_id=LYB status=ok fetched=15 written=15 error=None
+result asset_id=010130 status=ok fetched=15 written=15 error=None
+result asset_id=FCX status=ok fetched=15 written=15 error=None
+result asset_id=096770 status=ok fetched=15 written=15 error=None
+result asset_id=VLO status=ok fetched=15 written=15 error=None
+result asset_id=PSX status=ok fetched=15 written=15 error=None
+result asset_id=KMI status=ok fetched=15 written=15 error=None
+result asset_id=WMB status=ok fetched=15 written=15 error=None
+result asset_id=XOM status=ok fetched=15 written=15 error=None
+result asset_id=267260 status=ok fetched=15 written=15 error=None
+result asset_id=ETN status=ok fetched=15 written=15 error=None
+result asset_id=GEV status=ok fetched=15 written=15 error=None
+result asset_id=034020 status=ok fetched=15 written=15 error=None
+result asset_id=CEG status=ok fetched=15 written=15 error=None
+result asset_id=VST status=ok fetched=15 written=15 error=None
+result asset_id=011200 status=ok fetched=15 written=15 error=None
+result asset_id=028670 status=ok fetched=15 written=15 error=None
+result asset_id=005880 status=ok fetched=15 written=15 error=None
+result asset_id=003490 status=ok fetched=15 written=15 error=None
+result asset_id=DAL status=ok fetched=15 written=15 error=None
+result asset_id=UAL status=ok fetched=15 written=15 error=None
+result asset_id=000720 status=ok fetched=15 written=15 error=None
+result asset_id=028050 status=ok fetched=15 written=15 error=None
+result asset_id=PWR status=ok fetched=15 written=15 error=None
+result asset_id=AMZN status=ok fetched=15 written=15 error=None
+result asset_id=HD status=ok fetched=15 written=15 error=None
+result asset_id=NKE status=ok fetched=15 written=15 error=None
+result asset_id=105560 status=ok fetched=15 written=15 error=None
+result asset_id=JPM status=ok fetched=15 written=15 error=None
+result asset_id=BAC status=ok fetched=15 written=15 error=None
+result asset_id=006800 status=ok fetched=15 written=15 error=None
+result asset_id=GS status=ok fetched=15 written=15 error=None
+result asset_id=MS status=ok fetched=15 written=15 error=None
+result asset_id=207940 status=ok fetched=15 written=15 error=None
+result asset_id=LLY status=ok fetched=15 written=15 error=None
+result asset_id=UNH status=ok fetched=15 written=15 error=None
+backfill_industry_prices_done ok=74 failed=0 total=74
+[sync_weekly] ✓  산업 대표자산 최근 가격 갱신 (21일) (exit=0)
+
+[sync_weekly] ▶  산업 업황 지표 갱신
+backfill_industry_indicators_plan indicators=52 execute=True
+  indicator_id=us_industrial_production_index provider=FRED series_id=INDPRO transform=yoy_pct
+  indicator_id=us_manufacturers_new_orders provider=FRED series_id=AMTMNO transform=yoy_pct
+  indicator_id=us_manufacturers_inventories provider=FRED series_id=AMTMTI transform=yoy_pct
+  indicator_id=us_durable_goods_orders provider=FRED series_id=DGORDER transform=yoy_pct
+  indicator_id=us_computer_electronics_orders provider=FRED series_id=A34SNO transform=yoy_pct
+  indicator_id=us_computer_electronics_unfilled_orders provider=FRED series_id=A34SUO transform=yoy_pct
+  indicator_id=us_computer_electronics_production provider=FRED series_id=IPG334S transform=yoy_pct
+  indicator_id=us_semiconductor_production provider=FRED series_id=IPG3344S transform=yoy_pct
+  indicator_id=us_semiconductor_ppi provider=FRED series_id=PCU334413334413 transform=yoy_pct
+  indicator_id=us_data_hosting_revenue provider=FRED series_id=REV518TMSA transform=yoy_pct
+  indicator_id=us_software_publishers_revenue provider=FRED series_id=REV5112TAXABL144QSA transform=yoy_pct
+  indicator_id=us_machinery_orders provider=FRED series_id=A33SNO transform=yoy_pct
+  indicator_id=us_machinery_production provider=FRED series_id=IPG333S transform=yoy_pct
+  indicator_id=us_electrical_equipment_orders provider=FRED series_id=A35SNO transform=yoy_pct
+  indicator_id=us_electrical_equipment_production provider=FRED series_id=IPG335S transform=yoy_pct
+  indicator_id=us_auto_sales provider=FRED series_id=TOTALSA transform=yoy_pct
+  indicator_id=us_auto_production provider=FRED series_id=DAUPSA transform=yoy_pct
+  indicator_id=us_auto_inventories provider=FRED series_id=AUINSA transform=yoy_pct
+  indicator_id=us_motor_vehicle_parts_production provider=FRED series_id=IPG3361T3S transform=yoy_pct
+  indicator_id=us_transportation_equipment_orders provider=FRED series_id=A36SNO transform=yoy_pct
+  indicator_id=us_raw_steel_production provider=FRED series_id=IPN3311A2RS transform=yoy_pct
+  indicator_id=us_steel_orders provider=FRED series_id=A31ANO transform=yoy_pct
+  indicator_id=us_primary_metals_production provider=FRED series_id=IPG331S transform=yoy_pct
+  indicator_id=us_chemical_production provider=FRED series_id=IPG325S transform=yoy_pct
+  indicator_id=global_copper_price provider=FRED series_id=PCOPPUSDM transform=yoy_pct
+  indicator_id=global_aluminum_price provider=FRED series_id=PALUMUSDM transform=yoy_pct
+  indicator_id=us_wti_oil_price provider=FRED series_id=MCOILWTICO transform=yoy_pct
+  indicator_id=us_brent_oil_price provider=FRED series_id=MCOILBRENTEU transform=yoy_pct
+  indicator_id=us_refinery_output provider=FRED series_id=IPG324S transform=yoy_pct
+  indicator_id=us_refinery_ppi provider=FRED series_id=PCU324110324110 transform=yoy_pct
+  indicator_id=us_henry_hub_gas_price provider=FRED series_id=MHHNGSP transform=yoy_pct
+  indicator_id=us_electric_gas_utilities_production provider=FRED series_id=IPG2211A2N transform=yoy_pct
+  indicator_id=global_uranium_price provider=FRED series_id=PURANUSDM transform=yoy_pct
+  indicator_id=us_nuclear_power_production provider=FRED series_id=IPN221113S transform=yoy_pct
+  indicator_id=us_freight_transportation_index provider=FRED series_id=TSIFRGHT transform=yoy_pct
+  indicator_id=us_deep_sea_freight_ppi provider=FRED series_id=PCU483111483111 transform=yoy_pct
+  indicator_id=us_transport_warehouse_employment provider=FRED series_id=CES4300000001 transform=yoy_pct
+  indicator_id=us_air_passenger_miles provider=FRED series_id=AIRRPMTSID11 transform=yoy_pct
+  indicator_id=us_air_load_factor provider=FRED series_id=LOADFACTOR transform=yoy_pct
+  indicator_id=us_total_construction_spending provider=FRED series_id=TTLCONS transform=yoy_pct
+  indicator_id=us_housing_permits provider=FRED series_id=PERMIT transform=yoy_pct
+  indicator_id=us_housing_starts provider=FRED series_id=HOUST transform=yoy_pct
+  indicator_id=us_retail_sales provider=FRED series_id=MRTSSM44000USS transform=yoy_pct
+  indicator_id=us_inventory_sales_ratio provider=FRED series_id=ISRATIO transform=yoy_pct
+  indicator_id=us_bank_loans provider=FRED series_id=TOTLL transform=yoy_pct
+  indicator_id=us_bank_delinquency provider=FRED series_id=DRALACBN transform=level
+  indicator_id=us_yield_curve_10y2y provider=FRED series_id=T10Y2YM transform=level
+  indicator_id=us_broker_margin_receivables provider=FRED series_id=BOGZ1FL663067003Q transform=yoy_pct
+  indicator_id=us_m2_money_stock provider=FRED series_id=M2SL transform=yoy_pct
+  indicator_id=us_pharma_production provider=FRED series_id=IPG3254S transform=yoy_pct
+  indicator_id=us_healthcare_revenue provider=FRED series_id=REV621TMSA transform=yoy_pct
+  indicator_id=us_healthcare_employment provider=FRED series_id=CES6562000101 transform=yoy_pct
+fred_industry_provider[INDPRO]: fetch_failed (HTTPSConnectionPool(host='api.stlouisfed.org', port=443): Read timed out. (read timeout=10))
+fred_industry_provider[DGORDER]: fetch_failed (HTTPSConnectionPool(host='api.stlouisfed.org', port=443): Read timed out. (read timeout=10))
+fred_industry_provider[TOTLL]: fetch_failed (HTTPSConnectionPool(host='api.stlouisfed.org', port=443): Read timed out. (read timeout=10))
+result indicator_id=us_industrial_production_index status=skipped rows_written=0 reason=provider_unavailable
+result indicator_id=us_manufacturers_new_orders status=ok rows_written=169 reason=None
+result indicator_id=us_manufacturers_inventories status=ok rows_written=169 reason=None
+result indicator_id=us_durable_goods_orders status=skipped rows_written=0 reason=provider_unavailable
+result indicator_id=us_computer_electronics_orders status=ok rows_written=169 reason=None
+result indicator_id=us_computer_electronics_unfilled_orders status=ok rows_written=169 reason=None
+result indicator_id=us_computer_electronics_production status=ok rows_written=125 reason=None
+result indicator_id=us_semiconductor_production status=ok rows_written=125 reason=None
+result indicator_id=us_semiconductor_ppi status=ok rows_written=123 reason=None
+result indicator_id=us_data_hosting_revenue status=ok rows_written=21 reason=None
+result indicator_id=us_software_publishers_revenue status=ok rows_written=46 reason=None
+result indicator_id=us_machinery_orders status=ok rows_written=169 reason=None
+result indicator_id=us_machinery_production status=ok rows_written=125 reason=None
+result indicator_id=us_electrical_equipment_orders status=ok rows_written=169 reason=None
+result indicator_id=us_electrical_equipment_production status=ok rows_written=125 reason=None
+result indicator_id=us_auto_sales status=ok rows_written=150 reason=None
+result indicator_id=us_auto_production status=ok rows_written=149 reason=None
+result indicator_id=us_auto_inventories status=ok rows_written=149 reason=None
+result indicator_id=us_motor_vehicle_parts_production status=ok rows_written=125 reason=None
+result indicator_id=us_transportation_equipment_orders status=ok rows_written=169 reason=None
+result indicator_id=us_raw_steel_production status=ok rows_written=125 reason=None
+result indicator_id=us_steel_orders status=ok rows_written=169 reason=None
+result indicator_id=us_primary_metals_production status=ok rows_written=125 reason=None
+result indicator_id=us_chemical_production status=ok rows_written=125 reason=None
+result indicator_id=global_copper_price status=ok rows_written=116 reason=None
+result indicator_id=global_aluminum_price status=ok rows_written=116 reason=None
+result indicator_id=us_wti_oil_price status=ok rows_written=171 reason=None
+result indicator_id=us_brent_oil_price status=ok rows_written=171 reason=None
+result indicator_id=us_refinery_output status=ok rows_written=125 reason=None
+result indicator_id=us_refinery_ppi status=ok rows_written=123 reason=None
+result indicator_id=us_henry_hub_gas_price status=ok rows_written=127 reason=None
+result indicator_id=us_electric_gas_utilities_production status=ok rows_written=125 reason=None
+result indicator_id=global_uranium_price status=ok rows_written=116 reason=None
+result indicator_id=us_nuclear_power_production status=ok rows_written=125 reason=None
+result indicator_id=us_freight_transportation_index status=ok rows_written=128 reason=None
+result indicator_id=us_deep_sea_freight_ppi status=ok rows_written=123 reason=None
+result indicator_id=us_transport_warehouse_employment status=ok rows_written=172 reason=None
+result indicator_id=us_air_passenger_miles status=ok rows_written=123 reason=None
+result indicator_id=us_air_load_factor status=ok rows_written=123 reason=None
+result indicator_id=us_total_construction_spending status=ok rows_written=168 reason=None
+result indicator_id=us_housing_permits status=ok rows_written=311 reason=None
+result indicator_id=us_housing_starts status=ok rows_written=780 reason=None
+result indicator_id=us_retail_sales status=ok rows_written=92 reason=None
+result indicator_id=us_inventory_sales_ratio status=ok rows_written=340 reason=None
+result indicator_id=us_bank_loans status=skipped rows_written=0 reason=provider_unavailable
+result indicator_id=us_bank_delinquency status=ok rows_written=60 reason=None
+result indicator_id=us_yield_curve_10y2y status=ok rows_written=146 reason=None
+result indicator_id=us_broker_margin_receivables status=ok rows_written=25 reason=None
+result indicator_id=us_m2_money_stock status=ok rows_written=545 reason=None
+result indicator_id=us_pharma_production status=ok rows_written=125 reason=None
+result indicator_id=us_healthcare_revenue status=ok rows_written=21 reason=None
+result indicator_id=us_healthcare_employment status=ok rows_written=172 reason=None
+backfill_industry_indicators_done ok=49 skipped=3 failed=0 total=52
+[sync_weekly] ✓  산업 업황 지표 갱신 (exit=0)
+
+[sync_weekly] ▶  산업 가격·상대강도·과열 계산
+run_industry_price_factors_plan targets=72 as_of=2026-07-27 model_version=price_only_v1 execute=True
+  target asset_id=NVDA industry_id=ai_infrastructure market=US benchmark_asset_id=SP500
+  target asset_id=AVGO industry_id=ai_infrastructure market=US benchmark_asset_id=SP500
+  target asset_id=VRT industry_id=ai_infrastructure market=US benchmark_asset_id=SP500
+  target asset_id=EQIX industry_id=data_centers market=US benchmark_asset_id=SP500
+  target asset_id=DLR industry_id=data_centers market=US benchmark_asset_id=SP500
+  target asset_id=005930 industry_id=semiconductors market=KR benchmark_asset_id=KOSPI
+  target asset_id=000660 industry_id=semiconductors market=KR benchmark_asset_id=KOSPI
+  target asset_id=MU industry_id=semiconductors market=US benchmark_asset_id=SP500
+  target asset_id=ASML industry_id=semiconductor_equipment market=US benchmark_asset_id=SP500
+  target asset_id=AMAT industry_id=semiconductor_equipment market=US benchmark_asset_id=SP500
+  target asset_id=LRCX industry_id=semiconductor_equipment market=US benchmark_asset_id=SP500
+  target asset_id=005290 industry_id=semiconductor_materials market=KR benchmark_asset_id=KOSPI
+  target asset_id=357780 industry_id=semiconductor_materials market=KR benchmark_asset_id=KOSPI
+  target asset_id=APD industry_id=semiconductor_materials market=US benchmark_asset_id=SP500
+  target asset_id=AAPL industry_id=hardware_components market=US benchmark_asset_id=SP500
+  target asset_id=006400 industry_id=hardware_components market=KR benchmark_asset_id=KOSPI
+  target asset_id=DELL industry_id=hardware_components market=US benchmark_asset_id=SP500
+  target asset_id=MSFT industry_id=software_cloud market=US benchmark_asset_id=SP500
+  target asset_id=GOOGL industry_id=software_cloud market=US benchmark_asset_id=SP500
+  target asset_id=ORCL industry_id=software_cloud market=US benchmark_asset_id=SP500
+  target asset_id=005380 industry_id=automobiles market=KR benchmark_asset_id=KOSPI
+  target asset_id=000270 industry_id=automobiles market=KR benchmark_asset_id=KOSPI
+  target asset_id=TSLA industry_id=automobiles market=US benchmark_asset_id=SP500
+  target asset_id=012330 industry_id=auto_parts market=KR benchmark_asset_id=KOSPI
+  target asset_id=APTV industry_id=auto_parts market=US benchmark_asset_id=SP500
+  target asset_id=009540 industry_id=shipbuilding market=KR benchmark_asset_id=KOSPI
+  target asset_id=010140 industry_id=shipbuilding market=KR benchmark_asset_id=KOSPI
+  target asset_id=329180 industry_id=shipbuilding market=KR benchmark_asset_id=KOSPI
+  target asset_id=267250 industry_id=machinery_industrials market=KR benchmark_asset_id=KOSPI
+  target asset_id=CAT industry_id=machinery_industrials market=US benchmark_asset_id=SP500
+  target asset_id=DE industry_id=machinery_industrials market=US benchmark_asset_id=SP500
+  target asset_id=005490 industry_id=steel market=KR benchmark_asset_id=KOSPI
+  target asset_id=NUE industry_id=steel market=US benchmark_asset_id=SP500
+  target asset_id=STLD industry_id=steel market=US benchmark_asset_id=SP500
+  target asset_id=051910 industry_id=chemicals market=KR benchmark_asset_id=KOSPI
+  target asset_id=DOW industry_id=chemicals market=US benchmark_asset_id=SP500
+  target asset_id=LYB industry_id=chemicals market=US benchmark_asset_id=SP500
+  target asset_id=010130 industry_id=nonferrous_metals market=KR benchmark_asset_id=KOSPI
+  target asset_id=FCX industry_id=nonferrous_metals market=US benchmark_asset_id=SP500
+  target asset_id=096770 industry_id=refining market=KR benchmark_asset_id=KOSPI
+  target asset_id=VLO industry_id=refining market=US benchmark_asset_id=SP500
+  target asset_id=PSX industry_id=refining market=US benchmark_asset_id=SP500
+  target asset_id=KMI industry_id=lng market=US benchmark_asset_id=SP500
+  target asset_id=WMB industry_id=lng market=US benchmark_asset_id=SP500
+  target asset_id=XOM industry_id=lng market=US benchmark_asset_id=SP500
+  target asset_id=267260 industry_id=power_equipment market=KR benchmark_asset_id=KOSPI
+  target asset_id=ETN industry_id=power_equipment market=US benchmark_asset_id=SP500
+  target asset_id=GEV industry_id=power_equipment market=US benchmark_asset_id=SP500
+  target asset_id=034020 industry_id=nuclear market=KR benchmark_asset_id=KOSPI
+  target asset_id=CEG industry_id=nuclear market=US benchmark_asset_id=SP500
+  target asset_id=VST industry_id=nuclear market=US benchmark_asset_id=SP500
+  target asset_id=011200 industry_id=shipping market=KR benchmark_asset_id=KOSPI
+  target asset_id=028670 industry_id=shipping market=KR benchmark_asset_id=KOSPI
+  target asset_id=005880 industry_id=shipping market=KR benchmark_asset_id=KOSPI
+  target asset_id=003490 industry_id=airlines market=KR benchmark_asset_id=KOSPI
+  target asset_id=DAL industry_id=airlines market=US benchmark_asset_id=SP500
+  target asset_id=UAL industry_id=airlines market=US benchmark_asset_id=SP500
+  target asset_id=000720 industry_id=construction_materials market=KR benchmark_asset_id=KOSPI
+  target asset_id=028050 industry_id=construction_materials market=KR benchmark_asset_id=KOSPI
+  target asset_id=PWR industry_id=construction_materials market=US benchmark_asset_id=SP500
+  target asset_id=AMZN industry_id=consumer_discretionary market=US benchmark_asset_id=SP500
+  target asset_id=HD industry_id=consumer_discretionary market=US benchmark_asset_id=SP500
+  target asset_id=NKE industry_id=consumer_discretionary market=US benchmark_asset_id=SP500
+  target asset_id=105560 industry_id=banks market=KR benchmark_asset_id=KOSPI
+  target asset_id=JPM industry_id=banks market=US benchmark_asset_id=SP500
+  target asset_id=BAC industry_id=banks market=US benchmark_asset_id=SP500
+  target asset_id=006800 industry_id=securities market=KR benchmark_asset_id=KOSPI
+  target asset_id=GS industry_id=securities market=US benchmark_asset_id=SP500
+  target asset_id=MS industry_id=securities market=US benchmark_asset_id=SP500
+  target asset_id=207940 industry_id=healthcare_bio market=KR benchmark_asset_id=KOSPI
+  target asset_id=LLY industry_id=healthcare_bio market=US benchmark_asset_id=SP500
+  target asset_id=UNH industry_id=healthcare_bio market=US benchmark_asset_id=SP500
+result asset_id=NVDA status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=AVGO status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=VRT status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=EQIX status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=DLR status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=005930 status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=000660 status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=MU status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=ASML status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=AMAT status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=LRCX status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=005290 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=357780 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=APD status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=AAPL status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=warning action_signal=OVERHEAT_WARNING error=None
+result asset_id=006400 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=DELL status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=MSFT status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=GOOGL status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=ORCL status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=005380 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=confirmed action_signal=DETERIORATION_CONFIRMED error=None
+result asset_id=000270 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=confirmed action_signal=DETERIORATION_CONFIRMED error=None
+result asset_id=TSLA status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=012330 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=APTV status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=009540 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=010140 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=329180 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=267250 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=CAT status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=DE status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=005490 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=NUE status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=STLD status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=051910 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=DOW status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=LYB status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=010130 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=FCX status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=096770 status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=VLO status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=PSX status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=KMI status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=WMB status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=XOM status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=267260 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=ETN status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=GEV status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=034020 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=CEG status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=VST status=ok price_only_state=PRICE_ONLY_RECOVERY_CANDIDATE confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=011200 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=028670 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=005880 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=003490 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=DAL status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=UAL status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=000720 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=028050 status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=PWR status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=AMZN status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=HD status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=NKE status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=105560 status=ok price_only_state=PRICE_ONLY_OVERHEATED confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=JPM status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=BAC status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=006800 status=ok price_only_state=PRICE_ONLY_DETERIORATING confirmation_status=first_observation action_signal=NONE error=None
+result asset_id=GS status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=MS status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=207940 status=ok price_only_state=PRICE_ONLY_WEAK confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=LLY status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+result asset_id=UNH status=ok price_only_state=PRICE_ONLY_EXPANSION confirmation_status=not_applicable action_signal=NONE error=None
+run_industry_price_factors_done ok=72 failed=0 total=72
+[sync_weekly] ✓  산업 가격·상대강도·과열 계산 (exit=0)
+
+[sync_weekly] ▶  산업 펀더멘털 점수 계산
+run_industry_fundamentals_factors_plan industries=25 as_of=2026-07-27 model_version=fundamentals_free_api_v2 execute=True
+  target industry_id=ai_infrastructure
+  target industry_id=data_centers
+  target industry_id=semiconductors
+  target industry_id=semiconductor_equipment
+  target industry_id=semiconductor_materials
+  target industry_id=hardware_components
+  target industry_id=software_cloud
+  target industry_id=automobiles
+  target industry_id=auto_parts
+  target industry_id=shipbuilding
+  target industry_id=machinery_industrials
+  target industry_id=steel
+  target industry_id=chemicals
+  target industry_id=nonferrous_metals
+  target industry_id=refining
+  target industry_id=lng
+  target industry_id=power_equipment
+  target industry_id=nuclear
+  target industry_id=shipping
+  target industry_id=airlines
+  target industry_id=construction_materials
+  target industry_id=consumer_discretionary
+  target industry_id=banks
+  target industry_id=securities
+  target industry_id=healthcare_bio
+result industry_id=ai_infrastructure status=ok score=77.3595902351275 data_completeness=1.00 evidence_count=3
+result industry_id=data_centers status=ok score=73.38005684869893 data_completeness=1.00 evidence_count=3
+result industry_id=semiconductors status=ok score=75.34562012305263 data_completeness=1.00 evidence_count=3
+result industry_id=semiconductor_equipment status=ok score=79.23654665249578 data_completeness=1.00 evidence_count=3
+result industry_id=semiconductor_materials status=ok score=62.76227361037456 data_completeness=1.00 evidence_count=3
+result industry_id=hardware_components status=ok score=71.59477142650506 data_completeness=1.00 evidence_count=3
+result industry_id=software_cloud status=ok score=86.21232495043947 data_completeness=1.00 evidence_count=3
+result industry_id=automobiles status=ok score=45.31609658436943 data_completeness=1.00 evidence_count=3
+result industry_id=auto_parts status=ok score=28.80538436567245 data_completeness=1.00 evidence_count=3
+result industry_id=shipbuilding status=ok score=53.900149441979906 data_completeness=1.00 evidence_count=3
+result industry_id=machinery_industrials status=ok score=57.26253227349625 data_completeness=1.00 evidence_count=3
+result industry_id=steel status=ok score=85.00496623491964 data_completeness=1.00 evidence_count=3
+result industry_id=chemicals status=ok score=20.877810417702438 data_completeness=1.00 evidence_count=3
+result industry_id=nonferrous_metals status=ok score=96.30909373254073 data_completeness=1.00 evidence_count=3
+result industry_id=refining status=ok score=94.28725043315131 data_completeness=1.00 evidence_count=3
+result industry_id=lng status=ok score=66.00559940479451 data_completeness=1.00 evidence_count=3
+result industry_id=power_equipment status=ok score=77.63316724302324 data_completeness=1.00 evidence_count=3
+result industry_id=nuclear status=ok score=63.258493517398925 data_completeness=1.00 evidence_count=3
+result industry_id=shipping status=ok score=64.84670865441868 data_completeness=1.00 evidence_count=3
+result industry_id=airlines status=ok score=40.17888248498428 data_completeness=1.00 evidence_count=3
+result industry_id=construction_materials status=ok score=58.2964957465171 data_completeness=1.00 evidence_count=3
+result industry_id=consumer_discretionary status=ok score=71.49358558428973 data_completeness=1.00 evidence_count=3
+result industry_id=banks status=ok score=59.35497833757736 data_completeness=1.00 evidence_count=3
+result industry_id=securities status=ok score=86.99013497008158 data_completeness=1.00 evidence_count=3
+result industry_id=healthcare_bio status=ok score=48.39137007967642 data_completeness=1.00 evidence_count=3
+run_industry_fundamentals_factors_done ok=25 failed=0 total=25
+[sync_weekly] ✓  산업 펀더멘털 점수 계산 (exit=0)
+
+[sync_weekly] ▶  산업 ETF·종목 후보 순위 계산
+run_industry_candidates_plan industries=25 as_of=2026-07-27 model_version=stock_candidate_v1 execute=True
+  target industry_id=ai_infrastructure etfs=0 stocks=3
+  target industry_id=airlines etfs=0 stocks=3
+  target industry_id=auto_parts etfs=0 stocks=2
+  target industry_id=automobiles etfs=0 stocks=3
+  target industry_id=banks etfs=0 stocks=3
+  target industry_id=chemicals etfs=0 stocks=3
+  target industry_id=construction_materials etfs=0 stocks=3
+  target industry_id=consumer_discretionary etfs=0 stocks=3
+  target industry_id=data_centers etfs=0 stocks=2
+  target industry_id=hardware_components etfs=0 stocks=3
+  target industry_id=healthcare_bio etfs=0 stocks=3
+  target industry_id=lng etfs=0 stocks=3
+  target industry_id=machinery_industrials etfs=0 stocks=3
+  target industry_id=nonferrous_metals etfs=0 stocks=2
+  target industry_id=nuclear etfs=0 stocks=3
+  target industry_id=power_equipment etfs=0 stocks=3
+  target industry_id=refining etfs=0 stocks=3
+  target industry_id=securities etfs=0 stocks=3
+  target industry_id=semiconductor_equipment etfs=0 stocks=3
+  target industry_id=semiconductor_materials etfs=0 stocks=3
+  target industry_id=semiconductors etfs=0 stocks=3
+  target industry_id=shipbuilding etfs=0 stocks=3
+  target industry_id=shipping etfs=0 stocks=3
+  target industry_id=software_cloud etfs=0 stocks=3
+  target industry_id=steel etfs=0 stocks=3
+result industry_id=ai_infrastructure status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=34.101524206450655 breadth_score=88.07970779778823
+result industry_id=airlines status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=36.35474491967005 breadth_score=66.07563687658171
+result industry_id=auto_parts status=ok rows_written=2 etf_passed=0/0 stock_passed=1/2 earnings_revision_score=41.898071037886936 breadth_score=26.894142136999513
+result industry_id=automobiles status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=43.88611121682099 breadth_score=11.920292202211755
+result industry_id=banks status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=54.77748506057636 breadth_score=79.13914726739551
+result industry_id=chemicals status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=29.75676073408652 breadth_score=50.0
+result industry_id=construction_materials status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=63.840096050183995 breadth_score=66.07563687658171
+result industry_id=consumer_discretionary status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=69.06097914169457 breadth_score=11.920292202211755
+result industry_id=data_centers status=ok rows_written=2 etf_passed=0/0 stock_passed=0/2 earnings_revision_score=None breadth_score=88.07970779778823
+result industry_id=hardware_components status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=31.49775255202824 breadth_score=79.13914726739551
+result industry_id=healthcare_bio status=ok rows_written=3 etf_passed=0/0 stock_passed=0/3 earnings_revision_score=66.20916398959969 breadth_score=66.07563687658171
+result industry_id=lng status=ok rows_written=3 etf_passed=0/0 stock_passed=0/3 earnings_revision_score=None breadth_score=88.07970779778823
+result industry_id=machinery_industrials status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=68.91140176860628 breadth_score=66.07563687658171
+result industry_id=nonferrous_metals status=ok rows_written=2 etf_passed=0/0 stock_passed=0/2 earnings_revision_score=27.373311431156953 breadth_score=26.894142136999513
+result industry_id=nuclear status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=69.29026534541602 breadth_score=11.920292202211755
+result industry_id=power_equipment status=ok rows_written=3 etf_passed=0/0 stock_passed=0/3 earnings_revision_score=29.267908775786914 breadth_score=66.07563687658171
+result industry_id=refining status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=70.01680184836624 breadth_score=79.13914726739551
+result industry_id=securities status=ok rows_written=3 etf_passed=0/0 stock_passed=0/3 earnings_revision_score=67.51389287563188 breadth_score=66.07563687658171
+result industry_id=semiconductor_equipment status=ok rows_written=3 etf_passed=0/0 stock_passed=0/3 earnings_revision_score=None breadth_score=88.07970779778823
+result industry_id=semiconductor_materials status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=77.75370615527875 breadth_score=33.92436312341828
+result industry_id=semiconductors status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=88.11478723697896 breadth_score=88.07970779778823
+result industry_id=shipbuilding status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=30.834010952818442 breadth_score=11.920292202211755
+result industry_id=shipping status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=74.12068113769715 breadth_score=33.92436312341828
+result industry_id=software_cloud status=ok rows_written=3 etf_passed=0/0 stock_passed=2/3 earnings_revision_score=49.722506024181094 breadth_score=11.920292202211755
+result industry_id=steel status=ok rows_written=3 etf_passed=0/0 stock_passed=1/3 earnings_revision_score=27.68370770415897 breadth_score=66.07563687658171
+run_industry_candidates_done ok=25 failed=0 total=25
+[sync_weekly] ✓  산업 ETF·종목 후보 순위 계산 (exit=0)
+
+[sync_weekly] ▶  산업 사이클 최종 신호 계산
+run_industry_cycle_weekly_plan industries=25 as_of=2026-07-27 model_version=cycle_v1 execute=True
+  target industry_id=ai_infrastructure
+  target industry_id=airlines
+  target industry_id=auto_parts
+  target industry_id=automobiles
+  target industry_id=banks
+  target industry_id=chemicals
+  target industry_id=construction_materials
+  target industry_id=consumer_discretionary
+  target industry_id=data_centers
+  target industry_id=hardware_components
+  target industry_id=healthcare_bio
+  target industry_id=lng
+  target industry_id=machinery_industrials
+  target industry_id=nonferrous_metals
+  target industry_id=nuclear
+  target industry_id=power_equipment
+  target industry_id=refining
+  target industry_id=securities
+  target industry_id=semiconductor_equipment
+  target industry_id=semiconductor_materials
+  target industry_id=semiconductors
+  target industry_id=shipbuilding
+  target industry_id=shipping
+  target industry_id=software_cloud
+  target industry_id=steel
+result industry_id=ai_infrastructure status=ok cycle_score=69.03798436531056 confirmed_state=None confirmation_status=not_applicable confidence=0.5680094542338306 is_actionable=False urgent_flags=none
+result industry_id=airlines status=ok cycle_score=41.87023058858905 confirmed_state=None confirmation_status=first_observation confidence=0.23240616959566493 is_actionable=False urgent_flags=none
+result industry_id=auto_parts status=ok cycle_score=23.621587165081362 confirmed_state=CYCLE_RECESSION confirmation_status=first_observation confidence=0.6375 is_actionable=False urgent_flags=none
+result industry_id=automobiles status=ok cycle_score=26.779814253130088 confirmed_state=None confirmation_status=first_observation confidence=0.6375 is_actionable=False urgent_flags=BREADTH_COLLAPSE
+result industry_id=banks status=ok cycle_score=62.06298356591111 confirmed_state=CYCLE_OVERHEATED confirmation_status=warning confidence=0.34865754113595304 is_actionable=False urgent_flags=none
+result industry_id=chemicals status=ok cycle_score=21.770295139066317 confirmed_state=None confirmation_status=first_observation confidence=0.6375 is_actionable=False urgent_flags=none
+result industry_id=construction_materials status=ok cycle_score=60.50294256730093 confirmed_state=None confirmation_status=first_observation confidence=0.3020799611972795 is_actionable=False urgent_flags=none
+result industry_id=consumer_discretionary status=ok cycle_score=53.41194640124744 confirmed_state=None confirmation_status=first_observation confidence=0.09682228775899357 is_actionable=False urgent_flags=BREADTH_COLLAPSE
+result industry_id=data_centers status=ok cycle_score=78.7725444816746 confirmed_state=None confirmation_status=first_observation confidence=0.4675 is_actionable=False urgent_flags=none
+result industry_id=hardware_components status=ok cycle_score=67.0981132733758 confirmed_state=None confirmation_status=not_applicable confidence=0.5047766947570613 is_actionable=False urgent_flags=none
+result industry_id=healthcare_bio status=ok cycle_score=56.61712230495389 confirmed_state=None confirmation_status=first_observation confidence=0.18859135128351845 is_actionable=False urgent_flags=none
+result industry_id=lng status=ok cycle_score=73.94918632843763 confirmed_state=None confirmation_status=not_applicable confidence=0.4675 is_actionable=False urgent_flags=none
+result industry_id=machinery_industrials status=ok cycle_score=63.87847103310481 confirmed_state=None confirmation_status=not_applicable confidence=0.40381610890560077 is_actionable=False urgent_flags=none
+result industry_id=nonferrous_metals status=ok cycle_score=50.977287450811176 confirmed_state=None confirmation_status=first_observation confidence=0.0276933380858491 is_actionable=False urgent_flags=none
+result industry_id=nuclear status=ok cycle_score=46.2553939283953 confirmed_state=None confirmation_status=first_observation confidence=0.10629620258508043 is_actionable=False urgent_flags=BREADTH_COLLAPSE
+result industry_id=power_equipment status=ok cycle_score=56.0572137702058 confirmed_state=None confirmation_status=first_observation confidence=0.17246809458819612 is_actionable=False urgent_flags=none
+result industry_id=refining status=ok cycle_score=82.60913837488773 confirmed_state=None confirmation_status=first_observation confidence=0.6375 is_actionable=False urgent_flags=none
+result industry_id=securities status=ok cycle_score=75.17253544068488 confirmed_state=None confirmation_status=not_applicable confidence=0.6375 is_actionable=False urgent_flags=none
+result industry_id=semiconductor_equipment status=ok cycle_score=89.6622907170896 confirmed_state=None confirmation_status=first_observation confidence=0.4675 is_actionable=False urgent_flags=none
+result industry_id=semiconductor_materials status=ok cycle_score=52.8646374202172 confirmed_state=None confirmation_status=first_observation confidence=0.0812537088497289 is_actionable=False urgent_flags=PRICE_CRASH
+result industry_id=semiconductors status=ok cycle_score=89.95361799048148 confirmed_state=None confirmation_status=not_applicable confidence=0.6375 is_actionable=False urgent_flags=PRICE_CRASH
+result industry_id=shipbuilding status=ok cycle_score=23.325873788462907 confirmed_state=None confirmation_status=first_observation confidence=0.6375 is_actionable=False urgent_flags=BREADTH_COLLAPSE
+result industry_id=shipping status=ok cycle_score=49.441603391174176 confirmed_state=None confirmation_status=first_observation confidence=0.01582189505514869 is_actionable=False urgent_flags=none
+result industry_id=software_cloud status=ok cycle_score=54.117913014034265 confirmed_state=CYCLE_RECESSION confirmation_status=first_observation confidence=0.11693907669300725 is_actionable=False urgent_flags=BREADTH_COLLAPSE,CONFIDENCE_COLLAPSE
+result industry_id=steel status=ok cycle_score=62.05803246647434 confirmed_state=None confirmation_status=not_applicable confidence=0.34850859388529803 is_actionable=False urgent_flags=none
+run_industry_cycle_weekly_done ok=25 failed=0 total=25
+[sync_weekly] ✓  산업 사이클 최종 신호 계산 (exit=0)
+
+[sync_weekly] ▶  산업 가상 포트폴리오 갱신
+run_industry_virtual_portfolio_plan signals=25 as_of=2026-07-27 model_version=cycle_v1 execute=True
+  target industry_id=ai_infrastructure confirmed_state=None confirmation_status=not_applicable would_open=False would_close=None
+  target industry_id=airlines confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=auto_parts confirmed_state=CYCLE_RECESSION confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=automobiles confirmed_state=None confirmation_status=first_observation would_open=False would_close=urgent_flag:BREADTH_COLLAPSE
+  target industry_id=banks confirmed_state=CYCLE_OVERHEATED confirmation_status=warning would_open=False would_close=None
+  target industry_id=chemicals confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=construction_materials confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=consumer_discretionary confirmed_state=None confirmation_status=first_observation would_open=False would_close=urgent_flag:BREADTH_COLLAPSE
+  target industry_id=data_centers confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=hardware_components confirmed_state=None confirmation_status=not_applicable would_open=False would_close=None
+  target industry_id=healthcare_bio confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=lng confirmed_state=None confirmation_status=not_applicable would_open=False would_close=None
+  target industry_id=machinery_industrials confirmed_state=None confirmation_status=not_applicable would_open=False would_close=None
+  target industry_id=nonferrous_metals confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=nuclear confirmed_state=None confirmation_status=first_observation would_open=False would_close=urgent_flag:BREADTH_COLLAPSE
+  target industry_id=power_equipment confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=refining confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=securities confirmed_state=None confirmation_status=not_applicable would_open=False would_close=None
+  target industry_id=semiconductor_equipment confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=semiconductor_materials confirmed_state=None confirmation_status=first_observation would_open=False would_close=urgent_flag:PRICE_CRASH
+  target industry_id=semiconductors confirmed_state=None confirmation_status=not_applicable would_open=False would_close=urgent_flag:PRICE_CRASH
+  target industry_id=shipbuilding confirmed_state=None confirmation_status=first_observation would_open=False would_close=urgent_flag:BREADTH_COLLAPSE
+  target industry_id=shipping confirmed_state=None confirmation_status=first_observation would_open=False would_close=None
+  target industry_id=software_cloud confirmed_state=CYCLE_RECESSION confirmation_status=first_observation would_open=False would_close=urgent_flag:BREADTH_COLLAPSE
+  target industry_id=steel confirmed_state=None confirmation_status=not_applicable would_open=False would_close=None
+run_industry_virtual_portfolio_done opened=0 closed=0 errored=0 total=25
+[sync_weekly] ✓  산업 가상 포트폴리오 갱신 (exit=0)
+
+[sync_weekly] ▶  산업 뉴스·AI 종합의견 생성
+industry_weekly_insights_plan as_of=2026-07-27 industries=25 lookback_days=14 model=gpt-4.1 execute=True
+industry_news_collected counts={'ai_infrastructure': 8, 'data_centers': 5, 'semiconductors': 8, 'semiconductor_equipment': 1, 'semiconductor_materials': 8, 'hardware_components': 8, 'software_cloud': 8, 'automobiles': 8, 'auto_parts': 1, 'shipbuilding': 8, 'machinery_industrials': 3, 'steel': 8, 'chemicals': 4, 'nonferrous_metals': 1, 'refining': 8, 'lng': 8, 'power_equipment': 8, 'nuclear': 4, 'shipping': 3, 'airlines': 8, 'construction_materials': 1, 'consumer_discretionary': 8, 'banks': 2, 'securities': 8, 'healthcare_bio': 2} errors={}
+industry_weekly_insights_done news_only=true
+[sync_weekly] ✓  산업 뉴스·AI 종합의견 생성 (exit=0)
+
+[sync_weekly] ▶  대시보드 빌드 (docs/dashboard.html)
+fear_greed_ok: score=39.4 rating=fear source=cnn
+Dashboard generated: C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\docs\dashboard.html
+[sync_weekly] ✓  대시보드 빌드 (docs/dashboard.html) (exit=0)
+
+==============================================================
+  sync_weekly: 완료 요약
+==============================================================
+  ✓  KR 종목 마스터 (ticker_master, KOSPI+KOSDAQ)
+  ✓  US 종목 마스터 (ticker_master, S&P500 + NASDAQ100)
+  ✓  외국인/기관/개인 수급 전체 백필 (market_flow_daily, 2년치)
+  ✓  산업 분류·자산·지표 설정 동기화
+  ✓  산업 대표자산 최근 가격 갱신 (21일)
+  ✓  산업 업황 지표 갱신
+  ✓  산업 가격·상대강도·과열 계산
+  ✓  산업 펀더멘털 점수 계산
+  ✓  산업 ETF·종목 후보 순위 계산
+  ✓  산업 사이클 최종 신호 계산
+  ✓  산업 가상 포트폴리오 갱신
+  ✓  산업 뉴스·AI 종합의견 생성
+  ✓  대시보드 빌드 (docs/dashboard.html)
+
+  총 13단계 / 실패 0개
+==============================================================

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\sync_weekly.py", line 339, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\sync_weekly.py", line 181, in main
+    step(
+    ~~~~^
+        "KR 종목 마스터 (ticker_master, KOSPI+KOSDAQ)",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        [py, "scripts/sync_stock_master.py", "--kr"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\sync_weekly.py", line 171, in step
+    ok = _run(label, cmd, skip=skip)
+  File "C:\Users\oh390\OneDrive\바탕 화면\부자되기프로젝트\scripts\sync_weekly.py", line 88, in _run
+    print(f"[sync_weekly] {icon}  {label} (exit={result.returncode})")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'cp949' codec can't encode character '\u2713' in position 14: illegal multibyte sequence
