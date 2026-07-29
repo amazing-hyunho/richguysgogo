@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-07-29T16:42:11.054190+00:00",
+  "crawled_at": "2026-07-29T17:42:04.197129+00:00",
   "news_date": "2026-07-30",
-  "total_collected": 16,
+  "total_collected": 15,
   "topic_counts": [
+    [
+      "환율/달러",
+      1
+    ],
     [
       "에너지/원자재",
       1
@@ -18,13 +22,20 @@
     [
       "Thesis #2 전력, 초전도체, 데이터센터",
       2
-    ],
-    [
-      "미국지수",
-      2
     ]
   ],
   "top_articles": [
+    {
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "외환전문가들 \"연준 금리동결시 달러값 하락 압력커질 것\" - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5leFQycWVNVkpLU1Bta0tLd0lYdFd6eTk2RWkySy0td1czWTRWYi12VDNHZDBEaEFtMTFIRXFfaS0ycDNUSVVLR1JBc2hoVDdBWU9OZkFfQjNzZw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 외환전문가들 \"연준 금리동결시 달러값 하락 압력커질 것\" - 한국경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "에너지/원자재",
       "count": 1,
@@ -61,21 +72,10 @@
     {
       "topic": "Thesis #2 전력, 초전도체, 데이터센터",
       "count": 2,
-      "title": "메타 발행 채권에 ‘위험 프리미엄’… 데이터센터 투자용 금리 연 7.5% - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE41MkRrVld3cVk5d0NSc2UyZ1RnWVFaNDNjOEcxMlRxdHhwNHRuM1VSUGFzT3ZSdXNyNUJaZFdYVWNsYTBDU3RieWxJQk5jbVU?oc=5",
+      "title": "메타-자산운용사 ‘블랙록’ 제휴… 20조 규모 AI 데이터센터 구축 - 동아일보",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9nZ0VlMzRPblpYbzBIclQySFlyTnBObWIwcU9hRlZueTlkN09QSzZZYS02QjBBYXg0aEpzWTVXb1J4VDVvVW1PZzM4cnpnbkY4UTZDQVdaY2JNb1Z3bm9RZU5NMW9Zc3h5WEN0X2VLdnViam56bmfSAWZBVV95cUxQS3BCTUdkNDVOMEg0aGNpcUxFWWdRcWNOS2hsMkZuOGVGVGVGLUN5c1dJWkZ2VFMtR3lTaVZ2RW9VdnI3Q19KYUNrcHQzNW8taXNVd2NiZHNCNkVEUTlSVXpVUlJMY0E?oc=5",
       "summary_lines": [
-        "핵심 이슈: 메타 발행 채권에 ‘위험 프리미엄’… 데이터센터 투자용 금리 연 7.5% - v.daum.net",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "미국지수",
-      "count": 2,
-      "title": "Southern Cross Acquisition I, 나스닥서 1.15억 달러 IPO 마감 - Investing.com 한국어",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4xdWl5TzdsRDV6cnZxVHZTUVp2VU55MW1mZGpaTFdoaUg5c0tpTzZERkRaVUMzc2lka19MaVo4N1RESGxGRVMtNzB3eWtGS0FUeVo1RXJLSXdSU3Npa052dWpvdXNpRFBtSC11LVhUTDY?oc=5",
-      "summary_lines": [
-        "핵심 이슈: Southern Cross Acquisition I, 나스닥서 1.15억 달러 IPO 마감 - Investing.com 한국어",
+        "핵심 이슈: 메타-자산운용사 ‘블랙록’ 제휴… 20조 규모 AI 데이터센터 구축 - 동아일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -96,13 +96,19 @@
     },
     {
       "sector": "매크로",
-      "total_count": 2,
+      "total_count": 3,
       "topics": [
         {
           "topic": "인플레이션",
           "count": 2,
           "title": "모잠비크 중앙은행, 인플레이션 속 9.25% 금리 동결 - Investing.com 한국어",
           "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1rajdkczZJWmY2QlVaZ0tMa2s1cjBlYVhfMVhoNTZGUVhHM1B3bzNGTTQ4TVJkZThPRmdmSG85R2c1eUFCOXBOTjM3SDFtOUJ3cE9NSWNmZkoteTVuYkNNeFl0OGlGRFR2czlkQVJQeUM?oc=5"
+        },
+        {
+          "topic": "환율/달러",
+          "count": 1,
+          "title": "외환전문가들 \"연준 금리동결시 달러값 하락 압력커질 것\" - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5leFQycWVNVkpLU1Bta0tLd0lYdFd6eTk2RWkySy0td1czWTRWYi12VDNHZDBEaEFtMTFIRXFfaS0ycDNUSVVLR1JBc2hoVDdBWU9OZkFfQjNzZw?oc=5"
         }
       ]
     },
@@ -113,20 +119,8 @@
         {
           "topic": "Thesis #2 전력, 초전도체, 데이터센터",
           "count": 2,
-          "title": "메타 발행 채권에 ‘위험 프리미엄’… 데이터센터 투자용 금리 연 7.5% - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE41MkRrVld3cVk5d0NSc2UyZ1RnWVFaNDNjOEcxMlRxdHhwNHRuM1VSUGFzT3ZSdXNyNUJaZFdYVWNsYTBDU3RieWxJQk5jbVU?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "미국지수",
-          "count": 2,
-          "title": "Southern Cross Acquisition I, 나스닥서 1.15억 달러 IPO 마감 - Investing.com 한국어",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE4xdWl5TzdsRDV6cnZxVHZTUVp2VU55MW1mZGpaTFdoaUg5c0tpTzZERkRaVUMzc2lka19MaVo4N1RESGxGRVMtNzB3eWtGS0FUeVo1RXJLSXdSU3Npa052dWpvdXNpRFBtSC11LVhUTDY?oc=5"
+          "title": "메타-자산운용사 ‘블랙록’ 제휴… 20조 규모 AI 데이터센터 구축 - 동아일보",
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9nZ0VlMzRPblpYbzBIclQySFlyTnBObWIwcU9hRlZueTlkN09QSzZZYS02QjBBYXg0aEpzWTVXb1J4VDVvVW1PZzM4cnpnbkY4UTZDQVdaY2JNb1Z3bm9RZU5NMW9Zc3h5WEN0X2VLdnViam56bmfSAWZBVV95cUxQS3BCTUdkNDVOMEg0aGNpcUxFWWdRcWNOS2hsMkZuOGVGVGVGLUN5c1dJWkZ2VFMtR3lTaVZ2RW9VdnI3Q19KYUNrcHQzNW8taXNVd2NiZHNCNkVEUTlSVXpVUlJMY0E?oc=5"
         }
       ]
     },
