@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -0.61%, USD/KRW 1457.52. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -0.61,
+    "usdkrw": 1457.517826
+  },
+  "flow_summary": {
+    "note": "외국인 +3604억, 기관 +4757억, 개인 -8457억 | KOSPI(외 +3058, 기관 +4213, 개인 -7361) KOSDAQ(외 +546, 기관 +544, 개인 -1096)",
+    "foreign_net": 3604.0,
+    "institution_net": 4757.0,
+    "retail_net": -8457.0
+  },
+  "korean_market_flow": {
+    "date": "2026-07-30",
+    "market": {
+      "KOSPI": {
+        "individual": -7361,
+        "foreign": 3058,
+        "institution": 4213
+      },
+      "KOSDAQ": {
+        "individual": -1096,
+        "foreign": 546,
+        "institution": 544
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] 美 증시, 일제히 하락 마감…FOMC 결과에 미국채 금리 급등-[글로벌 마감 시황] - 한국경제TV",
+    "[미국지수] 이란, 요르단 주둔 미군 전격 공격에 국제 유가 급등…미 연준, 기준금리 동결 - VOA 한국어 홈페이지",
+    "[인플레이션] 미 연준, 기준금리 3.50~3.75% 동결…9월 금리 인상론 ‘솔솔’ - 경기일보",
+    "[환율/달러] [뉴욕증시] 연준 동결에도 코스피 안도 어렵다…유가·반도체·환율 ‘삼중고’ - 녹색경제신문",
+    "[반도체/AI] 엔비디아, 네이버 3대 주주 된다… 10억 달러 유상증자 참여 - 주간동아"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 5628.71,
+      "kosdaq": 652.96,
+      "kospi_pct": -0.61,
+      "kosdaq_pct": -1.47
+    },
+    "us": {
+      "sp500": 7316.15,
+      "nasdaq": 24442.941,
+      "dow": 51594.14,
+      "sp500_pct": -1.5161305086434127,
+      "nasdaq_pct": -1.744472947446216,
+      "dow_pct": -2.1862342958846064
+    },
+    "fx": {
+      "usdkrw": 1457.517826,
+      "usdkrw_pct": -0.2195823087313457
+    },
+    "volatility": {
+      "vix": 20.65999984741211
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.622000217437744,
+      "us2y": 3.6580002307891846,
+      "spread_2_10": 0.9639999866485596,
+      "us_3m_yield": 3.6580002307891846,
+      "us_2y_yield": 4.26,
+      "us_10y_yield": 4.622000217437744,
+      "spread_10y_2y": 0.36200021743774435,
+      "spread_10y_3m": 0.9639999866485596,
+      "vix": 20.65999984741211,
+      "dxy": 100.89299774169922,
+      "usdkrw": 1440.3800048828125,
+      "vix3m": 21.5,
+      "vix_term_spread": 0.8400001525878906,
+      "oil_wti": 84.19000244140625,
+      "russell2000": 2906.309814453125,
+      "oil_brent": 90.12999725341797
+    },
+    "monthly": {
+      "unemployment_rate": 4.2,
+      "cpi_yoy": 3.7265298484186804,
+      "core_cpi_yoy": 2.80581107579545,
+      "pce_yoy": 4.072638075644863,
+      "pmi": null,
+      "retail_sales_mom": 0.2186794214449339,
+      "nfp_change": 57.0,
+      "wage_growth": 37.64,
+      "wage_level": 37.64,
+      "wage_yoy": 3.5203520352035333,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24180.419,
+      "gdp_qoq_annualized": 2.1
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.3620002174377444,
+      "hy_oas": 2.84,
+      "ig_oas": 0.81,
+      "fed_balance_sheet": 6747378.0,
+      "tga_balance": 835417.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": 0.776,
+    "liquidity_signal_score": 3.784,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -22.178,
+    "kospi_20d_cum_pct": -34.473,
+    "kosdaq_5d_cum_pct": -18.403,
+    "kospi_abs_move_5d_avg": 4.825,
+    "usdkrw_5d_change_pct": -0.13,
+    "vix_5d_avg": 19.37,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-34.47%, vol20d=4.87, reversal=false"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI -0.61%(5628.71), KOSDAQ -1.47%(652.96)로 하락세 지속, 20일 누적 -34.47%로 약세장 심화.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 +3604억, 기관 +4757억 순매수에도 개인 -8457억 순매도, 저가 매수세 유입 불구 시장 반전 신호 부재.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 국면 해석",
+      "majority": "RISK_OFF(방어적·위험회피 기조)",
+      "minority": "RISK_ON(일부 하방 압력 완화 주장)",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "외국인·기관 순매수로 단기 급락 완화 주장 있으나, 누적 하락폭과 변동성, 반전 신호 부재로 다수는 방어적 입장 고수."
+    },
+    {
+      "topic": "수급 해석",
+      "majority": "저가 매수세 유입에도 시장 반전 신호 부재",
+      "minority": "외국인·기관 매수세로 단기 저점 가능성",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "수급만으로 방향성 전환 판단은 무리, 추가 매수세 지속 여부와 대외 변수 모니터링 필요."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 시장 요약 및 주요 지표\n\n- KOSPI는 5628.71p(-0.61%), KOSDAQ은 652.96p(-1.47%)로 동반 하락하며 약세장이 이어졌습니다. 20일 누적 하락률은 -34.47%로, 최근 5일간도 -22.18%의 급락세가 지속되고 있습니다.\n- 환율(USD/KRW)은 1457.52(-0.22%)로 고점 부근에서 등락, VIX는 20.7로 변동성도 높은 수준을 유지했습니다.\n- 수급 측면에서는 외국인 +3604억, 기관 +4757억 순매수, 개인은 -8457억 순매도(코스피: 외 +3058, 기관 +4213, 개인 -7361 / 코스닥: 외 +546, 기관 +544, 개인 -1096)로 집계되었습니다.\n\n## 수급 해석: 외국인·기관 저가 매수, 개인은 방어적\n\n- 최근 20일간 KOSPI가 -34% 급락한 가운데, 오늘은 외국인과 기관이 동반 순매수에 나서며 저가 매수세가 일부 유입되었습니다.\n- 그러나 개인은 대규모 순매도를 기록, 레버리지 추격매수보다는 기존 포지션 정리 및 수급 흡수에 머무른 모습입니다.\n- 수급상 외국인·기관 매수세가 단기 급락을 완화하는 역할을 했으나, 시장 반전 신호(리버설)는 아직 확인되지 않았습니다.\n\n## 글로벌 변수와 대외 불확실성: 금리·유가·환율\n\n- [美 증시, 일제히 하락 마감…FOMC 결과에 미국채 금리 급등](https://news.google.com/rss/articles/CBMid0FVX3lxTFBBaWNRZ3BwdDJUM3NHcUJQX3BnNTlmY0ZKbnlCaV80UHZDZnRDci1nc0Rld0dPYWlLc21lV2o3MmYwQlQ1QmI2eGJFU2d1bFRNNnJteS14NHNfWUJSX0Fxb3FxN0k1bmtXdERqNWJvRjBnSE5wbmkw?oc=5) 등 주요 뉴스에 따르면, 미 연준은 기준금리를 동결했으나 미국채 금리 급등과 함께 글로벌 증시가 동반 하락했습니다.\n- [이란, 요르단 주둔 미군 전격 공격에 국제 유가 급등…미 연준, 기준금리 동결](https://news.google.com/rss/articles/CBMi3wFBVV95cUxQaXEtSEFWNF9GVm1qVU1TOG1QcVNZa3pGdTBHTC16ZzFaS3NaeHFRczVydVNwVlNSN21WZWhQRUVHZE5vX0RYYTdzYkt2d1BWa09UQndnTWtidDJ6bU9NZmFHNUR0cXdSWktvN1RFbHhRenprMzBjN3hkSDdtaUplMm5OcFplRzV3aTJxWVZ4bVZRTTB0ekIzTWdGSDlrSDItRW1lWTRqZ2pzbElJV1pOMjlvRUZXa1RoQTM3WjEwQkpqZTE2UHZoRzdfRXpZMXpsOXJsMFpFd09WX3dpdWZJ0gHiAUFVX3lxTE1UMDJwQUExSEhFQ2VoZzg4ckNpNC1YN3VGTF9sOTBxVlVoejJ3Q0VkcFB3bjdvSmZ4VDRlZVhBVWRzYW9SeHdvR25sUTd3R0t5Q244aW81Zi04REdCNi1vSHFxWTdUdDliRS1IdndTYW9CYl92MWQ4Z1VuRkhsdnBwTDg4UlV1N0lKRDN1RmplcUxrQ1lPTldPZFJJYW9mTVlLTkswR2tIeHhZQ2o2RDlOMVlNbU56N1B1OHZHdFNjZGkyX1pKOVl2ZFltSUZjN09lRjUwY0ZGR2dIbWFGc1ItcFE?oc=5) 등 지정학적 리스크와 유가 급등도 투자심리 위축에 영향을 주고 있습니다.\n- 환율(USD/KRW)도 1457원대에서 고점 유지, 대외 불확실성(금리·유가·환율) 삼중고가 시장 부담으로 작용 중입니다.\n\n## 오늘의 핵심 이슈: 반도체/AI, 정책 불확실성, 실적 모멘텀\n\n- [엔비디아, 네이버 3대 주주 된다… 10억 달러 유상증자 참여](https://news.google.com/rss/articles/CBMiZEFVX3lxTE9ubENrUVJ3T3BsYXhUSEpjU0dySXJuMHFKRTNhczM1NkF1WjVWelBwSzVSYkI1dEJyS1haVl9QdmN4R3ljQ2J4NFhiX18zNlBvMl9mSnA5ZHBWQURHbWZ1NnZNNVQ?oc=5) 등 반도체/AI 관련 이슈가 부각되었으나, 시장 전체를 반전시키기엔 역부족이었습니다.\n- 실적 모멘텀 약화, 정책 불확실성(연준 금리, 환율, 유가 등)도 여전히 시장의 발목을 잡고 있습니다.\n\n## 전략적 시사점 및 체크포인트\n\n- 시장은 방어적 기조를 유지하며, 변동성 완화 및 대외 불확실성 해소 전까지 공격적 비중 확대는 미루는 것이 바람직합니다.\n- 외국인·기관 저가 매수세가 단기 급락을 완화할 수 있으나, 반전 신호(리버설) 부재와 누적 하락폭을 감안하면 추가 하락 리스크도 상존합니다.\n- 오늘 논의된 합의가 깨지는 조건: 외국인·기관 매수세가 급격히 약화되거나, 대외 변수(금리·환율·유가 등)에서 추가 충격이 발생할 경우 시장 방어적 전략을 재점검해야 합니다."
+}
