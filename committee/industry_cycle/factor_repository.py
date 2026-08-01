@@ -195,6 +195,25 @@ def list_factor_weekly(asset_id: str | None = None, db_path: Path | None = None)
         return [dict(r) for r in rows]
 
 
+def list_factor_weekly_for_as_of(
+    as_of: str,
+    model_version: str,
+    db_path: Path | None = None,
+) -> List[Dict[str, Any]]:
+    """Return one model's complete cross-section for a historical week."""
+    init_db(db_path)
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            """
+            SELECT * FROM industry_factor_weekly
+            WHERE as_of = :as_of AND model_version = :model_version
+            ORDER BY industry_id, asset_id;
+            """,
+            {"as_of": as_of, "model_version": model_version},
+        ).fetchall()
+        return [dict(row) for row in rows]
+
+
 # --- industry_price_state_weekly ----------------------------------------------
 
 

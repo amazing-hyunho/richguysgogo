@@ -1,0 +1,112 @@
+backfill_industry_cycle_history_plan weeks=54 range=2025-07-18..2026-07-24 industries=25 price_targets=72 reuse_price_factors=True execute=True
+point_in_time_policy=prices:available_at<=as_of,indicators:known_at<=as_of,news:excluded,current_representative_basket:reconstructed
+first_earnings_source_date=2026-05-09
+week_start index=1/54 as_of=2025-07-18
+week_done as_of=2025-07-18 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=2/54 as_of=2025-07-25
+week_done as_of=2025-07-25 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=3/54 as_of=2025-08-01
+week_done as_of=2025-08-01 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=4/54 as_of=2025-08-08
+week_done as_of=2025-08-08 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=5/54 as_of=2025-08-15
+week_done as_of=2025-08-15 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=6/54 as_of=2025-08-22
+week_done as_of=2025-08-22 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=7/54 as_of=2025-08-29
+week_done as_of=2025-08-29 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=8/54 as_of=2025-09-05
+week_done as_of=2025-09-05 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=9/54 as_of=2025-09-12
+week_done as_of=2025-09-12 price=72/72 reused=True fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=10/54 as_of=2025-09-19
+week_done as_of=2025-09-19 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=11/54 as_of=2025-09-26
+week_done as_of=2025-09-26 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=12/54 as_of=2025-10-03
+week_done as_of=2025-10-03 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=13/54 as_of=2025-10-10
+week_done as_of=2025-10-10 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=14/54 as_of=2025-10-17
+week_done as_of=2025-10-17 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=15/54 as_of=2025-10-24
+week_done as_of=2025-10-24 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=16/54 as_of=2025-10-31
+week_done as_of=2025-10-31 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=17/54 as_of=2025-11-07
+week_done as_of=2025-11-07 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=18/54 as_of=2025-11-14
+week_done as_of=2025-11-14 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=19/54 as_of=2025-11-21
+week_done as_of=2025-11-21 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=20/54 as_of=2025-11-28
+week_done as_of=2025-11-28 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=21/54 as_of=2025-12-05
+week_done as_of=2025-12-05 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=22/54 as_of=2025-12-12
+week_done as_of=2025-12-12 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=23/54 as_of=2025-12-19
+week_done as_of=2025-12-19 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=24/54 as_of=2025-12-26
+week_done as_of=2025-12-26 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=25/54 as_of=2026-01-02
+week_done as_of=2026-01-02 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=26/54 as_of=2026-01-09
+week_done as_of=2026-01-09 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=27/54 as_of=2026-01-16
+week_done as_of=2026-01-16 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=28/54 as_of=2026-01-23
+week_done as_of=2026-01-23 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=29/54 as_of=2026-01-30
+week_done as_of=2026-01-30 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=30/54 as_of=2026-02-06
+week_done as_of=2026-02-06 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=31/54 as_of=2026-02-13
+week_done as_of=2026-02-13 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=32/54 as_of=2026-02-20
+week_done as_of=2026-02-20 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=33/54 as_of=2026-02-27
+week_done as_of=2026-02-27 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=34/54 as_of=2026-03-06
+week_done as_of=2026-03-06 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=35/54 as_of=2026-03-13
+week_done as_of=2026-03-13 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=36/54 as_of=2026-03-20
+week_done as_of=2026-03-20 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=37/54 as_of=2026-03-27
+week_done as_of=2026-03-27 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=38/54 as_of=2026-04-03
+week_done as_of=2026-04-03 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=39/54 as_of=2026-04-10
+week_done as_of=2026-04-10 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=40/54 as_of=2026-04-17
+week_done as_of=2026-04-17 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=41/54 as_of=2026-04-24
+week_done as_of=2026-04-24 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=42/54 as_of=2026-05-01
+week_done as_of=2026-05-01 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=43/54 as_of=2026-05-08
+week_done as_of=2026-05-08 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=44/54 as_of=2026-05-15
+week_done as_of=2026-05-15 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=45/54 as_of=2026-05-22
+week_done as_of=2026-05-22 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=46/54 as_of=2026-05-29
+week_done as_of=2026-05-29 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=47/54 as_of=2026-06-05
+week_done as_of=2026-06-05 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=48/54 as_of=2026-06-12
+week_done as_of=2026-06-12 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=49/54 as_of=2026-06-19
+week_done as_of=2026-06-19 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=50/54 as_of=2026-06-26
+week_done as_of=2026-06-26 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=51/54 as_of=2026-07-03
+week_done as_of=2026-07-03 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=52/54 as_of=2026-07-10
+week_done as_of=2026-07-10 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=53/54 as_of=2026-07-17
+week_done as_of=2026-07-17 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+week_start index=54/54 as_of=2026-07-24
+week_done as_of=2026-07-24 price=72/72 reused=False fundamentals=25/25 breadth=25/25 cycle=25/25
+backfill_industry_cycle_history_done weeks=54 range=2025-07-18..2026-07-24 price_ok=3888 price_failed=0 fundamentals_ok=1350 fundamentals_failed=0 breadth_ok=1350 breadth_failed=0 cycle_ok=1350 cycle_failed=0

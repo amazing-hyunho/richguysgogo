@@ -109,6 +109,35 @@ class EarningsRevisionScoreTests(TempDbTestCase):
 
 
 class BreadthScoreTests(TempDbTestCase):
+    def test_factor_row_fast_path_matches_evidence_scoring(self) -> None:
+        factor_rows = [
+            {
+                "asset_id": "UP",
+                "rel_return_6m": 0.12,
+                "score_breakdown_json": (
+                    '{"trend":{"components":[{"key":"ma200_gap","raw_value":0.08}]}}'
+                ),
+            },
+            {
+                "asset_id": "DOWN",
+                "rel_return_6m": -0.05,
+                "score_breakdown_json": (
+                    '{"trend":{"components":[{"key":"ma200_gap","raw_value":-0.03}]}}'
+                ),
+            },
+        ]
+        bundle = ibs.compute_industry_breadth_score_from_factor_rows(
+            "semiconductors",
+            "2026-07-25",
+            factor_rows=factor_rows,
+            stock_model_config=self.stock_model_config,
+        )
+        self.assertAlmostEqual(bundle.score, 50.0)
+        self.assertEqual(bundle.data_completeness, 1.0)
+        self.assertEqual(bundle.n_tickers_considered, 2)
+        self.assertTrue(bundle.evidence[0].is_positive_relative_strength)
+        self.assertFalse(bundle.evidence[1].is_above_200ma)
+
     def test_all_stocks_outperforming_gives_high_breadth(self) -> None:
         end = date(2026, 7, 24)
         for t in ("X", "Y", "Z"):

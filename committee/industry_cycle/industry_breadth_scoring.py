@@ -19,6 +19,7 @@ never fabricated as 0/positive).
 """
 
 from dataclasses import dataclass, field
+import json
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
@@ -213,10 +214,6 @@ def compute_industry_breadth_score(
     `stock_scoring.compute_stock_score`'s per-ticker call signature.
     """
     evidence: List[TickerBreadthEvidence] = []
-    n_positive_rs = 0
-    n_with_rs_data = 0
-    n_above_200ma = 0
-    n_with_ma_data = 0
 
     for ticker, market in ticker_markets.items():
         benchmark_asset_id = ticker_benchmarks.get(ticker)
@@ -227,19 +224,8 @@ def compute_industry_breadth_score(
         rel_return_6m = features.rel_return_6m if features is not None else None
         ma200_gap = features.ma200_gap if features is not None else None
 
-        is_positive: Optional[bool] = None
-        if rel_return_6m is not None:
-            is_positive = rel_return_6m > 0
-            n_with_rs_data += 1
-            if is_positive:
-                n_positive_rs += 1
-
-        is_above: Optional[bool] = None
-        if ma200_gap is not None:
-            is_above = ma200_gap > 0
-            n_with_ma_data += 1
-            if is_above:
-                n_above_200ma += 1
+        is_positive = None if rel_return_6m is None else rel_return_6m > 0
+        is_above = None if ma200_gap is None else ma200_gap > 0
 
         evidence.append(
             TickerBreadthEvidence(
@@ -251,6 +237,25 @@ def compute_industry_breadth_score(
             )
         )
 
+    return _score_breadth_evidence(
+        industry_id,
+        as_of,
+        evidence=evidence,
+        stock_model_config=stock_model_config,
+    )
+
+
+def _score_breadth_evidence(
+    industry_id: str,
+    as_of: str,
+    *,
+    evidence: List[TickerBreadthEvidence],
+    stock_model_config: Dict[str, Any],
+) -> IndustryBreadthBundle:
+    n_positive_rs = sum(item.is_positive_relative_strength is True for item in evidence)
+    n_with_rs_data = sum(item.is_positive_relative_strength is not None for item in evidence)
+    n_above_200ma = sum(item.is_above_200ma is True for item in evidence)
+    n_with_ma_data = sum(item.is_above_200ma is not None for item in evidence)
     raw = {
         "pct_positive_relative_strength": _ratio(n_positive_rs, n_with_rs_data),
         "pct_above_200ma": _ratio(n_above_200ma, n_with_ma_data),
@@ -270,6 +275,60 @@ def compute_industry_breadth_score(
         weighted_sum=result.weighted_sum,
         reason=result.reason,
         data_completeness=data_completeness,
-        n_tickers_considered=len(ticker_markets),
+        n_tickers_considered=len(evidence),
         evidence=evidence,
+    )
+
+
+def _ma200_gap_from_factor_row(row: Dict[str, Any]) -> Optional[float]:
+    """Read the already-persisted production feature without recomputing prices."""
+    breakdown = row.get("score_breakdown")
+    if breakdown is None and row.get("score_breakdown_json"):
+        try:
+            breakdown = json.loads(row["score_breakdown_json"])
+        except (TypeError, ValueError):
+            breakdown = None
+    if not isinstance(breakdown, dict):
+        return None
+    for component in (breakdown.get("trend") or {}).get("components", []):
+        if component.get("key") == "ma200_gap":
+            value = component.get("raw_value")
+            return None if value is None else float(value)
+    return None
+
+
+def compute_industry_breadth_score_from_factor_rows(
+    industry_id: str,
+    as_of: str,
+    *,
+    factor_rows: List[Dict[str, Any]],
+    stock_model_config: Dict[str, Any],
+) -> IndustryBreadthBundle:
+    """Score breadth from the exact production price-factor rows for a week.
+
+    This is mathematically identical to ``compute_industry_breadth_score``;
+    it only avoids loading and rebuilding each ticker's full daily price
+    history again during a multi-week historical reconstruction.
+    """
+    evidence: List[TickerBreadthEvidence] = []
+    for row in factor_rows:
+        rel_return_6m = row.get("rel_return_6m")
+        rel_return_6m = None if rel_return_6m is None else float(rel_return_6m)
+        ma200_gap = _ma200_gap_from_factor_row(row)
+        evidence.append(
+            TickerBreadthEvidence(
+                ticker=str(row["asset_id"]),
+                rel_return_6m=rel_return_6m,
+                ma200_gap=ma200_gap,
+                is_positive_relative_strength=(
+                    None if rel_return_6m is None else rel_return_6m > 0
+                ),
+                is_above_200ma=None if ma200_gap is None else ma200_gap > 0,
+            )
+        )
+    return _score_breadth_evidence(
+        industry_id,
+        as_of,
+        evidence=evidence,
+        stock_model_config=stock_model_config,
     )
