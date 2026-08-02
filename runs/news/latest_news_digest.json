@@ -1,11 +1,23 @@
 {
-  "crawled_at": "2026-08-02T15:42:00.647808+00:00",
+  "crawled_at": "2026-08-02T16:42:03.023880+00:00",
   "news_date": "2026-08-03",
-  "total_collected": 3,
+  "total_collected": 10,
   "topic_counts": [
     [
-      "에너지/원자재",
+      "반도체/AI",
       1
+    ],
+    [
+      "국내지수",
+      1
+    ],
+    [
+      "중국/신흥국",
+      1
+    ],
+    [
+      "에너지/원자재",
+      2
     ],
     [
       "경기/성장",
@@ -14,8 +26,41 @@
   ],
   "top_articles": [
     {
-      "topic": "에너지/원자재",
+      "topic": "반도체/AI",
       "count": 1,
+      "title": "\"데이터센터 칩 교체주기 5년…반도체 성장 수십년 지속될 것\" - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBFX1NHalpUZzhGd1BWZmFTTWpsV0dFZjQ3anVOQnV5OUJodmVuS3liQTBpMktVRWNkQmlpQ3BOdUpVX1dBYlFpVk5SZkFaQms3S1dFaFk0dDU5QQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: \"데이터센터 칩 교체주기 5년…반도체 성장 수십년 지속될 것\" - 한국경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "국내지수",
+      "count": 1,
+      "title": "코스피 폭락에도 \"역대급 저평가\"…'8월' 파격 전망의 근거 - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1uZkpPZndBeXJrRGJOcGstZXdKQkhsLVFTMHp2bl94NFRpa3d2YnFUQVZvZUhwZXVjTjdVSHl6eTNtcFR4SWhMbDhOYjRhOUJzLVRkNmVuOWRQZw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 코스피 폭락에도 \"역대급 저평가\"…'8월' 파격 전망의 근거 - 한국경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "중국/신흥국",
+      "count": 1,
+      "title": "중국은행, AIIB와 손잡고 우즈베키스탄에 7억위안 역외 위안화 대출 - 이즈보험",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5PMXlpOVVHN3dvZTFpY0VqaVRxdzNrTVZsREl6ODB2aWhrQTU1SW1ZbzI2WUpKNXVrTkF4UE1oVXAwblA5N3lUeWo2Y28ySVIzOXFWblNwTVNsTi1wRVM5UTFqWUhzUVU2MWc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 중국은행, AIIB와 손잡고 우즈베키스탄에 7억위안 역외 위안화 대출 - 이즈보험",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "에너지/원자재",
+      "count": 2,
       "title": "\"캐나다 LNG기술 진보성 없어\"…삼성중공업, 특허분쟁 승기 잡았다 - 한국경제",
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4xcVpjR0N2TndIRm9lalZsZEs5RC1QWlJnVUs4eEUwMl9iM2tWc2RWTDFWVjRkQ21WRHpIUkdiWUVrYzdPOGZGOVFnR3pyTU00V084cmpOQXJDUQ?oc=5",
       "summary_lines": [
@@ -38,6 +83,18 @@
   ],
   "sector_hot_topics": [
     {
+      "sector": "에너지/소재",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "에너지/원자재",
+          "count": 2,
+          "title": "\"캐나다 LNG기술 진보성 없어\"…삼성중공업, 특허분쟁 승기 잡았다 - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4xcVpjR0N2TndIRm9lalZsZEs5RC1QWlJnVUs4eEUwMl9iM2tWc2RWTDFWVjRkQ21WRHpIUkdiWUVrYzdPOGZGOVFnR3pyTU00V084cmpOQXJDUQ?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "매크로",
       "total_count": 2,
       "topics": [
@@ -50,14 +107,38 @@
       ]
     },
     {
-      "sector": "에너지/소재",
+      "sector": "IT/반도체",
       "total_count": 1,
       "topics": [
         {
-          "topic": "에너지/원자재",
+          "topic": "반도체/AI",
           "count": 1,
-          "title": "\"캐나다 LNG기술 진보성 없어\"…삼성중공업, 특허분쟁 승기 잡았다 - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE4xcVpjR0N2TndIRm9lalZsZEs5RC1QWlJnVUs4eEUwMl9iM2tWc2RWTDFWVjRkQ21WRHpIUkdiWUVrYzdPOGZGOVFnR3pyTU00V084cmpOQXJDUQ?oc=5"
+          "title": "\"데이터센터 칩 교체주기 5년…반도체 성장 수십년 지속될 것\" - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBFX1NHalpUZzhGd1BWZmFTTWpsV0dFZjQ3anVOQnV5OUJodmVuS3liQTBpMktVRWNkQmlpQ3BOdUpVX1dBYlFpVk5SZkFaQms3S1dFaFk0dDU5QQ?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "지수/시장",
+      "total_count": 1,
+      "topics": [
+        {
+          "topic": "국내지수",
+          "count": 1,
+          "title": "코스피 폭락에도 \"역대급 저평가\"…'8월' 파격 전망의 근거 - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1uZkpPZndBeXJrRGJOcGstZXdKQkhsLVFTMHp2bl94NFRpa3d2YnFUQVZvZUhwZXVjTjdVSHl6eTNtcFR4SWhMbDhOYjRhOUJzLVRkNmVuOWRQZw?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "글로벌",
+      "total_count": 1,
+      "topics": [
+        {
+          "topic": "중국/신흥국",
+          "count": 1,
+          "title": "중국은행, AIIB와 손잡고 우즈베키스탄에 7억위안 역외 위안화 대출 - 이즈보험",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5PMXlpOVVHN3dvZTFpY0VqaVRxdzNrTVZsREl6ODB2aWhrQTU1SW1ZbzI2WUpKNXVrTkF4UE1oVXAwblA5N3lUeWo2Y28ySVIzOXFWblNwTVNsTi1wRVM5UTFqWUhzUVU2MWc?oc=5"
         }
       ]
     }
