@@ -1,0 +1,58 @@
+{
+  "consensus": "단기 급등에도 불구하고 중기적 추세 전환 신호는 미약하여, 중립적 관점에서 근거 확인 후 선별 대응이 필요합니다.",
+  "key_points": [
+    {
+      "point": "KOSPI 17.91% 급등, 외국인 +74,107억 순매수 등 단기 강세가 뚜렷하나, 20일 누적 수익률은 -4.57%로 중기 약세가 지속.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "USD/KRW 1,439.43(+1.07%)로 환율 부담이 여전하며, VIX 16.0으로 변동성은 낮아졌으나 유동성 환경은 보수적.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "뉴스는 반도체/AI, 금리/연준, 환율/달러, 지정학 등 불확실성 이슈가 다수 부각되어 경계심리 유지.",
+      "sources": [
+        "news_digest"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "수급 해석 및 시장 국면",
+      "majority": "단기 강세에도 중기적 추세 전환 신호는 미약하므로 중립적 대응 필요",
+      "minority": "외국인 주도 강한 매수세로 위험선호(RISK_ON) 국면 진입",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "외국인 매수세가 지속될 경우 단기 랠리가 중기 추세 전환으로 이어질 수 있어, 수급 변화 모니터링이 중요"
+    },
+    {
+      "topic": "유동성 환경 평가",
+      "majority": "단기 반등에도 불구하고 환율 급등 등 유동성 환경은 보수적",
+      "minority": "외국인 매수세가 환율 부담을 상쇄하며, 펀더멘털/테마 주도 유입이 긍정적",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "유동성 환경이 개선될 경우 시장의 추가 상승 여력이 확대될 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "외국인·기관 매수세가 강한 대형주 및 반도체/AI 테마는 단기 모멘텀 지속 가능"
+    },
+    {
+      "level": "CAUTION",
+      "text": "20일 누적 약세와 환율 부담, 지정학 이슈 등 중기 불확실성에 유의하며 비중 확대는 신중히 접근"
+    },
+    {
+      "level": "AVOID",
+      "text": "단기 급등에 따른 개인 차익실현 매물 집중 종목 및 실적 모멘텀 부진주는 피할 것"
+    }
+  ],
+  "sugeup_narrative": "## 단기 급등, 중기 불확실성: 오늘의 시장 성격과 주요 지표\n\n- KOSPI는 6,595.45pt로 전일 대비 +17.91% 급등, KOSDAQ도 719.76pt(+11.63%)로 강한 반등을 기록했습니다.\n- 외국인 순매수는 +74,107억, 기관도 +14,488억 순매수, 반면 개인은 -87,555억 순매도(코스피: 외 +72,410억, 코스닥: 외 +1,697억)로 집계되었습니다.\n- USD/KRW 환율은 1,439.43원(+1.07%)으로 상승, VIX는 16.0으로 5일 평균(18.19) 대비 하락하며 단기 변동성은 진정세를 보였습니다.\n- 5일 누적 KOSPI 수익률은 +17.77%로 단기 랠리가 두드러지나, 20일 누적은 -4.57%로 중기 약세가 여전합니다.\n\n## 외국인 주도 단기 랠리, 개인 차익실현: 수급 해석\n\n- 오늘 시장은 외국인과 기관의 강한 순매수세가 주도했습니다. 외국인은 코스피에서만 +72,410억을 순매수하며, 반도체/AI 기대와 금리/연준 정책 변화에 대한 선제적 베팅이 유입된 것으로 해석됩니다.\n- 개인은 최근 급등에 따른 차익실현 매물을 대거 출회, 단기 랠리의 수급 주체가 외국인·기관으로 전환된 점이 특징입니다.\n- 환율이 1,439원대로 상승했음에도 외국인 매수세가 이어진 점은 FX-driven outflow가 아닌 펀더멘털/테마 주도 유입임을 시사합니다.\n\n## 오늘의 핵심 이슈: 반도체/AI, 금리/연준, 환율/달러, 지정학\n\n- [반도체 호황이 부른 금리 인상… 시험대 오른 AI 투자 붐](https://news.google.com/rss/articles/CBMihgFBVV95cUxNUWRQZFpfS2F3dTBiT0hUN1JTV1JCZkV0Z0hwdW9Xd0FRZDlYOGZkQXlxeEpRVWpYVFZ5eXhxWlRTeUtkWW5ZSTJwX0hTemxHT0JkTVJrVkQ3YXdjQ0xfNm9aSGs4TF9yaUxfTk54dmFzRXVCR1pfTVNRbHUtYnhyYXBjcHM3Z9IBmgFBVV95cUxOWl9xWUNPM2NnUDdCdFZMWmJwQkFGc3RmNDdnLUhKZFM1aEJwLXJRVTFLMWhSSTFXb0l4X0J3VlZMdFZKVk9DTTJwMTF6UDZfYjVDOGlvUEFDTlhZd3UwcF94WVZaZFhSNE1iUEROUTZOdENnQ1RrVDNhMEdjYzJDVEtRaVdyNG43ME5tZ3FIbmlheDJRazBZTERR?oc=5): 반도체 업황 개선과 AI 투자 붐이 외국인 매수세를 견인.\n- [원화강세·달러공급 개선에 전쟁 충격 해소... 환율 1년만에 1300원대 초읽기](https://news.google.com/rss/articles/CBMihAFBVV95cUxOb2VnMi1qNFo3UVFEX2x3dEtzcl9paDloVkxLWU9YTUlobVU4c2E4cFl4V1ZzeUJlT0ctVUJ1UjFMcjVVaDdIZkNta2hmbWNxVWZvd0VpNXVCeUxER3pRRktkaEhfU1RyaW9icldiY1ZzOGpUbGZLbnJmSmZCb2xaanZoaS0?oc=5): 환율 부담이 완화될 조짐도 있으나, 단기적으로는 여전히 경계 필요.\n- [미·이란, 에너지전쟁 임박…호르무즈 피격·유가 90달러에 세계경제 경보](https://news.google.com/rss/articles/CBMibkFVX3lxTE9LOGhzYXlMNmZ5WmZIOExrZ010ZmZKaURySWZGdTZzNU1DbGt5RWNISm4xQXoxd0FTWks3TEw4a3liYTVvSGx0WWJORWwzZDluc09yTE51UmJ5TlluUkt0alBJYjlWWEw2eThxWmtR?oc=5): 지정학적 리스크와 유가 상승이 글로벌 경기 불확실성을 자극.\n- [7월 코스닥 21% 폭락에 '시총 미달' 30개 속출…투자자 발 동동](https://news.google.com/rss/articles/CBMiW0FVX3lxTE85WWVaV0RjbUtCeXZUdGkySTcyM1Ywd3JLNkprX1FmcmZ4d3RIYmdfeERqN0RKV2RsQklNWDdReDA0OVJUQ1F2dWlQUW4tT19hTEZZU2lUaDdlZDTSAWBBVV95cUxOakRoOVBuS29Falh2bENrb2hOWUtLVEZBbzNfeDdSWW9nVnAwdEg0WDI4TXlSNldTb2FpcGt6SmxtLVhwUEM5N1FmbW9YbzRXRE1fUU1EZlhZSTJXVkFzYXU?oc=5): 코스닥의 급락 후 반등에도 중소형주 투자심리는 여전히 불안정.\n\n## 전략적 시사점 및 체크포인트\n\n- 단기 랠리의 지속 여부는 외국인 매수세와 환율 안정, 반도체/AI 업황 개선 모멘텀에 달려 있습니다.\n- 중기적으로는 20일 누적 약세, 환율 부담, 지정학 리스크 등 불확실성이 상존하므로, 비중 확대는 신중히 접근해야 합니다.\n- 오늘의 중립적 시황이 무력화되는 조건: 외국인 순매수세가 급격히 약화되거나, 환율이 추가 급등(1,450원 돌파)할 경우 단기 랠리의 지속성에 의문이 제기될 수 있습니다."
+}
