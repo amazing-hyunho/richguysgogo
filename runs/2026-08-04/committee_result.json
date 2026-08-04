@@ -1,0 +1,59 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 -1.34% 하락(6173.46p)하며 20일 누적 -24.04% 약세를 이어갔고, 변동성(VIX 15.86)은 5일 평균(17.57) 대비 소폭 완화되었습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 KOSPI에서 +2722억 순매수하며 반등을 시도했으나, 기관은 -4856억 순매도, 개인은 저가매수(+1826억)로 대응했습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 리스크 국면 해석",
+      "majority": "RISK_OFF(방어적 접근 필요)",
+      "minority": "RISK_ON(구조적 약세 지속, 단기 반등 신호 미약)",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "대부분은 방어적 스탠스를 권고하나, 일부는 구조적 약세가 더 심화될 수 있다고 경고해 추가 하락 리스크에 대한 경계가 필요합니다."
+    },
+    {
+      "topic": "수급 반등의 지속성",
+      "majority": "외국인 매수와 개인 저가매수로 단기 반등 시도, 지속성은 미지수",
+      "minority": "단기 반등 신호 자체가 약하며, 내부 확산력도 부족",
+      "minority_agents": [
+        "breadth",
+        "sector"
+      ],
+      "why_it_matters": "수급 반등이 일시적일 수 있어, 추격 매수보다는 신중한 접근이 요구됩니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 개요 및 주요 지표\n\n- KOSPI는 6173.46p로 전일 대비 -1.34% 하락하며, 20일 누적 -24.04%의 약세 흐름을 이어갔습니다. KOSDAQ은 766.66p로 +3.98% 급등했으나, 시장 전반의 불안정성은 여전합니다.\n- 환율은 USD/KRW 1440.53원(-0.31%)로 소폭 하락하며 원화 강세를 보였고, VIX(15.86)는 5일 평균(17.57) 대비 다소 완화되었습니다.\n- 수급 측면에서는 외국인 +1560억(특히 KOSPI +2722억), 기관 -3051억, 개인 +1188억 순매수로 집계되었습니다.\n\n## 수급 해석: 외국인 매수와 개인 저가매수, 지속성은 미지수\n\n- 외국인은 KOSPI에서 대규모 순매수(+2722억)를 보이며 단기 반등을 시도했으나, 기관은 -4856억 순매도로 대응했습니다. 개인은 최근 20일간의 급락(-24%) 이후 저가매수(+1826억)에 나섰으나, 레버리지 추격매수 가능성도 일부 존재합니다.\n- [미국증시, 유가·국채금리 하락에 위험자산 선호 확대되며 상승 마감 - 버핏연구소](https://news.google.com/rss/articles/CBMiYkFVX3lxTFBzaHJ1VE43bC1nc0NVaE5ITkMyMkJhQi1Rb0tPbGV2eXJ2d2s4RWE4ZlBOazZqeE5KSl82aTh5aFNmaTVockllbVAyMGktcVVIQUY3M0FGdVFNV1hLNGNuVjZB?oc=5) 등 글로벌 위험자산 선호가 국내 시장에도 영향을 주고 있으나, 국내 변동성 및 내부 확산력은 여전히 제한적입니다.\n\n## 날짜별 핵심 이슈: 금리·환율·AI/반도체·글로벌 증시\n\n- [GAM]워시의 연준, 금리보다 유동성 궤적 ① QT와 국채 만기 구조가 열쇠 - 뉴스핌](https://news.google.com/rss/articles/CBMiXEFVX3lxTE5DNWpUTHpIN3k4Tjl0djFpVGNsNHpPX2JGT0k5b0ZhRm4xM243cDlSVDVpb1kwSW9IY2lwbnI2WFRSUEZsN01vTm1FMHJ6VWJhSXMxbFZTQWZXa1dr?oc=5): 연준의 유동성 정책과 국채 만기 구조가 시장 변동성에 영향을 주고 있습니다.\n- [아마존 시총 3조달러 돌파⋯\"AI 투자 우려 걷혔다\" - 브릿지경제](https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Qa20zUzdMYmNOZGwwV0RTUHp6eE1kSlNIUzVTM3ZHc0V2dDdvekZEWk5VeENEcmR1SVZYYzlrallsQ21WTjR0U3NkUE5jLVJRT0V6Qjhzcl8xQQ?oc=5): AI/반도체 관련 기대감이 글로벌 위험자산 선호를 자극하고 있으나, 국내 실적 모멘텀 개선 신호는 아직 미약합니다.\n- [엔화 반등 기대에 원·달러 환율 1300원대 복귀 가능성 - 컨슈머타임스](https://news.google.com/rss/articles/CBMiakFVX3lxTE5GeDZfZDFGNVowTnhKYVhwanU4aWliWmdDMVBySHpsd0lYM3Y2V2pTLVFpbmFERklLcF81QjlNYXYxQloyUkRPdHJoT01zZXptdE9MYjNDMG4taHd5ejZ3QjVpNXowRmJTd1E?oc=5): 환율 부담 완화 기대가 일부 반영되고 있으나, 정책 및 글로벌 변수에 따라 변동성 재확대 가능성도 상존합니다.\n\n## 전략적 시사점 및 체크포인트\n\n- 단기적으로 외국인 매수와 글로벌 위험자산 선호가 긍정적 신호이나, KOSPI의 중기적 약세(-24%/20일)와 내부 확산력 부족, 실적 모멘텀 미약 등 구조적 리스크가 우세합니다.\n- 변동성(VIX)과 환율(USD/KRW) 추이, 외국인 매수세의 지속성, 그리고 AI/반도체 등 성장 섹터의 실적 개선 신호가 확인되기 전까지는 방어적 포트폴리오 유지가 권고됩니다.\n- 오늘 제시된 전략의 무효화 조건: KOSPI가 5일 연속 강한 반등(+5% 이상)과 함께 외국인·기관 동반 순매수, 실적 모멘텀 개선 신호가 동반될 경우, 방어적 스탠스에서 점진적 비중 확대를 검토할 수 있습니다."
+}
