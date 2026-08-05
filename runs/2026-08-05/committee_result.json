@@ -1,0 +1,54 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 4.00% 급등(6613.47), 외국인 순매수 +2247억, VIX 16.5로 변동성 안정.",
+      "sources": [
+        "flow_data",
+        "macro_daily",
+        "market_note"
+      ]
+    },
+    {
+      "point": "5일 누적 KOSPI +17.18%로 단기 반등세 뚜렷하나, 20일 누적 -11.73%로 중기 하락분은 미회복.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "중기 추세 신뢰도",
+      "majority": "단기 랠리와 외국인 매수세에 기반한 위험 선호(Risk-On) 구간 진입",
+      "minority": "20일 누적 하락과 실적 모멘텀 부재로 중기적 불확실성 강조",
+      "minority_agents": [
+        "macro",
+        "risk",
+        "earnings"
+      ],
+      "why_it_matters": "단기 랠리 지속 여부와 추격매수 리스크 관리에 중요한 판단 기준"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 단기 랠리와 외국인 매수: 시장 분위기와 주요 지표\n\n오늘(8월 5일) KOSPI는 4.00% 급등한 6613.47pt, KOSDAQ은 2.31% 오른 798.75pt로 마감했습니다. 외국인은 전체 시장에서 +2247억 순매수(특히 KOSPI +4430억), 기관도 +191억 순매수, 반면 개인은 -2378억 순매도(특히 KOSDAQ +2759억 순매수, KOSPI -5137억 순매도)로 집계됐습니다. USD/KRW 환율은 1429.59원(-0.26%)로 안정세를 보였고, VIX는 16.5로 변동성도 낮은 수준을 유지했습니다.\n\n## 수급 구도: 외국인 주도, 개인은 KOSDAQ 추격매수\n\n오늘 시장은 외국인 매수세가 KOSPI 대형주에 집중되며 랠리를 주도했습니다. 이는 미국 나스닥(+2.59%) 등 글로벌 AI/반도체 모멘텀과 연준/금리 불확실성 완화, 환율 안정(USD/KRW -0.26%)이 복합적으로 작용한 결과로 해석됩니다. 반면 개인은 KOSDAQ에 대거 유입(+2759억)되며 단기 추격매수 양상을 보였으나, 최근 5일간 KOSDAQ이 19% 가까이 급등한 점을 감안하면 레버리지 및 단기 과열 신호에 유의해야 합니다.\n\n## 오늘의 핵심 이슈: AI·반도체, 미국 증시, 환율/유동성\n\n- [뉴욕증시, AI 실적·중동 긴장 완화에 '사상 최고'…나스닥 2.6% 급등](https://news.google.com/rss/articles/CBMiXkFVX3lxTE5TNnBpd3FVUlBYS3FuYlBabFZsN0p1bjRtN3NLWnl5Tmp1WGxCeHdMNWctd29QOEstZ1Qtd2J0aU9SeTJOSGpTYmxrcm1Ca3NYY2xrYzJ2T2FSMGFCbnc?oc=5): 미국발 AI 실적 호조와 지정학 완화가 글로벌 위험선호를 자극\n- [초고수가 먼저 담았는데…월가가 밤사이 찍은 ‘반도체 원픽’](https://news.google.com/rss/articles/CBMiWkFVX3lxTE1aWms1SUZFaDVZREtmNDdsd3BzdXJLQU1Kb1pxYlcxTm5fWEtBeWh2MFFyb2dlT2Vyb2lYOGNYdHA5V2Uyc2p0Q0RubU1hNVRyc1pZemtiTlBVUQ?oc=5): 반도체/AI 업종에 대한 월가의 긍정적 시각이 국내 대형주 랠리로 연결\n- [환율 방어에도 외환보유액 4279억달러…세계 10위](https://news.google.com/rss/articles/CBMiZkFVX3lxTE9Palp2dFJ1SmR5MW1obWNqblpKOHJhZEcxZjdCQVJQcW1iQmZqQnoxOEpHU2JXWWlPelYtUTNuWVhQbVZIVFpIdkFlTk1NaGhiblhrTTZ3NGxhMGFrQm14b2w4cEVrdw?oc=5): 환율 안정과 외환보유액 이슈가 외국인 자금 유입 심리를 뒷받침\n\n## 단기 랠리의 한계와 체크포인트: 중기 불확실성, 실적 모멘텀 부재\n\n5일 누적 KOSPI +17.18%로 단기 반등세가 강하지만, 20일 누적 -11.73%로 중기 하락분은 여전히 미회복 상태입니다. 실적 추정치 상향 신호는 아직 뚜렷하지 않고, 단기 헤드라인 효과에 의존한 랠리라는 점에서 추격매수 리스크가 상존합니다. VIX(16.5) 등 변동성 지표는 안정적이나, 단기 급등 이후 조정 가능성도 염두에 둬야 합니다.\n\n## 전략적 시사점 및 무효화 조건\n\n외국인 매수세와 유동성 개선에 기반한 모멘텀 구간에서는 대형주·AI/반도체 중심으로 비중 확대가 가능하나, 단기 과열 및 중기 실적 모멘텀 부재 구간에서는 분할매수·짧은 손절 기준이 필요합니다. 만약 외국인 순매수가 급격히 이탈하거나, 환율이 재차 불안정해질 경우 오늘의 랠리 논리는 무효화될 수 있으니 주의가 필요합니다."
+}
