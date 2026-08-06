@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-08-06T17:42:00.629481+00:00",
+  "crawled_at": "2026-08-06T18:42:13.306576+00:00",
   "news_date": "2026-08-07",
-  "total_collected": 9,
+  "total_collected": 11,
   "topic_counts": [
+    [
+      "반도체/AI",
+      2
+    ],
     [
       "Thesis #2 전력, 초전도체, 데이터센터",
       1
@@ -12,12 +16,8 @@
       1
     ],
     [
-      "반도체/AI",
-      2
-    ],
-    [
       "인플레이션",
-      1
+      2
     ],
     [
       "바이오/헬스케어",
@@ -25,6 +25,17 @@
     ]
   ],
   "top_articles": [
+    {
+      "topic": "반도체/AI",
+      "count": 2,
+      "title": "AI 투자 경쟁, 조달 금리 싸움으로 - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0yOTlkZ21lVW9WUkNicDdqY0huNDlKZllvbFJUaFNpNHhXdGlLRE5uQmxsQU1tOVVKRVhXczlhSHZoUDZZLUJ5X2ZoUjJMazg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: AI 투자 경쟁, 조달 금리 싸움으로 - v.daum.net",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "Thesis #2 전력, 초전도체, 데이터센터",
       "count": 1,
@@ -48,23 +59,12 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 2,
-      "title": "AI 투자 경쟁, 조달 금리 싸움으로 - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0yOTlkZ21lVW9WUkNicDdqY0huNDlKZllvbFJUaFNpNHhXdGlLRE5uQmxsQU1tOVVKRVhXczlhSHZoUDZZLUJ5X2ZoUjJMazg?oc=5",
-      "summary_lines": [
-        "핵심 이슈: AI 투자 경쟁, 조달 금리 싸움으로 - v.daum.net",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "인플레이션",
-      "count": 1,
-      "title": "워런 美 상원의원, PCE 물가 산출 방식 변경에 투명성 요구 - 블루밍비트",
-      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9rSThLZEdGSHdlZWhVZVR1MDhJUnB2YjVjc1pucl9ta1RZU1ZsalNzLXR2eF9NT2o3azlRSFQxdTlNQi1waXZMNkRuSDVVZUFv?oc=5",
+      "count": 2,
+      "title": "[미국 특징주] 켄뷰, 인플레이션·관세發 마진 압박에 2분기 실적 시장 예상치 밑돌아 - 뉴스핌",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9DTENVVDZrZ1VTai0xMkk0bEg4cUdEUTAwN3RMS3VpN1F2V3lsb0VuaGM4Y000a2lMS2xHVWhtOXNibjEyQUJQZVZHdW5DRV9UTlBRYjRPSmdDTWF3?oc=5",
       "summary_lines": [
-        "핵심 이슈: 워런 美 상원의원, PCE 물가 산출 방식 변경에 투명성 요구 - 블루밍비트",
+        "핵심 이슈: [미국 특징주] 켄뷰, 인플레이션·관세發 마진 압박에 2분기 실적 시장 예상치 밑돌아 - 뉴스핌",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,19 +84,19 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 2,
+      "total_count": 3,
       "topics": [
+        {
+          "topic": "인플레이션",
+          "count": 2,
+          "title": "[미국 특징주] 켄뷰, 인플레이션·관세發 마진 압박에 2분기 실적 시장 예상치 밑돌아 - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9DTENVVDZrZ1VTai0xMkk0bEg4cUdEUTAwN3RMS3VpN1F2V3lsb0VuaGM4Y000a2lMS2xHVWhtOXNibjEyQUJQZVZHdW5DRV9UTlBRYjRPSmdDTWF3?oc=5"
+        },
         {
           "topic": "경기/성장",
           "count": 1,
           "title": "[고영경의 마켓 나우] AI 공급망, 숨은 수혜국은 태국·말레이시아 - 미주중앙일보",
           "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBrNFRlYW43M0lQQldJWUVaMm9vcTJEdnVPVENvR0NkZ0l3M2FJLW5NeEtPeTV5UEFUWnZMMUcwSGtMYTM4V29EbjFEUXp2MHQ4Ri1XOExvQmZWOEEzSjBvTEpB?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 1,
-          "title": "워런 美 상원의원, PCE 물가 산출 방식 변경에 투명성 요구 - 블루밍비트",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9rSThLZEdGSHdlZWhVZVR1MDhJUnB2YjVjc1pucl9ta1RZU1ZsalNzLXR2eF9NT2o3azlRSFQxdTlNQi1waXZMNkRuSDVVZUFv?oc=5"
         }
       ]
     },
