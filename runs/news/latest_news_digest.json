@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-08-07T18:42:06.054285+00:00",
+  "crawled_at": "2026-08-07T19:42:15.628015+00:00",
   "news_date": "2026-08-08",
-  "total_collected": 9,
+  "total_collected": 15,
   "topic_counts": [
     [
       "금리/연준",
-      2
+      4
+    ],
+    [
+      "정책/테마",
+      1
     ],
     [
       "반도체/AI",
@@ -13,25 +17,32 @@
     ],
     [
       "경기/성장",
-      3
+      4
     ],
     [
-      "미국지수",
-      2
-    ],
-    [
-      "인플레이션",
+      "에너지/원자재",
       1
     ]
   ],
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 2,
+      "count": 4,
       "title": "유럽증시, 美 고용 예상 밖 부진에 연준 금리 인상 가능성 낮아지며 상승… STOXX 600 지수는 나흘 연속 최고치 - 뉴스핌",
       "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBabkxOeVVXTEFWOGNjQ1J3QkVRcTJmSzlhU0U1ZWNZY2xqVzFMaHcyUUNpNHN2YnJHQlRBZGhXYTY1X2RyUTk4MjhOREhhYXBrcUI3VmdqZ0M0dUNL?oc=5",
       "summary_lines": [
         "핵심 이슈: 유럽증시, 美 고용 예상 밖 부진에 연준 금리 인상 가능성 낮아지며 상승… STOXX 600 지수는 나흘 연속 최고치 - 뉴스핌",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "정책/테마",
+      "count": 1,
+      "title": "美상원, '러·이란 제재법' 통과…트럼프, 새로운 관세 무기 쥐나 - 뉴스1",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBNSl9TM0tzNkc3ZnBGX1NEd0NvNDhjeUNtS083UGVUWXJHQzNOa1Rza1o1dEl2Wkd2c0xWSDEyQVdkMHB1VlFhZ011S3JxTjVuRG91NWpOS3U?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 美상원, '러·이란 제재법' 통과…트럼프, 새로운 관세 무기 쥐나 - 뉴스1",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -49,33 +60,22 @@
     },
     {
       "topic": "경기/성장",
-      "count": 3,
-      "title": "폴란드는 국내총생산(GDP)이 1조 유로에 육박하면서 유럽연합(EU)에서 여섯 번째로 큰 경제 대국으로 성장했습니다. - Vietnam.vn",
-      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPa0V3UFo3aWg5bnBIT1lPdDAzd0Z6SXVWalFUSkNmNXNvcEs0cWVEY1ZJTUVVMzZYYkYtTzJFMUtYVWUyWExpbGlyZm1FRXhWY1FjLU5nLXNuUV9FX2tvQUMxZm50RUVmRVpvbkJHZ1RhcVpFUGRvMlo2c193TzVSNTlJMzcwRERTdjByUERjaHdBdWxUZVhQSG5FcVFzamJ1akE?oc=5",
+      "count": 4,
+      "title": "베선트 “GDP 5.8% 전망…고용지표, 실물경제 강점 과소평가” - 블록미디어",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBIYWhnZGRKY25qa3pPZFhnaVJlRnpEUThuMXlKcW9MajlYQTUtT1JLWDEyS0UzNjdoV01KZWdKak15cDkybkQ0a3VtblRjOWRZQ0syQ1RXUGg?oc=5",
       "summary_lines": [
-        "핵심 이슈: 폴란드는 국내총생산(GDP)이 1조 유로에 육박하면서 유럽연합(EU)에서 여섯 번째로 큰 경제 대국으로 성장했습니다. - Vietnam.vn",
+        "핵심 이슈: 베선트 “GDP 5.8% 전망…고용지표, 실물경제 강점 과소평가” - 블록미디어",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "미국지수",
-      "count": 2,
-      "title": "[로킷헬스케어 상장 1년] 美 자회사 나스닥 입성 차질…중복상장 우려 '부상' : 네이버 블로그 - Naver Blog",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOOS1BTUprdS1MZzZXT3FwVUp5dEVkT1RoS0lMN3RrSlNWZlVsVm5oX1R1SEUwWXNJNFJGWjhJY1dYYjM5UWdtZGh3ZFlDY3UxcFZ3RGhzMVdwcHc3X3l2NUdYQjQ0ODExUlZjdERvMDlXV3M3M0VtSU53Wl9EZVhPU25Za0dJTy1vakdycGFtOA?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [로킷헬스케어 상장 1년] 美 자회사 나스닥 입성 차질…중복상장 우려 '부상' : 네이버 블로그 - Naver Blog",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "인플레이션",
+      "topic": "에너지/원자재",
       "count": 1,
-      "title": "작년엔 금값이더니 올여름엔 반값… 폭염 뚫고 가격 급락한 '국민 채소' - 위키트리",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE83VHdoOW9LU1l3emtwZVZ5YlpFQ1d4bmg5aWJZbzlUMzNta0R5a2pQbTMxM3hwSDdrcktjdVdtY1NUZ3FwMGxDTW50WUlWVHQ1SnVBdDdB?oc=5",
+      "title": "유나이티드 스테이츠 12M 내추럴 가스 펀드, 2분기 순손실 110만 달러 기록 - 데이터투자",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5qaUVTY3V4SkhYa1IwNS1RVGRrcTdPdEdDSnVKRkNKYVJUVWNFVzFySmpxNGhYVVo0aXR3dXZCZ1NScG94N0NMdFFFUE5CREVFVzJwM3JhSVpDRktnVnVvUVkxdHdUWFJFcXVuOVloX011Rlk?oc=5",
       "summary_lines": [
-        "핵심 이슈: 작년엔 금값이더니 올여름엔 반값… 폭염 뚫고 가격 급락한 '국민 채소' - 위키트리",
+        "핵심 이슈: 유나이티드 스테이츠 12M 내추럴 가스 펀드, 2분기 순손실 110만 달러 기록 - 데이터투자",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,37 +84,31 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 6,
+      "total_count": 8,
       "topics": [
         {
-          "topic": "경기/성장",
-          "count": 3,
-          "title": "폴란드는 국내총생산(GDP)이 1조 유로에 육박하면서 유럽연합(EU)에서 여섯 번째로 큰 경제 대국으로 성장했습니다. - Vietnam.vn",
-          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPa0V3UFo3aWg5bnBIT1lPdDAzd0Z6SXVWalFUSkNmNXNvcEs0cWVEY1ZJTUVVMzZYYkYtTzJFMUtYVWUyWExpbGlyZm1FRXhWY1FjLU5nLXNuUV9FX2tvQUMxZm50RUVmRVpvbkJHZ1RhcVpFUGRvMlo2c193TzVSNTlJMzcwRERTdjByUERjaHdBdWxUZVhQSG5FcVFzamJ1akE?oc=5"
-        },
-        {
           "topic": "금리/연준",
-          "count": 2,
+          "count": 4,
           "title": "유럽증시, 美 고용 예상 밖 부진에 연준 금리 인상 가능성 낮아지며 상승… STOXX 600 지수는 나흘 연속 최고치 - 뉴스핌",
           "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBabkxOeVVXTEFWOGNjQ1J3QkVRcTJmSzlhU0U1ZWNZY2xqVzFMaHcyUUNpNHN2YnJHQlRBZGhXYTY1X2RyUTk4MjhOREhhYXBrcUI3VmdqZ0M0dUNL?oc=5"
         },
         {
-          "topic": "인플레이션",
-          "count": 1,
-          "title": "작년엔 금값이더니 올여름엔 반값… 폭염 뚫고 가격 급락한 '국민 채소' - 위키트리",
-          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE83VHdoOW9LU1l3emtwZVZ5YlpFQ1d4bmg5aWJZbzlUMzNta0R5a2pQbTMxM3hwSDdrcktjdVdtY1NUZ3FwMGxDTW50WUlWVHQ1SnVBdDdB?oc=5"
+          "topic": "경기/성장",
+          "count": 4,
+          "title": "베선트 “GDP 5.8% 전망…고용지표, 실물경제 강점 과소평가” - 블록미디어",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBIYWhnZGRKY25qa3pPZFhnaVJlRnpEUThuMXlKcW9MajlYQTUtT1JLWDEyS0UzNjdoV01KZWdKak15cDkybkQ0a3VtblRjOWRZQ0syQ1RXUGg?oc=5"
         }
       ]
     },
     {
-      "sector": "지수/시장",
-      "total_count": 2,
+      "sector": "정책/테마",
+      "total_count": 1,
       "topics": [
         {
-          "topic": "미국지수",
-          "count": 2,
-          "title": "[로킷헬스케어 상장 1년] 美 자회사 나스닥 입성 차질…중복상장 우려 '부상' : 네이버 블로그 - Naver Blog",
-          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOOS1BTUprdS1MZzZXT3FwVUp5dEVkT1RoS0lMN3RrSlNWZlVsVm5oX1R1SEUwWXNJNFJGWjhJY1dYYjM5UWdtZGh3ZFlDY3UxcFZ3RGhzMVdwcHc3X3l2NUdYQjQ0ODExUlZjdERvMDlXV3M3M0VtSU53Wl9EZVhPU25Za0dJTy1vakdycGFtOA?oc=5"
+          "topic": "정책/테마",
+          "count": 1,
+          "title": "美상원, '러·이란 제재법' 통과…트럼프, 새로운 관세 무기 쥐나 - 뉴스1",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBNSl9TM0tzNkc3ZnBGX1NEd0NvNDhjeUNtS083UGVUWXJHQzNOa1Rza1o1dEl2Wkd2c0xWSDEyQVdkMHB1VlFhZ011S3JxTjVuRG91NWpOS3U?oc=5"
         }
       ]
     },
@@ -127,6 +121,18 @@
           "count": 1,
           "title": "한국·대만 상반기 수출, 사상 첫 일본 추월…AI 반도체가 이끌었다 - 한겨레",
           "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHdTQ1VmUtM2pSX2hqdFhmMjJua0huLWFOLWhtdnpBZ2pMbHpvcUxndHFoNXBpVW9RRlV5QzlTbHU3TTN0WldYYXJGTFhMbjlwdExZWW0zcXhfNXVfaTJSWkU0UU9MNnRId2VlTg?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "에너지/소재",
+      "total_count": 1,
+      "topics": [
+        {
+          "topic": "에너지/원자재",
+          "count": 1,
+          "title": "유나이티드 스테이츠 12M 내추럴 가스 펀드, 2분기 순손실 110만 달러 기록 - 데이터투자",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5qaUVTY3V4SkhYa1IwNS1RVGRrcTdPdEdDSnVKRkNKYVJUVWNFVzFySmpxNGhYVVo0aXR3dXZCZ1NScG94N0NMdFFFUE5CREVFVzJwM3JhSVpDRktnVnVvUVkxdHdUWFJFcXVuOVloX011Rlk?oc=5"
         }
       ]
     }
