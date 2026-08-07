@@ -1,30 +1,41 @@
 {
-  "crawled_at": "2026-08-07T16:42:08.148725+00:00",
+  "crawled_at": "2026-08-07T17:42:17.502974+00:00",
   "news_date": "2026-08-08",
-  "total_collected": 6,
+  "total_collected": 8,
   "topic_counts": [
+    [
+      "금리/연준",
+      1
+    ],
     [
       "반도체/AI",
       2
+    ],
+    [
+      "경기/성장",
+      1
     ],
     [
       "Thesis #2 전력, 초전도체, 데이터센터",
       1
     ],
     [
-      "국내지수",
-      1
-    ],
-    [
       "미국지수",
-      1
-    ],
-    [
-      "인플레이션",
-      1
+      2
     ]
   ],
   "top_articles": [
+    {
+      "topic": "금리/연준",
+      "count": 1,
+      "title": "유럽증시, 美 고용 예상 밖 부진에 연준 금리 인상 가능성 낮아지며 상승… STOXX 600 지수는 나흘 연속 최고치 - 뉴스핌",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBabkxOeVVXTEFWOGNjQ1J3QkVRcTJmSzlhU0U1ZWNZY2xqVzFMaHcyUUNpNHN2YnJHQlRBZGhXYTY1X2RyUTk4MjhOREhhYXBrcUI3VmdqZ0M0dUNL?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 유럽증시, 美 고용 예상 밖 부진에 연준 금리 인상 가능성 낮아지며 상승… STOXX 600 지수는 나흘 연속 최고치 - 뉴스핌",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "반도체/AI",
       "count": 2,
@@ -32,6 +43,17 @@
       "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBHdTQ1VmUtM2pSX2hqdFhmMjJua0huLWFOLWhtdnpBZ2pMbHpvcUxndHFoNXBpVW9RRlV5QzlTbHU3TTN0WldYYXJGTFhMbjlwdExZWW0zcXhfNXVfaTJSWkU0UU9MNnRId2VlTg?oc=5",
       "summary_lines": [
         "핵심 이슈: 한국·대만 상반기 수출, 사상 첫 일본 추월…AI 반도체가 이끌었다 - 한겨레",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "경기/성장",
+      "count": 1,
+      "title": "블랙록 릭 리더 “미국 고용 감소, 경기침체 아닌 AI 생산성 혁명” - 블록미디어",
+      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5xX3dudEFOMHNXV3E3dGxQaEFGa1ZRMVA1RHNFNFB4dTNrQ1J4YkpHQzFCTXYxNW5hQVNIZ0ZlSFBvNFBnNTkwN1FvV1ZPc2NCYWlVX1l6UEc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 블랙록 릭 리더 “미국 고용 감소, 경기침체 아닌 AI 생산성 혁명” - 블록미디어",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -48,19 +70,8 @@
       ]
     },
     {
-      "topic": "국내지수",
-      "count": 1,
-      "title": "1만 간다던 코스피, 증권가 목표치 줄줄이 하향 - 더구루",
-      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9MQnktcEhSdDlKeVkzYVhsczBGeDJyaEZxbUsySWgyUzk4QkQ3bXAtVnVfR2ZScEtvMXVHM2R3WUptRHVLbGhTbFVPRG5RQk4tRGk4RmRVeVVWaFY3Ymc?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 1만 간다던 코스피, 증권가 목표치 줄줄이 하향 - 더구루",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "미국지수",
-      "count": 1,
+      "count": 2,
       "title": "[로킷헬스케어 상장 1년] 美 자회사 나스닥 입성 차질…중복상장 우려 '부상' : 네이버 블로그 - Naver Blog",
       "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOOS1BTUprdS1MZzZXT3FwVUp5dEVkT1RoS0lMN3RrSlNWZlVsVm5oX1R1SEUwWXNJNFJGWjhJY1dYYjM5UWdtZGh3ZFlDY3UxcFZ3RGhzMVdwcHc3X3l2NUdYQjQ0ODExUlZjdERvMDlXV3M3M0VtSU53Wl9EZVhPU25Za0dJTy1vakdycGFtOA?oc=5",
       "summary_lines": [
@@ -68,20 +79,27 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "인플레이션",
-      "count": 1,
-      "title": "작년엔 금값이더니 올여름엔 반값… 폭염 뚫고 가격 급락한 '국민 채소' - 위키트리",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE83VHdoOW9LU1l3emtwZVZ5YlpFQ1d4bmg5aWJZbzlUMzNta0R5a2pQbTMxM3hwSDdrcktjdVdtY1NUZ3FwMGxDTW50WUlWVHQ1SnVBdDdB?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 작년엔 금값이더니 올여름엔 반값… 폭염 뚫고 가격 급락한 '국민 채소' - 위키트리",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "매크로",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "금리/연준",
+          "count": 1,
+          "title": "유럽증시, 美 고용 예상 밖 부진에 연준 금리 인상 가능성 낮아지며 상승… STOXX 600 지수는 나흘 연속 최고치 - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBabkxOeVVXTEFWOGNjQ1J3QkVRcTJmSzlhU0U1ZWNZY2xqVzFMaHcyUUNpNHN2YnJHQlRBZGhXYTY1X2RyUTk4MjhOREhhYXBrcUI3VmdqZ0M0dUNL?oc=5"
+        },
+        {
+          "topic": "경기/성장",
+          "count": 1,
+          "title": "블랙록 릭 리더 “미국 고용 감소, 경기침체 아닌 AI 생산성 혁명” - 블록미디어",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5xX3dudEFOMHNXV3E3dGxQaEFGa1ZRMVA1RHNFNFB4dTNrQ1J4YkpHQzFCTXYxNW5hQVNIZ0ZlSFBvNFBnNTkwN1FvV1ZPc2NCYWlVX1l6UEc?oc=5"
+        }
+      ]
+    },
     {
       "sector": "IT/반도체",
       "total_count": 2,
@@ -99,14 +117,8 @@
       "total_count": 2,
       "topics": [
         {
-          "topic": "국내지수",
-          "count": 1,
-          "title": "1만 간다던 코스피, 증권가 목표치 줄줄이 하향 - 더구루",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9MQnktcEhSdDlKeVkzYVhsczBGeDJyaEZxbUsySWgyUzk4QkQ3bXAtVnVfR2ZScEtvMXVHM2R3WUptRHVLbGhTbFVPRG5RQk4tRGk4RmRVeVVWaFY3Ymc?oc=5"
-        },
-        {
           "topic": "미국지수",
-          "count": 1,
+          "count": 2,
           "title": "[로킷헬스케어 상장 1년] 美 자회사 나스닥 입성 차질…중복상장 우려 '부상' : 네이버 블로그 - Naver Blog",
           "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOOS1BTUprdS1MZzZXT3FwVUp5dEVkT1RoS0lMN3RrSlNWZlVsVm5oX1R1SEUwWXNJNFJGWjhJY1dYYjM5UWdtZGh3ZFlDY3UxcFZ3RGhzMVdwcHc3X3l2NUdYQjQ0ODExUlZjdERvMDlXV3M3M0VtSU53Wl9EZVhPU25Za0dJTy1vakdycGFtOA?oc=5"
         }
@@ -121,18 +133,6 @@
           "count": 1,
           "title": "에너지 볼트, 텍사스 AI 데이터센터 1.25GW 전력 공급 계약 확보 - Investing.com 한국어",
           "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9CaV9LamxhaUhvVEFtdnFic3lzSUJUTEpObjFnTU0tM3pETWZtcm5mY04zb2VJWXhWSmt2R2E0VURKOXpsbk9zdGVLbVI3VnFfc2R2U1JxZkJRY1prUWp0LUFvNG02WXMzM0dhRWZxajI?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "매크로",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "인플레이션",
-          "count": 1,
-          "title": "작년엔 금값이더니 올여름엔 반값… 폭염 뚫고 가격 급락한 '국민 채소' - 위키트리",
-          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE83VHdoOW9LU1l3emtwZVZ5YlpFQ1d4bmg5aWJZbzlUMzNta0R5a2pQbTMxM3hwSDdrcktjdVdtY1NUZ3FwMGxDTW50WUlWVHQ1SnVBdDdB?oc=5"
         }
       ]
     }
