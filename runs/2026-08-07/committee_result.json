@@ -1,0 +1,52 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 오늘 -0.13%(6287.92)로 마감하며 20일 누적 -19.8%의 약세가 지속되고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "외국인은 KOSPI에서 +3102억 순매수로 저점 매수세를 보였으나, KOSDAQ에서는 -1193억 순매도로 차별화된 흐름이 나타났습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "외국인 매수의 해석",
+      "majority": "누적 하락세와 불확실성에 따라 방어적 스탠스 유지 필요",
+      "minority": "외국인 저점 매수세가 단기 반등 신호일 수 있음",
+      "minority_agents": [
+        "flow",
+        "risk"
+      ],
+      "why_it_matters": "외국인 매수세가 시장 반전의 신호로 해석될 경우, 방어적 전략이 지나치게 보수적일 수 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 요약 및 주요 지표\n\n- KOSPI는 -0.13% 하락한 6,287.92pt, KOSDAQ은 -0.99% 하락한 793.71pt로 마감했습니다.\n- 원/달러 환율은 1,423.62원(-0.12%)로 제한적 등락을 보였고, VIX는 15.15로 5일 평균(15.86) 대비 안정적입니다.\n- 수급은 외국인 +1,909억, 기관 +786억, 개인 -2,401억(코스피 외국인 +3,102억, 코스닥 외국인 -1,193억)으로, 외국인 중심의 저점 매수세가 두드러졌습니다.\n- KOSPI 20일 누적 수익률은 -19.82%로, 중기 약세가 심화된 상황입니다.\n\n## 수급 해석: 외국인 저점 매수, 개인은 공급자 역할\n\n- 오늘 시장은 외국인의 KOSPI 대규모 순매수(+3,102억)가 두드러졌으나, KOSDAQ에서는 순매도(-1,193억)로 차별화된 흐름이 나타났습니다.\n- 외국인 매수세는 최근 20일간 -19.8%의 누적 하락에 따른 저점 매수 성격이 강하며, [반도체/AI 관세 이슈](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1fQVg0VVNJN0w4WHdDUFBvbmdld1lxTV9yc1VIRHlIMnFRMlJ1cW94NGpPY1B3cU1fTlYtZF9yOGpYVGtyajd2UmI4SGNGQjVVdGxnTFM4NWx5dTjSAWBBVV95cUxQYnVnOGJlRnNTUVB3OVdDRmZPOF9tT0Z1dU5VcHFxSHoxa0JHbXZGRVNtVGlOdlpHc2ZXS2RhN0FPR3lNSHI3RWhmTUJpaG43U0I5S3N1TWdSZFQ2dGF5aGM?oc=5)와 [금리/연준](https://news.google.com/rss/articles/CBMiWEFVX3lxTE0yanBva09MWnNKdkpMbEpXb21mNUx4SDlXOGJ3WElPSjhjUkhsRmhPUFVCZWJtaXFDaTd4VElLXzA0NFF0RlFwQk9mQ1ZOSFVCbDlSc1h3bl8?oc=5) 등 대외 변수에 대한 경계감이 혼재된 모습입니다.\n- 개인은 최근 레버리지 추격매수보다는 외국인 매수에 따른 공급자 역할에 머무르고 있습니다.\n\n## 날짜별 핵심 이슈: 반도체/AI 관세, 금리·환율, 인플레이션\n\n- [트럼프의 반도체 핵심 원료(폴리실리콘) 파생상품 15% 관세 부과](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1fQVg0VVNJN0w4WHdDUFBvbmdld1lxTV9yc1VIRHlIMnFRMlJ1cW94NGpPY1B3cU1fTlYtZF9yOGpYVGtyajd2UmI4SGNGQjVVdGxnTFM4NWx5dTjSAWBBVV95cUxQYnVnOGJlRnNTUVB3OVdDRmZPOF9tT0Z1dU5VcHFxSHoxa0JHbXZGRVNtVGlOdlpHc2ZXS2RhN0FPR3lNSHI3RWhmTUJpaG43U0I5S3N1TWdSZFQ2dGF5aGM?oc=5) 이슈로 반도체/AI 업종 변동성 확대 우려가 부각되고 있습니다.\n- [유가·고용 경계에 따른 국채금리·달러 상승](https://news.google.com/rss/articles/CBMiWEFVX3lxTE0yanBva09MWnNKdkpMbEpXb21mNUx4SDlXOGJ3WElPSjhjUkhsRmhPUFVCZWJtaXFDaTd4VElLXzA0NFF0RlFwQk9mQ1ZOSFVCbDlSc1h3bl8?oc=5), [이란 전쟁발 인플레이션 우려](https://news.google.com/rss/articles/CBMidkFVX3lxTE44eWRMRFNsLWc1NkpCYkVjRFE4WDloQWx5NDRicWRDYXZyV2pNS3l2enRZWEJERHJCdFc0S1dXM2UtQTNtOC1fMXhnc21waW1aeTk4bEpYeHFRZG9yNm5aNk5tR05IRjRpZ0JoSlpoVWtkMC1hR2c?oc=5) 등 대외 불확실성도 시장 심리에 부담을 주고 있습니다.\n- 원/달러 환율은 1,423원대에서 제한적 상승폭을 보이며, 당분간 환율 변동성도 주목해야 할 변수입니다.\n\n## 향후 전망 및 체크포인트\n\n- 시장은 외국인 저점 매수세와 누적 하락에 따른 기술적 반등 기대가 일부 있으나, 반도체/AI 관세, 금리·환율, 지정학 등 대외 불확실성이 해소되기 전까지 방어적 스탠스가 유지될 전망입니다.\n- 외국인 매수세가 단기 반등 신호로 전환되는지, 혹은 대외 리스크가 추가 확산되는지 여부가 핵심 체크포인트입니다.\n- 오늘의 전략적 결론은 변동성 완화 및 대외 불확실성 해소 전까지 공격적 비중 확대를 미루는 것입니다.\n- **오늘 논리의 무효화 조건:** 외국인 매수세가 3거래일 이상 연속적으로 확대되고, 반도체/AI 관세 등 대외 리스크가 완화되는 신호가 확인될 경우, 방어적 스탠스는 재검토가 필요합니다."
+}
