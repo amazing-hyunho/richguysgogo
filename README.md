@@ -1,3 +1,6 @@
+<<<<<<< ours
+<<<<<<< ours
+<<<<<<< ours
 # Daily AI Investment Committee
 
 매일 1회 시장 스냅샷을 만들고, 여러 에이전트 의견을 합쳐 최종 코멘트를 생성하는 배치 프로젝트입니다.
@@ -447,3 +450,97 @@ sequenceDiagram
 | Presentation | `docs/dashboard.html` (+ `scripts/build_dashboard.py`) | 누적 데이터 시각화 및 Pages 배포 | DB+runs 뉴스 digest → HTML |
 
 ---
+=======
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+# 마음톡 💛
+
+중등부 학생이 여름 아웃리치 전에 시골 어르신께 먼저 인사하고, 질문하고, 공감하는 경험을 게임처럼 연습하는 모바일 우선 한국어 음성 대화 MVP입니다. 회원가입·서버 DB·음성 저장 없이 동작하며 진행 기록은 브라우저 `localStorage`에만 저장합니다.
+
+## 주요 기능
+
+- 데이터 기반 어르신 3명과 미션 5개
+- 브라우저 Web Speech API STT와 `speechSynthesis` TTS (지원하지 않는 브라우저에서는 안내 표시)
+- 인사·질문·리액션·공감·침묵 깨기의 결정론적 점수 및 배지
+- Zod로 검증하는 AI structured JSON 응답
+- API 키 없이 전체 흐름을 체험하는 Mock Mode
+- GitHub Pages 프론트엔드 + 선택적인 Vercel Serverless API 분리
+
+## 로컬 실행
+
+Node.js 20 이상을 준비합니다.
+
+```bash
+npm install
+cp .env.example .env
+npm run dev
+```
+
+`.env` 기본값인 `VITE_MOCK_MODE=true`에서는 OpenAI 키 없이 실행됩니다. 음성 인식은 Chrome/Edge 계열 브라우저와 HTTPS(또는 localhost)를 권장하며 마이크 권한을 허용해야 합니다.
+
+## 실제 OpenAI 연결
+
+브라우저 번들에 API 키를 넣으면 안 됩니다. `api/chat.ts`를 Vercel에 배포하고 Vercel 프로젝트의 **서버 환경 변수**에 다음을 등록합니다.
+
+```dotenv
+OPENAI_API_KEY=sk-...
+OPENAI_MODEL=gpt-4o-mini
+```
+
+그 뒤 프론트엔드 환경 변수를 아래처럼 바꿉니다.
+
+```dotenv
+VITE_MOCK_MODE=false
+VITE_API_URL=https://YOUR-VERCEL-PROJECT.vercel.app/api/chat
+```
+
+`gpt-4` 계열도 사용할 수 있지만 이 앱은 짧은 역할극과 구조화 평가가 중심이므로, 비용·응답 속도가 좋은 소형 모델부터 시작하고 실제 학생 대화 샘플로 품질을 비교하는 편이 좋습니다. 모델 ID는 계정에서 현재 지원되는 structured outputs 호환 모델로 설정하세요. API 코드는 JSON Schema 응답을 요구합니다.
+
+Vercel CLI를 쓸 경우 `npm i -g vercel`, `vercel`로 연결한 뒤 환경 변수를 등록하고 `vercel --prod`로 배포할 수 있습니다.
+
+## GitHub Pages / Actions
+
+1. 저장소 **Settings → Pages → Source**를 **GitHub Actions**로 선택합니다.
+2. Actions 변수에 `VITE_MOCK_MODE`를 등록합니다. Mock 데모는 `true`입니다.
+3. 실제 AI 모드라면 `VITE_API_URL`에 Vercel 함수 URL도 등록합니다. OpenAI 키는 GitHub Pages에 등록하지 않습니다.
+4. `main` 또는 `work` 브랜치 push 시 lint, build 후 Pages 배포가 실행됩니다.
+
+저장소 이름이 `outreachgogo`가 아니라면 `vite.config.ts`의 GitHub Actions용 `base` 경로도 저장소 이름에 맞게 수정합니다. GitHub Pages는 정적 호스팅이므로 OpenAI 호출은 Vercel 함수가 담당합니다.
+
+## 명령어
+
+```bash
+npm run dev       # 개발 서버
+npm run lint      # ESLint
+npm run build     # TypeScript 검사 + 프로덕션 빌드
+npm run preview   # 빌드 결과 확인
+```
+
+## 구조
+
+```text
+src/
+  hooks/          localStorage 진행 기록
+  missions/       미션 데이터
+  personas/       캐릭터 설정과 프롬프트
+  scoring/        결정론적 평가와 점수
+  services/
+    llm/          Mock/실제 API 어댑터와 Zod 검증
+    speech/       교체 가능한 STT/TTS 인터페이스
+  types/          공용 타입
+api/chat.ts       API 키를 보호하는 Vercel Function
+.github/workflows/deploy.yml  Pages 빌드/배포
+```
+
+## 개인정보와 운영 참고
+
+음성은 브라우저 음성 인식 기능으로 텍스트화되며 앱 서버에 원본을 저장하지 않습니다. 실제 AI 모드에서는 대화 텍스트가 모델 API로 전송됩니다. 학생에게 이 사실을 안내하고 이름·연락처 등 개인정보를 말하지 않도록 운영 규칙을 마련하세요. 프로덕션에서는 Vercel API의 허용 Origin을 실제 Pages 도메인으로 제한하고 rate limit도 추가하는 것을 권장합니다.
+<<<<<<< ours
+<<<<<<< ours
+>>>>>>> theirs
+=======
+>>>>>>> theirs
+=======
+>>>>>>> theirs
