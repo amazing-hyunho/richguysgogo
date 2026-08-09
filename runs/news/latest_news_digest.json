@@ -1,55 +1,44 @@
 {
-  "crawled_at": "2026-08-09T22:41:50.652022+00:00",
+  "crawled_at": "2026-08-09T23:41:59.752420+00:00",
   "news_date": "2026-08-10",
-  "total_collected": 63,
+  "total_collected": 88,
   "topic_counts": [
     [
-      "반도체/AI",
-      11
-    ],
-    [
       "금리/연준",
-      5
-    ],
-    [
-      "인플레이션",
-      5
+      8
     ],
     [
       "미국지수",
-      5
+      8
     ],
     [
-      "바이오/헬스케어",
+      "환율/달러",
       7
+    ],
+    [
+      "국내지수",
+      13
+    ],
+    [
+      "반도체/AI",
+      8
     ]
   ],
   "top_articles": [
     {
-      "topic": "반도체/AI",
-      "count": 11,
-      "title": "[中반도체굴기] ③ \"美제재가 키운 것만은 아냐\"…장기투자·인재도 동력 - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAzaXZ6ZVNIaUNmSDVxakJyM1dFZzVBcllzWE9CVk93Zk5lT3lRTzNDSUllTHZqUGpzLWNKcmVSa29aNm44OTBZZzhfRUN6N1J3SFE?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [中반도체굴기] ③ \"美제재가 키운 것만은 아냐\"…장기투자·인재도 동력 - 매일경제 마켓",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "금리/연준",
-      "count": 5,
-      "title": "[김대호 인물] 리사 쿡 (Lisa Cook)... 연준 FOMC 금리인상 \"대통령과의 전쟁\" - 글로벌이코노믹",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQRDd1RFJhWE5KVzZaM29lbjNucVk2OFhVXy1veTBCbVIwUEpjTVR4OUdhVEhiVlVGMVlLTTB2ODNmanZyQ1JsRXhMamRWVXNRRlQ4d0xlRVctcjNOSXJFaXgyRk1KTzlfc2hDM25iZ0ViaWQ0MUJqNXQ2VExYdy01T1lTcTZFUUpw?oc=5",
+      "count": 8,
+      "title": "증시 오늘 '핫이슈' \"'고용쇼크'에도 무덤덤 美 국채금리, 최후의 카드는?\" - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TbTcxeUdFSjlXeHVPOE9fRy1fOWtkb1ptRDBFVlEyRG4tNDg1UzUxeVlIU2F4UlRKSm9JV0QtWEdBd2doNnkxYm5UTi03bXBLR1E?oc=5",
       "summary_lines": [
-        "핵심 이슈: [김대호 인물] 리사 쿡 (Lisa Cook)... 연준 FOMC 금리인상 \"대통령과의 전쟁\" - 글로벌이코노믹",
+        "핵심 이슈: 증시 오늘 '핫이슈' \"'고용쇼크'에도 무덤덤 美 국채금리, 최후의 카드는?\" - 매일경제 마켓",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "인플레이션",
-      "count": 5,
+      "topic": "미국지수",
+      "count": 8,
       "title": "8월 들어 강한 반등, CPI가 추가 랠리 가른다…AI주 줄줄이 실적[이번주 美 증시는] - 머니투데이 - 머니투데이",
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5Tc1lZZlR1LUotME5sMHE4MGUxdXYyNWR6Rm1fWE91eW95c3VHYzJsei14VUZKVHZOeHZweWVUQjZ4enh3S0owTnoybmVTMXFRR1V6c0R0WFlIOVY3SVAzSnBvVHlOcllJ0gFuQVVfeXFMT2h5RHNtR0NqWTBPdTJwUTh5Zkh5d014QlZVbndFNFViUkY0SHdwdlhtcHUwaVNfeW1XNFpLYXlWSzNfSXhJYWdvMFQ2VDJ3MU1CQk01MmRmY1VkeE5zU2JtMktMSjJDaHZOYkFHY0E?oc=5",
       "summary_lines": [
@@ -59,23 +48,34 @@
       ]
     },
     {
-      "topic": "미국지수",
-      "count": 5,
-      "title": "사상 최고치 되찾은 S&P…CPI가 '9월 금리인상' 가른다[월가프리뷰] - 뉴스1",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1nT0NwX2dVeEJmRjhXUzJUM3JEM0c4b18yQVBjVTJoVHlMcmdnYk55NDBEbzFrREpPc0RtN21iZTFBODYxdGY1dnlmRVJBdTYxdkR3amM3X3dCSjFUQUVWWlR0YUQyRU0?oc=5",
+      "topic": "환율/달러",
+      "count": 7,
+      "title": "美고용 충격이 불러온 약달러…환율 1400원대서 방향성 탐색[외환브리핑] - 네이트",
+      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE8xcVR5dGpmQVB4VVlPeThmZWJ5SEZiWnEwby1LbFNjS1FTWTRadE5OOG1LMFhCeHV5dkNybEpJR1RXb0hlYk9TN2xBV0pVZTRmOTBZ?oc=5",
       "summary_lines": [
-        "핵심 이슈: 사상 최고치 되찾은 S&P…CPI가 '9월 금리인상' 가른다[월가프리뷰] - 뉴스1",
+        "핵심 이슈: 美고용 충격이 불러온 약달러…환율 1400원대서 방향성 탐색[외환브리핑] - 네이트",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "바이오/헬스케어",
-      "count": 7,
-      "title": "건기식 130만 개 돌파! CU, 편의점 헬스케어 2.0 전략 실행한다! - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE84M2lmVU9TSDZEajR0OVItbUZBUG1uMkl0US03X0txY3dxNEtjUElqNXFSMDBGeldFY3VFMElyOXRpWVdfUEdHVzlrWEhZRGxYN1I0VHhodFE5Zw?oc=5",
+      "topic": "국내지수",
+      "count": 13,
+      "title": "[오늘의 증시]美금리인상 우려 완화…코스피 6300선 회복 시도 - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB5ZTRUcVNnRzVvc1JUM3hYVy0yVVg3dHA2bGktMmRmM2M3dGlMYmtYQkFUd1VOUVpWTk9hMWlzYWR5Sll6TGNncS1ZUS1nY1BySHp3WmVnOEFqbVNNdFlfRtIBeEFVX3lxTE5rV1BlT3dDSmF6VDJyaVIwZzJIQlVjQnBmSGdtMExiTkZMamFaSGR6Qi00alZNMFhKc3JVdm9RNG9Ud3VkMk9CMUN2RTJJbE1rTkNLYVEybWxGUkxzeEI0b0pPV1c0YzRva29OZG5wMzJST1drT0xtTw?oc=5",
       "summary_lines": [
-        "핵심 이슈: 건기식 130만 개 돌파! CU, 편의점 헬스케어 2.0 전략 실행한다! - 한국경제",
+        "핵심 이슈: [오늘의 증시]美금리인상 우려 완화…코스피 6300선 회복 시도 - 뉴시스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "반도체/AI",
+      "count": 8,
+      "title": "금값 메모리의 역풍?… 엔비디아, HBM 탑재량 축소 검토 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPeWwtVTFVdlhnSW9WMmxtUWlFdXgyR3drdU5vRTVJTHF6dE1ESml3U0NZaTlBTDN5WDA4YWZWb0ZIR2Nma3FlbGM1eWpEeHl4c0JwMjNsWE94dDF3QmItUkhhNjNTWXV0aXNvRmRjekhVMHN0bEkxY0pqMVFha3gzR0Nsbw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 금값 메모리의 역풍?… 엔비디아, HBM 탑재량 축소 검토 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -83,56 +83,50 @@
   ],
   "sector_hot_topics": [
     {
-      "sector": "IT/반도체",
-      "total_count": 11,
+      "sector": "지수/시장",
+      "total_count": 21,
       "topics": [
         {
-          "topic": "반도체/AI",
-          "count": 11,
-          "title": "[中반도체굴기] ③ \"美제재가 키운 것만은 아냐\"…장기투자·인재도 동력 - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAzaXZ6ZVNIaUNmSDVxakJyM1dFZzVBcllzWE9CVk93Zk5lT3lRTzNDSUllTHZqUGpzLWNKcmVSa29aNm44OTBZZzhfRUN6N1J3SFE?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "매크로",
-      "total_count": 10,
-      "topics": [
-        {
-          "topic": "금리/연준",
-          "count": 5,
-          "title": "[김대호 인물] 리사 쿡 (Lisa Cook)... 연준 FOMC 금리인상 \"대통령과의 전쟁\" - 글로벌이코노믹",
-          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQRDd1RFJhWE5KVzZaM29lbjNucVk2OFhVXy1veTBCbVIwUEpjTVR4OUdhVEhiVlVGMVlLTTB2ODNmanZyQ1JsRXhMamRWVXNRRlQ4d0xlRVctcjNOSXJFaXgyRk1KTzlfc2hDM25iZ0ViaWQ0MUJqNXQ2VExYdy01T1lTcTZFUUpw?oc=5"
+          "topic": "국내지수",
+          "count": 13,
+          "title": "[오늘의 증시]美금리인상 우려 완화…코스피 6300선 회복 시도 - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB5ZTRUcVNnRzVvc1JUM3hYVy0yVVg3dHA2bGktMmRmM2M3dGlMYmtYQkFUd1VOUVpWTk9hMWlzYWR5Sll6TGNncS1ZUS1nY1BySHp3WmVnOEFqbVNNdFlfRtIBeEFVX3lxTE5rV1BlT3dDSmF6VDJyaVIwZzJIQlVjQnBmSGdtMExiTkZMamFaSGR6Qi00alZNMFhKc3JVdm9RNG9Ud3VkMk9CMUN2RTJJbE1rTkNLYVEybWxGUkxzeEI0b0pPV1c0YzRva29OZG5wMzJST1drT0xtTw?oc=5"
         },
         {
-          "topic": "인플레이션",
-          "count": 5,
+          "topic": "미국지수",
+          "count": 8,
           "title": "8월 들어 강한 반등, CPI가 추가 랠리 가른다…AI주 줄줄이 실적[이번주 美 증시는] - 머니투데이 - 머니투데이",
           "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5Tc1lZZlR1LUotME5sMHE4MGUxdXYyNWR6Rm1fWE91eW95c3VHYzJsei14VUZKVHZOeHZweWVUQjZ4enh3S0owTnoybmVTMXFRR1V6c0R0WFlIOVY3SVAzSnBvVHlOcllJ0gFuQVVfeXFMT2h5RHNtR0NqWTBPdTJwUTh5Zkh5d014QlZVbndFNFViUkY0SHdwdlhtcHUwaVNfeW1XNFpLYXlWSzNfSXhJYWdvMFQ2VDJ3MU1CQk01MmRmY1VkeE5zU2JtMktMSjJDaHZOYkFHY0E?oc=5"
         }
       ]
     },
     {
-      "sector": "헬스케어",
-      "total_count": 7,
+      "sector": "매크로",
+      "total_count": 15,
       "topics": [
         {
-          "topic": "바이오/헬스케어",
+          "topic": "금리/연준",
+          "count": 8,
+          "title": "증시 오늘 '핫이슈' \"'고용쇼크'에도 무덤덤 美 국채금리, 최후의 카드는?\" - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TbTcxeUdFSjlXeHVPOE9fRy1fOWtkb1ptRDBFVlEyRG4tNDg1UzUxeVlIU2F4UlRKSm9JV0QtWEdBd2doNnkxYm5UTi03bXBLR1E?oc=5"
+        },
+        {
+          "topic": "환율/달러",
           "count": 7,
-          "title": "건기식 130만 개 돌파! CU, 편의점 헬스케어 2.0 전략 실행한다! - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE84M2lmVU9TSDZEajR0OVItbUZBUG1uMkl0US03X0txY3dxNEtjUElqNXFSMDBGeldFY3VFMElyOXRpWVdfUEdHVzlrWEhZRGxYN1I0VHhodFE5Zw?oc=5"
+          "title": "美고용 충격이 불러온 약달러…환율 1400원대서 방향성 탐색[외환브리핑] - 네이트",
+          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE8xcVR5dGpmQVB4VVlPeThmZWJ5SEZiWnEwby1LbFNjS1FTWTRadE5OOG1LMFhCeHV5dkNybEpJR1RXb0hlYk9TN2xBV0pVZTRmOTBZ?oc=5"
         }
       ]
     },
     {
-      "sector": "지수/시장",
-      "total_count": 5,
+      "sector": "IT/반도체",
+      "total_count": 8,
       "topics": [
         {
-          "topic": "미국지수",
-          "count": 5,
-          "title": "사상 최고치 되찾은 S&P…CPI가 '9월 금리인상' 가른다[월가프리뷰] - 뉴스1",
-          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1nT0NwX2dVeEJmRjhXUzJUM3JEM0c4b18yQVBjVTJoVHlMcmdnYk55NDBEbzFrREpPc0RtN21iZTFBODYxdGY1dnlmRVJBdTYxdkR3amM3X3dCSjFUQUVWWlR0YUQyRU0?oc=5"
+          "topic": "반도체/AI",
+          "count": 8,
+          "title": "금값 메모리의 역풍?… 엔비디아, HBM 탑재량 축소 검토 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPeWwtVTFVdlhnSW9WMmxtUWlFdXgyR3drdU5vRTVJTHF6dE1ESml3U0NZaTlBTDN5WDA4YWZWb0ZIR2Nma3FlbGM1eWpEeHl4c0JwMjNsWE94dDF3QmItUkhhNjNTWXV0aXNvRmRjekhVMHN0bEkxY0pqMVFha3gzR0Nsbw?oc=5"
         }
       ]
     }
