@@ -1,0 +1,13 @@
+{
+  "_comment": "Objective two-axis industry-cycle model. KPI cycle and market confirmation are kept separate; no logistic transform and no missing-component weight renormalization. Twelve-week excess return coefficients and ridge strength are learned only from matured historical observations.",
+  "model_version": "cycle_v2",
+  "fundamentals_history_min_weeks": 8,
+  "slope_lookback_weeks": 4,
+  "forecast": {
+    "horizon_calendar_days": 84,
+    "min_training_samples": 80,
+    "min_training_weeks": 8,
+    "validation_fraction": 0.20,
+    "ridge_lambdas": [0.0, 0.1, 1.0, 10.0]
+  }
+}

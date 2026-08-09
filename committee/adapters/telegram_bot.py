@@ -19,7 +19,6 @@ from committee.core.database import (
 from committee.core.strategy_store import load_latest_strategy, update_strategy
 from committee.core.stock_watchlist import add_stock, get_stocks, remove_stock
 from committee.core.telegram_poll_state import load_offset, save_offset
-from committee.core.thesis_monitor import archive_thesis, create_thesis_from_text, list_theses, update_thesis_signals
 from committee.tools.stock_consensus_provider import fetch_stock_consensus
 from committee.tools.stock_news import fetch_stock_news
 
@@ -148,9 +147,6 @@ def answer_for_message(text: str) -> str:
         return _handle_consensus_command(stripped)
     if stripped.startswith("/stock"):
         return _handle_stock_command(stripped)
-    if stripped.startswith("/thesis"):
-        return _handle_thesis_command(stripped)
-
     context = _load_latest_context()
     if stripped.startswith("/strategy"):
         return _handle_strategy_command(stripped, context)
@@ -176,10 +172,6 @@ def _format_help_message() -> str:
         "/consensus TICKER — 애널리스트 컨센서스 조회\n"
         "  예) /consensus AAPL\n"
         "  예) /consensus 005930\n\n"
-        "🧭 Thesis Monitor\n"
-        "/thesis help — 등록 양식 보기\n"
-        "/thesis list — 등록 가설 목록\n"
-        "/thesis remove ID — 가설 보관 처리\n\n"
         "🧩 전략 메모\n"
         "/strategy show — 최신 전략 보기\n"
         "/strategy set KEY=VALUE — 전략 값 저장 + 빌드/커밋/푸시\n"
@@ -339,6 +331,8 @@ def _handle_thesis_command(command: str) -> str:
     키워드: HBM, AI capex, Nvidia
     내용: 조사내용...
     """
+    return "Thesis Monitor 기능은 제거되었습니다. 산업 사이클 탭을 이용해주세요."
+
     first_line, *body_lines = command.splitlines()
     parts = first_line.strip().split(maxsplit=2)
     sub = parts[1].strip().lower() if len(parts) >= 2 else ""

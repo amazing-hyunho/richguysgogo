@@ -87,12 +87,10 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 
 try:
     from committee.core.database import init_db
-    from committee.core.thesis_monitor import load_thesis_monitor_data
 except ModuleNotFoundError:
     import sys
     sys.path.insert(0, str(ROOT_DIR))
     from committee.core.database import init_db
-    from committee.core.thesis_monitor import load_thesis_monitor_data
 DB_PATH = ROOT_DIR / "data" / "investment.db"
 RUNS_DIR = ROOT_DIR / "runs"
 OUTPUT_PATH = ROOT_DIR / "docs" / "dashboard.html"
@@ -651,6 +649,8 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
             candidate_repository,
             cycle_model_config,
             cycle_repository,
+            cycle_v2_model_config,
+            cycle_v2_repository,
             factor_repository,
             insight_repository,
             repository as industry_repository,
@@ -664,6 +664,7 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
     try:
         cfg = cycle_model_config.load_cycle_model_config()
         model_version = cfg["model_version"]
+        v2_model_version = cycle_v2_model_config.load_cycle_v2_model_config()["model_version"]
     except Exception as exc:
         print(f"industry_cycle_dashboard_config_failed: {exc}")
         return {"model_version": None, "as_of": None, "industries": [], "virtual_portfolio": None}
@@ -705,6 +706,13 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
         except Exception:
             signals = []
         latest = signals[-1] if signals else None
+        try:
+            v2_signals = cycle_v2_repository.list_cycle_v2_signals(
+                industry_id=industry_id, model_version=v2_model_version, db_path=DB_PATH
+            )
+        except Exception:
+            v2_signals = []
+        latest_v2 = v2_signals[-1] if v2_signals else None
         # Keep up to five years of weekly observations for the detail chart.
         # A newly-started installation will naturally return only the weeks
         # collected so far; the UI labels the actual available period.
@@ -789,6 +797,8 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
                 "name_en": industry.get("name_en"),
                 "country_scope": industry.get("country_scope", []),
                 "latest_signal": latest,
+                "latest_v2": latest_v2,
+                "v2_history": v2_signals[-260:],
                 "history": history,
                 "price_history": price_history,
                 "top_reasons": all_reasons[:5],
@@ -819,6 +829,8 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
 
     as_of_values = [item["latest_signal"]["as_of"] for item in result_industries if item.get("latest_signal")]
     latest_as_of = max(as_of_values) if as_of_values else None
+    v2_as_of_values = [item["latest_v2"]["as_of"] for item in result_industries if item.get("latest_v2")]
+    latest_v2_as_of = max(v2_as_of_values) if v2_as_of_values else None
 
     try:
         vp_summary = virtual_portfolio.summarize_portfolio_performance(
@@ -830,7 +842,9 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
 
     return {
         "model_version": model_version,
+        "v2_model_version": v2_model_version,
         "as_of": latest_as_of,
+        "v2_as_of": latest_v2_as_of,
         "industries": result_industries,
         "virtual_portfolio": vp_summary,
     }
@@ -891,7 +905,6 @@ def main() -> None:
             "financial_metrics": load_financial_metrics_summary(),
             "ticker_master": load_ticker_master(),
             "stock_news": load_stock_news_summary(),
-            "thesis_monitor": load_thesis_monitor_data(DB_PATH),
             "fear_greed": _fetch_fear_greed(),
             "industry_cycle": load_industry_cycle_dashboard_data(),
         }

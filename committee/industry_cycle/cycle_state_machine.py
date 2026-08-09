@@ -54,6 +54,7 @@ STATUS_NOT_APPLICABLE = "not_applicable"
 ACTION_NONE = "NONE"
 ACTION_HOLD_INSUFFICIENT_DATA = "HOLD_INSUFFICIENT_DATA"
 ACTION_RECOVERY_CONFIRMED = "RECOVERY_CONFIRMED"
+ACTION_EXPANSION_CONFIRMED = "EXPANSION_CONFIRMED"
 ACTION_OVERHEAT_WARNING = "OVERHEAT_WARNING"
 ACTION_DETERIORATION_CONFIRMED = "DETERIORATION_CONFIRMED"
 
@@ -148,6 +149,12 @@ def apply_cycle_confirmation_rule(
         need = confirmation_cfg["weeks_required_recovery"]
         if streak >= need:
             return CycleStateTransitionResult(raw_state, STATUS_CONFIRMED, streak, ACTION_RECOVERY_CONFIRMED)
+        return CycleStateTransitionResult(raw_state, STATUS_FIRST_OBSERVATION, streak, ACTION_NONE)
+
+    if raw_state == CYCLE_EXPANSION:
+        need = confirmation_cfg["weeks_required_expansion"]
+        if streak >= need:
+            return CycleStateTransitionResult(raw_state, STATUS_CONFIRMED, streak, ACTION_EXPANSION_CONFIRMED)
         return CycleStateTransitionResult(raw_state, STATUS_FIRST_OBSERVATION, streak, ACTION_NONE)
 
     if raw_state == CYCLE_OVERHEATED:

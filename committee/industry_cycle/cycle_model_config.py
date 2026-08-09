@@ -82,6 +82,7 @@ _STATE_THRESHOLD_KEYS = (
 
 _CONFIRMATION_KEYS = (
     "weeks_required_recovery",
+    "weeks_required_expansion",
     "weeks_required_overheat_warning",
     "weeks_required_deteriorating_confirmed",
 )

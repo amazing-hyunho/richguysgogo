@@ -16,7 +16,6 @@ if str(ROOT_DIR) not in sys.path:
 from committee.tools.news_digest import build_topic_digest, recommended_topic_queries
 from committee.core.market_collector import persist_snapshot_metrics
 from committee.core.snapshot_builder import build_snapshot, get_last_snapshot_status
-from committee.core.thesis_monitor import load_active_thesis_news_queries, update_thesis_signals
 
 
 def _digest_signature(payload: dict[str, object]) -> dict[str, object]:
@@ -84,18 +83,6 @@ def _sync_stock_news(limit: int) -> None:
     if result.stdout.strip():
         print(result.stdout.strip())
     print("[news_hourly] stock news sync: done")
-
-
-def _build_topic_queries_with_theses() -> dict[str, list[str]]:
-    topic_queries = recommended_topic_queries()
-    thesis_queries = load_active_thesis_news_queries(ROOT_DIR / "data" / "investment.db")
-    if thesis_queries:
-        topic_queries = {**topic_queries, **thesis_queries}
-        total = sum(len(v) for v in thesis_queries.values())
-        print(f"[news_hourly] thesis news queries: groups={len(thesis_queries)} queries={total}")
-    else:
-        print("[news_hourly] thesis news queries: none")
-    return topic_queries
 
 
 def _collect_indicators(market_date: date) -> None:
@@ -225,7 +212,7 @@ def main() -> None:
     if args.collect_indicators:
         _collect_indicators(market_date=date.fromisoformat(args.market_date))
 
-    topic_queries = _build_topic_queries_with_theses()
+    topic_queries = recommended_topic_queries()
     digest, reason = build_topic_digest(target_total=args.target_total, top_n=args.top_n, topic_queries=topic_queries)
     if digest is None:
         raise RuntimeError(f"news_topic_digest_failed: {reason}")
@@ -239,17 +226,14 @@ def main() -> None:
         _sync_stock_news(limit=args.stock_news_limit)
         stock_news_synced = True
 
-    thesis_changed = update_thesis_signals(str(args.market_date), db_path=ROOT_DIR / "data" / "investment.db")
-    print(f"[news_hourly] thesis monitor: signals updated ({thesis_changed})")
-
     # Rebuild dashboard only if digest changed or indicators were updated.
-    if args.build_dashboard and (digest_saved or args.collect_indicators or stock_news_synced or thesis_changed):
+    if args.build_dashboard and (digest_saved or args.collect_indicators or stock_news_synced):
         _build_dashboard()
 
     if args.auto_commit:
         committed = _auto_commit(
             include_dashboard=args.build_dashboard,
-            include_indicator_db=args.collect_indicators or stock_news_synced or thesis_changed > 0,
+            include_indicator_db=args.collect_indicators or stock_news_synced,
         )
         if committed and args.auto_push:
             _auto_push()

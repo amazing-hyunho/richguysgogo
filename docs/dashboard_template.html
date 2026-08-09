@@ -294,6 +294,7 @@
     .ic-action.hold { color:#fca5a5; background:rgba(248,113,113,.13); border:1px solid rgba(248,113,113,.38); }
     .ic-warning-inline { font-size:10px; color:#fbbf24; text-align:right; }
     .ic-summary { font-size:12px; line-height:1.55; color:#cbd5e1; min-height:38px; }
+    .ic-v2-strip { margin-top:9px; padding:8px 9px; border:1px solid rgba(56,189,248,.22); border-radius:8px; background:rgba(8,47,73,.22); color:#bae6fd; font-size:11px; line-height:1.5; }
     .ic-detail-btn { margin-top:auto; width:100%; padding:7px 10px; border-radius:9px; border:1px solid rgba(148,163,184,.25); color:#cbd5e1; background:rgba(15,23,42,.55); cursor:pointer; font-weight:700; }
     .ic-detail-btn:hover { color:#fff; border-color:rgba(56,189,248,.5); }
     .ic-detail { display:none; margin-top:18px; padding:18px; border:1px solid rgba(56,189,248,.25); border-radius:16px; background:linear-gradient(160deg,rgba(15,23,42,.98),rgba(15,23,42,.82)); }
@@ -502,7 +503,6 @@
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
       <button class="tab-btn" data-tab="greed-pot" role="tab" aria-selected="false">🏺 탐욕의 항아리</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
-      <button class="tab-btn" data-tab="thesis" role="tab" aria-selected="false">🧭 Thesis Monitor</button>
       <button class="tab-btn" data-tab="industry-cycle" role="tab" aria-selected="false">🏭 산업 사이클</button>
       <button class="tab-btn" data-tab="retire" role="tab" aria-selected="false">🏖️ 은퇴 준비</button>
     </nav>
@@ -838,31 +838,6 @@
         </div>
       </section>
     </div><!-- /tab-news -->
-
-    <!-- ══ 탭: Thesis Monitor ════════════════════════════════════ -->
-    <div id="tab-thesis" class="tab-pane" role="tabpanel">
-      <section class="section" id="section-thesis-monitor">
-        <div class="section-head">
-          <h2>🧭 Thesis Monitor</h2>
-          <span class="section-meta">투자 가설 추적 · 의사결정 보조</span>
-        </div>
-        <div class="thesis-kpi-grid" id="thesis-kpis"></div>
-        <div class="thesis-layout">
-          <div class="thesis-panel">
-            <h3>Active Thesis</h3>
-            <div class="thesis-list" id="thesis-list"></div>
-          </div>
-          <div class="thesis-panel">
-            <h3>선택 가설 상세</h3>
-            <div id="thesis-detail"></div>
-          </div>
-          <div class="thesis-panel">
-            <h3>오늘의 근거 / 행동 제안</h3>
-            <div id="thesis-today"></div>
-          </div>
-        </div>
-      </section>
-    </div><!-- /tab-thesis -->
 
     <!-- ══ 탭: 산업 사이클 (Phase 4) ══════════════════════════════ -->
     <div id="tab-industry-cycle" class="tab-pane" role="tabpanel">
@@ -3180,8 +3155,6 @@ function renderWatchTop3() {
     renderSelected();
   }
 
-  buildThesisMonitor();
-
   // ── 산업 사이클 탭 (Phase 4) ────────────────────────────────
   function renderIndustryCycleTab() {
     const ic = data.industry_cycle || {};
@@ -3228,7 +3201,20 @@ function renderWatchTop3() {
     function indicatorMeaning(key) {
       return (INDICATOR_META[key] || [key, '판정에 사용된 참고 지표'])[1];
     }
-    function actionMeta(sig) {
+    function actionMeta(sig, v2) {
+      const v2Action = (v2 || {}).entry_signal;
+      const v2Actions = {
+        EARLY_ENTRY: { cls:'scale-in', label:'초기 진입', warning:'' },
+        CONFIRM_ADD: { cls:'aggressive', label:'확정·추가', warning:'' },
+        HOLD: { cls:'scale-in', label:'보유', warning:'진입 조건 일부 확인' },
+        HOLD_EXTENDED: { cls:'watch', label:'보유·과열', warning:'신규 추격 주의' },
+        WATCH: { cls:'watch', label:'관찰', warning:'시장 확인 대기' },
+        AVOID: { cls:'hold', label:'진입 보류', warning:'경기·예측 동반 약화' },
+        NEUTRAL: { cls:'watch', label:'중립', warning:'신호 혼재' },
+        OBSERVE: { cls:'watch', label:'관찰', warning:'예측 표본 축적 중' },
+        INSUFFICIENT_DATA: { cls:'watch', label:'데이터 준비 중', warning:'필수 축 미충족' },
+      };
+      if (v2Action && v2Actions[v2Action]) return v2Actions[v2Action];
       const state = sig.confirmed_state || sig.raw_state;
       if (!state || typeof sig.cycle_score !== 'number') {
         return { cls:'watch', label:'데이터 준비 중', warning:'점수 미생성' };
@@ -3256,9 +3242,21 @@ function renderWatchTop3() {
     }
     function entryPriority(item) {
       const sig = item.latest_signal || {};
-      const action = actionMeta(sig);
+      const v2 = item.latest_v2 || {};
+      const action = actionMeta(sig, v2);
       const state = sig.confirmed_state || sig.raw_state;
       const candidates = [...safeArr((item.candidates || {}).etf), ...safeArr((item.candidates || {}).stock)];
+      if (v2.entry_signal) {
+        const eligible = ['EARLY_ENTRY','CONFIRM_ADD','HOLD'].includes(v2.entry_signal) && candidates.length > 0;
+        const actionOrder = {CONFIRM_ADD:3, EARLY_ENTRY:2, HOLD:1};
+        const predicted = Number(v2.expected_excess_return_12w || 0);
+        return {
+          eligible,
+          priority:(actionOrder[v2.entry_signal] || 0) * 1000 + predicted * 10000 + Number(v2.market_confirmation_score || 0),
+          action,
+          candidates,
+        };
+      }
       const urgent = safeArr(sig.urgent_flags).length > 0;
       const overheat = typeof sig.overheat_score === 'number' ? sig.overheat_score : 0;
       const excluded = !state || urgent || overheat >= 65 ||
@@ -3325,15 +3323,17 @@ function renderWatchTop3() {
         entryList.innerHTML = rankedEntries.length ? rankedEntries.slice(0, 5).map((row, index) => {
           const item = row.item;
           const sig = item.latest_signal || {};
+          const v2 = item.latest_v2 || {};
           const state = stateMeta(sig.confirmed_state || sig.raw_state);
           const assets = row.rank.candidates.slice().sort((a,b) => Number(b.score || 0) - Number(a.score || 0)).slice(0, 4);
           const statusText = row.rank.action.cls === 'watch' ? '초입 확인 중 · 관찰 후보' : `${row.rank.action.label} 검토`;
-          const confidenceText = typeof sig.confidence === 'number' ? `${(sig.confidence * 100).toFixed(0)}%` : '데이터 없음';
+          const confidenceText = v2.prediction_confidence || (typeof sig.confidence === 'number' ? `${(sig.confidence * 100).toFixed(0)}%` : '데이터 없음');
           const overheatText = typeof sig.overheat_score === 'number' ? sig.overheat_score.toFixed(1) : '데이터 없음';
+          const forecastText = typeof v2.expected_excess_return_12w === 'number' ? `${(v2.expected_excess_return_12w * 100).toFixed(1)}%` : '학습 중';
           return `<div class="ic-entry-card">
             <div class="ic-entry-rank">TOP ${index + 1} · ${escapeHtml(statusText)}</div>
             <div class="ic-entry-name">${escapeHtml(item.name_kr || item.industry_id)} · ${escapeHtml(state.label)}</div>
-            <div class="ic-entry-reason">신뢰도 ${escapeHtml(confidenceText)} · 과열 ${escapeHtml(overheatText)} · 긴급 경고 없음</div>
+            <div class="ic-entry-reason">12주 예상 ${escapeHtml(forecastText)} · 예측 신뢰도 ${escapeHtml(confidenceText)} · 과열 ${escapeHtml(overheatText)}</div>
             <div class="ic-entry-assets">${assets.map(a => `<span class="ic-entry-asset">${escapeHtml(a.asset_id || '')} ${typeof a.score === 'number' ? escapeHtml(a.score.toFixed(0)) : ''}</span>`).join('')}</div>
           </div>`;
         }).join('') : '<div class="empty-state" style="grid-column:1/-1;">이번 주에는 과열·긴급 위험 조건을 통과한 신규 진입 후보가 없습니다. 조건을 완화해 억지 후보를 만들지 않습니다.</div>';
@@ -3349,8 +3349,9 @@ function renderWatchTop3() {
         });
         cardGrid.innerHTML = orderedIndustries.map(item => {
           const sig = item.latest_signal || {};
+          const v2 = item.latest_v2 || {};
           const meta2 = stateMeta(sig.confirmed_state || sig.raw_state);
-          const action = actionMeta(sig);
+          const action = actionMeta(sig, v2);
           const marketPills = safeArr(item.country_scope).map(m => `<span class="ic-market-pill">${escapeHtml(m)}</span>`).join('');
           const confirmLabel = CONFIRMATION_LABEL[sig.confirmation_status] || (sig.confirmation_status || '-');
           const urgentTags = safeArr(sig.urgent_flags).map(f => `<span class="tag bear">${escapeHtml(f)}</span>`).join('');
@@ -3371,6 +3372,7 @@ function renderWatchTop3() {
             </div>
             <span class="ic-state-badge ${meta2.cls}">${escapeHtml(meta2.label)} · ${escapeHtml(confirmLabel)}</span>
             <div class="ic-summary">${escapeHtml(shortSummary(item, sig, action))}</div>
+            ${v2.entry_signal ? `<div class="ic-v2-strip">KPI 경기 ${typeof v2.kpi_cycle_score === 'number' ? v2.kpi_cycle_score.toFixed(1) : '-'} · 시장확인 ${typeof v2.market_confirmation_score === 'number' ? v2.market_confirmation_score.toFixed(1) : '-'} · 12주 ${typeof v2.expected_excess_return_12w === 'number' ? (v2.expected_excess_return_12w * 100).toFixed(1) + '%' : '학습 중'} · ${escapeHtml(v2.entry_signal)}</div>` : ''}
             ${urgentTags ? `<div class="ic-urgent">${urgentTags}</div>` : ''}
             ${candidateTags ? `<div class="ic-candidates">${candidateTags}</div>` : '<div class="ic-no-recommend">추천 후보 없음</div>'}
             <button type="button" class="ic-detail-btn" data-industry-id="${escapeHtml(item.industry_id)}">사이클과 근거 상세보기</button>
@@ -3387,7 +3389,8 @@ function renderWatchTop3() {
         function renderDetail(item) {
           const sig = item.latest_signal || {};
           const state = stateMeta(sig.confirmed_state || sig.raw_state);
-          const action = actionMeta(sig);
+          const v2 = item.latest_v2 || {};
+          const action = actionMeta(sig, v2);
           const allReasons = safeArr(item.all_reasons).length ? safeArr(item.all_reasons) : safeArr(item.top_reasons);
           const reasonsHtml = allReasons.slice(0, 5).map(r => {
             const cls = r.direction === 'positive' ? 'pos' : (r.direction === 'negative' ? 'neg' : '');
@@ -3447,6 +3450,15 @@ function renderWatchTop3() {
               <button type="button" class="ic-close" aria-label="상세보기 닫기">×</button>
             </div>
             <div class="ic-detail-grid">
+              ${v2.entry_signal ? `<div class="ic-panel ic-detail-wide">
+                <h4>객관식 v2 · 경기와 투자 진입 분리</h4>
+                <div class="ic-indicator-grid">
+                  <div class="ic-indicator"><div class="label">KPI 경기 백분위</div><div class="value">${typeof v2.kpi_cycle_score === 'number' ? v2.kpi_cycle_score.toFixed(1) : '-'}</div><div class="meaning">산업 자체의 과거 KPI 분포 기준</div></div>
+                  <div class="ic-indicator"><div class="label">시장확인 백분위</div><div class="value">${typeof v2.market_confirmation_score === 'number' ? v2.market_confirmation_score.toFixed(1) : '-'}</div><div class="meaning">상대강도와 breadth 동일가중</div></div>
+                  <div class="ic-indicator"><div class="label">12주 예상 초과수익</div><div class="value">${typeof v2.expected_excess_return_12w === 'number' ? (v2.expected_excess_return_12w * 100).toFixed(1) + '%' : '학습 중'}</div><div class="meaning">종료된 과거 표본만 사용 · 신뢰도 ${escapeHtml(v2.prediction_confidence || '-')}</div></div>
+                  <div class="ic-indicator"><div class="label">진입 판정</div><div class="value">${escapeHtml(v2.entry_signal)}</div><div class="meaning">${escapeHtml(v2.entry_reason || '')}</div></div>
+                </div>
+              </div>` : ''}
               <div class="ic-panel">
                 <h4>${usesPriceBackdata ? '가격 기반 사이클 흐름' : '종합 사이클 흐름'}</h4>
                 ${chartWeeks ? '<div class="ic-chart-wrap"><canvas id="ic-cycle-chart"></canvas></div>' : '<div class="empty-state">아직 계산된 사이클 이력이 없습니다. 대표 자산 또는 업황 지표가 연결되면 그래프가 자동 생성됩니다.</div>'}

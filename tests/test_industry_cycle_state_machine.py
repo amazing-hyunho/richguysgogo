@@ -124,10 +124,18 @@ class ApplyCycleConfirmationRuleTests(unittest.TestCase):
         self.assertEqual(result.consecutive_weeks, 1)
         self.assertEqual(result.confirmation_status, csm.STATUS_FIRST_OBSERVATION)
 
-    def test_expansion_is_not_applicable_for_confirmation(self) -> None:
-        result = csm.apply_cycle_confirmation_rule(csm.CYCLE_EXPANSION, None, confirmation_cfg=self.confirmation_cfg)
-        self.assertEqual(result.confirmation_status, csm.STATUS_NOT_APPLICABLE)
-        self.assertEqual(result.action_signal, csm.ACTION_NONE)
+    def test_expansion_confirms_on_second_consecutive_week(self) -> None:
+        first = csm.apply_cycle_confirmation_rule(
+            csm.CYCLE_EXPANSION, None, confirmation_cfg=self.confirmation_cfg
+        )
+        self.assertEqual(first.confirmation_status, csm.STATUS_FIRST_OBSERVATION)
+        second = csm.apply_cycle_confirmation_rule(
+            csm.CYCLE_EXPANSION,
+            {"raw_state": csm.CYCLE_EXPANSION, "consecutive_weeks": 1},
+            confirmation_cfg=self.confirmation_cfg,
+        )
+        self.assertEqual(second.confirmation_status, csm.STATUS_CONFIRMED)
+        self.assertEqual(second.action_signal, csm.ACTION_EXPANSION_CONFIRMED)
 
 
 if __name__ == "__main__":

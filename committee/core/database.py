@@ -1237,6 +1237,45 @@ def init_db(db_path: Path | None = None) -> None:
             "ON industry_cycle_signal(industry_id, as_of);"
         )
 
+        # Objective two-axis model: KPI cycle description is deliberately
+        # separate from market confirmation and the learned 12-week return
+        # forecast.  This keeps a missing market input from silently changing
+        # the meaning/weights of the economic-cycle score.
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS industry_cycle_v2_signal (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                industry_id TEXT NOT NULL,
+                as_of TEXT NOT NULL,
+                model_version TEXT NOT NULL,
+                kpi_cycle_score REAL,
+                kpi_raw_score REAL,
+                kpi_slope_4w REAL,
+                cycle_phase TEXT,
+                market_confirmation_score REAL,
+                relative_strength_percentile REAL,
+                breadth_percentile REAL,
+                earnings_revision_percentile REAL,
+                overheat_percentile REAL,
+                expected_excess_return_12w REAL,
+                upside_probability_12w REAL,
+                prediction_confidence TEXT,
+                training_sample_count INTEGER NOT NULL DEFAULT 0,
+                training_week_count INTEGER NOT NULL DEFAULT 0,
+                selected_ridge_lambda REAL,
+                data_completeness REAL,
+                entry_signal TEXT,
+                entry_reason TEXT,
+                created_at TEXT,
+                UNIQUE(industry_id, as_of, model_version)
+            );
+            """
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_industry_cycle_v2_signal_industry "
+            "ON industry_cycle_v2_signal(industry_id, as_of);"
+        )
+
         # industry_signal_reason: explainable per-component contribution rows
         # for one industry_cycle_signal row (design doc section 9:
         # "신호, 지표, 기여점수, 근거"). One row per

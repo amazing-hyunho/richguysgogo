@@ -31,6 +31,8 @@ from committee.industry_cycle import (
     candidate_ranking,
     cycle_model_config,
     cycle_runner,
+    cycle_v2,
+    cycle_v2_model_config,
     fundamentals_model_config,
     price_model_config,
     repository,
@@ -110,6 +112,18 @@ def main() -> None:
         db_path=DB_PATH,
     )
 
+    v2_cfg = cycle_v2_model_config.load_cycle_v2_model_config()
+    v2_results = cycle_v2.compute_cycle_v2_batch(
+        industry_ids,
+        as_of=args.as_of,
+        config=v2_cfg,
+        fundamentals_model_version=args.fundamentals_model_version,
+        candidate_model_version=args.candidate_model_version,
+        price_model_version=args.price_model_version,
+        persist=True,
+        db_path=DB_PATH,
+    )
+
     ok = 0
     failed = 0
     for r in results:
@@ -133,6 +147,11 @@ def main() -> None:
             print(f"result industry_id={r.industry_id} status=failed error={r.error}")
 
     print(f"run_industry_cycle_weekly_done ok={ok} failed={failed} total={len(industry_ids)}")
+    v2_predicted = sum(1 for row in v2_results if row.get("expected_excess_return_12w") is not None)
+    print(
+        f"run_industry_cycle_v2_weekly_done rows={len(v2_results)} "
+        f"predicted={v2_predicted} model_version={v2_cfg['model_version']}"
+    )
 
 
 if __name__ == "__main__":

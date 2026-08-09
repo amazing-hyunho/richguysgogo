@@ -13,6 +13,7 @@ if str(ROOT) not in sys.path:
 from committee.industry_cycle import (
     candidate_repository,
     cycle_repository,
+    cycle_v2_repository,
     factor_repository,
     repository as industry_repository,
     virtual_portfolio_repository,
@@ -62,6 +63,15 @@ class LoadIndustryCycleDashboardDataTests(unittest.TestCase):
             [{"component_key": "fundamentals_score", "raw_value": 70.0, "weight": 0.25, "contribution": 5.0, "direction": "positive"}],
             db_path=self.db_path,
         )
+        cycle_v2_repository.upsert_cycle_v2_signal(
+            {
+                "industry_id": "semiconductors", "as_of": "2026-07-25", "model_version": "cycle_v2",
+                "kpi_cycle_score": 72.0, "market_confirmation_score": 81.0,
+                "expected_excess_return_12w": 0.04, "upside_probability_12w": 0.62,
+                "prediction_confidence": "LOW", "entry_signal": "CONFIRM_ADD",
+            },
+            db_path=self.db_path,
+        )
         from committee.industry_cycle import stock_model_config
 
         candidate_repository.upsert_industry_candidate(
@@ -85,6 +95,12 @@ class LoadIndustryCycleDashboardDataTests(unittest.TestCase):
         self.assertEqual(len(item["all_reasons"]), 1)
         self.assertEqual(item["top_reasons"][0]["component_key"], "fundamentals_score")
         self.assertEqual(len(item["history"]), 1)
+        self.assertEqual(item["latest_v2"]["entry_signal"], "CONFIRM_ADD")
+
+    def test_thesis_monitor_tab_and_bootstrap_are_removed(self) -> None:
+        template = build_dashboard.TEMPLATE_PATH.read_text(encoding="utf-8")
+        self.assertNotIn('data-tab="thesis"', template)
+        self.assertNotIn("buildThesisMonitor();", template)
 
     def test_industry_without_signal_is_shown_as_data_preparing(self) -> None:
         industry_repository.upsert_industry_master(industry_id="banks", name_kr="은행", db_path=self.db_path)

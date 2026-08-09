@@ -32,6 +32,8 @@ from committee.industry_cycle import (
     candidate_repository,
     cycle_model_config,
     cycle_runner,
+    cycle_v2,
+    cycle_v2_model_config,
     factor_repository,
     fundamentals_model_config,
     fundamentals_repository,
@@ -146,6 +148,7 @@ def main() -> None:
     fundamentals_cfg = fundamentals_model_config.load_fundamentals_model_config()
     stock_cfg = stock_model_config.load_stock_model_config()
     cycle_cfg = cycle_model_config.load_cycle_model_config()
+    cycle_v2_cfg = cycle_v2_model_config.load_cycle_v2_model_config()
     price_targets = price_factor_runner.build_targets_from_universe(price_universe_payload)
     price_target_ids = {target.asset_id for target in price_targets}
 
@@ -196,6 +199,8 @@ def main() -> None:
         "breadth_failed": 0,
         "cycle_ok": 0,
         "cycle_failed": 0,
+        "cycle_v2_ok": 0,
+        "cycle_v2_failed": 0,
     }
 
     for index, as_of in enumerate(weekly_dates, start=1):
@@ -343,12 +348,33 @@ def main() -> None:
         totals["cycle_ok"] += cycle_ok
         totals["cycle_failed"] += cycle_failed
 
+        try:
+            cycle_v2_results = cycle_v2.compute_cycle_v2_batch(
+                active_industries,
+                as_of=as_of,
+                config=cycle_v2_cfg,
+                fundamentals_model_version=fundamentals_cfg["model_version"],
+                candidate_model_version=stock_cfg["model_version"],
+                price_model_version=price_cfg["model_version"],
+                persist=True,
+                db_path=DB_PATH,
+            )
+            cycle_v2_ok = len(cycle_v2_results)
+            cycle_v2_failed = 0
+        except Exception as exc:  # noqa: BLE001 - report v2 separately; v1 history remains valid
+            cycle_v2_ok = 0
+            cycle_v2_failed = len(active_industries)
+            print(f"stage_error as_of={as_of} stage=cycle_v2 error={exc}")
+        totals["cycle_v2_ok"] += cycle_v2_ok
+        totals["cycle_v2_failed"] += cycle_v2_failed
+
         print(
             f"week_done as_of={as_of} "
             f"price={price_ok}/{len(price_targets)} reused={can_reuse_price} "
             f"fundamentals={fundamentals_ok}/{len(active_industries)} "
             f"breadth={breadth_ok}/{len(active_industries)} "
-            f"cycle={cycle_ok}/{len(active_industries)}"
+            f"cycle={cycle_ok}/{len(active_industries)} "
+            f"cycle_v2={cycle_v2_ok}/{len(active_industries)}"
         )
 
     failed = sum(value for key, value in totals.items() if key.endswith("_failed"))
