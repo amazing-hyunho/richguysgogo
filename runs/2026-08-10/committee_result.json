@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 1.05% 상승(6,324.47p), KOSDAQ은 4.9% 급등(837.98p)했으나, 20일 누적 수익률은 -10.29%로 중기 약세가 여전합니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인 순매도(-1,379억)와 원/달러 환율 상승(1,409.64원, +0.38%)이 위험회피 심리를 자극하고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(단기 반등 vs. 중기 위험)",
+      "majority": "단기 반등에도 중기적으로는 신중한 접근이 필요하다는 의견(6/7명)",
+      "minority": "매크로, 유동성 담당자는 위험회피(RISK_OFF) 기조를 강조",
+      "minority_agents": [
+        "macro",
+        "liquidity"
+      ],
+      "why_it_matters": "외국인 매도와 누적 하락세가 지속될 경우, 단기 반등이 일시적일 수 있어 추가 하락 리스크를 경계해야 함"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 단기 반등 속 신중론: KOSPI 6,324p, KOSDAQ 4.9% 급등\n\n오늘(8/10) 코스피는 1.05% 상승한 6,324.47p, 코스닥은 4.9% 급등한 837.98p로 마감했습니다. 외국인은 -1,379억 순매도(코스피 -2,766억, 코스닥 +1,387억), 기관은 +3,522억 순매수(코스피 +2,452억, 코스닥 +1,070억), 개인은 -2,282억 순매도(코스닥 -2,435억)로 집계됐습니다. 원/달러 환율은 1,409.64원(+0.38%)로 상승했고, VIX는 14.9로 5일 평균(15.63) 대비 소폭 하락하며 변동성은 낮은 편입니다. 20일 누적 KOSPI 수익률은 -10.29%로 중기 약세가 여전히 부담입니다.\n\n## 수급: 기관 주도 반등, 외국인 매도는 지속\n\n오늘 시장 반등의 주체는 기관이었습니다. 기관은 코스피와 코스닥 모두에서 순매수(+3,522억)를 기록하며 단기 반등을 이끌었으나, 외국인은 코스피에서 -2,766억 순매도를 지속했습니다. 코스닥에서는 외국인(+1,387억)과 기관(+1,070억)이 동반 매수에 나섰지만, 개인은 -2,435억 순매도로 차익실현에 나선 모습입니다. 이는 최근 코스닥 5일 누적 급등(13.1%)에 따른 레버리지 청산 및 차익실현 심리가 반영된 결과로 해석됩니다. 외국인 매도세는 고환율(1,409.64원)과 미국 금리 부담, AI/반도체 업종 차익실현 등이 복합적으로 작용한 것으로 보입니다.\n\n## 오늘의 핵심 이슈: 금리·AI·환율·CPI\n\n오늘 뉴스 키워드는 금리/연준, 반도체/AI, 환율/달러, 인플레이션, 미국지수입니다. 미국 고용지표 부진에도 국채금리가 안정적이라는 점이 주목받았으며([증시 오늘 '핫이슈' \"'고용쇼크'에도 무덤덤 美 국채금리, 최후의 카드는?\"](https://news.google.com/rss/articles/CBMiUkFVX3lxTE5TbTcxeUdFSjlXeHVPOE9fRy1fOWtkb1ptRDBFVlEyRG4tNDg1UzUxeVlIU2F4UlRKSm9JV0QtWEdBd2doNnkxYm5UTi03bXBLR1E?oc=5)), AI/반도체 업종의 기술적 반등과 실적 기대감이 시장에 긍정적 영향을 주었습니다([스페이스X·테슬라 기술적 반등 성공…엔비디아·AMD AI 영토 확장 경쟁](https://news.google.com/rss/articles/CBMid0FVX3lxTFBrVjZLdEtVZS0tVExLRmlTVGZmN2ZGZFJIT0NvM2FTcXk1ZHpNZTJxQllNSWpnQXQxeHN6d2w4N0haZ01iU3doa2NYbVMtU1cwZ0lTYXJ4RmtlZW9abklUVUxJWWM1aGV6UUZ6UUt5U0Z5UFBKWmxB?oc=5)). 하지만 CPI 등 주요 이벤트를 앞두고 실적·정책 모멘텀의 본격적 변화는 아직 확인되지 않았습니다.\n\n## 중기 약세 부담과 향후 체크포인트\n\n20일 누적 KOSPI 하락(-10.29%)과 외국인 매도세, 고환율 구간이 지속되는 한, 단기 반등에 성급히 추종하기보다는 주요 이벤트(CPI, 연준 정책, 환율 방향성 등) 확인이 필요합니다. 실적 모멘텀 부재와 정책 불확실성, 외국인 수급 전환 여부가 중기 추세 전환의 핵심 변수입니다. 만약 외국인 순매수가 뚜렷하게 재개되거나, 원/달러 환율이 1,400원 이하로 안정화된다면 오늘의 신중론은 무력화될 수 있습니다.\n"
+}
