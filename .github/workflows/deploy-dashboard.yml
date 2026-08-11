@@ -23,6 +23,7 @@ jobs:
 
       - name: Prepare Pages artifact
         run: |
+          python scripts/render_dashboard_for_pages.py
           mkdir -p public
           cp docs/dashboard.html public/index.html
 
