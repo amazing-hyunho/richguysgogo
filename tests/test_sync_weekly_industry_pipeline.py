@@ -42,6 +42,31 @@ class SyncWeeklyIndustryPipelineTests(unittest.TestCase):
             scripts_run.index("scripts/run_industry_virtual_portfolio.py"),
             scripts_run.index("scripts/build_dashboard.py"),
         )
+        self.assertLess(
+            scripts_run.index("scripts/run_research_radar_weekly.py"),
+            scripts_run.index("scripts/build_dashboard.py"),
+        )
+
+    def test_skip_research_radar_omits_only_radar_step(self) -> None:
+        calls: list[list[str]] = []
+
+        def fake_run(cmd, **_kwargs):
+            calls.append(list(cmd))
+            return subprocess.CompletedProcess(cmd, 0, stdout="", stderr="")
+
+        with (
+            patch.object(
+                sys,
+                "argv",
+                ["sync_weekly.py", "--skip-stocks", "--skip-research-radar"],
+            ),
+            patch.object(sync_weekly.subprocess, "run", side_effect=fake_run),
+            patch("builtins.print"),
+        ):
+            sync_weekly.main()
+
+        self.assertFalse(any("scripts/run_research_radar_weekly.py" in cmd for cmd in calls))
+        self.assertTrue(any("scripts/build_dashboard.py" in cmd for cmd in calls))
 
     def test_skip_industry_llm_keeps_news_collection(self) -> None:
         calls: list[list[str]] = []

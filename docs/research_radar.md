@@ -28,6 +28,28 @@ JSON과 Markdown을 생성합니다.
 python scripts/run_research_radar.py --execute
 ```
 
+## 주간 미래산업 논문 레이더
+
+`config/research_radar_topics.json`에 등록된 미래산업 주제를 대상으로 최근 28일 arXiv 논문을
+매주 다시 수집합니다. GPT는 제목·초록 안에서 관련성, 핵심 주장, 반증 방향과 한계를 JSON으로
+추출하고 기존 규칙 엔진이 최종 점수와 단계 통과 여부를 계산합니다.
+
+```bash
+# 계획만 출력하며 네트워크·GPT 호출·파일 쓰기를 하지 않음
+python scripts/run_research_radar_weekly.py
+
+# 실제 수집·GPT 해석·보고서 저장
+python scripts/run_research_radar_weekly.py --execute
+```
+
+기본 모델은 `gpt-4.1`이며 `RESEARCH_RADAR_LLM_MODEL` 환경변수 또는 `--model`로 바꿀 수
+있습니다. `OPENAI_API_KEY`는 기존 프로젝트 설정을 그대로 사용합니다. 주간 예약 진입점인
+`scripts/sync_weekly.py`가 대시보드 생성 전에 이 명령을 자동 실행합니다. 일시적으로 제외하려면
+`--skip-research-radar`를 사용합니다.
+
+첫 자동 추적 주제는 `피지컬 AI·로봇 파운데이션 모델`입니다. 현재 버전은 연구 검증만 자동화하며
+인재 이동, 자본 형성, 공급망 병목과 실적 확인은 근거 수집기가 추가되기 전까지 통과시키지 않습니다.
+
 산출물은 다음 위치에 저장됩니다.
 
 ```text

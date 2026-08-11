@@ -38,6 +38,7 @@ STAGE_WEIGHTS = {
 
 SOURCE_RELIABILITY = {
     "academic_primary": 1.00,
+    "academic_preprint": 0.75,
     "regulatory_filing": 1.00,
     "company_filing": 0.95,
     "company_release": 0.82,
