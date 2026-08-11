@@ -482,6 +482,39 @@
     .retire-profile-msg { font-size:12px;padding:0 4px; }
     .retire-profile-msg.ok  { color:#34d399; }
     .retire-profile-msg.err { color:#f87171; }
+    .rr-theme-grid { display:grid;gap:18px; }
+    .rr-theme-card { background:linear-gradient(145deg,rgba(15,23,42,.96),rgba(17,24,39,.92));border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 14px 36px rgba(2,6,23,.22); }
+    .rr-theme-head { display:flex;align-items:flex-start;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-bottom:16px; }
+    .rr-theme-title { margin:0;color:#f8fafc;font-size:19px; }
+    .rr-theme-thesis { color:#94a3b8;font-size:13px;line-height:1.65;margin:6px 0 0;max-width:820px; }
+    .rr-score-row { display:flex;gap:8px;flex-wrap:wrap; }
+    .rr-score-pill { min-width:112px;padding:9px 12px;border:1px solid rgba(56,189,248,.24);border-radius:10px;background:rgba(56,189,248,.07); }
+    .rr-score-pill .k { color:#64748b;font-size:10px;text-transform:uppercase;letter-spacing:.05em; }
+    .rr-score-pill .v { color:#e2e8f0;font-size:17px;font-weight:800;margin-top:2px; }
+    .rr-stage-grid { display:grid;grid-template-columns:repeat(5,minmax(135px,1fr));gap:8px;overflow-x:auto;padding-bottom:4px; }
+    .rr-stage { min-width:135px;padding:11px;border:1px solid var(--line);border-radius:10px;background:rgba(30,41,59,.54); }
+    .rr-stage.pass { border-color:rgba(52,211,153,.38);background:rgba(52,211,153,.06); }
+    .rr-stage .label { color:#e2e8f0;font-size:12px;font-weight:700; }
+    .rr-stage .meta { color:#64748b;font-size:10px;margin-top:4px; }
+    .rr-stage-bar { height:5px;background:#1e293b;border-radius:999px;overflow:hidden;margin-top:9px; }
+    .rr-stage-bar > span { display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#34d399);border-radius:999px; }
+    .rr-subtitle { color:#cbd5e1;font-size:13px;font-weight:800;margin:18px 0 9px; }
+    .rr-company-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px; }
+    .rr-company { border:1px solid var(--line);background:rgba(30,41,59,.46);border-radius:10px;padding:11px; }
+    .rr-company .ticker { color:#7dd3fc;font-size:12px;font-weight:800; }
+    .rr-company .role { color:#cbd5e1;font-size:12px;margin-top:5px; }
+    .rr-company .thesis { color:#64748b;font-size:11px;line-height:1.55;margin-top:6px; }
+    .rr-evidence-list { display:grid;gap:7px;margin-top:9px; }
+    .rr-evidence { display:grid;grid-template-columns:100px 120px 1fr;gap:10px;align-items:start;border-left:2px solid #334155;padding:8px 10px;background:rgba(15,23,42,.42); }
+    .rr-evidence.positive { border-left-color:#34d399; }
+    .rr-evidence.negative { border-left-color:#f87171; }
+    .rr-evidence .date { color:#64748b;font-size:10px; }
+    .rr-evidence .stage { color:#94a3b8;font-size:10px;font-weight:700; }
+    .rr-evidence .claim { color:#cbd5e1;font-size:11px;line-height:1.55; }
+    .rr-evidence a { color:#7dd3fc;text-decoration:none; }
+    .rr-caution { margin:8px 0 0;padding-left:18px;color:#94a3b8;font-size:11px;line-height:1.6; }
+    .rr-disclaimer { margin-top:14px;padding:10px 12px;border-radius:9px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);color:#fcd34d;font-size:11px; }
+    @media(max-width:720px){ .rr-evidence { grid-template-columns:1fr;gap:3px; } }
   </style>
 </head>
 <body>
@@ -489,6 +522,9 @@
     <div class="top-link-bar">
       <a class="top-link-pill" href="https://activeholders.com/" target="_blank" rel="noopener noreferrer">
         💎 액티브홀더스
+      </a>
+      <a class="top-link-pill" href="https://zoopeter.io/dashboard" target="_blank" rel="noopener noreferrer">
+        🦁 ZooPeter
       </a>
       <a class="top-link-pill" href="https://www.indexergo.com/insight?ctg=insight" target="_blank" rel="noopener noreferrer">
         🔗 IndexerGo 인사이트 보기
@@ -504,6 +540,7 @@
       <button class="tab-btn" data-tab="greed-pot" role="tab" aria-selected="false">🏺 탐욕의 항아리</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
       <button class="tab-btn" data-tab="industry-cycle" role="tab" aria-selected="false">🏭 산업 사이클</button>
+      <button class="tab-btn" data-tab="research-radar" role="tab" aria-selected="false">🔬 연구→시장</button>
       <button class="tab-btn" data-tab="retire" role="tab" aria-selected="false">🏖️ 은퇴 준비</button>
     </nav>
 
@@ -876,6 +913,21 @@
         </div>
       </section>
     </div><!-- /tab-industry-cycle -->
+
+    <!-- ══ 탭: Research-to-Market Radar ══════════════════════════ -->
+    <div id="tab-research-radar" class="tab-pane" role="tabpanel">
+      <section class="section" id="section-research-radar">
+        <div class="section-head">
+          <h2>🔬 Research-to-Market Radar</h2>
+          <span class="section-meta" id="rr-meta">논문 → 인재 → 자본 → 병목 → 실적</span>
+        </div>
+        <div id="rr-empty" class="empty-state" style="display:none;">
+          아직 레이더 보고서가 없습니다.<br>
+          <code style="font-size:12px;">python scripts/run_research_radar.py --execute</code> 후 대시보드를 다시 생성하세요.
+        </div>
+        <div class="rr-theme-grid" id="rr-theme-grid"></div>
+      </section>
+    </div><!-- /tab-research-radar -->
 
     <!-- ══ 탭 4: 은퇴 준비 ══════════════════════════════════════ -->
     <div id="tab-retire" class="tab-pane" role="tabpanel">
@@ -3576,6 +3628,86 @@ function renderWatchTop3() {
     }
   }
   renderIndustryCycleTab();
+
+  // ── Research-to-Market Radar 탭 ─────────────────────────────
+  function renderResearchRadarTab() {
+    const radar = data.research_radar || {};
+    const themes = safeArr(radar.themes);
+    const meta = document.getElementById('rr-meta');
+    const empty = document.getElementById('rr-empty');
+    const grid = document.getElementById('rr-theme-grid');
+    if (!grid) return;
+    if (meta) meta.textContent = `최신 기준일: ${radar.as_of || '-'} · 테마 ${themes.length}개`;
+    if (!themes.length) {
+      if (empty) empty.style.display = 'block';
+      grid.innerHTML = '';
+      return;
+    }
+    if (empty) empty.style.display = 'none';
+
+    function numberScore(value) {
+      return (typeof value === 'number' && Number.isFinite(value)) ? value : 0;
+    }
+    function safeHttpUrl(value) {
+      const raw = String(value || '');
+      return /^https?:\/\//i.test(raw) ? raw : '#';
+    }
+    const directnessLabel = { direct:'직접', enabler:'핵심 공급', adjacent:'인접', speculative:'가설' };
+
+    grid.innerHTML = themes.map(report => {
+      const theme = report.theme || {};
+      const stages = safeArr(report.stages);
+      const companies = safeArr(report.public_companies);
+      const evidence = safeArr(report.evidence).slice(0, 20);
+      const cautions = [...safeArr(report.data_gaps), ...safeArr(report.limitations)];
+      const stageHtml = stages.map(stage => {
+        const score = numberScore(stage.score);
+        return `<div class="rr-stage ${stage.passed ? 'pass' : ''}">
+          <div class="label">${escapeHtml(stage.label || stage.stage || '-')}</div>
+          <div class="meta">점수 ${escapeHtml(score.toFixed(1))} · 확신 ${escapeHtml(numberScore(stage.confidence).toFixed(1))}</div>
+          <div class="meta">근거 ${escapeHtml(String(stage.evidence_count || 0))} · 출처 ${escapeHtml(String(stage.distinct_source_count || 0))}</div>
+          <div class="rr-stage-bar"><span style="width:${Math.max(0, Math.min(100, score))}%"></span></div>
+        </div>`;
+      }).join('');
+      const companyHtml = companies.length ? companies.map(company => `
+        <div class="rr-company">
+          <div class="ticker">${escapeHtml(company.market || '')}:${escapeHtml(company.ticker || '')} · 연결 ${escapeHtml(numberScore(company.link_strength).toFixed(1))}</div>
+          <div class="role">${escapeHtml(company.company_name || '')} · ${escapeHtml(company.role || '-')} · ${escapeHtml(directnessLabel[company.directness] || company.directness || '-')}</div>
+          <div class="thesis">${escapeHtml(company.thesis || '-')}</div>
+        </div>`).join('') : '<div class="empty-state">연결된 상장사가 없습니다.</div>';
+      const evidenceHtml = evidence.length ? evidence.map(row => `
+        <div class="rr-evidence ${escapeHtml(row.direction || 'neutral')}">
+          <div class="date">사건 ${escapeHtml(row.event_date || '-')}<br>인지 ${escapeHtml(row.known_at || '-')}</div>
+          <div class="stage">${escapeHtml(row.stage_label || row.stage || '-')}</div>
+          <div class="claim"><strong>${escapeHtml(row.title || '-')}</strong> — ${escapeHtml(row.claim || '-')}<br>
+            <a href="${escapeHtml(safeHttpUrl(row.source_url))}" target="_blank" rel="noopener noreferrer">${escapeHtml(row.source_name || '원문')} ↗</a>
+          </div>
+        </div>`).join('') : '<div class="empty-state">기준일 현재 사용 가능한 근거가 없습니다.</div>';
+      const cautionHtml = cautions.length
+        ? `<ul class="rr-caution">${cautions.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`
+        : '<div class="empty-state">입력에 명시된 데이터 공백이 없습니다.</div>';
+      return `<article class="rr-theme-card">
+        <div class="rr-theme-head">
+          <div>
+            <h3 class="rr-theme-title">${escapeHtml(theme.name || theme.theme_id || '-')}</h3>
+            <p class="rr-theme-thesis">${escapeHtml(theme.thesis || '-')}</p>
+          </div>
+          <div class="rr-score-row">
+            <div class="rr-score-pill"><div class="k">현재 단계</div><div class="v">${escapeHtml(report.status_label || report.status || '-')}</div></div>
+            <div class="rr-score-pill"><div class="k">체인 성숙도</div><div class="v">${escapeHtml(numberScore(report.chain_score).toFixed(1))}</div></div>
+            <div class="rr-score-pill"><div class="k">근거 확신도</div><div class="v">${escapeHtml(numberScore(report.confidence).toFixed(1))}</div></div>
+          </div>
+        </div>
+        <div class="rr-stage-grid">${stageHtml}</div>
+        <div class="rr-subtitle">공개시장 연결고리</div>
+        <div class="rr-company-grid">${companyHtml}</div>
+        <details style="margin-top:14px;"><summary class="rr-subtitle" style="cursor:pointer;margin:0;">증거 타임라인 (${evidence.length})</summary><div class="rr-evidence-list">${evidenceHtml}</div></details>
+        <details style="margin-top:12px;"><summary class="rr-subtitle" style="cursor:pointer;margin:0;">데이터 공백·한계 (${cautions.length})</summary>${cautionHtml}</details>
+        <div class="rr-disclaimer">연결 점수는 근거 성숙도일 뿐 기대수익률·밸류에이션·매수 추천이 아닙니다.</div>
+      </article>`;
+    }).join('');
+  }
+  renderResearchRadarTab();
 
   // ── 탭 전환 ──────────────────────────────────────────────────
   document.querySelectorAll('.tab-btn').forEach(btn => {

@@ -513,7 +513,10 @@ def _inject_dashboard_json(template: str, data_json: str) -> str:
 
 
 def build_dashboard_html(data: dict[str, object]) -> str:
-    data_json = json.dumps(data, ensure_ascii=False)
+    # Dashboard payloads include external headlines and user-authored research
+    # claims. Escape a closing tag so JSON embedded in the inline script can
+    # never terminate that script early.
+    data_json = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     return _inject_dashboard_json(template, data_json)
 
@@ -850,6 +853,61 @@ def load_industry_cycle_dashboard_data() -> dict[str, object]:
     }
 
 
+def load_research_radar_dashboard_data() -> dict[str, object]:
+    """Load the latest deterministic research-radar report per theme.
+
+    Reports are append-only date artifacts under
+    ``runs/<as-of>/research_radar/<theme-id>.json``. Invalid, partial, or
+    unrelated JSON files are ignored so dashboard generation remains
+    best-effort even if one artifact is interrupted or hand-edited.
+    """
+    latest_by_theme: dict[str, tuple[tuple[str, str], dict[str, object]]] = {}
+    for path in sorted(RUNS_DIR.glob("*/research_radar/*.json")):
+        if not path.is_file():
+            continue
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(payload, dict) or payload.get("schema_version") != "research-radar-report-v1":
+            continue
+        theme = payload.get("theme")
+        if not isinstance(theme, dict):
+            continue
+        theme_id = str(theme.get("theme_id") or "").strip()
+        as_of = str(payload.get("as_of") or "").strip()
+        if not theme_id or not as_of:
+            continue
+        try:
+            date.fromisoformat(as_of)
+        except ValueError:
+            continue
+        sort_key = (as_of, str(path))
+        previous = latest_by_theme.get(theme_id)
+        if previous is None or sort_key > previous[0]:
+            latest_by_theme[theme_id] = (sort_key, payload)
+
+    themes = [entry[1] for entry in latest_by_theme.values()]
+    def score_for_sort(row: dict[str, object]) -> float:
+        value = row.get("chain_score")
+        if isinstance(value, bool) or not isinstance(value, (int, float)):
+            return 0.0
+        return float(value)
+
+    themes.sort(
+        key=lambda row: (
+            -score_for_sort(row),
+            str((row.get("theme") or {}).get("name") or ""),
+        )
+    )
+    as_of_values = [str(row.get("as_of")) for row in themes if row.get("as_of")]
+    return {
+        "as_of": max(as_of_values) if as_of_values else None,
+        "theme_count": len(themes),
+        "themes": themes,
+    }
+
+
 def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     init_db(DB_PATH)
@@ -907,6 +965,7 @@ def main() -> None:
             "stock_news": load_stock_news_summary(),
             "fear_greed": _fetch_fear_greed(),
             "industry_cycle": load_industry_cycle_dashboard_data(),
+            "research_radar": load_research_radar_dashboard_data(),
         }
     finally:
         conn.close()

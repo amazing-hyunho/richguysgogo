@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -250,6 +251,103 @@ class IndustryAiOpinionTests(unittest.TestCase):
         self.assertEqual(batch.output_tokens, 45)
         self.assertEqual(batch.prompt_version, "industry_weekly_v2")
         self.assertEqual(len(batch.input_hash or ""), 64)
+
+    def test_batched_generation_limits_each_call_and_merges_results(self) -> None:
+        industries = [
+            {
+                "industry_id": f"industry-{index}",
+                "name_kr": f"산업 {index}",
+                "latest_signal": {"cycle_score": 50.0},
+                "news": [],
+            }
+            for index in range(12)
+        ]
+        call_sizes: list[int] = []
+
+        def fake_call(**kwargs):
+            payload = json.loads(kwargs["user_prompt"].split("산업 데이터:\n", 1)[1])
+            ids = [str(item["industry_id"]) for item in payload]
+            call_sizes.append(len(ids))
+            response = {
+                "overall_summary": f"{len(ids)}개 산업 요약",
+                "industries": [
+                    {
+                        "industry_id": industry_id,
+                        "investment_view": "중립",
+                        "opinion": "조건부 관찰입니다.",
+                        "weekly_change": "최초 관측",
+                        "structural_context": "시점 비의존 일반론입니다.",
+                        "news_assessment": "중립",
+                        "catalysts": [],
+                        "risks": [],
+                        "cited_links": [],
+                        "confidence": "낮음",
+                    }
+                    for industry_id in ids
+                ],
+            }
+            return ChatCompletionResult(
+                content=json.dumps(response, ensure_ascii=False),
+                model="gpt-4.1",
+                input_tokens=100,
+                output_tokens=40,
+            )
+
+        result = industry_ai_opinion.generate_industry_opinions_batched(
+            industries,
+            config=OpenAIConfig(api_key="test"),
+            model="gpt-4.1",
+            batch_size=5,
+            llm_call=fake_call,
+        )
+        self.assertEqual(call_sizes, [5, 5, 2])
+        self.assertEqual(len(result.batch.opinions), 12)
+        self.assertEqual(result.batch.input_tokens, 300)
+        self.assertEqual(result.batch.output_tokens, 120)
+        self.assertEqual(result.batch.prompt_version, "industry_weekly_v3_batched")
+        self.assertEqual(result.failed_industry_ids, ())
+
+    def test_failed_batch_retries_individually_and_preserves_successes(self) -> None:
+        call_ids: list[list[str]] = []
+
+        def fake_call(**kwargs):
+            payload = json.loads(kwargs["user_prompt"].split("산업 데이터:\n", 1)[1])
+            ids = [str(item["industry_id"]) for item in payload]
+            call_ids.append(ids)
+            if len(ids) > 1:
+                ids = [industry_id for industry_id in ids if industry_id != "banks"]
+            elif ids == ["banks"]:
+                raise RuntimeError("simulated_timeout")
+            response = {
+                "overall_summary": "부분 요약",
+                "industries": [
+                    {
+                        "industry_id": industry_id,
+                        "investment_view": "중립",
+                        "opinion": "조건부 관찰입니다.",
+                        "cited_links": [],
+                        "confidence": "낮음",
+                    }
+                    for industry_id in ids
+                ],
+            }
+            return json.dumps(response, ensure_ascii=False)
+
+        result = industry_ai_opinion.generate_industry_opinions_batched(
+            self.industries,
+            config=OpenAIConfig(api_key="test"),
+            model="gpt-4.1",
+            batch_size=5,
+            llm_call=fake_call,
+        )
+        self.assertEqual(call_ids, [["semiconductors", "banks"], ["semiconductors"], ["banks"]])
+        self.assertEqual(
+            [row["industry_id"] for row in result.batch.opinions],
+            ["semiconductors"],
+        )
+        self.assertEqual(result.failed_industry_ids, ("banks",))
+        self.assertIn("simulated_timeout", result.errors["banks"])
+        self.assertEqual(result.retry_count, 2)
 
 
 class WeeklyInsightContextTests(unittest.TestCase):

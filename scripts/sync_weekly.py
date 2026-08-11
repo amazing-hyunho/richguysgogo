@@ -145,6 +145,10 @@ def _parse_args(run_date: date | None = None) -> argparse.Namespace:
         help="산업 뉴스는 수집하되 AI 종합의견 생성은 건너뜀",
     )
     p.add_argument(
+        "--skip-research-radar", action="store_true",
+        help="미래산업 논문 수집·GPT 해석·레이더 보고서 생성을 건너뜀",
+    )
+    p.add_argument(
         "--us-sp500", action="store_true",
         help="US 종목 마스터: S&P 500 포함 (기본 포함)",
     )
@@ -159,7 +163,7 @@ def _parse_args(run_date: date | None = None) -> argparse.Namespace:
     return p.parse_args()
 
 
-def main() -> None:
+def main() -> int:
     # Freeze the logical run date once. Long full-universe batches can cross
     # midnight; every downstream cutoff must still belong to one weekly run.
     run_date = date.today()
@@ -191,8 +195,7 @@ def main() -> None:
 
     if args.master_only:
         print("\n[sync_weekly] --master-only 모드: 마스터 갱신 후 종료")
-        _print_summary(results, auto_push=args.auto_push)
-        return
+        return _print_summary(results, auto_push=args.auto_push)
 
     # ── 2. 수급 전체 백필 (외국인/기관/개인, 2년치) ──────────────
     # sync_all.py 에서는 최근 7일만 처리하므로, 주간 실행에서 누락 없이 채움.
@@ -310,17 +313,34 @@ def main() -> None:
             insight_cmd.append("--skip-llm")
         step("산업 뉴스·AI 종합의견 생성", insight_cmd)
 
-    # ── 8. 대시보드 빌드 ──────────────────────────────────────────
+    # ── 8. 미래산업 연구→시장 레이더 ──────────────────────────────
+    step(
+        "미래산업 논문 수집·GPT 레이더 생성",
+        [
+            py,
+            "scripts/run_research_radar_weekly.py",
+            "--as-of",
+            run_date.isoformat(),
+            "--execute",
+        ],
+        skip=args.skip_research_radar,
+    )
+
+    # ── 9. 대시보드 빌드 ──────────────────────────────────────────
     step(
         "대시보드 빌드 (docs/dashboard.html)",
         [py, "scripts/build_dashboard.py"],
         skip=args.skip_dashboard,
     )
 
-    _print_summary(results, auto_push=args.auto_push)
+    return _print_summary(results, auto_push=args.auto_push)
 
 
-def _print_summary(results: list[tuple[str, bool]], auto_push: bool = False, tag: str = "sync_weekly") -> None:
+def _print_summary(
+    results: list[tuple[str, bool]],
+    auto_push: bool = False,
+    tag: str = "sync_weekly",
+) -> int:
     print("\n" + "=" * 62)
     print("  sync_weekly: 완료 요약")
     print("=" * 62)
@@ -333,7 +353,8 @@ def _print_summary(results: list[tuple[str, bool]], auto_push: bool = False, tag
 
     if auto_push:
         _git_commit_push(tag)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

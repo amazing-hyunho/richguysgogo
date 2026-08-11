@@ -6,9 +6,6 @@ import json
 import os
 from dataclasses import dataclass
 
-import requests
-
-
 @dataclass(frozen=True)
 class OpenAIConfig:
     """Runtime config for OpenAI-compatible chat endpoint."""
@@ -65,6 +62,10 @@ def chat_completion_with_metadata(
     timeout: int = 30,
 ) -> ChatCompletionResult:
     """Call chat completions and retain model/usage metadata for audit."""
+
+    # Keep dry-runs, tests, and non-LLM commands importable even when optional
+    # runtime dependencies have not been installed yet.
+    import requests
 
     url = f"{config.base_url.rstrip('/')}/chat/completions"
     payload = {

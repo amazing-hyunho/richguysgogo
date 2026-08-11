@@ -21,8 +21,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Build research radar report
+        run: python scripts/run_research_radar.py --execute
+
       - name: Prepare Pages artifact
         run: |
+          python scripts/render_dashboard_for_pages.py
           mkdir -p public
           cp docs/dashboard.html public/index.html
 

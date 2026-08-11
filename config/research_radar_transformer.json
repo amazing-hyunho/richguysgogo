@@ -1,0 +1,160 @@
+{
+  "schema_version": "research-radar-input-v1",
+  "as_of": "2024-12-20",
+  "theme": {
+    "theme_id": "transformer-foundation-models",
+    "name": "Transformer와 파운데이션 모델",
+    "thesis": "Transformer의 기술 검증이 핵심 인재의 창업, 대규모 자본, AI 가속기 병목, 상장 인프라 기업의 실적 순으로 시장에 전달됐는지 추적한다."
+  },
+  "evidence": [
+    {
+      "evidence_id": "attention-is-all-you-need-2017",
+      "stage": "research_validation",
+      "event_type": "paper",
+      "title": "Attention Is All You Need",
+      "claim": "재귀·합성곱 없이 attention만 사용하는 Transformer 구조가 번역 성능과 병렬 학습 효율을 함께 제시했다.",
+      "event_date": "2017-06-12",
+      "known_at": "2017-06-12",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/1706.03762",
+      "source_name": "arXiv",
+      "source_kind": "academic_primary",
+      "direction": "positive",
+      "strength": 1.0,
+      "tags": ["transformer", "attention", "machine-translation"]
+    },
+    {
+      "evidence_id": "bert-2018",
+      "stage": "research_validation",
+      "event_type": "replication-and-adoption",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers",
+      "claim": "Transformer 기반 사전학습 모델이 11개 NLP 과제에서 강한 전이 성능을 보여 구조의 범용성을 재검증했다.",
+      "event_date": "2018-10-11",
+      "known_at": "2018-10-11",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/1810.04805",
+      "source_name": "arXiv",
+      "source_kind": "academic_primary",
+      "direction": "positive",
+      "strength": 0.95,
+      "tags": ["bert", "pretraining", "nlp"]
+    },
+    {
+      "evidence_id": "cohere-aidan-gomez-2024",
+      "stage": "talent_mobility",
+      "event_type": "researcher-founded-company",
+      "title": "Transformer co-author Aidan Gomez identified as Cohere founder and CEO",
+      "claim": "원 논문 공동저자가 독립 AI 기업의 창업자·CEO가 된 연결이 회사 자료에서 확인된다.",
+      "event_date": "2024-12-20",
+      "known_at": "2024-12-20",
+      "date_precision": "day",
+      "source_url": "https://cohere.com/blog/transformer-model",
+      "source_name": "Cohere",
+      "source_kind": "company_release",
+      "direction": "positive",
+      "strength": 0.82,
+      "limitation": "창업 시점의 동시대 자료가 아니라 2024년에 게시된 회사의 회고성 자료다.",
+      "tags": ["cohere", "talent", "spinout"]
+    },
+    {
+      "evidence_id": "microsoft-openai-partnership-2023",
+      "stage": "capital_formation",
+      "event_type": "strategic-investment",
+      "title": "Microsoft and OpenAI extend partnership",
+      "claim": "Microsoft가 OpenAI에 다년·수십억 달러 규모 투자를 발표하고 특화 슈퍼컴퓨팅과 Azure AI 인프라 확대를 명시했다.",
+      "event_date": "2023-01-23",
+      "known_at": "2023-01-23",
+      "date_precision": "day",
+      "source_url": "https://blogs.microsoft.com/blog/2023/01/23/microsoftandopenaiextendpartnership/",
+      "source_name": "Microsoft",
+      "source_kind": "company_release",
+      "direction": "positive",
+      "strength": 0.95,
+      "tags": ["openai", "microsoft", "investment", "azure"]
+    },
+    {
+      "evidence_id": "anthropic-series-c-2023",
+      "stage": "capital_formation",
+      "event_type": "venture-funding",
+      "title": "Anthropic raises $450 million in Series C funding",
+      "claim": "프런티어 모델 기업 Anthropic이 Spark Capital 주도, Google 등 참여로 4억5천만 달러를 조달했다.",
+      "event_date": "2023-05-23",
+      "known_at": "2023-05-23",
+      "date_precision": "day",
+      "source_url": "https://www.anthropic.com/news/anthropic-series-c",
+      "source_name": "Anthropic",
+      "source_kind": "company_release",
+      "direction": "positive",
+      "strength": 0.90,
+      "tags": ["anthropic", "funding", "frontier-model"]
+    },
+    {
+      "evidence_id": "nvidia-h100-2022",
+      "stage": "infrastructure_bottleneck",
+      "event_type": "specialized-infrastructure",
+      "title": "NVIDIA announces Hopper H100 with Transformer Engine",
+      "claim": "대규모 Transformer 학습을 겨냥한 전용 엔진·고속 인터커넥트·시스템 구성이 별도 제품 세대로 등장해 연산 병목의 산업화를 보여줬다.",
+      "event_date": "2022-03-22",
+      "known_at": "2022-03-22",
+      "date_precision": "day",
+      "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-hopper-architecture-the-next-generation-of-accelerated-computing",
+      "source_name": "NVIDIA",
+      "source_kind": "company_release",
+      "direction": "positive",
+      "strength": 0.92,
+      "limitation": "공급 부족 자체의 통계가 아니라 병목을 겨냥한 공급사 제품 발표다.",
+      "tags": ["gpu", "h100", "transformer-engine", "compute"]
+    },
+    {
+      "evidence_id": "nvidia-fy2024-results",
+      "stage": "earnings_confirmation",
+      "event_type": "earnings",
+      "title": "NVIDIA fiscal 2024 fourth-quarter results",
+      "claim": "분기 Data Center 매출이 184억 달러로 전년 대비 409% 증가해 생성형 AI 인프라 수요가 상장사 실적에 반영됐음을 확인했다.",
+      "event_date": "2024-02-21",
+      "known_at": "2024-02-21",
+      "date_precision": "day",
+      "source_url": "https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2024",
+      "source_name": "NVIDIA",
+      "source_kind": "company_release",
+      "direction": "positive",
+      "strength": 0.98,
+      "limitation": "규제 공시 원문이 아니라 NVIDIA가 배포한 실적 발표 자료다.",
+      "tags": ["nvda", "earnings", "data-center"]
+    }
+  ],
+  "public_companies": [
+    {
+      "ticker": "GOOGL",
+      "market": "US",
+      "company_name": "Alphabet",
+      "role": "원천 연구 조직과 후속 모델 개발",
+      "directness": "direct",
+      "thesis": "논문과 후속 BERT 연구의 직접 연결은 강하지만, 이 자료만으로 현재 매출 기여나 밸류에이션 매력은 판단할 수 없다.",
+      "evidence_ids": ["attention-is-all-you-need-2017", "bert-2018"]
+    },
+    {
+      "ticker": "MSFT",
+      "market": "US",
+      "company_name": "Microsoft",
+      "role": "모델 자본·클라우드 상용화 플랫폼",
+      "directness": "enabler",
+      "thesis": "OpenAI 투자와 Azure 인프라 확대가 자본 형성 및 상용화 경로를 연결한다.",
+      "evidence_ids": ["microsoft-openai-partnership-2023"]
+    },
+    {
+      "ticker": "NVDA",
+      "market": "US",
+      "company_name": "NVIDIA",
+      "role": "AI 연산 인프라 공급자",
+      "directness": "enabler",
+      "thesis": "Transformer 전용 가속 기능과 이후 Data Center 실적이 기술 수요에서 상장사 실적으로 이어지는 연결을 제공한다.",
+      "evidence_ids": ["nvidia-h100-2022", "nvidia-fy2024-results"]
+    }
+  ],
+  "limitations": [
+    "이 예제는 대표 사건만 담은 최소 fixture이며 당시 투자자 반응 전체를 포괄하지 않는다.",
+    "주가, 밸류에이션, 시장 기대치, 경쟁사 실적, 사후 수익률은 입력하지 않았으므로 매수 판단에 사용할 수 없다.",
+    "회사 보도자료는 홍보 편향이 있을 수 있어 규제 공시와 독립 자료로 추가 교차검증해야 한다."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "research-radar-weekly-config-v1",
+  "default_lookback_days": 28,
+  "default_max_papers": 20,
+  "topics": [
+    {
+      "theme_id": "physical-ai-foundation-models",
+      "name": "피지컬 AI·로봇 파운데이션 모델",
+      "thesis": "월드모델·VLA·범용 로봇 학습의 반복 가능한 성능 개선이 로봇 데이터와 연산·센서·액추에이터 병목으로 전달되는지 추적한다.",
+      "scope": [
+        "vision-language-action models",
+        "robot foundation models",
+        "physical world models",
+        "cross-embodiment learning",
+        "synthetic robot data",
+        "long-horizon manipulation"
+      ],
+      "arxiv_query": "(all:\"vision language action\" OR all:\"robot foundation model\" OR all:\"embodied foundation model\" OR all:\"robot world model\" OR all:\"physical intelligence\" OR all:\"cross embodiment\") AND (cat:cs.RO OR cat:cs.AI OR cat:cs.CV)",
+      "limitations": [
+        "첫 버전은 연구 검증 단계만 자동 추적하며 인재·투자·공급망·실적은 별도 출처 수집기가 추가될 때까지 통과시키지 않습니다."
+      ]
+    }
+  ]
+}

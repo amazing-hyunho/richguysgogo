@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-"""One-call, cross-industry LLM commentary grounded in scores and recent news.
+"""Batched cross-industry LLM commentary grounded in scores and recent news.
 
 The output is commentary only.  Nothing in this module writes to or mutates
 ``industry_cycle_signal``.
@@ -23,6 +23,7 @@ from committee.tools.openai_chat import (
 ALLOWED_CONFIDENCE = {"낮음", "보통", "높음"}
 ALLOWED_INVESTMENT_VIEWS = {"우호", "중립", "주의", "데이터 부족"}
 PROMPT_VERSION = "industry_weekly_v2"
+BATCHED_PROMPT_VERSION = "industry_weekly_v3_batched"
 
 
 @dataclass(frozen=True)
@@ -33,6 +34,15 @@ class IndustryOpinionBatch:
     input_hash: str | None = None
     input_tokens: int | None = None
     output_tokens: int | None = None
+
+
+@dataclass(frozen=True)
+class BatchedIndustryOpinionResult:
+    batch: IndustryOpinionBatch
+    failed_industry_ids: tuple[str, ...]
+    errors: dict[str, str]
+    chunk_count: int
+    retry_count: int
 
 
 def _compact_previous_signal(signal: dict[str, Any]) -> dict[str, Any] | None:
@@ -131,7 +141,7 @@ def build_prompts(industries: list[dict[str, Any]]) -> tuple[str, str]:
     )
     payload = [_compact_signal(item) for item in industries]
     user = (
-        "아래 전체 산업을 서로 비교해 주간 AI 종합의견을 작성하라. 산업별 의견은 2~4문장으로 "
+        "아래 입력 산업을 서로 비교해 주간 AI 종합의견을 작성하라. 산업별 의견은 2~4문장으로 "
         "작성하고, 정량 판정과 뉴스가 충돌하면 충돌을 명시하라. 인용 링크는 해당 산업 입력에 "
         "포함된 링크만 사용하라.\n\n"
         "출력 스키마:\n"
@@ -255,6 +265,108 @@ def generate_industry_opinions(
         input_hash=hashlib.sha256(user.encode("utf-8")).hexdigest(),
         input_tokens=input_tokens,
         output_tokens=output_tokens,
+    )
+
+
+def _sum_optional(values: list[int | None]) -> int | None:
+    present = [value for value in values if value is not None]
+    return sum(present) if present else None
+
+
+def generate_industry_opinions_batched(
+    industries: list[dict[str, Any]],
+    *,
+    config: OpenAIConfig,
+    model: str,
+    batch_size: int = 5,
+    llm_call: Callable[..., str | ChatCompletionResult] = chat_completion_with_metadata,
+) -> BatchedIndustryOpinionResult:
+    """Generate small strict batches, retrying only a failed batch's industries."""
+    if not industries:
+        return BatchedIndustryOpinionResult(
+            batch=IndustryOpinionBatch(
+                overall_summary="분석할 산업 신호가 없습니다.",
+                opinions=[],
+                prompt_version=BATCHED_PROMPT_VERSION,
+                input_hash=hashlib.sha256(b"no-industries").hexdigest(),
+            ),
+            failed_industry_ids=(),
+            errors={},
+            chunk_count=0,
+            retry_count=0,
+        )
+
+    size = max(1, int(batch_size))
+    chunks = [industries[index : index + size] for index in range(0, len(industries), size)]
+    successful_batches: list[IndustryOpinionBatch] = []
+    opinions_by_id: dict[str, dict[str, Any]] = {}
+    errors: dict[str, str] = {}
+    retry_count = 0
+
+    def remember(batch: IndustryOpinionBatch) -> None:
+        successful_batches.append(batch)
+        for opinion in batch.opinions:
+            opinions_by_id[str(opinion["industry_id"])] = opinion
+
+    for chunk in chunks:
+        try:
+            remember(
+                generate_industry_opinions(
+                    chunk,
+                    config=config,
+                    model=model,
+                    llm_call=llm_call,
+                )
+            )
+            continue
+        except Exception as chunk_exc:
+            chunk_error = str(chunk_exc)
+
+        for industry in chunk:
+            industry_id = str(industry["industry_id"])
+            retry_count += 1
+            try:
+                remember(
+                    generate_industry_opinions(
+                        [industry],
+                        config=config,
+                        model=model,
+                        llm_call=llm_call,
+                    )
+                )
+            except Exception as retry_exc:
+                errors[industry_id] = f"batch={chunk_error}; retry={retry_exc}"
+
+    ordered_ids = [str(industry["industry_id"]) for industry in industries]
+    opinions = [
+        opinions_by_id[industry_id]
+        for industry_id in ordered_ids
+        if industry_id in opinions_by_id
+    ]
+    summaries = [batch.overall_summary for batch in successful_batches if batch.overall_summary]
+    overall_summary = (
+        "배치별 요약: " + " / ".join(summaries)
+        if summaries
+        else "산업 AI 의견 생성에 실패했습니다."
+    )
+    hashes = [batch.input_hash for batch in successful_batches if batch.input_hash]
+    aggregate_hash_source = "|".join(hashes) or "all-batches-failed"
+    combined = IndustryOpinionBatch(
+        overall_summary=overall_summary[:2000],
+        opinions=opinions,
+        prompt_version=BATCHED_PROMPT_VERSION,
+        input_hash=hashlib.sha256(aggregate_hash_source.encode("utf-8")).hexdigest(),
+        input_tokens=_sum_optional([batch.input_tokens for batch in successful_batches]),
+        output_tokens=_sum_optional([batch.output_tokens for batch in successful_batches]),
+    )
+    return BatchedIndustryOpinionResult(
+        batch=combined,
+        failed_industry_ids=tuple(
+            industry_id for industry_id in ordered_ids if industry_id in errors
+        ),
+        errors=errors,
+        chunk_count=len(chunks),
+        retry_count=retry_count,
     )
 
 

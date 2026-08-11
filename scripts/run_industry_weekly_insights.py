@@ -42,6 +42,12 @@ def _parse_args() -> argparse.Namespace:
         help="Collect/analyze only this industry_id (repeatable). Default: all active industries.",
     )
     parser.add_argument("--model", default=os.getenv("INDUSTRY_LLM_MODEL", "gpt-4.1"))
+    parser.add_argument(
+        "--llm-batch-size",
+        type=int,
+        default=int(os.getenv("INDUSTRY_LLM_BATCH_SIZE", "5")),
+        help="한 번의 GPT 호출에서 처리할 산업 수 (기본 5)",
+    )
     parser.add_argument("--skip-llm", action="store_true", help="뉴스만 수집하고 LLM 의견은 생성하지 않음")
     parser.add_argument("--execute", action="store_true", help="네트워크 호출 및 DB 저장 실행")
     return parser.parse_args()
@@ -127,7 +133,7 @@ def _load_analysis_industries(
     return result
 
 
-def main() -> None:
+def main() -> int:
     load_project_env(ROOT_DIR)
     args = _parse_args()
     cfg = cycle_model_config.load_cycle_model_config()
@@ -146,11 +152,12 @@ def main() -> None:
         industries = [entry for entry in industries if entry["industry_id"] in selected]
     print(
         f"industry_weekly_insights_plan as_of={args.as_of} industries={len(industries)} "
-        f"lookback_days={args.lookback_days} model={args.model} execute={args.execute}"
+        f"lookback_days={args.lookback_days} model={args.model} "
+        f"llm_batch_size={args.llm_batch_size} execute={args.execute}"
     )
     if not args.execute:
         print("industry_weekly_insights_dry_run_only (no network or DB writes)")
-        return
+        return 0
     as_of_start = datetime.fromisoformat(args.as_of).replace(tzinfo=timezone.utc)
     collection_now = as_of_start + timedelta(days=1) - timedelta(microseconds=1)
     collection = industry_news.collect_and_store_industry_news(
@@ -164,14 +171,14 @@ def main() -> None:
     print(f"industry_news_collected counts={collection['counts']} errors={collection['errors']}")
     if args.skip_llm:
         print("industry_weekly_insights_done news_only=true")
-        return
+        return 0
 
     analysis_industries = _load_analysis_industries(
         args.as_of, model_version, candidate_model_version
     )
     if not analysis_industries:
         print("industry_weekly_insights_no_signals_for_as_of")
-        return
+        return 0
 
     since = (as_of_start - timedelta(days=max(1, args.lookback_days))).isoformat()
     before = (as_of_start + timedelta(days=1)).isoformat()
@@ -192,30 +199,55 @@ def main() -> None:
         )
 
     try:
-        batch = industry_ai_opinion.generate_industry_opinions(
+        generation = industry_ai_opinion.generate_industry_opinions_batched(
             llm_industries,
             config=load_openai_config(),
             model=args.model,
+            batch_size=args.llm_batch_size,
         )
-        stored = industry_ai_opinion.store_industry_opinions(
-            batch,
-            as_of=args.as_of,
-            cycle_model_version=model_version,
-            llm_model=args.model,
-            db_path=DB_PATH,
+        stored = 0
+        if generation.batch.opinions:
+            stored = industry_ai_opinion.store_industry_opinions(
+                generation.batch,
+                as_of=args.as_of,
+                cycle_model_version=model_version,
+                llm_model=args.model,
+                db_path=DB_PATH,
+            )
+        for industry_id in generation.failed_industry_ids:
+            repository.record_data_quality_event(
+                event_type="industry_ai_opinion_failed",
+                provider="openai",
+                target=f"{args.as_of}:{industry_id}",
+                severity="medium",
+                message=generation.errors[industry_id][:2000],
+                db_path=DB_PATH,
+            )
+        print(
+            f"industry_ai_opinions_stored={stored} failed={len(generation.failed_industry_ids)} "
+            f"chunks={generation.chunk_count} retries={generation.retry_count}"
         )
-        print(f"industry_ai_opinions_stored={stored}")
+        if generation.failed_industry_ids:
+            print(
+                "industry_ai_opinion_failed_ids="
+                + ",".join(generation.failed_industry_ids),
+                file=sys.stderr,
+            )
+            return 1
     except Exception as exc:
         repository.record_data_quality_event(
             event_type="industry_ai_opinion_failed",
+            provider="openai",
             target=args.as_of,
-            severity="low",
+            severity="high",
             message=str(exc),
             db_path=DB_PATH,
         )
-        print(f"industry_ai_opinion_failed={exc}")
+        print(f"industry_ai_opinion_failed={exc}", file=sys.stderr)
+        return 1
     print("industry_weekly_insights_done")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
