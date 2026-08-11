@@ -124,6 +124,24 @@ class SyncWeeklyIndustryPipelineTests(unittest.TestCase):
             if "--as-of" in cmd:
                 self.assertEqual(cmd[cmd.index("--as-of") + 1], "2026-07-25")
 
+    def test_failed_step_propagates_nonzero_weekly_exit_code(self) -> None:
+        def fake_run(cmd, **_kwargs):
+            return subprocess.CompletedProcess(
+                cmd,
+                1 if "scripts/run_industry_weekly_insights.py" in cmd else 0,
+                stdout="",
+                stderr="",
+            )
+
+        with (
+            patch.object(sys, "argv", ["sync_weekly.py", "--skip-stocks"]),
+            patch.object(sync_weekly.subprocess, "run", side_effect=fake_run),
+            patch("builtins.print"),
+        ):
+            exit_code = sync_weekly.main()
+
+        self.assertEqual(exit_code, 1)
+
 
 if __name__ == "__main__":
     unittest.main()

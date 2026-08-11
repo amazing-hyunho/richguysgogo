@@ -163,7 +163,7 @@ def _parse_args(run_date: date | None = None) -> argparse.Namespace:
     return p.parse_args()
 
 
-def main() -> None:
+def main() -> int:
     # Freeze the logical run date once. Long full-universe batches can cross
     # midnight; every downstream cutoff must still belong to one weekly run.
     run_date = date.today()
@@ -195,8 +195,7 @@ def main() -> None:
 
     if args.master_only:
         print("\n[sync_weekly] --master-only 모드: 마스터 갱신 후 종료")
-        _print_summary(results, auto_push=args.auto_push)
-        return
+        return _print_summary(results, auto_push=args.auto_push)
 
     # ── 2. 수급 전체 백필 (외국인/기관/개인, 2년치) ──────────────
     # sync_all.py 에서는 최근 7일만 처리하므로, 주간 실행에서 누락 없이 채움.
@@ -334,10 +333,14 @@ def main() -> None:
         skip=args.skip_dashboard,
     )
 
-    _print_summary(results, auto_push=args.auto_push)
+    return _print_summary(results, auto_push=args.auto_push)
 
 
-def _print_summary(results: list[tuple[str, bool]], auto_push: bool = False, tag: str = "sync_weekly") -> None:
+def _print_summary(
+    results: list[tuple[str, bool]],
+    auto_push: bool = False,
+    tag: str = "sync_weekly",
+) -> int:
     print("\n" + "=" * 62)
     print("  sync_weekly: 완료 요약")
     print("=" * 62)
@@ -350,7 +353,8 @@ def _print_summary(results: list[tuple[str, bool]], auto_push: bool = False, tag
 
     if auto_push:
         _git_commit_push(tag)
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
