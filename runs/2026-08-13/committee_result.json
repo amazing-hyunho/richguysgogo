@@ -1,0 +1,50 @@
+{
+  "consensus": "단기 반등세가 뚜렷하지만, 중기적 불확실성 해소는 확인되지 않아 신중한 접근이 필요합니다.",
+  "key_points": [
+    {
+      "point": "KOSPI가 3.70% 급등(6822.19p), 외국인 +5709억·기관 +4185억 순매수로 강한 반등세를 보임.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 환율이 1416.77(-0.37%)로 안정, VIX 14.55로 변동성도 낮은 수준 유지.",
+      "sources": [
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "5일 누적 KOSPI +4.48%로 단기 모멘텀은 강하나, 20일 누적 -6.86%로 중기 약세장 영향은 여전.",
+      "sources": [
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 방향성(단기 vs 중기)",
+      "majority": "단기 반등에도 불구하고 중기적 불확실성은 해소되지 않았다.",
+      "minority": "외국인 매수세와 정책 불확실성 완화로 단기 위험선호(Risk-on) 전환 가능성.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "단기 매수세가 추세 전환 신호인지, 일시적 반등에 그칠지 판단이 중요."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "외국인·기관 매수세가 뚜렷한 대형주(특히 반도체/AI) 중심 선별적 접근은 가능."
+    },
+    {
+      "level": "CAUTION",
+      "text": "단기 급등 이후 변동성 확대 및 중기 약세장 영향 지속 가능성에 유의."
+    },
+    {
+      "level": "AVOID",
+      "text": "근거 없는 추격매수, 실적 모멘텀 부재 종목, 레버리지 과도한 단기 베팅은 피할 것."
+    }
+  ],
+  "sugeup_narrative": "## 단기 급등: KOSPI 3.7% 상승, 외국인·기관 동반 매수\n\n오늘(8월 13일) 코스피는 3.70% 급등하며 6,822.19pt에 마감했습니다. 코스닥도 0.76% 상승해 865.43pt를 기록했습니다. 외국인은 +5,709억, 기관은 +4,185억 순매수로 강한 매수세를 보였고, 개인은 -9,677억 순매도였습니다. 환율은 USD/KRW 1,416.77(-0.37%)로 안정세를 보였고, VIX는 14.55로 낮은 변동성을 유지했습니다. 최근 5일간 KOSPI는 +4.48%로 단기 모멘텀은 강하지만, 20일 누적 수익률은 -6.86%로 중기 약세장 영향이 남아 있습니다.\n\n## 수급 해석: 외국인·기관 동반 유입, 개인은 KOSDAQ 단기 추격\n\n오늘 시장의 주도권은 외국인(+5,709억)과 기관(+4,185억)이 쥐었습니다. 특히 KOSPI에서 외국인(+6,633억), 기관(+4,920억)이 집중 매수에 나섰고, 개인은 -11,398억 순매도하며 차익 실현에 나선 모습입니다. 반면, 코스닥에서는 개인이 +1,721억 순매수로 단기 반등을 추격하는 양상이 뚜렷합니다. 이는 최근 미국 CPI 둔화와 연준 금리인상 압박 완화, 반도체/AI 업종 기대감이 결합된 결과로 해석됩니다. ([美 7월 CPI 상승세 주춤…연준 금리인상 압박 완화 - 블로터](https://news.google.com/rss/articles/CBMiaEFVX3lxTE1vSHlybWV0Rk1CRW9JUk5OSFhwVFRvdzRlUHZjWW9HbTJuV0lEZFBkR3dHS19NeFBFY3JNb2lxTnVBUTBCQUJRbHlxRTl4bjRtWEFrREgzZnkzMXVVeUstdVdKSFpGSDdt0gFsQVVfeXFMTmtHcDVoWnRJNXlod3lpN1Y3RWhRbV9JV2k0U0lsRWlRYlJNa3J4aWUyLVl5SW1zZThMdUJXY3VsZHRVcG1hcGJMMU1xS0VINDViWjhuRURrS1Y4d1gwNkFGVWdsRnphWmVTWnFn?oc=5), [美 국채가, 예상 부합 CPI에 급변동 후 강세 유지 - 연합인포맥스](https://news.google.com/rss/articles/CBMicEFVX3lxTE1sNzB6aWZTT1cydEY1RE1BVUZmMUw5TUFjdjdzNGJhaVlra1Exb3gzaFpvM3p4RkxGekVHVGEyY1JqOUp1N3dBb3NBYzFtcng2WVVZSlN2N3BFXzVXRFU4Y0tHLXFtQmtWR1VUdmwzS3k?oc=5))\n\n## 오늘의 핵심 이슈: 금리·연준, 인플레이션, 반도체/AI\n\n1. **금리/연준**: 미국 7월 CPI가 예상보다 낮게 나오며 연준의 추가 금리인상 압박이 완화됐습니다. 이는 글로벌 위험자산 선호 심리를 자극하며 외국인 매수세로 이어졌습니다.\n2. **인플레이션**: 미국 국채 금리가 CPI 발표 후 강세를 보이며, 인플레이션 우려가 다소 진정되는 분위기입니다.\n3. **반도체/AI**: 반도체 업종에 대한 이익 전망이 긍정적으로 제시되며, 관련 대형주 중심으로 매수세가 집중됐습니다. ([박석현의 마켓 나우 - 중앙일보](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5NUE5SV2dFSmN6dnZfSFVhcU1MMXprYXdMR1RWcF9iUllLeDRiRkpMYVBGV1dwMlhfVWF4bDJ2bUZ6dmtTaGdIUzd6WVhTamFhYmpBbGFB?oc=5))\n\n## 중기 불확실성: 단기 반등 신호, 추세 전환은 미확인\n\n단기적으로 외국인·기관 매수세와 환율 안정, 낮은 변동성(VIX 14.55)이 긍정적이지만, 20일 누적 KOSPI -6.86% 등 중기 약세장 영향은 해소되지 않았습니다. 실적 모멘텀 신호도 제한적이며, 정책·환율 리스크가 완전히 사라진 것은 아닙니다. 단기 급등 이후 변동성 확대 가능성, 실적 부진 종목의 추가 조정 가능성에 유의해야 합니다.\n\n## 전략적 시사점 및 체크포인트\n\n- 외국인·기관 매수세가 집중되는 대형주(특히 반도체/AI) 중심 선별적 접근은 유효합니다.\n- 단기 급등 이후 변동성 확대, 중기 약세장 영향 지속 여부를 주시해야 합니다.\n- 오늘의 단기 반등이 추세 전환으로 이어지려면, 외국인 매수세 지속과 실적 모멘텀 회복, 정책 불확실성 완화가 추가로 확인되어야 합니다.\n- **오늘 논리의 무효화 조건:** 외국인·기관 매수세가 급격히 약화되거나, 환율·정책 리스크가 재부각될 경우 단기 반등 논리는 무력화될 수 있습니다."
+}
