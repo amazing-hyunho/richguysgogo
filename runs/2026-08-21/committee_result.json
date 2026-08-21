@@ -1,0 +1,59 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 0.57% 상승(6891.87pt)했으나, KOSDAQ은 -3.91%(807.68pt) 급락하며 시장 내 온도차가 뚜렷하게 나타났습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    },
+    {
+      "point": "외국인은 전체적으로 411억 순매도(특히 KOSDAQ -1361억), 기관도 1432억 순매도, 개인은 271억 순매수로 수급 불안정이 심화되었습니다.",
+      "sources": [
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 신호 해석",
+      "majority": "단기 변동성 확대에도 중장기 위험 신호는 제한적이라는 의견(NEUTRAL)",
+      "minority": "매크로·유동성 담당자는 미국 금리 상승과 외국인 매도세로 위험회피 심리가 강화(RISK_OFF)",
+      "minority_agents": [
+        "macro",
+        "liquidity"
+      ],
+      "why_it_matters": "단기 조정이 중장기 추세 전환으로 이어질지 여부가 향후 전략에 결정적입니다."
+    },
+    {
+      "topic": "수급 해석",
+      "majority": "외국인·기관 매도와 개인의 KOSDAQ 추격 매수로 수급 불안정 심화",
+      "minority": "섹터 담당자는 환율 하락과 유동성 개선을 긍정적으로 해석",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "수급 불안정이 지속될 경우 시장 변동성 확대 가능성이 높아집니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 요약: KOSPI 강보합, KOSDAQ 급락 – 수급 불안정 심화\n\n- KOSPI는 0.57% 상승(6891.87pt)하며 강보합을 기록했으나, KOSDAQ은 -3.91%(807.68pt)로 급락해 시장 내 온도차가 극명하게 드러났습니다.\n- 원/달러 환율은 1394.71원으로 전일 대비 0.57% 하락, VIX는 16.01로 5일 평균(9.25) 대비 급등하며 변동성 경계감이 높아졌습니다.\n- 수급 측면에서는 외국인 -411억, 기관 -1432억 순매도, 개인 +271억 순매수로 전체적으로 불안정한 흐름이 이어졌습니다. 특히 KOSDAQ에서 외국인 -1361억, 기관 -878억, 개인 +2261억으로 개인의 레버리지 추격 매수가 두드러졌습니다.\n\n## 수급 해석: 외국인·기관 매도, 개인 KOSDAQ 추격 매수 – 변동성 확대\n\n- 외국인은 KOSPI에서 +950억 순매수였으나, KOSDAQ에서 -1361억 대량 매도로 전체적으로는 순매도 기조를 보였습니다.\n- 기관 역시 KOSPI(-554억), KOSDAQ(-878억) 모두 순매도, 개인은 KOSDAQ에서 대규모 순매수(+2261억)로 하락장 레버리지 추격 매수 양상이 뚜렷합니다.\n- 이는 최근 20일간 KOSPI 누적 상승률이 +6.07%로 강세를 보인 가운데, 미국 금리 상승과 대외 불확실성(연준 정책, AI/반도체 뉴스)으로 차익실현 및 포트폴리오 리밸런싱이 혼재된 결과로 해석됩니다.\n\n## 글로벌·정책 이슈: 금리·연준, AI/반도체, 환율 – 대외 변수 혼재\n\n- [美 국채 바이백에 연준 셈법 복잡…“시장 신호 흐리고 금리 인상 압력”](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBuY0xlUVpENVB4THUyd3Jpem5RUWpjeGltc0lpMG5XMVlGek5wN2tkWFdoRjlsZXF0S2ZXWXhadzE1MzJhTlo1VjYxdzB3eTh3SDFSaHJGZzcyUTA?oc=5) 등 금리/연준 관련 뉴스가 시장 불확실성을 자극하고 있습니다.\n- [뉴욕증시, 국채금리 반등에 동반 하락](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1EWkV5Vi1oX2pGbmFLNXljallqRUJ0c2NDcWMzenNfQnVFYkNseWw0NllUYnZjalYtaFVuaTNJZmxWNkxiT3hsdUdaSmdZQ3h5M0hRb2dVLVl6Y2lrMjNGSkpqZHoxalE?oc=5) 등 미국 증시 약세가 국내 투자심리에도 부담으로 작용.\n- [엔비디아 \"중국 전용 AI칩 없다\"…연내 출시설 일축](https://news.google.com/rss/articles/CBMiaEFVX3lxTE5tLUdELWVvRjN0ekp2T0hCUnBkdVlOMU9QcGNkSTI1QVdGM0RTLTR1NEFiamtPMVM2UF9DUnF5V3Jfa2NwSTNURExpUlV5MlJGQnJ2ckhtNU5UYWlwdDhfZ092bzVHN1NC0gFuQVVfeXFMTnRmQ3R1azBHb0lRWXBqdlhVZE14NTZnUWluVUhZOTVMZmI0UFpRaHpRdU5rS0hIcDIxWURCMkthRDY2eEFadWJpcTNTUk43cDcxdGJNeXREc2pnVmV4WlY3SVl3eFlJeVZrdGRnd1E?oc=5) 등 반도체/AI 관련 뉴스도 단기 변동성 요인으로 부각.\n- 환율은 5일간 -1.42% 하락하며 원화 강세가 이어졌으나, 대외 불확실성에 따라 추가 변동성 가능성 상존.\n\n## 전략적 시사점 및 체크포인트: 관망 유지, 변동성 확대 구간 선별 대응\n\n- 단기적으로는 외국인·기관 매도와 개인의 레버리지 추격 매수로 수급 불안정이 심화, KOSDAQ 중심의 변동성 확대에 유의해야 합니다.\n- 중장기적으로는 KOSPI 20일 누적 강세(+6.07%)와 환율 하락 등 긍정적 신호도 있으나, 미국 금리·연준 정책, 글로벌 AI/반도체 이슈 등 대외 변수에 따라 방향성이 달라질 수 있습니다.\n- 오늘의 중립적 관망 기조를 깨뜨릴 수 있는 조건은 외국인·기관의 대규모 순매수 전환 또는 미국 금리 급락 등 위험요인 해소입니다. 이 신호가 확인되기 전까지는 선별적 대응과 리스크 관리가 필요합니다."
+}
