@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6912.95(+0.88%)로 마감하며 20일 누적 +6.29%의 강세를 이어갔으나, KOSDAQ은 -4.63% 급락하며 시장 내부 확산 약화가 뚜렷합니다.",
+      "sources": [
+        "macro_daily",
+        "flow_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "외국인 -4597억, 기관 -981억 순매도세가 지속되며, 특히 KOSDAQ에서 외국인(-2837억)과 기관(-3462억) 동반 매도가 두드러졌습니다.",
+      "sources": [
+        "flow_data",
+        "korean_market_flow"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "중기 모멘텀 vs 단기 변동성",
+      "majority": "중립(NEUTRAL) — 단기 변동성 확대에도 중기적 코스피 강세 모멘텀은 유지",
+      "minority": "RISK_OFF — 유동성·수급 불안정으로 보수적 접근 필요",
+      "minority_agents": [
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "단기 변동성 확대가 중기 모멘텀을 훼손할 경우, 시장 방향성 전환 신호로 작용할 수 있음"
+    },
+    {
+      "topic": "실적 모멘텀",
+      "majority": "실적 추정치 상향 신호 부재",
+      "minority": "섹터 담당자 — 중기 긍정 모멘텀 강조",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "실적 개선이 동반되지 않으면 단기 반등의 지속성에 한계가 있음"
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 오늘의 시장 요약 및 주요 지표\n\n- KOSPI는 6912.95pt(+0.88%)로 마감하며 7000선에 근접, 20일 누적 상승률은 +6.29%로 중기 강세 흐름을 이어갔습니다. 반면 KOSDAQ은 801.94pt(-4.63%)로 급락, 시장 내부 확산 약화가 두드러졌습니다.\n- 외국인 순매도 -4597억, 기관 -981억, 개인 -5416억으로 주요 투자주체 모두 순매도 우위. KOSDAQ에서는 외국인(-2837억)과 기관(-3462억) 동반 매도, 개인만 +6236억 순매수로 저가매수에 나섰으나 지속성은 미지수입니다.\n- USD/KRW는 1384.51원(-0.71%)로 하락, VIX는 15.13으로 5일 평균(12.15) 대비 상승하며 단기 변동성 확대 신호가 감지됩니다.\n\n## 수급 해석: 외국인·기관 매도, 개인 저가매수의 불안정\n\n- 오늘 시장은 외국인과 기관의 동반 매도세가 두드러졌으며, 특히 KOSDAQ에서 외국인(-2837억)과 기관(-3462억) 매도가 집중되었습니다. 이는 [엔비디아 실적·美 국채금리 주목](https://news.google.com/rss/articles/CBMic0FVX3lxTFB5TUVPSHpjNVpxRDltQU1mSmNka1g1UzR0WmxNaDVvTlhEMHBlYjlVUkdVUWU3X2V6bXBvV2VMdWRqY0piQld1ZmtIWW9BdW11eTZmQ1laYzJES0h1SFZnaWZMaE05dDhrZkhJSk9hLWpnV3M?oc=5), [엔비디아 실적·워시 첫 잭슨홀…뉴욕증시, 'AI랠리·고금리' 시험대](https://news.google.com/rss/articles/CBMic0FVX3lxTE41aks2emhETzFtRm5aZEZDU2hjWDlONFZEajMtb3FVT2ZNOTIxWmJoQTliN3NYTlVEek5oaWVzSnA0X2lrTi1aNVFmdDJNTnpaWFlxMk1fSXdLX2k2aGNrTFFZXzdJZmdKcEVrejR3WnUwbHM?oc=5) 등 글로벌 금리·AI/반도체 이슈와 연동된 리밸런싱 성격이 강합니다.\n- 개인은 KOSDAQ에서 단기 저가매수(+6236억)에 나섰으나, 최근 5일간 KOSDAQ 급락과 연동된 레버리지 추종 성격이 강해 지속성은 낮아 보입니다.\n\n## 금리·정책·AI: 뉴스 이슈별 영향력\n\n- [기준금리 전망 '혼조'…\"7·8월 연속 인상\" vs \"숨 고르기\"](https://news.google.com/rss/articles/CBMiW0FVX3lxTE5BYXVhcGxjWEsxWTAwaFRtanpkUmpvbHVNVmJvY0wxQUhGQmZxcEM0NTVJWDBXakJwalI5SU5KYmtEX0N2akhaT1VWNkNXZGdQcHl4UUkyNW9MUmfSAWBBVV95cUxPa0hkMFZkTll3UVhoOElOQ1RQWk1MT3k3ajBONzBfbUZEdWFhejh5YThLcHduMlVLYlgxZm5MaGd0c3FsT0xjeF8tbVIwT3Z4SHZzQVJMdVBZcnpTWFB4TnA?oc=5) 등 금리 불확실성, [카니 총리 “미국과 전쟁 중”…캐나다, 미국의 50% 관세 발효에 맞불 관세 예고](https://news.google.com/rss/articles/CBMiWkFVX3lxTFBKTjROdnUtRGJxQkRxWElnaWpXMzFDU2xUMFFHcmFrUThkYWpaY1Q3YXBPZlJtMWJoSWNYQlZMTlpxZ1E0dEtfMDZaME5EZjZwWVkxUmNWay1qQdIBX0FVX3lxTFAtbkZabjJfb082by1XNkprWkpEcDJuYmpta1BDWGJMY0c5OExYVGpsUm96dy01c21HczhiNnprUW1MODlTRWctQ19IVUZpc29iY2dKQ1o1UDNYM096VElB?oc=5) 등 정책·관세 이슈가 시장 경계심을 자극하고 있습니다.\n- 반도체/AI 관련 뉴스가 시장 변동성 확대의 주요 배경으로 작용, 실적 모멘텀은 아직 뚜렷한 상향 신호가 확인되지 않습니다.\n\n## 향후 체크포인트 및 전략\n\n- 단기적으로 외국인·기관 매도세와 변동성 확대가 지속될 경우, KOSPI의 중기 강세 모멘텀도 훼손될 수 있으므로 주의가 필요합니다.\n- KOSPI는 중립 비중 유지, KOSDAQ·테마주는 단기 변동성 확대 구간에서 신중한 접근이 필요합니다.\n- 오늘 제시된 중립 시나리오가 무력화되는 조건은 외국인·기관 매도세가 2~3일 이상 대형주로 확산되며, KOSPI 5일 누적 수익률이 마이너스로 전환될 때입니다."
+}
