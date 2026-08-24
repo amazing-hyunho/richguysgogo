@@ -1,54 +1,51 @@
 {
-  "consensus": "외국인 대규모 매도와 코스피 약세로 단기 리스크 오프 국면이 우세하며, 공격적 비중 확대는 유보해야 할 시점입니다.",
+  "consensus": "오늘 국내 증시는 외국인 대규모 매도와 단기 변동성 확대에 따라 방어적 대응이 필요한 위험회피(Risk-off) 국면입니다.",
   "key_points": [
     {
-      "point": "코스피 -1.11%(6,836.19), 외국인 -1조원 순매도, 개인 대규모 순매수로 단기 수급 불균형 심화.",
+      "point": "KOSPI가 -3.16% 급락(6694.54p), 외국인 -2.8조원 순매도, 개인 저가매수 유입에도 수급 불안정 심화.",
       "sources": [
         "flow_data",
-        "macro_daily",
-        "news"
-      ]
-    },
-    {
-      "point": "USD/KRW 1,385.48(-0.31%)로 원화 강세 전환, 미국 금리·관세 등 대외 불확실성 지속.",
-      "sources": [
-        "macro_daily",
-        "news"
-      ]
-    },
-    {
-      "point": "KOSPI 5일 누적 -1.69%로 단기 약세, 20일 누적 +4.3%로 중기 모멘텀은 아직 유지.",
-      "sources": [
         "macro_daily"
+      ]
+    },
+    {
+      "point": "USD/KRW 환율은 1385.48원(-0.22%)로 하락하며 안정적이나, 변동성(VIX 15.1)과 미국 금리 이슈로 투자심리 위축.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    },
+    {
+      "point": "뉴스 이슈는 연준 매파 발언, 미 국채금리 급등, 글로벌 관세 갈등 등 대외 불확실성에 집중.",
+      "sources": [
+        "news"
       ]
     }
   ],
   "disagreements": [
     {
-      "topic": "중기 모멘텀 해석",
-      "majority": "단기 리스크 오프, 공격적 매수 유보",
-      "minority": "20일 누적 상승률을 근거로 중기 모멘텀 유지 주장",
+      "topic": "단기 급락 이후 시장 방향성",
+      "majority": "단기 변동성 확대와 외국인 매도세로 위험회피 기조 유지 필요",
+      "minority": "20일 누적 상승세와 환율 안정, 미국 증시 강세로 과도한 공포는 경계",
       "minority_agents": [
-        "sector",
-        "risk",
-        "earnings"
+        "risk"
       ],
-      "why_it_matters": "단기 조정이 중기 추세 전환 신호인지, 일시적 조정인지 판단이 중요함."
+      "why_it_matters": "단기 충격이 누적 하락 전환 신호로 이어질지, 아니면 일시적 조정에 그칠지 판단이 중요"
     }
   ],
   "ops_guidance": [
     {
       "level": "OK",
-      "text": "방어적 포트폴리오 유지, 현금비중 확대 및 변동성 완화 확인 전까지 신규 공격적 매수 자제."
+      "text": "방어적 포트폴리오 유지, 현금 비중 확대 및 변동성 완화 확인 전까지 신규 공격적 매수 자제"
     },
     {
       "level": "CAUTION",
-      "text": "외국인 매도세 지속 및 대외 금리·정책 변수(관세 등) 모니터링 필요."
+      "text": "외국인·기관 매도세 지속 및 단기 변동성 확대 구간에서는 저가매수 시도도 분할 접근 필요"
     },
     {
       "level": "AVOID",
-      "text": "단기 급등주, 변동성 높은 테마주 및 레버리지 상품 비중 확대는 피할 것."
+      "text": "대외 금리·정책 불확실성, 글로벌 관세 이슈 등 불확실성 해소 전까지 레버리지·고위험군 비중 확대는 피할 것"
     }
   ],
-  "sugeup_narrative": "## 오늘의 시장 요약: 외국인 매도와 코스피 약세, 수급 불균형 심화\n\n2026년 8월 24일 코스피는 6,836.19p로 전일 대비 -1.11% 하락하며 단기 약세를 보였습니다. 코스닥은 813.77p로 +1.47% 상승했으나, 대형주 중심의 코스피와는 상반된 흐름입니다. 원/달러 환율은 1,385.48원(-0.31%)로 소폭 하락하며 원화 강세를 보였고, VIX는 15.13으로 최근 5일 평균(12.15) 대비 다소 높아진 상태입니다. 수급 측면에서는 외국인 -1조 36억원, 기관 -2,805억원 순매도, 개인 +1조 671억원 순매수로, 외국인 매도세가 시장 하락을 주도했습니다.\n\n## 수급 해석: 외국인 매도 집중, 개인 추격매수\n\n오늘 시장의 가장 두드러진 특징은 외국인 투자자의 대규모 매도(-1조원)와 이를 개인이 대규모로 흡수한 점입니다. 특히 코스피에서 외국인 -1조 610억원, 개인 +1조 1,147억원으로, 개인의 추격매수 성격이 강하게 나타났습니다. 이는 [미국 국채금리 상승](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5MdmZVT0JaeEpmTmJRUWRiWW94TG5fRlB4dTcycGJnNWc1S09qUkd0bm5ZdXF5MlE1TEk5S0VsV2ZwYkJ4UF9aUkIzeExPNmRLOXBxM0t3MXVOdw?oc=5), [관세 등 정책 불확실성](https://news.google.com/rss/articles/CBMiVkFVX3lxTFAxX0ppc19VczBZR0s3bFc5RmtydS1jTUg5azEtMVY2eDNMTV95Q1BmYW4yT3hraHlwcTZfa0pJY0g1R24wd3h0MFRvYUFIYzgtZU83SUpn?oc=5) 등 대외 변수에 대한 경계심리가 반영된 결과로 해석됩니다. 코스닥에서는 외국인 소폭 순매수(+574억원)로 차별화된 흐름이지만, 전체적으로는 위험회피 심리가 우세합니다.\n\n## 주요 이슈: 금리·관세·환율 불확실성\n\n오늘 뉴스 헤드라인은 [코스피 반등 기대와 미국 국채금리](https://news.google.com/rss/articles/CBMiaEFVX3lxTE50alBhdUNPZUI2Vkt3UElBOFBSSllHdFFwdThZUm50bTBZZkFtYVNNY1NQQVhYeDFBd2l1bDZXNTdzNXEwdGN4elVrQThVM0Yta2MzTF8xYmZ1S0F1cTRCbUFfM0Zzd0Vt?oc=5), [연준 매파 발언](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5MdmZVT0JaeEpmTmJRUWRiWW94TG5fRlB4dTcycGJnNWc1S09qUkd0bm5ZdXF5MlE1TEk5S0VsV2ZwYkJ4UF9aUkIzeExPNmRLOXBxM0t3MXVOdw?oc=5), [미국-캐나다 관세 갈등](https://news.google.com/rss/articles/CBMiVkFVX3lxTFAxX0ppc19VczBZR0s3bFc5RmtydS1jTUg5azEtMVY2eDNMTV95Q1BmYW4yT3hraHlwcTZfa0pJY0g1R24wd3h0MFRvYUFIYzgtZU83SUpn?oc=5), [환율 변동성](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9abWpsY0VHTDZ6SVZjVExtQ09mVHUwU1RQSFcxUzdBNVNiMkRrRU52bWFPU1dtUy1LVEdRYTRmODhoeEVrUjhidTFxY1plS2tnTkVLUWxNUVIyTGU0M2tKaNIBeEFVX3lxTE9iRjZQcDU3UkM1N0RHWUtoa280T1Z5S21INjBCYWpCZndKbTNIVUNDWkprN1FCMTJxd0lIb0oydHN0OXlTOEpDUDlIWVI4Tkp4c2FnV1lOT1N2VGp5TDBlQ01iM0xqUFhQbnJNS3l4enpIeXYtVHJqRw?oc=5) 등 대외 불확실성에 집중되어 있습니다. 미국 금리 상승에도 뉴욕증시가 반등했다는 점([SBS Biz](https://news.google.com/rss/articles/CBMiU0FVX3lxTFBEZnI5bm0wNDJ3SUpwOG9OQmpxZTd0ZkRjVFliSUJzRkhtTUFzMHJsaXEzc3plY0NfbXUxTTNlam1kd1pPRWFVUG5sYXNfaTBQUzdF0gFYQVVfeXFMUGhaejhyVVhZQTJ2MUg2UjZ5dGFhdno1UVJlbEU0dE5tcmxfdWtaN3FVUXM2OWczVDI2ZlVZelRzZUtRRnVjb2c1TlJHNWVjN0ZMaG0xY25JNw?oc=5))은 단기 변동성 확대 속에서도 중기 모멘텀을 완전히 꺾지는 않았음을 시사합니다.\n\n## 전망 및 체크포인트: 단기 방어, 변동성 완화 확인 전까지 관망\n\n오늘 위원회 다수는 단기 리스크 오프 국면을 강조하며, 공격적 비중 확대는 변동성 완화와 외국인 매도 진정 확인 전까지 유보해야 한다는 데 의견을 모았습니다. 단기 조정이 중기 추세 전환으로 이어질지, 아니면 일시적 조정에 그칠지 판단이 핵심입니다. 만약 외국인 매도세가 진정되고, 대외 금리·정책 불확실성이 완화된다면 방어적 스탠스에서 점진적 비중 확대를 검토할 수 있습니다. 반대로, 외국인 매도세가 심화되거나 환율·금리 변동성이 재차 확대될 경우 추가 하락 리스크에 대비해야 합니다.\n\n**오늘 논의된 투자전략의 무효화 조건:** 외국인 매도세가 진정되고, KOSPI가 5일 연속 반등하며 변동성(VIX)이 5일 평균 이하로 하락할 경우, 단기 리스크 오프 시나리오는 재점검이 필요합니다."
+  "sugeup_narrative": "## 오늘의 시장 개요: KOSPI 급락, 변동성 확대\n\n2026년 8월 24일 KOSPI는 -3.16% 하락한 6,694.54pt로 마감하며 단기 급락세를 보였습니다. KOSDAQ은 오히려 +1.3% 상승(812.36pt)했으나, 대형주 중심의 매도 압력이 시장 전반에 영향을 미쳤습니다. 외국인은 -27,678억 원, 기관은 -8,711억 원 순매도, 개인은 +24,742억 원 순매수로 집계되었습니다. 원/달러 환율은 1,385.48원(-0.22%)로 하락하며 안정적인 흐름을 보였고, VIX(변동성지수)는 15.1로 5일 평균(12.15) 대비 상승해 투자심리 위축을 반영했습니다.\n\n## 수급 해석: 외국인 대규모 매도, 개인 저가매수의 한계\n\n오늘 시장은 외국인과 기관의 동반 매도세가 두드러졌습니다. 특히 KOSPI에서 외국인 -29,031억, 기관 -9,170억 순매도, 개인은 +26,472억 순매수로 저가매수에 나섰으나, 수급 불안정이 해소되지 않았습니다. 외국인 매도는 환율 하락(원화 강세)에도 불구하고, 미국 금리 급등 및 글로벌 반도체/AI 관련 차익실현, 대외 정책 불확실성 등 복합적 요인에 기인한 것으로 해석됩니다. 개인의 저가매수는 단기 반등 기대감에 기반하지만, 최근 5일간 KOSPI 누적 -3.7% 하락과 변동성 확대를 감안하면 지속성에는 한계가 있습니다.\n\n## 오늘의 핵심 이슈: 금리·연준, 환율, 글로벌 정책 불확실성\n\n- [코스피 2차 반등 이어질까…엔비디아·미 국채금리에 쏠린 눈](https://news.google.com/rss/articles/CBMiUkFVX3lxTE94YXltWWFEQnlJcW9fU0dlQlBPMzRNRXdZWjhjZGg4SkJ2S2xXaGs2Z2tLZE13dEZKZE5mc3BIX3lyVnFla1BVdXpjZ3U1SXpRaFE?oc=5): 시장은 미국 국채금리 급등과 AI/반도체 관련 글로벌 이슈에 민감하게 반응 중입니다.\n- [美연준 매파 인사, 국채금리 급등에도 \"시장 잘 가고 있다\"](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBpZVJkb05jUEUwWjFOc3FXM2tNN1JMSlRZYU5CNnhPQnNyOUtjN3h1a0l3LVlzc2lFamwySnJvRFhmTHJ2dzZZWHFOdjZ2MHhDTHRRNER2dzMwNXPSAWBBVV95cUxOY2JoN1NRYmk5VWhIX0Yxc0FPaEtQQWgwWGNXTERJZ0tXZnh0VzZrZjB0LWpOeVpzWUQ4UUthNklDYmhEY1BMZHBmQVZZRHI2blc4WGtadU1PRnVRbDg5SGs?oc=5): 연준 매파 발언과 미 국채금리 급등이 투자심리 위축을 심화시켰습니다.\n- [원/달러 환율 1,370원대로 하락…작년 9월 이후 최저](https://news.google.com/rss/articles/CBMiW0FVX3lxTE9wbWtfa25UR1V4WnpjaGh3MjhFTWdKMXI0ODRhX085YmhiUzR3MnJpWUZqbHZhYXUya3FOV0N2dU5FUC11RHZ3b21lMXdfM211V0NiVU1kU2RNYm_SAWBBVV95cUxNNVJHYlNYeDZQNDBzaDJMS3VscWNoTlZzZ25vanBlRi1HNEI2ZnVOTUJDR25fek1aVmZadjNMSVJ4elZwYjJhdDR1ZE1XbXNxN2taSEhJUzlBV2pQRFFmVG8?oc=5): 환율은 안정적이나, 대외 불확실성은 여전합니다.\n- [美·캐나다, 관세 ‘맞불 전쟁’…트럼프 “51번째 주 아니면서 혜택만 원해”](https://news.google.com/rss/articles/CBMiVkFVX3lxTFAxX0ppc19VczBZR0s3bFc5RmtydS1jTUg5azEtMVY2eDNMTV95Q1BmYW4yT3hraHlwcTZfa0pJY0g1R24wd3h0MFRvYUFIYzgtZU83SUpn?oc=5): 글로벌 정책·관세 이슈도 투자심리에 부담을 주고 있습니다.\n\n## 전략적 시사점 및 체크포인트\n\n오늘 시장은 외국인 대규모 매도와 단기 변동성 확대가 핵심입니다. 20일 누적 기준(+2.25%)으로는 아직 추세 전환 신호는 확인되지 않으나, 단기 충격이 누적 하락으로 이어질지 주목해야 합니다. 미국 금리·정책, 글로벌 관세 이슈 등 대외 불확실성 해소 전까지는 방어적 포트폴리오 유지가 바람직합니다. 만약 외국인 매도세가 진정되고 변동성이 5일 평균 이하로 안정화된다면, 저가매수 전략을 점진적으로 고려할 수 있습니다. 반대로, KOSPI가 추가로 5% 이상 하락하거나 외국인 순매도가 확대된다면, 오늘의 방어적 전략은 즉시 재점검이 필요합니다."
 }
