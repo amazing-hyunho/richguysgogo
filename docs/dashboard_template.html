@@ -386,6 +386,16 @@
     .v2-action-card .meta { color:#94a3b8;font-size:10px;line-height:1.55;margin-top:5px; }
     .v2-empty { padding:16px 10px;color:#64748b;font-size:12px;line-height:1.6;text-align:center;border:1px dashed rgba(71,85,105,.55);border-radius:10px; }
     .v2-consensus { margin-top:14px;padding:12px 14px;border-radius:11px;background:rgba(15,23,42,.55);border:1px solid var(--line);color:#cbd5e1;font-size:13px;line-height:1.65; }
+    .v2-chair-analysis { margin-top:12px;border:1px solid rgba(56,189,248,.28);border-radius:13px;background:rgba(8,47,73,.18);overflow:hidden; }
+    .v2-chair-analysis summary { display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer;padding:14px 16px;list-style-position:inside; }
+    .v2-chair-analysis summary::marker { color:#7dd3fc; }
+    .v2-chair-title { color:#e0f2fe;font-size:14px;font-weight:900; }
+    .v2-chair-subtitle { display:block;margin-top:4px;color:#94a3b8;font-size:10px;font-weight:600;line-height:1.45; }
+    .v2-chair-freshness { flex:0 0 auto;padding:4px 8px;border-radius:999px;border:1px solid rgba(52,211,153,.35);background:rgba(52,211,153,.1);color:#6ee7b7;font-size:10px;font-weight:800; }
+    .v2-chair-freshness.stale { border-color:rgba(251,191,36,.4);background:rgba(251,191,36,.1);color:#fcd34d; }
+    .v2-chair-freshness.missing { border-color:rgba(148,163,184,.35);background:rgba(148,163,184,.1);color:#cbd5e1; }
+    .v2-chair-analysis-body { padding:0 16px 16px; }
+    .v2-chair-analysis-body .md-report { font-size:13px;line-height:1.75;color:#dbe4f0;word-break:break-word; }
     .v2-details { margin-top:18px;border:1px solid var(--line);border-radius:13px;background:rgba(15,23,42,.48);overflow:hidden; }
     .v2-details summary { cursor:pointer;padding:14px 16px;color:#e2e8f0;font-size:13px;font-weight:800;list-style-position:inside; }
     .v2-details-body { padding:0 16px 16px; }
@@ -400,6 +410,7 @@
     .v2-minute .summary { color:#cbd5e1;font-size:12px;line-height:1.6;margin-top:4px; }
     .v2-caution { margin-top:14px;padding:10px 12px;border-radius:9px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);color:#fcd34d;font-size:11px;line-height:1.55; }
     @media(max-width:900px){ .v2-action-grid { grid-template-columns:1fr; } }
+    @media(max-width:640px){ .v2-chair-analysis summary { align-items:flex-start;flex-direction:column;gap:8px; } }
     /* ── 탐욕의 항아리 탭 ── */
     .greed-hero { padding: 18px 20px; margin-bottom: 18px; border-radius: 16px; background: radial-gradient(circle at 12% 0%, rgba(245, 158, 11, 0.22), transparent 28%), linear-gradient(135deg, rgba(88, 28, 135, 0.55), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(245, 158, 11, 0.28); box-shadow: 0 18px 42px rgba(15, 23, 42, 0.35); }
     .greed-hero-title { font-size: 22px; font-weight: 900; color: #fde68a; margin: 0 0 6px 0; letter-spacing: -0.01em; }
@@ -756,6 +767,18 @@
           <span class="v2-rule">현금 상한 60%</span>
         </div>
         <div class="v2-consensus" id="v2-consensus"></div>
+        <details class="v2-chair-analysis" id="v2-chair-analysis">
+          <summary>
+            <span>
+              <span class="v2-chair-title" id="v2-chair-title">오늘의 의장 심층 분석</span>
+              <span class="v2-chair-subtitle" id="v2-chair-subtitle">한 달 전략의 Daily 판단 근거를 펼쳐봅니다.</span>
+            </span>
+            <span class="v2-chair-freshness missing" id="v2-chair-freshness">분석 확인 중</span>
+          </summary>
+          <div class="v2-chair-analysis-body">
+            <div class="md-report" id="v2-chair-analysis-body">의장 분석을 불러오는 중입니다.</div>
+          </div>
+        </details>
         <div class="v2-caution">현재 탭은 기존 데이터로 화면 구조와 엄격한 후보 필터를 먼저 검증하는 베타입니다. 현금 비중 산식과 뉴스 보조점수는 다음 단계에서 연결되며, 그 전에는 임의 비율을 표시하지 않습니다.</div>
       </section>
 
@@ -3388,6 +3411,40 @@ function renderWatchTop3() {
     }
     const consensus = document.getElementById('v2-consensus');
     if (consensus) consensus.innerHTML = `<strong>기존 위원회 분석 참고</strong><br>${escapeHtml(committee.consensus || '최신 위원회 분석이 없습니다.')}`;
+    const chairDetails = document.getElementById('v2-chair-analysis');
+    const chairTitle = document.getElementById('v2-chair-title');
+    const chairSubtitle = document.getElementById('v2-chair-subtitle');
+    const chairFreshness = document.getElementById('v2-chair-freshness');
+    const chairBody = document.getElementById('v2-chair-analysis-body');
+    const chairNarrative = String(committee.sugeup_narrative || '').trim();
+    const analysisDate = String(committee.market_date || '').trim();
+    const strategyDate = String(ic.as_of || '').trim();
+    function dayDifference(laterDate, earlierDate) {
+      const later = Date.parse(`${laterDate}T00:00:00`);
+      const earlier = Date.parse(`${earlierDate}T00:00:00`);
+      if (!Number.isFinite(later) || !Number.isFinite(earlier)) return null;
+      return Math.floor((later - earlier) / 86400000);
+    }
+    const analysisAge = dayDifference(strategyDate, analysisDate);
+    if (chairDetails && chairTitle && chairSubtitle && chairFreshness && chairBody) {
+      chairDetails.open = false;
+      if (chairNarrative) {
+        const isStale = analysisAge != null && analysisAge >= 1;
+        chairTitle.textContent = isStale ? '최근 의장 심층 분석' : '오늘의 의장 심층 분석';
+        chairSubtitle.textContent = `한 달 전략의 Daily 판단 근거 · 기준일 ${analysisDate || '확인 불가'}`;
+        chairFreshness.className = `v2-chair-freshness${isStale ? ' stale' : ''}`;
+        chairFreshness.textContent = isStale
+          ? `최신 Daily 분석 아님 · ${analysisAge}일 이전`
+          : '최신 Daily 분석';
+        chairBody.innerHTML = markdownToHtml(chairNarrative);
+      } else {
+        chairTitle.textContent = '의장 심층 분석';
+        chairSubtitle.textContent = `한 달 전략의 Daily 판단 근거 · 기준일 ${analysisDate || '확인 불가'}`;
+        chairFreshness.className = 'v2-chair-freshness missing';
+        chairFreshness.textContent = '분석 없음';
+        chairBody.innerHTML = '<p>표시할 의장 장문 분석이 없습니다. 다음 Daily 실행 후 다시 확인하세요.</p>';
+      }
+    }
     const actionMeta = document.getElementById('v2-action-meta');
     if (actionMeta) actionMeta.textContent = `기준일 ${ic.as_of || '-'} · 75% 데이터 게이트 · 최대 3개 표시`;
     renderList('v2-buy-list', buy, 'buy', '현재 확정 조건을 모두 통과한 매수 후보가 없습니다.');

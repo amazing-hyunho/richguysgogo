@@ -38,10 +38,23 @@ class StrategyV2DashboardTemplateTests(unittest.TestCase):
     def test_v2_tab_preserves_ai_analysis_and_collapsible_minutes(self) -> None:
         template = build_dashboard.TEMPLATE_PATH.read_text(encoding="utf-8")
 
+        self.assertIn("오늘의 의장 심층 분석", template)
+        self.assertIn("한 달 전략의 Daily 판단 근거", template)
+        self.assertIn('id="v2-chair-analysis"', template)
+        self.assertIn('id="v2-chair-analysis-body"', template)
+        self.assertIn("markdownToHtml(chairNarrative)", template)
         self.assertIn("기존 AI 분석 보기", template)
         self.assertIn("위원회 회의록 펼쳐보기", template)
         self.assertIn('id="v2-agent-grid"', template)
         self.assertIn('id="v2-minutes"', template)
+
+    def test_v2_chair_analysis_has_date_and_freshness_warning(self) -> None:
+        template = build_dashboard.TEMPLATE_PATH.read_text(encoding="utf-8")
+
+        self.assertIn('id="v2-chair-freshness"', template)
+        self.assertIn("committee.market_date", template)
+        self.assertIn("최신 Daily 분석 아님", template)
+        self.assertIn("chairDetails.open = false", template)
 
     def test_v2_tab_exposes_agreed_safety_rules(self) -> None:
         template = build_dashboard.TEMPLATE_PATH.read_text(encoding="utf-8")
