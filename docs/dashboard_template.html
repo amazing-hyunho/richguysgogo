@@ -360,6 +360,46 @@
     .thesis-btn.secondary { background:rgba(148,163,184,.1); border-color:rgba(148,163,184,.3); color:#cbd5e1; }
     .tab-pane { display: none; padding-top: 24px; }
     .tab-pane.tab-active { display: block; }
+    /* ── V2 전략 가이드 탭 ── */
+    .v2-hero { padding:22px;margin-bottom:18px;border:1px solid rgba(56,189,248,.3);border-radius:18px;background:radial-gradient(circle at 90% 0%,rgba(56,189,248,.18),transparent 36%),linear-gradient(145deg,rgba(15,23,42,.98),rgba(17,24,39,.94)); }
+    .v2-hero-head { display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap; }
+    .v2-hero h2 { margin:0;color:#f8fafc;font-size:23px; }
+    .v2-hero p { margin:8px 0 0;color:#94a3b8;font-size:13px;line-height:1.65;max-width:820px; }
+    .v2-beta { display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid rgba(251,191,36,.35);background:rgba(251,191,36,.09);color:#fcd34d;font-size:11px;font-weight:800; }
+    .v2-kpi-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:18px 0; }
+    .v2-kpi { padding:14px;border:1px solid var(--line);border-radius:12px;background:rgba(30,41,59,.58); }
+    .v2-kpi .k { color:#64748b;font-size:11px;font-weight:700;margin-bottom:6px; }
+    .v2-kpi .v { color:#f8fafc;font-size:18px;font-weight:900;line-height:1.3; }
+    .v2-kpi .s { color:#94a3b8;font-size:10px;line-height:1.5;margin-top:6px; }
+    .v2-rule-row { display:flex;flex-wrap:wrap;gap:7px;margin-top:12px; }
+    .v2-rule { padding:5px 9px;border-radius:999px;background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.2);color:#bae6fd;font-size:11px;font-weight:700; }
+    .v2-action-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px; }
+    .v2-action-column { min-width:0;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(15,23,42,.5); }
+    .v2-action-column h3 { margin:0 0 5px;font-size:15px;color:#f1f5f9; }
+    .v2-action-column .desc { margin:0 0 12px;color:#64748b;font-size:11px;line-height:1.5; }
+    .v2-action-list { display:grid;gap:9px; }
+    .v2-action-card { padding:12px;border:1px solid rgba(71,85,105,.55);border-radius:11px;background:rgba(30,41,59,.62); }
+    .v2-action-card.buy { border-left:3px solid #34d399; }
+    .v2-action-card.wait { border-left:3px solid #fbbf24; }
+    .v2-action-card.stop { border-left:3px solid #f87171; }
+    .v2-action-card .title { color:#e2e8f0;font-size:13px;font-weight:850; }
+    .v2-action-card .meta { color:#94a3b8;font-size:10px;line-height:1.55;margin-top:5px; }
+    .v2-empty { padding:16px 10px;color:#64748b;font-size:12px;line-height:1.6;text-align:center;border:1px dashed rgba(71,85,105,.55);border-radius:10px; }
+    .v2-consensus { margin-top:14px;padding:12px 14px;border-radius:11px;background:rgba(15,23,42,.55);border:1px solid var(--line);color:#cbd5e1;font-size:13px;line-height:1.65; }
+    .v2-details { margin-top:18px;border:1px solid var(--line);border-radius:13px;background:rgba(15,23,42,.48);overflow:hidden; }
+    .v2-details summary { cursor:pointer;padding:14px 16px;color:#e2e8f0;font-size:13px;font-weight:800;list-style-position:inside; }
+    .v2-details-body { padding:0 16px 16px; }
+    .v2-agent-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:9px; }
+    .v2-agent { padding:12px;border:1px solid rgba(71,85,105,.5);border-radius:10px;background:rgba(30,41,59,.52); }
+    .v2-agent .owner { color:#7dd3fc;font-size:12px;font-weight:800; }
+    .v2-agent .comment { color:#e2e8f0;font-size:12px;line-height:1.55;margin-top:6px; }
+    .v2-agent .claim { color:#94a3b8;font-size:11px;line-height:1.5;margin-top:5px; }
+    .v2-minute { padding:10px 0;border-bottom:1px solid rgba(51,65,85,.55); }
+    .v2-minute:last-child { border-bottom:0; }
+    .v2-minute .speaker { color:#c4b5fd;font-size:11px;font-weight:800; }
+    .v2-minute .summary { color:#cbd5e1;font-size:12px;line-height:1.6;margin-top:4px; }
+    .v2-caution { margin-top:14px;padding:10px 12px;border-radius:9px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);color:#fcd34d;font-size:11px;line-height:1.55; }
+    @media(max-width:900px){ .v2-action-grid { grid-template-columns:1fr; } }
     /* ── 탐욕의 항아리 탭 ── */
     .greed-hero { padding: 18px 20px; margin-bottom: 18px; border-radius: 16px; background: radial-gradient(circle at 12% 0%, rgba(245, 158, 11, 0.22), transparent 28%), linear-gradient(135deg, rgba(88, 28, 135, 0.55), rgba(15, 23, 42, 0.9)); border: 1px solid rgba(245, 158, 11, 0.28); box-shadow: 0 18px 42px rgba(15, 23, 42, 0.35); }
     .greed-hero-title { font-size: 22px; font-weight: 900; color: #fde68a; margin: 0 0 6px 0; letter-spacing: -0.01em; }
@@ -536,6 +576,7 @@
     <!-- ── 탭 네비게이션 ── -->
     <nav class="tab-nav" role="tablist">
       <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
+      <button class="tab-btn" data-tab="strategy-v2" role="tab" aria-selected="false">🧭 V2 전략 가이드</button>
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
       <button class="tab-btn" data-tab="greed-pot" role="tab" aria-selected="false">🏺 탐욕의 항아리</button>
       <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">📰 뉴스 타임라인</button>
@@ -694,6 +735,65 @@
     </section>
 
     </div><!-- /tab-market -->
+
+    <!-- ══ 신규 탭: V2 전략 가이드 (기존 탭과 독립) ═══════════════ -->
+    <div id="tab-strategy-v2" class="tab-pane" role="tabpanel">
+      <section class="v2-hero" aria-labelledby="v2-heading">
+        <div class="v2-hero-head">
+          <div>
+            <h2 id="v2-heading">🧭 한 달 전략 가이드</h2>
+            <p>한국 주식 산업을 대상으로 시장 방향, 전술적 현금 범위, 매수·조정 대기·신규매수 중단 분야를 한 화면에 정리합니다.</p>
+          </div>
+          <span class="v2-beta">V2 BETA · 읽기 전용</span>
+        </div>
+        <div class="v2-kpi-grid" id="v2-kpis"></div>
+        <div class="v2-rule-row">
+          <span class="v2-rule">판단 기간 1개월</span>
+          <span class="v2-rule">핵심 데이터 75% 이상</span>
+          <span class="v2-rule">일반 신호 2주 확인</span>
+          <span class="v2-rule">긴급 위험 당일 반영</span>
+          <span class="v2-rule">후보군별 최대 3개</span>
+          <span class="v2-rule">현금 상한 60%</span>
+        </div>
+        <div class="v2-consensus" id="v2-consensus"></div>
+        <div class="v2-caution">현재 탭은 기존 데이터로 화면 구조와 엄격한 후보 필터를 먼저 검증하는 베타입니다. 현금 비중 산식과 뉴스 보조점수는 다음 단계에서 연결되며, 그 전에는 임의 비율을 표시하지 않습니다.</div>
+      </section>
+
+      <section class="section" aria-labelledby="v2-actions-heading">
+        <div class="section-head">
+          <h2 id="v2-actions-heading">분야별 행동</h2>
+          <span class="section-meta" id="v2-action-meta">주간 산업 신호 로딩 중</span>
+        </div>
+        <div class="v2-action-grid">
+          <div class="v2-action-column">
+            <h3>✅ 매수·확대 후보</h3>
+            <p class="desc">데이터·확정 신호·과열 기준을 모두 통과한 분야</p>
+            <div class="v2-action-list" id="v2-buy-list"></div>
+          </div>
+          <div class="v2-action-column">
+            <h3>⏳ 조정·확인 대기</h3>
+            <p class="desc">전망은 확인되지만 과열 또는 2주 확인이 필요한 분야</p>
+            <div class="v2-action-list" id="v2-wait-list"></div>
+          </div>
+          <div class="v2-action-column">
+            <h3>⛔ 신규매수 중단·회피</h3>
+            <p class="desc">둔화·침체가 확인됐거나 긴급 위험이 발생한 분야</p>
+            <div class="v2-action-list" id="v2-stop-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <details class="v2-details">
+        <summary>기존 AI 분석 보기</summary>
+        <div class="v2-details-body">
+          <div class="v2-agent-grid" id="v2-agent-grid"></div>
+        </div>
+      </details>
+      <details class="v2-details">
+        <summary>위원회 회의록 펼쳐보기</summary>
+        <div class="v2-details-body" id="v2-minutes"></div>
+      </details>
+    </div><!-- /tab-strategy-v2 -->
 
     <!-- ══ 탭 2: 종목 데이터 ════════════════════════════════════ -->
     <div id="tab-stocks" class="tab-pane" role="tabpanel">
@@ -3206,6 +3306,113 @@ function renderWatchTop3() {
     }));
     renderSelected();
   }
+
+  // ── V2 전략 가이드 탭 ───────────────────────────────────────
+  function renderStrategyV2Tab() {
+    const ic = data.industry_cycle || {};
+    const industries = safeArr(ic.industries);
+    const committee = data.latest_committee || {};
+    const stances = safeArr((data.latest_stances || {}).stances);
+    const debate = data.latest_debate_minutes || {};
+
+    function finiteNumber(value) {
+      return (typeof value === 'number' && Number.isFinite(value)) ? value : null;
+    }
+    function percent01(value) {
+      const n = finiteNumber(value);
+      return n == null ? '-' : `${Math.round(n * 100)}%`;
+    }
+    function industryDecision(item) {
+      const sig = item.latest_signal || {};
+      const v2 = item.latest_v2 || {};
+      const state = sig.confirmed_state || sig.raw_state || '';
+      const confirmation = sig.confirmation_status || '';
+      const completeness = finiteNumber(sig.data_completeness);
+      const overheat = finiteNumber(sig.overheat_score);
+      const urgent = safeArr(sig.urgent_flags).length > 0;
+      const entry = v2.entry_signal || '';
+      const hasSignal = Boolean((item.coverage || {}).has_cycle_signal);
+      const dataReady = hasSignal && completeness != null && completeness >= .75;
+      const confirmed = confirmation === 'confirmed';
+      const overheated = state === 'CYCLE_OVERHEATED' || (overheat != null && overheat >= 65) || entry === 'HOLD_EXTENDED';
+      const score = finiteNumber(sig.cycle_score);
+      const marketScore = finiteNumber(v2.market_confirmation_score);
+      const expected = finiteNumber(v2.expected_excess_return_12w);
+      const priority = (marketScore || 0) + (score || 0) + (expected || 0) * 100;
+      const base = { item, sig, v2, state, confirmation, completeness, overheat, entry, priority };
+
+      if (!dataReady) return { ...base, bucket:'insufficient', reason:'핵심 데이터 75% 기준 미달' };
+      if (urgent) return { ...base, bucket:'stop', reason:'긴급 위험 신호가 발생해 당일 신규매수 중단' };
+      if (confirmed && (['CYCLE_SLOWING', 'CYCLE_RECESSION'].includes(state) || entry === 'AVOID')) {
+        return { ...base, bucket:'stop', reason:'둔화·침체 또는 회피 신호가 확인됨' };
+      }
+      if (confirmed && !overheated && ['CONFIRM_ADD', 'EARLY_ENTRY'].includes(entry)) {
+        return { ...base, bucket:'buy', reason:entry === 'CONFIRM_ADD' ? '확정·추가 조건 통과' : '초기 진입 조건 통과' };
+      }
+      if (overheated) return { ...base, bucket:'wait', reason:'산업 전망과 별개로 단기 과열·추격 위험 확인' };
+      if (!confirmed) return { ...base, bucket:'wait', reason:'첫 관측 또는 경고 단계로 2주 확인 필요' };
+      return { ...base, bucket:'wait', reason:'방향성은 있으나 신규 진입 조건을 모두 통과하지 못함' };
+    }
+    function cardHtml(row, cls) {
+      const sig = row.sig || {};
+      const v2 = row.v2 || {};
+      const score = finiteNumber(sig.cycle_score);
+      const marketScore = finiteNumber(v2.market_confirmation_score);
+      return `<article class="v2-action-card ${cls}">
+        <div class="title">${escapeHtml((row.item || {}).name_kr || (row.item || {}).industry_id || '-')}</div>
+        <div class="meta">${escapeHtml(row.reason)}<br>산업 점수 ${score == null ? '-' : score.toFixed(1)} · 시장 확인 ${marketScore == null ? '-' : marketScore.toFixed(1)} · 데이터 ${percent01(row.completeness)}</div>
+      </article>`;
+    }
+    function renderList(id, rows, cls, emptyText) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = rows.length ? rows.map(row => cardHtml(row, cls)).join('') : `<div class="v2-empty">${escapeHtml(emptyText)}</div>`;
+    }
+
+    const decisions = industries.map(industryDecision);
+    const buy = decisions.filter(x => x.bucket === 'buy').sort((a,b) => b.priority - a.priority).slice(0,3);
+    const wait = decisions.filter(x => x.bucket === 'wait').sort((a,b) => b.priority - a.priority).slice(0,3);
+    const stop = decisions.filter(x => x.bucket === 'stop').sort((a,b) => b.priority - a.priority).slice(0,3);
+    const readyCount = decisions.filter(x => x.bucket !== 'insufficient').length;
+    const insufficientCount = decisions.filter(x => x.bucket === 'insufficient').length;
+
+    const kpis = document.getElementById('v2-kpis');
+    if (kpis) {
+      const rows = [
+        { k:'전략 기준일', v:ic.as_of || '-', s:'주간 산업 신호 기준' },
+        { k:'전략 유지기간', v:'1개월', s:'일반 변경은 2주 확인' },
+        { k:'권장 현금', v:'산식 준비 중', s:'확정 전 임의 비율 미표시' },
+        { k:'분석 가능 분야', v:`${readyCount}/${industries.length || 0}`, s:`데이터 부족 ${insufficientCount}개 제외` },
+      ];
+      kpis.innerHTML = rows.map(x => `<div class="v2-kpi"><div class="k">${escapeHtml(x.k)}</div><div class="v">${escapeHtml(x.v)}</div><div class="s">${escapeHtml(x.s)}</div></div>`).join('');
+    }
+    const consensus = document.getElementById('v2-consensus');
+    if (consensus) consensus.innerHTML = `<strong>기존 위원회 분석 참고</strong><br>${escapeHtml(committee.consensus || '최신 위원회 분석이 없습니다.')}`;
+    const actionMeta = document.getElementById('v2-action-meta');
+    if (actionMeta) actionMeta.textContent = `기준일 ${ic.as_of || '-'} · 75% 데이터 게이트 · 최대 3개 표시`;
+    renderList('v2-buy-list', buy, 'buy', '현재 확정 조건을 모두 통과한 매수 후보가 없습니다.');
+    renderList('v2-wait-list', wait, 'wait', '현재 조정·확인 대기 분야가 없습니다.');
+    renderList('v2-stop-list', stop, 'stop', '현재 확정된 신규매수 중단·회피 분야가 없습니다.');
+
+    const agentGrid = document.getElementById('v2-agent-grid');
+    if (agentGrid) {
+      agentGrid.innerHTML = stances.length ? stances.map(stance => `
+        <article class="v2-agent">
+          <div class="owner">${escapeHtml(stance.agent_owner || stance.agent_name || '-')} · 신뢰도 ${escapeHtml(stance.confidence || '-')}</div>
+          <div class="comment">${escapeHtml(stance.korean_comment || '-')}</div>
+          ${safeArr(stance.core_claims).map(claim => `<div class="claim">• ${escapeHtml(claim)}</div>`).join('')}
+        </article>`).join('') : '<div class="v2-empty">표시할 AI 분석이 없습니다.</div>';
+    }
+    const minutesEl = document.getElementById('v2-minutes');
+    if (minutesEl) {
+      const minutes = safeArr(debate.minutes);
+      const conclusion = debate.round_conclusion ? `<div class="v2-consensus"><strong>회의 결론</strong><br>${escapeHtml(debate.round_conclusion)}</div>` : '';
+      minutesEl.innerHTML = minutes.length
+        ? minutes.map(minute => `<div class="v2-minute"><div class="speaker">${escapeHtml(minute.speaker_label || minute.speaker || '-')}</div><div class="summary">${escapeHtml(minute.summary || '-')}</div></div>`).join('') + conclusion
+        : '<div class="v2-empty">표시할 회의록이 없습니다.</div>';
+    }
+  }
+  renderStrategyV2Tab();
 
   // ── 산업 사이클 탭 (Phase 4) ────────────────────────────────
   function renderIndustryCycleTab() {

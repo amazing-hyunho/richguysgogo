@@ -81,10 +81,7 @@ def main() -> None:
     if use_llm_chair:
         chair = LLMChairAgent(
             fallback_agent=chair_stub,
-            options=ChairLLMOptions(
-                model=os.getenv("CHAIR_OPENAI_MODEL", "gpt-4.1-mini").strip() or "gpt-4.1-mini",
-                temperature=float(os.getenv("CHAIR_LLM_TEMPERATURE", "0.1")),
-            ),
+            options=ChairLLMOptions.from_env(),
         )
         committee_result = chair.run(snapshot, stances)
     else:

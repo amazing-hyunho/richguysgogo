@@ -11,16 +11,179 @@ from committee.agents.chair_stub import ChairStub
 from committee.schemas.committee_result import CommitteeResult
 from committee.schemas.debate import DebateRound
 from committee.schemas.snapshot import Snapshot
-from committee.schemas.stance import Stance
-from committee.tools.openai_chat import chat_completion, load_openai_config
+from committee.schemas.stance import RegimeTag, Stance
+from committee.core.trace_logger import TraceLogger
+from committee.tools.openai_chat import load_openai_config, responses_completion_with_metadata
+
+
+_REASONING_EFFORTS = {"none", "low", "medium", "high", "xhigh", "max"}
+
+
+def _env_flag(name: str, default: bool = False) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
+
+
+def _env_float(name: str, default: float) -> float:
+    try:
+        return float(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        return default
+
+
+def _env_reasoning_effort(name: str, default: str) -> str:
+    value = os.getenv(name, default).strip().lower() or default
+    return value if value in _REASONING_EFFORTS else default
 
 
 @dataclass(frozen=True)
 class ChairLLMOptions:
     """Runtime options for chair LLM consensus."""
 
-    model: str = "gpt-4.1-mini"
-    temperature: float = 0.1
+    model: str = "gpt-5.6-terra"
+    escalation_model: str = "gpt-5.6-sol"
+    reasoning_effort: str = "medium"
+    escalation_reasoning_effort: str = "medium"
+    force_escalation: bool = False
+    urgent_flag: bool = False
+    report_mode: str = "daily"
+    vix_escalation_threshold: float = 30.0
+    kospi_move_escalation_pct: float = 3.0
+    usdkrw_move_escalation_pct: float = 1.5
+    source_conflict_threshold_pct: float = 0.5
+
+    @classmethod
+    def from_env(cls) -> "ChairLLMOptions":
+        """Build the chair's tiered model policy from environment variables."""
+
+        return cls(
+            model=os.getenv("CHAIR_OPENAI_MODEL", "gpt-5.6-terra").strip()
+            or "gpt-5.6-terra",
+            escalation_model=os.getenv(
+                "CHAIR_ESCALATION_MODEL", "gpt-5.6-sol"
+            ).strip()
+            or "gpt-5.6-sol",
+            reasoning_effort=_env_reasoning_effort(
+                "CHAIR_REASONING_EFFORT", "medium"
+            ),
+            escalation_reasoning_effort=_env_reasoning_effort(
+                "CHAIR_ESCALATION_REASONING_EFFORT", "medium"
+            ),
+            force_escalation=_env_flag("CHAIR_FORCE_SOL"),
+            urgent_flag=_env_flag("CHAIR_URGENT_FLAG"),
+            report_mode=os.getenv("CHAIR_REPORT_MODE", "daily").strip().lower()
+            or "daily",
+            vix_escalation_threshold=_env_float(
+                "CHAIR_ESCALATION_VIX", 30.0
+            ),
+            kospi_move_escalation_pct=_env_float(
+                "CHAIR_ESCALATION_KOSPI_PCT", 3.0
+            ),
+            usdkrw_move_escalation_pct=_env_float(
+                "CHAIR_ESCALATION_USDKRW_PCT", 1.5
+            ),
+            source_conflict_threshold_pct=_env_float(
+                "CHAIR_SOURCE_CONFLICT_PCT", 0.5
+            ),
+        )
+
+
+@dataclass(frozen=True)
+class ChairModelSelection:
+    """Auditable result of deterministic chair model routing."""
+
+    model: str
+    reasoning_effort: str
+    escalated: bool
+    reasons: tuple[str, ...]
+
+
+def select_chair_model(
+    *,
+    snapshot: Snapshot,
+    stances: list[Stance],
+    debate_round: DebateRound | None,
+    options: ChairLLMOptions,
+) -> ChairModelSelection:
+    """Select Terra normally and Sol only for bounded, observable conditions."""
+
+    reasons: list[str] = []
+    if options.force_escalation:
+        reasons.append("forced")
+    if options.urgent_flag:
+        reasons.append("urgent_flag")
+    if options.report_mode in {"monthly", "month", "monthly_report"}:
+        reasons.append("monthly_report")
+
+    cumulative = snapshot.cumulative_context
+    if cumulative is not None and cumulative.reversal_signal:
+        reasons.append("regime_reversal")
+
+    stance_tags = {stance.regime_tag for stance in stances}
+    if RegimeTag.RISK_ON in stance_tags and RegimeTag.RISK_OFF in stance_tags:
+        reasons.append("agent_regime_conflict")
+
+    if debate_round is not None:
+        debate_tags = {minute.internal_regime_tag for minute in debate_round.minutes}
+        if RegimeTag.RISK_ON in debate_tags and RegimeTag.RISK_OFF in debate_tags:
+            reasons.append("debate_regime_conflict")
+
+    markets = snapshot.markets
+    if markets.volatility.vix >= options.vix_escalation_threshold:
+        reasons.append("vix_stress")
+    if abs(markets.kr.kospi_pct) >= options.kospi_move_escalation_pct:
+        reasons.append("kospi_shock")
+    if abs(markets.fx.usdkrw_pct) >= options.usdkrw_move_escalation_pct:
+        reasons.append("fx_shock")
+
+    if (
+        abs(snapshot.market_summary.kospi_change_pct - markets.kr.kospi_pct)
+        >= options.source_conflict_threshold_pct
+    ):
+        reasons.append("kospi_source_conflict")
+    if snapshot.market_summary.usdkrw:
+        usdkrw_gap_pct = abs(
+            (markets.fx.usdkrw - snapshot.market_summary.usdkrw)
+            / snapshot.market_summary.usdkrw
+            * 100.0
+        )
+        if usdkrw_gap_pct >= options.source_conflict_threshold_pct:
+            reasons.append("usdkrw_source_conflict")
+
+    # Opposing core signals must be broad enough to avoid escalating on ordinary noise.
+    risk_on_signals = sum(
+        (
+            markets.kr.kospi_pct >= 0.7,
+            markets.fx.usdkrw_pct <= -0.5,
+            0.0 < markets.volatility.vix <= 18.0,
+            snapshot.flow_summary.foreign_net >= 2000.0,
+        )
+    )
+    risk_off_signals = sum(
+        (
+            markets.kr.kospi_pct <= -0.7,
+            markets.fx.usdkrw_pct >= 0.5,
+            markets.volatility.vix >= 25.0,
+            snapshot.flow_summary.foreign_net <= -2000.0,
+        )
+    )
+    if risk_on_signals >= 2 and risk_off_signals >= 2:
+        reasons.append("core_signal_conflict")
+
+    unique_reasons = tuple(dict.fromkeys(reasons))
+    escalated = bool(unique_reasons)
+    return ChairModelSelection(
+        model=options.escalation_model if escalated else options.model,
+        reasoning_effort=(
+            options.escalation_reasoning_effort
+            if escalated
+            else options.reasoning_effort
+        ),
+        escalated=escalated,
+        reasons=unique_reasons,
+    )
 
 
 class LLMChairAgent:
@@ -33,20 +196,54 @@ class LLMChairAgent:
     def run(self, snapshot: Snapshot, stances: list[Stance], debate_round: DebateRound | None = None) -> CommitteeResult:
         """Return a strict CommitteeResult with safe fallback on any error."""
 
+        selection = select_chair_model(
+            snapshot=snapshot,
+            stances=stances,
+            debate_round=debate_round,
+            options=self.options,
+        )
+        trace = TraceLogger(os.getenv("LLM_TRACE_PATH"))
+        trace.log(
+            "chair_model_routing",
+            {
+                "model": selection.model,
+                "reasoning_effort": selection.reasoning_effort,
+                "escalated": selection.escalated,
+                "reasons": list(selection.reasons),
+            },
+        )
         try:
             config = load_openai_config()
             system_prompt = self._system_prompt()
             user_prompt = self._user_prompt(snapshot=snapshot, stances=stances, debate_round=debate_round)
-            raw = chat_completion(
+            response = responses_completion_with_metadata(
                 config=config,
-                model=self.options.model,
+                model=selection.model,
                 system_prompt=system_prompt,
                 user_prompt=user_prompt,
-                temperature=self.options.temperature,
+                reasoning_effort=selection.reasoning_effort,
             )
-            parsed = json.loads(raw)
+            trace.log(
+                "chair_model_response",
+                {
+                    "requested_model": selection.model,
+                    "response_model": response.model,
+                    "reasoning_effort": selection.reasoning_effort,
+                    "input_tokens": response.input_tokens,
+                    "output_tokens": response.output_tokens,
+                },
+            )
+            parsed = json.loads(response.content)
             return CommitteeResult.model_validate(parsed)
-        except Exception:
+        except Exception as exc:
+            trace.log(
+                "chair_model_fallback",
+                {
+                    "requested_model": selection.model,
+                    "error_type": type(exc).__name__,
+                    "error": str(exc)[:200],
+                },
+            )
             return self.fallback_agent.run(stances)
 
     @staticmethod

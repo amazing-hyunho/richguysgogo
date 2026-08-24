@@ -71,10 +71,7 @@ def run_committee(snapshot: Snapshot, stances: List[Stance], debate_round: Debat
     if use_llm_chair:
         chair = LLMChairAgent(
             fallback_agent=chair_stub,
-            options=ChairLLMOptions(
-                model=os.getenv("CHAIR_OPENAI_MODEL", "gpt-4.1").strip() or "gpt-4.1",
-                temperature=float(os.getenv("CHAIR_LLM_TEMPERATURE", "0.1")),
-            ),
+            options=ChairLLMOptions.from_env(),
         )
         raw_result = chair.run(snapshot, stances, debate_round=debate_round)
         return tune_committee_result(snapshot, stances, raw_result)

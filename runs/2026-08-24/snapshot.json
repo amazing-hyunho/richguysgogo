@@ -1,27 +1,27 @@
 {
   "market_summary": {
-    "note": "KOSPI -3.16%, USD/KRW 1385.48. Headlines loaded. Flows loaded.",
-    "kospi_change_pct": -3.16,
+    "note": "KOSPI -3.12%, USD/KRW 1385.48. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -3.12,
     "usdkrw": 1385.479002
   },
   "flow_summary": {
-    "note": "외국인 -27678억, 기관 -8711억, 개인 +24742억 | KOSPI(외 -29031, 기관 -9170, 개인 +26472) KOSDAQ(외 +1353, 기관 +459, 개인 -1730)",
-    "foreign_net": -27678.0,
-    "institution_net": -8711.0,
-    "retail_net": 24742.0
+    "note": "외국인 -34275억, 기관 -12652억, 개인 +30613억 | KOSPI(외 -36691, 기관 -12901, 개인 +33217) KOSDAQ(외 +2416, 기관 +249, 개인 -2604)",
+    "foreign_net": -34275.0,
+    "institution_net": -12652.0,
+    "retail_net": 30613.0
   },
   "korean_market_flow": {
     "date": "2026-08-24",
     "market": {
       "KOSPI": {
-        "individual": 26472,
-        "foreign": -29031,
-        "institution": -9170
+        "individual": 33217,
+        "foreign": -36691,
+        "institution": -12901
       },
       "KOSDAQ": {
-        "individual": -1730,
-        "foreign": 1353,
-        "institution": 459
+        "individual": -2604,
+        "foreign": 2416,
+        "institution": 249
       }
     }
   },
@@ -31,11 +31,11 @@
     "n/a"
   ],
   "news_headlines": [
-    "[국내지수] 코스피 2차 반등 이어질까…엔비디아·미 국채금리에 쏠린 눈 - 매일경제 마켓",
-    "[금리/연준] 美연준 매파 인사, 국채금리 급등에도 \"시장 잘 가고 있다\" - 연합뉴스",
-    "[환율/달러] 원/달러 환율 1,370원대로 하락…작년 9월 이후 최저 - 연합뉴스",
-    "[정책/테마] 美·캐나다, 관세 ‘맞불 전쟁’…트럼프 “51번째 주 아니면서 혜택만 원해” - 중앙일보",
-    "[인플레이션] [증시전략] 뉴욕증시, 美국채금리 급등에도 상승…잭슨홀·PCE 대기 - SBS Biz"
+    "[환율/달러] 원/달러 환율 13개월 만에 최저…장중 1,370원대로 하락(종합) - 연합뉴스 한민족센터",
+    "[금리/연준] 프랑스·이탈리아·스페인도 국채 금리 급등 - 매일경제 마켓",
+    "[인플레이션] [증시전략] 뉴욕증시, 美국채금리 급등에도 상승…잭슨홀·PCE 대기 - SBS Biz",
+    "[국내지수] 국채금리·관세전쟁 등 매크로 불안정…코스피 장초반 약세 - 머니투데이 - 머니투데이",
+    "[반도체/AI] 엔비디아 “AI 서버 CPU도 RISC-V 지원”... 생태계 확대 선언[핫칩스 2026] - 매일경제"
   ],
   "watchlist": [
     "SPY",
@@ -44,10 +44,10 @@
   ],
   "markets": {
     "kr": {
-      "kospi": 6694.54,
-      "kosdaq": 812.36,
-      "kospi_pct": -3.16,
-      "kosdaq_pct": 1.3
+      "kospi": 6696.96,
+      "kosdaq": 813.33,
+      "kospi_pct": -3.12,
+      "kosdaq_pct": 1.42
     },
     "us": {
       "sp500": 7674.37,
@@ -59,30 +59,30 @@
     },
     "fx": {
       "usdkrw": 1385.479002,
-      "usdkrw_pct": -0.22238267148013915
+      "usdkrw_pct": -0.17978339350180572
     },
     "volatility": {
-      "vix": 15.130000114440918
+      "vix": 15.859999656677246
     }
   },
   "macro": {
     "daily": {
-      "us10y": 4.73799991607666,
-      "us2y": 3.7100000381469727,
-      "spread_2_10": 1.0279998779296875,
-      "us_3m_yield": 3.7100000381469727,
+      "us10y": 4.7139997482299805,
+      "us2y": 3.7179999351501465,
+      "spread_2_10": 0.995999813079834,
+      "us_3m_yield": 3.7179999351501465,
       "us_2y_yield": 4.19,
-      "us_10y_yield": 4.73799991607666,
-      "spread_10y_2y": 0.5479999160766598,
-      "spread_10y_3m": 1.0279998779296875,
-      "vix": 15.130000114440918,
-      "dxy": 98.84100341796875,
-      "usdkrw": 1382.0,
+      "us_10y_yield": 4.7139997482299805,
+      "spread_10y_2y": 0.5239997482299801,
+      "spread_10y_3m": 0.995999813079834,
+      "vix": 15.859999656677246,
+      "dxy": 98.9260025024414,
+      "usdkrw": 1382.47998046875,
       "vix3m": 18.5,
-      "vix_term_spread": 3.369999885559082,
-      "oil_wti": 85.72000122070312,
+      "vix_term_spread": 2.640000343322754,
+      "oil_wti": 85.58999633789062,
       "russell2000": 3017.8701171875,
-      "oil_brent": 93.16999816894531
+      "oil_brent": 93.37999725341797
     },
     "monthly": {
       "unemployment_rate": 4.1,
@@ -103,7 +103,7 @@
     },
     "structural": {
       "fed_funds_rate": 3.63,
-      "real_rate": 2.3979999160766603,
+      "real_rate": 2.3739997482299806,
       "hy_oas": 2.75,
       "ig_oas": 0.82,
       "fed_balance_sheet": 6745699.0,
@@ -113,20 +113,20 @@
   },
   "phase_two_signals": {
     "earnings_signal_score": 0.0,
-    "breadth_signal_score": -1.547,
-    "liquidity_signal_score": 8.163,
+    "breadth_signal_score": -1.467,
+    "liquidity_signal_score": 7.011,
     "note": "derived from headlines + markets + macro.daily + macro.structural"
   },
   "cumulative_context": {
     "lookback_days": 20,
     "sample_count": 20,
-    "kospi_5d_cum_pct": -3.737,
-    "kospi_20d_cum_pct": 2.25,
-    "kosdaq_5d_cum_pct": -6.028,
-    "kospi_abs_move_5d_avg": 3.457,
+    "kospi_5d_cum_pct": -3.697,
+    "kospi_20d_cum_pct": 2.29,
+    "kosdaq_5d_cum_pct": -5.908,
+    "kospi_abs_move_5d_avg": 3.449,
     "usdkrw_5d_change_pct": -1.988,
-    "vix_5d_avg": 12.15,
+    "vix_5d_avg": 12.296,
     "reversal_signal": false,
-    "note": "rolling_20d: kospi20d=+2.25%, vol20d=5.72, reversal=false"
+    "note": "rolling_20d: kospi20d=+2.29%, vol20d=5.72, reversal=false"
   }
 }

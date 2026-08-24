@@ -108,3 +108,90 @@ def chat_completion_with_metadata(
             int(usage["completion_tokens"]) if usage.get("completion_tokens") is not None else None
         ),
     )
+
+
+def responses_completion_with_metadata(
+    *,
+    config: OpenAIConfig,
+    model: str,
+    system_prompt: str,
+    user_prompt: str,
+    reasoning_effort: str = "medium",
+    timeout: int = 60,
+) -> ChatCompletionResult:
+    """Call the Responses API and retain model/usage metadata for audit."""
+
+    import requests
+
+    url = f"{config.base_url.rstrip('/')}/responses"
+    payload = {
+        "model": model,
+        "instructions": system_prompt,
+        # JSON mode validates the user input separately from `instructions`.
+        # Keep an explicit JSON directive here even when the system prompt already has one.
+        "input": f"Return the result as JSON.\n\n{user_prompt}",
+        "reasoning": {"effort": reasoning_effort},
+        "text": {
+            "format": {"type": "json_object"},
+            "verbosity": "medium",
+        },
+        "store": False,
+    }
+    response = requests.post(
+        url,
+        headers={
+            "Authorization": f"Bearer {config.api_key}",
+            "Content-Type": "application/json",
+        },
+        data=json.dumps(payload, ensure_ascii=False),
+        timeout=timeout,
+    )
+    if response.status_code != 200:
+        raise RuntimeError(f"openai_http_{response.status_code}: {response.text[:200]}")
+
+    body = response.json()
+    status = body.get("status")
+    if status not in (None, "completed"):
+        raise RuntimeError(f"openai_response_{status or 'unknown'}")
+
+    content = _extract_responses_output_text(body)
+    if not content:
+        raise RuntimeError("openai_empty_content")
+
+    usage = body.get("usage") if isinstance(body.get("usage"), dict) else {}
+    return ChatCompletionResult(
+        content=content,
+        model=str(body.get("model")) if body.get("model") else None,
+        input_tokens=(
+            int(usage["input_tokens"]) if usage.get("input_tokens") is not None else None
+        ),
+        output_tokens=(
+            int(usage["output_tokens"]) if usage.get("output_tokens") is not None else None
+        ),
+    )
+
+
+def _extract_responses_output_text(body: dict) -> str:
+    """Extract assistant text without assuming a fixed output item position."""
+
+    direct = body.get("output_text")
+    if isinstance(direct, str) and direct.strip():
+        return direct
+
+    parts: list[str] = []
+    output = body.get("output")
+    if not isinstance(output, list):
+        return ""
+    for item in output:
+        if not isinstance(item, dict) or item.get("type") != "message":
+            continue
+        contents = item.get("content")
+        if not isinstance(contents, list):
+            continue
+        for content in contents:
+            if not isinstance(content, dict) or content.get("type") != "output_text":
+                continue
+            text = content.get("text")
+            if isinstance(text, str) and text:
+                parts.append(text)
+    return "".join(parts)

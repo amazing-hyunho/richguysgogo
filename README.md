@@ -293,9 +293,14 @@ docs/          # 대시보드 HTML
 
 - `USE_LLM_AGENTS=1` : 에이전트 LLM 사용
 - `USE_LLM_CHAIR=1` : Chair LLM 사용
+- `CHAIR_OPENAI_MODEL=gpt-5.6-terra` : 평상시 의장 모델
+- `CHAIR_REASONING_EFFORT=medium` : 평상시 의장 추론 강도
+- `CHAIR_ESCALATION_MODEL=gpt-5.6-sol` : 충돌·급변·월간 보고서 시 승격 모델
+- `CHAIR_FORCE_SOL=1` / `CHAIR_URGENT_FLAG=1` : 수동·긴급 승격 스위치
+- `CHAIR_REPORT_MODE=monthly` : 월간 보고서 실행 시 Sol 승격
 - `USE_AGENT_DEBATE=1` : 토론 라운드 활성화
 - `AGENT_MODEL_BACKEND` : 모델 백엔드 선택
-- `LLM_TEMPERATURE` / `CHAIR_LLM_TEMPERATURE`
+- `LLM_TEMPERATURE` : 사전분석 에이전트 온도
 - `INDUSTRY_LLM_MODEL` : 주간 산업 해설 모델 (기본 `gpt-4.1`)
 - `RUNS_BASE_DIR` : 과거 runs 기준 경로
 
