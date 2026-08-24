@@ -47,8 +47,10 @@ python scripts/run_research_radar_weekly.py --execute
 `scripts/sync_weekly.py`가 대시보드 생성 전에 이 명령을 자동 실행합니다. 일시적으로 제외하려면
 `--skip-research-radar`를 사용합니다.
 
-첫 자동 추적 주제는 `피지컬 AI·로봇 파운데이션 모델`입니다. 현재 버전은 연구 검증만 자동화하며
-인재 이동, 자본 형성, 공급망 병목과 실적 확인은 근거 수집기가 추가되기 전까지 통과시키지 않습니다.
+8개 기본 연구영역과 최대 2개의 자유 탐색 슬롯을 운용합니다. 논문 레이더 외에도 주간 산업 뉴스
+DB에서 정책·기업 행동을, 산업 사이클 DB에서 시장 확인을 가져옵니다. 당일 정책 뉴스가 부족하면
+Google News RSS로 보강하며, 과거 사례는 원문 URL·유사점·차이점·재현 조건을 미리 검증한 목록만
+사용합니다. 이 수집기들은 별도의 LLM 호출을 추가하지 않습니다.
 
 산출물은 다음 위치에 저장됩니다.
 
@@ -57,12 +59,24 @@ runs/<as-of>/research_radar/<theme-id>.json
 runs/<as-of>/research_radar/<theme-id>.md
 ```
 
-기존 정적 대시보드의 `🔬 연구→시장` 탭에도 표시하려면 레이더 산출 후
-대시보드를 다시 생성합니다.
+논문 레이더 결과는 별도 탭을 만들지 않고 `🔭 미래 경제 연구소` 탭에 통합됩니다. 레이더 산출 후
+연구 상태와 AI 투자위원회 검토 안건을 갱신하고 대시보드를 다시 생성합니다.
 
 ```bash
+python scripts/run_future_economy_weekly.py --execute
 python scripts/build_dashboard.py
 ```
+
+과거 시점 재현이나 네트워크 없는 점검에서는 당일 정책 RSS, 정부 원문 API,
+DART 공시 수집을 각각 끌 수 있습니다.
+
+```bash
+python scripts/run_future_economy_weekly.py --as-of 2026-08-23 \
+  --skip-live-policy --skip-official-policy-api --skip-dart-disclosures --execute
+```
+
+서로 다른 근거 유형이 2종 이상이면 정식 연구로, 3종 이상이면 AI 투자위원회 검토 안건으로
+올라갑니다. 안건은 투자 판단을 위한 참고 자료이며 자동 주문이나 자동매매 지시가 아닙니다.
 
 과거 시점으로 되감으면 `known_at`이 기준일보다 늦은 근거가 자동 제외됩니다.
 

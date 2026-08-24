@@ -22,6 +22,7 @@ from committee.research_radar.weekly import (
     build_audit_payload,
     build_report,
     fetch_arxiv_papers,
+    filter_papers_for_topic_scope,
     filter_papers_for_window,
     interpret_papers,
     load_weekly_config,
@@ -37,6 +38,12 @@ def _parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--output-root", type=Path, default=DEFAULT_OUTPUT_ROOT)
     parser.add_argument("--lookback-days", type=int, default=None)
     parser.add_argument("--max-papers", type=int, default=None)
+    parser.add_argument(
+        "--theme-id",
+        action="append",
+        default=[],
+        help="지정한 연구 주제만 실행(여러 번 지정 가능)",
+    )
     parser.add_argument("--model", default=os.getenv("RESEARCH_RADAR_LLM_MODEL", "gpt-4.1"))
     parser.add_argument("--execute", action="store_true", help="네트워크·GPT 호출과 보고서 저장 실행")
     return parser.parse_args(argv)
@@ -60,6 +67,17 @@ def main(argv: list[str] | None = None) -> int:
     lookback_days = args.lookback_days or int(config.get("default_lookback_days", 28))
     max_papers = args.max_papers or int(config.get("default_max_papers", 20))
     topics = config["topics"]
+    requested_theme_ids = {str(value).strip() for value in args.theme_id if str(value).strip()}
+    if requested_theme_ids:
+        known_theme_ids = {str(topic.get("theme_id") or "") for topic in topics}
+        unknown_theme_ids = sorted(requested_theme_ids - known_theme_ids)
+        if unknown_theme_ids:
+            print(
+                f"research_radar_weekly_error unknown_theme_ids={','.join(unknown_theme_ids)}",
+                file=sys.stderr,
+            )
+            return 2
+        topics = [topic for topic in topics if str(topic.get("theme_id") or "") in requested_theme_ids]
     print(
         f"research_radar_weekly_plan as_of={as_of.isoformat()} topics={len(topics)} "
         f"lookback_days={lookback_days} max_papers={max_papers} model={args.model} execute={args.execute}"
@@ -85,7 +103,8 @@ def main(argv: list[str] | None = None) -> int:
             )
             papers = filter_papers_for_window(
                 fetched, as_of=as_of, lookback_days=lookback_days
-            )[:max_papers]
+            )
+            papers = filter_papers_for_topic_scope(papers, topic)[:max_papers]
             print(f"research_radar_weekly_collected theme={theme_id} papers={len(papers)}")
             if papers:
                 batch = interpret_papers(

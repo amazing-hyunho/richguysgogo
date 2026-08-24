@@ -908,6 +908,79 @@ def load_research_radar_dashboard_data() -> dict[str, object]:
     }
 
 
+def load_future_economy_dashboard_data() -> dict[str, object]:
+    """Load the latest future-economy state with research-radar compatibility.
+
+    The weekly report is append-only. When the new weekly state does not yet
+    exist, verified research-radar reports remain visible as paper signals and
+    the last greed-pot output is exposed only as legacy material.
+    """
+
+    valid_reports: list[tuple[str, Path, dict[str, object]]] = []
+    for path in RUNS_DIR.glob("*/future_economy/weekly_report.json"):
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        if not isinstance(payload, dict) or payload.get("schema_version") != "future-economy-weekly-report-v1":
+            continue
+        as_of = str(payload.get("as_of") or "").strip()
+        try:
+            date.fromisoformat(as_of)
+        except ValueError:
+            continue
+        valid_reports.append((as_of, path, payload))
+
+    radar = load_research_radar_dashboard_data()
+    legacy = load_latest_greed_pot()
+    if not valid_reports:
+        return {
+            "as_of": radar.get("as_of"),
+            "stale": False,
+            "age_days": None,
+            "source_mode": "research_radar_fallback" if radar.get("theme_count") else "empty",
+            "summary": {
+                "new": 0,
+                "strengthened": 0,
+                "maintained": 0,
+                "weakened": 0,
+                "archived": 0,
+                "active": 0,
+                "committee_review": 0,
+            },
+            "research_tasks": [],
+            "committee_agenda": {"as_of": None, "item_count": 0, "items": []},
+            "paper_signals": radar,
+            "legacy_material": legacy,
+        }
+
+    as_of, report_path, report = max(valid_reports, key=lambda row: (row[0], str(row[1])))
+    try:
+        age_days = (date.today() - date.fromisoformat(as_of)).days
+    except ValueError:
+        age_days = None
+    agenda_path = report_path.with_name("committee_agenda.json")
+    try:
+        agenda = json.loads(agenda_path.read_text(encoding="utf-8"))
+        if not isinstance(agenda, dict) or agenda.get("schema_version") != "future-economy-committee-agenda-v1":
+            agenda = {"as_of": as_of, "item_count": 0, "items": []}
+    except (OSError, json.JSONDecodeError):
+        agenda = {"as_of": as_of, "item_count": 0, "items": []}
+    tasks = report.get("research_tasks") if isinstance(report.get("research_tasks"), list) else []
+    return {
+        "as_of": as_of,
+        "stale": age_days is not None and age_days > 14,
+        "age_days": age_days,
+        "source_mode": "future_economy_weekly",
+        "summary": report.get("summary") if isinstance(report.get("summary"), dict) else {},
+        "research_tasks": tasks,
+        "committee_agenda": agenda,
+        "paper_signals": radar,
+        "legacy_material": legacy,
+        "methodology": report.get("methodology") if isinstance(report.get("methodology"), dict) else {},
+    }
+
+
 def main() -> None:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     init_db(DB_PATH)
@@ -966,6 +1039,7 @@ def main() -> None:
             "fear_greed": _fetch_fear_greed(),
             "industry_cycle": load_industry_cycle_dashboard_data(),
             "research_radar": load_research_radar_dashboard_data(),
+            "future_economy": load_future_economy_dashboard_data(),
         }
     finally:
         conn.close()

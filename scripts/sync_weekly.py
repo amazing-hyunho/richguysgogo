@@ -149,6 +149,10 @@ def _parse_args(run_date: date | None = None) -> argparse.Namespace:
         help="미래산업 논문 수집·GPT 해석·레이더 보고서 생성을 건너뜀",
     )
     p.add_argument(
+        "--skip-future-economy", action="store_true",
+        help="미래 경제 연구소 주간 상태·위원회 안건 생성을 건너뜀",
+    )
+    p.add_argument(
         "--us-sp500", action="store_true",
         help="US 종목 마스터: S&P 500 포함 (기본 포함)",
     )
@@ -326,7 +330,22 @@ def main() -> int:
         skip=args.skip_research_radar,
     )
 
-    # ── 9. 대시보드 빌드 ──────────────────────────────────────────
+    # ── 9. 미래 경제 연구소 상태·위원회 안건 ─────────────────────
+    # 논문 레이더는 근거의 한 축일 뿐이며, 서로 다른 근거 유형이
+    # 세 종류 이상일 때만 위원회 검토 안건이 생성된다.
+    step(
+        "미래 경제 연구소 주간 상태·위원회 안건 생성",
+        [
+            py,
+            "scripts/run_future_economy_weekly.py",
+            "--as-of",
+            run_date.isoformat(),
+            "--execute",
+        ],
+        skip=args.skip_future_economy,
+    )
+
+    # ── 10. 대시보드 빌드 ─────────────────────────────────────────
     step(
         "대시보드 빌드 (docs/dashboard.html)",
         [py, "scripts/build_dashboard.py"],

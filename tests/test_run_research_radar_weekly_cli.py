@@ -46,6 +46,18 @@ class RunResearchRadarWeeklyCliTests(unittest.TestCase):
         self.assertIn("--execute", result.stdout)
         self.assertIn("--model", result.stdout)
         self.assertIn("--lookback-days", result.stdout)
+        self.assertIn("--theme-id", result.stdout)
+
+    def test_theme_filter_rejects_unknown_topic_before_execute(self) -> None:
+        result = subprocess.run(
+            [sys.executable, str(SCRIPT), "--theme-id", "not-a-topic"],
+            cwd=str(ROOT),
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        self.assertEqual(result.returncode, 2)
+        self.assertIn("unknown_theme_ids=not-a-topic", result.stderr)
 
 
 if __name__ == "__main__":

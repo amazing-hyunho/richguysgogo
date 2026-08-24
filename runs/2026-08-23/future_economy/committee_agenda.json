@@ -1,0 +1,144 @@
+{
+  "schema_version": "future-economy-committee-agenda-v1",
+  "as_of": "2026-08-23",
+  "items": [
+    {
+      "research_id": "physical-ai-foundation-models",
+      "title": "피지컬 AI·로봇 파운데이션 모델",
+      "horizon_months": 12,
+      "thesis": "월드모델·VLA·범용 로봇 학습의 반복 가능한 성능 개선이 로봇 데이터와 연산·센서·액추에이터 병목으로 전달되는지 추적한다.",
+      "weekly_change": "new",
+      "evidence_type_count": 4,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "자동차 시장 확인 점수 12.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 자동차의 시장 확인 점수는 12.0, 상태는 AVOID입니다.",
+          "event_date": "2026-08-23",
+          "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "negative"
+        },
+        {
+          "evidence_type": "research",
+          "title": "$τ_0$-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation",
+          "claim": "$\\tau_0$-VLA는 월드모델 기반 테스트 타임 연산 할당을 통해 장기 조작 과제에서 예측 정확도와 성공률을 향상시킨다.",
+          "event_date": "2026-08-17",
+          "source_url": "https://arxiv.org/abs/2608.16885v1",
+          "source_name": "arXiv",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "AI, 자동차 선박 로봇이라는 몸을 입다",
+          "claim": "수집된 헤드라인에서 확인된 정책 사건: AI, 자동차 선박 로봇이라는 몸을 입다",
+          "event_date": "2026-08-22",
+          "source_url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPVEtXbFJPMzhSR3pYSEQ5RE9uNTVCS2FtOWhSaUZNZG00S1RfUGhZQVR6cU1DVlBhS3JTbVlObTBJRFlTXzRIYm1CazVJZDU0eC1FZXFaaUlLVnIzUzJ6dkFBUE9IUFRkS080NGtxRVlpdDgwekZaZUplcEUtMV9lc0l2VnJhd3U2YVBj?oc=5",
+          "source_name": "대한민국 정책브리핑",
+          "direction": "neutral"
+        },
+        {
+          "evidence_type": "historical_analogy",
+          "title": "Transformer 연구에서 상용 AI 인프라 확산까지",
+          "claim": "2017년 Transformer 논문은 범용 모델 성능 개선이 연구 검증에서 시작해 연산·데이터·인프라 수요로 확장된 과거 경로의 출발점입니다.",
+          "event_date": "2017-06-12",
+          "source_url": "https://arxiv.org/abs/1706.03762",
+          "source_name": "arXiv · Attention Is All You Need",
+          "direction": "neutral"
+        }
+      ],
+      "transmission_chain": [
+        "로봇 지능 성능 개선",
+        "센서·액추에이터·자동화 설비 수요",
+        "한국 로봇·부품·제조 자동화 기업"
+      ],
+      "watch_industries": [
+        "로봇",
+        "자동차",
+        "하드웨어·전자부품"
+      ],
+      "watch_companies": [],
+      "historical_analogues": [
+        {
+          "analogue_id": "transformer-to-commercial-ai-chain",
+          "title": "Transformer 연구에서 상용 AI 인프라 확산까지",
+          "source_url": "https://arxiv.org/abs/1706.03762",
+          "similarities": [
+            "범용 모델의 성능 개선이 여러 응용으로 확장될 수 있다는 연구 가설",
+            "데이터와 연산 인프라가 성능 확장의 핵심 병목이라는 점"
+          ],
+          "differences": [
+            "로봇은 텍스트 모델보다 실세계 데이터 수집 비용과 안전 검증 부담이 큼",
+            "소프트웨어 확산과 달리 센서·액추에이터·제조 수율이 상용화 속도를 제한함"
+          ],
+          "reapplication_conditions": [
+            "서로 다른 실환경 벤치마크에서 반복 가능한 성능 향상",
+            "도입 비용 대비 생산성 개선과 기업 투자·수주가 함께 확인",
+            "한국 부품·자동화 공급망의 매출 또는 수주 연결 확인"
+          ]
+        }
+      ],
+      "invalidation_conditions": [
+        "실환경 성능 개선이 재현되지 않음",
+        "도입 비용이 인건비 절감 효과를 지속적으로 초과"
+      ],
+      "research_score": 32.96
+    },
+    {
+      "research_id": "ai-semiconductor-datacenter",
+      "title": "AI·반도체·데이터센터",
+      "horizon_months": 12,
+      "thesis": "AI 연산 수요의 성능 개선과 비용 하락이 메모리·패키징·전력·냉각 병목으로 전달되는지 추적한다.",
+      "weekly_change": "new",
+      "evidence_type_count": 3,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "반도체 장비 시장 확인 점수 95.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 반도체 장비의 시장 확인 점수는 95.0, 상태는 EARLY_ENTRY입니다.",
+          "event_date": "2026-08-23",
+          "source_url": "https://finance.yahoo.com/",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "트럼프, 중국 견제 위해 주요 반도체 소재에 15% 관세 부과",
+          "claim": "수집된 헤드라인에서 확인된 정책 사건: 트럼프, 중국 견제 위해 주요 반도체 소재에 15% 관세 부과",
+          "event_date": "2026-08-07",
+          "source_url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1IODljV3l1S2FrQXNzV3lpU2dwLTFWVExLa3RwRE96S2xlZWJCQkxRWVpOUTFuYUQ1TUpkWUlpdHVteHRlQmFzVVF0WE1EcWNHSGtMS1FCMFRUUlFO0gFiQVVfeXFMTmE4TlppeFd2enRCYWEzd0ItRWdiY2NVNEkwaUhHSUtDc3ppcWU5OU1LYjJSYzZPMTNKMW91blhuVXlndGwtcU9WbWlKclVROXVsNXZnMUZoUFRXc3k4V2tuNlE?oc=5",
+          "source_name": "BBC",
+          "direction": "negative"
+        },
+        {
+          "evidence_type": "corporate",
+          "title": "“엔비디아, 韓 AI 반도체 기업 리벨리온과 협력 논의”…젠슨 황·박성현 대표 회동 - 조선비즈",
+          "claim": "수집된 헤드라인에서 확인된 기업 행동 사건: “엔비디아, 韓 AI 반도체 기업 리벨리온과 협력 논의”…젠슨 황·박성현 대표 회동 - 조선비즈",
+          "event_date": "2026-08-23",
+          "source_url": "https://news.google.com/rss/articles/CBMiggFBVV95cUxQck1GYjZReEt4OG8wMmFPU1ZQUmJpejE0Q2U5ZXNBcDRacTZxejMwQjdJWmRoeWdUWUZrN2tvcnRYSWJwdks1SGJIZm10aFl2MUNHWV9oZXdPMUxwRGFtTVBpRWpRUEtubzlOY182ME81ZnF2XzZhRk9MNUhmZWxSWHV30gGWAUFVX3lxTE9BUUlKUWo0UU9ia3A2QkNta2czSEpnMmRpOHpUVENsYzNreWZ1UFJBS3V1X1NfbG44VGFiOXhKNWstcFhzcDI4Zy1jV2ljRE95TlBKNTlCZXphZnQ4eGl4VUJ2ZjFyMmhPM0t4b1RqLTl6VW9xTzJJcWdoR3JZb1JfRV9NZG1rVV9keEtfVl9tRWlTT0Z1Zw?oc=5",
+          "source_name": "Chosunbiz",
+          "direction": "positive"
+        }
+      ],
+      "transmission_chain": [
+        "글로벌 AI 투자",
+        "연산·메모리·전력 병목",
+        "한국 반도체·장비·부품 수요"
+      ],
+      "watch_industries": [
+        "반도체",
+        "하드웨어·전자부품",
+        "전력기기"
+      ],
+      "watch_companies": [],
+      "historical_analogues": [],
+      "invalidation_conditions": [
+        "AI 인프라 투자가 여러 분기 연속 둔화",
+        "핵심 공급 병목이 구조적 과잉설비로 전환"
+      ],
+      "research_score": 32.04
+    }
+  ],
+  "item_count": 2,
+  "usage_note": "Context for macro/flow review only; never an order or automatic trading instruction."
+}

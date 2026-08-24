@@ -1,0 +1,205 @@
+{
+  "schema_version": "future-economy-committee-agenda-v1",
+  "as_of": "2026-08-25",
+  "items": [
+    {
+      "research_id": "photonic-interconnects-optoelectronics",
+      "title": "광 I/O·실리콘 포토닉스",
+      "horizon_months": 12,
+      "thesis": "AI 클러스터의 전기식 연결 한계를 광 I/O·실리콘 포토닉스·광전자 3D 집적이 실제 대역폭과 전력 효율 개선으로 해소하는지 추적한다.",
+      "weekly_change": "new",
+      "evidence_type_count": 3,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "반도체 장비 시장 확인 점수 95.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 반도체 장비의 시장 확인 점수는 95.0, 상태는 EARLY_ENTRY입니다.",
+          "event_date": "2026-08-23",
+          "source_url": "https://finance.yahoo.com/",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "research",
+          "title": "Zero-change foundry compatible silicon photonics MEMS optical switch",
+          "claim": "파운드리 호환 공정으로 제작된 실리콘 포토닉스 MEMS 광 스위치를 실험적으로 구현하여, 30 dB 이상의 소멸비와 1.5 dB 이하 삽입 손실, 매우 낮은 정적 전력 소모를 달성함으로써 대규모 광 회로 스위치의 실현 가능성을 보였다.",
+          "event_date": "2026-08-04",
+          "source_url": "https://arxiv.org/abs/2608.03146v1",
+          "source_name": "arXiv",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "[특징주] 美 중국산 광트랜시버 규제 추진에 대한광통신 등 광통신株 강세",
+          "claim": "정책 RSS 헤드라인에서 확인된 산업 관련 사건: [특징주] 美 중국산 광트랜시버 규제 추진에 대한광통신 등 광통신株 강세",
+          "event_date": "2026-08-10",
+          "source_url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1lczIxMTJta0s2NjRYMjZIMEVQQk8tdXdBTEdlZ191aXVLRlBFM3E5UW40c1BCcV85eERhQTQwajg2bTlWaW9EMjJlbmNmWjhLWm5KLQ?oc=5",
+          "source_name": "Google News RSS",
+          "direction": "neutral"
+        }
+      ],
+      "transmission_chain": [
+        "AI 클러스터의 대역폭·전력 병목",
+        "광 I/O·레이저·변조기·광전자 3D 집적",
+        "한국 반도체 패키징·기판·소재·정밀장비 수요"
+      ],
+      "watch_industries": [
+        "반도체",
+        "반도체 장비·소재",
+        "하드웨어·전자부품"
+      ],
+      "watch_companies": [],
+      "historical_analogues": [],
+      "invalidation_conditions": [
+        "광 링크의 총전력·원가가 전기식 연결 대비 우위를 반복 검증하지 못함",
+        "패키징 수율·열관리·표준화 문제로 데이터센터 채택이 장기 지연"
+      ],
+      "research_score": 42.38
+    },
+    {
+      "research_id": "power-grid-nuclear-renewables",
+      "title": "전력망·원전·신재생에너지",
+      "horizon_months": 12,
+      "thesis": "전력 수요 증가와 저탄소 전원의 기술 진전이 발전·송배전·저장 인프라 투자로 이어지는지 추적한다.",
+      "weekly_change": "new",
+      "evidence_type_count": 3,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "원자력 시장 확인 점수 8.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 원자력의 시장 확인 점수는 8.0, 상태는 WATCH입니다.",
+          "event_date": "2026-08-23",
+          "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "negative"
+        },
+        {
+          "evidence_type": "corporate",
+          "title": "두산에너빌리티 · 단일판매ㆍ공급계약체결",
+          "claim": "두산에너빌리티가 DART에 단일판매ㆍ공급계약체결 공시를 제출했습니다.",
+          "event_date": "2026-08-21",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800022",
+          "source_name": "금융감독원 DART",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "'국내생산세액공제' 첫 도입...태양광·풍력 등 6대 전략산업 지원",
+          "claim": "수집된 헤드라인에서 확인된 정책 사건: '국내생산세액공제' 첫 도입...태양광·풍력 등 6대 전략산업 지원",
+          "event_date": "2026-08-07",
+          "source_url": "https://news.google.com/rss/articles/CBMickFVX3lxTE5aMEhJSWJ2NlNFSTA2Nm5tRnJlY3l2Q1FDWGVubng5NFVMd2kteFp1XzZaRlNmcWRMQ0JBM05rWHk2enFRbUFkdnFIMnNYR3N4TkJoSzNtTEViWlJwWDhGYVBlaXJlTlp5QlFaaTJieHAzdw?oc=5",
+          "source_name": "에너지신문",
+          "direction": "positive"
+        }
+      ],
+      "transmission_chain": [
+        "전력 수요와 탈탄소 정책",
+        "발전·송배전·저장 투자",
+        "한국 전력기기·원전·설비 공급망"
+      ],
+      "watch_industries": [
+        "전력기기",
+        "원전",
+        "신재생에너지"
+      ],
+      "watch_companies": [
+        {
+          "company_name": "두산에너빌리티",
+          "stock_code": "034020",
+          "connection_reason": "단일판매ㆍ공급계약체결",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260821800022"
+        }
+      ],
+      "historical_analogues": [],
+      "invalidation_conditions": [
+        "전력 인프라 예산·발주 축소",
+        "프로젝트 인허가와 경제성 악화가 장기화"
+      ],
+      "research_score": 39.34
+    },
+    {
+      "research_id": "physical-ai-foundation-models",
+      "title": "로봇·자동화·자율주행",
+      "horizon_months": 12,
+      "thesis": "월드모델·VLA·범용 로봇 학습의 반복 가능한 성능 개선이 센서·액추에이터·제조 자동화 수요로 전달되는지 추적한다.",
+      "weekly_change": "strengthened",
+      "evidence_type_count": 4,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "자동차 시장 확인 점수 12.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 자동차의 시장 확인 점수는 12.0, 상태는 AVOID입니다.",
+          "event_date": "2026-08-23",
+          "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "negative"
+        },
+        {
+          "evidence_type": "research",
+          "title": "$τ_0$-VLA: a Hierarchical Robot Foundation Model with World-Model-Guided Test-Time Computation",
+          "claim": "$\\tau_0$-VLA는 월드모델 기반 테스트 타임 연산 할당을 통해 장기 조작 과제에서 예측 정확도와 성공률을 향상시킨다.",
+          "event_date": "2026-08-17",
+          "source_url": "https://arxiv.org/abs/2608.16885v1",
+          "source_name": "arXiv",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "AI, 자동차 선박 로봇이라는 몸을 입다",
+          "claim": "수집된 헤드라인에서 확인된 정책 사건: AI, 자동차 선박 로봇이라는 몸을 입다",
+          "event_date": "2026-08-22",
+          "source_url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPVEtXbFJPMzhSR3pYSEQ5RE9uNTVCS2FtOWhSaUZNZG00S1RfUGhZQVR6cU1DVlBhS3JTbVlObTBJRFlTXzRIYm1CazVJZDU0eC1FZXFaaUlLVnIzUzJ6dkFBUE9IUFRkS080NGtxRVlpdDgwekZaZUplcEUtMV9lc0l2VnJhd3U2YVBj?oc=5",
+          "source_name": "대한민국 정책브리핑",
+          "direction": "neutral"
+        },
+        {
+          "evidence_type": "historical_analogy",
+          "title": "Transformer 연구에서 상용 AI 인프라 확산까지",
+          "claim": "2017년 Transformer 논문은 범용 모델 성능 개선이 연구 검증에서 시작해 연산·데이터·인프라 수요로 확장된 과거 경로의 출발점입니다.",
+          "event_date": "2017-06-12",
+          "source_url": "https://arxiv.org/abs/1706.03762",
+          "source_name": "arXiv · Attention Is All You Need",
+          "direction": "neutral"
+        }
+      ],
+      "transmission_chain": [
+        "로봇 지능 성능 개선",
+        "센서·액추에이터·자동화 설비 수요",
+        "한국 로봇·부품·제조 자동화 기업"
+      ],
+      "watch_industries": [
+        "로봇",
+        "자동차",
+        "하드웨어·전자부품"
+      ],
+      "watch_companies": [],
+      "historical_analogues": [
+        {
+          "analogue_id": "transformer-to-commercial-ai-chain",
+          "title": "Transformer 연구에서 상용 AI 인프라 확산까지",
+          "source_url": "https://arxiv.org/abs/1706.03762",
+          "similarities": [
+            "범용 모델의 성능 개선이 여러 응용으로 확장될 수 있다는 연구 가설",
+            "데이터와 연산 인프라가 성능 확장의 핵심 병목이라는 점"
+          ],
+          "differences": [
+            "로봇은 텍스트 모델보다 실세계 데이터 수집 비용과 안전 검증 부담이 큼",
+            "소프트웨어 확산과 달리 센서·액추에이터·제조 수율이 상용화 속도를 제한함"
+          ],
+          "reapplication_conditions": [
+            "서로 다른 실환경 벤치마크에서 반복 가능한 성능 향상",
+            "도입 비용 대비 생산성 개선과 기업 투자·수주가 함께 확인",
+            "한국 부품·자동화 공급망의 매출 또는 수주 연결 확인"
+          ]
+        }
+      ],
+      "invalidation_conditions": [
+        "실환경 성능 개선이 재현되지 않음",
+        "도입 비용이 인건비 절감 효과를 지속적으로 초과"
+      ],
+      "research_score": 39.15
+    }
+  ],
+  "item_count": 3,
+  "usage_note": "Context for macro/flow review only; never an order or automatic trading instruction."
+}

@@ -1,0 +1,195 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "photonic-computing-programmable-optics",
+    "name": "광연산·프로그래머블 포토닉스",
+    "thesis": "광행렬연산·광신경망·프로그래머블 광회로가 정확도와 재구성 가능성을 유지하면서 전자식 AI 연산의 전력·지연 병목을 줄이는지 추적한다."
+  },
+  "as_of": "2026-08-25",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 6.56,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 26.25,
+      "net_signal": 26.25,
+      "confidence": 61.25,
+      "evidence_count": 2,
+      "distinct_source_count": 1,
+      "positive_count": 1,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2608-04582v1",
+        "arxiv-2608-11099v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2608-04582v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Universal Function Approximation via Diffractive Optical Processors: Physical Limits, Error Bounds, and Learnability",
+      "claim": "위상 부호화 회절 광 프로세서의 함수 근사 능력, 물리적 한계, 오차 경계, 학습 가능성에 대한 이론적 프레임워크와 설계 원리를 제시하여 대규모 아날로그 광연산 시스템의 수학적 표현력과 하드웨어 자원 간의 정량적 관계를 규명하였다.",
+      "event_date": "2026-08-05",
+      "known_at": "2026-08-05",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.04582v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.55,
+      "signed_signal": 0.0,
+      "limitation": "실제 광행렬연산 또는 AI 연산 시스템의 실험적 검증 없이 이론적 분석과 경계 도출에 머무르며, 하드웨어 구현의 현실적 제약이나 재구성 가능성, 전력·지연 병목 해소 효과는 직접 다루지 않는다.",
+      "tags": [
+        "weekly-paper",
+        "diffractive-optics",
+        "function-approximation",
+        "theory",
+        "error-bounds",
+        "optical-computing",
+        "expressivity"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2608-11099v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "High-dimensional Supermode Photonics Enabled by Hierarchical Supersymmetric Transformation",
+      "claim": "계층적 이산 초대칭 변환(DSUSY)을 이용해 실리콘 기반 집적회로에서 고차원 슈퍼모드 다중화 및 저손실·저간섭 전송을 실험적으로 구현하였으며, 이는 고용량 광인터커넥트와 병렬 AI 광연산에 확장 가능한 경로를 제시한다.",
+      "event_date": "2026-08-11",
+      "known_at": "2026-08-11",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.11099v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실제 AI 광연산 시스템에서의 연산 정확도, 재구성 가능성, 전력·지연 병목 해소 효과는 직접 검증하지 않았고, 주로 광통신·다중화 성능에 초점이 맞춰져 있다.",
+      "tags": [
+        "weekly-paper",
+        "supermode",
+        "multiplexing",
+        "silicon-photonics",
+        "optical-interconnect",
+        "ai-computing",
+        "scalability"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 26.25점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "특정 벤치마크의 연산 성능은 범용 워크로드, ADC·DAC 비용, 정밀도, 양산 경제성을 직접 증명하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

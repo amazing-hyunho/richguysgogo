@@ -97,12 +97,17 @@ python scripts/sync_all.py --backfill-macro-all
 
 ### 🗓️ 주간 실행 (`sync_weekly.py`) — 약 2~4시간
 
-종목 마스터 갱신 · 전체 종목 컨센서스 · US 재무제표 · 산업 사이클/가상 포트폴리오 · 주간 LLM 해설 · 대시보드 빌드
+종목 마스터 갱신 · 전체 종목 컨센서스 · US 재무제표 · 산업 사이클/가상 포트폴리오 · 미래 경제 연구소 · 주간 LLM 해설 · 대시보드 빌드
 매주 1~2회 실행 권장 (종목 데이터가 빠르게 바뀌지 않으므로 매일 불필요)
 
 주간 LLM은 같은 기준일의 산업 사이클 신호가 있는 산업만 분석합니다.
 모델 사전학습 지식은 시점 비의존 산업 구조 설명에만 사용하며, 현재 투자
 관점은 저장된 정량 신호와 최근 뉴스에만 근거합니다.
+
+미래 경제 연구소는 같은 주간 배치에서 논문, 산업 뉴스의 정책·기업 사건,
+산업 사이클 시장 확인, 검증된 과거 사례를 합칩니다. 이 추가 연결 자체는
+LLM을 호출하지 않습니다. 정책은 당일 뉴스 보강과 Federal Register 정부·규제 원문을,
+기업 행동은 설정된 `DART_API_KEY`가 있을 때 주요사항·거래소 공시 원문을 함께 확인합니다.
 
 ```bash
 # 기본 (KR 전체 종목 컨센서스 + 마스터 갱신, 주 1회 권장)
@@ -125,6 +130,9 @@ python scripts/sync_weekly.py --deep-macro
 
 # 종목 데이터 생략하고 마스터 + 매크로만
 python scripts/sync_weekly.py --skip-stocks
+
+# 미래 경제 연구소 상태 갱신만 일시적으로 생략
+python scripts/sync_weekly.py --skip-future-economy
 ```
 
 | 플래그 | 설명 |
@@ -136,6 +144,7 @@ python scripts/sync_weekly.py --skip-stocks
 | `--master-only` | 종목 마스터 갱신만 |
 | `--deep-macro` | FRED 전체 재백필 |
 | `--skip-stocks` | 컨센서스·재무 생략 |
+| `--skip-future-economy` | 미래 경제 연구소 주간 상태·위원회 안건 갱신 생략 |
 
 ---
 

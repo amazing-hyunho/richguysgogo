@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 import sys
 import tempfile
@@ -47,6 +48,37 @@ class LoadResearchRadarDashboardDataTests(unittest.TestCase):
         self.assertEqual(data["theme_count"], 1)
         self.assertEqual(len(data["themes"]), 1)
         self.assertEqual(data["themes"][0]["status"], "earnings_confirmed")
+        future = build_dashboard.load_future_economy_dashboard_data()
+        self.assertEqual(future["source_mode"], "research_radar_fallback")
+        self.assertEqual(future["paper_signals"]["theme_count"], 1)
+
+    def test_latest_future_economy_report_and_agenda_are_loaded(self) -> None:
+        target = self.runs_dir / "2026-08-24" / "future_economy"
+        target.mkdir(parents=True)
+        (target / "weekly_report.json").write_text(
+            json.dumps({
+                "schema_version": "future-economy-weekly-report-v1",
+                "as_of": "2026-08-24",
+                "summary": {"active": 1, "new": 1},
+                "research_tasks": [{"research_id": "future-ai", "status": "initial_watch"}],
+                "methodology": {"committee_review_min_types": 3},
+            }),
+            encoding="utf-8",
+        )
+        (target / "committee_agenda.json").write_text(
+            json.dumps({
+                "schema_version": "future-economy-committee-agenda-v1",
+                "as_of": "2026-08-24",
+                "item_count": 0,
+                "items": [],
+            }),
+            encoding="utf-8",
+        )
+        data = build_dashboard.load_future_economy_dashboard_data()
+        self.assertEqual(data["source_mode"], "future_economy_weekly")
+        self.assertEqual(data["as_of"], "2026-08-24")
+        self.assertEqual(data["research_tasks"][0]["research_id"], "future-ai")
+        self.assertEqual(data["committee_agenda"]["item_count"], 0)
 
     def test_invalid_and_unrelated_json_are_ignored(self) -> None:
         target = self.runs_dir / "2024-01-01" / "research_radar"
@@ -55,11 +87,18 @@ class LoadResearchRadarDashboardDataTests(unittest.TestCase):
         (target / "other.json").write_text('{"schema_version":"something-else"}', encoding="utf-8")
         self.assertEqual(build_dashboard.load_research_radar_dashboard_data()["themes"], [])
 
-    def test_template_contains_research_radar_tab_and_renderer(self) -> None:
+    def test_research_radar_is_merged_into_future_economy_tab(self) -> None:
         template = build_dashboard.TEMPLATE_PATH.read_text(encoding="utf-8")
-        self.assertIn('data-tab="research-radar"', template)
-        self.assertIn('id="tab-research-radar"', template)
-        self.assertIn("renderResearchRadarTab();", template)
+        self.assertIn('data-tab="future-economy"', template)
+        self.assertIn('id="tab-future-economy"', template)
+        self.assertNotIn('data-tab="research-radar"', template)
+        self.assertNotIn('id="tab-research-radar"', template)
+        self.assertIn("renderFutureEconomyTab();", template)
+        self.assertIn("AI 투자위원회 검토 안건", template)
+        self.assertIn("신규 논문·기술 신호", template)
+        self.assertIn("과거 사례 비교", template)
+        self.assertIn("약화·종료된 연구", template)
+        self.assertIn("['greed-pot', 'research-radar']", template)
 
     def test_embedded_json_cannot_close_inline_script(self) -> None:
         payload = {"research_radar": {"themes": [{"theme": {"name": "</script><script>alert(1)</script>"}}]}}

@@ -10,6 +10,7 @@ from committee.research_radar.weekly import (
     PaperCandidate,
     build_interpretation_prompts,
     build_report,
+    filter_papers_for_topic_scope,
     filter_papers_for_window,
     parse_arxiv_feed,
     validate_interpretation_payload,
@@ -68,6 +69,15 @@ class ResearchRadarWeeklyTests(unittest.TestCase):
         )
         selected = filter_papers_for_window(
             [old, self.paper, future], as_of=date(2026, 8, 11), lookback_days=28
+        )
+        self.assertEqual([paper.paper_id for paper in selected], [self.paper.paper_id])
+
+    def test_topic_scope_filter_applies_explicit_exclusions(self) -> None:
+        wireless = PaperCandidate(
+            **{**self.paper.__dict__, "paper_id": "wireless", "title": "Omni-Photonic Base Station"}
+        )
+        selected = filter_papers_for_topic_scope(
+            [wireless, self.paper], {"exclude_terms": ["base station"]}
         )
         self.assertEqual([paper.paper_id for paper in selected], [self.paper.paper_id])
 

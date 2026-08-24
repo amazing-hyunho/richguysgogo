@@ -1,24 +1,100 @@
 {
   "schema_version": "research-radar-weekly-config-v1",
   "default_lookback_days": 28,
-  "default_max_papers": 20,
+  "default_max_papers": 12,
   "topics": [
     {
-      "theme_id": "physical-ai-foundation-models",
-      "name": "피지컬 AI·로봇 파운데이션 모델",
-      "thesis": "월드모델·VLA·범용 로봇 학습의 반복 가능한 성능 개선이 로봇 데이터와 연산·센서·액추에이터 병목으로 전달되는지 추적한다.",
-      "scope": [
-        "vision-language-action models",
-        "robot foundation models",
-        "physical world models",
-        "cross-embodiment learning",
-        "synthetic robot data",
-        "long-horizon manipulation"
-      ],
-      "arxiv_query": "(all:\"vision language action\" OR all:\"robot foundation model\" OR all:\"embodied foundation model\" OR all:\"robot world model\" OR all:\"physical intelligence\" OR all:\"cross embodiment\") AND (cat:cs.RO OR cat:cs.AI OR cat:cs.CV)",
-      "limitations": [
-        "첫 버전은 연구 검증 단계만 자동 추적하며 인재·투자·공급망·실적은 별도 출처 수집기가 추가될 때까지 통과시키지 않습니다."
-      ]
+      "theme_id": "ai-semiconductor-datacenter",
+      "domain_id": "ai-semiconductor-datacenter",
+      "name": "AI·반도체·데이터센터",
+      "thesis": "AI 연산 수요의 성능 개선과 비용 하락이 메모리·패키징·전력·냉각 병목으로 전달되는지 추적한다.",
+      "scope": ["AI accelerators", "chiplets", "high bandwidth memory", "data center cooling", "AI infrastructure"],
+      "arxiv_query": "(all:\"AI accelerator\" OR all:chiplet OR all:\"high bandwidth memory\" OR all:\"data center cooling\") AND (cat:cs.AR OR cat:cs.LG OR cat:cs.DC)",
+      "limitations": ["논문은 기술 가능성을 보여줄 뿐 설비투자·수주·실적을 직접 증명하지 않습니다."]
+    },
+    {
+      "theme_id": "robotics-automation-autonomy",
+      "domain_id": "robotics-automation-autonomy",
+      "name": "로봇·자동화·자율주행",
+      "thesis": "월드모델·VLA·범용 로봇 학습의 반복 가능한 성능 개선이 센서·액추에이터·제조 자동화 수요로 전달되는지 추적한다.",
+      "scope": ["vision-language-action models", "robot foundation models", "physical world models", "factory automation", "autonomous systems"],
+      "arxiv_query": "(all:\"vision language action\" OR all:\"robot foundation model\" OR all:\"embodied foundation model\" OR all:\"robot world model\") AND (cat:cs.RO OR cat:cs.AI OR cat:cs.CV)",
+      "limitations": ["실험실 성능이 실제 공장·도로의 경제성으로 이어지는지는 별도 검증이 필요합니다."]
+    },
+    {
+      "theme_id": "power-grid-nuclear-renewables",
+      "domain_id": "power-grid-nuclear-renewables",
+      "name": "전력망·원전·신재생에너지",
+      "thesis": "전력 수요 증가와 저탄소 전원의 기술 진전이 발전·송배전·저장 인프라 투자로 이어지는지 추적한다.",
+      "scope": ["power grid optimization", "small modular reactors", "renewable integration", "long duration energy storage"],
+      "arxiv_query": "(all:\"power grid\" OR all:\"small modular reactor\" OR all:\"renewable integration\" OR all:\"long duration energy storage\") AND (cat:eess.SY OR cat:physics.soc-ph OR cat:cs.LG)",
+      "limitations": ["기술 성능 외에 인허가·예산·전력시장 제도 검증이 필요합니다."]
+    },
+    {
+      "theme_id": "battery-ev-mobility",
+      "domain_id": "battery-ev-mobility",
+      "name": "배터리·전기차·차세대 이동수단",
+      "thesis": "차세대 배터리의 수명·안전·원가 개선이 전기차 채택과 소재·장비 공급망 변화로 이어지는지 추적한다.",
+      "scope": ["solid state batteries", "battery recycling", "fast charging", "electric mobility"],
+      "arxiv_query": "(all:\"solid state battery\" OR all:\"battery recycling\" OR all:\"fast charging\" OR all:\"electric mobility\") AND (cat:cond-mat.mtrl-sci OR cat:physics.chem-ph OR cat:eess.SY)",
+      "limitations": ["논문 단계의 셀 성능은 양산 수율과 자동차 채택을 의미하지 않습니다."]
+    },
+    {
+      "theme_id": "bio-health-aging",
+      "domain_id": "bio-health-aging",
+      "name": "바이오·의료·고령화 기술",
+      "thesis": "AI 기반 신약·진단·고령화 기술의 검증이 임상·허가·생산 수요로 이어지는지 추적한다.",
+      "scope": ["AI drug discovery", "medical foundation models", "aging biomarkers", "digital health"],
+      "arxiv_query": "(all:\"AI drug discovery\" OR all:\"medical foundation model\" OR all:\"aging biomarker\" OR all:\"digital health\") AND (cat:q-bio.QM OR cat:cs.AI OR cat:cs.LG)",
+      "limitations": ["전임상·초기 연구 결과는 임상 성공과 규제 승인을 보장하지 않습니다."]
+    },
+    {
+      "theme_id": "defense-space-cybersecurity",
+      "domain_id": "defense-space-cybersecurity",
+      "name": "국방·우주·사이버보안",
+      "thesis": "자율 국방·위성·사이버보안 기술의 진전이 정부 예산과 상용 인프라 수요로 이어지는지 추적한다.",
+      "scope": ["autonomous defense", "satellite systems", "space communications", "cybersecurity"],
+      "arxiv_query": "(all:\"satellite system\" OR all:\"space communication\" OR all:cybersecurity OR all:\"autonomous defense\") AND (cat:cs.CR OR cat:eess.SP OR cat:cs.RO)",
+      "limitations": ["보안·국방 연구는 공개 정보가 제한되므로 예산·조달 자료와의 교차검증이 필요합니다."]
+    },
+    {
+      "theme_id": "climate-water-food-infrastructure",
+      "domain_id": "climate-water-food-infrastructure",
+      "name": "기후·물·식량·환경 인프라",
+      "thesis": "기후 적응·수처리·식량 기술의 개선이 필수 인프라 투자와 설비 수요로 이어지는지 추적한다.",
+      "scope": ["climate adaptation", "water treatment", "food technology", "environmental infrastructure"],
+      "arxiv_query": "(all:\"climate adaptation\" OR all:\"water treatment\" OR all:\"food technology\" OR all:\"environmental infrastructure\") AND (cat:physics.soc-ph OR cat:eess.SY OR cat:q-bio.QM)",
+      "limitations": ["사회적 필요가 크더라도 사업성·예산·발주 시점은 별도 확인이 필요합니다."]
+    },
+    {
+      "theme_id": "advanced-materials-supply-chain",
+      "domain_id": "advanced-materials-supply-chain",
+      "name": "첨단소재·공급망 재편",
+      "thesis": "첨단소재와 핵심 광물 대체 기술이 제조 공급망의 병목과 지역화 투자로 이어지는지 추적한다.",
+      "scope": ["advanced materials", "critical minerals", "material substitution", "supply chain resilience"],
+      "arxiv_query": "(all:\"advanced material\" OR all:\"critical mineral\" OR all:\"material substitution\" OR all:\"supply chain resilience\") AND (cat:cond-mat.mtrl-sci OR cat:physics.chem-ph OR cat:cs.CY)",
+      "limitations": ["소재 성능과 공급망 정책은 양산 원가·품질·조달계약으로 교차검증해야 합니다."]
+    },
+    {
+      "theme_id": "photonic-interconnects-optoelectronics",
+      "domain_id": "photonic-interconnects-optoelectronics",
+      "research_mode": "discovery",
+      "name": "광 I/O·실리콘 포토닉스",
+      "thesis": "AI 클러스터의 전기식 연결 한계를 광 I/O·실리콘 포토닉스·광전자 3D 집적이 실제 대역폭과 전력 효율 개선으로 해소하는지 추적한다.",
+      "scope": ["optical I/O", "co-packaged optics", "silicon photonics", "optical interconnects", "thin-film lithium niobate modulators", "3D photonic-electronic integration"],
+      "arxiv_query": "(all:\"optical I/O\" OR all:\"co-packaged optics\" OR all:\"optical interconnect\" OR all:\"silicon photonic engine\" OR all:\"photonic transceiver\" OR all:\"electro-optic modulator\") AND (cat:physics.optics OR cat:physics.app-ph OR cat:eess.SP)",
+      "limitations": ["소자 수준의 속도·전력 효율은 패키징 수율, 열관리, 표준화와 데이터센터 채택을 직접 증명하지 않습니다."]
+    },
+    {
+      "theme_id": "photonic-computing-programmable-optics",
+      "domain_id": "photonic-computing-programmable-optics",
+      "research_mode": "discovery",
+      "name": "광연산·프로그래머블 포토닉스",
+      "thesis": "광행렬연산·광신경망·프로그래머블 광회로가 정확도와 재구성 가능성을 유지하면서 전자식 AI 연산의 전력·지연 병목을 줄이는지 추적한다.",
+      "scope": ["photonic computing", "optical neural networks", "photonic accelerators", "programmable photonics", "optical matrix multiplication", "non-volatile photonic circuits"],
+      "arxiv_query": "(all:\"photonic computing\" OR all:\"optical computing\" OR all:\"optical neural network\" OR all:\"photonic accelerator\" OR all:\"optical matrix multiplication\") AND (cat:physics.optics OR cat:physics.app-ph OR cat:cs.ET OR cat:eess.SP)",
+      "exclude_terms": ["base station", "wireless infrastructure", "fiber nonlinearity compensation", "VCSEL aperture"],
+      "limitations": ["특정 벤치마크의 연산 성능은 범용 워크로드, ADC·DAC 비용, 정밀도, 양산 경제성을 직접 증명하지 않습니다."]
     }
   ]
 }

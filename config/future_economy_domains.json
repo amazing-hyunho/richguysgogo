@@ -1,0 +1,126 @@
+{
+  "schema_version": "future-economy-domains-v1",
+  "horizon_months": 12,
+  "new_research_limit": 3,
+  "active_research_limit": 10,
+  "free_discovery_slots": 2,
+  "legacy_theme_aliases": {
+    "physical-ai-foundation-models": "robotics-automation-autonomy"
+  },
+  "domains": [
+    {
+      "domain_id": "ai-semiconductor-datacenter",
+      "name": "AI·반도체·데이터센터",
+      "keywords": ["AI accelerator", "chiplet", "HBM", "data center", "AI infrastructure"],
+      "evidence_keywords": ["AI", "인공지능", "반도체", "HBM", "GPU", "NPU", "데이터센터", "data center", "chiplet"],
+      "industry_ids": ["ai_infrastructure", "data_centers", "semiconductors", "semiconductor_equipment", "semiconductor_materials", "hardware_components", "power_equipment"],
+      "dart_industry_ids": ["semiconductors", "semiconductor_equipment", "semiconductor_materials"],
+      "transmission_chain": ["글로벌 AI 투자", "연산·메모리·전력 병목", "한국 반도체·장비·부품 수요"],
+      "watch_industries": ["반도체", "하드웨어·전자부품", "전력기기"],
+      "invalidation_conditions": ["AI 인프라 투자가 여러 분기 연속 둔화", "핵심 공급 병목이 구조적 과잉설비로 전환"]
+    },
+    {
+      "domain_id": "robotics-automation-autonomy",
+      "name": "로봇·자동화·자율주행",
+      "keywords": ["robot foundation model", "vision language action", "factory automation", "autonomous driving"],
+      "evidence_keywords": ["로봇", "자동화", "자율주행", "피지컬 AI", "physical AI", "robot", "factory automation", "ADAS"],
+      "industry_ids": ["machinery_industrials", "automobiles", "auto_parts", "hardware_components"],
+      "dart_industry_ids": [],
+      "transmission_chain": ["로봇 지능 성능 개선", "센서·액추에이터·자동화 설비 수요", "한국 로봇·부품·제조 자동화 기업"],
+      "watch_industries": ["로봇", "자동차", "하드웨어·전자부품"],
+      "invalidation_conditions": ["실환경 성능 개선이 재현되지 않음", "도입 비용이 인건비 절감 효과를 지속적으로 초과"]
+    },
+    {
+      "domain_id": "power-grid-nuclear-renewables",
+      "name": "전력망·원전·신재생에너지",
+      "keywords": ["power grid", "small modular reactor", "renewable integration", "energy storage"],
+      "evidence_keywords": ["전력망", "전력기기", "원전", "원자력", "신재생", "태양광", "풍력", "SMR", "HVDC", "power grid"],
+      "industry_ids": ["power_equipment", "nuclear", "data_centers"],
+      "dart_industry_ids": ["power_equipment", "nuclear"],
+      "transmission_chain": ["전력 수요와 탈탄소 정책", "발전·송배전·저장 투자", "한국 전력기기·원전·설비 공급망"],
+      "watch_industries": ["전력기기", "원전", "신재생에너지"],
+      "invalidation_conditions": ["전력 인프라 예산·발주 축소", "프로젝트 인허가와 경제성 악화가 장기화"]
+    },
+    {
+      "domain_id": "battery-ev-mobility",
+      "name": "배터리·전기차·차세대 이동수단",
+      "keywords": ["solid state battery", "battery recycling", "electric vehicle", "advanced mobility"],
+      "evidence_keywords": ["배터리", "2차전지", "전기차", "전고체", "리튬", "양극재", "음극재", "battery", "electric vehicle", "EV"],
+      "industry_ids": ["automobiles", "auto_parts", "chemicals", "nonferrous_metals"],
+      "dart_industry_ids": [],
+      "transmission_chain": ["배터리 성능·원가 변화", "완성차 채택과 공급망 재편", "한국 셀·소재·장비 기업"],
+      "watch_industries": ["2차전지", "자동차", "화학"],
+      "invalidation_conditions": ["전기차 수요 둔화가 구조적으로 고착", "차세대 배터리의 수율·안전성 개선 실패"]
+    },
+    {
+      "domain_id": "bio-health-aging",
+      "name": "바이오·의료·고령화 기술",
+      "keywords": ["biotechnology", "drug discovery", "medical AI", "aging", "digital health"],
+      "evidence_keywords": ["바이오", "의료", "신약", "임상", "FDA", "고령화", "디지털 헬스", "biotech", "drug", "medical"],
+      "industry_ids": ["healthcare_bio"],
+      "dart_industry_ids": ["healthcare_bio"],
+      "transmission_chain": ["치료·진단 기술 검증", "임상·허가·보험 적용", "한국 바이오·의료기기·위탁생산 기업"],
+      "watch_industries": ["바이오", "헬스케어", "의료기기"],
+      "invalidation_conditions": ["핵심 임상 결과 실패", "규제·보험 적용 지연으로 상용화 경로 단절"]
+    },
+    {
+      "domain_id": "defense-space-cybersecurity",
+      "name": "국방·우주·사이버보안",
+      "keywords": ["defense technology", "satellite", "space systems", "cybersecurity", "autonomous defense"],
+      "evidence_keywords": ["국방", "방산", "위성", "우주", "사이버보안", "군사", "defense", "satellite", "space", "cybersecurity"],
+      "industry_ids": ["aerospace_defense", "machinery_industrials", "hardware_components"],
+      "dart_industry_ids": ["aerospace_defense"],
+      "transmission_chain": ["안보·국방 정책 변화", "예산·수출·우주 인프라 투자", "한국 방산·위성·보안 공급망"],
+      "watch_industries": ["방산", "우주항공", "소프트웨어"],
+      "invalidation_conditions": ["주요국 국방·우주 예산 축소", "수출 허가·보안 규제로 시장 접근성 악화"]
+    },
+    {
+      "domain_id": "climate-water-food-infrastructure",
+      "name": "기후·물·식량·환경 인프라",
+      "keywords": ["climate adaptation", "water treatment", "food technology", "environmental infrastructure"],
+      "evidence_keywords": ["기후", "수처리", "물", "식량", "환경", "탄소", "재활용", "climate", "water treatment", "food technology"],
+      "industry_ids": ["construction_materials", "machinery_industrials", "chemicals", "power_equipment"],
+      "dart_industry_ids": [],
+      "transmission_chain": ["기후·자원 제약", "물·식량·환경 인프라 투자", "한국 설비·소재·건설 기술 기업"],
+      "watch_industries": ["건설", "기계", "화학"],
+      "invalidation_conditions": ["정책 예산과 민간 투자 축소", "기술의 경제성이 기존 방식보다 개선되지 않음"]
+    },
+    {
+      "domain_id": "advanced-materials-supply-chain",
+      "name": "첨단소재·공급망 재편",
+      "keywords": ["advanced materials", "critical minerals", "supply chain", "manufacturing resilience"],
+      "evidence_keywords": ["첨단소재", "핵심광물", "공급망", "희토류", "구리", "니켈", "소재", "critical mineral", "supply chain"],
+      "industry_ids": ["semiconductor_materials", "nonferrous_metals", "chemicals", "steel"],
+      "dart_industry_ids": ["semiconductor_materials", "nonferrous_metals", "chemicals", "steel"],
+      "transmission_chain": ["무역·산업정책과 소재 혁신", "핵심 광물·소재·장비 공급망 재편", "한국 소재·부품·장비 기업"],
+      "watch_industries": ["소재", "화학", "하드웨어·전자부품"],
+      "invalidation_conditions": ["공급망 다변화 정책 후퇴", "대체 소재의 성능·원가 경쟁력 확보 실패"]
+    }
+  ],
+  "discovery_domains": [
+    {
+      "domain_id": "photonic-interconnects-optoelectronics",
+      "research_mode": "discovery",
+      "name": "광 I/O·실리콘 포토닉스",
+      "keywords": ["optical I/O", "co-packaged optics", "silicon photonics", "optical interconnect", "thin-film lithium niobate"],
+      "evidence_keywords": ["광 I/O", "광인터커넥트", "실리콘 포토닉스", "광통신", "광트랜시버", "CPO", "silicon photonics", "optical interconnect", "co-packaged optics"],
+      "industry_ids": ["ai_infrastructure", "data_centers", "semiconductors", "semiconductor_equipment", "semiconductor_materials", "hardware_components"],
+      "dart_industry_ids": ["semiconductors", "semiconductor_equipment", "semiconductor_materials", "hardware_components"],
+      "transmission_chain": ["AI 클러스터의 대역폭·전력 병목", "광 I/O·레이저·변조기·광전자 3D 집적", "한국 반도체 패키징·기판·소재·정밀장비 수요"],
+      "watch_industries": ["반도체", "반도체 장비·소재", "하드웨어·전자부품"],
+      "invalidation_conditions": ["광 링크의 총전력·원가가 전기식 연결 대비 우위를 반복 검증하지 못함", "패키징 수율·열관리·표준화 문제로 데이터센터 채택이 장기 지연"]
+    },
+    {
+      "domain_id": "photonic-computing-programmable-optics",
+      "research_mode": "discovery",
+      "name": "광연산·프로그래머블 포토닉스",
+      "keywords": ["photonic computing", "optical neural network", "photonic accelerator", "programmable photonics", "optical matrix multiplication"],
+      "evidence_keywords": ["광연산", "광컴퓨팅", "광신경망", "광가속기", "프로그래머블 포토닉스", "photonic computing", "optical computing", "photonic accelerator"],
+      "industry_ids": ["ai_infrastructure", "semiconductors", "semiconductor_equipment", "semiconductor_materials", "hardware_components"],
+      "dart_industry_ids": ["semiconductors", "semiconductor_equipment", "semiconductor_materials", "hardware_components"],
+      "transmission_chain": ["AI 연산의 전력·메모리 이동 병목", "광행렬연산·프로그래머블 광회로·광전자 혼성 집적", "한국 반도체 설계·패키징·소재·부품 수요"],
+      "watch_industries": ["반도체", "반도체 장비·소재", "하드웨어·전자부품"],
+      "invalidation_conditions": ["ADC·DAC와 메모리 이동을 포함한 시스템 전력 우위가 재현되지 않음", "정밀도·재구성·양산 비용 문제로 실제 AI 워크로드 채택이 지연"]
+    }
+  ]
+}

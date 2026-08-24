@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 
 from committee.agents.chair_stub import ChairStub
@@ -13,6 +14,7 @@ from committee.schemas.debate import DebateRound
 from committee.schemas.snapshot import Snapshot
 from committee.schemas.stance import RegimeTag, Stance
 from committee.core.trace_logger import TraceLogger
+from committee.future_economy.context import load_latest_committee_agenda
 from committee.tools.openai_chat import load_openai_config, responses_completion_with_metadata
 
 
@@ -271,6 +273,10 @@ class LLMChairAgent:
             "If a required value is missing or null, write '확인 불가(제공 데이터 기준)' instead of guessing.\n"
             "When mentioning KOSPI/KOSDAQ point levels, use ONLY KOSPI_level_today / KOSDAQ_level_today from payload.\n"
             "Do NOT mix historical memory or external knowledge. Treat payload as the single source of truth for today's report.\n\n"
+            "=== FUTURE ECONOMY CONTEXT RULE ===\n"
+            "future_economy_context contains verified weekly research agendas, not current market signals or trading orders. "
+            "Use an item only when today's macro/flow evidence makes it relevant, state conflicts explicitly, and never invent "
+            "a company, source, fact, order, position size, or automatic-trading action. If the context is empty, ignore it.\n\n"
             "=== PRIORITY / CONFLICT RULES ===\n"
             "You are given two evidence buckets: CORE_SIGNALS and SUPPORTING_SIGNALS.\n"
             "CORE_SIGNALS drive the main thesis. SUPPORTING_SIGNALS are for confirmation or rebuttal only.\n"
@@ -447,6 +453,23 @@ class LLMChairAgent:
             "indicator_context": indicator_context,
             "debate_round": debate_round.model_dump() if debate_round is not None else None,
         }
+        context_date_raw = (
+            snapshot.korean_market_flow.date
+            if snapshot.korean_market_flow is not None
+            else (news_digest.get("news_date") if news_digest else None)
+        )
+        try:
+            context_date = date.fromisoformat(str(context_date_raw))
+        except (TypeError, ValueError):
+            context_date = date.today()
+        runs_dir = Path(os.getenv("RUNS_BASE_DIR", "runs"))
+        if not runs_dir.is_absolute():
+            runs_dir = Path(__file__).resolve().parents[2] / runs_dir
+        payload["future_economy_context"] = load_latest_committee_agenda(
+            runs_dir=runs_dir,
+            as_of=context_date,
+            max_age_days=14,
+        )
         if agent_opinions is not None:
             payload["agent_opinions"] = agent_opinions
         return json.dumps(payload, ensure_ascii=False)

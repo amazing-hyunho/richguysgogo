@@ -1,0 +1,31 @@
+{
+  "schema_version": "future-economy-historical-analogues-v1",
+  "analogues": [
+    {
+      "analogue_id": "transformer-to-commercial-ai-chain",
+      "domain_ids": ["robotics-automation-autonomy"],
+      "title": "Transformer 연구에서 상용 AI 인프라 확산까지",
+      "claim": "2017년 Transformer 논문은 범용 모델 성능 개선이 연구 검증에서 시작해 연산·데이터·인프라 수요로 확장된 과거 경로의 출발점입니다.",
+      "event_date": "2017-06-12",
+      "known_at": "2017-06-12",
+      "source_url": "https://arxiv.org/abs/1706.03762",
+      "source_name": "arXiv · Attention Is All You Need",
+      "source_kind": "academic_primary",
+      "strength": 0.48,
+      "similarities": [
+        "범용 모델의 성능 개선이 여러 응용으로 확장될 수 있다는 연구 가설",
+        "데이터와 연산 인프라가 성능 확장의 핵심 병목이라는 점"
+      ],
+      "differences": [
+        "로봇은 텍스트 모델보다 실세계 데이터 수집 비용과 안전 검증 부담이 큼",
+        "소프트웨어 확산과 달리 센서·액추에이터·제조 수율이 상용화 속도를 제한함"
+      ],
+      "reapplication_conditions": [
+        "서로 다른 실환경 벤치마크에서 반복 가능한 성능 향상",
+        "도입 비용 대비 생산성 개선과 기업 투자·수주가 함께 확인",
+        "한국 부품·자동화 공급망의 매출 또는 수주 연결 확인"
+      ],
+      "limitation": "Transformer의 확산 경로는 비교 틀일 뿐 로봇 산업에서 같은 속도와 수익 구조가 재현된다는 증거가 아닙니다."
+    }
+  ]
+}

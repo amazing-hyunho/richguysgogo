@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 CONFIG_SCHEMA_VERSION = "research-radar-weekly-config-v1"
 AUDIT_SCHEMA_VERSION = "research-radar-weekly-audit-v1"
-PROMPT_VERSION = "research_radar_paper_interpreter_v1"
+PROMPT_VERSION = "research_radar_paper_interpreter_v2"
 ARXIV_API_URL = "https://export.arxiv.org/api/query"
 _ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
 _SAFE_ID = re.compile(r"[^a-z0-9]+")
@@ -170,6 +170,27 @@ def filter_papers_for_window(
     )
 
 
+def filter_papers_for_topic_scope(
+    papers: list[PaperCandidate], topic: Mapping[str, Any]
+) -> list[PaperCandidate]:
+    """Apply explicit topic exclusions before asking the LLM to judge relevance."""
+
+    excluded_terms = [
+        _normalize_space(str(value)).lower()
+        for value in topic.get("exclude_terms", [])
+        if _normalize_space(str(value))
+    ]
+    if not excluded_terms:
+        return list(papers)
+    result: list[PaperCandidate] = []
+    for paper in papers:
+        haystack = f"{paper.title}\n{paper.abstract}".lower()
+        if any(term in haystack for term in excluded_terms):
+            continue
+        result.append(paper)
+    return result
+
+
 def load_weekly_config(path: Path) -> dict[str, Any]:
     payload = json.loads(path.read_text(encoding="utf-8"))
     if payload.get("schema_version") != CONFIG_SCHEMA_VERSION:
@@ -192,8 +213,10 @@ def build_interpretation_prompts(
     system_prompt = (
         "당신은 미래산업 논문 증거를 심사하는 보수적인 리서치 분석가다. 제공된 제목·초록·메타데이터만 "
         "사용하고 사전학습 지식으로 최근 사실을 보충하지 않는다. 논문이 특정 기업의 매출·투자·상용화를 "
-        "증명한다고 추론하지 않는다. 사실, 저자의 주장, 한계와 대안 설명을 구분한다. survey·position paper·"
-        "시뮬레이션 전용 연구는 실제 로봇 검증보다 낮은 strength를 부여한다. JSON 객체만 출력한다."
+        "증명한다고 추론하지 않는다. 사실, 저자의 주장, 한계와 대안 설명을 구분한다. 제목이나 소재 이름이 "
+        "겹치는 것만으로 relevant=true를 주지 말고, 논문의 주된 실험·결과가 입력된 thesis 또는 scope 중 하나를 "
+        "직접 검증할 때만 관련 있다고 판정한다. survey·position paper·시뮬레이션 전용 연구는 실제 시스템 "
+        "검증보다 낮은 strength를 부여한다. JSON 객체만 출력한다."
     )
     schema = {
         "papers": [
@@ -217,15 +240,16 @@ def build_interpretation_prompts(
             "scope": topic.get("scope", []),
         },
         "strength_guide": {
-            "0.85": "여러 실제 로봇·과제에서 비교 검증하고 재현 자산도 제공",
-            "0.70": "실제 로봇 실험 또는 강한 정량 벤치마크",
+            "0.85": "여러 실제 시스템·과제에서 비교 검증하고 재현 자산도 제공",
+            "0.70": "실제 장치·시스템 실험 또는 강한 정량 벤치마크",
             "0.55": "시뮬레이션·제한된 벤치마크 중심",
             "0.35": "survey·position·개념 제안 중심",
         },
         "papers": [paper.to_prompt_dict() for paper in papers],
     }
     user_prompt = (
-        "각 입력 논문을 빠짐없이 한 번씩 판정하라. strength는 0~0.85로 제한하고, relevant=false인 "
+        "각 입력 논문을 빠짐없이 한 번씩 판정하라. 주제의 핵심 병목이나 전달경로를 직접 다루지 않고 인접 "
+        "광학·소재·응용 분야에 머무르면 relevant=false로 판정한다. strength는 0~0.85로 제한하고, relevant=false인 "
         "경우에도 paper_id와 판정 필드는 반환하라. direction은 기술 가설을 강화하면 positive, 핵심 한계를 "
         "실증하면 negative, 정보가 혼합되거나 단순 survey면 neutral이다. 입력에 없는 URL이나 수치를 만들지 "
         "마라.\n\n출력 스키마:\n"

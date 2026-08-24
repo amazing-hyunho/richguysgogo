@@ -3,6 +3,7 @@ from __future__ import annotations
 """Lightweight DART ingestion helpers (no pandas / no ORM)."""
 
 from io import BytesIO
+from datetime import date
 from typing import Any
 import os
 import xml.etree.ElementTree as ET
@@ -199,3 +200,63 @@ def fetch_financials_all_periods(
                 continue
             raise
     return all_rows
+
+
+def fetch_disclosures(
+    begin_date: date,
+    end_date: date,
+    *,
+    disclosure_types: tuple[str, ...] = ("B", "I"),
+    page_count: int = 100,
+    max_pages_per_type: int = 5,
+) -> list[dict[str, Any]]:
+    """Fetch material/stock-exchange disclosures for a bounded receipt-date window."""
+
+    if begin_date > end_date:
+        raise ValueError("invalid_dart_disclosure_date_range")
+    normalized: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for disclosure_type in disclosure_types:
+        for page_no in range(1, max(1, max_pages_per_type) + 1):
+            payload = _request_dart_json(
+                "list.json",
+                params={
+                    "bgn_de": begin_date.strftime("%Y%m%d"),
+                    "end_de": end_date.strftime("%Y%m%d"),
+                    "last_reprt_at": "Y",
+                    "pblntf_ty": disclosure_type,
+                    "sort": "date",
+                    "sort_mth": "desc",
+                    "page_no": page_no,
+                    "page_count": min(100, max(1, page_count)),
+                },
+            )
+            rows = payload.get("list") if isinstance(payload, dict) else None
+            if not isinstance(rows, list) or not rows:
+                break
+            for row in rows:
+                if not isinstance(row, dict):
+                    continue
+                receipt_no = str(row.get("rcept_no") or "").strip()
+                if not receipt_no or receipt_no in seen:
+                    continue
+                seen.add(receipt_no)
+                receipt_raw = str(row.get("rcept_dt") or "").strip()
+                receipt_date = (
+                    f"{receipt_raw[:4]}-{receipt_raw[4:6]}-{receipt_raw[6:8]}"
+                    if len(receipt_raw) >= 8 else receipt_raw
+                )
+                normalized.append({
+                    "receipt_no": receipt_no,
+                    "receipt_date": receipt_date,
+                    "company_name": _clean_text(row.get("corp_name")),
+                    "corp_code": _clean_text(row.get("corp_code")),
+                    "stock_code": _clean_text(row.get("stock_code")),
+                    "report_name": _clean_text(row.get("report_nm")),
+                    "corporation_class": _clean_text(row.get("corp_cls")),
+                    "disclosure_type": disclosure_type,
+                })
+            total_page = int(payload.get("total_page") or 1)
+            if page_no >= total_page:
+                break
+    return normalized
