@@ -1,0 +1,70 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,520.70으로 2.49% 하락했고 KOSDAQ도 795.79로 2.16% 내렸다. 외국인은 1조4,264억원 순매도해 단기 조정의 핵심 수급 주체였다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "개인은 9,464억원, 기관은 2,646억원을 순매수했지만 외국인 매도 규모를 상쇄하지 못했다. 특히 KOSPI에서 외국인 -1조3,763억원이 집중됐다.",
+      "sources": [
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 조정의 중기 추세 훼손 여부",
+      "majority": "매크로·수급·섹터·브레드스·유동성 담당자는 외국인 매도와 성장주 약세를 근거로 단기 리스크오프 우세라고 판단했다.",
+      "minority": "리스크·이익모멘텀 담당자는 중장기 위험 및 실적 하향 신호가 아직 제한적이라고 봤다.",
+      "minority_agents": [
+        "risk",
+        "earnings"
+      ],
+      "why_it_matters": "KOSPI 5일 누적 -4.64%와 당일 급락은 경계 신호지만, 20일 누적 +10.64%여서 수급 안정 시 기술적 되돌림 가능성을 배제할 수 없다."
+    },
+    {
+      "topic": "기관 수급의 해석",
+      "majority": "전체 기준 기관은 2,646억원 순매수로 외국인 매도에 일부 완충 역할을 했다.",
+      "minority": "수급 담당자는 외국인과 기관 순매도가 우세하다고 평가했다.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "제공된 실제 수급상 기관은 순매수이며, KOSDAQ에서만 기관 -521억원 순매도다. 기관 매도 동조로 해석하면 당일 수급 압력을 과대평가할 수 있다."
+    },
+    {
+      "topic": "글로벌 위험선호의 일관성",
+      "majority": "나스닥 -0.76% 및 반도체·AI 약세가 국내 조정의 주요 외부 압력이라는 판단이다.",
+      "minority": "다우는 0.26% 상승해 미국 시장 내부에서는 업종별 차별화가 나타났다.",
+      "minority_agents": [
+        "risk",
+        "earnings"
+      ],
+      "why_it_matters": "광범위한 글로벌 위험회피로 단정하기보다 반도체·AI 중심의 위험 축소가 지속되는지 확인해야 한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 외국인 매도가 압도한 8월 25일\n\nKOSPI는 6,520.70으로 2.49% 하락했고, KOSDAQ는 795.79로 2.16% 내렸다. 당일 시장의 성격은 반도체·AI 위험회피와 외국인 매도가 결합한 단기 리스크오프다. 달러/원은 1,383.12원으로 0.01% 하락해 환율이 급등한 날은 아니었지만, VIX는 15.85로 5일 평균 15.47을 웃돌았다. 변동성 부담이 남은 환경에서 KOSPI의 5일 누적 수익률은 -4.64%인 반면 20일 누적은 +10.64%다. 급락 자체는 경계하되, 중기 상승분의 조정 과정인지도 분리해 볼 필요가 있다.\n\n## 1조4,264억원 외국인 매도와 개인 흡수의 한계\n\n외국인은 전체 시장에서 1조4,264억원을 순매도했다. KOSPI에서만 -1조3,763억원으로 매도가 집중됐고 KOSDAQ도 -501억원이었다. 이에 맞서 개인은 9,464억원, 기관은 2,646억원을 순매수했다. 다만 기관 매수는 KOSPI +3,167억원에 국한됐고 KOSDAQ에서는 -521억원 순매도였다. 개인의 매수 흡수만으로는 외국인 매도 충격을 상쇄하기 어려웠다.\n\n수급 담당자는 금리·반도체/AI 부담 아래 개인 흡수의 지속성이 낮다고 평가했고, 유동성 담당자도 외국인 이탈을 보수적 대응 요인으로 제시했다. 다만 수급 담당자의 ‘외국인+기관 순매도’ 평가는 실제 전체 기관 순매수와 상충한다. 기관의 KOSPI 매수가 이어지는지는 단기 안정성 판단의 중요한 확인 항목이다.\n\n## 반도체·AI 약세, 장기금리 경계, 1,380원대 환율\n\n우선순위는 첫째, [반도체·AI주 약세에 혼조 마감](https://news.google.com/rss/articles/CBMiW0FVX3lxTE0zaDRKTTBVdVlfMWdnQ0VRaEV4bUNXWU9JbXRnVndwTDJoVUg3bzFqTTloLWFRWGNqYVpSX21QYjE1X3g5bTZqV2ozWU85MGJVMGdiN19aMzhXQ1XSAWBBVV95cUxQTm9YQ2V1blJWakowbE5Ra2hPRU1NRUN3SFAtRVkzSWpxTC1iemFEMnA4SU1yWTBzNUJ4YUJETzc2ZlNTcTl3ejgzYlVQRVBWcWp5YU5pV0doTTVQMXI0TE8?oc=5)와 나스닥 -0.76%다. 국내 성장주 수급에 직접적인 부담으로 작용했다. 둘째, [국채 매입 확대에도 장기금리 하락이 어렵다는 진단](https://news.google.com/rss/articles/CBMiXkFVX3lxTE5kR08tNmJSSzhCMHd1WDRkSGJ6N1V6UTl3a3kxZExTNV9OVTEtdFNiTjh5eFNDbkJkRHBkWmM5bFhoaFdrUExyQ2FMZzlfTEEzZU0wLThUaVlNM2t1bWc?oc=5)이다. 제공 지표상 미국 10년물은 4.70%로 금리 부담이 완전히 해소됐다고 보기 어렵다. 셋째, [달러 강세와 월말 네고가 맞서는 1,380원대 환율](https://news.google.com/rss/articles/CBMigAFBVV95cUxQdW5mTG9uVmpGaVdYV2lybFRqVld2NXEyVVY0YzhwRWF0dk1aM2Q1NDRGb205aXZSZTE0UDZqb2lzdEg0V3VTOVhWMk5LeVo0TmlOdVhrQnBSZ2lScjEtY0V4OFA0MTRJZWFuWHBpQ0xVS0lyMTB1Vk9oY1hOcnlpeA?oc=5)이다. 달러/원은 5일간 0.45% 하락했으나, 대외 금리·달러 뉴스가 외국인 수급에 재압력을 줄지 지켜봐야 한다.\n\n## 반등보다 수급 안정 확인이 우선\n\n핵심 관찰 변수는 외국인 순매도 축소, 기관의 KOSPI 순매수 지속, VIX의 5일 평균 하회 여부와 반도체·AI 약세 진정이다. 다우가 0.26% 오른 점은 미국 내 위험회피가 전면적이지 않다는 반론이지만, 나스닥 약세와 국내 외국인 매도라는 핵심 신호를 뒤집기에는 부족하다. 오늘의 단기 조정 논리는 외국인 매도가 빠르게 축소되고 반도체·AI 약세가 완화되는 경우 무효화될 수 있다."
+}
