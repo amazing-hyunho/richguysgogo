@@ -1,0 +1,51 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,752.95로 0.15% 상승했으나, 외국인 -4,275억원·기관 -894억원을 개인 +3,104억원이 흡수해 수급의 질은 약화됐다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "KOSPI 5일·20일 누적 상승률은 각각 4.481%, 19.936%로 높아 차익실현 압력이 자연스러운 구간이다. 다만 VIX 15.45는 5일 평균 15.482와 유사하다.",
+      "sources": [
+        "macro_daily",
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "외국인 순매도의 성격과 추세 지속성",
+      "majority": "다수는 최근 급등에 따른 이익실현과 단기 수급 불안으로 보며, 중립 비중과 확인 후 대응이 적절하다고 판단했다.",
+      "minority": "상승 모멘텀이 미국 반도체 강세와 결합해 이어질 수 있다는 의견이다.",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "외국인 매도가 하루성 차익실현에 그치면 추세 훼손은 제한적일 수 있으나, 환율 상승과 함께 이어지면 개인 매수만으로 지수 방어가 어려워질 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 급등 추세 속 수급 공방\n\n26일 KOSPI는 **6,752.95, +0.15%**로 소폭 상승했고 KOSDAQ은 **820.79, -0.77%**로 약세였다. 원·달러 환율은 **1,383.12원(+0.15%)**, VIX는 **15.45**였다. 지수는 버텼지만 내부 수급은 보수적이다. 외국인은 **4,275억원 순매도**, 기관은 **894억원 순매도**였고 개인이 **3,104억원 순매수**로 대응했다. KOSPI에서는 외국인 -3,334억원·기관 -511억원에 개인 +1,784억원, KOSDAQ에서는 외국인 -941억원·기관 -383억원에 개인 +1,320억원이 각각 집계됐다.\n\n## 외국인 매도는 이익실현인가, 공급 우위 전환인가\n\n핵심 신호는 외국인과 기관의 동반 매도다. 다만 KOSPI는 최근 5일 **+4.481%**, 20일 **+19.936%** 누적 상승해 차익실현이 출회될 여지가 컸다. 수급 담당자(flow)는 이를 이익실현 성격으로 평가하면서도 개인 매수를 추격성 자금으로 봐 지속성에 의문을 제기했다. 반면 리스크 담당자(risk)는 VIX가 5일 평균 **15.482**와 거의 같고 반전 신호도 없어 즉각적인 위험 전환으로 보기는 어렵다고 판단했다. 원·달러 환율은 당일 상승했지만 5일 누적 변화율은 **-0.552%**여서, 제공 데이터만으로 급격한 환차손 회피성 유출을 단정하기는 어렵다.\n\n## 26일 이슈 우선순위: 반도체·금리 우호, 관세와 환율은 경계\n\n1. 미국 시장은 반도체 반등과 국채금리 하락을 배경으로 상승했다는 [뉴욕증시, 반도체주 반등·국채금리 하락에 상승…나스닥 0.66%↑](https://news.google.com/rss/articles/CBMiW0FVX3lxTE9rSHVWenI5NUhZTzBsd3FTdnZacHh4Z1BzdkdGa21kS3JoYm5MVzBKY3JBQnF6V0lXQ25LT3l3bW9KZ0NRaDNTVFdXTi15MjVraWhLdGg3V1RNaGfSAWBBVV95cUxNQXZ5WWxqczZ1LTMyUFNuVEpEeFY5MUozNkYya3lmZ21waVNXdnVGOFZCZVBnRWVLeTFHR21wYzhCQ0Vzb1pncm5tVmljT0tHV2szeVNDdWlFTnY3bEFsbko?oc=5) 보도가 국내 위험선호의 완충 요인이다. 실제 나스닥은 **+0.659%**, S&P500은 **+0.319%**였다.\n2. 다만 환율은 장중 1,380원대 초반 등락이 언급된 [원·달러 환율 관련 기사](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9iLVRId1AxVWozN25qam9rQ2V2XzdWdEIxWFdySFJFa0xrNzU0X0ppR2lCZU5qdjZLQnY0Z2tfLTZPY1JJWGhMR0RON0hSUGNES3hIcThUeklqSi1Fa1lleg?oc=5)와 맞물려 외국인 매수 전환의 확인 변수다.\n3. [캐나다의 미국 대상 200억달러 보복관세 부과](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9mNGlRLV9MVURhSG91d00zUWEwZDRMWXM2OVQ5ZXIyNVZFNXNYbTcwZFJ4anhVUjRTZWRRMW5MOThMbUxTNDEzd3JnbVdLU2V0Y0h6MWJBUjJtNGZnOVY0WWgxT3JPdk0?oc=5)는 정책·교역 불확실성을 높이는 보조 경계 요인이다.\n\n## 다음 확인선과 전략\n\n당일 결론은 추세 추종보다 **수급 확인 우선**이다. 외국인 매도가 진정되고 환율 압력이 완화되는지, KOSDAQ 약세가 해소되는지를 봐야 한다. 매크로·브레드스·유동성 담당자는 공통으로 외국인 매도와 환율을 경계했고, 섹터 담당자만 미국 반도체 강세에 따른 위험선호 지속 가능성을 상대적으로 높게 봤다. 오늘의 상승 추세 내 조정이라는 판단은 **외국인 순매도가 확대되는 동시에 원·달러 환율 상승과 변동성 상승이 동반될 경우** 무효화된다."
+}
