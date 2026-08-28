@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,893.54로 0.19% 하락, KOSDAQ는 834.62로 0.36% 하락했다. 외국인 -2,976억원·기관 -786억원 순매도에 개인은 +1,577억원 순매수했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "KOSPI 20일 누적 수익률은 +5.419%이나 5일 누적은 -0.13%다. 외국인 매도는 중기 상승 이후 차익실현 가능성이 있으나, 단기 수급 개선 확인 전까지 경계가 필요하다.",
+      "sources": [
+        "market_data",
+        "flow_data",
+        "agent_opinions"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "외국인 순매도의 성격",
+      "majority": "중기 상승 이후 단기 차익실현 및 관망성 매도로 보고, 확인 전 보수적으로 대응한다.",
+      "minority": "누적 외국인 이탈과 유동성 부담을 위험회피 신호로 더 강하게 해석한다.",
+      "minority_agents": [
+        "risk",
+        "liquidity"
+      ],
+      "why_it_matters": "KOSPI 20일 +5.419%, VIX 14.51 및 원/달러 0.11% 하락은 급격한 위험회피 해석을 제약하지만, 외국인 -2,976억원 순매도가 이어지면 조정이 확대될 수 있다."
+    },
+    {
+      "topic": "중기 상승 추세의 지속성",
+      "majority": "20일 누적 상승은 유지되지만, 단기 수급과 실적 근거가 약해 선별 대응이 필요하다.",
+      "minority": "중기 모멘텀 자체는 아직 유효하다.",
+      "minority_agents": [
+        "sector"
+      ],
+      "why_it_matters": "5일 누적 KOSPI는 -0.13%이고 이익모멘텀 담당자는 추정치 상향 신호가 미약하다고 평가해, 지수 추세와 펀더멘털 확인 사이 간극이 존재한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 외국인·기관 매도 속 얕은 조정\n\n8월 28일 KOSPI는 6,893.54로 0.19% 하락했고, KOSDAQ는 834.62로 0.36% 내렸다. 시장 전체에서 외국인은 2,976억원, 기관은 786억원을 순매도한 반면 개인은 1,577억원을 순매수했다. 원/달러 환율은 1,381.57원으로 0.11% 하락했고 VIX는 14.51로 5일 평균 15.262보다 낮다. 가격 조정은 나타났지만 환율·변동성 지표만으로 급격한 위험회피를 단정하기는 어렵다.\n\n## 차익실현 우위, 개인은 KOSDAQ 중심 흡수\n\n매도의 중심은 외국인이었다. KOSPI에서 외국인 -1,951억원·기관 -572억원, KOSDAQ에서 외국인 -1,025억원·기관 -214억원으로 양 시장에서 동반 매도가 발생했다. 개인 매수는 KOSPI +338억원보다 KOSDAQ +1,239억원에 집중됐다. 수급 담당자(flow)는 KOSPI 20일 누적 +5.419% 이후 외국인 매도를 차익실현 성격으로 보되, 개인의 KOSDAQ 매수는 단기 추격 성향일 수 있다고 평가했다.\n\n중요한 점은 단기와 중기의 온도차다. KOSPI는 5일 누적 -0.13%로 최근에는 주춤했지만 20일 누적 +5.419%다. 따라서 오늘의 매도를 추세 훼손으로 단정하기보다, 외국인 매도가 멈추는지와 기관 매수 전환이 확인되는지를 먼저 봐야 한다. 다만 이익모멘텀 담당자(earnings)가 실적 추정치 상향 근거가 미약하다고 지적한 만큼, 지수 상승만을 근거로 한 고평가 추격은 부담스럽다.\n\n## 금리 경로와 반도체 기대의 줄다리기\n\n1. 금리·인플레이션: [미 연준 인사들의 인플레 경고와 금리경로 온도차](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1pNlNoUDZSQUpqck9xWTVvVV82cFZCZExhZXU1ZjQ5LTFZU3JCOVYwQnJtMXBpMXNuVmVFZnVTQktrS0ZmbzQ1blBPOGVXNGxGUUVDTW9jYWw1d0HSAWBBVV95cUxOZmkwLVVJUXFFN0NVanJwbzRRZUdVYzhsYkRGdU9ReUZsdm16TmlSZDBFSC1zSlFoZklHQnlmZ0VZVmVQTkdmQkFtZXdYRk1VMEppbWZ0UkVhZ3F3ZVRWRkI?oc=5)는 금리 인하 기대의 일방적 확대를 제약한다. 미국 10년물은 4.672%, CPI 상승률은 3.540%로 제공됐다.\n\n2. 미국 위험선호와 국내 수급의 괴리: S&P500은 0.72%, 나스닥은 1.57% 상승했지만 국내 지수는 하락했다. [잭슨홀 연설과 엔비디아발 호재를 주시하는 시장](https://news.google.com/rss/articles/CBMiUkFVX3lxTE9Ka0pLdUlveDJreks5M0dCTmc0aXI1elNwU0JlSDhZUHdLM29jazJSeUhjTTdCS1dKcmZBX1MxOVI3VDN0UV9OY29KNDBmcmdURlE?oc=5) 기대가 있어도 국내에서는 외국인 매도가 우세했다는 점이 핵심이다.\n\n3. 반도체 기대: [반도체 주주환원·FOMC 동결 전망에 따른 코스피 회복 기대](https://news.google.com/rss/articles/CBMicEFVX3lxTE95bkdiWkY5ZUhVQndxT0Jock1fYUtkbzlCbnA5OWpiaXB2cTYtTmNaV3ZXeXdiZXFMMEQ2Y1RjSHlVVDBPZGg5amhsOWZiTmxDS1AyUGJYRW5JRDhVYUZDa0Q0NFlyZndrZ0k4OGdNWE0?oc=5)는 하방 완충 요인이나, 당일 수급 반전의 증거는 아니다.\n\n## 다음 확인점: 외국인 매도 지속 여부\n\n기본 시나리오는 중기 상승 추세 안의 단기 조정이다. 원/달러의 5일 변화율이 +0.058%에 그치고 VIX도 낮아 유동성 충격 신호는 제한적이라는 것이 다수 의견이다. 그러나 리스크(risk)·유동성(liquidity) 담당자는 외국인 이탈을 더 보수적으로 해석한다. 향후에는 외국인 순매도 축소, 기관 수급 전환, 금리·인플레이션 뉴스 이후 환율 안정 여부를 함께 확인할 필요가 있다. **외국인 매도가 확대되면서 원/달러와 변동성이 동반 상승할 경우, 오늘의 ‘단기 숨고르기’ 판단은 무효화된다.**"
+}
