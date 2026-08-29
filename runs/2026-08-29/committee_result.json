@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,788.88로 1.79% 하락했고, 외국인 -9,467억원·기관 -11,906억원 순매도에 개인 +5,173억원 매수가 맞선 공급 우위 장세였다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "KOSPI 5일 누적 -0.40%에도 20일 누적 +7.15%이며 VIX 14.43은 5일 평균 14.93보다 낮아, 당일 급락을 즉각적인 구조적 위험 전환으로 단정하기는 이르다.",
+      "sources": [
+        "market_data",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "당일 급락의 성격",
+      "majority": "매크로·섹터·리스크·이익모멘텀 담당자는 20일 누적 상승과 낮아진 VIX를 근거로 단기 조정 후 중립 유지 의견이다.",
+      "minority": "수급·브레드스·유동성 담당자는 동반 매도를 위험회피 전환 신호로 본다.",
+      "minority_agents": [
+        "flow",
+        "breadth",
+        "liquidity"
+      ],
+      "why_it_matters": "향후 외국인·기관 매도가 이어지면 중기 상승 추세보다 단기 유동성 위축 해석이 우세해질 수 있다."
+    },
+    {
+      "topic": "환율 위험의 강도",
+      "majority": "뉴스의 연준 매파·달러 경계가 주식 수급 부담을 키운다는 판단이다.",
+      "minority": "당일 원/달러 하락과 5일 변화율 -0.26%는 즉각적인 원화 약세 확대와 다르다는 해석이다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "달러 강세가 실제 원화 약세와 외국인 매도로 동시 전개되는지 여부가 수급 지속성을 가를 핵심 확인 항목이다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 동반 매도가 만든 코스피 조정\n\n8월 29일 KOSPI는 6,788.88로 1.79% 하락했다. KOSDAQ은 838.41로 0.09% 상승해 대형주와 중소형주 사이의 온도 차가 나타났다. 전체 시장에서 외국인은 9,467억원, 기관은 1조1,906억원을 순매도했고 개인은 5,173억원을 순매수했다. 원/달러는 1,377.94원으로 당일 0.34% 하락했으며, VIX는 14.43이다. 즉 지수 하락의 직접 동력은 환율 급등보다 외국인·기관의 동반 매도였다.\n\n## 금리 경계와 차익실현이 겹친 수급\n\nKOSPI에서 외국인 -8,525억원, 기관 -1조1,876억원이 매도한 반면 개인은 +4,194억원을 사들였다. KOSDAQ에서도 외국인 -942억원, 기관 -30억원에 개인 +979억원으로 같은 구도가 이어졌다. 수급 담당자(flow)는 이를 20일 누적 강세 뒤 리밸런싱·차익실현 성격의 공급 우위로 평가했고, 브레드스(breadth)와 유동성(liquidity) 담당자도 단기 위험회피를 경계했다.\n\n다만 KOSPI는 최근 5일 -0.40%인 반면 20일로는 +7.15%다. VIX도 5일 평균 14.93보다 낮고 반전 신호는 없다. 리스크(risk) 담당자의 지적처럼 당일 매도만으로 구조적 위험 국면을 단정하기보다, 다음 거래일에도 기관·외국인 매도가 연속되는지를 확인할 필요가 있다.\n\n## 8월 29일 핵심 변수: 연준 발언, 달러, 반도체 기대\n\n1. 가장 큰 변수는 금리다. [워시 연준 의장 “해야할 일 있다”…힘 받는 9월 금리 인상론](https://news.google.com/rss/articles/CBMic0FVX3lxTE1zVmJYRC1tbWJHeXV3NXVmOE1VeFcweDh0TDROeF8tcGNUY19uNUp6Mk9CU1JCMjliVkU2VFBrNXFWeGNaSmlleXF4NkZzUS1rOTRHMEc0UTdRSE9Yc1cyT2VGMU8yM1VYRzlDU0VLaWxFMEHSAWZBVV95cUxQOHA5RHFoOW9WWTQwRVpWTGtPNW9qcUNiY3VRMzQ5NGtXTF9nb2RrdlZwNkYyNklhSFdjeFo2NkxGWmRnUlZFRVEzQzg2TFlKWHM5TEM1RlllbXpqQkdKYzEwcmQtckE?oc=5)가 정책 불확실성을 키웠다. 미국 10년물 금리는 4.72%, 기준금리는 3.63%로 제공됐다.\n\n2. 달러 관련 뉴스도 경계 요인이다. [‘워시 잭슨홀 경고’에 금융시장 흔들…미 국채금리·달러 급등](https://news.google.com/rss/articles/CBMiWEFVX3lxTE5uWWxicVJaSllpcWRmMENWQ3JuNEhpNlBqd0tQX1FTZ010aUdjb1FCVVgzdE4yNUI1QUpRWWZUUmVLd2ZFTFJMTzZjNFBjTEJvdG1vbHFSSVI?oc=5)가 이를 보여준다. 그러나 당일 원/달러와 5일 변화율(-0.26%)은 원화 약세 확대와 일치하지 않아, 뉴스 경계와 실제 환율 지표 간의 괴리를 함께 봐야 한다.\n\n3. [금리·경기 우려 속 반도체 기대…9월 코스피 7000선 시험대](https://news.google.com/rss/articles/CBMiZEFVX3lxTE01Sml1Q1RBdkM0eVo2VGE5eWlBU0pTX29CeWs3bW5JNVNDcHZnMXp5eWFkUWNRWGVMZVptZlY2T3RQMDhIb01pbFppbVROM25jY0NCQk94aGJMYnM2bHFvLVpqR3g?oc=5)처럼 반도체·AI 기대는 남아 있다. 다만 광 I/O·실리콘 포토닉스는 주간 연구 의제일 뿐 당일 매매 신호는 아니며, 금리 부담이 완화되는지 확인된 뒤에만 중기 테마의 보조 근거가 될 수 있다.\n\n## 확인할 조건과 무효화 기준\n\n기본 시나리오는 중기 상승 추세 내 단기 수급 조정이다. 외국인·기관 순매도 완화, 원/달러의 안정 지속, VIX의 급격한 상승 부재가 확인되면 조정 압력은 낮아질 수 있다. 반대로 외국인·기관의 대규모 순매도가 이어지면서 원/달러가 상승 전환하고 VIX가 5일 평균을 뚜렷하게 웃도는 상황은 오늘의 ‘단기 조정’ 판단을 무효화하는 조건이다."
+}
