@@ -1,0 +1,53 @@
+{
+  "consensus": "20일 상승 뒤 외국인·기관의 동반 차익실현이 나타난 단기 조정 국면으로, 환율·변동성 안정 때문에 전면적 위험회피보다는 중립적 선별 대응이 적절합니다.",
+  "key_points": [
+    {
+      "point": "KOSPI는 6,788.88로 1.79% 하락했고 외국인 -9,467억원, 기관 -11,906억원이 지수를 압박했지만 개인은 +5,173억원을 순매수했습니다.",
+      "sources": [
+        "market_data",
+        "flow_data"
+      ]
+    },
+    {
+      "point": "KOSPI의 20일 누적 수익률은 +7.15%이며 반전 신호는 없어, 오늘 하락은 현재까지 추세 붕괴보다 누적 상승 이후의 조정에 가깝습니다.",
+      "sources": [
+        "cumulative_context",
+        "flow_data"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1,377.90으로 0.65% 하락하고 VIX는 14.51로 5일 평균 14.95를 밑돌아 외국인 매도를 환율발 위험 전이로 해석하기는 이릅니다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "조정의 성격",
+      "majority": "macro·flow·sector·risk·earnings·breadth는 누적 상승 이후의 단기 조정이며 시장 전체의 위험 전이 신호는 제한적이라는 중립 의견입니다.",
+      "minority": "liquidity는 외국인·기관 동반 순매도와 금리·정책 불확실성을 근거로 유동성 환경이 보수적으로 전환됐다고 판단했습니다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "동반 순매도가 지속되면 차익실현이라는 다수 해석이 약해지고, 단순 조정이 유동성 주도 위험회피로 바뀔 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "현금 여력을 유지하면서 수급이 확인되는 종목만 분할 접근합니다."
+    },
+    {
+      "level": "CAUTION",
+      "text": "외국인·기관 동반 매도가 이어지는 대형주와 금리 민감 성장주의 추격매수는 경계합니다."
+    },
+    {
+      "level": "AVOID",
+      "text": "하루 급락만으로 추세 붕괴를 단정하거나 AI 뉴스만으로 테마 비중을 급격히 확대하지 않습니다."
+    }
+  ],
+  "sugeup_narrative": "## 8월 30일, 지수는 조정했지만 공포는 제한\n\nKOSPI는 6,788.88로 1.79% 하락한 반면 KOSDAQ은 838.41로 0.09% 상승했습니다. 외국인은 9,467억원, 기관은 11,906억원 순매도했고 개인은 5,173억원 순매수했습니다. 시장별로는 KOSPI에서 외국인 -8,525억원·기관 -11,876억원, KOSDAQ에서 외국인 -942억원·기관 -30억원이었습니다.\n\n다만 USD/KRW는 1,377.90으로 0.65% 하락했고 VIX는 14.51로 5일 평균 14.95보다 낮았습니다. KOSPI의 5일 누적은 -0.40%지만 20일 누적은 +7.15%이고 반전 신호도 없습니다. 따라서 오늘은 중기 추세 붕괴보다 누적 상승 이후의 숨 고르기 성격이 우세합니다.\n\n## 외국인·기관이 주도한 차익실현 수급\n\n가격 결정권은 개인보다 외국인과 기관에 있었습니다. flow 담당자는 20일간 +7.15% 오른 뒤 나온 차익실현으로 해석했고, risk 담당자도 환율과 VIX 안정을 근거로 위험 전이가 제한적이라고 봤습니다. 원화가 강해지는 가운데 외국인이 매도했다는 점도 환율 충격에 따른 기계적 이탈보다는 포지션 축소 가능성을 뒷받침합니다.\n\n반면 liquidity 담당자는 동반 순매도가 유동성의 보수적 전환일 수 있다고 경고했습니다. 개인의 +5,173억원 매수는 낙폭을 흡수했지만 외국인·기관 매도 규모를 고려하면 시장 방향을 되돌렸다고 평가하기는 어렵습니다.\n\n## 금리·환율·AI, 오늘의 세 가지 쟁점\n\n1. **연준과 금리:** [9월 FOMC가 시험대라는 보도](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1hSEVyRFMzdGU5bVpiVlNQdUNscXlDUTB6WjNCOUhXeEVDY3NoUGdPS1A5TF9pTnM4Nmd0T2RmU0EyUC1QalI5aUZjQ2IwbmtiaXFROWRKRFJWREHSAWBBVV95cUxQOUR6Q2t6U2pjV29wUkJlZ0ZJdlhhbkl0R2FxS3F3cjRsWnlYTm42Q1pHRGtGUmpmbEs4T2szd3FSeGtRcXZzUjlXb0JsbkxjV2tlNlIzYWNheU9idEt1UlQ?oc=5)가 금리 불확실성을 부각했습니다. 미국 10년물 금리 4.672%, CPI 전년 대비 3.54%는 성장주 변동성을 계속 점검해야 할 배경입니다.\n2. **환율:** [한국은행의 환율·금융안정 종합 판단 강조](https://news.google.com/rss/articles/CBMia0FVX3lxTFB1WmJwZUQxWXVJUHBkLUxXekwxSFRfcVo3eXRNalJZTVRqZjFaSmo5U0FOQmduMmM5ZkZTRENSMVBmS2xqeFNmOUxhMjl4S0h6MGI1aG9ZdlI4dlJYd1RKUjA2alAwVlNEcUZn0gFwQVVfeXFMUDJfNmlQbXkyNzdjQV9GYTlUdkV1OS1zTGhNQzluaVoxR1BSNG1WYkFRR3FDMTFHX3BjY21WVzlfYTZwakFUYzBEQXB0RFdxZ01WbUNQTnR1YzJoVjB6TEoxY3B2aFo3b3lZcTYzRDVUbg?oc=5)와 원화 강세는 하방 위험을 일부 제한했습니다.\n3. **반도체·AI:** [엔비디아의 허깅페이스 인수 추진 보도](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5TMzV2S3JFZGlfbUFlYXNHY3R6TzRFZUZxX19TLWVuMVJJN21SWXdpT2pjM0NMMmIxdWdpcWZyQnI3ZmJvMUJzZWhDMnFfcWtlSG9DaURPYjdfR2s4OVRjaG5uaHNZUGc?oc=5)는 AI 생태계 기대를 유지합니다. 광 I/O·실리콘 포토닉스 연구 의제도 관련성이 높아졌지만, 이는 주간 검증 과제이지 오늘의 매수 신호는 아닙니다.\n\n## 다음 확인점과 무효화 조건\n\n다음 거래일에는 외국인·기관의 동반 매도가 완화되는지, KOSDAQ의 상대적 견조함이 유지되는지, 금리 뉴스가 VIX에 반영되는지를 우선 확인해야 합니다. 오늘의 중립적 조정 논리는 **외국인·기관 동반 순매도가 지속되고 VIX가 5일 평균 14.95 위에 안착할 경우** 무효화됩니다."
+}

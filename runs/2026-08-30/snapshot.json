@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -1.79%, USD/KRW 1377.90. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -1.79,
+    "usdkrw": 1377.900275
+  },
+  "flow_summary": {
+    "note": "외국인 -9467억, 기관 -11906억, 개인 +5173억 | KOSPI(외 -8525, 기관 -11876, 개인 +4194) KOSDAQ(외 -942, 기관 -30, 개인 +979)",
+    "foreign_net": -9467.0,
+    "institution_net": -11906.0,
+    "retail_net": 5173.0
+  },
+  "korean_market_flow": {
+    "date": "2026-08-30",
+    "market": {
+      "KOSPI": {
+        "individual": 4194,
+        "foreign": -8525,
+        "institution": -11876
+      },
+      "KOSDAQ": {
+        "individual": 979,
+        "foreign": -942,
+        "institution": -30
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] 워시, '금리인하 압박' 트럼프와 충돌하나…\"9월 FOMC 시험대\"(종합) - 연합뉴스",
+    "[환율/달러] 신현송 한은 총재 \"美 금리 올려도 기계적 대응 안 해…환율·금융안정 종합 판단\" - 머니투데이 - 머니투데이",
+    "[반도체/AI] 엔비디아, 허깅페이스 인수 추진…오픈소스 AI로 반도체 묶는다 - 초이스스탁US",
+    "[국내지수] 코스피 숨고르기 구간…\"반도체 더해 2차전지·AI 서비스주 주목\" [주간전망] - 한국경제",
+    "[인플레이션] 비트코인(BTC), 9월 금리인상 경계 확산...고용·CPI가 다음 승부처 - 코인리더스"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6788.88,
+      "kosdaq": 838.41,
+      "kospi_pct": -1.79,
+      "kosdaq_pct": 0.09
+    },
+    "us": {
+      "sp500": 7711.76,
+      "nasdaq": 26402.424,
+      "dow": 53559.99,
+      "sp500_pct": -0.24873916535915275,
+      "nasdaq_pct": -0.5234398006552187,
+      "dow_pct": -0.017565998499149686
+    },
+    "fx": {
+      "usdkrw": 1377.900275,
+      "usdkrw_pct": -0.6468998790232076
+    },
+    "volatility": {
+      "vix": 14.510000228881836
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.671999931335449,
+      "us2y": 3.677999973297119,
+      "spread_2_10": 0.9939999580383301,
+      "us_3m_yield": 3.677999973297119,
+      "us_2y_yield": 4.2,
+      "us_10y_yield": 4.671999931335449,
+      "spread_10y_2y": 0.47199993133544904,
+      "spread_10y_3m": 0.9939999580383301,
+      "vix": 14.510000228881836,
+      "dxy": 99.16000366210938,
+      "usdkrw": 1371.5,
+      "vix3m": 17.479999542236328,
+      "vix_term_spread": 2.969999313354492,
+      "oil_wti": 83.4000015258789,
+      "russell2000": 3014.340087890625,
+      "oil_brent": 89.30999755859375
+    },
+    "monthly": {
+      "unemployment_rate": 4.1,
+      "cpi_yoy": 3.5397514271936714,
+      "core_cpi_yoy": 2.786747157096725,
+      "pce_yoy": 3.7011657214870874,
+      "pmi": null,
+      "retail_sales_mom": -0.5819766896853373,
+      "nfp_change": -23.0,
+      "wage_growth": 37.62,
+      "wage_level": 37.62,
+      "wage_yoy": 3.153276665752669,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24269.613,
+      "gdp_qoq_annualized": 1.5
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.361999931335449,
+      "hy_oas": 2.63,
+      "ig_oas": 0.79,
+      "fed_balance_sheet": 6730912.0,
+      "tga_balance": 959435.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -0.587,
+    "liquidity_signal_score": 7.606,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -0.396,
+    "kospi_20d_cum_pct": 7.154,
+    "kosdaq_5d_cum_pct": 3.149,
+    "kospi_abs_move_5d_avg": 1.353,
+    "usdkrw_5d_change_pct": -0.26,
+    "vix_5d_avg": 14.95,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+7.15%, vol20d=2.83, reversal=false"
+  }
+}
