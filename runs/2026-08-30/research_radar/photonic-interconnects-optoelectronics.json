@@ -1,0 +1,253 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "photonic-interconnects-optoelectronics",
+    "name": "광 I/O·실리콘 포토닉스",
+    "thesis": "AI 클러스터의 전기식 연결 한계를 광 I/O·실리콘 포토닉스·광전자 3D 집적이 실제 대역폭과 전력 효율 개선으로 해소하는지 추적한다."
+  },
+  "as_of": "2026-08-30",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 13.12,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 52.5,
+      "net_signal": 52.5,
+      "confidence": 61.25,
+      "evidence_count": 4,
+      "distinct_source_count": 1,
+      "positive_count": 4,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2608-03146v1",
+        "arxiv-2608-11099v1",
+        "arxiv-2608-11639v1",
+        "arxiv-2608-25064v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2608-03146v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Zero-change foundry compatible silicon photonics MEMS optical switch",
+      "claim": "파운드리 호환 공정과 BEOL 후공정으로 제작한 실리콘 포토닉스 MEMS 광 스위치를 실험적으로 구현, 30 dB 이상 소멸비, 1.5 dB 이하 삽입손실, 20 nW 수준의 정적 소비전력을 달성하여 대규모 저전력 광 회로 스위치의 실현 가능성을 보였다.",
+      "event_date": "2026-08-04",
+      "known_at": "2026-08-04",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.03146v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "스위치 소자 단위의 특성 평가에 머물며, 실제 데이터센터·AI 클러스터 전체의 대역폭·전력 효율 개선 효과는 검증하지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "silicon-photonics",
+        "mems",
+        "optical-switch",
+        "optical-interconnects",
+        "energy-efficiency",
+        "ai-cluster"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2608-11099v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "High-dimensional Supermode Photonics Enabled by Hierarchical Supersymmetric Transformation",
+      "claim": "계층적 DSUSY 변환을 이용해 실리콘 기반 6-수퍼모드 다중화 시스템을 제작, 1.2 Tbit/s 전송, 낮은 삽입손실과 채널간 간섭, FEC 임계 이하의 BER을 실험적으로 달성하여 고차원 수퍼모드 포토닉스가 고용량 광 인터커넥트에 유망함을 보였다.",
+      "event_date": "2026-08-11",
+      "known_at": "2026-08-11",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.11099v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 소자 및 단일 칩 수준의 전송에 한정되며, 실제 AI 클러스터의 병목 해소나 대규모 시스템 적용에 대한 직접적 검증은 없다.",
+      "tags": [
+        "weekly-paper",
+        "supermode-photonics",
+        "silicon-photonics",
+        "optical-interconnects",
+        "multiplexing",
+        "ai-computing",
+        "mode-division"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2608-11639v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Towards Terabit/$λ$/s Multidimensional Silicon Photonic Engine",
+      "claim": "단일 칩에 송수신기, 공간·편광 (디)멀티플렉서, 광 신호 프로세서를 집적한 다차원 실리콘 포토닉 엔진을 개발하여, 1.8 Tbit/s/lambda/s 이상의 통신 용량, 6채널 동시 전송, DSP 대비 5,000배 이상 전력·지연 감소, 300m 광섬유 간 칩-간 전이중 통신을 실험적으로 달성했다.",
+      "event_date": "2026-08-12",
+      "known_at": "2026-08-12",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.11639v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 엔진 단위 및 300m 전송에 한정되며, 실제 AI 클러스터 전체의 대역폭·전력 효율 개선이나 대규모 시스템 통합 효과는 직접 검증하지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "silicon-photonics",
+        "co-packaged-optics",
+        "optical-interconnects",
+        "multiplexing",
+        "ai-cluster",
+        "energy-efficiency"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2608-25064v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Single-Mode Control of High-Speed and Low-Threshold III-V/Si Quantum Dot Microring Lasers via Azimuthal Gratings",
+      "claim": "III-V/Si 양자점 마이크로링 레이저에 실리콘 링의 방위격자 패터닝을 적용해 단일 모드, 낮은 임계전류, 높은 사이드모드 억제비, 연속 조정 및 다중 기가헤르츠 직접 변조가 가능한 소형·저전력 O-밴드 광원 구현을 실험적으로 입증했다. 이는 데이터 통신 및 co-packaged optics용 파장 주소 지정 송신기 어레이의 실용적 빌딩 블록임을 시사한다.",
+      "event_date": "2026-08-25",
+      "known_at": "2026-08-25",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.25064v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "레이저 단일 소자 및 어레이 빌딩 블록 수준의 실험에 국한되며, 실제 대규모 시스템에서의 대역폭·전력 효율 개선 효과나 AI 클러스터 전체의 병목 해소까지는 검증하지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "silicon-photonics",
+        "quantum-dot-laser",
+        "single-mode",
+        "co-packaged-optics",
+        "modulation",
+        "wavelength-division"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 52.50점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "소자 수준의 속도·전력 효율은 패키징 수율, 열관리, 표준화와 데이터센터 채택을 직접 증명하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

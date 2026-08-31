@@ -1,0 +1,64 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,653.25로 2.00% 하락했고 KOSDAQ도 815.27로 2.76% 내렸다. 외국인 -3,843억원과 기관 -2,545억원을 개인 +4,302억원이 흡수했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "연준의 추가 금리인상 경계 뉴스와 원/달러 환율 1,376.60원(+0.16%)이 위험자산 부담을 키웠다. 다만 VIX는 14.51로 5일 평균 14.95를 하회한다.",
+      "sources": [
+        "macro_daily",
+        "news",
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "오늘 하락의 성격",
+      "majority": "중립 유지: 단기 심리·수급 조정이지만 중기 추세 훼손 여부는 추가 확인이 필요하다.",
+      "minority": "위험회피: 외국인 매도와 유동성 위축이 시장 하락을 더 연장할 수 있다.",
+      "minority_agents": [
+        "flow",
+        "breadth",
+        "liquidity"
+      ],
+      "why_it_matters": "외국인·기관 동반 매도가 지속될 경우 개인 매수만으로 지수 하방을 방어하기 어렵다."
+    },
+    {
+      "topic": "20일 상승 추세의 해석",
+      "majority": "KOSPI 20일 +6.94%는 구조적 추세 붕괴보다는 조정 가능성을 뒷받침한다.",
+      "minority": "누적 상승 폭 자체가 차익실현과 단기 위험회피를 증폭시키는 요인이다.",
+      "minority_agents": [
+        "flow",
+        "breadth"
+      ],
+      "why_it_matters": "상승 추세의 완충력과 차익실현 압력이 동시에 존재해 단일 지표만으로 방향성을 확정하기 어렵다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 매파 경계가 만든 동반 매도\n\n8월 31일 KOSPI는 **6,653.25(-2.00%)**, KOSDAQ는 **815.27(-2.76%)**로 마감했다. 원/달러 환율은 **1,376.60원(+0.16%)**으로 상승했고, VIX는 **14.51**이었다. 국내 주식 수급은 외국인 **-3,843억원**, 기관 **-2,545억원**의 동반 순매도에 개인 **+4,302억원** 순매수가 맞서는 구도였다. KOSPI에서는 외국인 -2,916억원·기관 -1,904억원·개인 +2,731억원, KOSDAQ에서는 각각 -927억원·-641억원·+1,571억원이었다.\n\n## 외국인·기관 매도, 개인이 흡수한 하루\n\n핵심은 매파적 통화정책 우려가 환율 상승과 동반 매도로 연결됐다는 점이다. [연준 의장, 잭슨홀서 매파 본색···“9월 금리 인상 가능성 커져”](https://news.google.com/rss/articles/CBMiUkFVX3lxTE9xWXRJQ1lONFZ6VzV6Mmo4ckhKQkNDdVVMR2FObm9aU3NGazZUSXBaVm5kMW5CV0xnRUNTNGZqdml4elVKbEhMY1VKVXNuTHBUc1E?oc=5)과 [미국증시, 연준 추가 금리인상 경계감에 기술주 중심 하락 마감](https://news.google.com/rss/articles/CBMiYkFVX3lxTE1nTUNGeUtmSmdkQ1YtX3B3N0VmbVBtZ1VhSTlPZFp0V1pNdk42UDVYbGk0ZV91NjVLVEtCTENMMl9IbG1BS3d4bGlWQk5JSjFQb1lHTkdlZ0Qzb3o2dE51UmZ3?oc=5)이 심리적 촉매가 됐다. 수급 담당자(flow)는 고환율과 연준 매파 기조, 그리고 KOSPI 20일 상승 이후 차익실현을 외국인 매도의 복합 배경으로 제시했다. 개인 매수는 하락 흡수 역할을 했지만, 매도 주체가 외국인과 기관 모두였다는 점에서 지속성 확인이 필요하다.\n\n## 오늘의 우선 이슈: 금리, 환율, AI 경계\n\n첫째, 금리 이슈가 최우선이다. [코스피, 美 연준 의장 '매파' 발언에 하방압력 받을 듯](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1CSjEzaXp0TGJiRVdpZEF5UGhRSmdzbXI4d2g5T3QyQ3pZTmQyTkJpWTl0dE44YmY1MDk2NkxIYlRWaTRTOTFMQ0M2UTdLVjE4Qnhkd2JNT1hZOW8?oc=5)라는 국내 증시 전망도 이를 반영한다. 둘째, 원/달러 환율 상승은 외국인 위험선호 회복을 지연시킬 변수다. 셋째, 반도체·AI 투자자금 이동을 다룬 뉴스가 나온 만큼 관련 테마는 장기 연구 의제와 별개로 당일 위험회피 수급에 취약할 수 있다.\n\n## 추세 판단은 수급 지속성으로\n\n단일 급락에 과잉 반응할 단계는 아니다. KOSPI는 최근 5일 **-0.61%**지만 20일 기준 **+6.94%**이며, VIX도 5일 평균 **14.95**보다 낮다. 매크로·섹터·리스크 담당자는 이를 단기 조정으로 평가한 반면, 브레드스·유동성 담당자는 확산 약화와 자금 이탈을 경고했다. 따라서 외국인·기관 순매도가 이어지고 원/달러 환율 상승이 지속되는지를 우선 확인해야 한다. **외국인·기관 매도가 완화되지 않은 채 KOSPI의 20일 누적 상승 흐름까지 훼손된다면, 오늘의 ‘단기 조정’ 판단은 무효화된다.**"
+}

@@ -1,0 +1,23 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "photonic-interconnects-optoelectronics",
+  "as_of": "2026-08-30",
+  "lookback_days": 28,
+  "candidate_count": 5,
+  "accepted_count": 4,
+  "rejected_count": 1,
+  "accepted_paper_ids": [
+    "2608-03146v1",
+    "2608-11099v1",
+    "2608-11639v1",
+    "2608-25064v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "0f0a6ea9f4b19c4704ef0928cc5c69263546c63d67a341ae6bc3941bd0320d75",
+  "input_tokens": 2813,
+  "output_tokens": 1133,
+  "report_status": "emerging",
+  "report_score": 13.12,
+  "generated_at": "2026-08-30T08:32:33.320462+00:00"
+}

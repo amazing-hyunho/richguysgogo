@@ -1,0 +1,194 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "battery-ev-mobility",
+    "name": "배터리·전기차·차세대 이동수단",
+    "thesis": "차세대 배터리의 수명·안전·원가 개선이 전기차 채택과 소재·장비 공급망 변화로 이어지는지 추적한다."
+  },
+  "as_of": "2026-08-30",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 10.31,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 41.25,
+      "net_signal": 41.25,
+      "confidence": 61.25,
+      "evidence_count": 2,
+      "distinct_source_count": 1,
+      "positive_count": 2,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2608-12638v1",
+        "arxiv-2608-25492v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2608-12638v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Improving Fast Charging Safety With Core Temperature Estimation Via Kolmogorov-Arnold Network",
+      "claim": "Kolmogorov-Arnold Network 기반 코어 온도 추정과 제어 장벽 함수 기법을 결합해, 리튬이온 배터리의 급속충전 시 표면·냉각 온도 등 외부 센서만으로도 안전한 온도 범위 내에서 충전이 가능함을 시뮬레이션으로 입증했다.",
+      "event_date": "2026-08-12",
+      "known_at": "2026-08-12",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.12638v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 배터리 시스템이 아닌 시뮬레이션 결과에 기반하며, 실제 환경에서의 성능 및 신뢰성 검증은 이루어지지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "fast-charging",
+        "battery-safety",
+        "temperature-estimation",
+        "control",
+        "simulation"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2608-25492v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Battery Recycling: Mechanistic Modelling of LiCoO$_2$ Leaching with Coupled Diffusion-Reaction Kinetics and Film Passivation",
+      "claim": "LiCoO2 리사이클링에서 산-환원 침출 과정의 메커니즘을 모델링하고, H2O2 농도와 산 농도에 따른 리튬·코발트 회수율을 실험 데이터와 비교 검증하여, 필름 패시베이션 효과를 포함한 모델이 실제 회수 거동을 잘 설명함을 보였다.",
+      "event_date": "2026-08-26",
+      "known_at": "2026-08-26",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2608.25492v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "모델은 일부 조건(2.5M HCl, H2O2 존재)에서 실험값을 과대 예측하며, 실제 산업 공정이나 다양한 배터리 화학계에 대한 직접 실험 검증은 부족하다.",
+      "tags": [
+        "weekly-paper",
+        "battery-recycling",
+        "mechanistic-modeling",
+        "li-ion",
+        "leaching",
+        "lithium",
+        "cobalt"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 41.25점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "논문 단계의 셀 성능은 양산 수율과 자동차 채택을 의미하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}
