@@ -1,33 +1,33 @@
 {
-  "crawled_at": "2026-09-01T11:41:57.228470+00:00",
+  "crawled_at": "2026-09-01T12:42:09.511298+00:00",
   "news_date": "2026-09-01",
-  "total_collected": 272,
+  "total_collected": 287,
   "topic_counts": [
     [
       "금리/연준",
-      26
+      27
     ],
     [
       "환율/달러",
-      19
+      21
+    ],
+    [
+      "에너지/원자재",
+      23
     ],
     [
       "반도체/AI",
-      26
+      22
     ],
     [
       "인플레이션",
-      15
-    ],
-    [
-      "경기/성장",
-      24
+      18
     ]
   ],
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 26,
+      "count": 27,
       "title": "트럼프 \"美금리 너무 높아\"…연준의장에 재차 인하 압박 - 연합뉴스TV",
       "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1jWEF4UVZJRC11WUpQVTZoNWxVWE1SbEg0Wmh5by1na0o3N01WWno3RzBnd0JNNHlRM2YwZDB5OGlwRHhOSnlkWnlyN3p4SjF4dnNKTGp1T3dHa2tHZndrZzRRRzc0MUE?oc=5",
       "summary_lines": [
@@ -38,7 +38,7 @@
     },
     {
       "topic": "환율/달러",
-      "count": 19,
+      "count": 21,
       "title": "강달러·약엔인데 원화 강세…환율 공식 바꾼 ‘한국 성수기’ - 중앙일보",
       "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5yR2NmdkR1dUgtWWIzWHFxSi1ja0RReXI1aHRDZXdsOHVaTHZtZW13Y0I4NVRCdV9Jb0NPRmJqNlNrRUdKTS1qS3UxVlNDZjRtbkNZMURR?oc=5",
       "summary_lines": [
@@ -48,8 +48,19 @@
       ]
     },
     {
+      "topic": "에너지/원자재",
+      "count": 23,
+      "title": "코스피, 중동 긴장 재고조에 6,780선 약세…유가·금리 부담에 반도체도 하락 - ppss.kr",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1ZX29PeGtGendVQXl6bjJjUGowSllTTkhLX1ZzM09FVzVHZ0NXQjBRR3J0WXJyblBKd1hQVzZxYnZfNDZTUzloWHhlUHo4cW1UMzNzM0o1ZTVXTGpZNWVWdjdnVGc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 코스피, 중동 긴장 재고조에 6,780선 약세…유가·금리 부담에 반도체도 하락 - ppss.kr",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "반도체/AI",
-      "count": 26,
+      "count": 22,
       "title": "‘잠재성장률 반등 사활’ 반도체∙AI 투자 10조 더 쓴다 [2027년 예산안] - 미주중앙일보",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9UYm9CWXdzbVlzT25kZC1oSmllLWtoVm9rcXpXMEtkVkYxUk5sb29IM1MzdHNBX2NybWJ1VXRPRkRHc0RlT2RGUmZhbnVDSzVxT0k5ZFJtVnhrZGtCTzJCS2JR?oc=5",
       "summary_lines": [
@@ -60,22 +71,11 @@
     },
     {
       "topic": "인플레이션",
-      "count": 15,
+      "count": 18,
       "title": "美 10년물 국채금리 4.75% 돌파...시장의 관심은 '8월 고용·CPI' - 뉴스웨이",
       "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAtUEZ0SHdLa09tajlYUVJRQ3ZfbFRDY2l1OFFfY0ZJUXJBZ1hGeHE2aUVvc1F6VVNvRzQtZkpwbjV2WFpMN0dyREFCelVPVzlRNS03QmxZdnhlY0FENFQzZTM2cnpaNTJKN0E?oc=5",
       "summary_lines": [
         "핵심 이슈: 美 10년물 국채금리 4.75% 돌파...시장의 관심은 '8월 고용·CPI' - 뉴스웨이",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "경기/성장",
-      "count": 24,
-      "title": "‘관세·이란에 국채까지’ 베선트 미국 재무장관, G20서 경제외교 시험대 - sedaily.com",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA3QjRmSUpiZGk0VTh4cHRTZzNXUEp2cmdQWTZxT1NxT1U4ak9ONFN3WkgtQUFjTGFKNnIyVU1fOGNuZDMtVzdRSEw2UXRvQWEyNWfSAVNBVV95cUxOMW1FTDdvNnl4WDVCLUphZDVsMXlWVVRDQzVpQkMxWURLMlpjNm92bk42alJlVjlqLTctZm45N21KbU9HQlRWTENCQ29BMDg4NVdGcw?oc=5",
-      "summary_lines": [
-        "핵심 이슈: ‘관세·이란에 국채까지’ 베선트 미국 재무장관, G20서 경제외교 시험대 - sedaily.com",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,41 +84,47 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 84,
+      "total_count": 66,
       "topics": [
         {
           "topic": "금리/연준",
-          "count": 26,
+          "count": 27,
           "title": "트럼프 \"美금리 너무 높아\"…연준의장에 재차 인하 압박 - 연합뉴스TV",
           "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1jWEF4UVZJRC11WUpQVTZoNWxVWE1SbEg0Wmh5by1na0o3N01WWno3RzBnd0JNNHlRM2YwZDB5OGlwRHhOSnlkWnlyN3p4SjF4dnNKTGp1T3dHa2tHZndrZzRRRzc0MUE?oc=5"
         },
         {
-          "topic": "경기/성장",
-          "count": 24,
-          "title": "‘관세·이란에 국채까지’ 베선트 미국 재무장관, G20서 경제외교 시험대 - sedaily.com",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFA3QjRmSUpiZGk0VTh4cHRTZzNXUEp2cmdQWTZxT1NxT1U4ak9ONFN3WkgtQUFjTGFKNnIyVU1fOGNuZDMtVzdRSEw2UXRvQWEyNWfSAVNBVV95cUxOMW1FTDdvNnl4WDVCLUphZDVsMXlWVVRDQzVpQkMxWURLMlpjNm92bk42alJlVjlqLTctZm45N21KbU9HQlRWTENCQ29BMDg4NVdGcw?oc=5"
-        },
-        {
           "topic": "환율/달러",
-          "count": 19,
+          "count": 21,
           "title": "강달러·약엔인데 원화 강세…환율 공식 바꾼 ‘한국 성수기’ - 중앙일보",
           "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5yR2NmdkR1dUgtWWIzWHFxSi1ja0RReXI1aHRDZXdsOHVaTHZtZW13Y0I4NVRCdV9Jb0NPRmJqNlNrRUdKTS1qS3UxVlNDZjRtbkNZMURR?oc=5"
         },
         {
           "topic": "인플레이션",
-          "count": 15,
+          "count": 18,
           "title": "美 10년물 국채금리 4.75% 돌파...시장의 관심은 '8월 고용·CPI' - 뉴스웨이",
           "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAtUEZ0SHdLa09tajlYUVJRQ3ZfbFRDY2l1OFFfY0ZJUXJBZ1hGeHE2aUVvc1F6VVNvRzQtZkpwbjV2WFpMN0dyREFCelVPVzlRNS03QmxZdnhlY0FENFQzZTM2cnpaNTJKN0E?oc=5"
         }
       ]
     },
     {
+      "sector": "에너지/소재",
+      "total_count": 23,
+      "topics": [
+        {
+          "topic": "에너지/원자재",
+          "count": 23,
+          "title": "코스피, 중동 긴장 재고조에 6,780선 약세…유가·금리 부담에 반도체도 하락 - ppss.kr",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1ZX29PeGtGendVQXl6bjJjUGowSllTTkhLX1ZzM09FVzVHZ0NXQjBRR3J0WXJyblBKd1hQVzZxYnZfNDZTUzloWHhlUHo4cW1UMzNzM0o1ZTVXTGpZNWVWdjdnVGc?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "IT/반도체",
-      "total_count": 26,
+      "total_count": 22,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 26,
+          "count": 22,
           "title": "‘잠재성장률 반등 사활’ 반도체∙AI 투자 10조 더 쓴다 [2027년 예산안] - 미주중앙일보",
           "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE9UYm9CWXdzbVlzT25kZC1oSmllLWtoVm9rcXpXMEtkVkYxUk5sb29IM1MzdHNBX2NybWJ1VXRPRkRHc0RlT2RGUmZhbnVDSzVxT0k5ZFJtVnhrZGtCTzJCS2JR?oc=5"
         }
