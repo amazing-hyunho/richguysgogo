@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -2.45%, USD/KRW 1373.78. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -2.45,
+    "usdkrw": 1373.777338
+  },
+  "flow_summary": {
+    "note": "외국인 -4081억, 기관 -6071억, 개인 +7837억 | KOSPI(외 -4472, 기관 -5551, 개인 +7702) KOSDAQ(외 +391, 기관 -520, 개인 +135)",
+    "foreign_net": -4081.0,
+    "institution_net": -6071.0,
+    "retail_net": 7837.0
+  },
+  "korean_market_flow": {
+    "date": "2026-09-02",
+    "market": {
+      "KOSPI": {
+        "individual": 7702,
+        "foreign": -4472,
+        "institution": -5551
+      },
+      "KOSDAQ": {
+        "individual": 135,
+        "foreign": 391,
+        "institution": -520
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[반도체/AI] [MUST KNOW5]엔비디아 ‘AI 생태계’ 확장·글로벌 국채금리 급등…오늘 알아야 할 5가지 - 이데일리TV",
+    "[금리/연준] 연준과 싸우지 말라는데…9월 금리 인상시 美 증시 운명은?[오미주] - 머니투데이 - 머니투데이",
+    "[환율/달러] \"달러·유가 동반 급등…미 국채금리 장중 4.8% 기록\" - 뉴스투데이",
+    "[미국지수] 미국증시, 중동 긴장에 유가·금리 급등…나스닥 1%↓ 엔비디아·반도체주 약세 - 톱스타뉴스",
+    "[인플레이션] 이스라엘 중앙은행, 인플레이션 안정 시 추가 금리 인하 가능성 - Investing.com 한국어"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6657.68,
+      "kosdaq": 818.07,
+      "kospi_pct": -2.45,
+      "kosdaq_pct": -0.39
+    },
+    "us": {
+      "sp500": 7631.47,
+      "nasdaq": 26099.773,
+      "dow": 52766.88,
+      "sp500_pct": -0.7112803045481877,
+      "nasdaq_pct": -1.0280882074168913,
+      "dow_pct": -0.7878403862677966
+    },
+    "fx": {
+      "usdkrw": 1373.777338,
+      "usdkrw_pct": -0.2693200759919217
+    },
+    "volatility": {
+      "vix": 16.34000015258789
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.796000003814697,
+      "us2y": 3.7720000743865967,
+      "spread_2_10": 1.0239999294281006,
+      "us_3m_yield": 3.7720000743865967,
+      "us_2y_yield": 4.34,
+      "us_10y_yield": 4.796000003814697,
+      "spread_10y_2y": 0.4560000038146974,
+      "spread_10y_3m": 1.0239999294281006,
+      "vix": 16.34000015258789,
+      "dxy": 99.70099639892578,
+      "usdkrw": 1369.97998046875,
+      "vix3m": 18.329999923706055,
+      "vix_term_spread": 1.989999771118164,
+      "oil_wti": 91.6500015258789,
+      "russell2000": 2920.13232421875,
+      "oil_brent": 96.18000030517578
+    },
+    "monthly": {
+      "unemployment_rate": 4.1,
+      "cpi_yoy": 3.5397514271936714,
+      "core_cpi_yoy": 2.786747157096725,
+      "pce_yoy": 3.7011657214870874,
+      "pmi": null,
+      "retail_sales_mom": -0.5819766896853373,
+      "nfp_change": -23.0,
+      "wage_growth": 37.62,
+      "wage_level": 37.62,
+      "wage_yoy": 3.153276665752669,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24269.613,
+      "gdp_qoq_annualized": 1.5
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.446000003814697,
+      "hy_oas": 2.63,
+      "ig_oas": 0.8,
+      "fed_balance_sheet": 6730912.0,
+      "tga_balance": 959435.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -0.578,
+    "liquidity_signal_score": 5.996,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -3.816,
+    "kospi_20d_cum_pct": 0.003,
+    "kosdaq_5d_cum_pct": -0.957,
+    "kospi_abs_move_5d_avg": 1.467,
+    "usdkrw_5d_change_pct": -0.483,
+    "vix_5d_avg": 15.222,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=+0.00%, vol20d=2.74, reversal=false"
+  }
+}
