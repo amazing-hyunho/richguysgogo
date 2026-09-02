@@ -20,6 +20,7 @@ class ChatCompletionResult:
     model: str | None
     input_tokens: int | None
     output_tokens: int | None
+    request_id: str | None = None
 
 
 def load_openai_config() -> OpenAIConfig:
@@ -107,6 +108,7 @@ def chat_completion_with_metadata(
         output_tokens=(
             int(usage["completion_tokens"]) if usage.get("completion_tokens") is not None else None
         ),
+        request_id=response.headers.get("x-request-id"),
     )
 
 
@@ -168,6 +170,7 @@ def responses_completion_with_metadata(
         output_tokens=(
             int(usage["output_tokens"]) if usage.get("output_tokens") is not None else None
         ),
+        request_id=response.headers.get("x-request-id"),
     )
 
 

@@ -48,6 +48,14 @@ class OpsGuidanceLevel(str, Enum):
     AVOID = "AVOID"
 
 
+class AnalysisStatus(str, Enum):
+    """How the chair analysis was produced."""
+
+    COMPLETE = "complete"
+    RECOVERED = "recovered"
+    FALLBACK = "fallback"
+
+
 class OpsGuidance(BaseModel):
     """Operational guidance item."""
     level: OpsGuidanceLevel
@@ -80,6 +88,14 @@ class CommitteeResult(BaseModel):
             "3 sections: (1) 외국인 매도 이유, (2) 개인 매수 이유·리스크, (3) 시나리오·투자 결론. "
             "Plain text, no markdown. Max ~1500 chars."
         ),
+    )
+    analysis_status: AnalysisStatus = Field(
+        default=AnalysisStatus.COMPLETE,
+        description="Whether chair analysis completed directly, recovered, or fell back.",
+    )
+    analysis_note: Optional[ShortText] = Field(
+        default=None,
+        description="Short operational note about retries, repairs, or fallback use.",
     )
 
     class Config:

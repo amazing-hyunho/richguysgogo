@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-02T00:53:39.127776+00:00",
+  "generated_at": "2026-09-02T03:17:43.634499+00:00",
   "market_date": "2026-09-02",
   "snapshot": {
     "market_summary": {
@@ -402,33 +402,42 @@
       {
         "point": "Majority regime tag: RISK_OFF.",
         "sources": [
-          "macro",
-          "flow",
-          "sector",
-          "earnings",
-          "breadth"
+          "regime_tuner"
         ]
       },
       {
-        "point": "Shared evidence focus: snapshot.cumulative_context.kospi_5d_cum_pct.",
+        "point": "KOSPI는 6,657.68로 2.45% 하락했고, 외국인 -4,081억원·기관 -6,071억원 순매도에 개인 +7,837억원이 대응한 공급 우위 장세였습니다.",
         "sources": [
-          "breadth",
-          "earnings",
-          "flow",
-          "liquidity",
-          "macro"
+          "flow_data",
+          "macro_daily"
+        ]
+      },
+      {
+        "point": "미국 10년물 금리 4.796%, WTI 91.65, VIX 16.34과 중동·매파 연준 뉴스가 위험자산 할인율 및 반도체 투자심리를 동시에 압박했습니다.",
+        "sources": [
+          "macro_daily",
+          "news"
         ]
       }
     ],
     "disagreements": [
       {
-        "topic": "Regime tags",
-        "majority": "RISK_OFF",
-        "minority": "NEUTRAL",
+        "topic": "단기 하락의 중기 추세 훼손 여부",
+        "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 동반 매도와 금리 부담을 근거로 위험회피 국면 지속을 판단했습니다.",
+        "minority": "리스크 담당자는 단기 약세는 인정하되 20일 누적 KOSPI가 +0.003%이고 VIX가 16.34인 점에서 중장기 위험 신호는 아직 뚜렷하지 않다고 봤습니다.",
         "minority_agents": [
           "risk"
         ],
-        "why_it_matters": "Minority risk regime can change positioning boundaries."
+        "why_it_matters": "5일 조정이 중기 하락 추세로 확대되는지, 또는 단기 변동성으로 마무리되는지에 따라 개인의 매수 흡수력을 해석하는 방식이 달라집니다."
+      },
+      {
+        "topic": "환율의 수급 설명력",
+        "majority": "수급 담당자는 USD/KRW가 1,373.777338로 0.269% 하락했음에도 외국인 순매도가 나타난 만큼 환율보다는 금리·유가 및 AI·반도체 약세에 따른 리밸런싱 성격이 강하다고 판단했습니다.",
+        "minority": "뉴스에서는 중동 긴장에 따른 달러 강세와 1,370원대 환율 재진입 가능성을 강조해, 향후 환율 변동이 외국인 수급을 악화시킬 위험을 제기했습니다.",
+        "minority_agents": [
+          "해당 없음"
+        ],
+        "why_it_matters": "원화가 당일 강세였다는 실제 수치와 달러 강세 뉴스 흐름의 괴리가 지속될 경우, 외국인 매도의 원인과 지속성 판단에 오류가 생길 수 있습니다."
       }
     ],
     "ops_guidance": [
@@ -445,6 +454,8 @@
         "text": "Avoid high-beta risk assets."
       }
     ],
-    "sugeup_narrative": null
+    "sugeup_narrative": "## 동반 매도가 만든 2.45% 급락\n\n2일 KOSPI는 6,657.68로 2.45% 하락했고, KOSDAQ도 818.07로 0.39% 내렸다. 외국인은 4,081억원, 기관은 6,071억원을 순매도한 반면 개인은 7,837억원을 순매수했다. 원·달러 환율은 1,373.777338원으로 0.269% 하락했지만, 주식 수급은 원화 강세보다 글로벌 위험회피를 더 강하게 반영했다. VIX는 16.34로 최근 5일 평균 15.222를 웃돌아 경계 심리가 높아졌다.\n\n## 금리·유가 충격과 개인 매수의 한계\n\n매도는 KOSPI에 집중됐다. 외국인은 KOSPI에서 4,472억원, 기관은 5,551억원을 팔았고 개인은 7,702억원을 사들였다. 반면 KOSDAQ에서는 외국인이 391억원 순매수했다. 이는 지수 급락의 핵심이 코스피 대형주 매물이었다는 해석에 무게를 둔다. 수급 담당자(flow)는 환율 주도 이탈보다 금리·유가 및 AI·반도체 약세에 따른 리밸런싱으로 진단했다. 미국 10년물 금리는 4.796%, WTI는 91.65로 제공됐으며, [중동 리스크에 유가·국채금리가 급등했다는 보도](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBHcGg5aUFzaVVYV2o4UW1SWGVLc29TOTV6ZGZvdG1PTGQwRzVOQWNKOEV2WUVNOTktTXp3TGN0dVhKODlkc3JRZWVZLVBLX1JvTkcyTzgzQ2pvU3PSAWBBVV95cUxOQVBPZkdhMUo3c014U2JqTFczeHBxbVBIVTducmlaOWdscmhxcjUwdTlSZ3g3SHk3bUR3dnQtNW9mVzJuZTk0RHQ1aEgzNVdCdTJuVk5BOEhYLXlMdlVsc3g?oc=5)가 이 경로를 뒷받침한다. 개인 매수는 낙폭을 흡수했으나, 기관·외국인 합산 매물 우위가 유지돼 방어력의 지속성은 확인이 필요하다.\n\n## 오늘의 핵심 변수: 연준, 중동, 반도체\n\n첫째, 뉴스 집계상 금리·연준 이슈가 20건으로 가장 많았다. [인플레이션이 둔화하지 않으면 금리 인상이 필요하다는 연준 이사 발언](https://news.google.com/rss/articles/CBMiYEFVX3lxTE1yMmgwaWRXRVdDM0xyMXUwVEFwSW90WUVPY0g0T2dFZ0hIZWZ1ZVlud2NlcGFUUHJ2R0ZpVWhBa2E3c0FYS1d4eFJINFhsSkZQMDBuMUFJZ2tURGRYT3p3N9IBeEFVX3lxTE5pRXFKYmtMU1UydUFqYmZoMnY2aXF5Y3RNdGlkRm5fblBCakNjMndHajJqS2pESE1kUDFoaHRDandwQjVEX0FZVWk2UmYwSXVhdWtTTnBGakJ5UzJsRWlnanNoUkpVYlp6cUtqUjRCVGtScUFxa2JJYw?oc=5)은 높은 금리 수준과 결합해 밸류에이션 부담을 키운다. 둘째, 환율·달러 이슈는 13건으로 중동발 유가 변수와 연결됐다. 다만 당일 USD/KRW는 하락했으므로 달러 강세 뉴스와 현물 환율 움직임은 엇갈렸다. 셋째, 반도체·AI 이슈는 19건이었고, [유가·금리와 HBM 부담을 언급한 반도체 약세 기사](https://news.google.com/rss/articles/CBMiWkFVX3lxTE9TYmluOWhTNm40WHFBZkNUdEsyamRvMlZDUkhaa0E4cVdWZ25JUVVOdlNJeExpYlBaNWFWbzc0VjhiNk04ZTNFdU9Sa0VJVjM4VlUwNld1bVdoUQ?oc=5)가 코스피 대형주 매도와 맞물렸다.\n\n## 5일 조정 이후의 확인 조건\n\nKOSPI는 최근 5일 3.816% 하락했지만 20일 누적은 +0.003%로 사실상 보합이며, 반전 신호는 false다. 따라서 현 단계의 기본 시나리오는 단기 위험회피 지속이다. 매크로·유동성 담당자의 보수적 판단을 우선하되, 리스크 담당자(risk)가 지적했듯 중기 위험 전환을 단정할 수는 없다. 다음 확인점은 미국 금리와 유가의 안정, VIX의 5일 평균 하회, 그리고 외국인·기관 동반 매도 완화다. 반대로 금리·유가 부담이 이어지는 가운데 외국인과 기관의 순매도가 지속·확대되면, 개인 매수 흡수에 기반한 단기 안정화라는 오늘의 전제는 무효화된다.",
+    "analysis_status": "complete",
+    "analysis_note": null
   }
 }

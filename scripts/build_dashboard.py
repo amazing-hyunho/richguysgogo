@@ -304,6 +304,8 @@ def load_latest_committee() -> dict[str, object]:
         "key_points": key_points[:3],
         "ops_guidance": ops_guidance[:3],
         "sugeup_narrative": committee.get("sugeup_narrative") or "",
+        "analysis_status": committee.get("analysis_status") or "complete",
+        "analysis_note": committee.get("analysis_note") or "",
     }
 
 

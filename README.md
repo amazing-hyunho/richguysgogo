@@ -305,6 +305,10 @@ docs/          # 대시보드 HTML
 - `CHAIR_OPENAI_MODEL=gpt-5.6-terra` : 평상시 의장 모델
 - `CHAIR_REASONING_EFFORT=medium` : 평상시 의장 추론 강도
 - `CHAIR_ESCALATION_MODEL=gpt-5.6-sol` : 충돌·급변·월간 보고서 시 승격 모델
+- `CHAIR_TIMEOUT_SEC=180` : 의장 응답 대기 시간(초)
+- `CHAIR_SAME_MODEL_RETRIES=1` : 같은 의장 모델 재시도 횟수
+- `CHAIR_RETRY_MODEL=gpt-5.6-luna` : 같은 모델 재시도 후 사용할 복구 모델
+- `CHAIR_RETRY_REASONING_EFFORT=low` : 복구 모델의 추론 강도
 - `CHAIR_FORCE_SOL=1` / `CHAIR_URGENT_FLAG=1` : 수동·긴급 승격 스위치
 - `CHAIR_REPORT_MODE=monthly` : 월간 보고서 실행 시 Sol 승격
 - `USE_AGENT_DEBATE=1` : 토론 라운드 활성화

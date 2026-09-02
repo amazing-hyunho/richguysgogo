@@ -17,6 +17,7 @@ class OpenAIResponsesTests(unittest.TestCase):
     @patch("requests.post")
     def test_responses_request_uses_reasoning_and_json_mode(self, post: Mock) -> None:
         response = Mock(status_code=200)
+        response.headers = {"x-request-id": "req_test"}
         response.json.return_value = {
             "status": "completed",
             "model": "gpt-5.6-terra-2026-08-01",
@@ -44,6 +45,7 @@ class OpenAIResponsesTests(unittest.TestCase):
         self.assertEqual(result.content, '{"consensus":"중립"}')
         self.assertEqual(result.input_tokens, 120)
         self.assertEqual(result.output_tokens, 40)
+        self.assertEqual(result.request_id, "req_test")
         self.assertEqual(post.call_args.args[0], "https://api.openai.com/v1/responses")
         payload = json.loads(post.call_args.kwargs["data"])
         self.assertEqual(payload["reasoning"], {"effort": "medium"})

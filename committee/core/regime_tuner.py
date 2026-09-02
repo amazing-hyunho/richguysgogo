@@ -58,6 +58,8 @@ def tune_committee_result(snapshot: Snapshot, stances: list[Stance], committee_r
         disagreements=committee_result.disagreements,
         ops_guidance=_ops_guidance(tuned),
         sugeup_narrative=committee_result.sugeup_narrative,
+        analysis_status=committee_result.analysis_status,
+        analysis_note=committee_result.analysis_note,
     )
 
 

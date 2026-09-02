@@ -3444,6 +3444,8 @@ function renderWatchTop3() {
     const chairFreshness = document.getElementById('v2-chair-freshness');
     const chairBody = document.getElementById('v2-chair-analysis-body');
     const chairNarrative = String(committee.sugeup_narrative || '').trim();
+    const chairStatus = String(committee.analysis_status || 'complete').trim();
+    const chairStatusNote = String(committee.analysis_note || '').trim();
     const analysisDate = String(committee.market_date || '').trim();
     const strategyDate = String(ic.as_of || '').trim();
     function dayDifference(laterDate, earlierDate) {
@@ -3457,12 +3459,18 @@ function renderWatchTop3() {
       chairDetails.open = false;
       if (chairNarrative) {
         const isStale = analysisAge != null && analysisAge >= 1;
-        chairTitle.textContent = isStale ? '최근 의장 심층 분석' : '오늘의 의장 심층 분석';
+        const isFallback = chairStatus === 'fallback';
+        const isRecovered = chairStatus === 'recovered';
+        chairTitle.textContent = isFallback
+          ? '규칙 기반 대체 분석'
+          : (isStale ? '최근 의장 심층 분석' : '오늘의 의장 심층 분석');
         chairSubtitle.textContent = `한 달 전략의 Daily 판단 근거 · 기준일 ${analysisDate || '확인 불가'}`;
-        chairFreshness.className = `v2-chair-freshness${isStale ? ' stale' : ''}`;
-        chairFreshness.textContent = isStale
-          ? `최신 Daily 분석 아님 · ${analysisAge}일 이전`
-          : '최신 Daily 분석';
+        chairFreshness.className = `v2-chair-freshness${isFallback ? ' missing' : (isStale ? ' stale' : '')}`;
+        chairFreshness.textContent = isFallback
+          ? `AI 분석 실패 · 대체 결과${chairStatusNote ? ` · ${chairStatusNote}` : ''}`
+          : (isRecovered
+            ? `AI 분석 복구 완료${chairStatusNote ? ` · ${chairStatusNote}` : ''}`
+            : (isStale ? `최신 Daily 분석 아님 · ${analysisAge}일 이전` : '최신 Daily 분석'));
         chairBody.innerHTML = markdownToHtml(chairNarrative);
       } else {
         chairTitle.textContent = '의장 심층 분석';

@@ -4,12 +4,13 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
 from committee.agents.chair_stub import ChairStub
-from committee.schemas.committee_result import CommitteeResult
+from committee.schemas.committee_result import AnalysisStatus, CommitteeResult
 from committee.schemas.debate import DebateRound
 from committee.schemas.snapshot import Snapshot
 from committee.schemas.stance import RegimeTag, Stance
@@ -35,6 +36,14 @@ def _env_float(name: str, default: float) -> float:
         return default
 
 
+def _env_int(name: str, default: int, *, minimum: int, maximum: int) -> int:
+    try:
+        value = int(os.getenv(name, str(default)))
+    except (TypeError, ValueError):
+        return default
+    return max(minimum, min(maximum, value))
+
+
 def _env_reasoning_effort(name: str, default: str) -> str:
     value = os.getenv(name, default).strip().lower() or default
     return value if value in _REASONING_EFFORTS else default
@@ -55,6 +64,10 @@ class ChairLLMOptions:
     kospi_move_escalation_pct: float = 3.0
     usdkrw_move_escalation_pct: float = 1.5
     source_conflict_threshold_pct: float = 0.5
+    timeout_sec: int = 180
+    same_model_retries: int = 1
+    retry_model: str = "gpt-5.6-luna"
+    retry_reasoning_effort: str = "low"
 
     @classmethod
     def from_env(cls) -> "ChairLLMOptions":
@@ -88,6 +101,17 @@ class ChairLLMOptions:
             ),
             source_conflict_threshold_pct=_env_float(
                 "CHAIR_SOURCE_CONFLICT_PCT", 0.5
+            ),
+            timeout_sec=_env_int(
+                "CHAIR_TIMEOUT_SEC", 180, minimum=30, maximum=600
+            ),
+            same_model_retries=_env_int(
+                "CHAIR_SAME_MODEL_RETRIES", 1, minimum=0, maximum=2
+            ),
+            retry_model=os.getenv("CHAIR_RETRY_MODEL", "gpt-5.6-luna").strip()
+            or "gpt-5.6-luna",
+            retry_reasoning_effort=_env_reasoning_effort(
+                "CHAIR_RETRY_REASONING_EFFORT", "low"
             ),
         )
 
@@ -212,41 +236,238 @@ class LLMChairAgent:
                 "reasoning_effort": selection.reasoning_effort,
                 "escalated": selection.escalated,
                 "reasons": list(selection.reasons),
+                "timeout_sec": self.options.timeout_sec,
+                "same_model_retries": self.options.same_model_retries,
+                "retry_model": self.options.retry_model,
             },
         )
         try:
             config = load_openai_config()
-            system_prompt = self._system_prompt()
-            user_prompt = self._user_prompt(snapshot=snapshot, stances=stances, debate_round=debate_round)
-            response = responses_completion_with_metadata(
-                config=config,
-                model=selection.model,
-                system_prompt=system_prompt,
-                user_prompt=user_prompt,
-                reasoning_effort=selection.reasoning_effort,
-            )
-            trace.log(
-                "chair_model_response",
-                {
-                    "requested_model": selection.model,
-                    "response_model": response.model,
-                    "reasoning_effort": selection.reasoning_effort,
-                    "input_tokens": response.input_tokens,
-                    "output_tokens": response.output_tokens,
-                },
-            )
-            parsed = json.loads(response.content)
-            return CommitteeResult.model_validate(parsed)
         except Exception as exc:
+            return self._fallback_result(
+                snapshot=snapshot,
+                stances=stances,
+                trace=trace,
+                requested_model=selection.model,
+                errors=[exc],
+            )
+
+        system_prompt = self._system_prompt()
+        user_prompt = self._user_prompt(
+            snapshot=snapshot,
+            stances=stances,
+            debate_round=debate_round,
+        )
+        attempts: list[tuple[str, str, str]] = [
+            ("primary", selection.model, selection.reasoning_effort)
+        ]
+        attempts.extend(
+            (f"same_model_retry_{index + 1}", selection.model, selection.reasoning_effort)
+            for index in range(self.options.same_model_retries)
+        )
+        attempts.append(
+            (
+                "recovery_model",
+                self.options.retry_model,
+                self.options.retry_reasoning_effort,
+            )
+        )
+
+        errors: list[Exception] = []
+        for attempt_index, (attempt_kind, model, effort) in enumerate(attempts, start=1):
+            started_at = time.perf_counter()
+            response = None
             trace.log(
-                "chair_model_fallback",
+                "chair_model_attempt",
                 {
-                    "requested_model": selection.model,
-                    "error_type": type(exc).__name__,
-                    "error": str(exc)[:200],
+                    "attempt": attempt_index,
+                    "attempts_total": len(attempts),
+                    "attempt_kind": attempt_kind,
+                    "model": model,
+                    "reasoning_effort": effort,
+                    "timeout_sec": self.options.timeout_sec,
                 },
             )
-            return self.fallback_agent.run(stances)
+            try:
+                response = responses_completion_with_metadata(
+                    config=config,
+                    model=model,
+                    system_prompt=system_prompt,
+                    user_prompt=user_prompt,
+                    reasoning_effort=effort,
+                    timeout=self.options.timeout_sec,
+                )
+                elapsed_sec = round(time.perf_counter() - started_at, 3)
+                trace.log(
+                    "chair_model_response",
+                    {
+                        "attempt": attempt_index,
+                        "attempt_kind": attempt_kind,
+                        "requested_model": model,
+                        "response_model": response.model,
+                        "request_id": response.request_id,
+                        "reasoning_effort": effort,
+                        "elapsed_sec": elapsed_sec,
+                        "input_tokens": response.input_tokens,
+                        "output_tokens": response.output_tokens,
+                    },
+                )
+                parsed = json.loads(response.content)
+                repaired, repairs = self._repair_payload(parsed)
+                result = CommitteeResult.model_validate(repaired)
+                recovered = attempt_index > 1 or bool(repairs)
+                note_parts: list[str] = []
+                if attempt_index > 1:
+                    note_parts.append(f"{attempt_index}번째 호출에서 복구")
+                if repairs:
+                    note_parts.append("응답 형식 자동 보정")
+                    trace.log(
+                        "chair_response_repaired",
+                        {
+                            "attempt": attempt_index,
+                            "repairs": repairs,
+                        },
+                    )
+                result = self._with_status(
+                    result,
+                    status=(
+                        AnalysisStatus.RECOVERED
+                        if recovered
+                        else AnalysisStatus.COMPLETE
+                    ),
+                    note=" · ".join(note_parts) or None,
+                )
+                trace.log(
+                    "chair_run_status",
+                    {
+                        "status": result.analysis_status.value,
+                        "attempt": attempt_index,
+                        "model": model,
+                        "note": result.analysis_note,
+                    },
+                )
+                return result
+            except Exception as exc:
+                errors.append(exc)
+                trace.log(
+                    "chair_model_attempt_failed",
+                    {
+                        "attempt": attempt_index,
+                        "attempt_kind": attempt_kind,
+                        "requested_model": model,
+                        "reasoning_effort": effort,
+                        "elapsed_sec": round(time.perf_counter() - started_at, 3),
+                        "error_type": type(exc).__name__,
+                        "error": str(exc)[:500],
+                        "response_preview": (
+                            response.content[:2000] if response is not None else None
+                        ),
+                    },
+                )
+
+        return self._fallback_result(
+            snapshot=snapshot,
+            stances=stances,
+            trace=trace,
+            requested_model=selection.model,
+            errors=errors,
+        )
+
+    @staticmethod
+    def _repair_payload(payload: object) -> tuple[object, list[str]]:
+        """Repair only bounded, non-semantic chair response shape errors."""
+
+        if not isinstance(payload, dict):
+            return payload, []
+        repaired = dict(payload)
+        repairs: list[str] = []
+        disagreements = repaired.get("disagreements")
+        if isinstance(disagreements, list):
+            repaired_disagreements: list[object] = []
+            for index, item in enumerate(disagreements):
+                if not isinstance(item, dict):
+                    repaired_disagreements.append(item)
+                    continue
+                normalized = dict(item)
+                if not normalized.get("minority_agents"):
+                    normalized["minority_agents"] = ["출처 미지정"]
+                    repairs.append(f"disagreements.{index}.minority_agents")
+                repaired_disagreements.append(normalized)
+            repaired["disagreements"] = repaired_disagreements
+        return repaired, repairs
+
+    @staticmethod
+    def _with_status(
+        result: CommitteeResult,
+        *,
+        status: AnalysisStatus,
+        note: str | None,
+    ) -> CommitteeResult:
+        payload = result.model_dump()
+        payload["analysis_status"] = status
+        payload["analysis_note"] = note
+        return CommitteeResult.model_validate(payload)
+
+    def _fallback_result(
+        self,
+        *,
+        snapshot: Snapshot,
+        stances: list[Stance],
+        trace: TraceLogger,
+        requested_model: str,
+        errors: list[Exception],
+    ) -> CommitteeResult:
+        fallback = self.fallback_agent.run(stances)
+        payload = fallback.model_dump()
+        payload["sugeup_narrative"] = self._fallback_narrative(snapshot)
+        payload["analysis_status"] = AnalysisStatus.FALLBACK
+        payload["analysis_note"] = "의장 AI 호출 실패 · 규칙 기반 대체"
+        result = CommitteeResult.model_validate(payload)
+        last_error = errors[-1] if errors else RuntimeError("unknown_chair_failure")
+        trace.log(
+            "chair_model_fallback",
+            {
+                "requested_model": requested_model,
+                "attempt_count": len(errors),
+                "error_type": type(last_error).__name__,
+                "error": str(last_error)[:500],
+            },
+        )
+        trace.log(
+            "chair_run_status",
+            {
+                "status": AnalysisStatus.FALLBACK.value,
+                "attempt_count": len(errors),
+                "note": result.analysis_note,
+            },
+        )
+        return result
+
+    @staticmethod
+    def _fallback_narrative(snapshot: Snapshot) -> str:
+        markets = snapshot.markets
+        flow = snapshot.flow_summary
+        cumulative = snapshot.cumulative_context
+        cumulative_line = "누적 흐름은 제공 데이터만으로 확인이 제한됩니다."
+        if cumulative is not None:
+            cumulative_line = (
+                f"KOSPI 5일 누적 {cumulative.kospi_5d_cum_pct:+.2f}%, "
+                f"20일 누적 {cumulative.kospi_20d_cum_pct:+.2f}%, "
+                f"VIX 5일 평균 {cumulative.vix_5d_avg:.2f}입니다."
+            )
+        return (
+            "## 분석 상태 안내\n\n"
+            "의장 AI 응답을 최종 검증하지 못해 아래 내용은 수집된 수치만으로 만든 규칙 기반 대체 분석입니다. "
+            "장문 AI 해석으로 간주하지 말고 데이터 확인용으로 사용해야 합니다.\n\n"
+            "## 시장과 수급\n\n"
+            f"KOSPI는 {markets.kr.kospi_pct:+.2f}%, KOSDAQ은 {markets.kr.kosdaq_pct:+.2f}% 움직였습니다. "
+            f"원/달러 환율은 {markets.fx.usdkrw:.2f}, VIX는 {markets.volatility.vix:.2f}입니다. "
+            f"전체 수급은 외국인 {flow.foreign_net:+.0f}억원, 기관 {flow.institution_net:+.0f}억원, "
+            f"개인 {flow.retail_net:+.0f}억원입니다.\n\n"
+            "## 누적 흐름과 대응\n\n"
+            f"{cumulative_line} AI 의장 판단이 복구되기 전에는 새로운 강한 방향성 결론을 추가하지 않고, "
+            "환율·외국인 수급·변동성의 동시 악화 여부를 우선 확인합니다."
+        )
 
     @staticmethod
     def _system_prompt() -> str:
@@ -290,7 +511,8 @@ class LLMChairAgent:
             "consensus: one concise Korean sentence summarizing today's market regime.\n"
             "key_points: 1~3 items, each with keys 'point' (Korean, max 200 chars) and 'sources' "
             "(list of data sources used, e.g. ['flow_data', 'news', 'macro_daily'] — not agent names unless USE_LLM_AGENTS is on).\n"
-            "disagreements: 1~3 items with keys topic, majority, minority, minority_agents, why_it_matters.\n"
+            "disagreements: 1~3 items with keys topic, majority, minority, minority_agents, why_it_matters. "
+            "minority_agents MUST contain 1~5 non-empty strings; when no named agent exists, use ['해당 없음'] and never [].\n"
             "ops_guidance: exactly 3 items with levels OK, CAUTION, AVOID and concise Korean text.\n\n"
             "=== sugeup_narrative FORMAT ===\n"
             "Korean Markdown text (headings, bullet points, links allowed). "

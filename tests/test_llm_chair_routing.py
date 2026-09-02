@@ -102,6 +102,10 @@ class ChairModelRoutingTests(unittest.TestCase):
         self.assertEqual(options.reasoning_effort, "medium")
         self.assertEqual(options.escalation_reasoning_effort, "high")
         self.assertTrue(options.force_escalation)
+        self.assertEqual(options.timeout_sec, 180)
+        self.assertEqual(options.same_model_retries, 1)
+        self.assertEqual(options.retry_model, "gpt-5.6-luna")
+        self.assertEqual(options.retry_reasoning_effort, "low")
 
 
 if __name__ == "__main__":
