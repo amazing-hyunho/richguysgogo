@@ -1,0 +1,64 @@
+{
+  "consensus": "코스피의 기술적 반등은 유효하나 외국인 순매도와 코스닥 약세가 동반돼 추세 전환보다는 확인이 필요한 중립 국면이다.",
+  "key_points": [
+    {
+      "point": "KOSPI는 6,636.48로 1.12% 상승했지만 KOSDAQ는 799.13으로 0.60% 하락해 대형주 반등과 시장 내부 확산의 괴리가 나타났다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "외국인은 3,874억원, 기관은 451억원 순매도했고 개인은 2,162억원 순매수했다. 최근 5일 KOSPI -5.765% 이후의 개인 저가매수가 반등을 흡수했으나 외국인 매도 지속성은 부담이다.",
+      "sources": [
+        "flow_data",
+        "cumulative_context",
+        "news"
+      ]
+    },
+    {
+      "point": "국채금리 진정 및 연준의 9월 인상 가능성 완화 뉴스는 반등 여건을 보탰지만, AI 투자·전쟁·부채 관련 불확실성과 뚜렷하지 않은 실적 신호는 위험선호 확대를 제한한다.",
+      "sources": [
+        "news",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 반등의 지속성",
+      "majority": "매크로·수급·섹터·리스크·이익모멘텀·브레드스 담당자는 단기 반등을 인정하되 외국인 순매도와 최근 5일 약세를 이유로 중립적 확인 국면으로 판단했다.",
+      "minority": "유동성 담당자는 외국인 자금 유출과 보수적 유동성 환경을 더 중시해 위험회피 국면으로 봤다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "반등이 외국인 매수 전환 없이 개인 매수에 주로 의존하면 지수 상승의 지속성과 시장 확산이 약해질 수 있다."
+    },
+    {
+      "topic": "변동성·환율 안정의 해석",
+      "majority": "리스크 담당자는 VIX 15.20과 USD/KRW 1,361.14원, 최근 5일 원화 강세 흐름을 단기 안정 요인으로 평가했다.",
+      "minority": "유동성 담당자는 변동성 및 환율 안정에도 정책 민감 유동성이 보수적이므로 위험선호 확대에는 한계가 있다고 판단했다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "표면적 안정이 외국인 수급 개선으로 연결되는지 확인되지 않으면 변동성 재확대에 취약할 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "KOSPI 반등과 금리 진정 뉴스의 수혜 가능성이 있는 대형주 중심으로 분할 대응하되, 수급 확인을 우선한다."
+    },
+    {
+      "level": "CAUTION",
+      "text": "개인 순매수만으로 형성된 반등은 지속성을 낮게 평가하고, 외국인 순매도 축소 여부와 KOSDAQ 흐름을 함께 점검한다."
+    },
+    {
+      "level": "AVOID",
+      "text": "외국인 매도가 이어지는 가운데 단기 급등 종목을 추격 매수하거나, AI 투자 불확실성 뉴스만으로 테마 비중을 확대하는 전략은 피한다."
+    }
+  ],
+  "sugeup_narrative": "## 반등 지수와 엇갈린 시장 내부\n\n9월 3일 KOSPI는 6,636.48로 1.12% 상승했다. 반면 KOSDAQ는 799.13으로 0.60% 하락해, 지수 반등이 시장 전반의 위험선호 회복으로 확산됐다고 보기는 이르다. 원·달러 환율은 1,361.14원으로 0.03% 하락했고, VIX는 15.20으로 최근 5일 평균 15.17과 유사했다. 변동성과 환율이 급격히 악화하지 않은 점은 완충 요인이다. 다만 KOSPI는 최근 5일 5.765% 하락한 반면 20일 기준으로는 4.159% 상승해, 오늘 상승은 중기 상승 추세 안에서의 단기 낙폭 반등으로 해석하는 편이 타당하다.\n\n## 외국인 매도 속 개인 저가매수의 한계\n\n전체 시장에서 외국인은 3,874억원, 기관은 451억원을 순매도했고 개인은 2,162억원을 순매수했다. KOSPI에서도 외국인과 기관이 각각 2,435억원, 196억원을 팔았고, KOSDAQ에서는 외국인 1,439억원 및 기관 255억원 순매도에 개인이 1,684억원을 순매수했다. 수급 담당자(flow)는 이를 최근 20일 상승 이후 차익실현과 최근 낙폭에 대한 개인 저가매수가 맞물린 구간으로 평가했다. 매크로·섹터 담당자도 외국인 매도가 반등 지속성의 제약이라고 봤다. 원화는 최근 5일 1.056% 강세였지만, 이는 외국인 수급의 즉각적 개선으로 아직 이어지지 않았다.\n\n## 금리 진정이 만든 반등 창, AI 불확실성은 잔존\n\n첫째, [연준 최고 금리 전문가 등판, 9월 인상 가능성 급제동](https://news.google.com/rss/articles/CBMiUkFVX3lxTFBzZ3dOS0RBVy15SGFKSlNiSWZUX0w1WEktSW51YWtpNm5ld1VvNUdzeHM1LTVkSHFoV0RLS3hyZWRaTDVvNGN1VF9oNUM5bUVCRWc?oc=5)과 [뉴욕증시, 국채금리 진정에 나흘 만에 반등…다우 0.56%↑](https://news.google.com/rss/articles/CBMiiAFBVV95cUxOWEZCX3VpcGlON08zdmV0aVltY012YUV6bnpkbmhjUVc2UHllNUdrSHIwSUkySUFkSWlWNkJFLTNYU3Z5cWM2aU5mOG9WMEhBXzk2NmJnWWlrNWdOR0VkZlJWdnVvSFdCYjhfdFZZVXQxWWoxTjNFNDdMUEVjSE04c3hBSWJJRlFn?oc=5) 보도는 금리 부담 완화 기대를 제공했다. 이는 미국 주요 지수 상승과 함께 국내 대형주 반등의 배경으로 작용했다.\n\n둘째, [미 국채금리 진정·반도체 강세에 코스피 반등 시도](https://news.google.com/rss/articles/CBMiT0FVX3lxTE9sWk04djI3aV9ucWZtSjk3dlNSMUhiWG9pM3FELURkZHlwRm5VQlpVYmR6UzdBdE9oN3poN0FFTExhWVBZSFFmdDBfU2NqUFE?oc=5)라는 국내지수 뉴스는 반등의 촉매를 보여준다. 그러나 [전쟁·부채·AI투자 삼각파도](https://news.google.com/rss/articles/CBMia0FVX3lxTFAyZEZBUGFNRGRlY25pUjZWbkVNQzk1ckotc05ac19oNXZHakhuN3F6NnF0Tld0a01jbHZkb0x1TkttUFNVb2h3dzRSZUNuWjl4bDNETlhKajhPYzN6WFQ3T0dtX1FndFp5SEJV0gFwQVVfeXFMTnBrVkhnYUVSckpOMlBSMWVqMm40QkdZQjIySENtSmM1cWt0MnFmbjBfU2U2VlVXVnl5elQzUEFzUmsxRV9HTXhISmxzNnFvWnA5TnRPd1RfeFZ6TDc1SXhpS0Z4OU1Ta09LUnFyQ18wUA?oc=5) 관련 우려와 이익모멘텀 담당자의 실적 상향 신호 부재 지적은 추격 매수를 경계하게 한다.\n\n## 다음 확인점: 수급 전환이 반등의 시험대\n\n기본 시나리오는 금리 부담 완화가 낙폭 반등을 지지하되, 외국인 수급 확인 전까지는 중립 비중과 선별 대응을 유지하는 것이다. 확인 지표는 외국인 순매도 축소, KOSDAQ의 상대적 회복, VIX의 최근 5일 평균 부근 안정이다. 유동성 담당자(liquidity)는 안정적 환율·VIX에도 위험선호가 제한적이라고 반대 의견을 냈으며, 이 점이 신뢰도를 낮춘다. 외국인 순매도가 확대되고 KOSPI가 재차 약세로 전환하면 오늘의 기술적 반등이라는 핵심 가정은 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
