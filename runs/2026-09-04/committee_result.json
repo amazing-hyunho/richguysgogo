@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6679.32로 1.52%, KOSDAQ은 807.57로 2.20% 상승했고 외국인과 기관이 각각 2878억원, 5364억원 순매수했습니다.",
+      "sources": [
+        "KEY_FIGURES_FOR_REPORT.CORE_SIGNALS",
+        "korean_market_flow_breakdown"
+      ]
+    },
+    {
+      "point": "반도체 호황에 따른 7월 경상수지 420.8억달러 흑자와 금리 안정 기대가 위험선호의 핵심 뉴스 동력입니다.",
+      "sources": [
+        "news_digest",
+        "KEY_FIGURES_FOR_REPORT.SUPPORTING_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 체제 판단",
+      "majority": "매크로·섹터·이익모멘텀·브레드스·유동성 담당자는 수급과 중기 추세를 근거로 위험선호 국면을 제시했습니다.",
+      "minority": "리스크 담당자는 내부 체제 태그를 위험회피로 분류했으나, 실제 논평에서는 뚜렷한 위험 신호가 없다고 평가해 판단 내 불일치가 있습니다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "위험회피 태그 자체보다 외국인·기관 수급과 VIX의 실제 변화가 후속 장세 판단에 중요합니다."
+    },
+    {
+      "topic": "개인 수급 해석",
+      "majority": "제공된 시장 자료상 개인은 KOSPI -8823억원, KOSDAQ -1250억원으로 합계 1조73억원 순매도했습니다.",
+      "minority": "수급 담당자는 개인의 반등 추격성 매수를 주장했지만 당일 순매매 수치와 배치됩니다.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "개인은 상승 추격 주체가 아니라 차익실현 성격의 공급자로 봐야 당일 수급 구조를 정확히 해석할 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 9월 4일, 반도체와 쌍끌이 수급이 만든 위험선호\n\nKOSPI는 6679.32로 1.52%, KOSDAQ은 807.57로 2.20% 상승했습니다. 원·달러 환율은 1356.73원으로 전일 대비 0.09% 올랐지만, 최근 5일 변화율은 -0.724%입니다. VIX는 14.32로 5일 평균 15.118을 밑돌았습니다.\n\n수급은 외국인 +2878억원, 기관 +5364억원, 개인 -1조73억원입니다. KOSPI에서는 외국인 +1882억원과 기관 +5013억원, KOSDAQ에서는 각각 +996억원과 +351억원이 유입됐습니다. 양 시장 모두 외국인·기관이 상승을 주도하고 개인이 매도한 구조입니다.\n\n## 외국인·기관이 주도한 반등의 배경\n\n핵심 동력은 반도체 수출 기대와 금리 부담 완화 뉴스의 결합입니다. [7월 경상수지 420.8억달러 흑자…반도체 호황에 동월 역대 최대](https://news.google.com/rss/articles/CBMiW0FVX3lxTFAzVTIyODFTTi1nZ0tUeWgyOGFubUtfODVoYTJaSURubTJMOWtVV0VXQjV2N1F1eHVac2l2RkpnQXdodFBFTGFFUE5uNmk1aFpvMFJIMjN5RHA3NTDSAWBBVV95cUxPdm5SWkRFLUdHc1JIYmhUU1hkX2JoM0Y0aXFGcl9uVWt6MUM3OUphdGp0UFljSWYyMGhlS1lnVmJhZ2ZWZ0hncHZsX2lKbGdPWFpic2N4M0ctbGR6Rzg0d3U?oc=5)는 반도체 업황과 대외건전성 기대를 동시에 지지했습니다. 매크로·섹터·이익모멘텀 담당자도 이를 중기 위험선호의 근거로 평가했습니다.\n\n다만 수급 담당자의 ‘개인 추격 매수’ 해석은 실제 개인 순매도 1조73억원과 충돌합니다. 오늘 반등의 주체는 개인이 아니라 외국인과 기관입니다.\n\n## 날짜별 핵심 이슈: 반도체·금리·환율\n\n1. **반도체/AI:** 경상수지 흑자 뉴스가 외국인 매수의 설명력을 높였습니다. 주간 연구 의제인 광 I/O·실리콘 포토닉스도 AI 인프라 병목과 연결되지만, 이는 12개월 연구 과제일 뿐 당일 매매 신호는 아닙니다.\n2. **연준·금리:** [월러 연준 이사 “물가 계속 둔화하면 9월 금리 동결 지지”](https://news.google.com/rss/articles/CBMiXkFVX3lxTFBndkE4bUR4OVZyM29qYUpnNS1mbXhBcmMtSnBrcUJIRmt3VUJBSXN1TWt3RmdZb1NMZmpmYjNZZzRnU2lla21kWFdRVENTZXFmdEYtb3F5eUVVZ0p3cGc?oc=5)는 기술주 심리에 우호적입니다. 다만 미국 10년물 금리는 4.762%여서 금리 안정 서사의 지속 여부는 추가 확인이 필요합니다.\n3. **환율:** 당일 원·달러 환율은 0.09% 상승했지만 5일 기준으로는 0.724% 하락했습니다. 하루의 원화 약세보다 누적 안정 흐름에 무게를 둘 수 있으나, BOJ 인상 전망에 따른 엔화 변수는 점검 대상입니다.\n\n## 20일 상승 추세와 무효화 조건\n\nKOSPI는 최근 5일 -1.525% 조정에도 20일 누적으로 7.21% 상승했고 반전 신호는 감지되지 않았습니다. 따라서 기본 전략은 모멘텀이 확인된 업종 중심의 선별 접근입니다. 다만 이미 누적 상승 폭이 큰 만큼 추격보다 수급 지속성을 우선 확인해야 합니다.\n\n오늘의 위험선호 논리는 **외국인과 기관이 동반 순매도로 전환하고 VIX가 5일 평균 15.118을 상향 이탈할 경우 무효화**됩니다. 원·달러 환율의 재상승 여부와 반도체 관련 수급의 연속성이 다음 거래일의 핵심 점검 항목입니다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
