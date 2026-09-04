@@ -1,33 +1,33 @@
 {
-  "crawled_at": "2026-09-04T10:41:53.530622+00:00",
+  "crawled_at": "2026-09-04T11:42:08.044092+00:00",
   "news_date": "2026-09-04",
-  "total_collected": 238,
+  "total_collected": 243,
   "topic_counts": [
     [
       "금리/연준",
-      24
+      26
     ],
     [
       "환율/달러",
-      23
-    ],
-    [
-      "인플레이션",
-      14
+      22
     ],
     [
       "반도체/AI",
-      23
+      26
     ],
     [
-      "국내지수",
-      28
+      "인플레이션",
+      16
+    ],
+    [
+      "미국지수",
+      18
     ]
   ],
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 24,
+      "count": 26,
       "title": "기준금리는 하나인데…예금·대출금리 왜 제각각 바뀔까 [최소한의 금융상식] - 매일경제",
       "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9RRGUtNTBaSFpXWkF1T2JrMWFfOFZaeXpscGlubFlwdHNXeDJZaU45OHBkWXdQMXY2RUVPWlhYWERqd3FqLS1sbUZiVEtkU2c?oc=5",
       "summary_lines": [
@@ -38,7 +38,7 @@
     },
     {
       "topic": "환율/달러",
-      "count": 23,
+      "count": 22,
       "title": "강달러에도 원화 강세… 반도체 수출 호조에 ‘환율 상식’ 깨졌다 - 동아일보",
       "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBtd2poV0lFUUJiQ0szdVJ3SklqY21tb3NPWW81T2lldHM2cmloS2NmeUQzRUJvLUl4dG05X0E0Nncwb3JZc3hqTzE4eWt1VHl3Z092U3dmZTFiUTd3UkpnZGxubGpXWURabk1lMzlmUGVPMjVmLWfSAWZBVV95cUxPelBnZ2k1TkZHUzNFSG1zMGJaWldtYjM2ci1XWFZEb2xMX08tcEdHMXFhWHBIWG1VUjgzQmNFdjJzZTF4TTZJWkZfbUNXVFFRX0M5U1VaWFNfWEZ3U2M1ZlFyM3hjbkE?oc=5",
       "summary_lines": [
@@ -48,8 +48,19 @@
       ]
     },
     {
+      "topic": "반도체/AI",
+      "count": 26,
+      "title": "젠슨 황의 승부수 “미국 AI 인프라에 1조 달러 투자”[글로벌 모닝 브리핑] - 서울경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5xLXZUc283RWlWWWR6M3dWYm5fbmlzdno4c3YydE9RVU1BaFNMRktaSko4bWlRT2U4UHRoU3M1NXcwUFo5eVh5QVlLUDlYemRqS0HSAVNBVV95cUxON0JIQmFIS2U2bXpReFRIaGhyQzhNUkdYR3NCZ21DY3BvRnBUaHlTTDIxWVBLT0lDY1M1QWF1MHRSaFEyc3dPYko5bHNTOFBGTnNNMA?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 젠슨 황의 승부수 “미국 AI 인프라에 1조 달러 투자”[글로벌 모닝 브리핑] - 서울경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "인플레이션",
-      "count": 14,
+      "count": 16,
       "title": "월러 연준 이사 \"인플레 둔화되면 금리 동결 지지…디플레이션에 기회를\" - 머니투데이 - 머니투데이",
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE83b0lkVU9vMzdIRmxxdmZsaFdrNXhHY2NsTUpsTTl3Vy04bnRlT2paN2FYSUhKMG9HOUZpeVBBbmt1WXlEb3o4WW5GMi1fVjZNNWh5blN5TVNkZFVQcTFQQ1cxMzFIUG1G0gFuQVVfeXFMTkQtOFNsV0xucnhXZUVGbHZ1VnZleV9hSEk5RndhMTVUbVhsNDI2QmdpR0JGT2lwN1ZLaENMd01aZEFXRDNEbjhnaWNmNXItVUlyX2w2dnRsQmxDMFpZLUh0UHZTa1lnTld6SmtzR2c?oc=5",
       "summary_lines": [
@@ -59,23 +70,12 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 23,
-      "title": "엔비디아, 전 오픈AI 임원 창업 AI 스타트업에 25억 달러 투자 논의 - 마켓인",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1kZTRhVVREZHRDMVJWSDhMeG1aWDg2dl90X2hLbmZJV1VBTGx0SGZYQnN5RVU4YUpBS3h4b3FsOFRnRkNUUnozdG5NbkVBRUtvQjdGRms5NndjTnNrcXlIeDJWS2lhU1pRQjNKcVVvVFpFcEE?oc=5",
+      "topic": "미국지수",
+      "count": 18,
+      "title": "美 금리동결 기대 타고…가상자산株 들썩 - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBHZXRIa3NqYXNWb0k0T1gydVBMa0YzdHhsY1dRUTBvYUEzSWY4alFkMHhNZFVqdkZwWFpnSDB5M0RCM3hBVTZOa2JDVi0xOVNUN1E?oc=5",
       "summary_lines": [
-        "핵심 이슈: 엔비디아, 전 오픈AI 임원 창업 AI 스타트업에 25억 달러 투자 논의 - 마켓인",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "국내지수",
-      "count": 28,
-      "title": "미 국채 금리 진정에 기술주 반등… 코스피도 1%대 상승 출발 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQYndiRG43Zk55QlRzckl4Z2xiMEhNMmxyM2NEdlp2d2lRZ0hmR05ZclVWcFQ2LWdfS2hNeVEwSjRFbjdyYTV2aFVMNERVMDRiejJ4eXNmTGdweWN4VGdrV2NiTmwxM25iM1NvODZ3R2ktVUgxMGNTMlNHbEdVYmRoeA?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 미 국채 금리 진정에 기술주 반등… 코스피도 1%대 상승 출발 - 조선일보",
+        "핵심 이슈: 美 금리동결 기대 타고…가상자산株 들썩 - 매일경제 마켓",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,49 +84,49 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 61,
+      "total_count": 64,
       "topics": [
         {
           "topic": "금리/연준",
-          "count": 24,
+          "count": 26,
           "title": "기준금리는 하나인데…예금·대출금리 왜 제각각 바뀔까 [최소한의 금융상식] - 매일경제",
           "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9RRGUtNTBaSFpXWkF1T2JrMWFfOFZaeXpscGlubFlwdHNXeDJZaU45OHBkWXdQMXY2RUVPWlhYWERqd3FqLS1sbUZiVEtkU2c?oc=5"
         },
         {
           "topic": "환율/달러",
-          "count": 23,
+          "count": 22,
           "title": "강달러에도 원화 강세… 반도체 수출 호조에 ‘환율 상식’ 깨졌다 - 동아일보",
           "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBtd2poV0lFUUJiQ0szdVJ3SklqY21tb3NPWW81T2lldHM2cmloS2NmeUQzRUJvLUl4dG05X0E0Nncwb3JZc3hqTzE4eWt1VHl3Z092U3dmZTFiUTd3UkpnZGxubGpXWURabk1lMzlmUGVPMjVmLWfSAWZBVV95cUxPelBnZ2k1TkZHUzNFSG1zMGJaWldtYjM2ci1XWFZEb2xMX08tcEdHMXFhWHBIWG1VUjgzQmNFdjJzZTF4TTZJWkZfbUNXVFFRX0M5U1VaWFNfWEZ3U2M1ZlFyM3hjbkE?oc=5"
         },
         {
           "topic": "인플레이션",
-          "count": 14,
+          "count": 16,
           "title": "월러 연준 이사 \"인플레 둔화되면 금리 동결 지지…디플레이션에 기회를\" - 머니투데이 - 머니투데이",
           "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE83b0lkVU9vMzdIRmxxdmZsaFdrNXhHY2NsTUpsTTl3Vy04bnRlT2paN2FYSUhKMG9HOUZpeVBBbmt1WXlEb3o4WW5GMi1fVjZNNWh5blN5TVNkZFVQcTFQQ1cxMzFIUG1G0gFuQVVfeXFMTkQtOFNsV0xucnhXZUVGbHZ1VnZleV9hSEk5RndhMTVUbVhsNDI2QmdpR0JGT2lwN1ZLaENMd01aZEFXRDNEbjhnaWNmNXItVUlyX2w2dnRsQmxDMFpZLUh0UHZTa1lnTld6SmtzR2c?oc=5"
         }
       ]
     },
     {
-      "sector": "지수/시장",
-      "total_count": 28,
+      "sector": "IT/반도체",
+      "total_count": 26,
       "topics": [
         {
-          "topic": "국내지수",
-          "count": 28,
-          "title": "미 국채 금리 진정에 기술주 반등… 코스피도 1%대 상승 출발 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQYndiRG43Zk55QlRzckl4Z2xiMEhNMmxyM2NEdlp2d2lRZ0hmR05ZclVWcFQ2LWdfS2hNeVEwSjRFbjdyYTV2aFVMNERVMDRiejJ4eXNmTGdweWN4VGdrV2NiTmwxM25iM1NvODZ3R2ktVUgxMGNTMlNHbEdVYmRoeA?oc=5"
+          "topic": "반도체/AI",
+          "count": 26,
+          "title": "젠슨 황의 승부수 “미국 AI 인프라에 1조 달러 투자”[글로벌 모닝 브리핑] - 서울경제",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5xLXZUc283RWlWWWR6M3dWYm5fbmlzdno4c3YydE9RVU1BaFNMRktaSko4bWlRT2U4UHRoU3M1NXcwUFo5eVh5QVlLUDlYemRqS0HSAVNBVV95cUxON0JIQmFIS2U2bXpReFRIaGhyQzhNUkdYR3NCZ21DY3BvRnBUaHlTTDIxWVBLT0lDY1M1QWF1MHRSaFEyc3dPYko5bHNTOFBGTnNNMA?oc=5"
         }
       ]
     },
     {
-      "sector": "IT/반도체",
-      "total_count": 23,
+      "sector": "지수/시장",
+      "total_count": 18,
       "topics": [
         {
-          "topic": "반도체/AI",
-          "count": 23,
-          "title": "엔비디아, 전 오픈AI 임원 창업 AI 스타트업에 25억 달러 투자 논의 - 마켓인",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1kZTRhVVREZHRDMVJWSDhMeG1aWDg2dl90X2hLbmZJV1VBTGx0SGZYQnN5RVU4YUpBS3h4b3FsOFRnRkNUUnozdG5NbkVBRUtvQjdGRms5NndjTnNrcXlIeDJWS2lhU1pRQjNKcVVvVFpFcEE?oc=5"
+          "topic": "미국지수",
+          "count": 18,
+          "title": "美 금리동결 기대 타고…가상자산株 들썩 - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBHZXRIa3NqYXNWb0k0T1gydVBMa0YzdHhsY1dRUTBvYUEzSWY4alFkMHhNZFVqdkZwWFpnSDB5M0RCM3hBVTZOa2JDVi0xOVNUN1E?oc=5"
         }
       ]
     }
