@@ -1,0 +1,22 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "battery-ev-mobility",
+  "as_of": "2026-09-06",
+  "lookback_days": 28,
+  "candidate_count": 4,
+  "accepted_count": 3,
+  "rejected_count": 1,
+  "accepted_paper_ids": [
+    "2608-12638v1",
+    "2608-25492v1",
+    "2609-01088v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "37f2b9e4a36f11e800231d32acb581a000453d09340e8a50459c878c4a74afe3",
+  "input_tokens": 2108,
+  "output_tokens": 673,
+  "report_status": "emerging",
+  "report_score": 10.31,
+  "generated_at": "2026-09-06T08:36:53.389320+00:00"
+}
