@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-09-07T23:41:54.752552+00:00",
+  "crawled_at": "2026-09-08T00:42:06.078042+00:00",
   "news_date": "2026-09-08",
-  "total_collected": 89,
+  "total_collected": 110,
   "topic_counts": [
     [
       "금리/연준",
-      8
+      14
+    ],
+    [
+      "환율/달러",
+      10
     ],
     [
       "에너지/원자재",
@@ -13,21 +17,17 @@
     ],
     [
       "경기/성장",
-      9
+      8
     ],
     [
       "반도체/AI",
-      9
-    ],
-    [
-      "환율/달러",
-      4
+      8
     ]
   ],
   "top_articles": [
     {
       "topic": "금리/연준",
-      "count": 8,
+      "count": 14,
       "title": "美 10년물 금리 5% 시험대…회사채·국채입찰 몰린 '살얼음판' - 연합뉴스",
       "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoX9IBYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoXw?oc=5",
       "summary_lines": [
@@ -37,45 +37,45 @@
       ]
     },
     {
+      "topic": "환율/달러",
+      "count": 10,
+      "title": "환율 1340원… 12년간 막힌 ‘국민소득 4만달러 클럽’ 보인다 - 동아일보",
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1DeTlERnJXakdGT1psZ3NVcWNNVklHbW9FSWlOenJPWkVxWV81cmxscEo0T0NoSklPcEhFVVdsbnNTMm53eWNodEFkeVA3U3JLMVJsaC10S3hvYjVHaFMyUWxtVDdjNEhJNTEyb0R2V0stbDY3VmfSAWZBVV95cUxQOXFUN1BBbVA2SEN5OEtNOUNicV92YW5QNGpBc3JQVDkwRkpWajBSX0RrQXk4bHRwUGZvMGVRZGpMXzA3TTZZWDRYQzFtV1hVbGZoRlJUeVF4djZGSnRYemtxcDlQOWc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 환율 1340원… 12년간 막힌 ‘국민소득 4만달러 클럽’ 보인다 - 동아일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "에너지/원자재",
       "count": 16,
-      "title": "구리 가격 사상 최고가…美 관세 리스크·광산 붕괴 - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE40b0xUNlNRZDZEMTV2cUx4STBkZG50YzVINmQyQTBXUHA4NmRJNmF2T29IR1VUZk5wWTMybG1LejVDSHlYb3pTc0FsNjNzV19kNWc?oc=5",
+      "title": "[원자재 시황] 중동 긴장·금리 인상 우려에 위험자산 위축 - ebn.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE04Y1BGMWY0dGZYTndHU1BmOHFkWG1IX1pTRHMweG9tbjRfTUluLWl4eC1zSklhbXc4NHcwLXgtUkVhYjVhVGx2Y0pJWlF1Q3BWWTBNSWwyMktPQ3ZQZzdtZjNMLWJHUzE4?oc=5",
       "summary_lines": [
-        "핵심 이슈: 구리 가격 사상 최고가…美 관세 리스크·광산 붕괴 - 매일경제 마켓",
+        "핵심 이슈: [원자재 시황] 중동 긴장·금리 인상 우려에 위험자산 위축 - ebn.co.kr",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "경기/성장",
-      "count": 9,
-      "title": "2분기 명목 GDP 성장률 47년 만에 최고…실질 GDP는 0.6%↑ - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBEMW9zX1FMYzZ3RzRZeVlVemtNdlUwaFFhZHdERjNVMWowWk1QaWxOR1ByT2Y3SEJwNkY3LTBaV1VtazBQNEFfMTRkX1h3cEpOWFBwOWFOOW5CRzDSAWBBVV95cUxQR213YlB4ZVEzTU8tQ3VKV1ZJU1RJc3d4Q3I5ZV9wMmY2WE52OGJzOGxxRV9yZ19jb0M2Vk9FXzAyNUQtdlRCMFg0RkpQV1RtNTNDLURpZXpOb0FUR3ZSUFA?oc=5",
+      "count": 8,
+      "title": "2분기 명목 GDP 성장률 47년 만에 최고…실질 GDP는 0.6%↑ - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAxSUZIR2JjX2JEMDJ6S3E0ZzlQNTFSb2VUamtKaUp2ZWxiSm1qbWt4TlZmZE5RbHB2OWppR1B6akRJRl9QbXRkcWo3UWItVUkyNVE?oc=5",
       "summary_lines": [
-        "핵심 이슈: 2분기 명목 GDP 성장률 47년 만에 최고…실질 GDP는 0.6%↑ - 연합뉴스",
+        "핵심 이슈: 2분기 명목 GDP 성장률 47년 만에 최고…실질 GDP는 0.6%↑ - 매일경제 마켓",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "반도체/AI",
-      "count": 9,
-      "title": "[속보] '반도체 호황' 2분기 명목GDP 9.2% 성장.. 47년 만에 최고치 - 파이낸셜뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBrRzE0bXZKam5XMmp4LTdzcDRNRV9QNVlKVDZuNVRWcXViTVZpSUtUbVBoUTJhVURNREZYMkRpVHRPa25LX3NIaWpoekFJSGlEbTlzcGxZZUkyQQ?oc=5",
+      "count": 8,
+      "title": "엔비디아도 참전한 자율주행 경쟁...한국은 여전히 시범 운행 중 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQcnJQR0pmS3luNVV6T3ptX0hyZU1OLVdYWlBaSW1ncDhUNE9VeWVZUzFLSXotUTFFNEFZb05Bak16NDg5Nml3NHhLZ25TX2tPYmxBLUs3UWIzNWNtTFpQLUNPNC0xemRYQ0FFS1lKWWN5UXZabnJpZkk1OXdUanUzeGFzZw?oc=5",
       "summary_lines": [
-        "핵심 이슈: [속보] '반도체 호황' 2분기 명목GDP 9.2% 성장.. 47년 만에 최고치 - 파이낸셜뉴스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "환율/달러",
-      "count": 4,
-      "title": "라보뱅크 美CPI, 달러 강세로 이어질 것 - SBS Biz",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9kYzhuenM2Slp1ZHQyOXlqcUhqa2MxcE5TUGQ5RlEtTTNkcVBONTB2Y2dic1d5dEdYU3lyM3lNNzNUYU5YTVpLOVRMR1NyUnhnNElmMjlGOXLSAVhBVV95cUxPZGM4bnpzNkpadWR0Mjl5anFIamtjMXBOU1BkOUZRLU0zZHFQTjUwdmNnYnNXeXRHWFN5cjN5TTczVGFOWE1aSzlUTEdTclJ4ZzRJZjI5Rjly?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 라보뱅크 美CPI, 달러 강세로 이어질 것 - SBS Biz",
+        "핵심 이슈: 엔비디아도 참전한 자율주행 경쟁...한국은 여전히 시범 운행 중 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,25 +84,25 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 21,
+      "total_count": 32,
       "topics": [
         {
-          "topic": "경기/성장",
-          "count": 9,
-          "title": "2분기 명목 GDP 성장률 47년 만에 최고…실질 GDP는 0.6%↑ - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBEMW9zX1FMYzZ3RzRZeVlVemtNdlUwaFFhZHdERjNVMWowWk1QaWxOR1ByT2Y3SEJwNkY3LTBaV1VtazBQNEFfMTRkX1h3cEpOWFBwOWFOOW5CRzDSAWBBVV95cUxQR213YlB4ZVEzTU8tQ3VKV1ZJU1RJc3d4Q3I5ZV9wMmY2WE52OGJzOGxxRV9yZ19jb0M2Vk9FXzAyNUQtdlRCMFg0RkpQV1RtNTNDLURpZXpOb0FUR3ZSUFA?oc=5"
-        },
-        {
           "topic": "금리/연준",
-          "count": 8,
+          "count": 14,
           "title": "美 10년물 금리 5% 시험대…회사채·국채입찰 몰린 '살얼음판' - 연합뉴스",
           "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoX9IBYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoXw?oc=5"
         },
         {
           "topic": "환율/달러",
-          "count": 4,
-          "title": "라보뱅크 美CPI, 달러 강세로 이어질 것 - SBS Biz",
-          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9kYzhuenM2Slp1ZHQyOXlqcUhqa2MxcE5TUGQ5RlEtTTNkcVBONTB2Y2dic1d5dEdYU3lyM3lNNzNUYU5YTVpLOVRMR1NyUnhnNElmMjlGOXLSAVhBVV95cUxPZGM4bnpzNkpadWR0Mjl5anFIamtjMXBOU1BkOUZRLU0zZHFQTjUwdmNnYnNXeXRHWFN5cjN5TTczVGFOWE1aSzlUTEdTclJ4ZzRJZjI5Rjly?oc=5"
+          "count": 10,
+          "title": "환율 1340원… 12년간 막힌 ‘국민소득 4만달러 클럽’ 보인다 - 동아일보",
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1DeTlERnJXakdGT1psZ3NVcWNNVklHbW9FSWlOenJPWkVxWV81cmxscEo0T0NoSklPcEhFVVdsbnNTMm53eWNodEFkeVA3U3JLMVJsaC10S3hvYjVHaFMyUWxtVDdjNEhJNTEyb0R2V0stbDY3VmfSAWZBVV95cUxQOXFUN1BBbVA2SEN5OEtNOUNicV92YW5QNGpBc3JQVDkwRkpWajBSX0RrQXk4bHRwUGZvMGVRZGpMXzA3TTZZWDRYQzFtV1hVbGZoRlJUeVF4djZGSnRYemtxcDlQOWc?oc=5"
+        },
+        {
+          "topic": "경기/성장",
+          "count": 8,
+          "title": "2분기 명목 GDP 성장률 47년 만에 최고…실질 GDP는 0.6%↑ - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFAxSUZIR2JjX2JEMDJ6S3E0ZzlQNTFSb2VUamtKaUp2ZWxiSm1qbWt4TlZmZE5RbHB2OWppR1B6akRJRl9QbXRkcWo3UWItVUkyNVE?oc=5"
         }
       ]
     },
@@ -113,20 +113,20 @@
         {
           "topic": "에너지/원자재",
           "count": 16,
-          "title": "구리 가격 사상 최고가…美 관세 리스크·광산 붕괴 - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE40b0xUNlNRZDZEMTV2cUx4STBkZG50YzVINmQyQTBXUHA4NmRJNmF2T29IR1VUZk5wWTMybG1LejVDSHlYb3pTc0FsNjNzV19kNWc?oc=5"
+          "title": "[원자재 시황] 중동 긴장·금리 인상 우려에 위험자산 위축 - ebn.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE04Y1BGMWY0dGZYTndHU1BmOHFkWG1IX1pTRHMweG9tbjRfTUluLWl4eC1zSklhbXc4NHcwLXgtUkVhYjVhVGx2Y0pJWlF1Q3BWWTBNSWwyMktPQ3ZQZzdtZjNMLWJHUzE4?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 9,
+      "total_count": 8,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 9,
-          "title": "[속보] '반도체 호황' 2분기 명목GDP 9.2% 성장.. 47년 만에 최고치 - 파이낸셜뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBrRzE0bXZKam5XMmp4LTdzcDRNRV9QNVlKVDZuNVRWcXViTVZpSUtUbVBoUTJhVURNREZYMkRpVHRPa25LX3NIaWpoekFJSGlEbTlzcGxZZUkyQQ?oc=5"
+          "count": 8,
+          "title": "엔비디아도 참전한 자율주행 경쟁...한국은 여전히 시범 운행 중 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQcnJQR0pmS3luNVV6T3ptX0hyZU1OLVdYWlBaSW1ncDhUNE9VeWVZUzFLSXotUTFFNEFZb05Bak16NDg5Nml3NHhLZ25TX2tPYmxBLUs3UWIzNWNtTFpQLUNPNC0xemRYQ0FFS1lKWWN5UXZabnJpZkk1OXdUanUzeGFzZw?oc=5"
         }
       ]
     }
