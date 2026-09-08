@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-09-08T04:41:58.048695+00:00",
+  "crawled_at": "2026-09-08T05:41:58.615605+00:00",
   "news_date": "2026-09-08",
-  "total_collected": 183,
+  "total_collected": 193,
   "topic_counts": [
     [
       "금리/연준",
@@ -9,19 +9,19 @@
     ],
     [
       "환율/달러",
-      12
-    ],
-    [
-      "경기/성장",
-      12
+      13
     ],
     [
       "에너지/원자재",
-      23
+      21
     ],
     [
-      "인플레이션",
-      6
+      "반도체/AI",
+      16
+    ],
+    [
+      "미국지수",
+      13
     ]
   ],
   "top_articles": [
@@ -29,7 +29,7 @@
       "topic": "금리/연준",
       "count": 13,
       "title": "美 10년물 금리 5% 시험대…회사채·국채입찰 몰린 '살얼음판' - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoX9IBYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoXw?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE42azhzSXZuVHdxT0NrNl92eWpubVA4bUdLQVFmbWhJcldCZTFoU1JuREJpTndkc2JiTkhyejN4M1ZNbHJvRVNQWDlTelRfUkhRaHBrd1FXcWlaYkHSAWBBVV95cUxNNlZ3ZWVKT0JpVF9RVks0WnZBeUFidnNrQldXazFESC1MMGV6YUo5WF90NVJ6MUhhQjNKVXBORjVQRV96OWlvbVl0T0xvaGxKaGR4RzlDU3lxb3djWDVwaF8?oc=5",
       "summary_lines": [
         "핵심 이슈: 美 10년물 금리 5% 시험대…회사채·국채입찰 몰린 '살얼음판' - 연합뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
@@ -38,29 +38,18 @@
     },
     {
       "topic": "환율/달러",
-      "count": 12,
-      "title": "환율 추가하락 전망에 연쇄 달러 매도 [Pick코노미] - 서울경제",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBHbEF6Z2szampDXy1OZjNORWV5RlltWEVIUXBfUEZFRjNjdUotYkFHb1ktUkllY0xqblRRUVgtSkZTR1lfNnpiNEd2cTB0ajJwZlHSAVNBVV95cUxObkFUeF9VTWN5clBmSmpSdVJkN29uM0ZHVDEzRW9RTTdZWG9CZVhQREZac0hJRE54eTVRaEN0OWZZQXNqbEZKek96VEFWUjdyeTRYTQ?oc=5",
+      "count": 13,
+      "title": "엔/달러 환율 장중 152엔대까지 하락…엔화가치 7개월 만에 최고 - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB4VEx6d0FsaFN6dUtRWWVMN3dyMF9fRE9QSmFTQkZERHU5d2pudW5aMjJOaVg2Z05vLXA2djJzaUluYmdXNHhobFB0XzZtRHVxNERZX0ZjdmhqZHPSAWBBVV95cUxNT3NfRGoxX3FqMDZ5czNiR1YyMjZ3QlZlWXU5WkFENXNfWjdybDNWN3VucW5jU3hhSkl6Qkd4aHF1dFl0RlJzMkY5N1RWSkR5WUlZUmlhdGZtVzVab0R3ZEs?oc=5",
       "summary_lines": [
-        "핵심 이슈: 환율 추가하락 전망에 연쇄 달러 매도 [Pick코노미] - 서울경제",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "경기/성장",
-      "count": 12,
-      "title": "2분기 명목 GDP 성장률 47년 만에 최고…\"1인당 4만달러 가능성\"(종합) - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9fV3kyc0JoWFNtNXZ5WlRMTmhtV2wzNV9KVEpkdFVmQjZaLUREV0RQX2V2dnY3V1hwbEdwMzc1czN0VGpSODgyUldpUDdrZWJmeHNfcUZrVllab0HSAWBBVV95cUxQdTQ4aU45ejg1VzdDNWVxc0Z2NXlKR0FUUHZXQ00zMjdMWnYxRjdkRE90RXVMMGNMOWwwZjJmN2M5WjlzVHZmX0FNWHFhYkNKbXlqWUFqNF90X3NRaU5RWkk?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 2분기 명목 GDP 성장률 47년 만에 최고…\"1인당 4만달러 가능성\"(종합) - 연합뉴스",
+        "핵심 이슈: 엔/달러 환율 장중 152엔대까지 하락…엔화가치 7개월 만에 최고 - 연합뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
       "topic": "에너지/원자재",
-      "count": 23,
+      "count": 21,
       "title": "뉴욕증시, 노동절 연휴로 휴장...CPI 앞두고 중동발 '유가 급등' 긴장 - 조세일보",
       "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA0dXlnemtPcWx6S3F5WFcxWl9FNjAtSnU1eHk1VUxaTGVzNHUwWkVzVUIyemlXNkJ0SXF2b2ZRYUhqWDJXcjcwNURfcFFId2RSTTV5Z0xwYmhYMkF5NEhF?oc=5",
       "summary_lines": [
@@ -70,12 +59,23 @@
       ]
     },
     {
-      "topic": "인플레이션",
-      "count": 6,
-      "title": "노동절 연휴로 휴장…이번주 PPI·CPI 촉각 [뉴욕증시 브리핑] - 한국경제",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1ORUJCdGowSi1rVmhnZW1YMmJRXzZWbi1lOERWMTBVUHZQRlJkLVItWHFzNVFSZjRhX2lWZEdzMGk5ODA5cy14ZjBySWpkYTk2VTlFZERpX0s4QQ?oc=5",
+      "topic": "반도체/AI",
+      "count": 16,
+      "title": "이준희 삼성SDS 대표 \"AI·로봇·물류 분야 전략적 투자 검토\" - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5MWjc1R0hXTDEzR3Q2a2daQS1XcXIyTFVOZHRvbHdMaXFWWE5RYzZ0anZGMVhZZDJFYThQcGlCc2hJQThaalBhbndfNzlIeUFIWEE?oc=5",
       "summary_lines": [
-        "핵심 이슈: 노동절 연휴로 휴장…이번주 PPI·CPI 촉각 [뉴욕증시 브리핑] - 한국경제",
+        "핵심 이슈: 이준희 삼성SDS 대표 \"AI·로봇·물류 분야 전략적 투자 검토\" - 매일경제 마켓",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "미국지수",
+      "count": 13,
+      "title": "\"원달러 환율 하락은 미국 반도체주 약세 신호\", 서학개미 자금 이탈해 유동성 저하 - 비즈니스포스트",
+      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE81a1F1VkNwZUZucnJwUlpoaDh1QUZUNWZjNHRLX09Bc2JoWDExY3djbGJ1Tm8wUXR6YzFkQ1RYSURYQ0tqVWR1ZDZ6aHFKd05OVGtRdV8yalhDMHJzSnJ5M0xOWTFUUm9UbmRrVU1JNTJNSEk?oc=5",
+      "summary_lines": [
+        "핵심 이슈: \"원달러 환율 하락은 미국 반도체주 약세 신호\", 서학개미 자금 이탈해 유동성 저하 - 비즈니스포스트",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,43 +84,55 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 43,
+      "total_count": 26,
       "topics": [
         {
           "topic": "금리/연준",
           "count": 13,
           "title": "美 10년물 금리 5% 시험대…회사채·국채입찰 몰린 '살얼음판' - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoX9IBYEFVX3lxTE02VndlZUpPQmlUX1FWSzRadkF5QWJ2c2tCV1drMURILUwwZXphSjlYX3Q1UnoxSGFCM0pVcE5GNVBFX3o5aW9tWXRPTG9obEpoZHhHOUNTeXFvd2NYNXBoXw?oc=5"
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE42azhzSXZuVHdxT0NrNl92eWpubVA4bUdLQVFmbWhJcldCZTFoU1JuREJpTndkc2JiTkhyejN4M1ZNbHJvRVNQWDlTelRfUkhRaHBrd1FXcWlaYkHSAWBBVV95cUxNNlZ3ZWVKT0JpVF9RVks0WnZBeUFidnNrQldXazFESC1MMGV6YUo5WF90NVJ6MUhhQjNKVXBORjVQRV96OWlvbVl0T0xvaGxKaGR4RzlDU3lxb3djWDVwaF8?oc=5"
         },
         {
           "topic": "환율/달러",
-          "count": 12,
-          "title": "환율 추가하락 전망에 연쇄 달러 매도 [Pick코노미] - 서울경제",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBHbEF6Z2szampDXy1OZjNORWV5RlltWEVIUXBfUEZFRjNjdUotYkFHb1ktUkllY0xqblRRUVgtSkZTR1lfNnpiNEd2cTB0ajJwZlHSAVNBVV95cUxObkFUeF9VTWN5clBmSmpSdVJkN29uM0ZHVDEzRW9RTTdZWG9CZVhQREZac0hJRE54eTVRaEN0OWZZQXNqbEZKek96VEFWUjdyeTRYTQ?oc=5"
-        },
-        {
-          "topic": "경기/성장",
-          "count": 12,
-          "title": "2분기 명목 GDP 성장률 47년 만에 최고…\"1인당 4만달러 가능성\"(종합) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9fV3kyc0JoWFNtNXZ5WlRMTmhtV2wzNV9KVEpkdFVmQjZaLUREV0RQX2V2dnY3V1hwbEdwMzc1czN0VGpSODgyUldpUDdrZWJmeHNfcUZrVllab0HSAWBBVV95cUxQdTQ4aU45ejg1VzdDNWVxc0Z2NXlKR0FUUHZXQ00zMjdMWnYxRjdkRE90RXVMMGNMOWwwZjJmN2M5WjlzVHZmX0FNWHFhYkNKbXlqWUFqNF90X3NRaU5RWkk?oc=5"
-        },
-        {
-          "topic": "인플레이션",
-          "count": 6,
-          "title": "노동절 연휴로 휴장…이번주 PPI·CPI 촉각 [뉴욕증시 브리핑] - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1ORUJCdGowSi1rVmhnZW1YMmJRXzZWbi1lOERWMTBVUHZQRlJkLVItWHFzNVFSZjRhX2lWZEdzMGk5ODA5cy14ZjBySWpkYTk2VTlFZERpX0s4QQ?oc=5"
+          "count": 13,
+          "title": "엔/달러 환율 장중 152엔대까지 하락…엔화가치 7개월 만에 최고 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFB4VEx6d0FsaFN6dUtRWWVMN3dyMF9fRE9QSmFTQkZERHU5d2pudW5aMjJOaVg2Z05vLXA2djJzaUluYmdXNHhobFB0XzZtRHVxNERZX0ZjdmhqZHPSAWBBVV95cUxNT3NfRGoxX3FqMDZ5czNiR1YyMjZ3QlZlWXU5WkFENXNfWjdybDNWN3VucW5jU3hhSkl6Qkd4aHF1dFl0RlJzMkY5N1RWSkR5WUlZUmlhdGZtVzVab0R3ZEs?oc=5"
         }
       ]
     },
     {
       "sector": "에너지/소재",
-      "total_count": 23,
+      "total_count": 21,
       "topics": [
         {
           "topic": "에너지/원자재",
-          "count": 23,
+          "count": 21,
           "title": "뉴욕증시, 노동절 연휴로 휴장...CPI 앞두고 중동발 '유가 급등' 긴장 - 조세일보",
           "link": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFA0dXlnemtPcWx6S3F5WFcxWl9FNjAtSnU1eHk1VUxaTGVzNHUwWkVzVUIyemlXNkJ0SXF2b2ZRYUhqWDJXcjcwNURfcFFId2RSTTV5Z0xwYmhYMkF5NEhF?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "IT/반도체",
+      "total_count": 16,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 16,
+          "title": "이준희 삼성SDS 대표 \"AI·로봇·물류 분야 전략적 투자 검토\" - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5MWjc1R0hXTDEzR3Q2a2daQS1XcXIyTFVOZHRvbHdMaXFWWE5RYzZ0anZGMVhZZDJFYThQcGlCc2hJQThaalBhbndfNzlIeUFIWEE?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "지수/시장",
+      "total_count": 13,
+      "topics": [
+        {
+          "topic": "미국지수",
+          "count": 13,
+          "title": "\"원달러 환율 하락은 미국 반도체주 약세 신호\", 서학개미 자금 이탈해 유동성 저하 - 비즈니스포스트",
+          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE81a1F1VkNwZUZucnJwUlpoaDh1QUZUNWZjNHRLX09Bc2JoWDExY3djbGJ1Tm8wUXR6YzFkQ1RYSURYQ0tqVWR1ZDZ6aHFKd05OVGtRdV8yalhDMHJzSnJ5M0xOWTFUUm9UbmRrVU1JNTJNSEk?oc=5"
         }
       ]
     }
