@@ -1,33 +1,33 @@
 {
-  "crawled_at": "2026-09-09T12:42:01.096950+00:00",
+  "crawled_at": "2026-09-09T13:42:00.492736+00:00",
   "news_date": "2026-09-09",
-  "total_collected": 265,
+  "total_collected": 273,
   "topic_counts": [
     [
       "환율/달러",
-      21
+      22
     ],
     [
       "금리/연준",
-      20
+      19
     ],
     [
       "인플레이션",
-      18
+      17
+    ],
+    [
+      "에너지/원자재",
+      28
     ],
     [
       "경기/성장",
       17
-    ],
-    [
-      "정책/테마",
-      25
     ]
   ],
   "top_articles": [
     {
       "topic": "환율/달러",
-      "count": 21,
+      "count": 22,
       "title": "일본 15조엔·인도 150억달러…‘환율 전쟁’이 글로벌 금융시장 흔든다 [김주완의 글로벌 머니 X파일] - 한국경제",
       "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1HVlI0dllybFBMSTBiSjFGWGxkTWJoYTVTWUxJT3Y4X3NvVW12NGZ0bzlzbWpWalpUYkdMXy1GY1hNOE91RzNreGlJNW5ReE03Z09VVEIwaEhEUQ?oc=5",
       "summary_lines": [
@@ -38,7 +38,7 @@
     },
     {
       "topic": "금리/연준",
-      "count": 20,
+      "count": 19,
       "title": "유가 100달러가 바꾼 월가의 셈법…연준 금리인상 다시 ‘카운트다운’ - 지이코노미",
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBNRWJfN2J0RXFvS0pMV3FWQURsUVROcnVxN3FBS3RvbzExUW1GaWt5ZGIydEJFd05semM5QjJUNFAtdDl5TFhrUG9fenF3bDBuWlkwUGtnVnRKajZ4NXJLeDRpbGQ?oc=5",
       "summary_lines": [
@@ -49,11 +49,22 @@
     },
     {
       "topic": "인플레이션",
-      "count": 18,
-      "title": "'유가상승·美CPI 경계' 국고채 금리 상승…3년물 연 3.910%(종합) - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBrUXJ3ZkRqUkpKYl9wUE5hSWpQRXAzcWJJTXMxbU9wRFlBZVlOVW5Nc3p2U1B2RE1tR2JJbzV6cjNMYk0zczB2bUNlYVd5Xzc4U2R1Qlo0SGZ6Nnc?oc=5",
+      "count": 17,
+      "title": "연준, ‘데이터 게임’에 빠지다: 0.01%p만으로도 금리 결정 좌우 가능 - techflowpost.com",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBwRzQ1NXpmUktVbGppRTRLWHZqcGh2WUEyWk56aHJwb1JKUllQdWhDUDAzREdyX2FNX0x5a1FBOEhOWFFzWnk3dHM1RUFEY2JaVHpPejFwVUlSMG15?oc=5",
       "summary_lines": [
-        "핵심 이슈: '유가상승·美CPI 경계' 국고채 금리 상승…3년물 연 3.910%(종합) - 연합뉴스",
+        "핵심 이슈: 연준, ‘데이터 게임’에 빠지다: 0.01%p만으로도 금리 결정 좌우 가능 - techflowpost.com",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "에너지/원자재",
+      "count": 28,
+      "title": "중동 리스크에 다우 1.2% 하락…국제유가 100달러 육박 - 서울경제TV",
+      "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVYlhXdkZ5OGhCQlBpaloyX21GLUt1Q21FdDUzRXRQTXFEUHNvSGhnQzhhbGVySWFueElJdllnQnJ5eFNYZHB0SXg3cnBtbVlHQ2NWT3lNWjRianB4cG1ReW9TeDE?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 중동 리스크에 다우 1.2% 하락…국제유가 100달러 육박 - 서울경제TV",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -61,21 +72,10 @@
     {
       "topic": "경기/성장",
       "count": 17,
-      "title": "신현송 한은 총재, 10월 금리 또 올릴까…GDP·물가·가계부채가 민다 - 더팩트",
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1EUDF3c2czMFFKeXNwNzBtdk9EcUc0ZWxMUkJxT2R3NlRfQ1ZHVWNjZlRRemJ2UVFGUTR5TThCQ0VEaDBjWUFSU0xTdmkzRGI2Z0VvMG4tdE1CZ9IBVEFVX3lxTE5RekQ5c29OaU5LU2Q2MG0xcVFXb05aSDRSUHpvRFZVcnZHSHMxVlRtd3JKd3ZBRDl0Z2NmclR3R05xS0VYU2NXUU1lcHowZmh0T2ZjUQ?oc=5",
+      "title": "‘삼의 법칙’ 창시자가 변심한 이유. 금리 동결 포기했다던데 - 매일경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE54NFI2dnFJNzU3LVg3c1plTDVmWmJzY0JNOVM0aTFGREhkZzFaLUFtOFhEcHRpblVlTFFFdnhJYWxWN0RpRHVGSE9ZX2o2TXNPT1E?oc=5",
       "summary_lines": [
-        "핵심 이슈: 신현송 한은 총재, 10월 금리 또 올릴까…GDP·물가·가계부채가 민다 - 더팩트",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "정책/테마",
-      "count": 25,
-      "title": "중동·관세 악재에도… 코스피 7000선 안착 공방전 - 문화일보",
-      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9QVXV5bWFldE5BT29NVHRUQ1VIX2JtWkxyUk5jWFRkMm9xU2pVVnoyS0xNRENkbHBObnREUWlvcEdBcks1cGxkcjEtTlBiaE9E?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 중동·관세 악재에도… 코스피 7000선 안착 공방전 - 문화일보",
+        "핵심 이슈: ‘삼의 법칙’ 창시자가 변심한 이유. 금리 동결 포기했다던데 - 매일경제",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,43 +84,43 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 76,
+      "total_count": 75,
       "topics": [
         {
           "topic": "환율/달러",
-          "count": 21,
+          "count": 22,
           "title": "일본 15조엔·인도 150억달러…‘환율 전쟁’이 글로벌 금융시장 흔든다 [김주완의 글로벌 머니 X파일] - 한국경제",
           "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1HVlI0dllybFBMSTBiSjFGWGxkTWJoYTVTWUxJT3Y4X3NvVW12NGZ0bzlzbWpWalpUYkdMXy1GY1hNOE91RzNreGlJNW5ReE03Z09VVEIwaEhEUQ?oc=5"
         },
         {
           "topic": "금리/연준",
-          "count": 20,
+          "count": 19,
           "title": "유가 100달러가 바꾼 월가의 셈법…연준 금리인상 다시 ‘카운트다운’ - 지이코노미",
           "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBNRWJfN2J0RXFvS0pMV3FWQURsUVROcnVxN3FBS3RvbzExUW1GaWt5ZGIydEJFd05semM5QjJUNFAtdDl5TFhrUG9fenF3bDBuWlkwUGtnVnRKajZ4NXJLeDRpbGQ?oc=5"
         },
         {
           "topic": "인플레이션",
-          "count": 18,
-          "title": "'유가상승·美CPI 경계' 국고채 금리 상승…3년물 연 3.910%(종합) - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBrUXJ3ZkRqUkpKYl9wUE5hSWpQRXAzcWJJTXMxbU9wRFlBZVlOVW5Nc3p2U1B2RE1tR2JJbzV6cjNMYk0zczB2bUNlYVd5Xzc4U2R1Qlo0SGZ6Nnc?oc=5"
+          "count": 17,
+          "title": "연준, ‘데이터 게임’에 빠지다: 0.01%p만으로도 금리 결정 좌우 가능 - techflowpost.com",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFBwRzQ1NXpmUktVbGppRTRLWHZqcGh2WUEyWk56aHJwb1JKUllQdWhDUDAzREdyX2FNX0x5a1FBOEhOWFFzWnk3dHM1RUFEY2JaVHpPejFwVUlSMG15?oc=5"
         },
         {
           "topic": "경기/성장",
           "count": 17,
-          "title": "신현송 한은 총재, 10월 금리 또 올릴까…GDP·물가·가계부채가 민다 - 더팩트",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1EUDF3c2czMFFKeXNwNzBtdk9EcUc0ZWxMUkJxT2R3NlRfQ1ZHVWNjZlRRemJ2UVFGUTR5TThCQ0VEaDBjWUFSU0xTdmkzRGI2Z0VvMG4tdE1CZ9IBVEFVX3lxTE5RekQ5c29OaU5LU2Q2MG0xcVFXb05aSDRSUHpvRFZVcnZHSHMxVlRtd3JKd3ZBRDl0Z2NmclR3R05xS0VYU2NXUU1lcHowZmh0T2ZjUQ?oc=5"
+          "title": "‘삼의 법칙’ 창시자가 변심한 이유. 금리 동결 포기했다던데 - 매일경제",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE54NFI2dnFJNzU3LVg3c1plTDVmWmJzY0JNOVM0aTFGREhkZzFaLUFtOFhEcHRpblVlTFFFdnhJYWxWN0RpRHVGSE9ZX2o2TXNPT1E?oc=5"
         }
       ]
     },
     {
-      "sector": "정책/테마",
-      "total_count": 25,
+      "sector": "에너지/소재",
+      "total_count": 28,
       "topics": [
         {
-          "topic": "정책/테마",
-          "count": 25,
-          "title": "중동·관세 악재에도… 코스피 7000선 안착 공방전 - 문화일보",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9QVXV5bWFldE5BT29NVHRUQ1VIX2JtWkxyUk5jWFRkMm9xU2pVVnoyS0xNRENkbHBObnREUWlvcEdBcks1cGxkcjEtTlBiaE9E?oc=5"
+          "topic": "에너지/원자재",
+          "count": 28,
+          "title": "중동 리스크에 다우 1.2% 하락…국제유가 100달러 육박 - 서울경제TV",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVYlhXdkZ5OGhCQlBpaloyX21GLUt1Q21FdDUzRXRQTXFEUHNvSGhnQzhhbGVySWFueElJdllnQnJ5eFNYZHB0SXg3cnBtbVlHQ2NWT3lNWjRianB4cG1ReW9TeDE?oc=5"
         }
       ]
     }
