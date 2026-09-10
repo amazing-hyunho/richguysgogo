@@ -520,7 +520,17 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     # never terminate that script early.
     data_json = json.dumps(data, ensure_ascii=False).replace("<", "\\u003c")
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
+    panel_path = Path(__file__).resolve().parents[1] / "docs" / "supply_chain_panel.html"
+    template = template.replace("__SUPPLY_CHAIN_PANEL__", panel_path.read_text(encoding="utf-8"))
     return _inject_dashboard_json(template, data_json)
+
+
+def load_supply_chain_dashboard_data() -> dict[str, object]:
+    from committee.industry_cycle.supply_chain import load_supply_chain_dashboard_data as load
+    from committee.industry_cycle.supply_chain_monitor import load_monitor
+    payload = load()
+    payload["monitor"] = load_monitor()
+    return payload
 
 
 
@@ -1040,6 +1050,7 @@ def main() -> None:
             "stock_news": load_stock_news_summary(),
             "fear_greed": _fetch_fear_greed(),
             "industry_cycle": load_industry_cycle_dashboard_data(),
+            "supply_chain": load_supply_chain_dashboard_data(),
             "research_radar": load_research_radar_dashboard_data(),
             "future_economy": load_future_economy_dashboard_data(),
         }

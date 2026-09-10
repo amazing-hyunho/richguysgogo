@@ -31,6 +31,7 @@ def main() -> None:
     output_path = build_dashboard.OUTPUT_PATH
     data = load_embedded_dashboard_data(output_path)
     data["research_radar"] = build_dashboard.load_research_radar_dashboard_data()
+    data["supply_chain"] = build_dashboard.load_supply_chain_dashboard_data()
     output_path.write_text(build_dashboard.build_dashboard_html(data), encoding="utf-8")
     print(f"Pages dashboard rendered: {output_path}")
 

@@ -1,0 +1,64 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,962.60으로 1.26% 하락했고 KOSDAQ도 816.55로 1.66% 내렸다. 외국인 -3,208억원과 기관 -3,946억원 매도가 개인 +4,768억원 매수를 압도하는 수급 구도다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "최근 5일 KOSPI는 5.802%, 20일은 2.864% 상승해 금일 하락은 급등 후 조정 성격도 있다. USD/KRW는 1,339.00원으로 0.12% 하락했고 5일 변화율도 -1.307%다.",
+      "sources": [
+        "market_data",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "금일 하락의 추세 전환 여부",
+      "majority": "중립 의견은 최근 5일 및 20일 누적 상승과 원화 강세를 고려할 때 금일 하락을 우선 단기 조정으로 해석한다.",
+      "minority": "위험회피 의견은 외국인·기관 동반 매도와 고유가·금리 우려가 수급 악화 및 변동성 확대로 이어질 수 있다고 본다.",
+      "minority_agents": [
+        "macro",
+        "breadth",
+        "liquidity"
+      ],
+      "why_it_matters": "향후 외국인·기관 매도가 이어지고 변동성이 추가 확대되면 단기 조정이라는 다수 해석의 신뢰도가 낮아진다."
+    },
+    {
+      "topic": "환율의 수급 설명력",
+      "majority": "USD/KRW가 1,339.00원으로 0.12% 하락하고 5일간 1.307% 하락한 점은 금일 외국인 매도를 환율 주도 자금 이탈로 단정하기 어렵게 한다.",
+      "minority": "유동성 경계 의견은 정책 불확실성과 외국인 자금 이탈 자체가 단기 위험 요인이라고 본다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "환율이 반등하면서 외국인 매도가 지속될 경우 수급 부담은 단순 차익실현보다 구조적으로 해석될 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 급등 뒤 맞은 동반 매도 조정\n\n국내 증시는 단기 위험회피가 우세했다. KOSPI는 6,962.60으로 1.26% 하락했고, KOSDAQ는 816.55로 1.66% 내렸다. 외국인은 3,208억원, 기관은 3,946억원을 순매도한 반면 개인은 4,768억원을 순매수했다. 원·달러 환율은 1,339.00원으로 0.12% 하락했고 VIX는 16.46이었다. 즉 주가 하락은 나타났지만 원화 약세가 동반된 전형적 대외자금 이탈로 단정할 근거는 제한적이다.\n\n## 외국인·기관 매도, 개인 저가매수의 한계\n\n수급의 중심은 외국인과 기관의 동반 매도였다. KOSPI에서 외국인 -1,683억원·기관 -3,471억원, KOSDAQ에서 외국인 -1,525억원·기관 -475억원을 기록했다. 개인은 각각 2,743억원과 2,025억원을 받아냈지만, 시장 전체 하락을 막지는 못했다. 수급 담당자 flow는 이를 최근 5일 KOSPI 5.802% 상승 뒤의 차익실현과 고유가·금리 경계가 결합한 흐름으로 평가했다. 실제 WTI는 96.60달러, 미 10년물은 4.837%로 할인율 부담을 의식할 환경이다.\n\n다만 하루 수급만으로 추세 훼손을 선언하기는 이르다. KOSPI의 20일 누적 수익률은 2.864%이며, USD/KRW의 5일 변화율은 -1.307%다. 리스크 담당자 risk와 이익모멘텀 담당자 earnings가 조정의 추세 전환 가능성을 낮게 본 배경이다. 반대로 macro·breadth·liquidity는 동반 매도와 확산 약화를 위험 신호로 제시해, 반등 시에도 수급 회복 확인이 선행돼야 한다.\n\n## 9월 9일 이슈: 유가·연준·환율의 교차점\n\n1. **에너지와 지정학**: [중동 리스크에 다우 1.2% 하락…국제유가 100달러 육박](https://news.google.com/rss/articles/CBMiZEFVX3lxTFBVYlhXdkZ5OGhCQlBpaloyX21GLUt1Q21FdDUzRXRQTXFEUHNvSGhnQzhhbGVySWFueElJdllnQnJ5eFNYZHB0SXg3cnBtbVlHQ2NWT3lNWjRianB4cG1ReW9TeDE?oc=5) 보도는 유가가 인플레이션 재자극 변수임을 부각한다. WTI 96.60달러는 이 경계와 방향이 같다.\n2. **금리 재평가**: [유가 100달러가 바꾼 월가의 셈법…연준 금리인상 다시 ‘카운트다운’](https://news.google.com/rss/articles/CBMiZEFVX3lxTFBNRWJfN2J0RXFvS0pMV3FWQURsUVROcnVxN3FBS3RvbzExUW1GaWt5ZGIydEJFd05semM5QjJUNFAtdDl5TFhrUG9fenF3bDBuWlkwUGtnVnRKajZ4NXJLeDRpbGQ?oc=5) 및 [연준, ‘데이터 게임’에 빠지다](https://news.google.com/rss/articles/CBMiXEFVX3lxTFBwRzQ1NXpmUktVbGppRTRLWHZqcGh2WUEyWk56aHJwb1JKUllQdWhDUDAzREdyX2FNX0x5a1FBOEhOWFFzWnk3dHM1RUFEY2JaVHpPejFwVUlSMG15?oc=5)는 금리 민감 자산의 변동성 확대 가능성을 시사한다.\n3. **환율 변수**: [삼전닉스·대미투자·금리…원·달러 환율 가를 '3대 변수'](https://news.google.com/rss/articles/CBMiWkFVX3lxTE16MTRUVHhlaDFjczlDT1BiUUlWUDZNWXBNQmE5MDR0ZFpRaWxMZlpuc2dhZzJpUVhaZzBYUFgtUTJiSGJvU3VmU0JWX3FPYlRQUXRncUpkbkdJZw?oc=5)는 환율 불확실성을 제기하지만, 금일 원화는 강세였다.\n\n## 다음 확인선과 무효화 조건\n\n단기적으로는 유가와 미 국채금리의 추가 상승, VIX의 5일 평균 15.478 대비 확대 여부, 외국인·기관 매도의 연속성이 핵심 확인선이다. 미국 증시도 S&P500 -0.48%, NASDAQ -0.64%, DOW -0.77%로 약세여 대외 위험선호 회복도 필요하다. 오늘의 ‘급등 후 조정’ 판단은 외국인·기관 순매도가 이어지고, 원화 약세와 VIX 상승이 동시에 나타날 경우 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

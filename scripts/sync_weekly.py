@@ -316,6 +316,10 @@ def main() -> int:
         if args.skip_industry_llm:
             insight_cmd.append("--skip-llm")
         step("산업 뉴스·AI 종합의견 생성", insight_cmd)
+        step(
+            "소부장 재무·뉴스·매크로 추적 갱신",
+            [py, "scripts/refresh_supply_chain_monitor.py", "--execute"],
+        )
 
     # ── 8. 미래산업 연구→시장 레이더 ──────────────────────────────
     step(

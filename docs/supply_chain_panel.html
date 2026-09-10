@@ -1,0 +1,157 @@
+<style>
+  .sc-intro {color:#a8b9cf;line-height:1.7;max-width:850px}
+  .sc-stats {display:flex;gap:12px;flex-wrap:wrap;margin:22px 0}
+  .sc-stat {background:#132238;border:1px solid #2c3f56;border-radius:12px;padding:14px 20px;min-width:130px;color:#a8b9cf}
+  .sc-stat strong {display:block;color:#e7f2ff;font-size:25px;margin-bottom:3px}
+  .sc-tools {display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:20px 0}
+  .sc-tools label {display:flex;flex-direction:column;gap:6px;font-size:12px;color:#a8b9cf}
+  .sc-tools input,.sc-tools select,.sc-tools button {background:#142237;color:#e7f2ff;border:1px solid #466078;border-radius:8px;padding:11px;font:inherit}
+  .sc-tools input {width:min(330px,75vw)}
+  .sc-tools button {cursor:pointer}
+  .sc-layout {display:grid;grid-template-columns:225px minmax(0,1fr);gap:24px;align-items:start}
+  .sc-nav {display:grid;gap:6px;max-height:760px;overflow:auto;padding:2px}
+  .sc-nav button {text-align:left;border:1px solid #2c3f56;border-radius:9px;background:#111e30;color:#c9d8eb;padding:12px;cursor:pointer;font:inherit;font-size:13px;line-height:1.6}
+  .sc-nav button[aria-pressed=true] {background:#153b46;border-color:#5eead4;color:#ccfbf1}
+  .sc-nav small {display:block;color:#9bb1c6}
+  .sc-detail {min-width:0}
+  .sc-detail h3 {font-size:24px;margin:0 0 10px;color:#edf5ff}
+  .sc-chain {display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0}
+  .sc-chain span {border:1px solid #3d586b;background:#132b38;border-radius:8px;padding:10px;color:#baf1e8;font-size:13px}
+  .sc-chain b {color:#658b9c}
+  .sc-card {border:1px solid #31445c;border-radius:12px;padding:20px;margin:15px 0;background:#101d2f;color:#cfdaea;overflow-wrap:anywhere}
+  .sc-card h4 {font-size:18px;color:#f0f7ff;margin:0 0 8px}
+  .sc-card p {line-height:1.7;margin:10px 0}
+  .sc-badge {display:inline-block;padding:4px 9px;border-radius:20px;background:#203850;color:#bce4ff;font-size:11px;margin:0 5px 5px 0}
+  .sc-badge.sc-unknown {background:#3b3020;color:#fbd38d}
+  .sc-grid {display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:15px}
+  .sc-grid strong {color:#84ddd0;font-size:12px}
+  .sc-grid ul {padding-left:19px;line-height:1.8;margin:6px 0;font-size:13px}
+  .sc-note {color:#a8b9cf;font-size:12px;line-height:1.7}
+  .sc-card details {border-top:1px solid #2c3f56;padding-top:12px;margin-top:14px;font-size:13px}
+  .sc-card summary {cursor:pointer;color:#a5d5fa}
+  .sc-card a {color:#8dd3ff;text-decoration:underline}
+  .sc-source {margin:12px 0;line-height:1.7}
+  #sc-empty {padding:24px;color:#c4d3e4}
+  .sc-next {background:#132b38;border-left:3px solid #5eead4;padding:14px;margin:18px 0;line-height:1.7}
+  .sc-monitor {margin:20px 0;border:1px solid #31445c;border-radius:12px;padding:18px;background:#0e2030}
+  .sc-monitor h4 {margin:4px 0 14px;color:#d5f5ef;font-size:17px}
+  .sc-macro-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .sc-metric {background:#142b3d;border:1px solid #355063;border-radius:10px;padding:14px;min-width:0}
+  .sc-metric b {display:block;font-size:23px;color:#f0f8ff;margin:9px 0}
+  .sc-metric svg {width:100%;height:52px;margin:8px 0}
+  .sc-news-item {border-bottom:1px solid #2c3f56;padding:12px 0;font-size:13px;line-height:1.7}
+  .sc-news-item a,.sc-monitor a {color:#9ad6ff;text-decoration:underline}
+  .sc-fin-table {width:100%;min-width:0;table-layout:fixed;font-size:12px;border-collapse:collapse;margin:12px 0}
+  .sc-fin-table td,.sc-fin-table th {padding:8px;text-align:right;border-bottom:1px solid #31445c;white-space:normal}
+  .sc-fin-table td:first-child,.sc-fin-table th:first-child {text-align:left}
+  .sc-observation {padding:10px 0;border-bottom:1px solid #31445c;font-size:13px;line-height:1.7}
+  #tab-supply-chain :focus-visible {outline:2px solid #5eead4;outline-offset:3px}
+  @media(max-width:760px) {.sc-layout,.sc-grid{grid-template-columns:1fr}.sc-nav{max-height:230px;grid-template-columns:repeat(2,minmax(0,1fr))}.sc-stat{min-width:105px;padding:12px}.sc-card{padding:15px}}
+</style>
+<div id="tab-supply-chain" class="tab-pane" role="tabpanel">
+  <section class="section">
+    <div class="section-head"><h2>🔗 산업별 소부장 지도</h2><span class="section-meta" id="sc-date"></span></div>
+    <p class="sc-intro">산업의 변화가 어떤 제품과 기업으로 이어지는지 살펴보세요. 한국 상장기업을 중심으로 제품·공정·공급 관계를 정리하고, 실적에 연결되는 조건을 하나씩 검증합니다.</p>
+    <div class="sc-stats" id="sc-stats"></div>
+    <div id="sc-monitor-status" class="sc-note" role="status"></div>
+    <p class="sc-note">현재는 핵심 사례를 담은 초기 지도입니다. 조사 순서는 매수 순위가 아닙니다. 제품 근거와 사이클 가설을 구분하며, 매출 비중·반영 시차가 미확인인 항목은 수치로 추정하지 않습니다.</p>
+    <div class="sc-tools">
+      <label>기업·제품·산업 검색<input id="sc-search" type="search" placeholder="예: 반도체, OLED, 유압, 삼성전기"></label>
+      <label>공급 역할<select id="sc-role"><option value="">전체</option><option value="material">소재</option><option value="component">부품</option><option value="equipment">장비</option><option value="service">서비스</option></select></label>
+      <button id="sc-download" type="button">조사 데이터 JSON 저장</button>
+    </div>
+    <div id="sc-empty" hidden>조건에 맞는 조사 자료가 없습니다.</div>
+    <div class="sc-layout"><nav class="sc-nav" id="sc-nav" aria-label="산업별 조사 순서"></nav><div class="sc-detail" id="sc-detail" aria-live="polite"></div></div>
+  </section>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const sc = data.supply_chain;
+  if (!sc) {document.getElementById('sc-empty').hidden = false; return;}
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const roles = {material:'소재',component:'부품',equipment:'장비',service:'서비스'};
+  const companies = Object.fromEntries(sc.companies.map(c => [c.company_id,c]));
+  const sources = Object.fromEntries(sc.sources.map(s => [s.source_id,s]));
+  const $ = id => document.getElementById(id);
+  const monitor=sc.monitor||{};
+  const fmt=v=>typeof v==='number'&&Number.isFinite(v)?v.toLocaleString('ko-KR',{maximumFractionDigits:2}):'미확인';
+  const safeUrl=v=>{try{const u=new URL(v);return ['http:','https:'].includes(u.protocol)?u.href:'#';}catch{return '#';}};
+  const statusLabels={ok:'수집 성공',empty:'새 기사 없음',error:'갱신 실패',cached:'이전 성공 자료',not_requested:'이번 수집 생략',no_filing:'공시 미확보',missing_corp_code:'기업코드 미확보'};
+  const generated=new Date(monitor.generated_at);
+  const staleMonitor=Number.isFinite(generated.getTime()) && Date.now()-generated.getTime()>8*86400000;
+  $('sc-monitor-status').textContent=monitor.generated_at?`추적 갱신 ${generated.toLocaleString('ko-KR')} · 재무 ${monitor.summary?.financials||0}개 기업 · 기업 뉴스 ${monitor.summary?.company_news||0}건 · 산업 지표 ${monitor.summary?.indicators||0}개${staleMonitor?' · 갱신 지연':''} · 주간 배치 실행 시 갱신`:'추적 자료 미생성';
+  let selected = sc.industries[0]?.industry_id;
+  $('sc-date').textContent = '조사 확인일 '+sc.research_as_of+' · 초기 지도';
+  const stats = [[sc.summary.mapped_industry_count+'/'+sc.summary.industry_count,'산업 초기 지도'],[sc.summary.company_count,'중복 제외 기업'],[sc.summary.relationship_count,'제품·산업 연결'],[sc.summary.research_observation_count||0,'공시 정량 근거']];
+  $('sc-stats').innerHTML = stats.map(([v,k]) => `<div class="sc-stat"><strong>${esc(v)}</strong>${esc(k)}</div>`).join('');
+  const li = values => '<ul>'+values.map(v=>'<li>'+esc(v)+'</li>').join('')+'</ul>';
+  function newsHtml(items) {
+    return items.length?items.slice(0,6).map(n=>`<div class="sc-news-item"><a href="${esc(safeUrl(n.link))}" target="_blank" rel="noopener noreferrer">${esc(n.title)} ↗</a><br><span class="sc-note">${esc((n.published_at||'').slice(0,10))} · ${esc(n.source||'출처 미표기')} · ${(n.tags||[]).map(esc).join(' / ')} · 제목 기준 분류</span></div>`).join(''):'<p class="sc-note">최근 28일 내 확인한 기사가 없습니다.</p>';
+  }
+  function spark(history) {
+    const values=(history||[]).map(r=>r.value).filter(v=>typeof v==='number'&&Number.isFinite(v));
+    if(values.length<2)return '';
+    const min=Math.min(...values),max=Math.max(...values),span=max-min||1;
+    const points=values.map((v,i)=>`${(i/(values.length-1)*180+5).toFixed(1)},${(45-(v-min)/span*36).toFixed(1)}`).join(' ');
+    return `<svg viewBox="0 0 190 52" role="img" aria-label="최근 ${values.length}개 관측 추이"><title>최근 관측 추이 · 최저 ${fmt(min)} · 최고 ${fmt(max)}</title><polyline fill="none" stroke="#5eead4" stroke-width="2" points="${points}"/></svg>`;
+  }
+  function macroHtml(industry) {
+    const m=monitor.macro||{},ids=m.by_industry?.[industry]||[],rows=ids.map(id=>m.indicators?.[id]).filter(Boolean);
+    const tile=r=>`<div class="sc-metric"><span class="sc-note">${esc(r.name||r.description||r.indicator_id)}</span><b>${fmt(r.latest?.value)} <small>${esc(r.display_unit||'')}</small></b><span class="sc-note">${esc(r.value_label||'수준')} · ${r.status==='stale'?'자료 지연':r.status==='missing'?'미확보':'관측 확보'}</span>${spark(r.history)}<div class="sc-note">관측 ${esc(r.latest?.observed_at||'미확인')}<br>DB 발표일 ${esc(r.latest?.published_at||'미확인')}${r.change!==undefined&&r.change!==null?'<br>직전 관측 대비 '+fmt(r.change)+' '+esc(r.change_unit):''}<br>${r.source_url?'<a href="'+esc(safeUrl(r.source_url))+'" target="_blank" rel="noopener noreferrer">FRED 원자료 ↗</a>':esc(r.source_label||'')}<br>${esc(r.interpretation)}</div></div>`;
+    return `<section class="sc-monitor"><h4>산업 지표 · 관측 추이</h4><p class="sc-note">미국·글로벌 대리지표와 한국 공급사의 실적은 별도로 검증합니다. 지표별 관측 주기·시점이 다릅니다.</p><div class="sc-macro-grid">${rows.map(tile).join('')||'<p>연결 지표 없음</p>'}</div><details><summary>공통 금리·환율·원가 배경</summary><div class="sc-macro-grid">${(m.common||[]).map(tile).join('')}</div></details></section>`;
+  }
+  function companyMonitor(cid) {
+    const m=monitor.companies?.[cid];if(!m)return '';
+    const f=m.financials||{};
+    const metrics=(f.metrics||[]).slice(0,7);
+    return `<details><summary>공시 재무 · 기업 뉴스 ${m.news?.length||0}건</summary><p class="sc-note">재무: ${esc(statusLabels[f.status]||f.status||'미확인')}${f.last_attempt_status?' · 최근 시도 '+esc(statusLabels[f.last_attempt_status]||f.last_attempt_status):''} · ${esc(f.period||'')} · ${f.basis==='CFS'?'연결':f.basis==='OFS'?'별도':''}<br>공시일 ${esc(f.published_at||'미확인')} · 수집 ${esc((f.known_at||'').slice(0,10))}<br>기업 전체 재무입니다. 특정 제품·고객·산업의 매출로 배분하지 않습니다.</p>
+      ${metrics.length?'<table class="sc-fin-table"><thead><tr><th>항목</th><th>당기</th><th>비교 증감</th></tr></thead><tbody>'+metrics.map(x=>'<tr><td>'+esc(x.name)+'<br>'+esc(x.period_basis)+'</td><td>'+fmt(x.value===null?null:x.unit==='KRW'?x.value/1e8:x.value)+' '+esc(x.unit==='KRW'?'억원':x.unit)+'</td><td>'+fmt(x.change_pct)+(x.change_pct===null?'':'%')+'<br>'+esc(x.comparison)+(x.negative_base_note?'<br>비교값 0 이하':'')+'</td></tr>').join('')+'</tbody></table>':''}
+      ${f.source_url?'<a href="'+esc(safeUrl(f.source_url))+'" target="_blank" rel="noopener noreferrer">DART 공시 원문 ↗</a>':''}<p class="sc-note">뉴스 수집: ${esc(statusLabels[m.news_status]||m.news_status)} · 최신 갱신 실패 시 기존 기사를 유지합니다. 본문·공시 검증 전 참고 자료입니다.</p>${newsHtml(m.news||[])}</details>`;
+  }
+  function sourceHtml(id) {
+    const s = sources[id]; if (!s) return '';
+    let url; try {url=new URL(s.url);if(!['https:','http:'].includes(url.protocol))return '';} catch {return '';}
+    return `<div class="sc-source"><a href="${esc(url.href)}" target="_blank" rel="noopener noreferrer">${esc(s.title)} ↗</a><br><span class="sc-note">${esc(s.source_type)} · 자료 기준 ${esc(s.data_as_of||'미표기')} · 공개일 ${esc(s.published_at||'미확인')} · 확인일 ${esc(s.accessed_at)}<br>${esc(s.date_note)}</span></div>`;
+  }
+  function card(r) {
+    const c=companies[r.company_id], h=r.cycle_hypothesis, exposure=r.revenue_exposure;
+    const links=r.external_links.map(l=>`${l.name} — ${{customer:'고객',competitor:'경쟁사',upstream:'상위 공급사',end_market:'최종 시장'}[l.relationship]}: ${l.note}`);
+    const observations=c.research_observations||[];
+    const sourceIds=[...new Set([...r.fact_source_ids,...r.external_links.map(l=>l.source_id),...observations.map(o=>o.source_id),...(exposure.source_id?[exposure.source_id]:[])])];
+    return `<article class="sc-card"><h4>${esc(c.name)} <span class="sc-note">${esc(c.ticker)}</span></h4>
+      <span class="sc-badge">${esc(roles[r.role])}</span><span class="sc-badge">${r.directness==='indirect'?'최종 산업에 간접 연결':'제품·적용 산업 연결'}</span><span class="sc-badge sc-unknown">사이클 가설 미검증</span>
+      <p><b>${esc(r.product)}</b> → ${esc(r.recipient)}</p><p>${esc(r.fact)}</p><p class="sc-note">${esc(r.relationship_note)}</p>
+      <div class="sc-grid"><div><strong>매출 노출도 · 실적 반영</strong><p>${exposure.value_pct===null?'개별 제품 매출 비중 미확인':esc(exposure.value_pct)+'% · '+esc(exposure.period)+' · '+esc(exposure.scope)}</p><p class="sc-note">실적 반영 시차 미측정 · 고객별 비중은 공시 근거 확인 필요</p></div><div><strong>검증할 전달 경로</strong><p>${esc(h.mechanism)}</p></div></div>
+      ${observations.length?'<details><summary>기업 정량 조사 '+observations.length+'건 · 부문·기간 구분</summary>'+observations.map(o=>'<div class="sc-observation"><b>'+esc(o.label)+' '+fmt(o.value)+' '+esc(o.unit)+'</b><br>'+esc(o.period)+' · '+esc(o.scope)+'<br><a href="'+esc(safeUrl(sources[o.source_id]?.url))+'" target="_blank" rel="noopener noreferrer">근거 공시 ↗</a></div>').join('')+'</details>':''}
+      ${companyMonitor(r.company_id)}
+      <div class="sc-grid"><div><strong>기업별 추가 확보 지표</strong>${li(h.watch_metrics)}</div><div><strong>가설을 재검토할 조건</strong><p>${esc(h.falsifier)}</p></div></div>
+      ${links.length?'<p><b>추가 연결 근거</b></p>'+li(links):'<p class="sc-note">개별 해외 고객·경쟁사: 확인 근거 추가 조사</p>'}
+      <details><summary>확인 근거 ${sourceIds.length}건 · 다음 조사 항목</summary>${sourceIds.map(sourceHtml).join('')}<strong>다음 조사</strong>${li(r.next_checks)}</details></article>`;
+  }
+  function render() {
+    const query=$('sc-search').value.trim().toLowerCase(), role=$('sc-role').value;
+    const matches = industry => sc.relationships.filter(r=>r.industry_id===industry.industry_id && (!role||r.role===role) && (!query||[industry.name,industry.focus,r.product,r.recipient,companies[r.company_id].name,companies[r.company_id].ticker].join(' ').toLowerCase().includes(query)));
+    const visible=sc.industries.map(i=>({...i,rows:matches(i)})).filter(i=>i.rows.length || (!query&&!role));
+    if(!visible.some(i=>i.industry_id===selected)) selected=visible[0]?.industry_id;
+    $('sc-empty').hidden=visible.length>0;
+    $('sc-nav').innerHTML=visible.map(i=>`<button type="button" data-industry="${esc(i.industry_id)}" aria-pressed="${i.industry_id===selected}">${esc(String(i.research_order).padStart(2,'0'))} · ${esc(i.name)}<small>${new Set(i.rows.map(r=>r.company_id)).size}개 기업 · ${i.rows.length}개 연결</small></button>`).join('');
+    const i=visible.find(x=>x.industry_id===selected);
+    if(!i){$('sc-detail').innerHTML='';return;}
+    const companyIds=new Set(i.rows.map(r=>r.company_id));
+    const indicatorIds=new Set(monitor.macro?.by_industry?.[i.industry_id]||[]);
+    const changes=(monitor.changes||[]).filter(c=>companyIds.has(c.company_id)||indicatorIds.has(c.indicator_id));
+    $('sc-detail').innerHTML=`<h3>${esc(i.name)}</h3><p class="sc-note">${esc(i.focus)} · ${i.map_type==='service_supply_chain'?'서비스 공급망':'제조 공급망'} · ${i.status==='pending'?'조사 대기':'초기 지도'}</p>
+      <div class="sc-chain" aria-label="사이클 전달 가설">${i.chain.map(x=>'<span>'+esc(x)+'</span>').join('<b aria-hidden="true">→</b>')}</div>
+      <p class="sc-note">위 흐름은 검증할 가설입니다. 개별 공급 계약이나 실적 개선이 확정됐다는 뜻은 아닙니다.</p>
+      <div class="sc-next"><b>다음 조사 순서</b><br>${esc(i.research_path)}<br><span class="sc-note">${esc(i.next_step)}</span></div>
+      ${monitor.generated_at?'<p class="sc-note">직전 저장 이후: '+(changes.length?changes.map(c=>esc(c.label)).join(' · '):'이 산업에서 새로 확인된 변경 없음')+'</p>':''}
+      ${macroHtml(i.industry_id)}
+      <div class="sc-monitor"><details><summary>산업 배경 뉴스 · 공통 매크로 뉴스</summary><p class="sc-note">기업 직접 공급을 확인한 뉴스와 구분한 배경 정보입니다.</p>${newsHtml(monitor.industry_news?.[i.industry_id]||[])}${Object.entries(monitor.macro_news||{}).map(([k,v])=>'<h4>'+esc({rates_fx:'금리·환율',energy_cost:'에너지·원자재',trade_policy:'통상·정책'}[k]||k)+'</h4><p class="sc-note">'+esc(statusLabels[v.status]||v.status)+'</p>'+newsHtml(v.items||[])).join('')}</details></div>
+      ${i.rows.map(card).join('')||'<p>아직 근거가 등록되지 않았습니다.</p>'}`;
+  }
+  $('sc-nav').addEventListener('click',event=>{const b=event.target.closest('button[data-industry]');if(b){selected=b.dataset.industry;render();}});
+  $('sc-search').addEventListener('input',render);$('sc-role').addEventListener('change',render);
+  $('sc-download').addEventListener('click',()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(sc,null,2)],{type:'application/json;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='industry-supply-chains-'+sc.research_as_of+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+  render();
+});
+</script>

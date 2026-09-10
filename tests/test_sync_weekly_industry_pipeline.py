@@ -35,6 +35,7 @@ class SyncWeeklyIndustryPipelineTests(unittest.TestCase):
             "scripts/run_industry_cycle_weekly.py",
             "scripts/run_industry_virtual_portfolio.py",
             "scripts/run_industry_weekly_insights.py",
+            "scripts/refresh_supply_chain_monitor.py",
         ]
         positions = [scripts_run.index(name) for name in expected]
         self.assertEqual(positions, sorted(positions))
