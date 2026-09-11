@@ -1,0 +1,54 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,835.34로 2.66% 하락했고 KOSDAQ도 819.64로 2.06% 내렸다. 외국인 -8,975억원과 기관 -7,505억원 매도가 개인 +1조3,897억원 매수를 압도했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "VIX는 17.84로 5일 평균 16.384를 상회했다. 고유가·고금리 및 FOMC 경계 뉴스가 위험자산 회피의 배경으로 작용했으나, 원/달러는 1,345.06원으로 0.19% 하락해 환율 주도 이탈로 단정하기는 어렵다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 급락의 추세적 위험 전환 여부",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 외국인·기관 동반 매도와 변동성 확대를 근거로 리스크오프 지속을 판단했다.",
+      "minority": "단기 하락은 컸지만 5일 누적 상승과 제한적인 20일 누적 하락을 고려하면 과도한 위험 신호로 단정하기 어렵다는 중립 의견이다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "낙폭과대 반등 가능성은 남아 있으나 반전 신호가 없으므로, 반등 시 추격 확대보다 외국인·기관 수급의 지속적 개선 확인이 필요하다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 동반 매도가 만든 급락: 수급이 가격을 주도\n\n11일 KOSPI는 6,835.34로 2.66% 하락했고, KOSDAQ도 819.64로 2.06% 내렸다. 외국인은 8,975억원, 기관은 7,505억원을 순매도한 반면 개인은 1조3,897억원을 순매수했다. 시장별로도 KOSPI에서 외국인 -7,499억원·기관 -7,090억원, KOSDAQ에서 외국인 -1,476억원·기관 -415억원으로 두 시장 모두 기관성 자금의 매도 우위가 확인됐다. 원/달러 환율은 1,345.06원으로 0.19% 하락했지만, 주식 수급은 개선되지 않아 환율만으로 매도 압력을 설명하기 어렵다.\n\n## 고유가·금리 경계가 개인 저가매수를 압도\n\n핵심은 개인의 매수 흡수에도 외국인과 기관의 동반 매도가 지수 하락을 주도했다는 점이다. 수급 담당자(flow)는 이를 고금리·연준 불확실성, 고유가, AI 반도체 약세가 겹친 결과로 평가했고, 유동성 담당자(liquidity)도 정책 불확실성과 자금 이탈을 경계했다. 보조지표상 WTI는 103.29, 미국 10년물 금리는 4.944%, VIX는 17.84로 5일 평균 16.384를 웃돌았다. 위험회피 환경을 확인하는 조합이다.\n\n다만 하루 수급만으로 추세 붕괴를 단정할 단계는 아니다. KOSPI는 최근 5일 2.511% 상승했으며 20일 누적은 -1.205%다. 리스크 담당자(risk)는 이 누적 흐름을 근거로 과도한 위험 신호는 아니라는 중립 의견을 냈다. 그러나 반전 신호는 여전히 없고, 당일 낙폭은 최근 5일 일평균 절대 변동폭 1.9%를 웃돈 만큼 개인 순매수를 곧바로 안정 신호로 해석하기는 이르다.\n\n## 11일 우선순위 이슈: FOMC·에너지·AI 반도체\n\n1. 금리 경계가 최우선이다. [중동 리스크 확대로 다음주 FOMC '깜짝 금리인상' 가능](https://news.google.com/rss/articles/CBMiWkFVX3lxTFBuUE1COHpHSDNHeDNpUlBhc2o0TE5EWHc1Mk83OFJGZVhIVThCVjdMQVlIbnFCRW11QTVhNVB6Y0tUWXJObk5xWHlNRE9ya1hYQTN4Vk5ha1laQQ?oc=5) 및 [미 8월 CPI가 9월 금리 결정을 가른다](https://news.google.com/rss/articles/CBMiWkFVX3lxTE03a1NPSS1XSU1QeUlKaVNlbXE4YzFvdTRtckxRN3c2ZDVXUE9LM3Q2YzU2UW9Ec0JpYXhwRF9KaUZBSHF4OFlfTnV2TGVnNEFGWlNGNDM4MHIyUQ?oc=5)라는 보도는 물가와 정책금리 불확실성을 부각한다.\n\n2. 에너지 가격이 인플레이션 경계를 키운다. [전쟁·AI·약달러가 불붙인 원자재 랠리](https://news.google.com/rss/articles/CBMiWkFVX3lxTE1VOTd2UGxPNVprQ21YMXRGU0tVMkRVd25oS1l2VDlxMlNwM2R0Nm1xaGdxNG4wZ25telFBd09fdHpldjZiNmt6QmtjLWNqVWtaenFybUxmbUh2dw?oc=5)와 103.29의 WTI는 금리 경계의 지속 가능성을 높인다.\n\n3. [고유가·고금리와 AI 반도체 급락으로 뉴욕 3대 지수 하락](https://news.google.com/rss/articles/CBMicEFVX3lxTFBQUjBxSmNJQVlKT1J2TTk4TnpCOEVxVEVkMmw2MzBTaFNGQUtIdDA0b3ZSLVdqRlZHYWVmSTV3a0xieUlaU2NOLWQ4Z2VvX2s0UlhHWHcyb1VEZEY0SFZWemdnZ0VCM3lCUDljcFI2QlA?oc=5) 보도는 대형 성장주 위험선호에 추가 부담이다.\n\n## 다음 확인점: 매도 진정이 먼저다\n\n단기적으로는 외국인·기관의 순매도 완화, VIX의 5일 평균 접근 여부, CPI 및 FOMC 관련 뉴스 흐름을 함께 확인할 필요가 있다. 오늘의 리스크오프 판단은 외국인과 기관의 동반 순매도가 이어지거나 변동성이 더 높아질 때 강화된다. 반대로 외국인·기관 매도가 함께 진정되고 VIX가 안정되는 경우, 개인 저가매수가 가격 안정으로 연결되며 본 방어적 판단은 무효화될 수 있다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
