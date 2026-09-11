@@ -1,15 +1,11 @@
 {
-  "crawled_at": "2026-09-11T19:41:54.543805+00:00",
+  "crawled_at": "2026-09-11T20:41:52.839185+00:00",
   "news_date": "2026-09-12",
-  "total_collected": 11,
+  "total_collected": 22,
   "topic_counts": [
     [
       "금리/연준",
       4
-    ],
-    [
-      "변동성/리스크",
-      1
     ],
     [
       "환율/달러",
@@ -17,11 +13,15 @@
     ],
     [
       "인플레이션",
-      2
+      6
     ],
     [
-      "미국지수",
-      3
+      "변동성/리스크",
+      1
+    ],
+    [
+      "반도체/AI",
+      2
     ]
   ],
   "top_articles": [
@@ -32,6 +32,28 @@
       "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQR0JoelZKMlY0UGRZOEpzTmFCckY0ME1jZmNWV0VEZk5Bd0lfN0xaWDZuZ2d4V29qY2hCTWFUM3llcGItM3FMTWZ0eEg1XzFqRjlFeTBNZEhHbHhHb2s2MGx0ZmhSa3VrdjZPQnp1bUJNZ19Jd2UzTDNISjl2UXRHM3JnMmJRcHphTTNn?oc=5",
       "summary_lines": [
         "핵심 이슈: 유가·물가 압박에… 美 국채금리 급등 - 조선일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "[뉴욕환시] 달러 강보합…'高유가 + 물가 부담'에 연준 인상론 탄력 - KB Think",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1id3hpc0kxRnBzTG5LcmNXbUtYTFhZUzJtMFRYbEx3Wmg1YzhRd0hVLWZXOEx5Nng3d1hBbnh2eEg4Y0hLYkV1LWJobzhNMHJxcVZDU2FyX3BVOWVVU19MYnJrNXh0aUdDRjNNUE85akRYZw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [뉴욕환시] 달러 강보합…'高유가 + 물가 부담'에 연준 인상론 탄력 - KB Think",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "인플레이션",
+      "count": 6,
+      "title": "FOMC 앞두고 확인된 미 고물가…치솟는 9월 금리인상 확률 - KBS 뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE16ZWlXcTloQmtyaUdaZUt6UlAyQTJWSkszOHB4MzBvNmlWbHp0RWliZXFDZG13MGhKOE9pLXZ4eVBuMEs1R0Rkc1ZjMnlwQUpPZXVITHZjYnVndVk?oc=5",
+      "summary_lines": [
+        "핵심 이슈: FOMC 앞두고 확인된 미 고물가…치솟는 9월 금리인상 확률 - KBS 뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -48,34 +70,12 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 1,
-      "title": "서원주 국민연금 CIO \"환율 분석 등 AI 활용 분야 발굴하겠다\" [fn마켓워치] - v.daum.net",
-      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9LNUdsX09pamtHUHFQejgycWVOM2ttRTBOQzZHS2FUZ05BX2pFbGFmbk8zM3IxcFk4SDdjSXJYODdYZlZfTlR3dG9hU242Q3M?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 서원주 국민연금 CIO \"환율 분석 등 AI 활용 분야 발굴하겠다\" [fn마켓워치] - v.daum.net",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "인플레이션",
+      "topic": "반도체/AI",
       "count": 2,
-      "title": "고유가 여파 美소비자심리 47.8로 급락…역대 두번째로 낮아 - 연합뉴스",
-      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wSzJwcFN6VVpGNWZ1OWNqV1ZRTFRmUFpkRDFoTVF4U1VsUEZodk4tY29rdTBzWlZaaDltbzlWN2FSSDY3NTl0MTZndTl4clpBUHBOX2NBZWROVEHSAWBBVV95cUxOdVdkZUUxd3RWNnB2NXFjZjdtTzhFMHhKOERIdkxTQ2JQeFJWcTFTT2tRcFlhNmxXWWRKRWc0QTY0b1JUSUFUOGVJdldLT0lRZGlMREVWZWxTSEh4YkxfU3k?oc=5",
+      "title": "21조 터졌는데 주가는 '반토막⋯AI·반도체가 삼킨 'K바이오' 생존 조건 - 이투데이",
+      "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBZRnJLa2JuVC1CdUhwam5SV3k2Ty1sRTdSeGU2WGNmalBXSXNRM3FOMTFOdE5wZnVxSjhaT3JqQm0td19QeWtrXzRpenRER05JSFp6cw?oc=5",
       "summary_lines": [
-        "핵심 이슈: 고유가 여파 美소비자심리 47.8로 급락…역대 두번째로 낮아 - 연합뉴스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "미국지수",
-      "count": 3,
-      "title": "외국인 ‘삼전닉스’ 이틀간 5.2조 팔았다…美 CPI 뒤 나스닥 1.3% 반등 - 녹색경제신문",
-      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9WeHVwVTgxOWltVmJyb0w4WXZLa285SGlhVjl3V3pONzRDVG9BSzNTWmQ3WHJwblFXaHhvT1JhNWoyWU9faE1nZXVQZ0lHMUpOb05oMDh5R1dvWlBZNXRjRjRMNF9MaGIw?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 외국인 ‘삼전닉스’ 이틀간 5.2조 팔았다…美 CPI 뒤 나스닥 1.3% 반등 - 녹색경제신문",
+        "핵심 이슈: 21조 터졌는데 주가는 '반토막⋯AI·반도체가 삼킨 'K바이오' 생존 조건 - 이투데이",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,8 +84,14 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 7,
+      "total_count": 11,
       "topics": [
+        {
+          "topic": "인플레이션",
+          "count": 6,
+          "title": "FOMC 앞두고 확인된 미 고물가…치솟는 9월 금리인상 확률 - KBS 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE16ZWlXcTloQmtyaUdaZUt6UlAyQTJWSkszOHB4MzBvNmlWbHp0RWliZXFDZG13MGhKOE9pLXZ4eVBuMEs1R0Rkc1ZjMnlwQUpPZXVITHZjYnVndVk?oc=5"
+        },
         {
           "topic": "금리/연준",
           "count": 4,
@@ -93,28 +99,22 @@
           "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQR0JoelZKMlY0UGRZOEpzTmFCckY0ME1jZmNWV0VEZk5Bd0lfN0xaWDZuZ2d4V29qY2hCTWFUM3llcGItM3FMTWZ0eEg1XzFqRjlFeTBNZEhHbHhHb2s2MGx0ZmhSa3VrdjZPQnp1bUJNZ19Jd2UzTDNISjl2UXRHM3JnMmJRcHphTTNn?oc=5"
         },
         {
-          "topic": "인플레이션",
-          "count": 2,
-          "title": "고유가 여파 美소비자심리 47.8로 급락…역대 두번째로 낮아 - 연합뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE4wSzJwcFN6VVpGNWZ1OWNqV1ZRTFRmUFpkRDFoTVF4U1VsUEZodk4tY29rdTBzWlZaaDltbzlWN2FSSDY3NTl0MTZndTl4clpBUHBOX2NBZWROVEHSAWBBVV95cUxOdVdkZUUxd3RWNnB2NXFjZjdtTzhFMHhKOERIdkxTQ2JQeFJWcTFTT2tRcFlhNmxXWWRKRWc0QTY0b1JUSUFUOGVJdldLT0lRZGlMREVWZWxTSEh4YkxfU3k?oc=5"
-        },
-        {
           "topic": "환율/달러",
           "count": 1,
-          "title": "서원주 국민연금 CIO \"환율 분석 등 AI 활용 분야 발굴하겠다\" [fn마켓워치] - v.daum.net",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9LNUdsX09pamtHUHFQejgycWVOM2ttRTBOQzZHS2FUZ05BX2pFbGFmbk8zM3IxcFk4SDdjSXJYODdYZlZfTlR3dG9hU242Q3M?oc=5"
+          "title": "[뉴욕환시] 달러 강보합…'高유가 + 물가 부담'에 연준 인상론 탄력 - KB Think",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1id3hpc0kxRnBzTG5LcmNXbUtYTFhZUzJtMFRYbEx3Wmg1YzhRd0hVLWZXOEx5Nng3d1hBbnh2eEg4Y0hLYkV1LWJobzhNMHJxcVZDU2FyX3BVOWVVU19MYnJrNXh0aUdDRjNNUE85akRYZw?oc=5"
         }
       ]
     },
     {
-      "sector": "지수/시장",
-      "total_count": 3,
+      "sector": "IT/반도체",
+      "total_count": 2,
       "topics": [
         {
-          "topic": "미국지수",
-          "count": 3,
-          "title": "외국인 ‘삼전닉스’ 이틀간 5.2조 팔았다…美 CPI 뒤 나스닥 1.3% 반등 - 녹색경제신문",
-          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9WeHVwVTgxOWltVmJyb0w4WXZLa285SGlhVjl3V3pONzRDVG9BSzNTWmQ3WHJwblFXaHhvT1JhNWoyWU9faE1nZXVQZ0lHMUpOb05oMDh5R1dvWlBZNXRjRjRMNF9MaGIw?oc=5"
+          "topic": "반도체/AI",
+          "count": 2,
+          "title": "21조 터졌는데 주가는 '반토막⋯AI·반도체가 삼킨 'K바이오' 생존 조건 - 이투데이",
+          "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBZRnJLa2JuVC1CdUhwam5SV3k2Ty1sRTdSeGU2WGNmalBXSXNRM3FOMTFOdE5wZnVxSjhaT3JqQm0td19QeWtrXzRpenRER05JSFp6cw?oc=5"
         }
       ]
     },
