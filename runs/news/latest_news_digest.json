@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-09-12T18:41:51.072471+00:00",
+  "crawled_at": "2026-09-12T19:41:52.504703+00:00",
   "news_date": "2026-09-13",
-  "total_collected": 7,
+  "total_collected": 9,
   "topic_counts": [
     [
       "반도체/AI",
@@ -9,11 +9,15 @@
     ],
     [
       "인플레이션",
-      1
+      2
     ],
     [
       "미국지수",
       3
+    ],
+    [
+      "중국/신흥국",
+      1
     ],
     [
       "2차전지/전기차",
@@ -34,7 +38,7 @@
     },
     {
       "topic": "인플레이션",
-      "count": 1,
+      "count": 2,
       "title": "개스값 뛰자 물가도 다시 들썩..금리까지 오르나 - 라디오코리아",
       "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTZDZkcV9uUXZkZjBiYW1XR05Wa0Flc0J3X2hTVTdjRWw2MlpzbUFITnJqTFZCck5yQVJ2elVzQzN2dVd3VjAtUDU2azFEdjRuajJwQzExMFJEOG5SY1JzWl9YUl8?oc=5",
       "summary_lines": [
@@ -50,6 +54,17 @@
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQcWJwTFZqRFQ5cDFPdmVxbzJvWmM1STRWNXNhekM0RzZXdUhMemoxMlBIVUIxZTBSLUxkdjRVQnZ0SnNXQWFtcmkyT2xmdFRKRzFHZEN6dkh3aHBfdkJfUHlnQ2w2QVZ1NkZFcUMzQTA0QUp5MEI1V2dNZVJDYUJtLTU4VHBVTDA?oc=5",
       "summary_lines": [
         "핵심 이슈: 22년 만의 최고 금리 덮쳤지만… 월가는 왜 다시 기술주를 샀나 - 글로벌이코노믹",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "중국/신흥국",
+      "count": 1,
+      "title": "국제 유가 향배, 중국에 달렸다 - v.daum.net",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zM2UtZko4dmpWck1PbnFOQVBLWWNWRlgwTzduLVAzOVJoQ2c4dm1GVjRpSjE2bTFZUU5FODZ4TEFRNnJIdERkMVNTbFJoRnc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 국제 유가 향배, 중국에 달렸다 - v.daum.net",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -80,6 +95,18 @@
       ]
     },
     {
+      "sector": "매크로",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "인플레이션",
+          "count": 2,
+          "title": "개스값 뛰자 물가도 다시 들썩..금리까지 오르나 - 라디오코리아",
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTZDZkcV9uUXZkZjBiYW1XR05Wa0Flc0J3X2hTVTdjRWw2MlpzbUFITnJqTFZCck5yQVJ2elVzQzN2dVd3VjAtUDU2azFEdjRuajJwQzExMFJEOG5SY1JzWl9YUl8?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "2차전지/자동차",
       "total_count": 2,
       "topics": [
@@ -104,14 +131,14 @@
       ]
     },
     {
-      "sector": "매크로",
+      "sector": "글로벌",
       "total_count": 1,
       "topics": [
         {
-          "topic": "인플레이션",
+          "topic": "중국/신흥국",
           "count": 1,
-          "title": "개스값 뛰자 물가도 다시 들썩..금리까지 오르나 - 라디오코리아",
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBTZDZkcV9uUXZkZjBiYW1XR05Wa0Flc0J3X2hTVTdjRWw2MlpzbUFITnJqTFZCck5yQVJ2elVzQzN2dVd3VjAtUDU2azFEdjRuajJwQzExMFJEOG5SY1JzWl9YUl8?oc=5"
+          "title": "국제 유가 향배, 중국에 달렸다 - v.daum.net",
+          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zM2UtZko4dmpWck1PbnFOQVBLWWNWRlgwTzduLVAzOVJoQ2c4dm1GVjRpSjE2bTFZUU5FODZ4TEFRNnJIdERkMVNTbFJoRnc?oc=5"
         }
       ]
     }
