@@ -1,0 +1,132 @@
+{
+  "market_summary": {
+    "note": "KOSPI -1.76%, USD/KRW 1342.53. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -1.76,
+    "usdkrw": 1342.534479
+  },
+  "flow_summary": {
+    "note": "외국인 -26107억, 기관 -14343억, 개인 +23795억 | KOSPI(외 -22984, 기관 -12184, 개인 +18675) KOSDAQ(외 -3123, 기관 -2159, 개인 +5120)",
+    "foreign_net": -26107.0,
+    "institution_net": -14343.0,
+    "retail_net": 23795.0
+  },
+  "korean_market_flow": {
+    "date": "2026-09-12",
+    "market": {
+      "KOSPI": {
+        "individual": 18675,
+        "foreign": -22984,
+        "institution": -12184
+      },
+      "KOSDAQ": {
+        "individual": 5120,
+        "foreign": -3123,
+        "institution": -2159
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[금리/연준] FOMC 코앞 확인된 끈적한 美물가…9월 금리인상 확률 86%까지 쑥(종합) - 연합뉴스",
+    "[인플레이션] [뉴욕마켓워치] 9월 금리인상에 쐐기 박은 CPI…주식·달러↑채권 혼조 - 연합인포맥스",
+    "[정책/테마] 정부 \"견조한 경기회복세...전쟁·미 관세 불확실성은 다소 확대\" - YTN",
+    "[반도체/AI] 'AI 중앙은행' 엔비디아, 과연 그 대출은 건전할까? [PADO] - 머니투데이 - 머니투데이",
+    "[미국지수] [글로벌 STO] 나스닥, 크라켄 모회사에 1억달러 투자 합의…토큰화 주식 인프라 확대 - thedailyeconomy.kr"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 6909.91,
+      "kosdaq": 820.64,
+      "kospi_pct": -1.76,
+      "kosdaq_pct": -1.95
+    },
+    "us": {
+      "sp500": 7656.98,
+      "nasdaq": 26333.035,
+      "dow": 52573.29,
+      "sp500_pct": 0.859886454944212,
+      "nasdaq_pct": 0.9635482315682774,
+      "dow_pct": 0.9780059580401895
+    },
+    "fx": {
+      "usdkrw": 1342.534479,
+      "usdkrw_pct": -0.6003780157877283
+    },
+    "volatility": {
+      "vix": 15.84000015258789
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.974999904632568,
+      "us2y": 3.9130001068115234,
+      "spread_2_10": 1.061999797821045,
+      "us_3m_yield": 3.9130001068115234,
+      "us_2y_yield": 4.56,
+      "us_10y_yield": 4.974999904632568,
+      "spread_10y_2y": 0.41499990463256875,
+      "spread_10y_3m": 1.061999797821045,
+      "vix": 15.84000015258789,
+      "dxy": 99.09500122070312,
+      "usdkrw": 1341.050048828125,
+      "vix3m": 18.600000381469727,
+      "vix_term_spread": 2.760000228881836,
+      "oil_wti": 99.98999786376953,
+      "russell2000": 2903.9443359375,
+      "oil_brent": 104.41999816894531
+    },
+    "monthly": {
+      "unemployment_rate": 4.1,
+      "cpi_yoy": 3.7129581058388483,
+      "core_cpi_yoy": 2.7634613395318253,
+      "pce_yoy": 3.7011657214870874,
+      "pmi": null,
+      "retail_sales_mom": -0.5819766896853373,
+      "nfp_change": 162.0,
+      "wage_growth": 37.75,
+      "wage_level": 37.75,
+      "wage_yoy": 3.085745494265435,
+      "export_yoy": null
+    },
+    "quarterly": {
+      "real_gdp": 24269.613,
+      "gdp_qoq_annualized": 1.5
+    },
+    "structural": {
+      "fed_funds_rate": 3.63,
+      "real_rate": 2.6149999046325685,
+      "hy_oas": 2.7,
+      "ig_oas": 0.8,
+      "fed_balance_sheet": 6740619.0,
+      "tga_balance": 843705.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -2.789,
+    "liquidity_signal_score": 7.112,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -2.959,
+    "kospi_20d_cum_pct": -2.066,
+    "kosdaq_5d_cum_pct": -2.088,
+    "kospi_abs_move_5d_avg": 1.15,
+    "usdkrw_5d_change_pct": 0.248,
+    "vix_5d_avg": 16.1,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-2.07%, vol20d=2.62, reversal=false"
+  }
+}

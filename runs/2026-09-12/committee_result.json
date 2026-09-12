@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,909.91(-1.76%), KOSDAQ은 820.64(-1.95%)로 하락했고 외국인과 기관이 각각 2조6,107억원, 1조4,343억원 순매도했다.",
+      "sources": [
+        "국내지수",
+        "수급데이터"
+      ]
+    },
+    {
+      "point": "미국 물가와 9월 금리인상 우려가 부각된 가운데 미국 10년물 금리는 4.975%, 소비자물가 상승률은 3.713%로 제시됐다.",
+      "sources": [
+        "일일매크로",
+        "뉴스"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 국면 판단",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 외국인과 기관의 동반 매도를 근거로 리스크 오프를 주장했다.",
+      "minority": "리스크 담당자는 단기 매도 압력은 강하지만 20일 누적 하락폭이 제한적이라는 점에서 중립 판단을 유지했다.",
+      "minority_agents": [
+        "리스크 담당자(risk)"
+      ],
+      "why_it_matters": "약세 추세의 심화인지 제한적인 조정인지에 따라 현금 비중과 반등 대응 강도가 달라질 수 있다."
+    },
+    {
+      "topic": "대외 위험지표와 국내 수급의 괴리",
+      "majority": "외국인·기관 순매도와 국내 양 시장 하락은 금리 및 정책 불확실성에 대한 경계를 보여준다.",
+      "minority": "미국 3대 지수는 0.86~0.98% 상승했고 VIX는 15.84로 5일 평균 16.1보다 낮았으며 원·달러 환율도 0.60% 하락했다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "대외 위험선호가 국내로 확산되면 수급 약세가 완화될 수 있어 리스크 오프 판단의 확신도를 낮추는 요인이다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 9월 12일, 금리 경계가 국내 양 시장을 압박\n\nKOSPI는 **6,909.91(-1.76%)**, KOSDAQ은 **820.64(-1.95%)**로 동반 하락했다. 원·달러 환율은 **1,342.53원(-0.60%)**, VIX는 **15.84**였다. 외국인은 **-2조6,107억원**, 기관은 **-1조4,343억원**, 개인은 **+2조3,795억원**을 기록했다. 환율과 변동성 지표가 급격한 위험 회피를 가리키지 않았음에도 국내 수급은 뚜렷한 공급 우위였다.\n\n하루 낙폭만의 문제도 아니다. KOSPI는 5일 누적 **-2.959%**, 20일 누적 **-2.066%**이며 반전 신호도 확인되지 않았다. 다만 VIX는 5일 평균 **16.1**보다 낮고 미국 3대 지수는 **0.86~0.98% 상승**해 글로벌 위험선호와 국내 약세가 엇갈렸다. 따라서 핵심 판단은 리스크 오프로 유지하되 확신도는 한 단계 낮출 필요가 있다.\n\n## 외국인·기관의 동반 이탈, 개인이 받아낸 공급\n\n수급의 주도권은 외국인과 기관에 있었다. KOSPI에서 외국인 **-2조2,984억원**, 기관 **-1조2,184억원**이었고 개인은 **+1조8,675억원**을 순매수했다. KOSDAQ도 외국인 **-3,123억원**, 기관 **-2,159억원**, 개인 **+5,120억원**으로 같은 구도였다.\n\n수급 담당자는 이를 “개인이 단기 반등 기대감으로 물량을 흡수하는 공급 우위 장세”로 해석했고, 매크로·섹터·유동성 담당자도 금리 및 정책 불확실성을 약세 배경으로 지목했다. 특히 미국 10년물 금리 **4.975%**, 실질금리 **2.615%**는 성장주와 장기 기대수익에 부담을 줄 수 있다. 반면 원화 강세와 낮아진 VIX는 매도 원인을 환율 불안 하나로 설명하기 어렵다는 반론이다.\n\n## 날짜별 핵심 이슈: FOMC·물가·AI 금융건전성\n\n1. **금리와 물가:** [FOMC 코앞 확인된 끈적한 미국 물가…9월 금리인상 확률 86%](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Ic2JhdXRFck1mcmNwRFRPRW5nZkk2SUF3N3pWZ09INFVIdVNOdVRUNkRlM0pnUmx0blVEcTcxZkcwVUxnai0yRlFlWWFKSWx4dlh0SndiT3ZfSVnSAWBBVV95cUxOUDF3UzMwN0VscnJ5Y3JRT1lTQVMzSDlncFpkaE05RkE1Mzl1d3JBcGtVblkxUjMtdEhjbzhiOGRqUDZFMXlUR181cWwxQzJtcVc3SXJpNUpRVnhySFRxQjk?oc=5)가 투자심리를 압박했다. 소비자물가 상승률 **3.713%**와 연방기금금리 **3.63%**를 함께 점검해야 한다.\n2. **자산별 엇갈림:** [9월 금리인상에 쐐기 박은 CPI…주식·달러 상승, 채권 혼조](https://news.google.com/rss/articles/CBMicEFVX3lxTFBIVVAtR3Z3VGdySEl0enEzbldmeHpsTWthS1FEVDZlYzhZcHZNSHo4Nks5NDk3VXo4aHRmR1RhVlpuS2ZwM0h6dFVBR2hXRllRNDBKU0Nvbnd2QXNndGZReTNOeUp2RVFGV2hNTXoyMzA?oc=5)는 금리 우려가 곧바로 미국 주가 하락으로 이어지지 않았음을 보여준다.\n3. **AI 투자 품질:** [‘AI 중앙은행’ 엔비디아, 과연 그 대출은 건전할까](https://news.google.com/rss/articles/CBMiaEFVX3lxTE15dVhWT096a1M5N01aSkl2bVpqUUItSXRGMlQ2SFh5RFMySFFoTkNuNDNBcmh4eEp3VjJSQ2hVQzBMMmxWNmI1VkFHdkc0Q3IyTEVsakNraGs2TnJKUDZiVnd2TkZQOGl40gFuQVVfeXFMTXhPdVZlbnF0R0ZaQTctODZvamFNRXgyMVR5M2NoQUhadXJvdWd2MXNGLUl5dWRpLTlfbmRXd2tfd0lkTi0wbDRGN0ZzeHh4aEV5a2FRbUFoSmFWeWFUZlM3b2pZbC0zUWFnQ2pwSHc?oc=5)가 부각됐다. 광 I/O·실리콘 포토닉스의 중기 연구 의제는 유효하지만, 이는 현재 매수 신호가 아니라 자금조달 건전성과 실제 수요 전환을 확인할 장기 과제다.\n\n## 반전 확인선과 오늘의 무효화 조건\n\n다음 확인 대상은 FOMC 이후 미국 금리 반응, 외국인·기관의 동반 수급, 원·달러 환율의 5일 변화율 **+0.248%**다. 개인 매수의 지속성보다 외국인과 기관의 매도 강도가 먼저 완화돼야 한다. **외국인과 기관이 동반 순매수로 지속 전환하고 KOSPI의 5일 누적 하락 흐름이 해소된다면, 오늘의 리스크 오프 판단은 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
