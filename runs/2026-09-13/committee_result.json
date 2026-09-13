@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI와 KOSDAQ이 각각 1.76%, 1.95% 하락한 가운데 외국인 -2조6107억원, 기관 -1조4343억원으로 매도 주도권이 뚜렷했습니다.",
+      "sources": [
+        "핵심 시장지표",
+        "국내 수급 데이터"
+      ]
+    },
+    {
+      "point": "WTI 100.05달러와 미국 10년물 4.975%가 중동·FOMC 불확실성을 증폭시켰고, 반도체 이익 전망 우려도 투자심리를 압박했습니다.",
+      "sources": [
+        "거시경제 일간지표",
+        "뉴스"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "현재 약세의 성격",
+      "majority": "매크로·수급·섹터 등 다수는 외국인 이탈과 정책 불확실성이 지속되는 리스크 오프로 판단했습니다.",
+      "minority": "리스크 담당자는 누적 하락에도 구조적 위험 신호가 아직 뚜렷하지 않다는 중립 의견을 제시했습니다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "방어적 운용은 필요하지만 VIX가 15.84이고 반전 신호가 없어, 공포성 전면 축소보다 수급 확인을 전제로 한 대응이 적절합니다."
+    },
+    {
+      "topic": "국내외 위험선호의 괴리",
+      "majority": "국내 수급과 지수는 위험회피를 가리킵니다.",
+      "minority": "S&P500 0.86%, 나스닥 0.96%, 다우 0.98% 상승은 글로벌 위험선호가 완전히 훼손되지 않았음을 보여줍니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "핵심 국내 수급을 우선하되 해외 강세가 국내로 전이되는지 확인해야 하므로 오늘 결론의 확신을 낮춥니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 9월 13일, 수급이 만든 리스크 오프\n\nKOSPI는 6,909.91로 1.76%, KOSDAQ은 820.64로 1.95% 하락했습니다. 원·달러 환율은 1,343.03원으로 0.60% 내렸고 VIX는 15.84였습니다. 외국인은 2조6,107억원, 기관은 1조4,343억원 순매도한 반면 개인은 2조3,795억원 순매수했습니다.\n\n하루의 충격만으로 볼 상황도 아닙니다. KOSPI는 최근 5일간 2.962%, 20일간 2.069% 하락했고 반전 신호도 나타나지 않았습니다. 다만 VIX가 최근 5일 평균 16.1을 밑돌고 미국 증시는 S&P500 0.86%, 나스닥 0.96%, 다우 0.98% 상승했습니다. 국내 핵심 수급과 해외 위험선호가 충돌하므로 리스크 오프 판단은 유지하되 확신은 중간 수준으로 낮춥니다.\n\n## 외국인·기관이 동시에 누른 시장\n\n매도 압력은 KOSPI에 집중됐습니다. KOSPI에서 외국인과 기관이 각각 2조2,984억원, 1조2,184억원을 순매도했고, KOSDAQ에서도 각각 3,123억원, 2,159억원을 팔았습니다. 개인은 양 시장에서 각각 1조8,675억원과 5,120억원을 순매수했지만 가격 흐름을 되돌리지는 못했습니다.\n\n배경은 환율 하나보다 유가·금리·업종 우려의 결합에 가깝습니다. WTI가 100.05달러, 미국 10년물이 4.975%인 가운데 [유가 등 중동 악재에 눌린 코스피, 美 FOMC 금리결정 주시](https://news.google.com/rss/articles/CBMiW0FVX3lxTE9Xd2xWY3pTVW8wV3Q4Sm5KbnpPSnhFLXRnZEl0OUU1WkZLdGNaYy03X1FWSlVrem9TN2pMT3VzeHpwTFMxdWhLU1NKcC14SlE5VjNVdVhIQzd2RWPSAWBBVV95cUxOY0U4ajNqX2IwdjJDRDJEZE1fTnpUWmxqWGZOY19ySTBZeEV1ZDFMMFVPOXNvWTNlVWVxemNfeVFJaE1iTnhzUzZMdDdSMGQ3OTY5Mzl5OHlRYVJUdzJrbGI?oc=5)라는 경계가 위험자산 할인 요인으로 작용했습니다. macro·flow·liquidity 담당자도 외국인 이탈, 고유가, 정책 불확실성을 공통 근거로 보수적 대응을 제시했습니다.\n\n## 9월 13일 핵심 이슈 순위\n\n1. **연준과 금리:** [미 연준 금리 올릴까 긴장 고조…당국, F4 회의 등 대응 착수](https://news.google.com/rss/articles/CBMiU0FVX3lxTE5Bc01Scl9Xa1JINVdrV0plTF94VW1UeEh0NHNGNTNiY0t1ZzVGcTJ4cmdxbWpjS05lVkM3RmlpRUcyLXlTcnl1cV9NdW12ZEFSZ2Rn?oc=5)가 핵심 변수입니다. 미국 10년물 4.975%와 실질금리 2.615%는 성장주 평가 부담을 계속 점검하게 합니다.\n2. **유가와 중동:** WTI 100.05달러는 물가와 기업 비용 우려를 동시에 자극합니다. 미국 CPI 전년 대비 3.713%도 금리 불확실성이 완전히 해소되지 않았음을 보여줍니다.\n3. **반도체·AI:** [환율 급락에 반도체 이익 전망도 하락](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1ZcEN2WE9RUHVhX1Z4WU5UdkkyQ2Ywai0zRDd0QkVJdHc0eE1SanM0VXk2dGJpM2Jjb3EwM29iQkpuTTZtdV83T2VyTmktRl83YUJGcWs0N1hHcknSAWBBVV95cUxQQXFJbHdNeTdHd3MzNzVleWd4UElqaVYySmhXeU4yVTllZVF0MTVFXzFIWFBiaVpmVTU0aGNCNjZWODh6REV4b2hrbnRxTW9UcjVndjNNU2NWYTlldFA0ZHQ?oc=5) 우려가 외국인 매도와 맞물렸습니다. 장기 연구 의제인 광 I/O·실리콘 포토닉스의 긍정적 방향성은 유효하지만, 이는 오늘의 매수 신호가 아니라 중장기 검증 과제입니다.\n\n## 반전 확인 전 방어, 무효화 조건은 수급 전환\n\n당장은 개인 저가 매수보다 외국인·기관의 동반 매도가 시장을 지배합니다. 다음 관찰점은 FOMC 이후 미국 장기금리와 WTI의 안정 여부, 반도체 이익 전망 변화, 외국인 KOSPI 수급의 전환입니다. 오늘의 방어적 논리는 **외국인과 기관이 동반 순매수로 지속 전환하고 KOSPI 누적 하락 흐름이 안정될 경우** 무효화됩니다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
