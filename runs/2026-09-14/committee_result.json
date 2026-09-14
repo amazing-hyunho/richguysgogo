@@ -1,0 +1,54 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,712.37로 2.87% 하락했고 KOSDAQ도 808.71로 1.45% 내렸다. 외국인 -1조4,835억원, 기관 -4,062억원 순매도에 개인 +1조6,524억원 순매수가 대응했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1,342.63으로 0.24% 상승했고 KOSPI 5일 누적 수익률은 -4.07%다. 금리·인플레이션 및 환율 뉴스가 외국인 이탈과 위험회피 해석을 뒷받침한다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "위험회피의 강도와 시스템 리스크 여부",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 외국인·기관 동반 매도와 환율 상승을 근거로 단기 리스크 오프가 우세하다고 판단했다.",
+      "minority": "리스크 담당자는 단기 약세는 인정하지만 VIX가 15.84이고 5일 평균도 16.1인 점을 들어 시스템적 위험 신호는 아직 부족하다고 봤다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "해외 증시 반등과 제한된 변동성은 급락 추격 매도의 근거를 약화시키지만, 외국인 순매도와 원화 약세가 이어지면 국내 수급 악화라는 핵심 판단은 유지된다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 외국인 매도에 밀린 9월 14일\n\n국내 증시는 해외 반등과 분리된 수급 주도 약세였다. KOSPI는 **6,712.37, -2.87%**, KOSDAQ는 **808.71, -1.45%**로 마감했다. 원·달러 환율은 **1,342.63원, +0.24%**였고, VIX는 **15.84**였다. 외국인은 **-1조4,835억원**, 기관은 **-4,062억원**을 순매도한 반면 개인은 **+1조6,524억원**을 순매수했다. KOSPI의 외국인 매도는 **-1조4,125억원**으로 대부분을 차지했다. 개인의 매수 흡수에도 지수 하락이 컸다는 점에서 매수 주체의 질보다 매도 압력이 우위였던 하루다.\n\n## 환율·금리 불확실성이 수급을 압박\n\n수급 담당자 flow는 고환율과 연준·인플레이션 불확실성이 외국인 매도를 자극했다고 평가했고, 매크로 담당자 macro도 외국인 이탈과 원화 약세를 단기 위험 신호로 지목했다. 실제 KOSPI는 최근 5일 **-4.07%**, 20일 **-3.18%**로 조정이 누적됐다. 환율의 5일 변화율도 **+0.26%**다. 이날 개인 매수는 하락을 완충했지만 외국인·기관의 동반 매도를 뒤집지는 못했다.\n\n다만 VIX는 5일 평균 **16.1**보다 낮고, 미국 S&P 500·NASDAQ·DOW는 각각 **+0.86%, +0.96%, +0.98%** 올랐다. 리스크 담당자 risk가 “시스템적 위험 신호는 아직 부족하다”고 본 근거다. 이는 국내 위험회피라는 핵심 판단과 충돌하는 완충 신호이므로, 현 단계에서는 확신을 낮추되 국내 수급 반전 여부를 우선 확인해야 한다.\n\n## 금리·AI·환율: 오늘의 우선 이슈\n\n1. 금리 경계가 최우선이다. FOMC를 앞두고 통상정책과 금리 압박이 함께 부각된 [트럼프 \"금리 안 내리면 무역적자국과 교역 중단\"…FOMC 앞두고 재차 압박](https://news.google.com/rss/articles/CBMiWkFVX3lxTE1Mc1Z5LWgwRkNDa3dmZzFlSVZYSktNS0RiSHFUTGxLdGpGN2lRSkczTGZjVXl4UmV6X2xuQ01xdmFKYXA1S3RGVXBCRk5GWk5XVjA0emJJZE5pZw?oc=5)과 [핌코 美8월 CPI, 연준 금리인상으로 이어질 것](https://news.google.com/rss/articles/CBMiU0FVX3lxTE1zYWJoM3pRRU83cFBmb09xRVhuWk5KT2VQRWVBNDFKeFh0QkoybFItMnNoVlBvVllKLVprTGRBNVMtZEYtNHQxUDhUalk5MVI2djlJ0gFYQVVfeXFMTWtWTFFHMWhObkJVNnJXbkFjMU1fN09aa2h0NS0wUnpGb0o2dDQ4YXVfM1V3Q0dRaFlIOEo4U2w1el9DM2FHRlFHNllmTHdRZWhhX1UzcFY4NQ?oc=5)가 위험자산 할인율 부담을 키웠다.\n\n2. 환율은 수급의 즉시 변수다. [원·달러 환율, 오전 9시 1343.1원](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9VdWdOQ05OcjNXRDlfbG5nczQzaVU0UUtESUl2MUo1eUk3SXZzdmo1RFdsSE1TNXljMXo5eWhnOXY0cnhibWsyc1BpdzY4MGpObXRoLS04YnZJd2p1bkxRedIBeEFVX3lxTE9sUk5PeGZJbWd3ZHV3TGtmWDJ4bjZ5Q0Z2aHdYa1YzQTRYOWlzYzJvZ19lLTFzbUQ2bWdJQlkyMGY2R1h2OWlIbGF5MFF0TEpCT01FYVBxSW5uNnhUVlFoSWVtR0NZVzZCVE9rT1ZHbDZjbm1MX2hTdw?oc=5) 보도와 이날 제공 환율 상승은 원화 약세 경계가 지속됐음을 보여준다.\n\n3. AI 데이터센터 투자 뉴스는 중기 성장 기대를 지지하지만, 이날 지수·수급 약세를 상쇄하지는 못했다. 따라서 AI 장기 의제는 유지하되 단기 매매 판단은 금리·환율과 외국인 흐름에 둬야 한다.\n\n## 반전의 조건은 외국인 수급과 환율 안정\n\n단기적으로는 원·달러 환율의 추가 상승 여부와 KOSPI 외국인 매도 완화가 핵심 관찰 변수다. VIX가 낮고 미국 지수가 강세인 점은 반등 여지를 남기지만, 개인 순매수만으로 추세 전환을 선언하기는 이르다. 오늘의 위험회피 판단은 **외국인 순매도가 멈추고 원화 약세가 완화되는 가운데 KOSPI가 추가 하락을 멈추는 경우** 무효화될 수 있다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
