@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,667.88(-0.25%)로 밀렸고 외국인 -4,103억원, 기관 -2,728억원의 동반 순매도가 위험회피 흐름을 주도했습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "korean_market_flow_breakdown"
+      ]
+    },
+    {
+      "point": "미 10년물 4.961%, WTI 102.74, USD/KRW 1,347.20이 금리·유가·환율 부담을 형성했고 AI 속도조절론도 투자심리를 압박했습니다.",
+      "sources": [
+        "SUPPORTING_SIGNALS",
+        "news_digest"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 체제 판정",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 리스크 오프로 판단했습니다.",
+      "minority": "리스크 담당자의 체제 태그는 리스크 온이지만, 실제 주장과 근거는 위험 신호 누적 및 보수적 대응을 지지했습니다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "소수 태그와 서술이 불일치하므로 이를 공격적 매수 근거로 해석하기보다 데이터 기반 위험관리 의견으로 읽어야 합니다."
+    },
+    {
+      "topic": "시장 내부 차별화",
+      "majority": "KOSPI 약세와 외국인·기관 동반 매도를 중심으로 위험회피가 우세합니다.",
+      "minority": "KOSDAQ은 816.07(+1.08%)로 상승했고 기관도 118억원 순매수해 전면적 투매와는 다른 모습을 보였습니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "코스닥의 상대 강세는 단기 순환매 가능성을 시사하지만 핵심 수급과 누적 약세를 뒤집지는 못해 확신도를 낮추는 요인입니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 9월 15일 장세: 코스닥 반등보다 무거운 금리와 수급\n\nKOSPI는 6,667.88로 0.25% 하락한 반면 KOSDAQ은 816.07로 1.08% 상승했습니다. 지수 차별화에도 시장의 중심 성격은 방어적이었습니다. USD/KRW는 1,347.20으로 0.03% 상승했고 VIX는 17.10으로 5일 평균 16.778을 웃돌았습니다. 외국인은 4,103억원, 기관은 2,728억원 순매도했고 개인은 4,727억원 순매수했습니다.\n\n하루 낙폭만 보면 충격은 제한적이지만 KOSPI의 5일 누적 수익률은 -4.128%, 20일은 -2.27%입니다. 반전 신호도 나타나지 않아 오늘의 약세를 단순한 하루 조정으로 축소해서 보기는 어렵습니다.\n\n## 외국인·기관 동반 매도와 개인의 저가매수\n\n수급의 주도권은 매도 측에 있었습니다. KOSPI에서 외국인 -3,799억원, 기관 -2,846억원에 맞서 개인이 4,572억원을 순매수했습니다. KOSDAQ에서는 외국인 -304억원, 기관 +118억원, 개인 +155억원으로 상대적으로 견조했지만 전체 위험회피 구도를 바꾸기에는 부족했습니다.\n\n배경은 금리·유가·환율의 동시 부담입니다. 미 10년물 금리는 4.961%, WTI는 102.74이며, [연준 금리인상 베팅과 미 국채 금리 부담](https://news.google.com/rss/articles/CBMiUkFVX3lxTE1ueG5wWlRmMVJud2FJTnNhSWVSVFpscmRrZkZPVE04SUVqb1lSa21lT1M4OHQxbG1WQ3FfS1hMQldGSGM5NnBVX3lwTllhNXZtbVE?oc=5)이 국내 증시 경계심을 키웠습니다. 수급 담당자 flow는 이를 고금리·고환율·AI 조정이 결합된 외국인 위험회피로 해석했고, macro와 liquidity도 보수적 대응에 동의했습니다.\n\n## 날짜별 핵심 이슈: 금리·유가·AI\n\n1. **연준과 장기금리:** 높은 장기금리는 성장주 할인율 부담을 높였습니다. S&P500 -0.48%, NASDAQ -0.56%, DOW -0.29%도 같은 방향의 보조 신호입니다.\n2. **유가와 환율:** [미 국채 금리·유가 상승에 따른 뉴욕증시 하락](https://news.google.com/rss/articles/CBMiW0FVX3lxTFAwNFdkWGRSUnBIdzRsSU1DUW9FZkdLOUM0T1Y4cUpUUzQ3dHVxUF9SN1Q5M2RydThBdFFvYXJTV3FhRWs0MjJWOUQ3SVd4TnFOVk5tU2xibzcyLTjSAWBBVV95cUxNaFExc2RCYmRBSmZJNmY0TUxSNXRRMUlqNXhOMGZ4VVhCLVUwVmM4bnRiT3Z0c3BYaXpuZmZzSHlnc2t5X2FYMTJONHpwdzI0YXpQU2kyQVhHZ0FQd2tQU1U?oc=5)과 원화 약세가 외국인 수급에 부담을 줬습니다. USD/KRW의 5일 변화율도 +0.6%입니다.\n3. **반도체·AI:** [AI 속도조절론과 반도체 조정](https://news.google.com/rss/articles/CBMic0FVX3lxTE1wcld0Tk1GSkxuSUQ4cmpZdE43dTJoaU96NkZUcDZXeHk5ejM4SERrM0wtalpFYkRma0M3THgtM05JM25fQmROSHlTWGlRekJ4SFlLeENxeEZJRXpzd3ZNVmJYWkFBLVRaelVVY3lfUGszdkE?oc=5)이 지수 부담으로 작용했습니다. 광 I/O·실리콘 포토닉스의 12개월 연구 의제는 유지되고 있으나 이는 장기 점검 과제일 뿐 오늘의 매수 신호는 아닙니다.\n\n## 다음 확인점과 무효화 조건\n\n우선 확인할 것은 외국인·기관 수급, 미 장기금리, WTI, USD/KRW의 동반 안정입니다. KOSDAQ 반등은 긍정적 반론이지만 KOSPI 누적 약세와 반전 신호 부재 때문에 확신도는 높이지 않습니다. **외국인과 기관이 순매수로 전환하고 금리·유가·환율 부담이 함께 완화되면서 KOSPI 반전 신호가 확인되면 오늘의 리스크 오프 논리는 무효화됩니다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
