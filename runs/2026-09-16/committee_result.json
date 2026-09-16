@@ -1,0 +1,53 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,685.04로 0.87% 상승했지만 KOSDAQ은 804.52로 1.02% 하락해 지수별 온도 차가 컸다.",
+      "sources": [
+        "market_data"
+      ]
+    },
+    {
+      "point": "외국인은 5,206억원 순매도했고 기관은 2,038억원, 개인은 550억원 순매수해 외국인 매물을 일부 흡수했다.",
+      "sources": [
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "현재 시장을 중립 조정으로 볼지 위험회피 강화로 볼지",
+      "majority": "매크로·리스크·이익모멘텀·브레드스 담당자는 20일 누적 KOSPI 상승과 제한적인 VIX를 근거로 중립을 유지했다.",
+      "minority": "수급·섹터·유동성 담당자는 외국인 순매도, 환율 상승, 최근 5일 KOSPI 약세를 근거로 위험회피 국면을 주장했다.",
+      "minority_agents": [
+        "flow",
+        "sector",
+        "liquidity"
+      ],
+      "why_it_matters": "외국인 매도와 환율 압력이 지속되면 당일 반등의 신뢰도가 낮아지고 방어적 포지션의 필요성이 커진다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 9월 16일, 지수 반등과 체감 약세의 공존\n\nKOSPI는 6,685.04로 0.87% 상승했지만 KOSDAQ은 804.52로 1.02% 하락했다. USD/KRW는 1,360.36원으로 0.66% 올랐고 VIX는 17.20이었다. 외국인은 5,206억원 순매도한 반면 기관은 2,038억원, 개인은 550억원 순매수했다.\n\n하루 지수만 보면 반등이지만 누적 흐름은 아직 불안하다. KOSPI는 최근 5일간 5.258% 하락했고 20일 누적으로는 3.799% 상승했다. VIX도 5일 평균 17.052와 큰 차이가 없어 공포의 급등보다는 단기 조정과 중기 상승 흐름이 충돌하는 모습이다. 반전 신호 역시 아직 확인되지 않았다.\n\n## 외국인 매물을 기관이 흡수한 KOSPI\n\n외국인 매도는 KOSPI 4,127억원, KOSDAQ 1,079억원으로 양 시장에 걸쳤다. KOSPI에서는 기관이 2,164억원 순매수했지만 개인은 658억원 순매도했다. 반대로 KOSDAQ에서는 개인이 1,208억원을 샀고 기관도 126억원 순매도해 수급의 질이 상대적으로 약했다.\n\n수급 담당자 flow와 유동성 담당자 liquidity는 고환율과 연준 정책 불확실성을 외국인 이탈의 핵심 배경으로 봤다. 미국 10년물 금리는 4.996%, WTI는 104.83달러로 금리와 유가 부담도 동시에 높다. 다만 risk 담당자는 KOSPI의 당일 반등과 20일 누적 상승을 들어 구조적 위험으로 단정하기는 이르다고 판단했다. 위원회의 중립 결론은 유지하되 신뢰도는 높지 않다.\n\n## 9월 15일 뉴스 우선순위: 연준·환율·AI\n\n1. **연준과 금리:** [미 연준 금리 인상 베팅 90%로 상승](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8waFF6ZHdHdF9oQWY3T3RmYkwwalRLQUZBN2tKOXhsNFlzYkZaVWs3QVk1RURmM01meS1Wd19xLUZfOG55OXpjV2k0U25PSVNTRkdxTktrbXAxbjZIdDVLdVpuaXJsWXc?oc=5) 보도는 높은 국채금리와 맞물려 성장주 할인율 부담을 키웠다.\n2. **환율·유가:** [코스피, 금리·유가·환율 3중고](https://news.google.com/rss/articles/CBMiYEFVX3lxTFAyWk9hUWl2a0h1WGFDdmVpU1dSWWU3RU10U1dLdHB2aGF5cWR2YXdkb3ExY3lhWF85aXBEV2xYbHpNNW5jbWlnWHhFNmt3SGxYQWpSTUhyUUNoajhYcUZLQw?oc=5)라는 진단은 원화 약세와 외국인 매도를 설명하는 핵심 키워드다.\n3. **AI 변동성:** [금리·유가·AI 악재로 코스피 나흘째 하락](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5vSlRXZmxzbGF6aDBNZ2hmZXJjQVpKWDFDdDRoT1BUcnJraFF5b3lvY0JJS2lDYmdpQ2l5N3lYcDBjUm9jYUFBZk50NHozdklPNldYZU54RGwyUERRMU1LTE5EZFZuTGs?oc=5) 보도는 기술주 심리 부담을 시사한다. 광 I/O·실리콘 포토닉스 의제는 장기 연구 관찰 대상일 뿐, 오늘의 매매 신호로 해석해서는 안 된다.\n\n## 다음 확인점과 무효화 조건\n\n우선 확인할 변수는 외국인 순매도 완화, USD/KRW 상승세 진정, KOSDAQ 수급 개선이다. 현재는 기관의 KOSPI 방어가 지수 반등을 만들었지만 외국인과 환율이 동행 개선되지 않으면 추세 전환으로 보기 어렵다. 반대로 **외국인이 순매수로 전환하고 환율 상승 압력이 진정되며 반전 신호가 확인될 경우**, 오늘의 ‘중립 속 위험회피 우위’ 논리는 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
