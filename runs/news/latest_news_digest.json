@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-09-18T18:42:27.411203+00:00",
+  "crawled_at": "2026-09-18T19:42:29.665211+00:00",
   "news_date": "2026-09-19",
-  "total_collected": 7,
+  "total_collected": 10,
   "topic_counts": [
+    [
+      "금리/연준",
+      1
+    ],
     [
       "인플레이션",
       3
@@ -12,15 +16,26 @@
       1
     ],
     [
-      "국내지수",
-      1
-    ],
-    [
       "미국지수",
       2
+    ],
+    [
+      "국내지수",
+      1
     ]
   ],
   "top_articles": [
+    {
+      "topic": "금리/연준",
+      "count": 1,
+      "title": "\"연준 긴축, 한 번으로 안 끝나\"…美 10년물 금리 다시 5% - 뉴스핌",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE02SHBqcnA2Q3FBZVJYZFNZRnM1d09tcWlIM0hpd2pHSW9DVmJzTGpPWUdTUXRlV3Y5M1U3b3hpZWZIYTdBTlEtNG1OS2ZSRlJrbGl0TDZPZGlJZ19n?oc=5",
+      "summary_lines": [
+        "핵심 이슈: \"연준 긴축, 한 번으로 안 끝나\"…美 10년물 금리 다시 5% - 뉴스핌",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "인플레이션",
       "count": 3,
@@ -44,17 +59,6 @@
       ]
     },
     {
-      "topic": "국내지수",
-      "count": 1,
-      "title": "[단독] 한국거래소, 뉴욕서 K증시 세일즈…외국기업 ‘코스닥 IPO’ 유치전 [시그널] - 서울경제",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1zOWFsenI4WUNjTWFUbm5FQjMzQ0hOQzFOTFdjdW1zcmdsMUtYRnhoSkk5Y3RLUXNfSWo0dVk4Q3JQbGdFellTZDlpMHlwRl9Xc0HSAVNBVV95cUxPYnBTa2w0SnNiWkJ6SWxxQ3NRYUNILU9ZR20xT0I1Y1FnNFd4NzdHUWd5R1lSVzcwNFJzeUtnbU8tNjhMWjhqbTFmajBfZG10SkNoRQ?oc=5",
-      "summary_lines": [
-        "핵심 이슈: [단독] 한국거래소, 뉴욕서 K증시 세일즈…외국기업 ‘코스닥 IPO’ 유치전 [시그널] - 서울경제",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "미국지수",
       "count": 2,
       "title": "Orion180 인슈어런스, 11.4억 달러 기업가치로 나스닥 상장 - Investing.com 한국어",
@@ -64,18 +68,35 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
+    },
+    {
+      "topic": "국내지수",
+      "count": 1,
+      "title": "[단독] 한국거래소, 뉴욕서 K증시 세일즈…외국기업 ‘코스닥 IPO’ 유치전 [시그널] - sedaily.com",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1zOWFsenI4WUNjTWFUbm5FQjMzQ0hOQzFOTFdjdW1zcmdsMUtYRnhoSkk5Y3RLUXNfSWo0dVk4Q3JQbGdFellTZDlpMHlwRl9Xc0HSAVNBVV95cUxPYnBTa2w0SnNiWkJ6SWxxQ3NRYUNILU9ZR20xT0I1Y1FnNFd4NzdHUWd5R1lSVzcwNFJzeUtnbU8tNjhMWjhqbTFmajBfZG10SkNoRQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [단독] 한국거래소, 뉴욕서 K증시 세일즈…외국기업 ‘코스닥 IPO’ 유치전 [시그널] - sedaily.com",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
     }
   ],
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 4,
+      "total_count": 5,
       "topics": [
         {
           "topic": "인플레이션",
           "count": 3,
           "title": "슈미드 캔자스시티 연은 총재 “인플레이션 대응 위한 금리 인상 필연적” - 블록미디어",
           "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE5wN3o2V0dIYnBZVzJSZFhtQ1RFOFdUT09ZUXkyY1lZaGpldzRoU3laZkhYUVRCeHpsdWlibkVsdXB4UHNBS0VDcHJYcjlLSFdPa2dfLUxxY0U?oc=5"
+        },
+        {
+          "topic": "금리/연준",
+          "count": 1,
+          "title": "\"연준 긴축, 한 번으로 안 끝나\"…美 10년물 금리 다시 5% - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE02SHBqcnA2Q3FBZVJYZFNZRnM1d09tcWlIM0hpd2pHSW9DVmJzTGpPWUdTUXRlV3Y5M1U3b3hpZWZIYTdBTlEtNG1OS2ZSRlJrbGl0TDZPZGlJZ19n?oc=5"
         },
         {
           "topic": "환율/달러",
@@ -98,7 +119,7 @@
         {
           "topic": "국내지수",
           "count": 1,
-          "title": "[단독] 한국거래소, 뉴욕서 K증시 세일즈…외국기업 ‘코스닥 IPO’ 유치전 [시그널] - 서울경제",
+          "title": "[단독] 한국거래소, 뉴욕서 K증시 세일즈…외국기업 ‘코스닥 IPO’ 유치전 [시그널] - sedaily.com",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1zOWFsenI4WUNjTWFUbm5FQjMzQ0hOQzFOTFdjdW1zcmdsMUtYRnhoSkk5Y3RLUXNfSWo0dVk4Q3JQbGdFellTZDlpMHlwRl9Xc0HSAVNBVV95cUxPYnBTa2w0SnNiWkJ6SWxxQ3NRYUNILU9ZR20xT0I1Y1FnNFd4NzdHUWd5R1lSVzcwNFJzeUtnbU8tNjhMWjhqbTFmajBfZG10SkNoRQ?oc=5"
         }
       ]
