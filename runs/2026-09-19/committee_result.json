@@ -1,0 +1,63 @@
+{
+  "consensus": "코스피의 강한 상승 추세는 유지되지만, 원화 약세·고금리와 주체별 수급 부재로 추격 매수보다 확인형 선별 대응이 필요한 중립 국면이다.",
+  "key_points": [
+    {
+      "point": "코스피는 6,894.23으로 2.66% 상승했고 최근 5일·20일 누적 상승률도 각각 5.796%, 5.925%로 강세 추세가 이어졌다.",
+      "sources": [
+        "market_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "원/달러는 1,386.89원으로 0.43% 상승했고 5일간 1.71% 올랐다. 미국 10년물 4.998%, WTI 95.47달러는 금리·물가 부담을 재확인한다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context",
+        "news"
+      ]
+    },
+    {
+      "point": "외국인·기관·개인 순매수는 집계 실패로 확인 불가(제공 데이터 기준)다. 따라서 지수 상승을 실제 투자주체의 매수세로 단정할 수 없다.",
+      "sources": [
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "강세 추세의 지속성",
+      "majority": "매크로·수급·섹터·리스크·이익모멘텀·유동성 담당자는 환율·금리 및 수급 공백을 이유로 중립적 확인 대응을 제시했다.",
+      "minority": "브레드스 담당자는 시장 내부 확산이 양호하고 반전 신호가 없다며 위험선호 국면을 주장했다.",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "상승 추세 자체는 분명하지만, 실제 수급 주체와 이익 추정치 개선이 확인되지 않으면 고환율·고금리 충격에 상승 탄력이 빠르게 약화될 수 있다."
+    },
+    {
+      "topic": "AI 뉴스의 주가 정당화 수준",
+      "majority": "AI·메모리 수요 기대는 중기 관심 요인이나, 당일 실적 추정치 상향이나 업종별 수급 확인은 부족하다는 판단이다.",
+      "minority": "브레드스 담당자는 기술적 확산이 긍정적이어서 강세 흐름의 지속 가능성을 더 높게 평가했다.",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "AI 기대가 실적과 수주로 연결되지 않으면 테마성 상승은 금리·환율 변수에 더 민감해질 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "AI·반도체 등 뉴스 모멘텀은 실적·수급 확인을 전제로 분할 접근한다."
+    },
+    {
+      "level": "CAUTION",
+      "text": "원/달러 상승과 미국 금리 흐름이 지속되는지 점검하며 단기 급등 종목의 추격 비중은 낮춘다."
+    },
+    {
+      "level": "AVOID",
+      "text": "순매수 데이터가 없는 상태에서 외국인·기관 매수 전환을 전제로 한 방향성 베팅은 피한다."
+    }
+  ],
+  "sugeup_narrative": "## 6,894선 안착: 강한 지수와 약한 확인력\n\n코스피는 6,894.23으로 2.66% 상승했고, 코스닥도 827.12로 0.60% 올랐다. 코스피는 최근 5일 5.796%, 20일 5.925% 상승해 단기 반전 신호가 없는 상승 추세다. VIX는 14.81로 최근 5일 평균 16.544보다 낮아 위험회피 심리도 당장은 제한적이다. 다만 원/달러는 1,386.89원으로 0.43% 상승했고 5일 변화율도 1.71%다. 지수 강세와 원화 약세가 동시에 나타난 만큼, 이를 일방적 위험선호로 해석하기는 이르다.\n\n## 수급 공백 속 거시 변수의 우위\n\n오늘 외국인·기관·개인 순매수는 집계 실패로 **확인 불가(제공 데이터 기준)**다. 따라서 코스피 급등을 특정 투자주체의 매수로 설명하거나, 외국인 수급 개선으로 단정할 근거는 없다. 수급 담당자(flow)도 데이터 부재를 지적했고, 매크로·리스크 담당자는 상승 추세와 환율 부담의 병존을 강조했다.\n\n시장 해석의 중심은 금리와 달러다. 미국 10년물은 4.998%, 달러지수는 100.215이며 WTI는 95.47달러다. 원/달러 상승과 함께 나타난 이 조합은 할인율 및 비용 부담을 다시 자극할 수 있다. 반면 VIX 하락은 급격한 위험회피 가능성을 낮춘다. 즉, 현재는 유동성 위축 공포보다 고금리 지속 여부를 확인하는 장세에 가깝다.\n\n## 9월 19일 핵심 이슈: 금리·달러, 그리고 AI 기대\n\n1. **금리와 물가**: [미 연준 기준금리 인상 가능성을 다룬 기사](https://news.google.com/rss/articles/CBMickFVX3lxTE4tNk1iVjVDUVB3dDAxYS1XclZqR2FZRHRQQURtQVlxdk1xdjd4TWlYNnNESC1hb2c0dE55N3poc0xyUjE2RWp0MzNybzc1alRkZm5oaWp1M2FKY3EwQnE1cnZjRjYzNjhrRnVjWGozVmxjZw?oc=5)와 [미국 CPI 관련 보도](https://news.google.com/rss/articles/CBMicEFVX3lxTE9sM182dDE4VFIweW1KNVBEQ1BYdzRmNlgwdHpGZWdZdm5wcm9lSUhaZVljQW1FaXJRUUFGcC1NVVVWUlczSEpwRHYzb0ljQ3lfSm1UcmtLMW5IRWlNVVdBaDg3WDMwZ241TW1HS3ZUSUc?oc=5)는 금리 민감 업종의 변동성 요인이다.\n2. **달러 고공행진**: [미 10년물 금리와 달러 강세 기사](https://news.google.com/rss/articles/CBMic0FVX3lxTE1SOWg0M1VYeHR2Y1ZiTHBua0ptYzBiVFRmZHpzLVlDNjQ1bVUzcEFLNGFIUHVCb05panlMT0VLcTF6S2Z2Q0tvNXNlLXZCVHVmTjFlckl2QlF6dzhlLWdkVGJkTzA2YkNYR0xlNVJZUHAzQ2fSAXNBVV95cUxNUjloNDNVWHh0dmNWYkxwbmtKbWMwYlRUZmR6cy1ZQzY0NW1VM3BBSzRhSFB1Qm9OaWp5TE9FS3ExektmdkNLbzVzZS12QlR1Zk4xZXJJdkJRenc4ZS1nZFRiZE8wNmJDWEdMZTVSWVBwM0Nn?oc=5)는 원화 약세가 이어질 위험을 부각한다.\n3. **AI·메모리**: [계속 학습하는 AI와 메모리 반도체 기사](https://news.google.com/rss/articles/CBMibEFVX3lxTE1LRTFKR1ZXbklzcm9mZFpHSmMwWlduS1lRTllaVGhwWHRYZzlGaURKUGlCbDdHeGlPTHIwZ0JEOG10WkEtT2FsUTkxb3UxaHNvZGR6dlBub0JxbGx1WkszcERKSVhndFJvRW5KV9IBckFVX3lxTE8yRjNjV3R2ZTBYWWEwOFktR3VhbTVVeVNTOU94bktTazhTWEdNY1hMS002N2c1OUVJZXVrXzU1U3dibHFiY1FmRlVNNXRXd3RqY0pwTTZDWjB3VTVEeF95Q3dBNkMzdDRTNFN6WWpJd094dw?oc=5)는 반도체 기대를 지지하지만, 이익모멘텀 담당자(earnings)가 지적했듯 실적 추정치 상향 신호는 아직 뚜렷하지 않다.\n\n## 다음 확인점과 시나리오 훼손 조건\n\n기본 시나리오는 낮은 VIX와 누적 상승 추세를 바탕으로 한 선별적 강세다. 다만 원/달러의 추가 상승, 미국 금리·유가의 높은 수준 지속, 그리고 실제 주체별 순매수의 부재가 확인될 경우 지수 상승의 질은 낮아진다. 반대로 수급 데이터가 회복돼 매수 주체가 확인되고 AI 기대가 실적 지표로 이어지면 강세의 신뢰도는 높아질 수 있다. 오늘의 강세 추세는 원/달러 상승과 금리 부담이 확대되는 동시에 코스피 상승 흐름이 약화될 경우 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
