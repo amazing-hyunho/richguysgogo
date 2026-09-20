@@ -1,0 +1,65 @@
+{
+  "consensus": "국내 증시는 누적 상승 추세를 유지하지만 환율·금리 부담과 수급 데이터 공백을 감안해 중립 비중에서 선별 대응할 국면입니다.",
+  "key_points": [
+    {
+      "point": "KOSPI는 6,894.23으로 2.66% 상승했고 5일·20일 누적 수익률도 각각 5.799%, 5.927%로 추세가 이어졌습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1,386.74로 0.37% 상승했고 5일간 1.7% 올라, 지수 강세와 환율 부담이 충돌하고 있습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "macro_daily",
+        "news_digest"
+      ]
+    },
+    {
+      "point": "외국인·기관·개인 순매수는 조회 실패로 확인 불가하며, 상승을 주도한 투자 주체를 특정할 수 없습니다.",
+      "sources": [
+        "flow_data",
+        "agent_opinions"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "현재 시장 국면",
+      "majority": "매크로·리스크·수급·이익모멘텀 담당자는 상승 추세를 인정하면서도 환율, 금리, 수급 공백 때문에 중립 판단을 유지했습니다.",
+      "minority": "섹터 및 브레드스 담당자는 지수 상승과 반전 신호 부재를 근거로 위험선호 국면을 주장했습니다.",
+      "minority_agents": [
+        "sector",
+        "breadth"
+      ],
+      "why_it_matters": "위험선호 판단을 채택하려면 지수 상승이 실제 수급 확산과 실적 개선으로 연결되는지 추가 확인이 필요합니다."
+    },
+    {
+      "topic": "유동성 환경의 방향",
+      "majority": "다수는 강세 흐름 속에서도 성급한 비중 변경을 피해야 한다고 봤습니다.",
+      "minority": "유동성 담당자는 USD/KRW 1,386.74와 금리 불확실성을 근거로 제한적인 유동성 환경과 위험회피를 강조했습니다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "환율 상승이 지속되면 현재의 지수 모멘텀보다 할인율과 외화 유동성 부담이 우선할 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "기존 핵심 보유분은 유지하되 추세와 실적 근거가 확인되는 영역만 선별 대응합니다."
+    },
+    {
+      "level": "CAUTION",
+      "text": "USD/KRW와 미국 10년물 금리, 수급 데이터 복구 여부를 확인하며 신규 진입을 분할합니다."
+    },
+    {
+      "level": "AVOID",
+      "text": "주체별 순매수 확인 없이 하루 지수 급등만 근거로 추격 매수하는 전략은 피합니다."
+    }
+  ],
+  "sugeup_narrative": "## 9월 20일, 강한 지수와 불편한 환율의 동행\n\nKOSPI는 6,894.23으로 2.66% 상승했고 KOSDAQ은 827.12로 0.60% 올랐습니다. KOSPI의 5일 및 20일 누적 상승률도 각각 5.799%, 5.927%로, 하루 반등보다는 기존 상승 추세의 연장에 가깝습니다. 반전 신호도 현재는 없습니다.\n\n다만 USD/KRW는 1,386.74로 0.37% 상승했고 최근 5일 변화율은 1.7%입니다. VIX는 14.81로 5일 평균 16.544보다 낮아 공포 확산은 제한됐지만, 환율은 위험선호를 온전히 지지하지 않습니다. 외국인·기관·개인 순매수는 모두 확인 불가(제공 데이터 기준)이며, 조회 실패 때문에 0억원으로 해석해서는 안 됩니다.\n\n## 수급 주도자는 확인 불가, 가격만 먼저 움직였다\n\n오늘 상승을 외국인이나 기관 매수로 설명할 근거는 없습니다. flow 담당자는 주체별 데이터 부재로 수급 해석이 불가능하다고 지적했고, macro와 risk 담당자도 추세 강세를 인정하면서 중립 의견을 유지했습니다. 따라서 확인 가능한 사실은 ‘지수 상승’이지 ‘특정 주체의 매수 전환’이 아닙니다.\n\n섹터·브레드스 담당자는 KOSPI +2.66%와 반전 신호 부재를 근거로 위험선호를 주장했습니다. 그러나 유동성 담당자는 환율 상승을 위험요인으로 봤고, 이익모멘텀 담당자도 실적 추정치 상향 신호가 없다고 평가했습니다. 미국 시장도 S&P500 +0.17%, NASDAQ +0.39%, DOW -0.18%로 혼조여서 국내 강세를 전면적 위험선호로 확대 해석하기는 이릅니다.\n\n## 날짜별 핵심 이슈: 연준·환율·지정학\n\n1. **연준과 금리**: [연준 금리 추가 인상 시 주식시장 시나리오](https://news.google.com/rss/articles/CBMiYEFVX3lxTE40cUtId0hicGNzaVB3OUVBRWUzbEZZQTZvN29qZjdydktyMEtvb1VwM1QtYVJ3Ynh6UzNYR2FsMzVYT2RLaEx3SUlwTmNXQXFfZE9BM0tqTVFYMmNOdm85btIBeEFVX3lxTE85TDYxcThBTkhIX2QtYVowRHE2STdEb3Z2Y1ZQVWZKUlZGM2lBMTY0NFJhMHM5Z3lSMEZMeU8tZVhVZlM0XzhtQjZiSlJTeVhncnBoQmM2eGZKcy13Q3FqMHRQVjh3cWxtWGlRLTJFV2F6QnBoWS04VQ?oc=5)가 부각됐습니다. 미국 10년물 금리는 4.998%, 실질금리는 2.668%여서 높은 할인율 부담이 남아 있습니다.\n2. **원화 약세**: [매파적 연준에 상승한 원·달러 환율](https://news.google.com/rss/articles/CBMiYEFVX3lxTE41Ui1tVzJpbXkzVFRyWWpfbm9QdUZxTnR2TmlGSURvUkw3eVB6WTY5VE9FdW5KQWtHV0pYcXhDMkhRTzhNalZ6c0w0aE1Hdnhwb2s1SFFKb2lJdFFBTDA0RtIBeEFVX3lxTE9SdGkzNU82TzRpZHhiVC00b2F6Y1Z4VnEtcEVmZFowalNlWDlRdFB6NWJQOHFTTlRrSjdGZW9DVElPSzhuMXcwMWNYLWl3TnNlNEU3Ri1JZkJNOTNfN01Xb1NfYWlYVV9Zd2ZsNkJEQ09xWkZSX09kSQ?oc=5)이 오늘의 핵심 제약입니다.\n3. **지정학과 에너지**: 이란전쟁 격화 가능성이 뉴스 전면에 놓인 가운데 WTI는 100.30입니다. 에너지 가격과 금리 부담이 동시에 커지는지 점검해야 합니다.\n\n## 다음 확인 순서와 무효화 조건\n\n우선순위는 수급 데이터 복구, USD/KRW 상승세 진정, 미국 10년물 금리 안정입니다. 반도체 장기 연구 의제는 유지되고 있지만, [반도체 신규 채용 22% 감소](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE0tOW1zY0gzWG1RWE1KWWducGsyRTF2cFJuLW9PM1QxZWZ6a1lsVnRWTHJFa0s2UU5kMURjempwTG1jTUVPVmRrTWx1TnhyYjhWUkN0cEVZSEJYa21wNWpQVFdsSjZLRmc?oc=5)와 실적 상향 신호 부재가 충돌하므로 당장의 매매 신호로 사용하기 어렵습니다.\n\n오늘의 ‘상승 추세 속 중립 대응’ 판단은 **환율 상승이 이어지는 가운데 VIX가 5일 평균 16.544를 웃돌고 KOSPI 반전 신호까지 발생할 경우** 무효화됩니다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
