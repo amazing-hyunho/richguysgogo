@@ -1,33 +1,33 @@
 {
-  "crawled_at": "2026-09-21T20:42:29.697299+00:00",
+  "crawled_at": "2026-09-21T21:42:33.098473+00:00",
   "news_date": "2026-09-22",
-  "total_collected": 34,
+  "total_collected": 51,
   "topic_counts": [
     [
       "반도체/AI",
-      7
+      9
     ],
     [
       "금리/연준",
-      4
-    ],
-    [
-      "경기/성장",
-      1
+      7
     ],
     [
       "환율/달러",
-      3
+      4
     ],
     [
-      "정책/테마",
+      "인플레이션",
+      4
+    ],
+    [
+      "변동성/리스크",
       1
     ]
   ],
   "top_articles": [
     {
       "topic": "반도체/AI",
-      "count": 7,
+      "count": 9,
       "title": "엔비디아 경쟁사 AMD, ‘시총 1조 달러’ 돌파…미 반도체사 4번째 - KBS 뉴스",
       "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1MaWV2bW9POWFLSllOVXFaam91YVRxWWpXRWpRSVBqNloxVUJINm80d21LMEN3NEt6QmJvbllSM0pRbFJFMDJNY1hLcFlFS0pseDY4WUtTSWdyN3M?oc=5",
       "summary_lines": [
@@ -38,7 +38,7 @@
     },
     {
       "topic": "금리/연준",
-      "count": 4,
+      "count": 7,
       "title": "굴스비 “美 부채비용 낮추려 금리인하 안돼”…연준 독립성 강조 - 글로벌이코노믹",
       "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOU0lROVNtRG43VmdPSmtXeDJoR2hrendLaEViZVhuNVN4aGtXWngweVFKZGthSlE1dS1wNzlYVFA2Q1JXNm5YV2xLTTF0LXEwb0FjMllzdmJuR0pwdDJydVNWT3BZTzhfUHJUYnRvUVdZOUYwR282c1d3OWtWZlZGU0VEdVo1TlZW?oc=5",
       "summary_lines": [
@@ -48,34 +48,34 @@
       ]
     },
     {
-      "topic": "경기/성장",
-      "count": 1,
-      "title": "미중 정상 24일 백악관 국빈 일정…연준·PMI 대기 - 토큰포스트",
-      "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1EZVVpMEFvelNDRGM0RnhoVll3RnIwTEVpNGJic0Y2U2Z3NzdPVFIzNVhtOU93TWVzbFFGVUVpR0psLVk5VDJ3VE42a3JhbWJuRzRBS0dERGo?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 미중 정상 24일 백악관 국빈 일정…연준·PMI 대기 - 토큰포스트",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "환율/달러",
-      "count": 3,
-      "title": "달러-엔, 레이트 체크로 반납한 상승분 회복 중…157.335엔 | - 연합인포맥스",
-      "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBGNnpwdktvY3hwN2RPTHlNbUhFQVIyeEZQMUphb2JueGdreFZiamR4R1RieHgxQnNzX0VxdWN5ZVFnWVY0bHB1ZEVVSzJWU3BHd0dKc2hDeExiYk1VQWJUb0pUTk5yUjJIcjYyakpoRDliOTRG?oc=5",
+      "count": 4,
+      "title": "일본은행, 금리 올렸는데도 엔화 '폭락'...강달러에 유로와 동반 침체 - 코인리더스",
+      "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBKUF84UllEVkJLSHNkRHNfbXpfUXY3WFEzekw3VHFXRzl6VVlvRFZnYWFQZmhHckxiRENPWlVCT2hyajloTkM1cVF3?oc=5",
       "summary_lines": [
-        "핵심 이슈: 달러-엔, 레이트 체크로 반납한 상승분 회복 중…157.335엔 | - 연합인포맥스",
+        "핵심 이슈: 일본은행, 금리 올렸는데도 엔화 '폭락'...강달러에 유로와 동반 침체 - 코인리더스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "정책/테마",
-      "count": 1,
-      "title": "캐나다 중앙은행, \"미국 신규 관세로 4분기 성장률 1% 하회 가능성\" - Investing.com 한국어",
-      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB2VS1wR2o0WlFjODJ1NVpfMldianA2YWZyZ1FkRFpsT3M5RDRDdzNwaUlacmttbkpmUkx2UW1tYW9VSFdJbUhzU0tiUGhnaWdmb01qMFVXN0RYaVZXQWlEaXd3MWhrYUJiM3JPMXBCRHI?oc=5",
+      "topic": "인플레이션",
+      "count": 4,
+      "title": "[뉴욕증시 주간전망(24~28일)] PCE 가격지수와 엔비디아 흐름 중요 - 미주조선일보",
+      "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNdm1LdHhNRHhOT1hwc3loOU1keVhIWFhCUzVqTEtkbXdDandCblZaRHhTVzRtaWp1X1BaSlRfVXJfek9sQlZ6R0dSMS1oM280b0xSR1R0ZUdHdDRma3BXY2tsZUpoRVptZElmcFJQd2JMaEdXRHUwT282T283c1Z3Y3p1dXhTY1BpeTRnTDhTOGxXNG1WaTV2TWxyY3ZHX2V5QzVZeWlJR3RNbG9XTF9FQjBCc2k2NEllelJGa2FpWmlBTUxPbHBHR1F1bDVpQnRE?oc=5",
       "summary_lines": [
-        "핵심 이슈: 캐나다 중앙은행, \"미국 신규 관세로 4분기 성장률 1% 하회 가능성\" - Investing.com 한국어",
+        "핵심 이슈: [뉴욕증시 주간전망(24~28일)] PCE 가격지수와 엔비디아 흐름 중요 - 미주조선일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "변동성/리스크",
+      "count": 1,
+      "title": "'친절한 美 연준' 끝났다…증시 변동성·실적 장세 예고 - ebn.co.kr",
+      "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE40QlVSX3J4YWpicHJxNzlkaGJzeGFyVkI1SkZSX1J4aERJZWJvb1NpeEdkN2F2V2dHMVV4LTEyQ3BGUXNlT2NlMHh4dXl6eUwxRUg5V1BRVDIyWm1aM1VwWkVsY3dtMkJM?oc=5",
+      "summary_lines": [
+        "핵심 이슈: '친절한 美 연준' 끝났다…증시 변동성·실적 장세 예고 - ebn.co.kr",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,49 +84,49 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 8,
+      "total_count": 15,
       "topics": [
         {
           "topic": "금리/연준",
-          "count": 4,
+          "count": 7,
           "title": "굴스비 “美 부채비용 낮추려 금리인하 안돼”…연준 독립성 강조 - 글로벌이코노믹",
           "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOU0lROVNtRG43VmdPSmtXeDJoR2hrendLaEViZVhuNVN4aGtXWngweVFKZGthSlE1dS1wNzlYVFA2Q1JXNm5YV2xLTTF0LXEwb0FjMllzdmJuR0pwdDJydVNWT3BZTzhfUHJUYnRvUVdZOUYwR282c1d3OWtWZlZGU0VEdVo1TlZW?oc=5"
         },
         {
           "topic": "환율/달러",
-          "count": 3,
-          "title": "달러-엔, 레이트 체크로 반납한 상승분 회복 중…157.335엔 | - 연합인포맥스",
-          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBGNnpwdktvY3hwN2RPTHlNbUhFQVIyeEZQMUphb2JueGdreFZiamR4R1RieHgxQnNzX0VxdWN5ZVFnWVY0bHB1ZEVVSzJWU3BHd0dKc2hDeExiYk1VQWJUb0pUTk5yUjJIcjYyakpoRDliOTRG?oc=5"
+          "count": 4,
+          "title": "일본은행, 금리 올렸는데도 엔화 '폭락'...강달러에 유로와 동반 침체 - 코인리더스",
+          "link": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFBKUF84UllEVkJLSHNkRHNfbXpfUXY3WFEzekw3VHFXRzl6VVlvRFZnYWFQZmhHckxiRENPWlVCT2hyajloTkM1cVF3?oc=5"
         },
         {
-          "topic": "경기/성장",
-          "count": 1,
-          "title": "미중 정상 24일 백악관 국빈 일정…연준·PMI 대기 - 토큰포스트",
-          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1EZVVpMEFvelNDRGM0RnhoVll3RnIwTEVpNGJic0Y2U2Z3NzdPVFIzNVhtOU93TWVzbFFGVUVpR0psLVk5VDJ3VE42a3JhbWJuRzRBS0dERGo?oc=5"
+          "topic": "인플레이션",
+          "count": 4,
+          "title": "[뉴욕증시 주간전망(24~28일)] PCE 가격지수와 엔비디아 흐름 중요 - 미주조선일보",
+          "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxNdm1LdHhNRHhOT1hwc3loOU1keVhIWFhCUzVqTEtkbXdDandCblZaRHhTVzRtaWp1X1BaSlRfVXJfek9sQlZ6R0dSMS1oM280b0xSR1R0ZUdHdDRma3BXY2tsZUpoRVptZElmcFJQd2JMaEdXRHUwT282T283c1Z3Y3p1dXhTY1BpeTRnTDhTOGxXNG1WaTV2TWxyY3ZHX2V5QzVZeWlJR3RNbG9XTF9FQjBCc2k2NEllelJGa2FpWmlBTUxPbHBHR1F1bDVpQnRE?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 7,
+      "total_count": 9,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 7,
+          "count": 9,
           "title": "엔비디아 경쟁사 AMD, ‘시총 1조 달러’ 돌파…미 반도체사 4번째 - KBS 뉴스",
           "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1MaWV2bW9POWFLSllOVXFaam91YVRxWWpXRWpRSVBqNloxVUJINm80d21LMEN3NEt6QmJvbllSM0pRbFJFMDJNY1hLcFlFS0pseDY4WUtTSWdyN3M?oc=5"
         }
       ]
     },
     {
-      "sector": "정책/테마",
+      "sector": "리스크",
       "total_count": 1,
       "topics": [
         {
-          "topic": "정책/테마",
+          "topic": "변동성/리스크",
           "count": 1,
-          "title": "캐나다 중앙은행, \"미국 신규 관세로 4분기 성장률 1% 하회 가능성\" - Investing.com 한국어",
-          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB2VS1wR2o0WlFjODJ1NVpfMldianA2YWZyZ1FkRFpsT3M5RDRDdzNwaUlacmttbkpmUkx2UW1tYW9VSFdJbUhzU0tiUGhnaWdmb01qMFVXN0RYaVZXQWlEaXd3MWhrYUJiM3JPMXBCRHI?oc=5"
+          "title": "'친절한 美 연준' 끝났다…증시 변동성·실적 장세 예고 - ebn.co.kr",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE40QlVSX3J4YWpicHJxNzlkaGJzeGFyVkI1SkZSX1J4aERJZWJvb1NpeEdkN2F2V2dHMVV4LTEyQ3BGUXNlT2NlMHh4dXl6eUwxRUg5V1BRVDIyWm1aM1VwWkVsY3dtMkJM?oc=5"
         }
       ]
     }
