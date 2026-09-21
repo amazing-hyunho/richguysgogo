@@ -1,0 +1,147 @@
+[
+  {
+    "agent_name": "macro",
+    "core_claims": [
+      "코스피는 최근 20일간 완만한 상승세를 보이고 있습니다.",
+      "미국 금리와 인플레이션 부담이 지속되나, 변동성은 낮은 수준입니다.",
+      "외국인 수급 데이터 부재로 추가 해석에는 신중함이 필요합니다."
+    ],
+    "korean_comment": "단기 상승세이나 거시 불확실성은 여전합니다.",
+    "raw_response": "{\n  \"agent_name\": \"MACRO_pre_analysis_agent\",\n  \"core_claims\": [\n    \"코스피는 최근 20일간 완만한 상승세를 보이고 있습니다.\",\n    \"미국 금리와 인플레이션 부담이 지속되나, 변동성은 낮은 수준입니다.\",\n    \"외국인 수급 데이터 부재로 추가 해석에는 신중함이 필요합니다.\"\n  ],\n  \"korean_comment\": \"단기 상승세이나 거시 불확실성은 여전합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.macro.daily.us10y\",\n    \"snapshot.macro.monthly.cpi_yoy\",\n    \"snapshot.macro.daily.vix\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.news_headlines\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.macro.daily.us10y",
+      "snapshot.macro.monthly.cpi_yoy",
+      "snapshot.macro.daily.vix",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.flow_summary.note",
+      "snapshot.news_headlines"
+    ],
+    "confidence": "MED"
+  },
+  {
+    "agent_name": "flow",
+    "core_claims": [
+      "수급 데이터 부재로 외국인/기관/개인 주체별 흐름 해석 불가.",
+      "반도체/AI, 고금리/연준, 인플레이션이 시장 심리에 영향.",
+      "KOSPI 5일/20일 누적 강세와 USD/KRW 상승세 감안 시, 외국인 매수/매도 방향성 판단 제한적."
+    ],
+    "korean_comment": "수급 데이터 미제공으로 주체별 매매 해석이 제한되는 구간입니다.",
+    "raw_response": "{\n  \"agent_name\": \"FLOW_pre_analysis_agent_KR\",\n  \"core_claims\": [\n    \"수급 데이터 부재로 외국인/기관/개인 주체별 흐름 해석 불가.\",\n    \"반도체/AI, 고금리/연준, 인플레이션이 시장 심리에 영향.\",\n    \"KOSPI 5일/20일 누적 강세와 USD/KRW 상승세 감안 시, 외국인 매수/매도 방향성 판단 제한적.\"\n  ],\n  \"korean_comment\": \"수급 데이터 미제공으로 주체별 매매 해석이 제한되는 구간입니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.flow_summary.note\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.flow_summary.institution_net\",\n    \"snapshot.flow_summary.retail_net\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\"\n  ],\n  \"confidence\": \"LOW\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.flow_summary.note",
+      "snapshot.flow_summary.foreign_net",
+      "snapshot.flow_summary.institution_net",
+      "snapshot.flow_summary.retail_net",
+      "snapshot.news_headlines",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.usdkrw_5d_change_pct",
+      "snapshot.cumulative_context.vix_5d_avg"
+    ],
+    "confidence": "LOW"
+  },
+  {
+    "agent_name": "sector",
+    "core_claims": [
+      "코스피는 최근 20일간 4% 이상 상승하며 강한 흐름을 보이고 있습니다.",
+      "반도체 및 AI 관련주가 시장 상승을 주도하고 있습니다.",
+      "금리 부담에도 불구하고 시장 전반의 투자심리는 양호합니다."
+    ],
+    "korean_comment": "코스피는 강세를 이어가고 있으며, 투자심리도 긍정적입니다.",
+    "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"코스피는 최근 20일간 4% 이상 상승하며 강한 흐름을 보이고 있습니다.\",\n    \"반도체 및 AI 관련주가 시장 상승을 주도하고 있습니다.\",\n    \"금리 부담에도 불구하고 시장 전반의 투자심리는 양호합니다.\"\n  ],\n  \"korean_comment\": \"코스피는 강세를 이어가고 있으며, 투자심리도 긍정적입니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.news_headlines",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.cumulative_context.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "risk",
+    "core_claims": [
+      "코스피가 최근 20일간 꾸준히 상승세를 보임",
+      "변동성(VIX)과 환율도 안정적인 흐름 유지",
+      "단기적으로 위험 신호는 감지되지 않음"
+    ],
+    "korean_comment": "시장 전반에 뚜렷한 위험 신호는 없습니다.",
+    "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"코스피가 최근 20일간 꾸준히 상승세를 보임\",\n    \"변동성(VIX)과 환율도 안정적인 흐름 유지\",\n    \"단기적으로 위험 신호는 감지되지 않음\"\n  ],\n  \"korean_comment\": \"시장 전반에 뚜렷한 위험 신호는 없습니다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.market_summary.usdkrw\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.cumulative_context.reversal_signal\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_OFF",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.market_summary.kospi_change_pct",
+      "snapshot.market_summary.usdkrw",
+      "snapshot.markets.volatility.vix",
+      "snapshot.cumulative_context.reversal_signal",
+      "snapshot.cumulative_context.note"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "earnings",
+    "core_claims": [
+      "코스피 20일 누적 상승세로 실적 모멘텀 개선 신호.",
+      "반도체 등 주요 업종 중심의 긍정적 실적 기대감 지속.",
+      "단기 헤드라인보다 중기 실적 상향 흐름이 우세."
+    ],
+    "korean_comment": "실적 추정치 상향 흐름이 당분간 이어질 가능성이 높습니다.",
+    "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"코스피 20일 누적 상승세로 실적 모멘텀 개선 신호.\",\n    \"반도체 등 주요 업종 중심의 긍정적 실적 기대감 지속.\",\n    \"단기 헤드라인보다 중기 실적 상향 흐름이 우세.\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 흐름이 당분간 이어질 가능성이 높습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"confidence\": \"HIGH\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.market_summary.note\",\n    \"snapshot.markets.kr.kospi_pct\"\n  ]\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.news_headlines",
+      "snapshot.market_summary.note",
+      "snapshot.markets.kr.kospi_pct"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "breadth",
+    "core_claims": [
+      "코스피와 코스닥 모두 최근 5~20일간 상승세를 유지하고 있다.",
+      "시장 변동성(VIX)도 낮은 수준을 보이며 위험 신호는 크지 않다.",
+      "시장 내부 확산도 양호해 단기적으로 위험 회피 신호는 약하다."
+    ],
+    "korean_comment": "시장 전반적으로 상승 모멘텀이 유지되고 있습니다.",
+    "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"코스피와 코스닥 모두 최근 5~20일간 상승세를 유지하고 있다.\",\n    \"시장 변동성(VIX)도 낮은 수준을 보이며 위험 신호는 크지 않다.\",\n    \"시장 내부 확산도 양호해 단기적으로 위험 회피 신호는 약하다.\"\n  ],\n  \"korean_comment\": \"시장 전반적으로 상승 모멘텀이 유지되고 있습니다.\",\n  \"regime_tag\": \"RISK_ON\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.market_summary.kospi_change_pct\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+    "regime_tag": "RISK_ON",
+    "evidence_ids": [
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.kospi_20d_cum_pct",
+      "snapshot.cumulative_context.vix_5d_avg",
+      "snapshot.phase_two_signals.breadth_signal_score",
+      "snapshot.market_summary.kospi_change_pct"
+    ],
+    "confidence": "HIGH"
+  },
+  {
+    "agent_name": "liquidity",
+    "core_claims": [
+      "정책 불확실성과 금리 부담이 여전하다.",
+      "환율과 변동성은 안정적이지만, 유동성 신호는 제한적이다."
+    ],
+    "korean_comment": "정책과 유동성 측면에서 신중한 접근이 필요합니다.",
+    "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"정책 불확실성과 금리 부담이 여전하다.\",\n    \"환율과 변동성은 안정적이지만, 유동성 신호는 제한적이다.\"\n  ],\n  \"korean_comment\": \"정책과 유동성 측면에서 신중한 접근이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.news_headlines\",\n    \"snapshot.macro.daily.us10y\",\n    \"snapshot.macro.daily.vix\",\n    \"snapshot.macro.structural.fed_funds_rate\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\"\n  ],\n  \"confidence\": \"MED\"\n}",
+    "regime_tag": "NEUTRAL",
+    "evidence_ids": [
+      "snapshot.news_headlines",
+      "snapshot.macro.daily.us10y",
+      "snapshot.macro.daily.vix",
+      "snapshot.macro.structural.fed_funds_rate",
+      "snapshot.cumulative_context.kospi_5d_cum_pct",
+      "snapshot.cumulative_context.usdkrw_5d_change_pct",
+      "snapshot.cumulative_context.vix_5d_avg"
+    ],
+    "confidence": "MED"
+  }
+]

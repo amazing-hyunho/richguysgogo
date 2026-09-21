@@ -1,0 +1,64 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,968.19로 0.97%, KOSDAQ은 831.56으로 0.54% 상승했으며 KOSPI 5일·20일 누적 수익률도 각각 4.109%, 4.237%다.",
+      "sources": [
+        "시장지표",
+        "누적맥락"
+      ]
+    },
+    {
+      "point": "VIX는 14.81로 5일 평균 16.544보다 낮지만, 미국 10년물 금리 4.998%와 매파적 연준 발언은 상승장의 제약 요인이다.",
+      "sources": [
+        "거시지표",
+        "뉴스"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 선호 강도",
+      "majority": "섹터·이익모멘텀·브레드스 담당자는 지수 상승과 반도체 기대를 근거로 리스크온 흐름이 유지된다고 판단했다.",
+      "minority": "매크로·수급·유동성 담당자는 높은 금리와 수급 공백 때문에 중립적이고 신중한 접근이 필요하다고 봤다.",
+      "minority_agents": [
+        "macro",
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "방향성은 상승이지만 추격 매수보다 금리와 실제 수급 확인을 우선해야 한다는 의미다."
+    },
+    {
+      "topic": "위험 신호 평가",
+      "majority": "다수는 VIX 하락과 KOSPI 누적 상승을 근거로 즉각적인 위험 회피 신호가 약하다고 평가했다.",
+      "minority": "리스크 담당자는 내부 체제 태그를 RISK_OFF로 제시했으나 동시에 뚜렷한 위험 신호는 없다고 설명해 판단 간 긴장이 남았다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "변동성 수치만으로 낙관하기보다 미국 금리와 원화 약세의 누적 흐름을 함께 점검해야 한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 9월 21일 장세: 반도체가 금리 부담을 앞섰다\n\nKOSPI는 6,968.19로 0.97%, KOSDAQ은 831.56으로 0.54% 상승했다. KOSPI의 5일 누적 상승률은 4.109%, 20일은 4.237%로 단기 상승분이 누적 흐름의 상당 부분을 차지한다. USD/KRW는 1,386.02로 하루 기준 0.10% 하락했고, VIX는 14.81로 5일 평균 16.544를 밑돌았다.\n\n다만 외국인·기관·개인은 각각 0억원으로 표시됐지만 이는 수집 실패에 따른 값이다. 실제 순매수와 수급 기준일은 확인 불가(제공 데이터 기준)다. 따라서 오늘의 성격은 ‘수급이 입증된 전면 강세’보다 반도체 뉴스가 주도한 가격 모멘텀으로 보는 편이 적절하다.\n\n## 수급 공백 속 가격을 움직인 키워드\n\n주체별 우위를 판정할 수 없는 가운데, [금리 부담에도 반도체 훈풍…코스피, 장 초반 7000선 회복](https://news.google.com/rss/articles/CBMiYEFVX3lxTE9keTh2TzFqYUV5bFBhWDdhNF8ySnNaWUJsSjE4NU4tZ3doTHhGRFk1VGRwOUhKU0tJcUpJY2J3NUlCNFJaVjFuanYwNkM1d0I3dzR6WERyR3NVUTV5Nkp3ddIBeEFVX3lxTFA0dlAxMkh0VEh4RkVBTWhaaWl1Yndtc3VsZS1EVzIxdG5kVld1Z2l0bFZXNEpvckJJaVF3ejI5M2w2ZXV6TlhEYVpvR0lSQTU2UnBrbzFSYk1rYnZXaVM5Z2h4WklRLU56cE1KM0o0bEtZSnY5RjBuTg?oc=5)가 투자심리를 설명한다. 다만 장 초반 7,000선이라는 기사 표현과 제공된 지수 6,968.19는 구분해야 한다.\n\n섹터·이익모멘텀·브레드스 담당자는 리스크온을 주장했다. 반면 macro와 liquidity는 금리 부담을, flow는 수급 부재를 들어 신중론을 유지했다. 의사결정상 핵심은 상승 방향을 인정하되 주도 주체를 추정하지 않는 것이다.\n\n## 오늘의 핵심 이슈 순위: AI, 연준, 환율\n\n1. **반도체·AI**: 나스닥은 0.395%, S&P500은 0.167% 상승한 반면 다우는 0.184% 하락해 미국 시장도 선택적 강세였다. [국채금리 상승에도 반도체주 강세](https://news.google.com/rss/articles/CBMidkFVX3lxTE11cnNUc1lmc1NJZVprUDAzVjVPZmNSQU1fTks3U3pqYTBaX1pIbUhpNjdqblhVU25sN1FaTkxub0xGdm05anE1LTFTM2oxUmpyZmVnMS1NSGJLMGM2UHZ3SUZXeWxNaUJWcHdPazRwWm1DOHVDaEE?oc=5)라는 흐름이 국내 반도체 기대와 연결됐다. 광 I/O·실리콘 포토닉스 주간 의제도 관련성이 있으나, 이는 12개월 연구 과제이지 당일 매매 신호는 아니다.\n2. **금리·인플레이션**: 미국 10년물 금리는 4.998%, 실질금리는 2.668%, CPI 상승률은 3.713%다. [연준 매파 인사의 추가 인상 시사](https://news.google.com/rss/articles/CBMie0FVX3lxTE1GbEF3QkE0ZFgyM1BkSTJGRm5TcS0ycVMweW5reGVSOGs3OGY3YnZBQmdpN2hxN1gwZElkbWNWaVU0SGhxQ0s0NXBaQ1pxTUNYQm9PTXJzU0dOWmNoMmI0VlZTX1RQUzhFblN6elNOVlhaN0VXdXRWLXRId9IBgAFBVV95cUxPczFZWlB4UENXS2RuOUZORERUUE83VF81WGRTY19wbmItaDQxTENSWlNPcnVvb01DTXRtR3IyamxoUWZoSThDcm1RYzZFMmlWRUc2V1psNTN4R2c5WGF5VEZGVkRRaGc2OWlJdEJMT1B0a3YzNGJ0Z04wdEl1blVIWA?oc=5)는 밸류에이션 확장의 상단을 제한한다.\n3. **환율**: 원화는 하루 기준 강세였지만 USD/KRW의 5일 변화율은 1.646% 상승이다. 당일 안정과 누적 원화 약세가 충돌하므로 외국인 수급 개선으로 연결해 해석할 수 없다.\n\n## 다음 확인점과 무효화 조건\n\n우선 확인할 것은 실제 외국인·기관 수급 복구 여부, 미국 10년물 금리, 반도체 강세의 지속성이다. VIX가 낮고 반전 신호도 없다는 점은 우호적이지만, WTI 94.52와 매파적 연준 뉴스는 경계 요인이다. **VIX가 5일 평균 16.544를 지속적으로 웃돌고 USD/KRW의 5일 상승 흐름이 확대되는 동시에 반도체 주도력이 약화되면, 오늘의 선별적 리스크온 판단은 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
