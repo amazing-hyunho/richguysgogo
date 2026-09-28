@@ -67,6 +67,9 @@ def _aggregate(flow: dict) -> tuple[tuple[float, float, float], tuple[float, flo
     markets = (flow or {}).get("market", {}) or {}
     kospi = markets.get("KOSPI", {}) or {}
     kosdaq = markets.get("KOSDAQ", {}) or {}
+    for market in (kospi, kosdaq):
+        if any(market.get(key) is None for key in ("foreign", "institution", "individual")):
+            raise ValueError("incomplete_market_flow")
     kospi_f = float(kospi.get("foreign", 0))
     kospi_i = float(kospi.get("institution", 0))
     kospi_r = float(kospi.get("individual", 0))
@@ -127,7 +130,7 @@ def main() -> None:
         if args.skip_existing:
             ex_rows = conn.execute(
                 "SELECT date, foreign_net, institution_net, retail_net FROM market_flow_daily "
-                "WHERE foreign_net IS NOT NULL OR institution_net IS NOT NULL"
+                "WHERE foreign_net IS NOT NULL AND institution_net IS NOT NULL AND retail_net IS NOT NULL AND kospi_foreign_net IS NOT NULL AND kospi_institution_net IS NOT NULL AND kospi_retail_net IS NOT NULL"
             ).fetchall()
             for r in ex_rows:
                 existing_dates.add(r[0])
@@ -209,14 +212,14 @@ def main() -> None:
                         :created_at
                     )
                     ON CONFLICT(date) DO UPDATE SET
-                        foreign_net=excluded.foreign_net,
-                        institution_net=excluded.institution_net,
-                        retail_net=excluded.retail_net,
-                        foreign_20d=excluded.foreign_20d,
-                        foreign_60d=excluded.foreign_60d,
-                        kospi_foreign_net=excluded.kospi_foreign_net,
-                        kospi_institution_net=excluded.kospi_institution_net,
-                        kospi_retail_net=excluded.kospi_retail_net,
+                        foreign_net=COALESCE(excluded.foreign_net, market_flow_daily.foreign_net),
+                        institution_net=COALESCE(excluded.institution_net, market_flow_daily.institution_net),
+                        retail_net=COALESCE(excluded.retail_net, market_flow_daily.retail_net),
+                        foreign_20d=COALESCE(excluded.foreign_20d, market_flow_daily.foreign_20d),
+                        foreign_60d=COALESCE(excluded.foreign_60d, market_flow_daily.foreign_60d),
+                        kospi_foreign_net=COALESCE(excluded.kospi_foreign_net, market_flow_daily.kospi_foreign_net),
+                        kospi_institution_net=COALESCE(excluded.kospi_institution_net, market_flow_daily.kospi_institution_net),
+                        kospi_retail_net=COALESCE(excluded.kospi_retail_net, market_flow_daily.kospi_retail_net),
                         created_at=excluded.created_at;
                     """,
                     {

@@ -106,19 +106,29 @@ def main() -> None:
     if end_d < start_d:
         raise ValueError("end-date must be >= start-date")
 
-    init_db(DB_PATH)
+    if not args.dry_run:
+        init_db(DB_PATH)
     days = _iter_dates(start_d, end_d)
 
+    def fetch(symbol: str) -> dict[str, float]:
+        try:
+            return _fetch_series(symbol, start_d, end_d)
+        except Exception as exc:
+            print(f"series_load_failed[{symbol}]: {type(exc).__name__}")
+            return {}
+
     # Primary + fallback symbols
-    tnx = _fetch_series("^TNX", start_d, end_d)
-    irx = _fetch_series("^IRX", start_d, end_d)
-    vix = _fetch_series("^VIX", start_d, end_d)
-    dxy1 = _fetch_series("DX-Y.NYB", start_d, end_d)
-    dxy2 = _fetch_series("^DXY", start_d, end_d)
-    krw1 = _fetch_series("KRW=X", start_d, end_d)
-    krw2 = _fetch_series("USDKRW=X", start_d, end_d)
-    oil1 = _fetch_series("CL=F", start_d, end_d)
-    oil2 = _fetch_series("BZ=F", start_d, end_d)
+    tnx = fetch("^TNX")
+    irx = fetch("^IRX")
+    vix = fetch("^VIX")
+    dxy1 = fetch("DX-Y.NYB")
+    dxy2 = fetch("^DXY")
+    krw1 = fetch("KRW=X")
+    krw2 = fetch("USDKRW=X")
+    oil1 = fetch("CL=F")
+
+    if not any((tnx, irx, vix, dxy1, dxy2, krw1, krw2, oil1)):
+        raise RuntimeError("all_macro_series_unavailable")
 
     conn = sqlite3.connect(DB_PATH)
     try:
@@ -132,7 +142,7 @@ def main() -> None:
             vix_v = vix.get(ds)
             dxy_v = _pick(dxy1, dxy2, ds)
             usdkrw_v = _pick(krw1, krw2, ds)
-            oil_v = _pick(oil1, oil2, ds)
+            oil_v = oil1.get(ds)
 
             if args.dry_run:
                 print(
@@ -149,13 +159,13 @@ def main() -> None:
                     :date, :us10y, :us2y, :spread_2_10, :vix, :dxy, :usdkrw, :oil_wti, :created_at
                 )
                 ON CONFLICT(date) DO UPDATE SET
-                    us10y=excluded.us10y,
-                    us2y=excluded.us2y,
-                    spread_2_10=excluded.spread_2_10,
-                    vix=excluded.vix,
-                    dxy=excluded.dxy,
-                    usdkrw=excluded.usdkrw,
-                    oil_wti=excluded.oil_wti,
+                    us10y=COALESCE(excluded.us10y, daily_macro.us10y),
+                    us2y=COALESCE(excluded.us2y, daily_macro.us2y),
+                    spread_2_10=COALESCE(excluded.spread_2_10, daily_macro.spread_2_10),
+                    vix=COALESCE(excluded.vix, daily_macro.vix),
+                    dxy=COALESCE(excluded.dxy, daily_macro.dxy),
+                    usdkrw=COALESCE(excluded.usdkrw, daily_macro.usdkrw),
+                    oil_wti=COALESCE(excluded.oil_wti, daily_macro.oil_wti),
                     created_at=excluded.created_at;
                 """,
                 {

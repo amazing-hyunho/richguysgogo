@@ -1694,14 +1694,14 @@ def upsert_market_flow_daily(
                 :created_at
             )
             ON CONFLICT(date) DO UPDATE SET
-                foreign_net=excluded.foreign_net,
-                institution_net=excluded.institution_net,
-                retail_net=excluded.retail_net,
-                foreign_20d=excluded.foreign_20d,
-                foreign_60d=excluded.foreign_60d,
-                kospi_foreign_net=excluded.kospi_foreign_net,
-                kospi_institution_net=excluded.kospi_institution_net,
-                kospi_retail_net=excluded.kospi_retail_net,
+                foreign_net=COALESCE(excluded.foreign_net, market_flow_daily.foreign_net),
+                institution_net=COALESCE(excluded.institution_net, market_flow_daily.institution_net),
+                retail_net=COALESCE(excluded.retail_net, market_flow_daily.retail_net),
+                foreign_20d=COALESCE(excluded.foreign_20d, market_flow_daily.foreign_20d),
+                foreign_60d=COALESCE(excluded.foreign_60d, market_flow_daily.foreign_60d),
+                kospi_foreign_net=COALESCE(excluded.kospi_foreign_net, market_flow_daily.kospi_foreign_net),
+                kospi_institution_net=COALESCE(excluded.kospi_institution_net, market_flow_daily.kospi_institution_net),
+                kospi_retail_net=COALESCE(excluded.kospi_retail_net, market_flow_daily.kospi_retail_net),
                 created_at=excluded.created_at;
             """,
             {

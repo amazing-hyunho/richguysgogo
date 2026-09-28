@@ -15,6 +15,9 @@ FRED provides stable, official macro time series (unemployment, CPI, PCE, PMI, w
 """
 
 import re
+import calendar
+from datetime import date
+from html import unescape
 
 import requests
 from committee.tools.fred_common import fetch_fred_last_n_values
@@ -118,6 +121,22 @@ def pmi_series_ids_tried() -> list[str]:
     return ["ISM_WEB(go.weareism.org)"]
 
 
+def _parse_ism_manufacturing_pmi(html: str, asof: date | None = None) -> float | None:
+    text = re.sub(r"\s+", " ", unescape(re.sub(r"<[^>]+>", " ", html)))
+    months = "|".join(calendar.month_name[1:])
+    period = re.search(rf"({months})\s+(20\d{{2}})\s+ISM.{{0,15}}Manufacturing PMI", text, re.I)
+    if not period:
+        return None
+    month = list(calendar.month_name).index(period.group(1).title())
+    today = asof or date.today()
+    age = (today.year - int(period.group(2))) * 12 + today.month - month
+    if age < 0 or age > 2:
+        print(f"ism_pmi_stale_report: {period.group(2)}-{month:02d}")
+        return None
+    match = re.search(r"Manufacturing PMI[^0-9]{0,80}at\s+([0-9]{1,2}(?:\.[0-9]+)?)", text, re.I)
+    return float(match.group(1)) if match else None
+
+
 def _fetch_ism_manufacturing_pmi() -> float | None:
     """Scrape the latest ISM Manufacturing PMI value from ISM public page.
 
@@ -133,12 +152,7 @@ def _fetch_ism_manufacturing_pmi() -> float | None:
         if resp.status_code != 200:
             print(f"ism_pmi_http_error: {resp.status_code}")
             return None
-        text = resp.text or ""
-        # Look for the headline "Manufacturing PMI® at 47.9%" (or similar).
-        m = re.search(r"Manufacturing PMI[^0-9]{0,80}at\\s+([0-9]{1,2}(?:\\.[0-9])?)", text, re.IGNORECASE)
-        if not m:
-            return None
-        return float(m.group(1))
+        return _parse_ism_manufacturing_pmi(resp.text or "")
     except Exception as exc:  # noqa: BLE001
         print(f"ism_pmi_fetch_failed: {exc}")
         return None

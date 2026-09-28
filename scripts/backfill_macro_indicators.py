@@ -28,6 +28,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.append(str(ROOT_DIR))
 
 from committee.core.database import init_db
+from committee.core.env_loader import load_project_env
 
 
 def _import_yfinance():
@@ -125,7 +126,9 @@ def main() -> None:
     parser.add_argument("--days", type=int, default=0, help="최근 N일만 처리 (0=전체). 일별 실행엔 --days 7 권장.")
     args = parser.parse_args()
 
-    init_db(DB_PATH)
+    load_project_env(ROOT_DIR)
+    if not args.dry_run:
+        init_db(DB_PATH)
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     try:
@@ -161,11 +164,11 @@ def main() -> None:
             conn.execute(
                 """
                 UPDATE daily_macro
-                SET vix3m = :vix3m,
-                    vix_term_spread = :vix_term_spread,
-                    hy_oas = :hy_oas,
-                    ig_oas = :ig_oas,
-                    fed_balance_sheet = :fed_balance_sheet,
+                SET vix3m = COALESCE(:vix3m, vix3m),
+                    vix_term_spread = COALESCE(:vix_term_spread, vix_term_spread),
+                    hy_oas = COALESCE(:hy_oas, hy_oas),
+                    ig_oas = COALESCE(:ig_oas, ig_oas),
+                    fed_balance_sheet = COALESCE(:fed_balance_sheet, fed_balance_sheet),
                     created_at = :created_at
                 WHERE date = :date
                 """,

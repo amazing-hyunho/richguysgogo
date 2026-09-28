@@ -60,7 +60,6 @@ def _fetch_market_flow_eok(ymd: str, sosok: str) -> Dict[str, int]:
         raise RuntimeError("no_rows")
 
     target_cells: list[str] | None = None
-    fallback_cells: list[str] | None = None
     for tr in tr_blocks:
         cells = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", tr, flags=re.IGNORECASE | re.DOTALL)
         cleaned = [_clean_html_text(c) for c in cells]
@@ -69,17 +68,12 @@ def _fetch_market_flow_eok(ymd: str, sosok: str) -> Dict[str, int]:
         row_ymd = _normalize_ymd(cleaned[0])
         if not row_ymd:
             continue
-        if fallback_cells is None:
-            fallback_cells = cleaned
         if row_ymd == ymd:
             target_cells = cleaned
             break
 
     if not target_cells:
-        if fallback_cells is not None:
-            target_cells = fallback_cells
-        else:
-            raise RuntimeError(f"row_not_found[{ymd}]")
+        raise RuntimeError(f"row_not_found[{ymd}]")
 
     individual = _parse_eok_cell(target_cells[1])
     foreign = _parse_eok_cell(target_cells[2])
@@ -107,12 +101,12 @@ def _parse_eok_cell(raw: str) -> int:
     """Parse integer 억원 values like '+1,234' / '-56' / '0'."""
     s = (raw or "").strip()
     if not s:
-        return 0
+        raise ValueError("missing_flow_value")
 
     sign = -1 if s.startswith("-") else 1
     digits = re.sub(r"[^0-9]", "", s)
     if not digits:
-        return 0
+        raise ValueError("invalid_flow_value")
     return sign * int(digits)
 
 

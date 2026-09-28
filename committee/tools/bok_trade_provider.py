@@ -7,7 +7,7 @@ from urllib.parse import quote
 
 import requests
 
-_STAT_CODE = "901Y011"
+_STAT_CODE = "901Y118"
 _CYCLE = "M"
 _NAME_PRIORITY = (
     "국별수출관세청",
@@ -21,7 +21,7 @@ _EXPORT_UNIT_HINTS = ("달러", "백만", "금액")
 
 
 def fetch_korea_export_yoy(market_date: date, timeout_sec: int = 7) -> float | None:
-    """Fetch Korea export YoY% from ECOS table 901Y011 (monthly).
+    """Fetch Korea export YoY% from ECOS customs totals 901Y118 (monthly).
 
     Uses latest published month vs the same calendar month one year earlier.
     Returns None on any failure; logs a short reason (never prints API keys).
@@ -47,7 +47,7 @@ def fetch_korea_export_yoy(market_date: date, timeout_sec: int = 7) -> float | N
             base, market_date, timeout_sec=timeout_sec
         )
     if not item_code:
-        print("korea_export_yoy: no matching item code for 901Y011")
+        print(f"korea_export_yoy: no matching item code for {_STAT_CODE}")
         return None
 
     end_anchor = date(market_date.year, market_date.month, 1)
@@ -128,9 +128,7 @@ def _resolve_export_item_code(api_key_quoted: str, *, timeout_sec: int) -> str |
         codes = [_item_code(it) for it in pool]
         return sorted(set(codes))[0]
 
-    all_codes = [_item_code(it) for it in items if _item_code(it)]
-    if all_codes:
-        return sorted(set(all_codes))[0]
+    # Never substitute an unrelated series (e.g. imports) for exports.
     return None
 
 
@@ -154,7 +152,7 @@ def _resolve_export_item_code_via_statistic_search(
 ) -> str | None:
     """Resolve export item code from StatisticSearch when StatisticItemList is empty or unusable.
 
-    Queries 901Y011/M over the last 24 months without ITEM_CODE1 in the path, then picks
+    Queries the monthly customs table over the last 24 months without ITEM_CODE1, then picks
     ITEM_CODE1 using the same name priority as the item list, with a deterministic 수출 fallback.
     """
     end_anchor = date(market_date.year, market_date.month, 1)

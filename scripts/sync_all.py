@@ -103,6 +103,10 @@ def _parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    if str(ROOT_DIR) not in sys.path:
+        sys.path.insert(0, str(ROOT_DIR))
+    from committee.core.env_loader import load_project_env
+    load_project_env(ROOT_DIR)
     args = _parse_args()
     py = sys.executable
     results: list[tuple[str, bool]] = []
@@ -215,6 +219,9 @@ def main() -> None:
     failed = sum(1 for _, ok in results if not ok)
     print(f"\n  총 {len(results)}단계 / 실패 {failed}개")
     print("=" * 60)
+
+    if failed:
+        raise SystemExit(1)
 
     if args.auto_commit:
         _git_commit_push("sync_all", push=args.auto_push)

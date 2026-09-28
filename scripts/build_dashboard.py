@@ -1014,7 +1014,7 @@ def main() -> None:
             ),
             "daily_macro": fetch_rows(
                 conn,
-                "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, "
+                "SELECT date, us10y, us2y, spread_2_10, vix, dxy, usdkrw, fed_funds_rate, real_rate, "
                 "us_3m_yield, us_2y_yield, us_10y_yield, spread_10y_2y, spread_10y_3m, "
                 "vix3m, vix_term_spread, oil_wti, hy_oas, ig_oas, fed_balance_sheet, "
                 "russell2000, oil_brent, tga_balance, boj_rate, "

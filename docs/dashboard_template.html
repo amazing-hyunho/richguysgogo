@@ -672,6 +672,7 @@
       </div>
       <p class="macro-prompt">지금은 어떤 매크로 환경인가?</p>
       <div class="metric-grid" id="macro-metric-cards"></div>
+      <details open id="data-health-panel"><summary>전체 시장·매크로·수급 지표 점검</summary><p id="data-health-summary"></p><p>마지막 저장일 기준입니다. 원천 통계의 발표일과 다를 수 있습니다. 최근 값이 없는 지표는 과거 값과 날짜를 함께 표시하며, 휴장일은 결측에 포함될 수 있습니다.</p><div style="overflow-x:auto;max-height:420px"><table><thead><tr><th>지표</th><th>마지막 유효값</th><th>마지막 저장일</th><th>상태</th><th>최근 30행 결측</th></tr></thead><tbody id="data-health-rows"></tbody></table></div></details>
       <div class="macro-story-box" id="macro-story-box" role="region" aria-label="매크로 스토리"></div>
       <div class="macro-conclusion" id="macro-conclusion" role="region" aria-label="매크로 결론"></div>
       <div class="agent-grid" id="macro-agent-cards"></div>
@@ -1395,6 +1396,33 @@ function latestNonNull(rows, key) {
     if (typeof v === 'number' && Number.isFinite(v)) return { value: v, row: r[i] };
   }
   return null;
+}
+function renderDataHealth() {
+  const groups = {
+    market_daily: {kospi:'KOSPI', kosdaq:'KOSDAQ', sp500:'S&P 500', nasdaq:'NASDAQ', dow:'Dow', kospi_pct:'KOSPI 등락률', kosdaq_pct:'KOSDAQ 등락률', sp500_pct:'S&P 등락률', nasdaq_pct:'NASDAQ 등락률', dow_pct:'Dow 등락률', usdkrw:'시장 USD/KRW', usdkrw_pct:'USD/KRW 등락률'},
+    daily_macro: {us10y:'미국 10년 금리', us_2y_yield:'미국 2년 금리', us_3m_yield:'미국 3개월 금리', spread_10y_2y:'10년-2년 금리차', spread_10y_3m:'10년-3개월 금리차', vix:'VIX', vix3m:'VIX 3M', vix_term_spread:'VIX 기간차', dxy:'DXY', usdkrw:'매크로 USD/KRW', fed_funds_rate:'Fed 금리', real_rate:'실질금리', oil_wti:'WTI', oil_brent:'브렌트', hy_oas:'하이일드 OAS', ig_oas:'투자등급 OAS', fed_balance_sheet:'Fed 자산', russell2000:'Russell 2000', tga_balance:'TGA 잔고', boj_rate:'BOJ 금리'},
+    monthly_macro: {unemployment_rate:'실업률', cpi_yoy:'CPI YoY', core_cpi_yoy:'근원 CPI YoY', pce_yoy:'PCE YoY', pmi:'제조업 PMI', retail_sales_mom:'소매판매 MoM', nfp_change:'비농업 고용 증감', wage_level:'시간당 임금', wage_yoy:'임금 YoY', export_yoy:'한국 수출 YoY'},
+    quarterly_macro: {real_gdp:'실질 GDP', gdp_qoq_annualized:'GDP 성장률'},
+    market_flow_daily: {foreign_net:'외국인 순매수', institution_net:'기관 순매수', retail_net:'개인 순매수', foreign_20d:'외국인 20일 누적', foreign_60d:'외국인 60일 누적', kospi_foreign_net:'KOSPI 외국인', kospi_institution_net:'KOSPI 기관', kospi_retail_net:'KOSPI 개인'}
+  };
+  const reference = new Date().toISOString().slice(0,10);
+  let unavailable = 0, stale = 0, total = 0;
+  const html = [];
+  for (const [table, fields] of Object.entries(groups)) {
+    const rows = safeArr(data[table]);
+    for (const [key, label] of Object.entries(fields)) {
+      total++;
+      const found = latestNonNull(rows, key);
+      const age = found ? (Date.parse(reference) - Date.parse(found.row.date)) / 86400000 : null;
+      const status = !found ? '데이터 없음' : age > 7 ? '갱신 지연 · 과거값' : '저장값 있음';
+      if (!found) unavailable++; else if (age > 7) stale++;
+      const tail = rows.slice(-30);
+      const missing = tail.filter(r => typeof r[key] !== 'number' || !Number.isFinite(r[key])).length;
+      html.push(`<tr><td>${escapeHtml(label)}</td><td>${found ? escapeHtml(formatNumberWithComma(found.value, 2)) : '—'}</td><td>${found ? escapeHtml(found.row.date) : '—'}</td><td>${status}</td><td>${missing}/${tail.length}</td></tr>`);
+    }
+  }
+  document.getElementById('data-health-summary').textContent = `${total}개 지표 · 저장 이력 없음 ${unavailable}개 · 7일 초과 갱신 지연 ${stale}개`;
+  document.getElementById('data-health-rows').innerHTML = html.join('');
 }
 function previousNonNullBefore(rows, key, beforeIndex) {
   const r = safeArr(rows);
@@ -3083,9 +3111,10 @@ function renderWatchTop3() {
     ? (exForMeta.row.date || exForMeta.row.time || exForMeta.row.as_of || '-')
     : '-';
   document.getElementById('macro-dates').textContent =
-    `일별 ${dm.date || '-'} · 월별 ${mLast && mLast.date ? mLast.date : '-'} · 수출 기준 ${exportAsOf}`;
+    `일별 ${dm.date || '-'} · 월별 ${mLast && mLast.date ? mLast.date : '-'} · 수출 저장 ${exportAsOf}`;
 
   document.getElementById('macro-metric-cards').innerHTML = buildMacroMetricCards();
+  renderDataHealth();
 
   const storyEl = document.getElementById('macro-story-box');
   if (storyEl) storyEl.textContent = buildMacroStoryKo(dailyMacro, digest);
