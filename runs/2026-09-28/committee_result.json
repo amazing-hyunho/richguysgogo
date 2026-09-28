@@ -1,0 +1,65 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 7,001.71로 1.20% 하락했지만 최근 20일 누적 3.80% 상승을 유지했고, KOSDAQ는 861.13으로 1.88% 올랐다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1,356.04원으로 0.21% 상승했고 VIX는 14.87로 5일 평균 11.83을 웃돌아 금리·달러발 경계가 강화됐다.",
+      "sources": [
+        "macro_daily",
+        "cumulative_context",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "오늘 하락을 추세 전환으로 볼지 여부",
+      "majority": "중립 의견은 KOSPI의 당일 하락에도 5일 및 20일 누적 상승을 근거로 단기 조정 가능성을 우선 평가했습니다.",
+      "minority": "위험회피 의견은 미국 장기금리와 달러 강세가 유동성 환경을 보수적으로 바꿨다고 판단했습니다.",
+      "minority_agents": [
+        "macro",
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "금리·환율 압력이 이어질 경우 누적 상승 추세의 지지력이 약화될 수 있어, 단기 반등을 추세 재개로 성급히 해석하기 어렵습니다."
+    },
+    {
+      "topic": "수급 방향성 판단의 신뢰도",
+      "majority": "수급 데이터 부재로 투자주체별 매매를 근거로 한 방향성 판단을 유보해야 한다는 의견입니다.",
+      "minority": "시장 내부 확산이 비교적 양호해 중기 흐름은 아직 긍정적이라는 평가가 제시됐습니다.",
+      "minority_agents": [
+        "breadth"
+      ],
+      "why_it_matters": "외국인·기관·개인 순매수 확인 전에는 KOSPI와 KOSDAQ의 엇갈린 흐름이 위험선호 회복인지 단기 순환매인지 판별하기 어렵습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 금리·환율 경계 속 KOSPI 조정, KOSDAQ는 반등\n\nKOSPI는 7,001.71로 1.20% 하락한 반면 KOSDAQ는 861.13으로 1.88% 상승했다. 대형주 중심의 위험회피와 성장주 일부의 상대강세가 동시에 나타난 하루다. USD/KRW는 1,356.04원으로 0.21% 올랐고, VIX는 14.87로 5일 평균 11.83을 상회했다. 미국 10년물 금리는 5.18%, 달러지수는 100.97로 제공돼 금리와 달러가 국내 위험자산의 할인요인으로 작용하는 환경이다. 다만 KOSPI는 최근 5일 0.74%, 20일 3.80% 상승해 당일 하락만으로 중기 추세 훼손을 단정하기는 이르다.\n\n## 수급은 확인 불가, 지수 간 차별화에 주목\n\n외국인·기관·개인 순매수는 제공 데이터 기준 확인 불가다. 따라서 KOSPI 하락을 외국인 매도 등 특정 주체의 매매로 해석해서는 안 된다. 수급 담당자(flow)는 금리 급등·고환율로 수급 불확실성이 확대됐다고 평가했고, 유동성 담당자(liquidity)도 달러 강세와 장기금리를 보수적 요인으로 지목했다. 반면 KOSDAQ 상승은 위험자산 전반의 일방적 이탈보다는 종목·시장별 선별 대응 가능성을 시사한다. 다만 VIX가 5일 평균보다 높아진 만큼 이를 곧바로 위험선호 회복으로 보기는 어렵다.\n\n## 9월 28일 핵심 변수: PCE·고용, 장기금리, AI 수요\n\n1. 우선순위는 미국 물가와 고용이다. [국채 금리 상승 속 PCE 물가·고용지표 주목](https://news.google.com/rss/articles/CBMiaEFVX3lxTE5jeGZORllpcy1uUGc2Z012ZkRfQ2xjMmM3SGZQRmtqY3Jid1hXODhsOVFlN1BnNm8zLXlHcWV2Q05aSjV5OHVLMUJacGgtQk5tYjY4QjZLaHh0ZnJFZy05c1B2eXQyMGRO0gFuQVVfeXFMTU9oVFVpX3UxZU9Wd0ZybTdhWnNjTmtiOTZBQ1VBMEF1VDRlOGdSLUw2NXpUUXVJT3VUa01WVVZaMEFtT2tJWWs1WmQ3UGVNZ3MtX1dwS2ZFbHdQLUk2RUlsS1h0UTFPSDFmdDlrcnc?oc=5)가 금리 상승 국면에서 지표를 분수령으로 제시한 만큼, 물가·고용 결과가 금리 재상승 우려를 줄이는지가 관건이다.\n\n2. 장기금리 불확실성도 지속된다. [글로벌 국채금리 상승과 시장 불확실성](https://news.google.com/rss/articles/CBMigAFBVV95cUxQbG1pRGtFVk1TREtqVkZDSlVldEVKNWV3ankxVk9seXJXUnhHRHV4QjZ5SXVKckpiSGtXUzdLanIzZlRwQkRiNVBOX0lNMDFGVVVRdU83TlphRnpBeWQwVDZyTnhtUnBJcFk4TktBd29GaW1jMElyUUNESEZIakNvYg?oc=5) 보도는 오늘의 환율·변동성 수치와 방향이 같다.\n\n3. AI·반도체 수요는 방어적 성장 논리다. [엔비디아·오픈AI발 수요와 한국 반도체주](https://news.google.com/rss/articles/CBMiYEFVX3lxTE5YSjFxaXF1TDAyRDRpSEhsVFRNSDJnTk5DOEZGNHhKeG9BNVlPYnkxV2JhR3pQN0NsLTQ3R0VudEJTQjhhNEpfdjE3OVFOMFRSdU5GVXM3SW85ZUw4cmgyVNIBeEFVX3lxTFBqYUszQ1ZKMTZZbjdHd05na1huRDc2aDlSTTQ2MGJqb1lZc3REYno0Vm03ZXRaUGhoX0hPN3lBSUxIaFFSWnI4RThaM08zd1hvRjVnYVFuSklHQWRkckg1aWtjbkxlUi1SNEFKOGFyTVdVSXVpTC1OeA?oc=5) 이슈는 중기 연구 의제와 맞닿아 있으나, 오늘의 금리 부담을 상쇄하는 즉각적 매매 신호로 확대 해석할 단계는 아니다.\n\n## 결론: 추세 훼손 여부는 금리·환율의 동행으로 검증\n\n기본 시나리오는 중립적 방어다. KOSPI의 20일 상승 추세와 KOSDAQ 강세는 하방을 완충하지만, USD/KRW 상승과 VIX의 평균 상회가 단기 비중 확대를 제한한다. 향후 미국 장기금리, PCE·고용, USD/KRW 및 확인 가능한 투자주체 수급을 함께 점검해야 한다. 오늘의 중립·단기조정 판단은 KOSPI의 누적 상승이 유지되고 금리·환율 부담이 추가로 증폭되지 않는다는 전제에 있다. 미국 장기금리와 USD/KRW가 동반 상승하면서 KOSPI의 누적 상승 폭이 훼손될 경우, 이 전제는 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
