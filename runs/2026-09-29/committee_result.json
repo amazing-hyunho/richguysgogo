@@ -1,0 +1,65 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,848.23으로 0.59% 하락했고 KOSDAQ는 836.58로 1.10% 내렸다. 미 10년물 5.24%와 VIX 16.07은 금리·변동성 부담을 확인한다.",
+      "sources": [
+        "market_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "원/달러는 1,358.97원으로 0.16% 상승했고, 미국 주요 지수도 0.67~0.92% 하락했다. 금리 상승과 달러 강세가 위험자산 전반의 할인율 부담으로 연결됐다.",
+      "sources": [
+        "market_data",
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 조정을 추세적 위험회피로 볼지 여부",
+      "majority": "매크로·수급·브레드스·유동성 담당자는 금리와 달러, 변동성 상승을 근거로 단기 리스크오프 우세를 판단했습니다.",
+      "minority": "섹터·리스크·이익모멘텀 담당자는 20일 KOSPI 누적 상승과 뚜렷하지 않은 실적 훼손을 근거로 단기 조정 가능성을 더 높게 봤습니다.",
+      "minority_agents": [
+        "sector",
+        "risk",
+        "earnings"
+      ],
+      "why_it_matters": "5일 하락이 중기 상승 추세의 훼손으로 이어지는지, 또는 금리 충격에 따른 일시적 조정에 그치는지가 향후 위험자산 비중 판단을 좌우합니다."
+    },
+    {
+      "topic": "투자자별 수급 해석의 가능 여부",
+      "majority": "수급 방향은 거시 불확실성에 제약될 가능성이 높다는 경계 의견입니다.",
+      "minority": "수급 담당자는 투자자별 순매수 데이터가 없어 외국인·기관·개인 주도 여부를 단정할 수 없다고 판단했습니다.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "당일 순매수 데이터 부재로 하락의 주도 주체와 매도 압력의 지속성을 확인할 수 없어, 수급 기반의 공격적 대응은 근거가 약합니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 금리 충격이 주도한 동반 조정\n\nKOSPI는 6,848.23으로 0.59% 하락했고, KOSDAQ는 836.58로 1.10% 내렸다. 원/달러는 1,358.97원으로 0.16% 상승했다. VIX는 16.07로 5일 평균 12.304를 웃돌아 위험회피 강도가 직전 며칠보다 높아졌음을 시사한다. 미국도 S&P500 -0.77%, 나스닥 -0.92%, 다우 -0.67%로 동반 약세였다. 핵심 배경은 미 10년물 금리 5.24%까지 높아진 할인율 부담이다.\n\n## 수급은 공란, 가격은 매크로를 반영\n\n외국인·기관·개인 순매수는 모두 확인 불가(제공 데이터 기준)다. 따라서 당일 하락을 특정 투자자 주도의 매도로 해석해서는 안 된다. 다만 수급 담당자(flow)는 거시 불확실성 때문에 방향성 판단이 제한적이라고 봤고, 유동성 담당자(liquidity)는 달러와 금리 부담이 위험자산 선호를 제약한다고 평가했다. 원/달러의 당일 상승과 미국 주가 약세가 동시에 나타난 만큼, 현재 가격 흐름은 국내 고유 수급보다 글로벌 금리·달러 변수에 민감하게 반응한 것으로 판단한다.\n\n최근 5일 KOSPI는 1.49% 하락했지만 20일 누적 수익률은 1.48% 상승이다. 즉 단기 조정은 분명하되 중기 추세 훼손을 확정할 단계는 아니다. 리스크 담당자(risk)와 이익모멘텀 담당자(earnings)가 이를 일시적 충격으로 본 이유다. 반대로 VIX가 5일 평균을 웃돌고 있어 낙폭만을 근거로 성급한 반등 베팅을 하기에는 이르다.\n\n## 9월 29일 우선순위 이슈: 금리·물가, 달러, AI\n\n1. **금리와 물가**: [미 국채금리 5.2%까지 치솟아…韓 경제·반도체에 복병](https://news.google.com/rss/articles/CBMiYEFVX3lxTE5abmtvNXVQaXlSZUxodVFUUXpZZm9LZTFfSWQzOGo2Sm85MEd3UnV6R24wdjNmeFNJUFNHVWRlaTczYU5pNGVRb1czVmREZi1LdnY3dDgwUVhjME5ERGtkT9IBeEFVX3lxTE12dFRZUklsLVlyY1F2NjhjM0xyZkFBblByZ1FvcU5WYnhXMm5Gd2ZGdE9yNk11R25yejNOamVMQkVHRnZMZmZ6UVlFdWxfV2NpMU5DcVhFOHpWNUJyQ0hjeW82R3YxVTJ1dkVpY1RzLUZVeUxzYVJoaA?oc=5)와 [인플레이션 압력 지속 언급](https://news.google.com/rss/articles/CBMiW0FVX3lxTE5yNG5kUG9Ua3laX3haZUJEbGxqLTVkZnh6dW4xYnoxbDBub200OEtZa0hJTGtYNjlxLWMxNUJlVkI0dm1WMDJxaW1qQjdSM3NFZmZqSFZxVEVaSEE?oc=5)는 고금리 장기화 우려를 강화한다.\n2. **달러와 지정학**: [중동 리스크 재확대에 따른 달러 강세 전망](https://news.google.com/rss/articles/CBMiX0FVX3lxTE4xaTBCWUZIZXB0ejhBTU5IRmxBRGRzNHFZcEM1X1U1MVdJRlc2bGRKZVB2N194NUdtUXlqS2R2TG5oc1pQMTVOYzd2aXhOQzJlRDJkelhGUVFqc3dHdDNB?oc=5)은 원화 약세 압력을 뒷받침한다.\n3. **AI 테마**: 엔비디아의 AI 안전플랫폼 뉴스는 중장기 AI 관심을 유지시키지만, 오늘은 금리 충격이 더 직접적인 가격 결정 요인이다.\n\n## 다음 확인점과 시나리오 무효화 조건\n\n기본 시나리오는 금리·달러·변동성의 추가 악화 여부를 확인하는 방어적 대응이다. 미 10년물, 원/달러, VIX가 안정되고 미국 증시 약세가 완화되면 최근 5일 조정은 중기 상승 흐름 안의 되돌림으로 해석할 여지가 커진다. 반대로 **미 10년물과 원/달러, VIX가 추가 상승하는 가운데 KOSPI의 하락이 이어지면 ‘일시적 조정’이라는 오늘의 완화 시나리오는 무효화**된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
