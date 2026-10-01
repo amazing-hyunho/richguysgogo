@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "코스피는 6,818.18로 0.29% 하락했고 최근 5일 -3.745% 조정이나 20일 누적 +4.764%로 중기 상승 흐름은 유지했습니다.",
+      "sources": [
+        "market_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "달러/원은 1,355.84원으로 0.42% 상승했고 VIX는 16.34로 5일 평균 12.77보다 높아, 국채금리 경계와 함께 단기 위험선호를 제약했습니다.",
+      "sources": [
+        "macro_daily",
+        "market_data",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "유동성 위험의 강도",
+      "majority": "매크로·수급·섹터·리스크·이익모멘텀·브레드스 담당자는 단기 경계는 필요하지만 중립적 대응이 적절하다고 봤습니다.",
+      "minority": "유동성 담당자는 미국 국채금리와 달러 강세를 근거로 정책·유동성 환경이 위험회피로 전환했다고 판단했습니다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "수급 데이터가 부재한 상황에서 금리와 환율의 추가 상승은 중립 판단을 빠르게 위험회피로 바꿀 수 있는 핵심 감시 변수입니다."
+    },
+    {
+      "topic": "단기 조정 이후의 추세 지속성",
+      "majority": "최근 5일 조정에도 20일 누적 상승과 코스닥 상대강세를 고려하면 중기 추세는 훼손되지 않았다는 의견입니다.",
+      "minority": "이익모멘텀 담당자는 실적 추정치 상향 신호가 뚜렷하지 않아 추세 강화를 단정하기 어렵다고 봤습니다.",
+      "minority_agents": [
+        "earnings"
+      ],
+      "why_it_matters": "AI 투자 기대가 실적 개선으로 연결되지 않으면 중기 상승 논거는 약화될 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 금리 경계 속 코스피 조정, 코스닥은 상대강세\n\n10월 1일 코스피는 6,818.18로 0.29% 하락했고, 코스닥은 865.64로 1.19% 상승했다. 달러/원은 1,355.84원으로 0.42% 올랐으며, VIX는 16.34로 5일 평균 12.77을 웃돌았다. 미국 10년물 금리는 5.293%다. 즉 국내 대형주에는 금리·환율 부담이 작용한 반면, 코스닥의 반등이 위험회피 일변도는 아님을 보여준다. 다만 외국인·기관·개인 순매수는 데이터 수집 실패로 확인 불가(제공 데이터 기준)다.\n\n## 수급의 공백은 금리와 환율로 읽어야 한다\n\n오늘은 투자자별 매매대금을 0억원으로 해석해서는 안 된다. 제공된 0은 실제 순매수가 아니라 수급 데이터 부재를 뜻한다. 따라서 주체별 매도·매수의 원인을 단정할 수 없다. 수급 담당자(flow)도 이 점을 들어 관망 우세를 제시했다. 대신 달러/원 상승과 VIX의 5일 평균 상회, 그리고 [국채금리 급등 속 혼조로 마감한 뉴욕증시](https://news.google.com/rss/articles/CBMiVEFVX3lxTE5lczJWa0RhdDhGQUsxT3JjNnFsTUVCRC05NnhYUU8xYmNDaUFMVENOeHRVSVpPSXVwUjdFQVFXLVBITWEwUUFDRFJGSi1SZ3dUcHJLbg?oc=5)가 단기 위험선호를 제약한 핵심 배경으로 판단된다. 유동성 담당자(liquidity)는 이를 위험회피 전환으로 평가했으나, 다수 의견은 아직 중립 유지다.\n\n## 오늘의 이슈: 금리 우려와 AI 기대의 공존\n\n1. 국내 증시는 [미 국채금리 최고치에 투심이 위축됐다는 보도](https://news.google.com/rss/articles/CBMiaEFVX3lxTE5nU3FmWFhPSEZPQzNBQzhfNHpDWWoybjA5WHpnSkZ2elZNcjVGS2toZVdvQk1zbjdEQ0ZMS1R4RWZ6ZlFabklndHpXMWVYVkh2Tm42d2dkaW1lN0tWUFlfdlRnRDR5NGQt0gFuQVVfeXFMT1BnOXVuSzloMV9OMm1Yb09VTURIZWFidWhTZFV5clR2ZWRsNlVtd0VJcEp4RVdISWNWaENZdWJUblF3SmZFeTRzYW93QjNyelZDcVVCN2VZU29HMEFoV0g5RlFhQzdKVVhMRF80OEE?oc=5)와 부합한다. 2. 반면 PCE 물가 예상 하회와 10월 인상 전망 후퇴 뉴스는 금리 부담의 완화 가능성을 남긴다. 3. AI 투자 지속 기대는 반도체·장비의 중기 논리를 지지한다. 미래경제 주간 의제의 AI·반도체·데이터센터 및 광 I/O는 이를 점검할 장기 연구 주제이나, 오늘의 매매 신호로 확대 해석할 단계는 아니다.\n\n## 5일 조정과 20일 상승 사이의 판단\n\n코스피는 최근 5일 -3.745%이나 20일 누적 +4.764%다. 섹터·브레드스 담당자는 이 조합과 코스닥 강세를 근거로 중기 모멘텀 잔존을 봤다. 반면 이익모멘텀 담당자는 실적 추정치 상향이 뚜렷하지 않다고 지적했다. 결론적으로 금리·환율 진정과 실제 수급 데이터 복원이 확인되기 전까지는 선별 대응이 합리적이다. 오늘의 중립·선별대응 가설은 국채금리 경계가 완화되고 달러/원이 안정돼도 코스피의 조정이 이어지거나, 확인 가능한 수급이 일관된 순매도로 전환될 경우 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
