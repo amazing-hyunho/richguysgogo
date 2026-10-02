@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "코스피는 6,970.28로 -0.04%에 그친 반면 코스닥은 902.00으로 +0.92% 상승했다. 코스피 20일 누적 +5.329% 대비 최근 5일 -1.542%는 상승 추세 내 단기 숨고르기 성격을 시사한다.",
+      "sources": [
+        "market_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "원/달러는 1,355.84원으로 +0.32% 상승했고, 미 10년물 5.237%·달러지수 102.082 및 유가 93.09달러는 금리·물가 경계가 국내 위험선호 회복을 제약할 수 있음을 보여준다.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 국면 판단",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스 담당자는 단기 조정과 거시 불확실성이 공존하는 중립 국면으로 판단했다.",
+      "minority": "리스크·유동성 담당자는 금리와 달러 환경을 근거로 위험회피에 더 무게를 뒀다.",
+      "minority_agents": [
+        "risk",
+        "liquidity"
+      ],
+      "why_it_matters": "중립 판단의 전제는 변동성 안정이다. 금리·달러가 추가 상승하면 중립적 숨고르기는 위험회피 확대로 전환될 수 있다."
+    },
+    {
+      "topic": "성장주·반도체의 방어력",
+      "majority": "섹터 담당자는 반도체 등 성장 섹터의 상대 강세 가능성을 언급했다.",
+      "minority": "이익모멘텀 담당자는 실적 추정치 상향 근거가 명확하지 않아 테마 강세의 추세화를 경계했다.",
+      "minority_agents": [
+        "earnings"
+      ],
+      "why_it_matters": "반도체 관련 뉴스가 지수 방어에 기여하더라도 실적 확인이 뒤따르지 않으면 금리 부담 국면에서 주도력 지속 여부가 약해질 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 7,000선 문턱의 혼조: 지수보다 금리·환율이 변수\n\n코스피는 6,970.28로 전일 대비 -0.04%에 머물렀고, 코스닥은 902.00으로 +0.92% 상승했다. 대형주 지수는 보합권인 반면 성장주 성격이 상대적으로 견조했던 하루다. 원/달러는 1,355.84원으로 +0.32% 상승했고 VIX는 16.39로 5일 평균 16.244를 소폭 웃돌았다. 외국인·기관·개인 순매수는 모두 **확인 불가(제공 데이터 기준)**다. 따라서 표기된 0억원을 실제 무매매로 해석해서는 안 된다.\n\n최근 5일 코스피는 -1.542%이나 20일 누적은 +5.329%다. 단기 조정이 진행 중이지만 중기 상승분을 아직 훼손했다고 보기는 이르다. 다만 반전 신호는 제공되지 않았고, 오늘의 작은 지수 하락을 즉각적인 추세 전환으로 확대 해석하기보다 7,000선 부근의 매물 소화 과정으로 보는 편이 타당하다.\n\n## 수급 공백 속 거시 가격의 메시지\n\n주체별 현물 수급이 비어 있어 매수·매도 주도 세력과 그 원인은 확인 불가다. 대신 가격 변수는 보수적이다. 미 10년물 국채금리는 5.237%, 달러지수는 102.082, WTI는 93.09달러다. 원화 약세와 고금리·고유가 조합은 할인율 및 물가 우려를 높여 국내 주식의 밸류에이션 확장에 부담이 될 수 있다.\n\n매크로·수급·브레드스 담당자는 이를 중립적 관망 근거로 봤다. 반면 리스크 및 유동성 담당자는 달러와 금리를 근거로 위험회피 가능성을 더 높게 평가했다. 다만 VIX가 16.39에 머문 점은 급격한 위험회피 확산보다는 경계성 조정이라는 다수 의견을 보완한다.\n\n## 금리·물가와 반도체의 줄다리기\n\n1. [국채금리 24년만에 최고…연준 발언에 안정](https://news.google.com/rss/articles/CBMiaEFVX3lxTFA3cUFDV3pJS1ZWME5lR0xkZGRmSEd4bWtnaXQ2LWRiV01xOHF2X2FOcWpCWEhtNURROFpEWWZCNG9HZDNjcGxrUjlrdFJSZ180SW50VVFxbjFQb3prWmFnejJacER5bmdX0gFuQVVfeXFMUHhjcVhkcVhkcEhuX2pPRjlhenpwSUE2aVdCUzFZdXh0SHU0LXR5WXNlQXptWUg1UFZsQUhtQjJFMVJmdEdDZEM3Z2dWdWVzX3lER2l1ckVrTmZydGxZX3hrYkNxM1pMaUQ5QTd4NGhRRXc?oc=5)와 [뉴욕증시, 국채금리 급등락 속 강보합](https://news.google.com/rss/articles/CBMiVEFVX3lxTFBzV01LT25UMWRnOFpJWU5pZG1oaWE1R0U2Y3ZWQ3hhQU44bktyVFFsbUJNZExLZ0lmdE1Fa2RNMFlpaEFxLWI0RV9RaEdnMXRCR2VBQw?oc=5)은 금리 변동성이 핵심 위험 요인임을 보여준다. 미국 지수는 S&P500 +0.19%, 나스닥 +0.04%로 강보합이어서 대외 주가 환경은 완전히 훼손되지 않았다.\n\n2. [반도체 강세 vs 유가·금리 부담](https://news.google.com/rss/articles/CBMiYEFVX3lxTE1iaVlaMFJBZzZWbGV3cjJTMk9POE5hTml0b1p0eW1JSi1zb3RhSURrVW45VG1NNnc4a1NkMVA0UmxoTTg4cXZGUjBaSmFncVhZTWx3RUxTVUVBZjNjeHpWdtIBeEFVX3lxTE0yOGFrLTBJU3ZRUmdpTFBaYmpMYVJ4TmlWRU80UE91YV9kQnBUdW5DSTVBWkZyNDB1N3A2ZjB5b0NoQXVlSC1QYXV6d1l5YTI0UUNQelNPblFvODJiYkpSSTM4NjJ6V0FPd3RsZDJNUGI3Y2VZNGhJeg?oc=5)이라는 국내 뉴스 흐름은 코스닥 상대 강세와 맞닿아 있다. 다만 미래경제 리서치의 AI·반도체·데이터센터 의제는 12개월 관점의 검증 과제일 뿐 당일 매매 근거가 아니다. 이익모멘텀 담당자가 지적했듯 실적 상향 신호는 제공되지 않았다.\n\n## 다음 확인점: 7,000선 회복의 질\n\n단기적으로는 원/달러 추가 상승 여부, 미 국채금리와 유가의 안정, 그리고 확인 가능한 국내 수급 데이터 복원이 우선이다. 코스피가 20일 누적 상승을 유지하면서 7,000선에 재접근하더라도 금리·환율 부담이 완화되지 않으면 업종별 선별 강세에 그칠 가능성이 높다. 오늘의 중립·관망 가설은 **금리와 달러 상승이 이어지면서 VIX가 5일 평균을 뚜렷하게 상회하고, 코스피의 단기 조정이 확대되는 경우** 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
