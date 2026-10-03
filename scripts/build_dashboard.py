@@ -140,6 +140,7 @@ def normalize_minute(minute: dict[str, object]) -> dict[str, object]:
         "speaker_label": minute.get("speaker_label") or map_agent_owner(speaker),
         "summary": minute.get("summary", ""),
         "references": minute.get("references", []),
+        "internal_regime_tag": minute.get("internal_regime_tag"),
     }
 
 
@@ -210,58 +211,81 @@ def load_latest_stances() -> dict[str, object]:
 
 
 
+def _meeting_dates() -> list[str]:
+    candidates = {p.stem for p in list_run_paths()}
+    if RUNS_DIR.exists():
+        candidates.update(p.name for p in RUNS_DIR.iterdir() if p.is_dir())
+    valid = []
+    for value in candidates:
+        try:
+            parsed = date.fromisoformat(value)
+        except ValueError:
+            continue
+        if value == parsed.isoformat() and parsed <= date.today():
+            valid.append(value)
+    return sorted(valid, reverse=True)
+
+
+def _load_meeting(day: str) -> dict[str, object] | None:
+    payload = load_run_payload(RUNS_DIR / f"{day}.json")
+    payload = payload if isinstance(payload, dict) else {}
+    if payload.get("market_date") not in (None, day):
+        payload = {}
+    debate = payload.get("debate_round")
+    source = "run"
+    def valid_minutes(value):
+        if not isinstance(value, dict) or not isinstance(value.get("minutes"), list):
+            return []
+        return [m for m in value["minutes"] if isinstance(m, dict) and m.get("speaker") and m.get("summary")]
+    minutes = valid_minutes(debate)
+    if not minutes:
+        debate = load_run_payload(RUNS_DIR / day / "debate_round.json")
+        minutes = valid_minutes(debate)
+        source = "saved_artifact"
+    if not minutes:
+        return None
+    stances = payload.get("stances") or load_run_payload(RUNS_DIR / day / "stances.json") or []
+    by_agent = {x.get("agent_name"): x for x in stances if isinstance(x, dict)} if isinstance(stances, list) else {}
+    normalized = []
+    for minute in minutes:
+        item = normalize_minute(minute)
+        stance = by_agent.get(item["speaker"], {})
+        item["internal_regime_tag"] = item["internal_regime_tag"] or stance.get("regime_tag")
+        item["headline"] = stance.get("korean_comment") or item["summary"]
+        item["core_claims"] = stance.get("core_claims", [])
+        normalized.append(item)
+    committee = payload.get("committee_result") or load_run_payload(RUNS_DIR / day / "committee_result.json") or {}
+    committee = committee if isinstance(committee, dict) else {}
+    return {"market_date": day, "generated_at": payload.get("generated_at"),
+            "enabled": True, "source": source, "stale": day < date.today().isoformat(),
+            "round_index": debate.get("round_index"), "facilitator_note": debate.get("facilitator_note", ""),
+            "round_conclusion": debate.get("round_conclusion", ""),
+            "consensus": committee.get("consensus", ""),
+            "key_points": [x["point"] for x in committee.get("key_points", []) if isinstance(x, dict) and x.get("point")][:3],
+            "ops_guidance": [x for x in committee.get("ops_guidance", []) if isinstance(x, dict)][:3],
+            "minutes": sort_minutes(normalized)}
+
+
 def load_latest_debate_minutes() -> dict[str, object]:
-    today_path = RUNS_DIR / f"{date.today().isoformat()}.json"
-    if not today_path.exists():
-        return {"market_date": "-", "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
-
-    payload = load_run_payload(today_path)
-    if not payload:
-        return {"market_date": today_path.stem, "enabled": False, "facilitator_note": "", "round_conclusion": "", "minutes": []}
-
-    debate = payload.get("debate_round") or {}
-    minutes = sort_minutes([normalize_minute(minute) for minute in debate.get("minutes", [])])
-    return {
-        "market_date": payload.get("market_date", today_path.stem),
-        "enabled": bool(debate),
-        "round_index": debate.get("round_index"),
-        "facilitator_note": debate.get("facilitator_note", ""),
-        "round_conclusion": debate.get("round_conclusion", ""),
-        "minutes": minutes,
-    }
-
+    for day in _meeting_dates():
+        meeting = _load_meeting(day)
+        if meeting:
+            return meeting
+    return {"market_date": "-", "enabled": False, "stale": True,
+            "facilitator_note": "", "round_conclusion": "", "minutes": []}
 
 
 def load_recent_meeting_timeline(limit: int = 7) -> list[dict[str, object]]:
-    timeline: list[dict[str, object]] = []
-    for path in reversed(list_run_paths()):
-        payload = load_run_payload(path)
-        if not payload:
-            continue
-
-        debate = payload.get("debate_round") or {}
-        committee = payload.get("committee_result") or {}
-        key_points = [item.get("point", "") for item in committee.get("key_points", []) if isinstance(item, dict) and item.get("point")]
-        ops_guidance = [
-            {"level": item.get("level", ""), "text": item.get("text", "")}
-            for item in committee.get("ops_guidance", [])
-            if isinstance(item, dict)
-        ]
-        timeline.append(
-            {
-                "market_date": payload.get("market_date", path.stem),
-                "facilitator_note": debate.get("facilitator_note", ""),
-                "round_conclusion": debate.get("round_conclusion", ""),
-                "consensus": committee.get("consensus", ""),
-                "key_points": key_points[:3],
-                "ops_guidance": ops_guidance[:3],
-                "minutes": sort_minutes([normalize_minute(minute) for minute in debate.get("minutes", [])]),
-            }
-        )
-        if len(timeline) >= limit:
-            break
+    timeline = []
+    if limit <= 0:
+        return timeline
+    for day in _meeting_dates():
+        meeting = _load_meeting(day)
+        if meeting:
+            timeline.append(meeting)
+            if len(timeline) >= limit:
+                break
     return timeline
-
 
 
 def load_handoff_context() -> dict[str, object]:

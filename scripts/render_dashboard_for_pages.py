@@ -30,6 +30,12 @@ def load_embedded_dashboard_data(path: Path) -> dict[str, object]:
 def main() -> None:
     output_path = build_dashboard.OUTPUT_PATH
     data = load_embedded_dashboard_data(output_path)
+    # Meetings are file-backed; refresh them on Pages even when the DB is absent.
+    data["latest_debate_minutes"] = build_dashboard.load_latest_debate_minutes()
+    data["recent_meeting_timeline"] = build_dashboard.load_recent_meeting_timeline()
+    data["meeting_handoff"] = build_dashboard.load_handoff_context()
+    data["latest_committee"] = build_dashboard.load_latest_committee()
+    data["latest_stances"] = build_dashboard.load_latest_stances()
     data["research_radar"] = build_dashboard.load_research_radar_dashboard_data()
     data["supply_chain"] = build_dashboard.load_supply_chain_dashboard_data()
     output_path.write_text(build_dashboard.build_dashboard_html(data), encoding="utf-8")

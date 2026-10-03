@@ -406,6 +406,22 @@
     .v2-agent .claim { color:#94a3b8;font-size:11px;line-height:1.5;margin-top:5px; }
     .v2-minute { padding:10px 0;border-bottom:1px solid rgba(51,65,85,.55); }
     .v2-minute:last-child { border-bottom:0; }
+    .meeting-badge { display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border:1px solid currentColor;border-radius:999px;font-size:12px;font-weight:800; }
+    .meeting-positive { color:#6ee7b7;background:rgba(16,185,129,.1); }
+    .meeting-negative { color:#fda4af;background:rgba(244,63,94,.1); }
+    .meeting-neutral { color:#fde68a;background:rgba(245,158,11,.1); }
+    .meeting-mixed,.meeting-unknown { color:#cbd5e1;background:rgba(148,163,184,.1); }
+    .meeting-meta { margin:10px 0;color:#cbd5e1;font-size:12px;line-height:1.7; }
+    .meeting-toolbar,.meeting-votes { display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0; }
+    .meeting-toolbar select { max-width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:#f8fafc; }
+    .meeting-grid { display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:12px; }
+    .meeting-card { border:1px solid var(--line);border-radius:12px;padding:15px;background:rgba(15,23,42,.5); }
+    .meeting-card h4 { margin:0;font-size:14px;color:#f1f5f9; }
+    .meeting-card p,.meeting-card li { font-size:13px;line-height:1.75;color:#e2e8f0; }
+    .meeting-card ul { padding-left:18px; }
+    .meeting-card details summary { padding:8px 0;font-size:12px;color:#94a3b8; }
+    #meeting-status { margin-left:10px; }
+
     .v2-minute .speaker { color:#c4b5fd;font-size:11px;font-weight:800; }
     .v2-minute .summary { color:#cbd5e1;font-size:12px;line-height:1.6;margin-top:4px; }
     .v2-caution { margin-top:14px;padding:10px 12px;border-radius:9px;background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);color:#fcd34d;font-size:11px;line-height:1.55; }
@@ -818,8 +834,8 @@
           <div class="v2-agent-grid" id="v2-agent-grid"></div>
         </div>
       </details>
-      <details class="v2-details">
-        <summary>위원회 회의록 펼쳐보기</summary>
+      <details class="v2-details" open id="committee-minutes-panel">
+        <summary>위원회 회의록 펼쳐보기 <span id="meeting-status"></span></summary>
         <div class="v2-details-body" id="v2-minutes"></div>
       </details>
     </div><!-- /tab-strategy-v2 -->
@@ -3383,6 +3399,68 @@ function renderWatchTop3() {
     renderSelected();
   }
 
+  function meetingOpinion(tag) {
+    return ({RISK_ON:{key:'positive',label:'긍정 · 위험선호',icon:'↑'},
+      NEUTRAL:{key:'neutral',label:'중립 · 관망',icon:'↔'},
+      RISK_OFF:{key:'negative',label:'부정 · 위험회피',icon:'↓'}})[tag]
+      || {key:'unknown',label:'판단 미기록',icon:'?'};
+  }
+  function meetingVoteSummary(minutes) {
+    const counts = {positive:0,neutral:0,negative:0,unknown:0};
+    safeArr(minutes).forEach(m => counts[meetingOpinion(m.internal_regime_tag).key]++);
+    const top = Math.max(counts.positive,counts.neutral,counts.negative);
+    const winners = ['positive','neutral','negative'].filter(k => counts[k] === top);
+    const key = !top ? 'unknown' : winners.length > 1 ? 'mixed' : winners[0];
+    const label = {positive:'긍정 우세',neutral:'중립 우세',negative:'부정 우세',mixed:'의견 혼재',unknown:'판단 미기록'}[key];
+    return {counts,key,label};
+  }
+  function meetingBadge(key,label) {
+    return `<span class="meeting-badge meeting-${escapeHtml(key)}">${escapeHtml(label)}</span>`;
+  }
+  function renderCommitteeMinutes(latestMeeting, history) {
+    const el = document.getElementById('v2-minutes');
+    const status = document.getElementById('meeting-status');
+    if (!el) return;
+    const byDate = new Map();
+    safeArr(history).forEach(m => { if (safeArr(m.minutes).length) byDate.set(m.market_date,m); });
+    if (safeArr(latestMeeting.minutes).length) byDate.set(latestMeeting.market_date,latestMeeting);
+    const meetings = [...byDate.values()].sort((a,b) => String(b.market_date).localeCompare(String(a.market_date)));
+    if (!meetings.length) {
+      el.innerHTML = '<div class="v2-empty">복구할 저장 회의록이 없습니다. 다음 위원회 실행 후 표시됩니다.</div>';
+      if (status) status.textContent = '기록 없음';
+      return;
+    }
+    function show(index) {
+      const meeting = meetings[index];
+      const vote = meetingVoteSummary(meeting.minutes);
+      const c = vote.counts;
+      const generated = meeting.generated_at ? new Date(meeting.generated_at) : null;
+      const generatedText = generated && Number.isFinite(generated.getTime())
+        ? generated.toLocaleString('ko-KR',{timeZone:'Asia/Seoul',hour12:false}) + ' KST 생성' : '생성 시각 미기록';
+      const todayKst = new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+      const freshness = index > 0 ? '선택한 과거 회의'
+        : meeting.market_date < todayKst ? '오늘 회의록 없음 · 마지막 저장 기록 표시' : '최신 저장 회의록';
+      if (status) status.innerHTML = meetingBadge(vote.key,vote.label) + ` <span class="meeting-meta">${escapeHtml(meeting.market_date)}</span>`;
+      const options = meetings.map((m,i) => `<option value="${i}"${i === index ? ' selected' : ''}>${escapeHtml(m.market_date)}${i === 0 ? ' · 최신 기록' : ''}</option>`).join('');
+      const cards = safeArr(meeting.minutes).map(m => {
+        const opinion = meetingOpinion(m.internal_regime_tag);
+        const claims = safeArr(m.core_claims).slice(0,3);
+        return `<article class="meeting-card"><div class="meeting-toolbar"><h4>${escapeHtml(m.speaker_label || m.speaker || '-')}</h4>${meetingBadge(opinion.key,opinion.icon+' '+opinion.label)}</div>
+          <p>${escapeHtml(m.headline || m.summary || '-')}</p>
+          ${claims.length ? `<ul>${claims.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ul>` : ''}
+          <details><summary>회의록 원문 보기</summary><p>${escapeHtml(m.summary || '-')}</p></details></article>`;
+      }).join('');
+      el.innerHTML = `<div class="meeting-toolbar"><label for="meeting-date-select">회의 날짜</label><select id="meeting-date-select">${options}</select></div>
+        <p class="meeting-meta" role="status">${escapeHtml(freshness)} · 회의일 ${escapeHtml(meeting.market_date)} · ${escapeHtml(generatedText)}${meeting.source === 'saved_artifact' ? ' · 저장 원본에서 복구' : ''}</p>
+        <div class="meeting-votes" aria-label="담당자별 시장 판단 분포">${meetingBadge('positive','긍정 '+c.positive+'명')}${meetingBadge('neutral','중립 '+c.neutral+'명')}${meetingBadge('negative','부정 '+c.negative+'명')}${c.unknown ? meetingBadge('unknown','미기록 '+c.unknown+'명') : ''}</div>
+        <p class="meeting-meta">저장된 담당자별 시장 판단을 표시합니다. 의견 분포는 의장 최종 결론과 다를 수 있습니다.</p>
+        <div class="v2-consensus"><strong>저장된 회의 결론</strong><p>${escapeHtml(meeting.round_conclusion || '결론 미기록')}</p></div>
+        <div class="meeting-grid">${cards}</div>`;
+      document.getElementById('meeting-date-select').addEventListener('change',e => show(Number(e.target.value)));
+    }
+    show(0);
+  }
+
   // ── V2 전략 가이드 탭 ───────────────────────────────────────
   function renderStrategyV2Tab() {
     const ic = data.industry_cycle || {};
@@ -3527,14 +3605,8 @@ function renderWatchTop3() {
           ${safeArr(stance.core_claims).map(claim => `<div class="claim">• ${escapeHtml(claim)}</div>`).join('')}
         </article>`).join('') : '<div class="v2-empty">표시할 AI 분석이 없습니다.</div>';
     }
-    const minutesEl = document.getElementById('v2-minutes');
-    if (minutesEl) {
-      const minutes = safeArr(debate.minutes);
-      const conclusion = debate.round_conclusion ? `<div class="v2-consensus"><strong>회의 결론</strong><br>${escapeHtml(debate.round_conclusion)}</div>` : '';
-      minutesEl.innerHTML = minutes.length
-        ? minutes.map(minute => `<div class="v2-minute"><div class="speaker">${escapeHtml(minute.speaker_label || minute.speaker || '-')}</div><div class="summary">${escapeHtml(minute.summary || '-')}</div></div>`).join('') + conclusion
-        : '<div class="v2-empty">표시할 회의록이 없습니다.</div>';
-    }
+    renderCommitteeMinutes(debate, data.recent_meeting_timeline);
+
   }
   renderStrategyV2Tab();
 
