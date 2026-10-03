@@ -49,6 +49,17 @@ class MarketFlowRecoveryTests(unittest.TestCase):
         with patch.object(provider.requests,'get',return_value=response([api_row()])):
             with self.assertRaises(ValueError): provider.fetch_korean_market_flow_history(date(2026,10,1))
 
+    def test_collection_failure_never_reaches_database_write(self):
+        with patch('sys.argv',['sync_market_flows']),patch.object(sync,'fetch_korean_market_flow_history',side_effect=RuntimeError('source_unavailable')),patch.object(sync,'save_history') as save:
+            with self.assertRaisesRegex(RuntimeError,'source_unavailable'): sync.main()
+        save.assert_not_called()
+
+    def test_short_history_is_not_accepted_as_complete(self):
+        history=[{'date':'2026-10-02','market':{}}]
+        with patch('sys.argv',['sync_market_flows','--as-of','2026-10-02']),patch.object(sync,'fetch_korean_market_flow_history',return_value=history),patch.object(sync,'save_history') as save:
+            with self.assertRaisesRegex(RuntimeError,'insufficient_flow_history'): sync.main()
+        save.assert_not_called()
+
     def test_source_holiday_gap_counts_observations_not_calendar_days(self):
         days=[];d=date(2026,6,1)
         while len(days)<65:

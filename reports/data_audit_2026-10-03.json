@@ -1,0 +1,1133 @@
+{
+  "as_of": "2026-10-03",
+  "integrity": [
+    "ok"
+  ],
+  "tables": [
+    {
+      "table": "asset_price_daily",
+      "rows": 57280,
+      "dates": {
+        "trade_date": [
+          "2023-01-02",
+          "2026-09-25"
+        ],
+        "created_at": [
+          "2026-07-25T03:21:26.863913+00:00",
+          "2026-09-27T07:50:18.336700+00:00"
+        ]
+      }
+    },
+    {
+      "table": "daily_macro",
+      "rows": 1007,
+      "dates": {
+        "date": [
+          "2024-01-01",
+          "2026-10-03"
+        ],
+        "created_at": [
+          "2026-10-03T00:50:23.707588Z",
+          "2026-10-03T00:51:50.475691+00:00"
+        ]
+      }
+    },
+    {
+      "table": "daily_price_kr",
+      "rows": 0,
+      "dates": {
+        "trade_date": [
+          null,
+          null
+        ],
+        "updated_at": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "dart_company_code",
+      "rows": 119447,
+      "dates": {
+        "updated_at": [
+          "2026-09-27T05:35:20.136820+00:00",
+          "2026-09-27T05:35:20.136820+00:00"
+        ]
+      }
+    },
+    {
+      "table": "data_quality_event",
+      "rows": 16,
+      "dates": {
+        "created_at": [
+          "2026-07-25T18:39:17.840127+00:00",
+          "2026-09-27T07:52:43.375106+00:00"
+        ]
+      }
+    },
+    {
+      "table": "domestic_policy_rate_daily",
+      "rows": 178,
+      "dates": {
+        "date": [
+          "2025-04-27",
+          "2026-10-03"
+        ],
+        "created_at": [
+          "2026-04-11T14:41:36.806142+00:00",
+          "2026-10-03T00:51:50.467285+00:00"
+        ]
+      }
+    },
+    {
+      "table": "financial_metric",
+      "rows": 2875,
+      "dates": {
+        "updated_at": [
+          "2026-05-09T04:01:03.869422+00:00",
+          "2026-10-03T00:51:17.531141+00:00"
+        ]
+      }
+    },
+    {
+      "table": "financial_statement",
+      "rows": 327559,
+      "dates": {
+        "updated_at": [
+          "2026-05-09T04:01:01.783971+00:00",
+          "2026-09-27T07:48:42.125276+00:00"
+        ]
+      }
+    },
+    {
+      "table": "indicator_catalog",
+      "rows": 54,
+      "dates": {
+        "created_at": [
+          "2026-07-25T04:03:01.789380+00:00",
+          "2026-07-27T03:46:14.671851+00:00"
+        ],
+        "updated_at": [
+          "2026-09-27T07:53:08.678272+00:00",
+          "2026-09-27T07:53:09.267186+00:00"
+        ]
+      }
+    },
+    {
+      "table": "indicator_observation",
+      "rows": 10847,
+      "dates": {
+        "created_at": [
+          "2026-07-25T18:39:22.873758+00:00",
+          "2026-09-27T07:52:56.716236+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_ai_opinion",
+      "rows": 203,
+      "dates": {
+        "as_of": [
+          "2026-07-25",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T12:58:49.539515+00:00",
+          "2026-09-27T07:55:46.807541+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_ai_run",
+      "rows": 8,
+      "dates": {
+        "as_of": [
+          "2026-07-26",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-26T07:53:44.154826+00:00",
+          "2026-09-27T07:55:46.516497+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_alert_dispatch_log",
+      "rows": 0,
+      "dates": {
+        "as_of": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "industry_alias",
+      "rows": 2,
+      "dates": {
+        "created_at": [
+          "2026-07-25T03:42:21.525664+00:00",
+          "2026-07-25T03:42:21.931399+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_asset_map",
+      "rows": 154,
+      "dates": {
+        "created_at": [
+          "2026-07-25T03:42:22.134985+00:00",
+          "2026-07-31T06:29:06.847895+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_candidate",
+      "rows": 1011,
+      "dates": {
+        "as_of": [
+          "2025-07-18",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T03:42:52.850616+00:00",
+          "2026-09-27T07:53:29.185031+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_cycle_signal",
+      "rows": 1587,
+      "dates": {
+        "as_of": [
+          "2025-07-18",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T04:03:15.779917+00:00",
+          "2026-09-27T07:53:34.659974+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_cycle_v2_signal",
+      "rows": 1525,
+      "dates": {
+        "as_of": [
+          "2025-07-18",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-08-09T11:14:17.652570+00:00",
+          "2026-09-27T07:53:47.001620+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_earnings_breadth_weekly",
+      "rows": 1588,
+      "dates": {
+        "as_of": [
+          "2025-07-18",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T03:42:22.613542+00:00",
+          "2026-09-27T07:53:29.214076+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_factor_weekly",
+      "rows": 16840,
+      "dates": {
+        "as_of": [
+          "2023-01-06",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T04:02:50.424397+00:00",
+          "2026-09-27T07:53:08.089258+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_fundamentals_weekly",
+      "rows": 1644,
+      "dates": {
+        "as_of": [
+          "2025-07-18",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T04:03:01.976327+00:00",
+          "2026-09-27T07:53:11.930787+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_indicator_map",
+      "rows": 156,
+      "dates": {
+        "created_at": [
+          "2026-07-25T04:03:01.853931+00:00",
+          "2026-07-31T06:29:09.250700+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_master",
+      "rows": 35,
+      "dates": {
+        "created_at": [
+          "2026-07-25T03:42:21.490916+00:00",
+          "2026-07-27T03:46:12.478559+00:00"
+        ],
+        "updated_at": [
+          "2026-09-27T07:53:12.143233+00:00",
+          "2026-09-27T07:53:12.552511+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_news",
+      "rows": 1450,
+      "dates": {}
+    },
+    {
+      "table": "industry_price_signal_performance",
+      "rows": 9592,
+      "dates": {
+        "created_at": [
+          "2026-07-25T05:54:45.267151+00:00",
+          "2026-07-25T06:18:56.390065+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_price_state_weekly",
+      "rows": 16840,
+      "dates": {
+        "as_of": [
+          "2023-01-06",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T04:02:50.436605+00:00",
+          "2026-09-27T07:53:08.101485+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_signal_reason",
+      "rows": 5181,
+      "dates": {
+        "as_of": [
+          "2025-07-18",
+          "2026-09-27"
+        ],
+        "created_at": [
+          "2026-07-25T04:03:15.802960+00:00",
+          "2026-09-27T07:53:34.714563+00:00"
+        ]
+      }
+    },
+    {
+      "table": "industry_virtual_position",
+      "rows": 0,
+      "dates": {
+        "created_at": [
+          null,
+          null
+        ],
+        "updated_at": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "investment_thesis",
+      "rows": 2,
+      "dates": {
+        "created_at": [
+          "2026-06-20T03:20:29.063177Z",
+          "2026-07-11T02:07:04.320234Z"
+        ],
+        "updated_at": [
+          "2026-06-20T03:20:29.063177Z",
+          "2026-07-11T02:07:04.320234Z"
+        ]
+      }
+    },
+    {
+      "table": "market_daily",
+      "rows": 827,
+      "dates": {
+        "date": [
+          "2024-01-01",
+          "2026-10-03"
+        ],
+        "created_at": [
+          "2026-04-26T08:35:18.724835Z",
+          "2026-10-03T00:51:49.988829+00:00"
+        ]
+      }
+    },
+    {
+      "table": "market_flow_daily",
+      "rows": 656,
+      "dates": {
+        "date": [
+          "2024-05-09",
+          "2026-10-03"
+        ],
+        "created_at": [
+          "2026-04-26T08:35:30.299367Z",
+          "2026-10-03T00:51:49.999516+00:00"
+        ]
+      }
+    },
+    {
+      "table": "monthly_macro",
+      "rows": 225,
+      "dates": {
+        "date": [
+          "2025-04-27",
+          "2026-10-03"
+        ],
+        "created_at": [
+          "2026-02-14T04:43:03.846285+00:00",
+          "2026-10-03T00:51:50.493359+00:00"
+        ]
+      }
+    },
+    {
+      "table": "quarterly_macro",
+      "rows": 225,
+      "dates": {
+        "date": [
+          "2025-04-27",
+          "2026-10-03"
+        ],
+        "created_at": [
+          "2026-02-14T04:43:03.855904+00:00",
+          "2026-10-03T00:51:50.512288+00:00"
+        ]
+      }
+    },
+    {
+      "table": "stock_consensus",
+      "rows": 85242,
+      "dates": {
+        "date": [
+          "2026-05-09",
+          "2026-10-03"
+        ],
+        "updated_at": [
+          "2026-05-09T02:57:38.136474+00:00",
+          "2026-10-03T00:50:40.752045+00:00"
+        ]
+      }
+    },
+    {
+      "table": "stock_daily",
+      "rows": 0,
+      "dates": {
+        "date": [
+          null,
+          null
+        ],
+        "created_at": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "stock_news",
+      "rows": 21495,
+      "dates": {}
+    },
+    {
+      "table": "strategy_history",
+      "rows": 0,
+      "dates": {
+        "created_at": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "theme_industry_map",
+      "rows": 0,
+      "dates": {
+        "created_at": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "theme_master",
+      "rows": 0,
+      "dates": {}
+    },
+    {
+      "table": "theme_stock_map",
+      "rows": 0,
+      "dates": {}
+    },
+    {
+      "table": "thesis_asset_map",
+      "rows": 4,
+      "dates": {
+        "created_at": [
+          "2026-06-20T03:20:29.063177Z",
+          "2026-07-11T02:07:04.320234Z"
+        ],
+        "updated_at": [
+          "2026-06-20T03:20:29.063177Z",
+          "2026-07-11T02:07:04.320234Z"
+        ]
+      }
+    },
+    {
+      "table": "thesis_evidence_daily",
+      "rows": 0,
+      "dates": {
+        "date": [
+          null,
+          null
+        ],
+        "created_at": [
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "table": "thesis_indicator_map",
+      "rows": 8,
+      "dates": {
+        "created_at": [
+          "2026-06-20T03:20:29.063177Z",
+          "2026-07-11T02:07:04.320234Z"
+        ],
+        "updated_at": [
+          "2026-06-20T03:20:29.063177Z",
+          "2026-07-11T02:07:04.320234Z"
+        ]
+      }
+    },
+    {
+      "table": "thesis_signal_daily",
+      "rows": 81,
+      "dates": {
+        "date": [
+          "2026-06-20",
+          "2026-08-09"
+        ],
+        "created_at": [
+          "2026-06-20T14:42:58.013751Z",
+          "2026-08-09T10:42:33.403470Z"
+        ]
+      }
+    },
+    {
+      "table": "ticker_master",
+      "rows": 4532,
+      "dates": {
+        "updated_at": [
+          "2026-05-17T03:32:28.393119+00:00",
+          "2026-09-27T03:32:39.972793+00:00"
+        ]
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "table": "daily_macro",
+      "metric": "us10y",
+      "value": 5.2769999504089355,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "us2y",
+      "value": 3.993000030517578,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "spread_2_10",
+      "value": 1.2839999198913574,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "vix",
+      "value": 15.3100004196167,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "dxy",
+      "value": 101.92400360107422,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "usdkrw",
+      "value": 1342.510009765625,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "fed_funds_rate",
+      "value": 3.75,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "real_rate",
+      "value": 2.9169999504089357,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "vix3m",
+      "value": 18.010000228881836,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "vix_term_spread",
+      "value": 2.6999998092651367,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "hy_oas",
+      "value": 3.24,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "ig_oas",
+      "value": 0.86,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "fed_balance_sheet",
+      "value": 6743031.0,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "oil_wti",
+      "value": 91.26000213623047,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "russell2000",
+      "value": 2832.894775390625,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "oil_brent",
+      "value": 102.69999694824219,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "tga_balance",
+      "value": 984046.0,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "boj_rate",
+      "value": 0.3,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "us_3m_yield",
+      "value": 3.993000030517578,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "us_2y_yield",
+      "value": 4.78,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "us_10y_yield",
+      "value": 5.2769999504089355,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "spread_10y_2y",
+      "value": 0.4969999504089353,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "daily_macro",
+      "metric": "spread_10y_3m",
+      "value": 1.2839999198913574,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "domestic_policy_rate_daily",
+      "metric": "base_rate",
+      "value": 3.0,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "kospi_pct",
+      "value": 0.46,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "kosdaq_pct",
+      "value": -0.11,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "sp500_pct",
+      "value": 0.7339772645748741,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "nasdaq_pct",
+      "value": 1.1881207204812092,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "dow_pct",
+      "value": 0.49168842348668645,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "usdkrw",
+      "value": 1347.389067,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "usdkrw_pct",
+      "value": -1.2744146370161142,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "us10y",
+      "value": 5.2769999504089355,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "vix",
+      "value": 15.3100004196167,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "kospi",
+      "value": 7003.74,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "kosdaq",
+      "value": 893.29,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 1,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "sp500",
+      "value": 7722.72,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "nasdaq",
+      "value": 27190.863,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_daily",
+      "metric": "dow",
+      "value": 51176.96,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "foreign_net",
+      "value": -2847.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 7,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "foreign_20d",
+      "value": -208465.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 11,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "foreign_60d",
+      "value": -355452.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 11,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "institution_net",
+      "value": 5091.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 7,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "retail_net",
+      "value": -17056.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 7,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "kospi_foreign_net",
+      "value": -1080.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 7,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "kospi_institution_net",
+      "value": 4155.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 7,
+      "status": "available"
+    },
+    {
+      "table": "market_flow_daily",
+      "metric": "kospi_retail_net",
+      "value": -17897.0,
+      "last_recorded_date": "2026-10-02",
+      "age_days": 1,
+      "recent_rows": 30,
+      "recent_nulls": 7,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "unemployment_rate",
+      "value": 4.2,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "cpi_yoy",
+      "value": 3.7129581058388483,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "core_cpi_yoy",
+      "value": 2.7634613395318253,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "pce_yoy",
+      "value": 3.419031824505425,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "pmi",
+      "value": null,
+      "last_recorded_date": null,
+      "age_days": null,
+      "recent_rows": 30,
+      "recent_nulls": 30,
+      "status": "missing"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "wage_level",
+      "value": 37.81,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "wage_yoy",
+      "value": 3.0245231607629375,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "retail_sales_mom",
+      "value": 1.127425850332675,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "nfp_change",
+      "value": 29.0,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "monthly_macro",
+      "metric": "export_yoy",
+      "value": 62.964519,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 24,
+      "status": "available"
+    },
+    {
+      "table": "quarterly_macro",
+      "metric": "real_gdp",
+      "value": 24408.011,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    },
+    {
+      "table": "quarterly_macro",
+      "metric": "gdp_qoq_annualized",
+      "value": 2.2,
+      "last_recorded_date": "2026-10-03",
+      "age_days": 0,
+      "recent_rows": 30,
+      "recent_nulls": 0,
+      "status": "available"
+    }
+  ],
+  "note": "Dates are database record dates, not verified source publication dates. Null rows may include market holidays. Empty optional tables are not automatically errors."
+}
