@@ -1,8 +1,12 @@
 {
-  "crawled_at": "2026-10-03T19:41:56.705711+00:00",
+  "crawled_at": "2026-10-03T20:41:56.817696+00:00",
   "news_date": "2026-10-04",
-  "total_collected": 8,
+  "total_collected": 9,
   "topic_counts": [
+    [
+      "금리/연준",
+      1
+    ],
     [
       "반도체/AI",
       2
@@ -18,13 +22,20 @@
     [
       "미국지수",
       1
-    ],
-    [
-      "변동성/리스크",
-      1
     ]
   ],
   "top_articles": [
+    {
+      "topic": "금리/연준",
+      "count": 1,
+      "title": "[주간 월가 레이더] 美 고용 2만9000명 '쇼크'⋯연준, 10월 쉬고 12월 다시 올리나 - 포커스온경제",
+      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBrRU95dU8yeWFEMGhyNlJCYVVjMTRYcTBSVnJUMnUxb3RSWEY0bWhoQjY1UXlxMGFWMHFnbkdLRlRaeUtOVGMxOWR2SkNqclktUlZ2OFdNZ3FDOF94Snc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [주간 월가 레이더] 美 고용 2만9000명 '쇼크'⋯연준, 10월 쉬고 12월 다시 올리나 - 포커스온경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "반도체/AI",
       "count": 2,
@@ -65,17 +76,6 @@
       "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOdjk1ZGtuZmswRXZ6cmVRU3ducWtGdlVpTU5qbFZBeDJZT1lXa2hqMmJmcFlvc0gtZEU3Y19DNFJ6bFIxY1FzLWxmZHlJd3pMUU1SdUFQRGxEUDVCUjVuT3gxQzdoLVBjc1dJMFV2QUtpcXhKSnFaeWRpbmdrNUo5RWg5NmcyOUJnWUNybUhRWF80amlpNTE5X3pNUkVCbmRvRk1RWHY1RTNsbXhydWphb1JSNkhJR0dHaWtsOXFpdDA5VjBDcVE?oc=5",
       "summary_lines": [
         "핵심 이슈: OpenPayd, 연말 나스닥 상장 및 미국 출범 목표로 추가 인수 추진 - CoinDesk",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "변동성/리스크",
-      "count": 1,
-      "title": "Ethereum(ETHUSD) 종목이 10월3일에 변동성이 심화되었습니다. 무엇을 주의해야 할까요? - TradingKey",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ3p2T3JQRDhmNEdQcUhZRFRzTmRWRnJqYkhFYTJpaFZ5aV8wN3VQSDVzSDBmVUItbUxSc255YUo1dFo5THlHZHhXQk5fMmNwdzQ5TVdTSHF6ZjZ6d2RJV3h5cVR0NHNQLTNmLTdHT1l3X0dLUTdKMlI4dTRpalFfa0Zndm9XbFNTaUYteDhoZ0liQQ?oc=5",
-      "summary_lines": [
-        "핵심 이슈: Ethereum(ETHUSD) 종목이 10월3일에 변동성이 심화되었습니다. 무엇을 주의해야 할까요? - TradingKey",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -125,14 +125,14 @@
       ]
     },
     {
-      "sector": "리스크",
+      "sector": "매크로",
       "total_count": 1,
       "topics": [
         {
-          "topic": "변동성/리스크",
+          "topic": "금리/연준",
           "count": 1,
-          "title": "Ethereum(ETHUSD) 종목이 10월3일에 변동성이 심화되었습니다. 무엇을 주의해야 할까요? - TradingKey",
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQZ3p2T3JQRDhmNEdQcUhZRFRzTmRWRnJqYkhFYTJpaFZ5aV8wN3VQSDVzSDBmVUItbUxSc255YUo1dFo5THlHZHhXQk5fMmNwdzQ5TVdTSHF6ZjZ6d2RJV3h5cVR0NHNQLTNmLTdHT1l3X0dLUTdKMlI4dTRpalFfa0Zndm9XbFNTaUYteDhoZ0liQQ?oc=5"
+          "title": "[주간 월가 레이더] 美 고용 2만9000명 '쇼크'⋯연준, 10월 쉬고 12월 다시 올리나 - 포커스온경제",
+          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBrRU95dU8yeWFEMGhyNlJCYVVjMTRYcTBSVnJUMnUxb3RSWEY0bWhoQjY1UXlxMGFWMHFnbkdLRlRaeUtOVGMxOWR2SkNqclktUlZ2OFdNZ3FDOF94Snc?oc=5"
         }
       ]
     }
