@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 7,003.74로 0.46% 상승했고 최근 5일 및 20일 누적 수익률은 각각 2.118%, 1.68%다. 다만 수급은 기관 +5,091억원이 외국인 -2,847억원과 개인 -1조7,056억원을 흡수한 구조다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "원/달러는 1,347.39원으로 1.27% 하락했고 VIX는 15.31로 5일 평균 15.974보다 낮다. 금리 인상 기대 완화 뉴스가 위험선호의 배경이지만, 정책·관세 이슈는 잔존한다.",
+      "sources": [
+        "macro_daily",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험도 평가",
+      "majority": "매크로·수급·섹터·브레드스·유동성 담당자는 낮은 변동성과 원화 강세를 근거로 중립적 시장 환경을 제시했다.",
+      "minority": "리스크 담당자는 내부 레짐을 RISK_OFF로 분류해 방어적 확인 필요성을 더 강조했다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "VIX와 환율은 안정적이지만 외국인 순매도가 지속되면 기관 매수만으로 위험선호가 유지되는지 재검증해야 한다."
+    },
+    {
+      "topic": "상승 추세의 지속성",
+      "majority": "최근 5일·20일 KOSPI 누적 상승과 기관 매수를 근거로 완만한 개선 흐름을 유지한다는 의견이 우세하다.",
+      "minority": "이익모멘텀 담당자는 실적 추정치 상향 근거가 약해 가격 상승만으로 추세 지속성을 단정하기 어렵다고 봤다.",
+      "minority_agents": [
+        "earnings"
+      ],
+      "why_it_matters": "실적 확인 없이 금리 기대만으로 상승할 경우 정책·금리 뉴스 변화에 지수 민감도가 커질 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 기관 흡수로 이어진 KOSPI 강세\n\n10월 2일 국내 수급 기준 KOSPI는 7,003.74로 0.46% 상승한 반면, KOSDAQ은 893.29로 0.11% 하락했다. 원/달러는 1,347.39원으로 1.27% 하락했고, VIX는 15.31로 5일 평균 15.974를 밑돌았다. KOSPI의 최근 5일 누적 상승률은 2.118%, 20일은 1.68%이며, 단일일 반전 신호도 없다. 가격·환율·변동성 조합만 보면 급격한 위험회피보다는 완만한 위험선호에 가깝다.\n\n## 외국인 이탈보다 기관의 KOSPI 매수가 우세\n\n전체 시장에서 기관은 5,091억원 순매수했고 외국인은 2,847억원, 개인은 1조7,056억원 순매도했다. 특히 KOSPI에서는 기관이 4,155억원을 매수해 외국인 -1,080억원과 개인 -1조7,897억원 매도를 흡수했다. 반대로 외국인 매도는 KOSDAQ에서 -1,767억원으로 더 컸고, KOSDAQ 기관은 936억원 순매수에 그쳤다. 수급 담당자(flow)가 지적했듯 대형주 중심 방어력과 성장주 수급의 온도 차가 핵심이다. 원/달러의 당일 하락은 부담을 완화했지만, 외국인 매도가 완전히 멈춘 것은 아니므로 이를 추세적 자금 유입으로 해석하기는 이르다.\n\n## 금리 완화 기대와 AI 뉴스, 관세 변수의 공존\n\n첫째, [10월 금리 인상 확률 70%→25%…연준 핵심 인사들 잇단 신중론](https://news.google.com/rss/articles/CBMiW0FVX3lxTFBfZDUyd2hjZ1JobmtMRWlDVk03Z3dFNkRuaHJMVVJMVjJnblNZcDZyaDZncXV2RmVjTVZubDRrQ0lUQWcxQm5iMll3RGttbl9RelluenlSYlBCUWc?oc=5)은 금리 부담 완화 기대를 제공한다. 이는 낮은 VIX와 기관 매수에 우호적인 뉴스 배경이다. 둘째, [고용 둔화에 상승…반도체·테슬라 강세](https://news.google.com/rss/articles/CBMickFVX3lxTE1aMHBLRWpqYXhvUGtzTk9IU1VPeUxEOHl0YkRuRW51RFo4eThMMWQxTEtSMm1rcFZ0dnVTSHBJTGpKczNsRXRtM2hkYWNxNGRXSElQUW5Hc0JLSHVBT254QzdqeWFReHlLLTVDMzJITTlSQQ?oc=5) 보도와 AI 관련 헤드라인은 성장주 관심을 지지한다. 다만 이는 중장기 AI·반도체 연구 의제와 연결될 수 있는 테마일 뿐, 당일 KOSDAQ 외국인 매도를 뒤집는 거래 신호는 아니다. 셋째, [알래스카 LNG 참여 압박과 관세 인상 경고](https://news.google.com/rss/articles/CBMiakFVX3lxTFA3NEIyaFZucmZHRUhjaVNySlVabFpzVVZiVjc3LUZxN09LcFNJZUI1Y3R2NU9aZGxHOTJMb3ZyUVRpTlIxYm52R2VkOGR3bGZtb1daSHJobi1jdjl5TXhaUXp1TWNvSzduUXc?oc=5)는 정책 불확실성이 여전히 할인 요인임을 보여준다.\n\n## 다음 확인점: 외국인 복귀인가, 기관 단독 방어인가\n\n기본 시나리오는 기관 주도의 KOSPI 우위와 저변동성 유지다. 그러나 이익모멘텀 담당자(earnings)의 지적처럼 실적 상향 근거는 제공 데이터에서 확인되지 않아, 상승 폭 확대보다 수급 지속성이 더 중요하다. 향후 외국인의 KOSDAQ 매도 완화, 원/달러 및 VIX의 안정, 금리·관세 뉴스의 추가 악화 여부를 함께 확인해야 한다. 오늘의 중립적 개선 시나리오는 외국인 순매도가 KOSPI까지 확대되고 기관 매수가 이를 흡수하지 못하는 경우 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

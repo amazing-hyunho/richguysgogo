@@ -365,8 +365,30 @@ def load_latest_news_digest() -> dict[str, object]:
         }
 
 
+def _latest_db_flow_snapshots() -> list[tuple[str, dict]]:
+    """Prefer repaired DB observations to stale analysis run snapshots."""
+    from contextlib import closing
+    if not DB_PATH.exists():
+        return []
+    with closing(sqlite3.connect(DB_PATH.resolve().as_uri() + "?mode=ro", uri=True)) as conn:
+        rows = conn.execute("""SELECT date,foreign_net,institution_net,retail_net,
+            kospi_foreign_net,kospi_institution_net,kospi_retail_net
+            FROM market_flow_daily WHERE foreign_net IS NOT NULL
+            AND institution_net IS NOT NULL AND retail_net IS NOT NULL
+            AND kospi_foreign_net IS NOT NULL AND kospi_institution_net IS NOT NULL
+            AND kospi_retail_net IS NOT NULL AND date <= ?
+            AND strftime('%w',date) NOT IN ('0','6') ORDER BY date DESC LIMIT 2""",
+            (date.today().isoformat(),)).fetchall()
+    return [(r[0], {"KOSPI": {"foreign":r[4],"institution":r[5],"individual":r[6]},
+                     "KOSDAQ": {"foreign":r[1]-r[4],"institution":r[2]-r[5],"individual":r[3]-r[6]}})
+            for r in rows]
+
+
 def load_latest_korean_market_flow_breakdown() -> dict[str, object]:
     """Load latest KOSPI/KOSDAQ investor flow breakdown from run snapshot."""
+    rows = _latest_db_flow_snapshots()
+    if rows:
+        return {"market_date": rows[0][0], "market": rows[0][1]}
     latest_path = max(list_run_paths(), default=None)
     if latest_path is None:
         return {"market_date": "-", "market": {}}
@@ -403,6 +425,11 @@ def load_latest_greed_pot() -> dict[str, object]:
 
 def load_korean_market_flow_compare() -> dict[str, object]:
     """Load current/previous Korean market flow snapshots for day-over-day comparison."""
+    rows = _latest_db_flow_snapshots()
+    if rows:
+        return {"current_date": rows[0][0], "current": rows[0][1],
+                "previous_date": rows[1][0] if len(rows) > 1 else "-",
+                "previous": rows[1][1] if len(rows) > 1 else {}}
     run_paths = list_run_paths()
     if not run_paths:
         return {"current_date": "-", "previous_date": "-", "current": {}, "previous": {}}
@@ -414,7 +441,7 @@ def load_korean_market_flow_compare() -> dict[str, object]:
         flow = snapshot.get("korean_market_flow") or {}
         market = flow.get("market") if isinstance(flow, dict) else {}
         if isinstance(market, dict) and market:
-            snapshots.append((str(payload.get("market_date", path.stem)), market))
+            snapshots.append((str(flow.get("date") or payload.get("market_date", path.stem)), market))
         if len(snapshots) >= 2:
             break
 

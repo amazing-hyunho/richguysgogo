@@ -1,14 +1,15 @@
 from __future__ import annotations
 
 """
-Naver market flow provider (HTML crawl, no pandas dependency)
+Naver market flow provider (JSON API, no pandas dependency)
 -------------------------------------------------------------
 Fetch investor net buying (순매수, 억원) for:
 - KOSPI (sosok=01)
 - KOSDAQ (sosok=02)
 
 Data source:
-- https://finance.naver.com/sise/investorDealTrendDay.naver
+- https://stock.naver.com/api/domestic/market/trend/daily
+- Legacy HTML parser retained for regression checks only.
 """
 
 from datetime import date, timedelta
@@ -18,23 +19,78 @@ from typing import Any, Dict
 import requests
 
 
-def get_korean_market_flow_naver(asof: date | None = None) -> Dict[str, Any]:
-    """Best-effort Naver flow fetch with weekend/holiday backoff."""
-    d = asof or date.today()
-    last_error: str | None = None
-    for _ in range(10):
-        ymd = d.strftime("%Y%m%d")
+FLOW_API = "https://stock.naver.com/api/domestic/market/trend/daily"
+_INSTITUTIONS = ("1000", "2000", "3000", "3100", "4000", "5000", "6000", "7000")
+
+
+def _parse_api_investors(row: dict) -> Dict[str, int]:
+    from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
+    values = {}
+    for item in row.get("netAmounts", []):
+        code = str(item.get("investorGubun", ""))
+        if code in values:
+            raise ValueError("duplicate_investor_code")
         try:
-            kospi = _fetch_market_flow_eok(ymd=ymd, sosok="01")
-            kosdaq = _fetch_market_flow_eok(ymd=ymd, sosok="02")
-            return {
-                "date": f"{ymd[0:4]}-{ymd[4:6]}-{ymd[6:8]}",
-                "market": {"KOSPI": kospi, "KOSDAQ": kosdaq},
-            }
-        except Exception as exc:
-            last_error = f"{ymd}: {exc}"
-            d = d - timedelta(days=1)
-    raise RuntimeError(f"naver_flow_unavailable: {last_error or 'unknown'}")
+            value = Decimal(str(item.get("diffValue")))
+        except InvalidOperation as exc:
+            raise ValueError("invalid_flow_value") from exc
+        if not value.is_finite():
+            raise ValueError("nonfinite_flow_value")
+        values[code] = value
+    required = ("8000", "9000", "9001", *_INSTITUTIONS)
+    if any(code not in values for code in required):
+        raise ValueError("incomplete_market_flow")
+    def eok(value):
+        return int((value / Decimal(100_000_000)).quantize(Decimal(1), rounding=ROUND_HALF_UP))
+    # Match the Naver KRX display: foreigners include 기타외국인 (9001).
+    return {"individual": eok(values["8000"]),
+            "foreign": eok(values["9000"] + values["9001"]),
+            "institution": eok(sum(values[k] for k in _INSTITUTIONS))}
+
+
+def fetch_korean_market_flow_history(asof: date, rows: int = 80) -> list[dict]:
+    """Read dated KRX daily observations from Naver's current public JSON endpoint.
+
+    Values are KRW in the API and integer 억원 in the existing snapshot contract.
+    Both markets must cover the same dates; partial/malformed responses fail closed.
+    """
+    if not 1 <= rows <= 100:
+        raise ValueError("rows must be between 1 and 100")
+    markets = {}
+    for market in ("KOSPI", "KOSDAQ"):
+        response = requests.get(FLOW_API,
+            params={"tradeType": "KRX", "marketType": market,
+                    "bizdate": asof.strftime("%Y%m%d"), "startIdx": 0, "pageSize": rows},
+            timeout=15, headers={"User-Agent": "Mozilla/5.0", "Referer": "https://stock.naver.com/market/stock/kr/trend/trader"})
+        response.raise_for_status()
+        payload = response.json()
+        content = payload.get("content") if isinstance(payload, dict) else None
+        if not isinstance(content, list) or not content:
+            raise RuntimeError(f"empty_flow_history[{market}]")
+        parsed = {}
+        for row in content:
+            raw = str(row.get("bizdate", ""))
+            if not re.fullmatch(r"[0-9]{8}", raw):
+                raise ValueError("invalid_flow_date")
+            d = date(int(raw[:4]), int(raw[4:6]), int(raw[6:]))
+            if d > asof or d.weekday() >= 5 or d.isoformat() in parsed:
+                raise ValueError("unexpected_flow_date")
+            parsed[d.isoformat()] = _parse_api_investors(row)
+        markets[market] = parsed
+    if set(markets["KOSPI"]) != set(markets["KOSDAQ"]):
+        raise RuntimeError("market_flow_dates_mismatch")
+    return [{"date": d, "market": {m: markets[m][d] for m in markets}}
+            for d in sorted(markets["KOSPI"])]
+
+
+def get_korean_market_flow_naver(asof: date | None = None) -> Dict[str, Any]:
+    """Return the latest common observation, keeping its actual trading date."""
+    target = asof or date.today()
+    history = fetch_korean_market_flow_history(target, rows=10)
+    latest = history[-1]
+    if (target - date.fromisoformat(latest["date"])).days > 10:
+        raise RuntimeError("stale_flow_history")
+    return latest
 
 
 def _fetch_market_flow_eok(ymd: str, sosok: str) -> Dict[str, int]:

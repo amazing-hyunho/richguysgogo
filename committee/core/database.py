@@ -2546,7 +2546,7 @@ def get_last_n_market_flow(n: int, db_path: Path | None = None) -> List[Dict[str
         return [dict(row) for row in rows]
 
 
-def calculate_rolling_sum(column: str, n: int, db_path: Path | None = None) -> float | None:
+def calculate_rolling_sum(column: str, n: int, db_path: Path | None = None, *, asof: str | None = None) -> float | None:
     """Calculate rolling sum over last N **trading** days for a given flow column.
 
     Security note:
@@ -2573,11 +2573,12 @@ def calculate_rolling_sum(column: str, n: int, db_path: Path | None = None) -> f
                 SELECT {column}
                 FROM market_flow_daily
                 WHERE strftime('%w', date) NOT IN ('0', '6')
+                  AND (:asof IS NULL OR date <= :asof)
                 ORDER BY date DESC
                 LIMIT :n
             );
             """,
-            {"n": int(n)},
+            {"n": int(n), "asof": asof},
         ).fetchone()
         if row is None:
             return None
@@ -2590,14 +2591,14 @@ def calculate_rolling_sum(column: str, n: int, db_path: Path | None = None) -> f
 def update_market_flow_rollings(date: str, db_path: Path | None = None) -> None:
     """Update rolling sums (20d/60d) for the given date row in `market_flow_daily`."""
     init_db(db_path)
-    foreign_20d = calculate_rolling_sum("foreign_net", 20, db_path=db_path)
-    foreign_60d = calculate_rolling_sum("foreign_net", 60, db_path=db_path)
+    foreign_20d = calculate_rolling_sum("foreign_net", 20, db_path=db_path, asof=date)
+    foreign_60d = calculate_rolling_sum("foreign_net", 60, db_path=db_path, asof=date)
     with connect(db_path) as conn:
         conn.execute(
             """
             UPDATE market_flow_daily
-            SET foreign_20d = :foreign_20d,
-                foreign_60d = :foreign_60d
+            SET foreign_20d = COALESCE(:foreign_20d, foreign_20d),
+                foreign_60d = COALESCE(:foreign_60d, foreign_60d)
             WHERE date = :date;
             """,
             {

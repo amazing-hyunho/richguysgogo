@@ -68,8 +68,11 @@ def persist_snapshot_metrics(
             kospi_f_db = float(_kospi.foreign)
             kospi_i_db = float(_kospi.institution)
             kospi_r_db = float(_kospi.individual)
+    flow_date = (snapshot.korean_market_flow.date
+                 if status.get("flows") == "OK" and snapshot.korean_market_flow is not None
+                 else market_date.isoformat())
     safe_upsert_market_flow_daily(
-        date=market_date.isoformat(),
+        date=flow_date,
         foreign_net=foreign_net_db,
         institution_net=institution_net_db,
         retail_net=retail_net_db,
