@@ -1,0 +1,194 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "advanced-materials-supply-chain",
+    "name": "첨단소재·공급망 재편",
+    "thesis": "첨단소재와 핵심 광물 대체 기술이 제조 공급망의 병목과 지역화 투자로 이어지는지 추적한다."
+  },
+  "as_of": "2026-10-04",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 11.72,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 46.88,
+      "net_signal": 46.88,
+      "confidence": 61.25,
+      "evidence_count": 2,
+      "distinct_source_count": 1,
+      "positive_count": 2,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2609-12300v1",
+        "arxiv-2609-29344v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2609-12300v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "$Ab$ $initio$ Study of Substitutional Defects in Li$_{3}$OCl Solid Electrolyte for Li-ion Batteries",
+      "claim": "중성자 조사에 의한 결함 공학이 Li3OCl 고체 전해질의 결함 화학을 조절할 수 있음을 DFT 기반으로 제시하여, 고체 전해질의 이온전도성 향상과 첨단소재 개발의 새로운 전략 가능성을 뒷받침한다.",
+      "event_date": "2026-09-11",
+      "known_at": "2026-09-11",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.12300v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 제조 공정 적용이나 공급망 차원의 효과, 대체 소재의 상용화 가능성은 초록에서 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "defect-engineering",
+        "solid-electrolyte",
+        "li-ion-battery",
+        "neutron-irradiation",
+        "material-substitution"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-29344v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Combining physical models with dynamically acquired experimental information for the optimization of multicomponent NASICON fast ionic conductors in a self-driving laboratory",
+      "claim": "자율 실험실과 물리 기반 생성 모델을 결합한 CASS 프레임워크가 NASICON 고체 전해질의 조성 최적화와 빠른 이온전도성 조성 발굴에 성공하여 첨단소재 개발의 효율적 가속 가능성을 실험적으로 입증했다.",
+      "event_date": "2026-09-24",
+      "known_at": "2026-09-24",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.29344v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "적용 사례가 NASICON 고체 전해질에 한정되어 있으며, 공급망 병목 해소나 대체 소재의 실제 제조·투자 효과는 검증하지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "materials-discovery",
+        "autonomous-lab",
+        "solid-electrolyte",
+        "elemental-substitution",
+        "nasicon",
+        "optimization"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 46.88점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "소재 성능과 공급망 정책은 양산 원가·품질·조달계약으로 교차검증해야 합니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

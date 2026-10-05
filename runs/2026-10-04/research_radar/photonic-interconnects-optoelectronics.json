@@ -1,0 +1,223 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "photonic-interconnects-optoelectronics",
+    "name": "광 I/O·실리콘 포토닉스",
+    "thesis": "AI 클러스터의 전기식 연결 한계를 광 I/O·실리콘 포토닉스·광전자 3D 집적이 실제 대역폭과 전력 효율 개선으로 해소하는지 추적한다."
+  },
+  "as_of": "2026-10-04",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 11.25,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 45.0,
+      "net_signal": 45.0,
+      "confidence": 61.25,
+      "evidence_count": 3,
+      "distinct_source_count": 1,
+      "positive_count": 3,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2609-20686v1",
+        "arxiv-2609-21830v1",
+        "arxiv-2609-36690v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2609-20686v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Volumetric Evanescent Edge Coupling for Fiber-to-Chip Optical I/O",
+      "claim": "fiber-to-chip 인터페이스의 채널 밀도 한계를 극복하기 위해 volumetric edge coupling 구조를 제안하고, FDTD 시뮬레이션으로 높은 결합 효율과 정렬 허용오차를 보였다.",
+      "event_date": "2026-09-17",
+      "known_at": "2026-09-17",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.20686v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 다채널 또는 시스템 수준의 실증이 아닌 단일 채널 시뮬레이션 및 설계 검증에 머무른다.",
+      "tags": [
+        "weekly-paper",
+        "opticalio",
+        "fiberchipcoupling",
+        "copackagedoptics",
+        "simulation",
+        "integration"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-21830v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Performance of Capacitively Loaded RF Electrodes on SiO2/Si Substrates for High-Speed Electro-Optic Modulators",
+      "claim": "SiO2/Si 기판 위에 제작된 capacitively loaded RF 전극이 낮은 RF 감쇠와 광대역 속도 매칭을 실험적으로 달성하여, 집적 광전자 모듈 및 co-packaged optics에 적합한 저손실·고속 전극 플랫폼임을 보였다.",
+      "event_date": "2026-09-18",
+      "known_at": "2026-09-18",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.21830v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실제 광 I/O 시스템 전체의 대역폭·전력 효율 개선 효과는 직접 검증하지 않았으며, 전극 자체의 특성에 초점을 둔다.",
+      "tags": [
+        "weekly-paper",
+        "electrooptic",
+        "modulator",
+        "rf",
+        "siliconphotonics",
+        "copackagedoptics",
+        "experiment"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-36690v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Co-design of Silicon Microring Modulator beyond 200 Gb/s per Lane: Device Physics, Operating Point, and Compact Models for Scale-Up and Scale-Out Optical I/O",
+      "claim": "200 Gb/s 이상 per lane 광 I/O를 위한 실리콘 마이크로링 변조기의 물리적 한계와 동작점을 분석하고, 전기-광-열 결합 모델을 통해 실제 회로 수준 시뮬레이션 및 설계 최적화 방안을 제시하였다.",
+      "event_date": "2026-09-29",
+      "known_at": "2026-09-29",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.36690v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 시스템 실험 결과가 아닌 모델링 및 시뮬레이션 중심이며, 전체 광 I/O 시스템의 대역폭·전력 효율 개선을 실증적으로 검증하지는 않는다.",
+      "tags": [
+        "weekly-paper",
+        "siliconphotonics",
+        "modulator",
+        "opticalio",
+        "modeling",
+        "highspeed",
+        "devicephysics"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 45.00점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "소자 수준의 속도·전력 효율은 패키징 수율, 열관리, 표준화와 데이터센터 채택을 직접 증명하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

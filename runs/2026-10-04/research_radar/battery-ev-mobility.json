@@ -1,0 +1,253 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "battery-ev-mobility",
+    "name": "배터리·전기차·차세대 이동수단",
+    "thesis": "차세대 배터리의 수명·안전·원가 개선이 전기차 채택과 소재·장비 공급망 변화로 이어지는지 추적한다."
+  },
+  "as_of": "2026-10-04",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 5.86,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 23.44,
+      "net_signal": 23.44,
+      "confidence": 61.25,
+      "evidence_count": 4,
+      "distinct_source_count": 1,
+      "positive_count": 2,
+      "neutral_count": 2,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2609-07302v1",
+        "arxiv-2609-10388v1",
+        "arxiv-2609-20946v1",
+        "arxiv-2609-22843v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2609-07302v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Timescale-aware surrogate-assisted multi-objective optimization of battery cell design for energy density, fast charging, and degradation",
+      "claim": "본 논문은 에너지 밀도, 급속충전, 열화 등 상이한 시간척도의 배터리 셀 설계 목표를 동시 최적화하는 시뮬레이션 기반 프레임워크를 제안하고, 일부 설계가 세 지표 모두에서 기준 셀을 능가함을 보였다.",
+      "event_date": "2026-09-07",
+      "known_at": "2026-09-07",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.07302v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.55,
+      "signed_signal": 0.0,
+      "limitation": "실제 셀 제조 및 실험 검증 없이 시뮬레이션 결과에 한정된다.",
+      "tags": [
+        "weekly-paper",
+        "battery-design",
+        "multi-objective",
+        "fast-charging",
+        "energy-density",
+        "degradation",
+        "simulation"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-10388v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Economic Evaluation of V2G-Enabled Fast Charging Stations Under Endogenous EV Adoption Dynamics",
+      "claim": "본 논문은 EV 채택 동태와 FCS 입지·용량 확장 간의 상호작용을 반영한 다기간 계획 프레임워크를 제안하고, V2G 집합 모델이 분배망 혼잡 완화에 기여함을 수치적으로 보였다.",
+      "event_date": "2026-09-09",
+      "known_at": "2026-09-09",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.10388v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.55,
+      "signed_signal": 0.0,
+      "limitation": "실제 EV 채택률 변화나 상용 네트워크에서의 실증은 없으며, 시뮬레이션 기반 경제성 평가에 국한된다.",
+      "tags": [
+        "weekly-paper",
+        "ev-adoption",
+        "fast-charging",
+        "v2g",
+        "economic-evaluation",
+        "simulation",
+        "planning"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-20946v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Optimal Day-Ahead Scheduling of Fast EV Charging Station With Multi-Stage Battery Degradation Model",
+      "claim": "본 논문은 다단계 배터리 열화 모델을 도입하여, BESS가 포함된 EV 급속충전소의 운영비용을 단일 모델 대비 평균 2.1% 절감할 수 있음을 사례 연구로 입증하였다.",
+      "event_date": "2026-09-17",
+      "known_at": "2026-09-17",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.20946v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "모델의 실제 현장 적용 및 다양한 열화 모델에 대한 일반화 가능성은 제한적으로만 검증되었다.",
+      "tags": [
+        "weekly-paper",
+        "fast-charging",
+        "bess",
+        "battery-degradation",
+        "ev",
+        "optimization",
+        "operation-cost"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-22843v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Intelligent Degradation Monitoring in Lithium-ion Batteries via Discharge Incremental Capacity Feature Estimation",
+      "claim": "본 논문은 충전 신호만을 이용해 방전 증분용량(IC) 특성을 예측하는 신경망 기반 프레임워크를 제안하여, 저전류 방전 없이도 리튬이온 배터리의 열화 지표를 실시간으로 추정할 수 있음을 보였다.",
+      "event_date": "2026-09-19",
+      "known_at": "2026-09-19",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.22843v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실제 전기차 시스템에서의 실시간 적용 및 다양한 배터리 화학계에 대한 일반화는 초록에서 직접 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "battery-health",
+        "lithium-ion",
+        "fast-charging",
+        "bms",
+        "degradation",
+        "machine-learning"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 23.44점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "논문 단계의 셀 성능은 양산 수율과 자동차 채택을 의미하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

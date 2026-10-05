@@ -1,0 +1,31 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "robotics-automation-autonomy",
+  "as_of": "2026-10-04",
+  "lookback_days": 28,
+  "candidate_count": 12,
+  "accepted_count": 12,
+  "rejected_count": 0,
+  "accepted_paper_ids": [
+    "2610-00913v1",
+    "2610-00981v1",
+    "2610-00982v1",
+    "2610-01019v1",
+    "2610-01083v1",
+    "2610-01351v1",
+    "2610-01741v1",
+    "2610-01794v1",
+    "2610-01856v1",
+    "2610-01939v1",
+    "2610-02054v1",
+    "2610-02161v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "1991dbafa0eb8459986dc1a962a28e6895f1bda9e2ee9baa6cbeb2360068a9a2",
+  "input_tokens": 5197,
+  "output_tokens": 2153,
+  "report_status": "emerging",
+  "report_score": 10.86,
+  "generated_at": "2026-10-04T08:34:06.196849+00:00"
+}

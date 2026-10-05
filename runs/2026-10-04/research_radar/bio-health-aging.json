@@ -1,0 +1,224 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "bio-health-aging",
+    "name": "바이오·의료·고령화 기술",
+    "thesis": "AI 기반 신약·진단·고령화 기술의 검증이 임상·허가·생산 수요로 이어지는지 추적한다."
+  },
+  "as_of": "2026-10-04",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 11.25,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 45.0,
+      "net_signal": 45.0,
+      "confidence": 61.25,
+      "evidence_count": 3,
+      "distinct_source_count": 1,
+      "positive_count": 3,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2609-07729v2",
+        "arxiv-2609-12035v1",
+        "arxiv-2609-23333v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2609-07729v2",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Attributing Cohen's d: Training Data Attribution for Disease-Related Effects in Normative Age Biomarkers",
+      "claim": "노화 바이오마커 예측 모델에서 질병 관련 효과 크기를 개별 훈련 샘플에 귀속시키는 새로운 영향 함수 기반 방법이 실제 UK Biobank 데이터에서 질병 분리 효과를 크게 높일 수 있음을 보였다.",
+      "event_date": "2026-09-07",
+      "known_at": "2026-09-07",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.07729v2",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "임상적 진단이나 실제 환자 관리에 미치는 영향은 직접 검증되지 않았으며, 주로 바이오마커와 데이터셋 기반의 효과 크기 향상에 초점이 있다.",
+      "tags": [
+        "weekly-paper",
+        "aging-biomarker",
+        "influence-function",
+        "attribution",
+        "disease-risk",
+        "uk-biobank",
+        "ai"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-12035v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Reading the Whole Heart: Latent-Attention Masked Autoencoders for Multimodal Cardiac Representation Learning",
+      "claim": "여러 심장 진단 모달리티를 환자 수준에서 직접 통합하는 Latent-Attention Masked Autoencoder(LAMAE)가 대규모 실제 병원 데이터에서 기존 단일 모달리티 및 대조 학습 기반 모델보다 다양한 임상 예측 과제에서 더 우수한 성능을 보인다.",
+      "event_date": "2026-09-10",
+      "known_at": "2026-09-10",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.12035v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "임상적 실제 적용이나 환자 치료 개선에 대한 직접적 검증은 초록에서 확인되지 않으며, 주로 벤치마크 기반 성능 비교에 초점이 맞춰져 있다.",
+      "tags": [
+        "weekly-paper",
+        "medical-foundation-model",
+        "multimodal",
+        "cardiac",
+        "representation-learning",
+        "self-supervised",
+        "benchmark"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-23333v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "A Patient World Model for Early Forecasting of Digital Health Campaign Outcomes: Capabilities and Limits",
+      "claim": "환자별 잠재 상태를 유지하고 노출 조건에 따른 상태 동역학과 처방전 전환 위험을 공동 학습하는 환자 월드 모델이 실제 미국 디지털 건강 캠페인 데이터에서 기존 방법 대비 처방전 예측 정확도를 크게 향상시킨다.",
+      "event_date": "2026-09-20",
+      "known_at": "2026-09-20",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.23333v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "모델의 예측은 관찰된 노출 데이터에 조건화되어 있어 인과적 해석에는 한계가 있으며, 시나리오 시뮬레이션 결과도 선택 효과에 영향을 받는다.",
+      "tags": [
+        "weekly-paper",
+        "digital-health",
+        "forecasting",
+        "patient-modeling",
+        "campaign",
+        "ai",
+        "evaluation"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 45.00점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "전임상·초기 연구 결과는 임상 성공과 규제 승인을 보장하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}
