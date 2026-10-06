@@ -616,6 +616,7 @@
     <!-- ── 탭 네비게이션 ── -->
     <nav class="tab-nav" role="tablist">
       <button class="tab-btn tab-active" data-tab="market" role="tab" aria-selected="true">📈 시장 분석</button>
+      <button class="tab-btn" data-tab="korea-macro" role="tab" aria-selected="false">🇰🇷 한국 경제지표</button>
       <button class="tab-btn" data-tab="strategy-v2" role="tab" aria-selected="false">🧭 AI 투자 위원회</button>
       <button class="tab-btn" data-tab="stocks" role="tab" aria-selected="false">🏢 종목 데이터</button>
       <button class="tab-btn" data-tab="future-economy" role="tab" aria-selected="false">🔭 미래 경제 연구소</button>
@@ -776,6 +777,24 @@
     </section>
 
     </div><!-- /tab-market -->
+
+    <div id="tab-korea-macro" class="tab-pane" role="tabpanel">
+      <h2>한국 경제지표</h2>
+      <p class="muted">경기 · 심리 · 생산 · 소비 · 물가 · 고용 · 수출의 월별 변화</p>
+      <p id="kr-macro-status" role="status"></p>
+      <p class="muted">한국은행 ECOS에서 조회합니다. 자료 기준월과 수집일은 다릅니다. 긍정·부정은 각 카드의 비교 기준에 따른 변화 신호이며 투자 권고가 아닙니다.</p>
+      <div id="kr-macro-cards" class="kr-macro-grid"></div>
+      <section class="kr-macro-detail" aria-label="선택한 경제지표 추이">
+        <label for="kr-macro-select">자세히 볼 지표 </label><select id="kr-macro-select"></select>
+        <label for="kr-macro-range"> 표시 기간 </label><select id="kr-macro-range"><option value="36">최근 3년</option><option value="12">최근 1년</option><option value="72">전체 이력</option></select>
+        <h3 id="kr-macro-chart-title"></h3>
+        <div id="kr-macro-chart"></div>
+        <p id="kr-macro-note" class="muted"></p>
+        <details><summary>월별 수치 보기</summary><div style="max-height:360px;overflow:auto"><table class="stock-data-table"><thead><tr><th>기준월</th><th>값</th><th>전월 변화</th><th>전년 동월 대비</th></tr></thead><tbody id="kr-macro-history"></tbody></table></div></details>
+      </section>
+      <p class="muted">최근 약 6년의 현재 수정치를 매일 다시 확인합니다. 실제 발표 시각은 제공되지 않아 수집 시각으로 대신 표시하며, 과거 시점의 정보만을 사용한 백테스트 자료는 아닙니다. 정상 표시는 수집 성공 여부이고, 공개 시차 범위를 넘으면 ‘자료 지연 확인 필요’로 표시합니다.</p>
+      <a href="https://ecos.bok.or.kr/" target="_blank" rel="noopener">출처: 한국은행 경제통계시스템 ↗</a>
+    </div>
 
     <!-- ══ 신규 탭: V2 전략 가이드 (기존 탭과 독립) ═══════════════ -->
     <div id="tab-strategy-v2" class="tab-pane" role="tabpanel">
@@ -5328,5 +5347,21 @@ function renderPfDonut(canvasId, rows, key) {
 }
 </script>
 
+<style>
+.kr-macro-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:24px 0;}
+.kr-macro-card {background:var(--panel);color:var(--text,#e2e8f0);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:left;cursor:pointer;font:inherit;}
+.kr-macro-card:hover,.kr-macro-card[aria-pressed="true"] {border-color:#38bdf8;}
+.kr-macro-card:focus-visible {outline:2px solid #38bdf8;outline-offset:3px;}
+.kr-macro-card h3 {font-size:16px;margin:10px 0;}
+.kr-macro-value {font-size:28px;font-weight:700;}.kr-macro-value small {font-size:12px;color:#94a3b8;}
+.kr-macro-card p {font-size:13px;}.kr-macro-health {color:#cbd5e1;}
+.kr-macro-detail {padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:14px;scroll-margin-top:20px;}
+.kr-macro-detail select {max-width:100%;background:#0f172a;color:#e2e8f0;padding:8px;border:1px solid #475569;border-radius:6px;margin:6px 10px 6px 0;}
+#tab-korea-macro .muted {color:#94a3b8;font-size:13px;line-height:1.7;}
+</style>
+<script>
+/* KOREA_MACRO_SCRIPT */
+renderKoreaMacro(_dash.korea_macro || {});
+</script>
 </body>
 </html>

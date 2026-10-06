@@ -1,0 +1,3625 @@
+{
+  "generated_at": "2026-10-06T22:16:11.027523+09:00",
+  "source": "한국은행 ECOS",
+  "source_url": "https://ecos.bok.or.kr/",
+  "history_note": "현재 공개된 수정치 기준 이력입니다. 과거 시점에 알려졌던 값의 재현 자료가 아닙니다.",
+  "indicators": [
+    {
+      "id": "kr_leading",
+      "name": "선행지수 순환변동치",
+      "group": "경기",
+      "table": "901Y067",
+      "items": [
+        "I16E"
+      ],
+      "source_unit": "2020=100",
+      "unit": "지수",
+      "comparison": "delta",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "전월 대비 상승은 경기 개선 신호로 해석합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 99.9
+        },
+        {
+          "period": "202012",
+          "value": 100.2
+        },
+        {
+          "period": "202101",
+          "value": 100.6
+        },
+        {
+          "period": "202102",
+          "value": 100.9
+        },
+        {
+          "period": "202103",
+          "value": 101.3
+        },
+        {
+          "period": "202104",
+          "value": 101.7
+        },
+        {
+          "period": "202105",
+          "value": 102.1
+        },
+        {
+          "period": "202106",
+          "value": 102.4
+        },
+        {
+          "period": "202107",
+          "value": 102.2
+        },
+        {
+          "period": "202108",
+          "value": 102.0
+        },
+        {
+          "period": "202109",
+          "value": 101.6
+        },
+        {
+          "period": "202110",
+          "value": 101.2
+        },
+        {
+          "period": "202111",
+          "value": 100.9
+        },
+        {
+          "period": "202112",
+          "value": 100.7
+        },
+        {
+          "period": "202201",
+          "value": 100.9
+        },
+        {
+          "period": "202202",
+          "value": 100.7
+        },
+        {
+          "period": "202203",
+          "value": 100.5
+        },
+        {
+          "period": "202204",
+          "value": 100.3
+        },
+        {
+          "period": "202205",
+          "value": 100.5
+        },
+        {
+          "period": "202206",
+          "value": 100.6
+        },
+        {
+          "period": "202207",
+          "value": 100.3
+        },
+        {
+          "period": "202208",
+          "value": 100.1
+        },
+        {
+          "period": "202209",
+          "value": 100.1
+        },
+        {
+          "period": "202210",
+          "value": 100.0
+        },
+        {
+          "period": "202211",
+          "value": 99.7
+        },
+        {
+          "period": "202212",
+          "value": 99.1
+        },
+        {
+          "period": "202301",
+          "value": 98.9
+        },
+        {
+          "period": "202302",
+          "value": 98.5
+        },
+        {
+          "period": "202303",
+          "value": 98.4
+        },
+        {
+          "period": "202304",
+          "value": 98.1
+        },
+        {
+          "period": "202305",
+          "value": 98.3
+        },
+        {
+          "period": "202306",
+          "value": 98.6
+        },
+        {
+          "period": "202307",
+          "value": 98.9
+        },
+        {
+          "period": "202308",
+          "value": 98.8
+        },
+        {
+          "period": "202309",
+          "value": 98.8
+        },
+        {
+          "period": "202310",
+          "value": 99.0
+        },
+        {
+          "period": "202311",
+          "value": 99.1
+        },
+        {
+          "period": "202312",
+          "value": 99.3
+        },
+        {
+          "period": "202401",
+          "value": 99.3
+        },
+        {
+          "period": "202402",
+          "value": 99.4
+        },
+        {
+          "period": "202403",
+          "value": 99.4
+        },
+        {
+          "period": "202404",
+          "value": 99.6
+        },
+        {
+          "period": "202405",
+          "value": 99.6
+        },
+        {
+          "period": "202406",
+          "value": 99.7
+        },
+        {
+          "period": "202407",
+          "value": 99.5
+        },
+        {
+          "period": "202408",
+          "value": 99.4
+        },
+        {
+          "period": "202409",
+          "value": 99.3
+        },
+        {
+          "period": "202410",
+          "value": 99.2
+        },
+        {
+          "period": "202411",
+          "value": 99.2
+        },
+        {
+          "period": "202412",
+          "value": 98.9
+        },
+        {
+          "period": "202501",
+          "value": 98.5
+        },
+        {
+          "period": "202502",
+          "value": 98.5
+        },
+        {
+          "period": "202503",
+          "value": 98.7
+        },
+        {
+          "period": "202504",
+          "value": 98.8
+        },
+        {
+          "period": "202505",
+          "value": 98.9
+        },
+        {
+          "period": "202506",
+          "value": 99.0
+        },
+        {
+          "period": "202507",
+          "value": 99.4
+        },
+        {
+          "period": "202508",
+          "value": 99.8
+        },
+        {
+          "period": "202509",
+          "value": 99.7
+        },
+        {
+          "period": "202510",
+          "value": 99.6
+        },
+        {
+          "period": "202511",
+          "value": 99.8
+        },
+        {
+          "period": "202512",
+          "value": 100.2
+        },
+        {
+          "period": "202601",
+          "value": 100.7
+        },
+        {
+          "period": "202602",
+          "value": 101.2
+        },
+        {
+          "period": "202603",
+          "value": 101.8
+        },
+        {
+          "period": "202604",
+          "value": 102.3
+        },
+        {
+          "period": "202605",
+          "value": 102.9
+        },
+        {
+          "period": "202606",
+          "value": 103.8
+        },
+        {
+          "period": "202607",
+          "value": 104.3
+        },
+        {
+          "period": "202608",
+          "value": 104.2
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_coincident",
+      "name": "동행지수 순환변동치",
+      "group": "경기",
+      "table": "901Y067",
+      "items": [
+        "I16D"
+      ],
+      "source_unit": "2020=100",
+      "unit": "지수",
+      "comparison": "delta",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "전월 대비 상승은 현재 경기 개선 신호로 해석합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 98.4
+        },
+        {
+          "period": "202012",
+          "value": 98.4
+        },
+        {
+          "period": "202101",
+          "value": 98.1
+        },
+        {
+          "period": "202102",
+          "value": 98.1
+        },
+        {
+          "period": "202103",
+          "value": 98.6
+        },
+        {
+          "period": "202104",
+          "value": 99.3
+        },
+        {
+          "period": "202105",
+          "value": 99.5
+        },
+        {
+          "period": "202106",
+          "value": 99.5
+        },
+        {
+          "period": "202107",
+          "value": 99.5
+        },
+        {
+          "period": "202108",
+          "value": 99.5
+        },
+        {
+          "period": "202109",
+          "value": 99.5
+        },
+        {
+          "period": "202110",
+          "value": 99.7
+        },
+        {
+          "period": "202111",
+          "value": 100.0
+        },
+        {
+          "period": "202112",
+          "value": 100.7
+        },
+        {
+          "period": "202201",
+          "value": 101.2
+        },
+        {
+          "period": "202202",
+          "value": 101.3
+        },
+        {
+          "period": "202203",
+          "value": 101.1
+        },
+        {
+          "period": "202204",
+          "value": 100.6
+        },
+        {
+          "period": "202205",
+          "value": 100.8
+        },
+        {
+          "period": "202206",
+          "value": 100.9
+        },
+        {
+          "period": "202207",
+          "value": 101.2
+        },
+        {
+          "period": "202208",
+          "value": 101.6
+        },
+        {
+          "period": "202209",
+          "value": 101.6
+        },
+        {
+          "period": "202210",
+          "value": 101.5
+        },
+        {
+          "period": "202211",
+          "value": 101.2
+        },
+        {
+          "period": "202212",
+          "value": 100.5
+        },
+        {
+          "period": "202301",
+          "value": 100.2
+        },
+        {
+          "period": "202302",
+          "value": 100.3
+        },
+        {
+          "period": "202303",
+          "value": 100.7
+        },
+        {
+          "period": "202304",
+          "value": 100.8
+        },
+        {
+          "period": "202305",
+          "value": 101.0
+        },
+        {
+          "period": "202306",
+          "value": 101.0
+        },
+        {
+          "period": "202307",
+          "value": 100.7
+        },
+        {
+          "period": "202308",
+          "value": 100.6
+        },
+        {
+          "period": "202309",
+          "value": 100.5
+        },
+        {
+          "period": "202310",
+          "value": 100.7
+        },
+        {
+          "period": "202311",
+          "value": 100.9
+        },
+        {
+          "period": "202312",
+          "value": 100.6
+        },
+        {
+          "period": "202401",
+          "value": 100.8
+        },
+        {
+          "period": "202402",
+          "value": 100.8
+        },
+        {
+          "period": "202403",
+          "value": 100.6
+        },
+        {
+          "period": "202404",
+          "value": 100.4
+        },
+        {
+          "period": "202405",
+          "value": 100.1
+        },
+        {
+          "period": "202406",
+          "value": 100.1
+        },
+        {
+          "period": "202407",
+          "value": 99.7
+        },
+        {
+          "period": "202408",
+          "value": 99.6
+        },
+        {
+          "period": "202409",
+          "value": 99.7
+        },
+        {
+          "period": "202410",
+          "value": 100.1
+        },
+        {
+          "period": "202411",
+          "value": 99.8
+        },
+        {
+          "period": "202412",
+          "value": 99.7
+        },
+        {
+          "period": "202501",
+          "value": 99.4
+        },
+        {
+          "period": "202502",
+          "value": 99.4
+        },
+        {
+          "period": "202503",
+          "value": 99.7
+        },
+        {
+          "period": "202504",
+          "value": 99.8
+        },
+        {
+          "period": "202505",
+          "value": 99.5
+        },
+        {
+          "period": "202506",
+          "value": 99.7
+        },
+        {
+          "period": "202507",
+          "value": 99.7
+        },
+        {
+          "period": "202508",
+          "value": 99.9
+        },
+        {
+          "period": "202509",
+          "value": 99.9
+        },
+        {
+          "period": "202510",
+          "value": 99.5
+        },
+        {
+          "period": "202511",
+          "value": 99.3
+        },
+        {
+          "period": "202512",
+          "value": 99.1
+        },
+        {
+          "period": "202601",
+          "value": 99.1
+        },
+        {
+          "period": "202602",
+          "value": 99.7
+        },
+        {
+          "period": "202603",
+          "value": 100.1
+        },
+        {
+          "period": "202604",
+          "value": 100.3
+        },
+        {
+          "period": "202605",
+          "value": 99.9
+        },
+        {
+          "period": "202606",
+          "value": 100.4
+        },
+        {
+          "period": "202607",
+          "value": 101.2
+        },
+        {
+          "period": "202608",
+          "value": 101.7
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_consumer_sentiment",
+      "name": "소비자심리지수",
+      "group": "심리",
+      "table": "511Y002",
+      "items": [
+        "FME",
+        "99988"
+      ],
+      "source_unit": "",
+      "unit": "지수",
+      "comparison": "delta",
+      "direction": 1,
+      "lag_months": 1,
+      "note": "전월 대비 심리 개선·악화를 표시합니다. 100을 기준으로 한 수준 판단과는 별개입니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 98.8
+        },
+        {
+          "period": "202012",
+          "value": 90.5
+        },
+        {
+          "period": "202101",
+          "value": 95.0
+        },
+        {
+          "period": "202102",
+          "value": 97.2
+        },
+        {
+          "period": "202103",
+          "value": 100.4
+        },
+        {
+          "period": "202104",
+          "value": 102.3
+        },
+        {
+          "period": "202105",
+          "value": 105.5
+        },
+        {
+          "period": "202106",
+          "value": 110.9
+        },
+        {
+          "period": "202107",
+          "value": 103.4
+        },
+        {
+          "period": "202108",
+          "value": 102.7
+        },
+        {
+          "period": "202109",
+          "value": 104.1
+        },
+        {
+          "period": "202110",
+          "value": 107.3
+        },
+        {
+          "period": "202111",
+          "value": 108.2
+        },
+        {
+          "period": "202112",
+          "value": 104.2
+        },
+        {
+          "period": "202201",
+          "value": 104.9
+        },
+        {
+          "period": "202202",
+          "value": 103.4
+        },
+        {
+          "period": "202203",
+          "value": 103.6
+        },
+        {
+          "period": "202204",
+          "value": 104.3
+        },
+        {
+          "period": "202205",
+          "value": 103.1
+        },
+        {
+          "period": "202206",
+          "value": 96.6
+        },
+        {
+          "period": "202207",
+          "value": 85.7
+        },
+        {
+          "period": "202208",
+          "value": 88.5
+        },
+        {
+          "period": "202209",
+          "value": 91.3
+        },
+        {
+          "period": "202210",
+          "value": 88.6
+        },
+        {
+          "period": "202211",
+          "value": 86.2
+        },
+        {
+          "period": "202212",
+          "value": 89.7
+        },
+        {
+          "period": "202301",
+          "value": 90.4
+        },
+        {
+          "period": "202302",
+          "value": 89.8
+        },
+        {
+          "period": "202303",
+          "value": 91.7
+        },
+        {
+          "period": "202304",
+          "value": 94.9
+        },
+        {
+          "period": "202305",
+          "value": 97.9
+        },
+        {
+          "period": "202306",
+          "value": 100.7
+        },
+        {
+          "period": "202307",
+          "value": 103.4
+        },
+        {
+          "period": "202308",
+          "value": 103.2
+        },
+        {
+          "period": "202309",
+          "value": 99.7
+        },
+        {
+          "period": "202310",
+          "value": 98.0
+        },
+        {
+          "period": "202311",
+          "value": 97.1
+        },
+        {
+          "period": "202312",
+          "value": 99.5
+        },
+        {
+          "period": "202401",
+          "value": 101.5
+        },
+        {
+          "period": "202402",
+          "value": 101.7
+        },
+        {
+          "period": "202403",
+          "value": 100.5
+        },
+        {
+          "period": "202404",
+          "value": 100.6
+        },
+        {
+          "period": "202405",
+          "value": 98.2
+        },
+        {
+          "period": "202406",
+          "value": 100.7
+        },
+        {
+          "period": "202407",
+          "value": 103.6
+        },
+        {
+          "period": "202408",
+          "value": 100.6
+        },
+        {
+          "period": "202409",
+          "value": 99.8
+        },
+        {
+          "period": "202410",
+          "value": 101.6
+        },
+        {
+          "period": "202411",
+          "value": 100.6
+        },
+        {
+          "period": "202412",
+          "value": 87.9
+        },
+        {
+          "period": "202501",
+          "value": 91.0
+        },
+        {
+          "period": "202502",
+          "value": 95.0
+        },
+        {
+          "period": "202503",
+          "value": 93.2
+        },
+        {
+          "period": "202504",
+          "value": 93.6
+        },
+        {
+          "period": "202505",
+          "value": 101.7
+        },
+        {
+          "period": "202506",
+          "value": 108.6
+        },
+        {
+          "period": "202507",
+          "value": 110.7
+        },
+        {
+          "period": "202508",
+          "value": 111.2
+        },
+        {
+          "period": "202509",
+          "value": 110.0
+        },
+        {
+          "period": "202510",
+          "value": 109.6
+        },
+        {
+          "period": "202511",
+          "value": 112.3
+        },
+        {
+          "period": "202512",
+          "value": 109.8
+        },
+        {
+          "period": "202601",
+          "value": 110.8
+        },
+        {
+          "period": "202602",
+          "value": 112.1
+        },
+        {
+          "period": "202603",
+          "value": 107.0
+        },
+        {
+          "period": "202604",
+          "value": 99.2
+        },
+        {
+          "period": "202605",
+          "value": 106.1
+        },
+        {
+          "period": "202606",
+          "value": 106.6
+        },
+        {
+          "period": "202607",
+          "value": 106.8
+        },
+        {
+          "period": "202608",
+          "value": 104.5
+        },
+        {
+          "period": "202609",
+          "value": 106.6
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_economic_sentiment",
+      "name": "경제심리지수",
+      "group": "심리",
+      "table": "513Y001",
+      "items": [
+        "E1000"
+      ],
+      "source_unit": "",
+      "unit": "지수",
+      "comparison": "delta",
+      "direction": 1,
+      "lag_months": 1,
+      "note": "원계열입니다. 전월 변화에는 계절 요인이 포함될 수 있습니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 92.2
+        },
+        {
+          "period": "202012",
+          "value": 86.0
+        },
+        {
+          "period": "202101",
+          "value": 93.2
+        },
+        {
+          "period": "202102",
+          "value": 97.2
+        },
+        {
+          "period": "202103",
+          "value": 102.1
+        },
+        {
+          "period": "202104",
+          "value": 106.3
+        },
+        {
+          "period": "202105",
+          "value": 106.3
+        },
+        {
+          "period": "202106",
+          "value": 110.5
+        },
+        {
+          "period": "202107",
+          "value": 105.0
+        },
+        {
+          "period": "202108",
+          "value": 106.2
+        },
+        {
+          "period": "202109",
+          "value": 105.7
+        },
+        {
+          "period": "202110",
+          "value": 107.0
+        },
+        {
+          "period": "202111",
+          "value": 107.8
+        },
+        {
+          "period": "202112",
+          "value": 105.8
+        },
+        {
+          "period": "202201",
+          "value": 106.8
+        },
+        {
+          "period": "202202",
+          "value": 107.1
+        },
+        {
+          "period": "202203",
+          "value": 104.7
+        },
+        {
+          "period": "202204",
+          "value": 107.1
+        },
+        {
+          "period": "202205",
+          "value": 108.1
+        },
+        {
+          "period": "202206",
+          "value": 103.8
+        },
+        {
+          "period": "202207",
+          "value": 98.9
+        },
+        {
+          "period": "202208",
+          "value": 100.2
+        },
+        {
+          "period": "202209",
+          "value": 99.0
+        },
+        {
+          "period": "202210",
+          "value": 96.1
+        },
+        {
+          "period": "202211",
+          "value": 92.2
+        },
+        {
+          "period": "202212",
+          "value": 92.5
+        },
+        {
+          "period": "202301",
+          "value": 91.1
+        },
+        {
+          "period": "202302",
+          "value": 92.2
+        },
+        {
+          "period": "202303",
+          "value": 92.3
+        },
+        {
+          "period": "202304",
+          "value": 94.8
+        },
+        {
+          "period": "202305",
+          "value": 95.3
+        },
+        {
+          "period": "202306",
+          "value": 96.7
+        },
+        {
+          "period": "202307",
+          "value": 95.2
+        },
+        {
+          "period": "202308",
+          "value": 95.1
+        },
+        {
+          "period": "202309",
+          "value": 93.7
+        },
+        {
+          "period": "202310",
+          "value": 92.8
+        },
+        {
+          "period": "202311",
+          "value": 92.2
+        },
+        {
+          "period": "202312",
+          "value": 92.0
+        },
+        {
+          "period": "202401",
+          "value": 92.2
+        },
+        {
+          "period": "202402",
+          "value": 94.1
+        },
+        {
+          "period": "202403",
+          "value": 92.9
+        },
+        {
+          "period": "202404",
+          "value": 95.1
+        },
+        {
+          "period": "202405",
+          "value": 94.4
+        },
+        {
+          "period": "202406",
+          "value": 95.4
+        },
+        {
+          "period": "202407",
+          "value": 96.7
+        },
+        {
+          "period": "202408",
+          "value": 94.8
+        },
+        {
+          "period": "202409",
+          "value": 94.4
+        },
+        {
+          "period": "202410",
+          "value": 93.1
+        },
+        {
+          "period": "202411",
+          "value": 93.4
+        },
+        {
+          "period": "202412",
+          "value": 83.6
+        },
+        {
+          "period": "202501",
+          "value": 87.1
+        },
+        {
+          "period": "202502",
+          "value": 90.5
+        },
+        {
+          "period": "202503",
+          "value": 87.6
+        },
+        {
+          "period": "202504",
+          "value": 87.9
+        },
+        {
+          "period": "202505",
+          "value": 92.6
+        },
+        {
+          "period": "202506",
+          "value": 93.2
+        },
+        {
+          "period": "202507",
+          "value": 93.3
+        },
+        {
+          "period": "202508",
+          "value": 95.0
+        },
+        {
+          "period": "202509",
+          "value": 91.7
+        },
+        {
+          "period": "202510",
+          "value": 94.8
+        },
+        {
+          "period": "202511",
+          "value": 94.5
+        },
+        {
+          "period": "202512",
+          "value": 93.5
+        },
+        {
+          "period": "202601",
+          "value": 94.0
+        },
+        {
+          "period": "202602",
+          "value": 98.8
+        },
+        {
+          "period": "202603",
+          "value": 94.0
+        },
+        {
+          "period": "202604",
+          "value": 91.7
+        },
+        {
+          "period": "202605",
+          "value": 97.5
+        },
+        {
+          "period": "202606",
+          "value": 96.8
+        },
+        {
+          "period": "202607",
+          "value": 97.9
+        },
+        {
+          "period": "202608",
+          "value": 99.4
+        },
+        {
+          "period": "202609",
+          "value": 99.9
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_utilization",
+      "name": "제조업 가동률지수",
+      "group": "생산·소비",
+      "table": "901Y035",
+      "items": [
+        "I32A",
+        "I11C"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "mom",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "계절조정 지수이며, 가동률(%) 자체가 아닙니다. 전월 증가를 개선 신호로 표시합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 103.7
+        },
+        {
+          "period": "202012",
+          "value": 104.1
+        },
+        {
+          "period": "202101",
+          "value": 103.5
+        },
+        {
+          "period": "202102",
+          "value": 106.8
+        },
+        {
+          "period": "202103",
+          "value": 105.2
+        },
+        {
+          "period": "202104",
+          "value": 103.9
+        },
+        {
+          "period": "202105",
+          "value": 103.1
+        },
+        {
+          "period": "202106",
+          "value": 103.5
+        },
+        {
+          "period": "202107",
+          "value": 105.8
+        },
+        {
+          "period": "202108",
+          "value": 105.0
+        },
+        {
+          "period": "202109",
+          "value": 104.6
+        },
+        {
+          "period": "202110",
+          "value": 105.5
+        },
+        {
+          "period": "202111",
+          "value": 107.4
+        },
+        {
+          "period": "202112",
+          "value": 111.7
+        },
+        {
+          "period": "202201",
+          "value": 112.0
+        },
+        {
+          "period": "202202",
+          "value": 110.2
+        },
+        {
+          "period": "202203",
+          "value": 110.3
+        },
+        {
+          "period": "202204",
+          "value": 108.0
+        },
+        {
+          "period": "202205",
+          "value": 106.0
+        },
+        {
+          "period": "202206",
+          "value": 106.7
+        },
+        {
+          "period": "202207",
+          "value": 105.6
+        },
+        {
+          "period": "202208",
+          "value": 101.8
+        },
+        {
+          "period": "202209",
+          "value": 101.5
+        },
+        {
+          "period": "202210",
+          "value": 99.6
+        },
+        {
+          "period": "202211",
+          "value": 100.2
+        },
+        {
+          "period": "202212",
+          "value": 96.5
+        },
+        {
+          "period": "202301",
+          "value": 99.7
+        },
+        {
+          "period": "202302",
+          "value": 98.4
+        },
+        {
+          "period": "202303",
+          "value": 101.9
+        },
+        {
+          "period": "202304",
+          "value": 100.6
+        },
+        {
+          "period": "202305",
+          "value": 104.0
+        },
+        {
+          "period": "202306",
+          "value": 100.8
+        },
+        {
+          "period": "202307",
+          "value": 98.7
+        },
+        {
+          "period": "202308",
+          "value": 102.1
+        },
+        {
+          "period": "202309",
+          "value": 103.1
+        },
+        {
+          "period": "202310",
+          "value": 103.0
+        },
+        {
+          "period": "202311",
+          "value": 103.3
+        },
+        {
+          "period": "202312",
+          "value": 100.7
+        },
+        {
+          "period": "202401",
+          "value": 101.8
+        },
+        {
+          "period": "202402",
+          "value": 103.6
+        },
+        {
+          "period": "202403",
+          "value": 100.3
+        },
+        {
+          "period": "202404",
+          "value": 104.0
+        },
+        {
+          "period": "202405",
+          "value": 103.3
+        },
+        {
+          "period": "202406",
+          "value": 102.2
+        },
+        {
+          "period": "202407",
+          "value": 99.0
+        },
+        {
+          "period": "202408",
+          "value": 103.0
+        },
+        {
+          "period": "202409",
+          "value": 102.0
+        },
+        {
+          "period": "202410",
+          "value": 102.8
+        },
+        {
+          "period": "202411",
+          "value": 100.4
+        },
+        {
+          "period": "202412",
+          "value": 102.7
+        },
+        {
+          "period": "202501",
+          "value": 101.6
+        },
+        {
+          "period": "202502",
+          "value": 102.0
+        },
+        {
+          "period": "202503",
+          "value": 103.9
+        },
+        {
+          "period": "202504",
+          "value": 103.5
+        },
+        {
+          "period": "202505",
+          "value": 101.1
+        },
+        {
+          "period": "202506",
+          "value": 102.8
+        },
+        {
+          "period": "202507",
+          "value": 101.5
+        },
+        {
+          "period": "202508",
+          "value": 103.7
+        },
+        {
+          "period": "202509",
+          "value": 103.2
+        },
+        {
+          "period": "202510",
+          "value": 99.0
+        },
+        {
+          "period": "202511",
+          "value": 99.7
+        },
+        {
+          "period": "202512",
+          "value": 102.5
+        },
+        {
+          "period": "202601",
+          "value": 99.5
+        },
+        {
+          "period": "202602",
+          "value": 104.6
+        },
+        {
+          "period": "202603",
+          "value": 105.0
+        },
+        {
+          "period": "202604",
+          "value": 103.0
+        },
+        {
+          "period": "202605",
+          "value": 99.6
+        },
+        {
+          "period": "202606",
+          "value": 105.0
+        },
+        {
+          "period": "202607",
+          "value": 105.2
+        },
+        {
+          "period": "202608",
+          "value": 99.6
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_retail",
+      "name": "소매판매액지수",
+      "group": "생산·소비",
+      "table": "901Y100",
+      "items": [
+        "G0",
+        "T3"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "mom",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "계절조정 지수. 전월 증가를 소비 개선 신호로 표시합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 101.2
+        },
+        {
+          "period": "202012",
+          "value": 101.7
+        },
+        {
+          "period": "202101",
+          "value": 104.9
+        },
+        {
+          "period": "202102",
+          "value": 102.1
+        },
+        {
+          "period": "202103",
+          "value": 104.1
+        },
+        {
+          "period": "202104",
+          "value": 105.4
+        },
+        {
+          "period": "202105",
+          "value": 105.0
+        },
+        {
+          "period": "202106",
+          "value": 106.1
+        },
+        {
+          "period": "202107",
+          "value": 106.7
+        },
+        {
+          "period": "202108",
+          "value": 106.2
+        },
+        {
+          "period": "202109",
+          "value": 108.9
+        },
+        {
+          "period": "202110",
+          "value": 108.6
+        },
+        {
+          "period": "202111",
+          "value": 105.8
+        },
+        {
+          "period": "202112",
+          "value": 108.0
+        },
+        {
+          "period": "202201",
+          "value": 107.8
+        },
+        {
+          "period": "202202",
+          "value": 104.4
+        },
+        {
+          "period": "202203",
+          "value": 106.4
+        },
+        {
+          "period": "202204",
+          "value": 105.9
+        },
+        {
+          "period": "202205",
+          "value": 105.5
+        },
+        {
+          "period": "202206",
+          "value": 104.6
+        },
+        {
+          "period": "202207",
+          "value": 104.6
+        },
+        {
+          "period": "202208",
+          "value": 108.3
+        },
+        {
+          "period": "202209",
+          "value": 106.5
+        },
+        {
+          "period": "202210",
+          "value": 107.0
+        },
+        {
+          "period": "202211",
+          "value": 103.6
+        },
+        {
+          "period": "202212",
+          "value": 104.3
+        },
+        {
+          "period": "202301",
+          "value": 102.1
+        },
+        {
+          "period": "202302",
+          "value": 107.3
+        },
+        {
+          "period": "202303",
+          "value": 105.2
+        },
+        {
+          "period": "202304",
+          "value": 104.2
+        },
+        {
+          "period": "202305",
+          "value": 104.8
+        },
+        {
+          "period": "202306",
+          "value": 106.0
+        },
+        {
+          "period": "202307",
+          "value": 102.5
+        },
+        {
+          "period": "202308",
+          "value": 103.7
+        },
+        {
+          "period": "202309",
+          "value": 103.7
+        },
+        {
+          "period": "202310",
+          "value": 104.0
+        },
+        {
+          "period": "202311",
+          "value": 103.8
+        },
+        {
+          "period": "202312",
+          "value": 103.5
+        },
+        {
+          "period": "202401",
+          "value": 104.9
+        },
+        {
+          "period": "202402",
+          "value": 101.0
+        },
+        {
+          "period": "202403",
+          "value": 101.8
+        },
+        {
+          "period": "202404",
+          "value": 101.6
+        },
+        {
+          "period": "202405",
+          "value": 101.9
+        },
+        {
+          "period": "202406",
+          "value": 102.2
+        },
+        {
+          "period": "202407",
+          "value": 101.4
+        },
+        {
+          "period": "202408",
+          "value": 102.0
+        },
+        {
+          "period": "202409",
+          "value": 103.4
+        },
+        {
+          "period": "202410",
+          "value": 102.1
+        },
+        {
+          "period": "202411",
+          "value": 101.5
+        },
+        {
+          "period": "202412",
+          "value": 101.6
+        },
+        {
+          "period": "202501",
+          "value": 101.6
+        },
+        {
+          "period": "202502",
+          "value": 103.2
+        },
+        {
+          "period": "202503",
+          "value": 102.1
+        },
+        {
+          "period": "202504",
+          "value": 101.6
+        },
+        {
+          "period": "202505",
+          "value": 101.6
+        },
+        {
+          "period": "202506",
+          "value": 102.0
+        },
+        {
+          "period": "202507",
+          "value": 104.1
+        },
+        {
+          "period": "202508",
+          "value": 101.8
+        },
+        {
+          "period": "202509",
+          "value": 102.9
+        },
+        {
+          "period": "202510",
+          "value": 105.8
+        },
+        {
+          "period": "202511",
+          "value": 102.1
+        },
+        {
+          "period": "202512",
+          "value": 102.7
+        },
+        {
+          "period": "202601",
+          "value": 105.6
+        },
+        {
+          "period": "202602",
+          "value": 105.2
+        },
+        {
+          "period": "202603",
+          "value": 107.2
+        },
+        {
+          "period": "202604",
+          "value": 103.2
+        },
+        {
+          "period": "202605",
+          "value": 103.1
+        },
+        {
+          "period": "202606",
+          "value": 105.9
+        },
+        {
+          "period": "202607",
+          "value": 103.1
+        },
+        {
+          "period": "202608",
+          "value": 101.2
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_investment",
+      "name": "설비투자지수",
+      "group": "생산·소비",
+      "table": "901Y066",
+      "items": [
+        "I15B"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "mom",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "계절조정 지수. 전월 증가를 투자 개선 신호로 표시합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 98.9
+        },
+        {
+          "period": "202012",
+          "value": 104.8
+        },
+        {
+          "period": "202101",
+          "value": 113.2
+        },
+        {
+          "period": "202102",
+          "value": 109.6
+        },
+        {
+          "period": "202103",
+          "value": 109.9
+        },
+        {
+          "period": "202104",
+          "value": 118.2
+        },
+        {
+          "period": "202105",
+          "value": 108.5
+        },
+        {
+          "period": "202106",
+          "value": 114.9
+        },
+        {
+          "period": "202107",
+          "value": 116.8
+        },
+        {
+          "period": "202108",
+          "value": 109.9
+        },
+        {
+          "period": "202109",
+          "value": 101.7
+        },
+        {
+          "period": "202110",
+          "value": 100.7
+        },
+        {
+          "period": "202111",
+          "value": 108.7
+        },
+        {
+          "period": "202112",
+          "value": 111.4
+        },
+        {
+          "period": "202201",
+          "value": 117.5
+        },
+        {
+          "period": "202202",
+          "value": 108.8
+        },
+        {
+          "period": "202203",
+          "value": 106.1
+        },
+        {
+          "period": "202204",
+          "value": 103.9
+        },
+        {
+          "period": "202205",
+          "value": 112.3
+        },
+        {
+          "period": "202206",
+          "value": 116.1
+        },
+        {
+          "period": "202207",
+          "value": 115.2
+        },
+        {
+          "period": "202208",
+          "value": 121.1
+        },
+        {
+          "period": "202209",
+          "value": 113.8
+        },
+        {
+          "period": "202210",
+          "value": 117.5
+        },
+        {
+          "period": "202211",
+          "value": 117.0
+        },
+        {
+          "period": "202212",
+          "value": 115.0
+        },
+        {
+          "period": "202301",
+          "value": 105.0
+        },
+        {
+          "period": "202302",
+          "value": 110.3
+        },
+        {
+          "period": "202303",
+          "value": 108.4
+        },
+        {
+          "period": "202304",
+          "value": 109.6
+        },
+        {
+          "period": "202305",
+          "value": 109.5
+        },
+        {
+          "period": "202306",
+          "value": 113.6
+        },
+        {
+          "period": "202307",
+          "value": 101.8
+        },
+        {
+          "period": "202308",
+          "value": 102.1
+        },
+        {
+          "period": "202309",
+          "value": 107.4
+        },
+        {
+          "period": "202310",
+          "value": 111.1
+        },
+        {
+          "period": "202311",
+          "value": 108.2
+        },
+        {
+          "period": "202312",
+          "value": 112.9
+        },
+        {
+          "period": "202401",
+          "value": 103.0
+        },
+        {
+          "period": "202402",
+          "value": 113.2
+        },
+        {
+          "period": "202403",
+          "value": 105.9
+        },
+        {
+          "period": "202404",
+          "value": 109.6
+        },
+        {
+          "period": "202405",
+          "value": 104.1
+        },
+        {
+          "period": "202406",
+          "value": 109.6
+        },
+        {
+          "period": "202407",
+          "value": 118.9
+        },
+        {
+          "period": "202408",
+          "value": 109.6
+        },
+        {
+          "period": "202409",
+          "value": 114.5
+        },
+        {
+          "period": "202410",
+          "value": 114.7
+        },
+        {
+          "period": "202411",
+          "value": 110.5
+        },
+        {
+          "period": "202412",
+          "value": 124.0
+        },
+        {
+          "period": "202501",
+          "value": 105.5
+        },
+        {
+          "period": "202502",
+          "value": 115.0
+        },
+        {
+          "period": "202503",
+          "value": 120.9
+        },
+        {
+          "period": "202504",
+          "value": 117.5
+        },
+        {
+          "period": "202505",
+          "value": 112.7
+        },
+        {
+          "period": "202506",
+          "value": 112.2
+        },
+        {
+          "period": "202507",
+          "value": 114.1
+        },
+        {
+          "period": "202508",
+          "value": 110.6
+        },
+        {
+          "period": "202509",
+          "value": 119.6
+        },
+        {
+          "period": "202510",
+          "value": 112.0
+        },
+        {
+          "period": "202511",
+          "value": 111.9
+        },
+        {
+          "period": "202512",
+          "value": 107.3
+        },
+        {
+          "period": "202601",
+          "value": 112.7
+        },
+        {
+          "period": "202602",
+          "value": 129.6
+        },
+        {
+          "period": "202603",
+          "value": 131.8
+        },
+        {
+          "period": "202604",
+          "value": 126.5
+        },
+        {
+          "period": "202605",
+          "value": 126.4
+        },
+        {
+          "period": "202606",
+          "value": 134.2
+        },
+        {
+          "period": "202607",
+          "value": 144.9
+        },
+        {
+          "period": "202608",
+          "value": 131.1
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_production",
+      "name": "전산업생산지수",
+      "group": "생산·소비",
+      "table": "901Y033",
+      "items": [
+        "A00",
+        "2"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "mom",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "농림어업 제외·계절조정 지수. 전월 증가를 생산 개선 신호로 표시합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 102.5
+        },
+        {
+          "period": "202012",
+          "value": 101.5
+        },
+        {
+          "period": "202101",
+          "value": 101.7
+        },
+        {
+          "period": "202102",
+          "value": 103.7
+        },
+        {
+          "period": "202103",
+          "value": 104.4
+        },
+        {
+          "period": "202104",
+          "value": 104.0
+        },
+        {
+          "period": "202105",
+          "value": 104.4
+        },
+        {
+          "period": "202106",
+          "value": 105.0
+        },
+        {
+          "period": "202107",
+          "value": 105.1
+        },
+        {
+          "period": "202108",
+          "value": 105.0
+        },
+        {
+          "period": "202109",
+          "value": 106.1
+        },
+        {
+          "period": "202110",
+          "value": 106.7
+        },
+        {
+          "period": "202111",
+          "value": 108.3
+        },
+        {
+          "period": "202112",
+          "value": 109.5
+        },
+        {
+          "period": "202201",
+          "value": 110.1
+        },
+        {
+          "period": "202202",
+          "value": 108.3
+        },
+        {
+          "period": "202203",
+          "value": 109.7
+        },
+        {
+          "period": "202204",
+          "value": 110.7
+        },
+        {
+          "period": "202205",
+          "value": 110.8
+        },
+        {
+          "period": "202206",
+          "value": 111.4
+        },
+        {
+          "period": "202207",
+          "value": 112.0
+        },
+        {
+          "period": "202208",
+          "value": 110.9
+        },
+        {
+          "period": "202209",
+          "value": 110.8
+        },
+        {
+          "period": "202210",
+          "value": 110.1
+        },
+        {
+          "period": "202211",
+          "value": 111.4
+        },
+        {
+          "period": "202212",
+          "value": 109.5
+        },
+        {
+          "period": "202301",
+          "value": 108.9
+        },
+        {
+          "period": "202302",
+          "value": 110.6
+        },
+        {
+          "period": "202303",
+          "value": 111.2
+        },
+        {
+          "period": "202304",
+          "value": 110.2
+        },
+        {
+          "period": "202305",
+          "value": 112.2
+        },
+        {
+          "period": "202306",
+          "value": 111.8
+        },
+        {
+          "period": "202307",
+          "value": 111.1
+        },
+        {
+          "period": "202308",
+          "value": 112.7
+        },
+        {
+          "period": "202309",
+          "value": 114.0
+        },
+        {
+          "period": "202310",
+          "value": 113.1
+        },
+        {
+          "period": "202311",
+          "value": 114.0
+        },
+        {
+          "period": "202312",
+          "value": 113.2
+        },
+        {
+          "period": "202401",
+          "value": 113.7
+        },
+        {
+          "period": "202402",
+          "value": 114.7
+        },
+        {
+          "period": "202403",
+          "value": 112.4
+        },
+        {
+          "period": "202404",
+          "value": 114.5
+        },
+        {
+          "period": "202405",
+          "value": 114.1
+        },
+        {
+          "period": "202406",
+          "value": 113.1
+        },
+        {
+          "period": "202407",
+          "value": 112.5
+        },
+        {
+          "period": "202408",
+          "value": 114.3
+        },
+        {
+          "period": "202409",
+          "value": 113.6
+        },
+        {
+          "period": "202410",
+          "value": 114.9
+        },
+        {
+          "period": "202411",
+          "value": 113.5
+        },
+        {
+          "period": "202412",
+          "value": 115.1
+        },
+        {
+          "period": "202501",
+          "value": 114.1
+        },
+        {
+          "period": "202502",
+          "value": 114.6
+        },
+        {
+          "period": "202503",
+          "value": 115.3
+        },
+        {
+          "period": "202504",
+          "value": 115.1
+        },
+        {
+          "period": "202505",
+          "value": 114.0
+        },
+        {
+          "period": "202506",
+          "value": 116.0
+        },
+        {
+          "period": "202507",
+          "value": 115.6
+        },
+        {
+          "period": "202508",
+          "value": 115.5
+        },
+        {
+          "period": "202509",
+          "value": 116.9
+        },
+        {
+          "period": "202510",
+          "value": 114.3
+        },
+        {
+          "period": "202511",
+          "value": 115.1
+        },
+        {
+          "period": "202512",
+          "value": 116.5
+        },
+        {
+          "period": "202601",
+          "value": 115.6
+        },
+        {
+          "period": "202602",
+          "value": 118.0
+        },
+        {
+          "period": "202603",
+          "value": 118.5
+        },
+        {
+          "period": "202604",
+          "value": 117.9
+        },
+        {
+          "period": "202605",
+          "value": 117.4
+        },
+        {
+          "period": "202606",
+          "value": 120.4
+        },
+        {
+          "period": "202607",
+          "value": 120.3
+        },
+        {
+          "period": "202608",
+          "value": 118.7
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_cpi",
+      "name": "소비자물가지수",
+      "group": "물가·고용·수출",
+      "table": "901Y009",
+      "items": [
+        "0"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "yoy",
+      "direction": 0,
+      "lag_months": 1,
+      "note": "전년 동월 대비 물가 상승률을 표시합니다. 물가 변화의 긍정·부정은 경기와 목표 수준에 따라 달라 단정하지 않습니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 100.09
+        },
+        {
+          "period": "202012",
+          "value": 100.33
+        },
+        {
+          "period": "202101",
+          "value": 101.04
+        },
+        {
+          "period": "202102",
+          "value": 101.58
+        },
+        {
+          "period": "202103",
+          "value": 101.84
+        },
+        {
+          "period": "202104",
+          "value": 101.98
+        },
+        {
+          "period": "202105",
+          "value": 102.05
+        },
+        {
+          "period": "202106",
+          "value": 102.05
+        },
+        {
+          "period": "202107",
+          "value": 102.26
+        },
+        {
+          "period": "202108",
+          "value": 102.75
+        },
+        {
+          "period": "202109",
+          "value": 103.17
+        },
+        {
+          "period": "202110",
+          "value": 103.35
+        },
+        {
+          "period": "202111",
+          "value": 103.87
+        },
+        {
+          "period": "202112",
+          "value": 104.04
+        },
+        {
+          "period": "202201",
+          "value": 104.85
+        },
+        {
+          "period": "202202",
+          "value": 105.42
+        },
+        {
+          "period": "202203",
+          "value": 106.1
+        },
+        {
+          "period": "202204",
+          "value": 106.83
+        },
+        {
+          "period": "202205",
+          "value": 107.5
+        },
+        {
+          "period": "202206",
+          "value": 108.21
+        },
+        {
+          "period": "202207",
+          "value": 108.73
+        },
+        {
+          "period": "202208",
+          "value": 108.63
+        },
+        {
+          "period": "202209",
+          "value": 108.82
+        },
+        {
+          "period": "202210",
+          "value": 109.16
+        },
+        {
+          "period": "202211",
+          "value": 109.07
+        },
+        {
+          "period": "202212",
+          "value": 109.26
+        },
+        {
+          "period": "202301",
+          "value": 110.07
+        },
+        {
+          "period": "202302",
+          "value": 110.33
+        },
+        {
+          "period": "202303",
+          "value": 110.52
+        },
+        {
+          "period": "202304",
+          "value": 110.77
+        },
+        {
+          "period": "202305",
+          "value": 111.13
+        },
+        {
+          "period": "202306",
+          "value": 111.16
+        },
+        {
+          "period": "202307",
+          "value": 111.29
+        },
+        {
+          "period": "202308",
+          "value": 112.28
+        },
+        {
+          "period": "202309",
+          "value": 112.85
+        },
+        {
+          "period": "202310",
+          "value": 113.27
+        },
+        {
+          "period": "202311",
+          "value": 112.68
+        },
+        {
+          "period": "202312",
+          "value": 112.73
+        },
+        {
+          "period": "202401",
+          "value": 113.17
+        },
+        {
+          "period": "202402",
+          "value": 113.78
+        },
+        {
+          "period": "202403",
+          "value": 113.95
+        },
+        {
+          "period": "202404",
+          "value": 114.01
+        },
+        {
+          "period": "202405",
+          "value": 114.1
+        },
+        {
+          "period": "202406",
+          "value": 113.84
+        },
+        {
+          "period": "202407",
+          "value": 114.13
+        },
+        {
+          "period": "202408",
+          "value": 114.54
+        },
+        {
+          "period": "202409",
+          "value": 114.65
+        },
+        {
+          "period": "202410",
+          "value": 114.69
+        },
+        {
+          "period": "202411",
+          "value": 114.4
+        },
+        {
+          "period": "202412",
+          "value": 114.91
+        },
+        {
+          "period": "202501",
+          "value": 115.71
+        },
+        {
+          "period": "202502",
+          "value": 116.08
+        },
+        {
+          "period": "202503",
+          "value": 116.29
+        },
+        {
+          "period": "202504",
+          "value": 116.38
+        },
+        {
+          "period": "202505",
+          "value": 116.27
+        },
+        {
+          "period": "202506",
+          "value": 116.31
+        },
+        {
+          "period": "202507",
+          "value": 116.52
+        },
+        {
+          "period": "202508",
+          "value": 116.45
+        },
+        {
+          "period": "202509",
+          "value": 117.06
+        },
+        {
+          "period": "202510",
+          "value": 117.42
+        },
+        {
+          "period": "202511",
+          "value": 117.2
+        },
+        {
+          "period": "202512",
+          "value": 117.57
+        },
+        {
+          "period": "202601",
+          "value": 118.03
+        },
+        {
+          "period": "202602",
+          "value": 118.4
+        },
+        {
+          "period": "202603",
+          "value": 118.8
+        },
+        {
+          "period": "202604",
+          "value": 119.37
+        },
+        {
+          "period": "202605",
+          "value": 119.92
+        },
+        {
+          "period": "202606",
+          "value": 119.99
+        },
+        {
+          "period": "202607",
+          "value": 119.77
+        },
+        {
+          "period": "202608",
+          "value": 120.05
+        },
+        {
+          "period": "202609",
+          "value": 120.43
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_ppi",
+      "name": "생산자물가지수",
+      "group": "물가·고용·수출",
+      "table": "404Y014",
+      "items": [
+        "*AA"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "yoy",
+      "direction": 0,
+      "lag_months": 2,
+      "note": "전년 동월 대비 변화율입니다. 비용·수요 요인이 함께 작용하므로 긍정·부정을 단정하지 않습니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 100.06
+        },
+        {
+          "period": "202012",
+          "value": 100.84
+        },
+        {
+          "period": "202101",
+          "value": 101.96
+        },
+        {
+          "period": "202102",
+          "value": 102.8
+        },
+        {
+          "period": "202103",
+          "value": 103.89
+        },
+        {
+          "period": "202104",
+          "value": 104.88
+        },
+        {
+          "period": "202105",
+          "value": 105.45
+        },
+        {
+          "period": "202106",
+          "value": 106.01
+        },
+        {
+          "period": "202107",
+          "value": 107.04
+        },
+        {
+          "period": "202108",
+          "value": 107.6
+        },
+        {
+          "period": "202109",
+          "value": 108.0
+        },
+        {
+          "period": "202110",
+          "value": 109.12
+        },
+        {
+          "period": "202111",
+          "value": 109.9
+        },
+        {
+          "period": "202112",
+          "value": 109.88
+        },
+        {
+          "period": "202201",
+          "value": 111.04
+        },
+        {
+          "period": "202202",
+          "value": 111.57
+        },
+        {
+          "period": "202203",
+          "value": 113.27
+        },
+        {
+          "period": "202204",
+          "value": 115.1
+        },
+        {
+          "period": "202205",
+          "value": 115.92
+        },
+        {
+          "period": "202206",
+          "value": 116.57
+        },
+        {
+          "period": "202207",
+          "value": 116.9
+        },
+        {
+          "period": "202208",
+          "value": 116.45
+        },
+        {
+          "period": "202209",
+          "value": 116.53
+        },
+        {
+          "period": "202210",
+          "value": 117.13
+        },
+        {
+          "period": "202211",
+          "value": 116.75
+        },
+        {
+          "period": "202212",
+          "value": 116.27
+        },
+        {
+          "period": "202301",
+          "value": 116.69
+        },
+        {
+          "period": "202302",
+          "value": 116.91
+        },
+        {
+          "period": "202303",
+          "value": 117.05
+        },
+        {
+          "period": "202304",
+          "value": 116.96
+        },
+        {
+          "period": "202305",
+          "value": 116.53
+        },
+        {
+          "period": "202306",
+          "value": 116.27
+        },
+        {
+          "period": "202307",
+          "value": 116.53
+        },
+        {
+          "period": "202308",
+          "value": 117.5
+        },
+        {
+          "period": "202309",
+          "value": 118.03
+        },
+        {
+          "period": "202310",
+          "value": 117.86
+        },
+        {
+          "period": "202311",
+          "value": 117.41
+        },
+        {
+          "period": "202312",
+          "value": 117.56
+        },
+        {
+          "period": "202401",
+          "value": 118.19
+        },
+        {
+          "period": "202402",
+          "value": 118.55
+        },
+        {
+          "period": "202403",
+          "value": 118.82
+        },
+        {
+          "period": "202404",
+          "value": 119.16
+        },
+        {
+          "period": "202405",
+          "value": 119.25
+        },
+        {
+          "period": "202406",
+          "value": 119.23
+        },
+        {
+          "period": "202407",
+          "value": 119.56
+        },
+        {
+          "period": "202408",
+          "value": 119.38
+        },
+        {
+          "period": "202409",
+          "value": 119.16
+        },
+        {
+          "period": "202410",
+          "value": 119.01
+        },
+        {
+          "period": "202411",
+          "value": 119.1
+        },
+        {
+          "period": "202412",
+          "value": 119.52
+        },
+        {
+          "period": "202501",
+          "value": 120.27
+        },
+        {
+          "period": "202502",
+          "value": 120.33
+        },
+        {
+          "period": "202503",
+          "value": 120.36
+        },
+        {
+          "period": "202504",
+          "value": 120.14
+        },
+        {
+          "period": "202505",
+          "value": 119.64
+        },
+        {
+          "period": "202506",
+          "value": 119.77
+        },
+        {
+          "period": "202507",
+          "value": 120.19
+        },
+        {
+          "period": "202508",
+          "value": 120.11
+        },
+        {
+          "period": "202509",
+          "value": 120.54
+        },
+        {
+          "period": "202510",
+          "value": 120.94
+        },
+        {
+          "period": "202511",
+          "value": 121.31
+        },
+        {
+          "period": "202512",
+          "value": 121.76
+        },
+        {
+          "period": "202601",
+          "value": 122.56
+        },
+        {
+          "period": "202602",
+          "value": 123.28
+        },
+        {
+          "period": "202603",
+          "value": 125.35
+        },
+        {
+          "period": "202604",
+          "value": 128.75
+        },
+        {
+          "period": "202605",
+          "value": 129.98
+        },
+        {
+          "period": "202606",
+          "value": 129.92
+        },
+        {
+          "period": "202607",
+          "value": 129.43
+        },
+        {
+          "period": "202608",
+          "value": 129.64
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_unemployment",
+      "name": "실업률",
+      "group": "물가·고용·수출",
+      "table": "901Y027",
+      "items": [
+        "I61BC",
+        "I28B"
+      ],
+      "source_unit": "%",
+      "unit": "%",
+      "comparison": "delta",
+      "direction": -1,
+      "lag_months": 2,
+      "note": "계절조정 실업률. 전월 대비 하락을 고용 개선 신호로 표시합니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 4.1
+        },
+        {
+          "period": "202012",
+          "value": 4.1
+        },
+        {
+          "period": "202101",
+          "value": 4.6
+        },
+        {
+          "period": "202102",
+          "value": 4.1
+        },
+        {
+          "period": "202103",
+          "value": 4.0
+        },
+        {
+          "period": "202104",
+          "value": 3.8
+        },
+        {
+          "period": "202105",
+          "value": 3.8
+        },
+        {
+          "period": "202106",
+          "value": 3.7
+        },
+        {
+          "period": "202107",
+          "value": 3.3
+        },
+        {
+          "period": "202108",
+          "value": 3.4
+        },
+        {
+          "period": "202109",
+          "value": 3.1
+        },
+        {
+          "period": "202110",
+          "value": 3.3
+        },
+        {
+          "period": "202111",
+          "value": 3.1
+        },
+        {
+          "period": "202112",
+          "value": 3.2
+        },
+        {
+          "period": "202201",
+          "value": 3.2
+        },
+        {
+          "period": "202202",
+          "value": 2.9
+        },
+        {
+          "period": "202203",
+          "value": 2.8
+        },
+        {
+          "period": "202204",
+          "value": 2.8
+        },
+        {
+          "period": "202205",
+          "value": 2.9
+        },
+        {
+          "period": "202206",
+          "value": 2.9
+        },
+        {
+          "period": "202207",
+          "value": 3.0
+        },
+        {
+          "period": "202208",
+          "value": 2.8
+        },
+        {
+          "period": "202209",
+          "value": 2.9
+        },
+        {
+          "period": "202210",
+          "value": 2.9
+        },
+        {
+          "period": "202211",
+          "value": 2.8
+        },
+        {
+          "period": "202212",
+          "value": 2.7
+        },
+        {
+          "period": "202301",
+          "value": 2.7
+        },
+        {
+          "period": "202302",
+          "value": 2.7
+        },
+        {
+          "period": "202303",
+          "value": 2.7
+        },
+        {
+          "period": "202304",
+          "value": 2.6
+        },
+        {
+          "period": "202305",
+          "value": 2.5
+        },
+        {
+          "period": "202306",
+          "value": 2.6
+        },
+        {
+          "period": "202307",
+          "value": 2.9
+        },
+        {
+          "period": "202308",
+          "value": 2.7
+        },
+        {
+          "period": "202309",
+          "value": 2.8
+        },
+        {
+          "period": "202310",
+          "value": 2.6
+        },
+        {
+          "period": "202311",
+          "value": 2.8
+        },
+        {
+          "period": "202312",
+          "value": 2.8
+        },
+        {
+          "period": "202401",
+          "value": 2.8
+        },
+        {
+          "period": "202402",
+          "value": 2.7
+        },
+        {
+          "period": "202403",
+          "value": 2.8
+        },
+        {
+          "period": "202404",
+          "value": 2.8
+        },
+        {
+          "period": "202405",
+          "value": 2.8
+        },
+        {
+          "period": "202406",
+          "value": 2.8
+        },
+        {
+          "period": "202407",
+          "value": 2.7
+        },
+        {
+          "period": "202408",
+          "value": 2.6
+        },
+        {
+          "period": "202409",
+          "value": 2.6
+        },
+        {
+          "period": "202410",
+          "value": 2.8
+        },
+        {
+          "period": "202411",
+          "value": 2.8
+        },
+        {
+          "period": "202412",
+          "value": 3.1
+        },
+        {
+          "period": "202501",
+          "value": 2.8
+        },
+        {
+          "period": "202502",
+          "value": 2.8
+        },
+        {
+          "period": "202503",
+          "value": 2.8
+        },
+        {
+          "period": "202504",
+          "value": 2.7
+        },
+        {
+          "period": "202505",
+          "value": 2.7
+        },
+        {
+          "period": "202506",
+          "value": 2.7
+        },
+        {
+          "period": "202507",
+          "value": 2.7
+        },
+        {
+          "period": "202508",
+          "value": 2.8
+        },
+        {
+          "period": "202509",
+          "value": 2.7
+        },
+        {
+          "period": "202510",
+          "value": 2.7
+        },
+        {
+          "period": "202511",
+          "value": 2.8
+        },
+        {
+          "period": "202512",
+          "value": 3.3
+        },
+        {
+          "period": "202601",
+          "value": 3.0
+        },
+        {
+          "period": "202602",
+          "value": 2.9
+        },
+        {
+          "period": "202603",
+          "value": 2.7
+        },
+        {
+          "period": "202604",
+          "value": 2.8
+        },
+        {
+          "period": "202605",
+          "value": 2.8
+        },
+        {
+          "period": "202606",
+          "value": 2.7
+        },
+        {
+          "period": "202607",
+          "value": 2.8
+        },
+        {
+          "period": "202608",
+          "value": 2.7
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    },
+    {
+      "id": "kr_export_index",
+      "name": "수출금액지수",
+      "group": "물가·고용·수출",
+      "table": "403Y001",
+      "items": [
+        "*AA"
+      ],
+      "source_unit": "2020=100",
+      "unit": "2020=100",
+      "comparison": "yoy",
+      "direction": 1,
+      "lag_months": 2,
+      "note": "전년 동월 대비 증가를 개선 신호로 표시합니다. 통관 수출총액·수출물량과는 다른 지표입니다.",
+      "history": [
+        {
+          "period": "202011",
+          "value": 109.25
+        },
+        {
+          "period": "202012",
+          "value": 118.65
+        },
+        {
+          "period": "202101",
+          "value": 108.86
+        },
+        {
+          "period": "202102",
+          "value": 105.87
+        },
+        {
+          "period": "202103",
+          "value": 125.1
+        },
+        {
+          "period": "202104",
+          "value": 121.87
+        },
+        {
+          "period": "202105",
+          "value": 120.86
+        },
+        {
+          "period": "202106",
+          "value": 128.8
+        },
+        {
+          "period": "202107",
+          "value": 130.69
+        },
+        {
+          "period": "202108",
+          "value": 126.02
+        },
+        {
+          "period": "202109",
+          "value": 133.18
+        },
+        {
+          "period": "202110",
+          "value": 132.29
+        },
+        {
+          "period": "202111",
+          "value": 138.64
+        },
+        {
+          "period": "202112",
+          "value": 144.75
+        },
+        {
+          "period": "202201",
+          "value": 133.66
+        },
+        {
+          "period": "202202",
+          "value": 127.41
+        },
+        {
+          "period": "202203",
+          "value": 152.14
+        },
+        {
+          "period": "202204",
+          "value": 139.04
+        },
+        {
+          "period": "202205",
+          "value": 145.18
+        },
+        {
+          "period": "202206",
+          "value": 137.94
+        },
+        {
+          "period": "202207",
+          "value": 140.66
+        },
+        {
+          "period": "202208",
+          "value": 135.14
+        },
+        {
+          "period": "202209",
+          "value": 136.49
+        },
+        {
+          "period": "202210",
+          "value": 123.64
+        },
+        {
+          "period": "202211",
+          "value": 122.79
+        },
+        {
+          "period": "202212",
+          "value": 127.09
+        },
+        {
+          "period": "202301",
+          "value": 109.39
+        },
+        {
+          "period": "202302",
+          "value": 118.24
+        },
+        {
+          "period": "202303",
+          "value": 131.25
+        },
+        {
+          "period": "202304",
+          "value": 116.47
+        },
+        {
+          "period": "202305",
+          "value": 123.81
+        },
+        {
+          "period": "202306",
+          "value": 125.27
+        },
+        {
+          "period": "202307",
+          "value": 118.78
+        },
+        {
+          "period": "202308",
+          "value": 122.63
+        },
+        {
+          "period": "202309",
+          "value": 129.76
+        },
+        {
+          "period": "202310",
+          "value": 126.28
+        },
+        {
+          "period": "202311",
+          "value": 131.52
+        },
+        {
+          "period": "202312",
+          "value": 131.17
+        },
+        {
+          "period": "202401",
+          "value": 126.58
+        },
+        {
+          "period": "202402",
+          "value": 122.48
+        },
+        {
+          "period": "202403",
+          "value": 132.73
+        },
+        {
+          "period": "202404",
+          "value": 131.47
+        },
+        {
+          "period": "202405",
+          "value": 136.08
+        },
+        {
+          "period": "202406",
+          "value": 135.16
+        },
+        {
+          "period": "202407",
+          "value": 136.35
+        },
+        {
+          "period": "202408",
+          "value": 132.3
+        },
+        {
+          "period": "202409",
+          "value": 135.66
+        },
+        {
+          "period": "202410",
+          "value": 133.9
+        },
+        {
+          "period": "202411",
+          "value": 131.0
+        },
+        {
+          "period": "202412",
+          "value": 141.3
+        },
+        {
+          "period": "202501",
+          "value": 112.86
+        },
+        {
+          "period": "202502",
+          "value": 123.31
+        },
+        {
+          "period": "202503",
+          "value": 133.44
+        },
+        {
+          "period": "202504",
+          "value": 135.18
+        },
+        {
+          "period": "202505",
+          "value": 133.41
+        },
+        {
+          "period": "202506",
+          "value": 139.04
+        },
+        {
+          "period": "202507",
+          "value": 141.97
+        },
+        {
+          "period": "202508",
+          "value": 134.82
+        },
+        {
+          "period": "202509",
+          "value": 151.89
+        },
+        {
+          "period": "202510",
+          "value": 133.06
+        },
+        {
+          "period": "202511",
+          "value": 142.77
+        },
+        {
+          "period": "202512",
+          "value": 162.11
+        },
+        {
+          "period": "202601",
+          "value": 154.7
+        },
+        {
+          "period": "202602",
+          "value": 158.62
+        },
+        {
+          "period": "202603",
+          "value": 203.63
+        },
+        {
+          "period": "202604",
+          "value": 203.06
+        },
+        {
+          "period": "202605",
+          "value": 209.43
+        },
+        {
+          "period": "202606",
+          "value": 242.77
+        },
+        {
+          "period": "202607",
+          "value": 233.29
+        },
+        {
+          "period": "202608",
+          "value": 237.04
+        }
+      ],
+      "attempted_at": "2026-10-06T22:16:11.027523+09:00",
+      "succeeded_at": "2026-10-06T22:16:11.027523+09:00",
+      "error": null
+    }
+  ]
+}

@@ -144,6 +144,8 @@ def main() -> None:
          "--days", "0" if args.backfill_macro_all else "7"],
     )
 
+    step("한국 경제지표 12종 (ECOS 월별 이력)", [py, "scripts/sync_korea_macro.py"])
+
     # Refresh source-confirmed sessions, including revisions and 20/60-session sums.
     step(
         "외국인/기관/개인 수급 (최근 100거래일, 전일 확정분)",

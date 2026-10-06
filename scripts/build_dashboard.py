@@ -573,7 +573,20 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     panel_path = Path(__file__).resolve().parents[1] / "docs" / "supply_chain_panel.html"
     template = template.replace("__SUPPLY_CHAIN_PANEL__", panel_path.read_text(encoding="utf-8"))
+    macro_script = Path(__file__).resolve().parents[1] / "docs/korea_macro.js"
+    template = template.replace("/* KOREA_MACRO_SCRIPT */", macro_script.read_text(encoding="utf-8"))
     return _inject_dashboard_json(template, data_json)
+
+
+def load_korea_macro_data() -> dict:
+    path = Path(__file__).resolve().parents[1] / "runs/korea_macro/latest.json"
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(payload, dict) and isinstance(payload.get("indicators"), list):
+            return payload
+    except (OSError, ValueError):
+        pass
+    return {"indicators": [], "error": "한국 경제지표 수집 결과가 없습니다."}
 
 
 def load_supply_chain_dashboard_data() -> dict[str, object]:
@@ -1050,6 +1063,7 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     try:
         dashboard_data = {
+            "korea_macro": load_korea_macro_data(),
             "market_daily": fetch_rows(
                 conn,
                 "SELECT date, kospi, kosdaq, sp500, nasdaq, dow, kospi_pct, kosdaq_pct, sp500_pct, nasdaq_pct, dow_pct, usdkrw, usdkrw_pct FROM market_daily ORDER BY date",

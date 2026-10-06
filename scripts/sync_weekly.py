@@ -349,6 +349,8 @@ def main() -> int:
         skip=args.skip_future_economy,
     )
 
+    step("한국 경제지표 12종 (ECOS 월별 이력)", [py, "scripts/sync_korea_macro.py"])
+
     # ── 10. 대시보드 빌드 ─────────────────────────────────────────
     step(
         "대시보드 빌드 (docs/dashboard.html)",
