@@ -1,4 +1,5 @@
 from __future__ import annotations
+from committee.core.korea_macro_context import load_context as load_korea_macro_context
 
 # Snapshot builder for real-data v1 with fallback safety.
 # Failure handling: each provider fetch is wrapped in _safe_value (or _safe_flows/_safe_headlines).
@@ -359,6 +360,7 @@ def build_snapshot_real(
         markets=markets,
         phase_two_signals=phase_two_signals,
         cumulative_context=cumulative_context,
+        korea_macro_context=load_korea_macro_context(market_date),
         macro={
             "daily": {
                 "us10y": us10y,

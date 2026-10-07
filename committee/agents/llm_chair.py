@@ -484,6 +484,10 @@ class LLMChairAgent:
         )
         return (
             "You are the CHAIR of an investment committee. Your job is two-fold:\n"
+            "Use indicator_context.korea_macro_context as Korean monthly macro evidence. "
+            "When available > 0, discuss it in the macro section with reference months, "
+            "comparison basis, and conflicts between groups or daily signals. Follow its guidance. "
+            "Excluded indicators must not support the conclusion; never equate monthly readings with today's moves. "
             "(A) Produce a structured consensus JSON, AND\n"
             "(B) Write a professional Korean market report in sugeup_narrative — "
             "similar to a sell-side equity strategist's daily note.\n\n"
@@ -639,6 +643,7 @@ class LLMChairAgent:
             news_context["digest"] = news_digest
 
         indicator_context = {
+            "korea_macro_context": snapshot.korea_macro_context,
             "report_date_context": {
                 "news_date": news_digest.get("news_date") if news_digest else None,
                 "korean_flow_date": (

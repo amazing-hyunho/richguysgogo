@@ -583,6 +583,8 @@ def load_korea_macro_data() -> dict:
     try:
         payload = json.loads(path.read_text(encoding="utf-8"))
         if isinstance(payload, dict) and isinstance(payload.get("indicators"), list):
+            from committee.core.korea_macro_context import build_context
+            payload["analysis"] = build_context(payload)
             return payload
     except (OSError, ValueError):
         pass

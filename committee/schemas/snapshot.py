@@ -233,6 +233,8 @@ class CumulativeContext(BaseModel):
 class Snapshot(BaseModel):
     """Single shared fact packet for the daily meeting."""
 
+    korea_macro_context: dict = Field(default_factory=dict, description="Validated Korean monthly evidence, distinct from US macro.")
+
     market_summary: MarketSummary = Field(..., description="Compact market summary.")
     flow_summary: FlowSummary = Field(..., description="Supply-demand flow summary.")
     korean_market_flow: Optional[KoreanMarketFlow] = Field(

@@ -31,6 +31,7 @@ function krStatus(spec, now = new Date()) {
   return '정상 · 다음 발표 대기';
 }
 function renderKoreaMacro(payload) {
+  renderKoreaMarketAnalysis(payload);
   const root = document.getElementById('kr-macro-cards');
   if (!root) return;
   const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -89,4 +90,31 @@ function renderKoreaMacro(payload) {
   select.addEventListener('change', detail);
   range.addEventListener('change', detail);
   detail();
+}
+
+function renderKoreaMarketAnalysis(payload) {
+  const panel = document.getElementById('korea-market-analysis');
+  if (!panel) return;
+  const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const context = payload.analysis;
+  if (!context) { panel.textContent = '한국 경제지표 분석 근거가 없습니다.'; return; }
+  // Re-check freshness in the browser so a static deployment cannot stay fresh forever.
+  const validIds = new Set((payload.indicators || []).filter(s => krStatus(s).startsWith('정상')).map(s => s.id));
+  const evidence = context.evidence.filter(s => validIds.has(s.id));
+  const groups = context.groups.map(g => {
+    const rows = evidence.filter(s => s.group === g.name);
+    const signs = new Set(rows.map(s => s.signal).filter(s => s === '긍정' || s === '부정'));
+    let tone = signs.size === 2 ? '혼조' : signs.size === 1 ? [...signs][0] : '판단 유보';
+    if (rows.some(s => s.signal === '맥락 확인')) tone += ' / 물가는 별도 판단';
+    const detail = rows.map(s => {
+      const compare = s.comparison === 'yoy' ? '전년 동월 대비' : '전월 대비';
+      const n = s.change.toLocaleString('ko-KR', {maximumFractionDigits:2});
+      return `${esc(s.name)} (${s.period.slice(0,4)}.${s.period.slice(4)}): ${compare} ${s.change > 0 ? '+' : ''}${n}${esc(s.change_unit)} → ${esc(s.signal)}`;
+    }).join('<br>');
+    return `<div style="margin:12px 0"><strong>${esc(g.name)} · ${tone}</strong><div>${detail || '유효한 최신 근거 없음'}</div></div>`;
+  }).join('');
+  panel.innerHTML = `<h3>한국 경제지표를 반영한 중기 시장 배경</h3><p>분석에 반영 ${evidence.length}/${context.total}개 · 수집 실패·지연·비교월 부족 자료는 제외</p>${groups}<p>일별 가격·수급·환율 판단과 함께 보는 월별 경기 배경입니다. 분야 간 신호가 엇갈리면 시장 방향을 단정하지 않습니다. 물가 상승·하락은 경기와 정책 맥락을 함께 확인합니다.</p><details><summary>반영 기준과 제외 항목</summary><p>${esc(context.guidance)}</p><p>${context.excluded.map(s => esc(s.name + ': ' + s.reason)).join('<br>') || '분석 생성 시 제외 항목 없음'}${evidence.length < context.evidence.length ? '<br>화면 조회 시 수집 신선도 기준을 넘은 자료 추가 제외' : ''}</p></details><a href="#korea-macro" id="kr-analysis-detail-link">한국 경제지표 전체 추이 보기 →</a>`;
+  document.getElementById('kr-analysis-detail-link').addEventListener('click', event => {
+    event.preventDefault(); document.querySelector('[data-tab="korea-macro"]').click();
+  });
 }

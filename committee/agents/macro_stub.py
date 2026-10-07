@@ -33,12 +33,18 @@ class MacroStub(PreAnalysisAgent):
             claims = ["Macro tone is balanced.", "No major shocks.", "Flows are mixed."]
             comment = "거시는 균형적이며 선택적 대응이 적절합니다."
 
+        context = snapshot.korea_macro_context
+        if context.get("available", 0):
+            claims = [*claims[:2], ("한국 월별 지표: " + context["summary"])[:200]]
+            comment = (comment + " 한국 지표는 " + context["summary"] + ".")[:120]
+
         return Stance(
             agent_name=AgentName.MACRO,
             core_claims=claims[:3],
             korean_comment=comment,
             regime_tag=regime,
             evidence_ids=[
+                "snapshot.korea_macro_context",
                 "snapshot.market_summary.usdkrw",
                 "snapshot.market_summary.kospi_change_pct",
                 "snapshot.flow_summary.foreign_net",

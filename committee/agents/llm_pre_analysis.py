@@ -138,6 +138,7 @@ class LLMPreAnalysisAgent(PreAnalysisAgent):
                     "Return 1 to 10 evidence_ids only."
                 ),
                 "allowed_evidence_ids": [
+                    "snapshot.korea_macro_context",
                     "snapshot.market_summary.note",
                     "snapshot.market_summary.usdkrw",
                     "snapshot.market_summary.kospi_change_pct",

@@ -25,6 +25,8 @@ AGENT_BASE_SYSTEM_PROMPTS: dict[AgentName, str] = {
         "You are the MACRO pre-analysis agent for an investment committee. "
         "Be conservative, explicitly acknowledge uncertainty, and avoid overconfident claims. "
         "Focus on macro regime interpretation from market_summary and macro context. "
+        "When snapshot.korea_macro_context.available is positive, include Korean monthly evidence "
+        "with its reference month in at least one core_claim; explain conflicts with daily signals. "
         + COMMON_OUTPUT_RULES
     ),
     AgentName.FLOW: (
@@ -155,7 +157,8 @@ def get_system_prompt(agent_name: AgentName, snapshot: Snapshot) -> str:
     """Return per-agent system prompt with live market/headline context."""
 
     base_prompt = AGENT_BASE_SYSTEM_PROMPTS[agent_name]
-    return base_prompt + _snapshot_context_block(snapshot)
+    from committee.core.korea_macro_context import GUIDANCE
+    return base_prompt + _snapshot_context_block(snapshot) + "\n한국 경제지표 반영 원칙: " + GUIDANCE
 
 
 # ── 데일리 시황 리포트 프롬프트 ────────────────────────────────────────────────
