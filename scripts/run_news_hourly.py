@@ -121,6 +121,12 @@ def _auto_commit(include_dashboard: bool, include_indicator_db: bool) -> bool:
         _checkpoint_db()
     if include_dashboard:
         targets.append("docs/dashboard.html")
+        # Pages rebuilds report sections from these files. Publish the matching
+        # daily artifacts, not just HTML, even if the daily sync partly failed.
+        import re
+        for path in sorted((ROOT_DIR / "runs").glob("????-??-??.json")):
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", path.stem):
+                targets.append(str(path.relative_to(ROOT_DIR)))
 
     add_command = ["git", "add", *targets]
     add_result = subprocess.run(add_command, cwd=str(ROOT_DIR), capture_output=True, text=True)

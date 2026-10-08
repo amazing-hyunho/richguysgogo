@@ -650,6 +650,7 @@
       </div>
       <div class="cio-sub-head">
         <div class="cio-title" style="margin:0;">AI 수급 분석 (Markdown)</div>
+        <span id="cio-analysis-date" class="section-meta"></span>
         <button id="cio-sugeup-toggle" class="cio-expand-btn" type="button" aria-expanded="false">펼쳐보기</button>
       </div>
       <div id="cio-sugeup-wrap" style="display:none; margin-top:10px;">
@@ -3096,6 +3097,11 @@ function renderWatchTop3() {
   const cioSugeup = document.getElementById('cio-sugeup-narrative');
   const cioSugeupToggle = document.getElementById('cio-sugeup-toggle');
   const sugeupText = String(chair.sugeup_narrative || '').trim();
+  const analysisDate = document.getElementById('cio-analysis-date');
+  if (analysisDate) {
+    const todayKst = new Intl.DateTimeFormat('en-CA', {timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+    analysisDate.textContent = `보고서 ${chair.market_date || '미확인'} · 수급 기준 ${chair.flow_date || '미확인'}${chair.market_date && chair.market_date < todayKst ? ' · 오늘 보고서 미반영' : ''}`;
+  }
   if (cioSugeupWrap && cioSugeup && cioSugeupToggle) {
     __cioSugeupMd = sugeupText;
     if (sugeupText) {
