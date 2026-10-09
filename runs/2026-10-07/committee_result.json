@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,952.54로 0.22% 상승했지만 KOSDAQ는 907.88로 1.31% 하락해 시장 내부 확산은 제한적이었다.",
+      "sources": [
+        "flow_data",
+        "macro_daily"
+      ]
+    },
+    {
+      "point": "외국인 -7,024억원과 기관 -1,825억원을 개인 +7,917억원이 흡수했다. KOSPI와 KOSDAQ 모두 같은 수급 구도여서 개인 매수의 지속성이 핵심 변수다.",
+      "sources": [
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "외국인 순매도의 위험도",
+      "majority": "외국인 매도에도 KOSPI가 상승했고 VIX가 15.01인 만큼 즉각적인 위험회피 전환보다는 중립적 확인 국면으로 본다.",
+      "minority": "외국인 대규모 순매도와 기관 동반 매도는 유동성 취약성을 시사하므로 보수적으로 대응해야 한다.",
+      "minority_agents": [
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "개인 순매수가 외국인·기관 매도를 계속 흡수하지 못하면 제한적 지수 상승은 빠르게 약화될 수 있다."
+    },
+    {
+      "topic": "상승 추세의 질",
+      "majority": "KOSPI의 5일 누적 2.20% 상승과 미국 증시 강세는 단기 하방을 완충한다.",
+      "minority": "KOSDAQ 하락과 실적 개선 신호 부재를 고려하면 상승의 시장 전반 확산으로 판단하기 어렵다.",
+      "minority_agents": [
+        "breadth",
+        "earnings"
+      ],
+      "why_it_matters": "지수 반등이 일부 종목 또는 개인 수급에 국한될 경우 추격 매수의 손익 변동성이 커질 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 제한적 KOSPI 상승, 약한 시장 확산\n\n10월 7일 KOSPI는 6,952.54로 0.22% 상승했지만, KOSDAQ는 907.88로 1.31% 하락했다. 원/달러는 1,338.92원으로 당일 0.13% 상승했고, VIX는 15.01이다. 외국인은 7,024억원, 기관은 1,825억원을 순매도한 반면 개인은 7,917억원을 순매수했다. 지수는 강보합이지만 중소형·성장주까지 위험선호가 확산된 장세로 보기는 어렵다.\n\n최근 5거래일 KOSPI는 2.20% 올랐고 20거래일 누적은 0.20% 상승에 그쳤다. 원/달러는 5일간 1.59% 하락했지만 이날 재상승했다. VIX도 5일 평균 15.78보다 낮아 급격한 공포 국면은 아니다. 매크로·리스크 담당자가 중립을 유지한 이유다. 다만 수급·유동성 담당자는 외국인 매도 규모를 근거로 위험회피 가능성을 경계했다.\n\n## 개인 흡수 매수와 외국인 이탈의 충돌\n\n수급은 개인의 매수 흡수가 지수 하방을 막은 하루였다. KOSPI에서 외국인 -5,544억원·기관 -1,575억원에 맞서 개인이 +6,038억원을 샀고, KOSDAQ에서도 외국인 -1,480억원·기관 -250억원 대비 개인이 +1,879억원을 순매수했다. 따라서 오늘의 핵심은 ‘상승’ 자체보다 매수 주체의 질이다.\n\n원/달러의 당일 상승은 외국인 자금에 부담 요인이다. 반면 미국 S&P500은 0.58%, 나스닥은 0.45% 올랐다는 보조 신호는 국내 하방을 일부 완충한다. 그러나 코어 수급 신호와 상충하므로 이를 국내 위험선호 회복의 확증으로 해석해서는 안 된다. 개인 매수세가 둔화하거나 외국인 매도가 이어지면 경계 강도를 높여야 한다.\n\n## 금리 완화 기대와 AI 투자 우려의 동시 노출\n\n1. 금리 측면에서는 [추가 금리인상 필요없을 수도 있다는 연준위원 발언](https://news.google.com/rss/articles/CBMiUkFVX3lxTE5wa1F0X3hYaVRJU21fVkQzUGh2dHhiMm1VWHh1TWxBbEFyVFpYUmIxd1lOWGhuSHJmdWFGSXlUdjlXRFU5dDYxQjlJaUJzbUhKUlE?oc=5)과 [국채금리 하락 속 뉴욕증시 상승](https://news.google.com/rss/articles/CBMiVEFVX3lxTFB1SFQxdzB6aWg1Y2plQi1wcDRUUER1OFNlZTNtVFBOYnVYWlFPQ3haSUJrbkpWcndKdEQ3Z2V0c1djS1VKb0hvcE5jUGJwbGt6WTFPVw?oc=5)이 위험자산 심리를 지지했다.\n\n2. 반도체·AI는 [스페이스X의 엔비디아 반도체 구매 관련 보도와 투자수요 불안](https://news.google.com/rss/articles/CBMic0FVX3lxTE1WTHVmajJXUkZRcy14VzVZWE9HdHpubThUNjdhRm1TTTB3c1o0cExpcTZCcUtuTGFNaEQ1d19Ebml4MnA2VzlqYmdNdDExWmxpMWNxZUtfTGhiak9sVm9tM3hocm45bVVwVXdZZDdpNGNac2c?oc=5)처럼 수요 기대와 자금조달 우려가 공존했다. 주간 연구 의제의 AI·반도체 장기 관심은 유지하되, 이는 당일 매매 신호가 아니라 AI 인프라 투자 지속 여부를 점검하는 중기 과제다.\n\n3. 환율·실적에서는 [환율 부담에 따른 HD현대일렉트릭 컨센서스 하회 전망](https://news.google.com/rss/articles/CBMiUkFVX3lxTFA2UVg1UTJxZGdrQ3ZhLVFQcDhVSk9yQW9yVF9JLVNtRjBLZXBHQlJPR0FwbFl2YXZ0TkJVSmpPZHdWUGJxc0FYUkFicm9HVmFkR1E?oc=5)이 개별 실적 민감도를 높였다. 이익모멘텀 담당자가 실적 개선 신호가 뚜렷하지 않다고 본 배경이다.\n\n## 다음 확인선: 외국인 매도 진정 여부\n\n기본 시나리오는 낮은 VIX와 미국 증시 강세가 완충하는 가운데, 국내에서는 선별 대응이 이어지는 중립 국면이다. 다음 거래일에는 원/달러 방향, 외국인·기관의 동반 순매도 지속 여부, KOSDAQ의 상대 약세 완화를 확인할 필요가 있다. 오늘의 논지는 외국인 순매도가 이어지고 개인 순매수가 이를 흡수하지 못하면서 KOSPI와 KOSDAQ의 약세가 동시에 확대될 경우 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

@@ -1,0 +1,64 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,996.78로 0.10% 하락했으나 KOSDAQ는 912.82로 1.95% 상승했다. 외국인 3,180억원 순매도를 기관 2,488억원 순매수가 일부 상쇄했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "원/달러는 1,342.77원으로 0.23% 상승해 당일 외국인 수급 부담과 맞물렸지만, 5일 변화율은 -1.04%로 단기 환율 방향은 엇갈린다.",
+      "sources": [
+        "macro_daily",
+        "flow_data",
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "당일 외국인 매도의 시장 국면 해석",
+      "majority": "중립 유지: 외국인 매도는 경계하되 기관 매수, KOSDAQ 강세, VIX 15.52를 고려하면 즉각적인 전면 위험회피 전환으로 단정하기 어렵다.",
+      "minority": "환율 및 금리 부담이 결합한 위험회피 국면으로 봐야 한다.",
+      "minority_agents": [
+        "flow",
+        "liquidity"
+      ],
+      "why_it_matters": "외국인 매도가 KOSPI에서 3,608억원으로 집중됐기 때문에 매도 지속과 원/달러 추가 상승 여부가 지수 방어력의 핵심 변수다."
+    },
+    {
+      "topic": "AI 기대의 국내 주가 지지력",
+      "majority": "나스닥 강세와 AI 관련 뉴스는 반도체·AI 관련 위험선호를 보완하는 요인이다.",
+      "minority": "실적 추정치 변화나 가이던스 상향이 확인되지 않아 테마 기대만으로 추세 강화를 판단하기 어렵다.",
+      "minority_agents": [
+        "earnings"
+      ],
+      "why_it_matters": "AI 뉴스가 국내 이익 전망 개선으로 연결되지 않으면 해외 기술주 강세의 국내 파급은 제한될 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 기관 방어 속 KOSPI 보합권, KOSDAQ는 위험선호 회복\n\n10월 6일 KOSPI는 **6,996.78, -0.10%**로 소폭 조정됐지만 KOSDAQ는 **912.82, +1.95%**로 상대강세를 보였다. 원/달러는 **1,342.77원(+0.23%)**, VIX는 **15.52**였다. 전체 수급은 외국인 **-3,180억원**, 기관 **+2,488억원**, 개인 **-1,337억원**으로 기관이 외국인 매물을 상당 부분 흡수했다. 다만 KOSPI 기준 외국인 매도는 **-3,608억원**으로 집중됐고, 기관은 **+2,229억원**을 순매수했다. 반대로 KOSDAQ에서는 외국인과 기관이 각각 **+428억원, +259억원**을 순매수했다.\n\n## 환율·금리 부담과 AI 기대의 줄다리기\n\n핵심 수급은 원화 약세가 재개된 날 외국인이 KOSPI를 매도하고 기관이 방어한 구조다. 수급 담당자 flow와 유동성 담당자 liquidity는 원/달러 상승 및 금리 부담을 위험회피 요인으로 지목했다. 실제 미국 10년물 금리는 **5.311%**이며, [미 국채 금리의 큰 폭 상승](https://news.google.com/rss/articles/CBMijgFBVV95cUxNcExoOVZBUk9oTXE2U2g1cEZab29zRHNFd2M0Tk40Z0FNMHhiOGp6VFV1QWJ4ZkNKcjZ1dENFSFIwV08zYnZyODRlSXMwdklUNU1uWENUand1bE9KNE9PUUlNVTl2aDF4MUd6eFFFVGk1SjBHSDlXSXJXeTNEN0pBRnNET1VrRkl3TXUxTWhB?oc=5) 보도는 이 해석을 보완한다.\n\n그러나 위험회피로의 단정은 이르다. VIX는 5일 평균 **15.962**보다 낮고, KOSPI는 최근 5일 **+2.297%**, 20일 **+2.169%**다. 당일 원/달러는 올랐지만 5일 변화율은 **-1.037%**로 환율 방향도 일관되지 않다. 매크로·리스크 담당자의 중립 의견과 위험회피 소수 의견이 공존하는 이유다.\n\n## 오늘의 뉴스 우선순위: 금리보다 강했던 기술주 기대\n\n1. **AI·기술주**: 나스닥은 **+1.05%**였고, [AI 실적 기대에 따른 나스닥 최고치 보도](https://news.google.com/rss/articles/CBMiW0FVX3lxTE1WaE91UFA2U1hzWkRQT2dWNWZZTFRRTHV0WnpwMko3YVRYQ2VnT3dRNTRXVm5zWnMxenJyX1l4Z2ZUSnlWTlRMRVQ2X2NPemFNeGtQQ0Z2WWhzS00?oc=5)는 KOSDAQ 강세의 배경으로 해석할 수 있다. 검증된 주간 연구 의제에서도 AI·반도체·데이터센터 전망은 강화됐으나, 이는 12개월 관찰 과제일 뿐 당일 매매 신호는 아니다.\n2. **금리**: [금리 상승에도 뉴욕증시가 상승했다는 보도](https://news.google.com/rss/articles/CBMiW0FVX3lxTE5GbFUxRWVzSmpPWTdEYTdISzVEUEVNblJvMTIzVzNIMjdjWmZ2WFF2OV9HQTh6blpITjlINUdTN3JtUzR6SlBLTVFCQzY0UmVmLWdLTzI3dGI1eknSAWBBVV95cUxPU1ZqbTFtcXNXeVJBOUxncnFzWS1DSlVhdTB0djVjQVRpajNmeng0SjM2MHRhTzNVRF9RRnprVzI1aFVMY2I0dEtEWHRRZmgxc3dTM2hMR1BqckRhc1JldlU?oc=5)는 금리 민감도만으로 위험자산 흐름을 설명하기 어렵다는 반증이다.\n3. **환율**: [글로벌 달러 강세와 1,340원대 중반 공방 전망](https://news.google.com/rss/articles/CBMigAFBVV95cUxOLWZ2TWJWdThydlZndFIxR0gyWUJXa25iSl9JV25pVUhUVWtTZjlzTHVsb1djODhKdV9Kb3NpcmlQd01nbThJVXVOTUJDaWktOENvd2VZdDdUc1drSVRndUI5b3gxSkdBOVcyRC1heWd4SU9MaTA5UHlobzhWOW1CUw?oc=5)은 외국인 KOSPI 매도 지속 여부를 가를 단기 변수다.\n\n## 다음 확인 변수와 시나리오 훼손 조건\n\n기본 시나리오는 기관 방어와 AI 기대가 하방을 완충하는 가운데, 환율·외국인 수급이 상단을 제한하는 중립 장세다. 다음 거래일에는 외국인의 KOSPI 매도 지속 여부, 원/달러 방향, KOSDAQ의 외국인 순매수 유지 여부를 함께 봐야 한다. **원/달러 상승과 KOSPI 외국인 순매도가 동시에 이어지고 기관 매수마저 약화될 경우**, 오늘의 중립·완충 시나리오는 훼손되며 위험회피 해석으로 전환해야 한다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
