@@ -1,11 +1,15 @@
 {
-  "crawled_at": "2026-10-09T17:41:57.612194+00:00",
+  "crawled_at": "2026-10-09T18:41:56.546030+00:00",
   "news_date": "2026-10-10",
-  "total_collected": 9,
+  "total_collected": 11,
   "topic_counts": [
     [
       "금리/연준",
       1
+    ],
+    [
+      "반도체/AI",
+      2
     ],
     [
       "인플레이션",
@@ -13,11 +17,7 @@
     ],
     [
       "중국/신흥국",
-      1
-    ],
-    [
-      "반도체/AI",
-      1
+      2
     ],
     [
       "정책/테마",
@@ -37,6 +37,17 @@
       ]
     },
     {
+      "topic": "반도체/AI",
+      "count": 2,
+      "title": "\"반도체만 보면 안 된다\"…AI 시대 살아남는 복합 포트폴리오 - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8yM25XVndKOURCU3c3dE1ERVNIM3ltdjdDYzhqRzBYMVVqTzgwdUwtajU5V1R0RWhmcHkwNERPbEZaczJYRXhwRU9RZHVCazZuQ1FlZlEtRDRCdmViTG82c9IBeEFVX3lxTE9yR1ZfVWltVFFHTTRvb0JFOGg3MC1zSURtd2M5ajBiSDhiQkgxZnh4ZmZmSy1kSUVFOVZWdEJZZVBsTXlvMFNMWkxyV1Y1dFNpZGI0anJmalN6RVhBWG1UbmFBTjZSTDhuY1k2OGNhQVM0c1JhbFF1MA?oc=5",
+      "summary_lines": [
+        "핵심 이슈: \"반도체만 보면 안 된다\"…AI 시대 살아남는 복합 포트폴리오 - 뉴시스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "인플레이션",
       "count": 3,
       "title": "美 10월 소비자심리 5개월만에 최저…현 경기평가는 역대 최악 - 매일경제 마켓",
@@ -49,22 +60,11 @@
     },
     {
       "topic": "중국/신흥국",
-      "count": 1,
+      "count": 2,
       "title": "\"환율 덕 본 적 없다\"…EU 협상 테이블 앉자마자 '위안화 저평가' 맞불 놓은 中 - CBC뉴스",
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LaFF3RjRGWFNYTE1IS3VzZ2J6c1cxVWphMDVIa1FnQnZDQnVjR0F0Z2puMDg2TWt4ZzRfWlZPanB5S2l2QUpHNlVIbzctOU1Wd0JOYkVfM19QckUzYWs5MDRya0pJRDdi?oc=5",
       "summary_lines": [
         "핵심 이슈: \"환율 덕 본 적 없다\"…EU 협상 테이블 앉자마자 '위안화 저평가' 맞불 놓은 中 - CBC뉴스",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "반도체/AI",
-      "count": 1,
-      "title": "경제부처 장관들 “반도체 초과세수로 공공주택 확충 검토” - 한겨레",
-      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9pc2p5VkkyS0J1Q1IzVXN1OG9zbDZhcF9QRVNXQWVWTlJMdWI5VHk0Y0J5aF84R1g1RnVkbFpGRVEwWlhqYnZoUzJ0X0RFcEttNmtGYWJQN3hmZ19DeldEQjVjX0kxMzlpOUl6dVF3MllIUQ?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 경제부처 장관들 “반도체 초과세수로 공공주택 확충 검토” - 한겨레",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -101,6 +101,30 @@
       ]
     },
     {
+      "sector": "IT/반도체",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 2,
+          "title": "\"반도체만 보면 안 된다\"…AI 시대 살아남는 복합 포트폴리오 - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE8yM25XVndKOURCU3c3dE1ERVNIM3ltdjdDYzhqRzBYMVVqTzgwdUwtajU5V1R0RWhmcHkwNERPbEZaczJYRXhwRU9RZHVCazZuQ1FlZlEtRDRCdmViTG82c9IBeEFVX3lxTE9yR1ZfVWltVFFHTTRvb0JFOGg3MC1zSURtd2M5ajBiSDhiQkgxZnh4ZmZmSy1kSUVFOVZWdEJZZVBsTXlvMFNMWkxyV1Y1dFNpZGI0anJmalN6RVhBWG1UbmFBTjZSTDhuY1k2OGNhQVM0c1JhbFF1MA?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "글로벌",
+      "total_count": 2,
+      "topics": [
+        {
+          "topic": "중국/신흥국",
+          "count": 2,
+          "title": "\"환율 덕 본 적 없다\"…EU 협상 테이블 앉자마자 '위안화 저평가' 맞불 놓은 中 - CBC뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LaFF3RjRGWFNYTE1IS3VzZ2J6c1cxVWphMDVIa1FnQnZDQnVjR0F0Z2puMDg2TWt4ZzRfWlZPanB5S2l2QUpHNlVIbzctOU1Wd0JOYkVfM19QckUzYWs5MDRya0pJRDdi?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "정책/테마",
       "total_count": 2,
       "topics": [
@@ -109,30 +133,6 @@
           "count": 2,
           "title": "말레이시아 팜유 선물, 수출 관세 면제 불발에 하락 - Investing.com 한국어",
           "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE1xTURKRzFrOWl6dkExaU5hUTBNRi15NmhOYzNVeWtuMHZLMGQ0SGlkMmg5U2YySndKNVFVUVk3dExtYS1MZjlzVm5fai1Nel9SSXdRaG9kNF9SWEF3VmpIYm42NExUdWlMVjdUNzEzZTZvYkt3THc?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "글로벌",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "중국/신흥국",
-          "count": 1,
-          "title": "\"환율 덕 본 적 없다\"…EU 협상 테이블 앉자마자 '위안화 저평가' 맞불 놓은 中 - CBC뉴스",
-          "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9LaFF3RjRGWFNYTE1IS3VzZ2J6c1cxVWphMDVIa1FnQnZDQnVjR0F0Z2puMDg2TWt4ZzRfWlZPanB5S2l2QUpHNlVIbzctOU1Wd0JOYkVfM19QckUzYWs5MDRya0pJRDdi?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "IT/반도체",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "반도체/AI",
-          "count": 1,
-          "title": "경제부처 장관들 “반도체 초과세수로 공공주택 확충 검토” - 한겨레",
-          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9pc2p5VkkyS0J1Q1IzVXN1OG9zbDZhcF9QRVNXQWVWTlJMdWI5VHk0Y0J5aF84R1g1RnVkbFpGRVEwWlhqYnZoUzJ0X0RFcEttNmtGYWJQN3hmZ19DeldEQjVjX0kxMzlpOUl6dVF3MllIUQ?oc=5"
         }
       ]
     }
