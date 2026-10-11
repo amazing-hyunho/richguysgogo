@@ -575,6 +575,8 @@ def build_dashboard_html(data: dict[str, object]) -> str:
     template = TEMPLATE_PATH.read_text(encoding="utf-8")
     panel_path = Path(__file__).resolve().parents[1] / "docs" / "supply_chain_panel.html"
     template = template.replace("__SUPPLY_CHAIN_PANEL__", panel_path.read_text(encoding="utf-8"))
+    cycle_panel = Path(__file__).resolve().parents[1] / "docs/economic_cycle_panel.html"
+    template = template.replace("__ECONOMIC_CYCLE_PANEL__", cycle_panel.read_text(encoding="utf-8"))
     macro_script = Path(__file__).resolve().parents[1] / "docs/korea_macro.js"
     template = template.replace("/* KOREA_MACRO_SCRIPT */", macro_script.read_text(encoding="utf-8"))
     return _inject_dashboard_json(template, data_json)
