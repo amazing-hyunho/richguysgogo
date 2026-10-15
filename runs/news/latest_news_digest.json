@@ -1,15 +1,19 @@
 {
-  "crawled_at": "2026-10-15T15:41:58.787938+00:00",
+  "crawled_at": "2026-10-15T16:41:54.559281+00:00",
   "news_date": "2026-10-16",
-  "total_collected": 5,
+  "total_collected": 10,
   "topic_counts": [
+    [
+      "반도체/AI",
+      5
+    ],
     [
       "금리/연준",
       1
     ],
     [
-      "반도체/AI",
-      2
+      "환율/달러",
+      1
     ],
     [
       "인플레이션",
@@ -22,6 +26,17 @@
   ],
   "top_articles": [
     {
+      "topic": "반도체/AI",
+      "count": 5,
+      "title": "\"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는 - 뉴시스",
+      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9KRmZzdjNYTkI3ODFDbC1xWjNlM3dwOHNIdnlPQ2lCQ20xdTE3TUU4MnRiUmZDRGpObjNhTjJ1VGpfNzR2VndEZE9LRmdkZVoyTzdMSWphUXdubEpuVUF4cQ?oc=5",
+      "summary_lines": [
+        "핵심 이슈: \"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는 - 뉴시스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "금리/연준",
       "count": 1,
       "title": "\"내년 채권시장 반등 기대…기준금리 정점은 3.25%~3.5%\" - 마켓인",
@@ -33,12 +48,12 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 2,
-      "title": "\"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는 - 뉴시스",
-      "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9KRmZzdjNYTkI3ODFDbC1xWjNlM3dwOHNIdnlPQ2lCQ20xdTE3TUU4MnRiUmZDRGpObjNhTjJ1VGpfNzR2VndEZE9LRmdkZVoyTzdMSWphUXdubEpuVUF4cQ?oc=5",
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "환율의 습격… 車·조선 등 제조업 ‘어닝 쇼크’ 공포 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOeFVyYW1xM2R3bXJZcC1UY2h4OXZSbnVSYmI0cWdiWVBQdHZFMlNnbGlYLXZtcHRGSlF0eW5RZS02a3lqdGNqLVMyY1VUMUpkVW45YnFvMWpFUzZ5a3dNLU9pUTA3ZGZnRnYyN1JxN1NIaFNXQi16amxVX2tjRjJWYU1PcG9BRGdpVWxkdUF0Zw?oc=5",
       "summary_lines": [
-        "핵심 이슈: \"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는 - 뉴시스",
+        "핵심 이슈: 환율의 습격… 車·조선 등 제조업 ‘어닝 쇼크’ 공포 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -68,8 +83,20 @@
   ],
   "sector_hot_topics": [
     {
+      "sector": "IT/반도체",
+      "total_count": 5,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 5,
+          "title": "\"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는 - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9KRmZzdjNYTkI3ODFDbC1xWjNlM3dwOHNIdnlPQ2lCQ20xdTE3TUU4MnRiUmZDRGpObjNhTjJ1VGpfNzR2VndEZE9LRmdkZVoyTzdMSWphUXdubEpuVUF4cQ?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "매크로",
-      "total_count": 2,
+      "total_count": 3,
       "topics": [
         {
           "topic": "금리/연준",
@@ -78,22 +105,16 @@
           "link": "https://news.google.com/rss/articles/CBMickFVX3lxTFA0aXRtZk9zMkY4TmRGUFp3a0tuTUVGbTV3eHB2bE5Vckt4NlRmYzJrYURYd2ltQ20ybVJxeGpoM2d5cEJvT3VYN0FRSWtMd2NMRWZ0TFBmRmxlZTNRRVBBRzgzWjE3WVFwUDhzcVFDUDgxZw?oc=5"
         },
         {
+          "topic": "환율/달러",
+          "count": 1,
+          "title": "환율의 습격… 車·조선 등 제조업 ‘어닝 쇼크’ 공포 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOeFVyYW1xM2R3bXJZcC1UY2h4OXZSbnVSYmI0cWdiWVBQdHZFMlNnbGlYLXZtcHRGSlF0eW5RZS02a3lqdGNqLVMyY1VUMUpkVW45YnFvMWpFUzZ5a3dNLU9pUTA3ZGZnRnYyN1JxN1NIaFNXQi16amxVX2tjRjJWYU1PcG9BRGdpVWxkdUF0Zw?oc=5"
+        },
+        {
           "topic": "인플레이션",
           "count": 1,
           "title": "\"지금 팔면 후회\"…짐 크레이머가 경고한 반등의 10일 - 디지털투데이",
           "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE92RGd1RTdoeTFQZ0J1ZFRETUVHNlFqXzdPSnZLUWV4ZjdubU4waXNlN2NaWmQ4eXJCZTJZS1VxTTl1TUlWcUh4R1dCeEt3c2FTRjh6aWU2U3ByRE8wd2tMcG0yZVVxT3R5cVBMRUxrSFFsLTA?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "IT/반도체",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "반도체/AI",
-          "count": 2,
-          "title": "\"AI 병목, 메모리서 돈으로 이동\"…반도체 호황 흔들 변수는 - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9KRmZzdjNYTkI3ODFDbC1xWjNlM3dwOHNIdnlPQ2lCQ20xdTE3TUU4MnRiUmZDRGpObjNhTjJ1VGpfNzR2VndEZE9LRmdkZVoyTzdMSWphUXdubEpuVUF4cQ?oc=5"
         }
       ]
     },
