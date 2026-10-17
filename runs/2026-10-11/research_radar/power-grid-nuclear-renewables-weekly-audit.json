@@ -1,0 +1,25 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "power-grid-nuclear-renewables",
+  "as_of": "2026-10-11",
+  "lookback_days": 28,
+  "candidate_count": 12,
+  "accepted_count": 6,
+  "rejected_count": 6,
+  "accepted_paper_ids": [
+    "2609-30606v1",
+    "2609-36215v1",
+    "2609-38435v1",
+    "2610-02477v1",
+    "2610-03275v1",
+    "2610-11147v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "899336ddd298ffb6703d13989667b6a55794cea6865a3582ed16fc85e04ca678",
+  "input_tokens": 4752,
+  "output_tokens": 1279,
+  "report_status": "emerging",
+  "report_score": 8.6,
+  "generated_at": "2026-10-11T07:57:03.231363+00:00"
+}

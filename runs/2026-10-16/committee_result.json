@@ -1,0 +1,61 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5682.66으로 2.31%, KOSDAQ은 785.44로 3.24% 상승했지만 외국인은 4334억원 순매도했다.",
+      "sources": [
+        "market_data",
+        "flow_data"
+      ]
+    },
+    {
+      "point": "KOSPI의 5일·20일 누적 수익률은 각각 -14.808%, -19.902%이며 반전 신호는 확인되지 않았다.",
+      "sources": [
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "오늘 반등의 성격",
+      "majority": "매크로·섹터·이익모멘텀·브레드스·유동성 담당자는 누적 하락과 외국인 매도를 근거로 위험회피 국면이 유지된다고 판단했다.",
+      "minority": "수급 담당자는 개인·기관의 저가 매수로 외국인 물량이 흡수된 중립적 반등 구도에 무게를 뒀다.",
+      "minority_agents": [
+        "수급 담당자"
+      ],
+      "why_it_matters": "반등 추격 여부는 외국인 순매도 지속과 개인·기관 매수의 연속성에 따라 달라진다."
+    },
+    {
+      "topic": "위험선호 신호의 해석",
+      "majority": "외국인 -4334억원, USD/KRW 상승, KOSPI 20일 누적 -19.902%를 핵심 위험 신호로 평가했다.",
+      "minority": "리스크 담당자의 체제 분류는 위험선호였지만 실제 주장은 누적 하락과 수급 악화를 경계하는 내용이었다.",
+      "minority_agents": [
+        "리스크 담당자"
+      ],
+      "why_it_matters": "분류와 근거가 충돌하므로 위험선호 판정의 신뢰도를 낮추고 실제 수급과 환율을 우선 확인해야 한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 급반등했지만 아직은 추세 전환보다 복원\n\n10월 16일 KOSPI는 5682.66으로 2.31%, KOSDAQ은 785.44로 3.24% 상승했다. 그러나 KOSPI는 최근 5일 -14.808%, 20일 -19.902%로 누적 낙폭이 크고 반전 신호도 확인되지 않았다. USD/KRW는 1342.74로 0.28% 올랐으며 5일 변화도 0.645% 상승이다. VIX는 16.46으로 5일 평균 16.02를 소폭 웃돈다. 이날 외국인은 4334억원 순매도한 반면 기관과 개인은 각각 1716억원, 1701억원 순매수했다.\n\n## 외국인 매도를 기관·개인이 흡수한 수급\n\n외국인은 KOSPI에서 3438억원, KOSDAQ에서 896억원을 순매도했고 기관은 각각 1406억원, 310억원을 순매수했다. 개인도 각각 1128억원, 573억원을 받아냈다. 지수 상승의 주도권은 외국인 복귀보다 급락 후 국내 매수세의 물량 흡수에 있었다.\n\n배경에는 원화 약세와 미국 금리 불확실성이 있다. 미국 10년물 금리는 5.089%이고, [미국 경제 과열로 연준 선택이 어려워졌다는 보도](https://news.google.com/rss/articles/CBMiiAFBVV95cUxQS3d6R20zdWVJdW15aGRaVHNkbXBILUVSckM0Z0pNU051RWdCVS12Yld6U20wcEQySjY1T0k5aTNycUdNLUs3N3lLbjVrTkhfa3QxVldOYU9TdDRVMi1UVWZpUkhmbS1CWmpwTDF4X3NaMWZFLXpPakpUeUgtSE8taFdJcy1pclhS?oc=5)가 금리 민감도를 높였다. 다만 미국 주요 지수가 상승했고 VIX도 5일 평균과 큰 차이가 없어, 지원 신호는 극단적 공포보다 제한적 안정에 가깝다. 이 충돌 때문에 위험회피 판단의 확신은 중간 수준이다.\n\n## 10월 16일 핵심 이슈: 금리·AI·유가\n\n1. **인플레이션과 연준**: [미국 9월 생산자물가 급등 보도](https://news.google.com/rss/articles/CBMiWkFVX3lxTE00ZUF4cWRhaGhVYkc1VU1yQjVpV2FMVHRqOEVod0ZjaUQ0cktPMkNfU0gwdG9rUjcwYWFRZUJpN25RaHZ2TzZlYUw0dmhyZ1lqTGpKeFdUazczUQ?oc=5)는 금리 인상 우려를 자극한다. 이는 원화와 외국인 수급의 부담 요인이다.\n2. **반도체·AI**: [AI 투자 우려에도 뉴욕증시가 반등했다는 기사](https://news.google.com/rss/articles/CBMiW0FVX3lxTE80QWFvaDFqX3VIckdOaDBibHhsOWZ3S3RnLUNRRTcySl9CMnBtMnZiRkozdEg2a080SV9DWWlzUXFxQXBhRGlRRXFUa01kRjJ4TTd3T29MaWJGY2fSAWBBVV95cUxQbzlmX1R0Y3A4aHhlNEcwZkw5c3VFbkxNZDRlOEFUMXNpZlNWUVRIOFVtTmtTVFhTS2w3eXFUSzAyVDh6eUZSUGRhX1kySDVzdTNKTEZuOXJ2b09TSGs2Z3U?oc=5)는 심리 완충재다. 다만 AI·반도체 주간 연구 의제는 약화 상태이며 현재 매매 신호로 볼 수 없다.\n3. **유가·정책**: WTI는 95.99이고 중동 긴장과 수입물가 관련 뉴스가 비용 부담을 환기한다.\n\n## 월별 경기 혼조와 다음 확인 조건\n\n한국 월별 지표는 상충한다. 8월 선행지수 순환변동치는 104.2로 전월보다 0.1포인트 하락했지만 동행지수는 101.7로 0.5포인트 상승했다. 9월 소비자심리는 전월 대비 2.1포인트, 경제심리는 0.5포인트 개선됐다. 반면 8월 제조업 가동률지수는 전월 대비 5.3232%, 소매판매는 1.8429%, 설비투자는 9.5238%, 전산업생산은 1.33% 하락했다. 9월 수출금액지수는 전년 동월 대비 89.2225% 상승했지만, 이는 통관 수출총액과 다른 지표다. 월별 자료는 중기 배경일 뿐 오늘 움직임과 동일시할 수 없다.\n\n다음 확인점은 외국인 수급, USD/KRW, 미국 금리다. **외국인이 순매수로 전환하고 USD/KRW 하락이 동반되며 5일·20일 누적 낙폭이 지속적으로 축소된다면, 오늘의 ‘위험회피 속 기술적 반등’ 판단은 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

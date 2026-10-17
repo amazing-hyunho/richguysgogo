@@ -1,0 +1,70 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "코스피는 6,116.43으로 4.03% 하락했고 외국인은 8,850억원 순매도해, 기관·개인의 순매수에도 핵심 수급 불균형이 이어졌습니다.",
+      "sources": [
+        "시장 데이터",
+        "수급 데이터"
+      ]
+    },
+    {
+      "point": "코스피 5일 누적 수익률은 -14.894%, 20일은 -8.779%이며 반전 신호는 확인되지 않았습니다.",
+      "sources": [
+        "누적 시장 데이터"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 체제",
+      "majority": "매크로·수급·섹터·이익·브레드스·유동성 담당자는 외국인 매도와 누적 하락을 근거로 리스크 오프를 제시했습니다.",
+      "minority": "리스크 담당자의 체제 태그는 리스크 온이지만, 실제 설명은 급락과 외국인 매도를 강조해 태그와 논지가 충돌합니다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "분류상 이견보다 실제 근거는 방어론에 수렴하지만, 신뢰도는 한 단계 낮춰 해석해야 합니다."
+    },
+    {
+      "topic": "외국인 수급의 시장별 차이",
+      "majority": "전체 외국인 수급은 8,850억원 순매도이고 코스피에서는 9,967억원 순매도했습니다.",
+      "minority": "코스닥에서는 외국인이 1,117억원 순매수해 전면적 이탈로 단정하기 어렵습니다.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "대형주 중심 위험회피와 중소형주 선별 매수가 병존하므로 지수별 수급 확인이 필요합니다."
+    },
+    {
+      "topic": "변동성 지표와 국내 급락의 괴리",
+      "majority": "코스피 당일 -4.03%, 5일 누적 -14.894%와 외국인 순매도는 강한 위험회피 신호입니다.",
+      "minority": "VIX는 15.21로 5일 평균 15.298과 유사하고 원·달러 환율도 5일간 0.398% 하락해 글로벌 공포 확산은 제한적입니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "국내 고유 수급 충격일 가능성이 있어 글로벌 지표만으로 즉각적인 반전을 기대해서는 안 됩니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 10월 13일, 대형주 수급 충격이 지배한 장\n\n코스피는 **6,116.43(-4.03%)**, 코스닥은 **827.99(-2.50%)**로 동반 하락했습니다. 원·달러 환율은 **1,333.744원(+0.150%)**, VIX는 **15.21**입니다. 전체 수급은 외국인 **-8,850억원**, 기관 **+3,790억원**, 개인 **+4,243억원**으로 외국인 매도를 국내 주체가 받아낸 구도입니다.\n\n하루 충격으로만 보기도 어렵습니다. 코스피는 5일 누적 **-14.894%**, 20일 누적 **-8.779%**이고 반전 신호는 없습니다. 다만 VIX가 5일 평균 **15.298**과 비슷하고 원·달러 환율의 5일 변화가 **-0.398%**라는 점은 글로벌 공포가 국내 낙폭만큼 확대된 것은 아니라는 반론입니다.\n\n## 코스피 외국인 매도와 코스닥의 예외\n\n외국인은 코스피에서 **9,967억원 순매도**한 반면 코스닥에서는 **1,117억원 순매수**했습니다. 기관도 코스피에서 **3,705억원 순매수**했고 개인은 코스피에서 **5,410억원 순매수**했지만, 지수 하락을 막지는 못했습니다. 대형주 중심 외국인 이탈이 핵심이며 전 시장의 일률적 이탈은 아닙니다.\n\n수급 담당자는 고금리·달러·반도체 이슈의 복합 작용을 지적했습니다. 실제 미국 10년물 금리는 **5.24%**, 달러지수는 **102.565**입니다. [S&P500 최고치인데 내 계좌는 왜 이래…답은 국채금리 5%](https://news.google.com/rss/articles/CBMiYEFVX3lxTFAxTjhSTVNjeEkyYWNUQndtQkFrdTViV1BCSy0tTWxWaHlkNzZpX0VrV1lTSGJERWt5amgwX3JWOHk4czV1ZF93YXBkWDRiR21rOVR2MDNYYXpOTzMtdFZET9IBeEFVX3lxTFBiLUdXMm4xV09TT01VU3gzMm9ucWFzZWlDNDg4bjBwNkZ3MnB1aEstMUpFSXFBMEFuOXh5S2p2dng0d0NTWUNpWWVrS0l0U1ZMZlFSU2RaWEFqSS1iUDlHYzl1TVkxek1QWFdlRE1WMFUtSHlvclJINg?oc=5)라는 뉴스 키워드도 고금리의 밸류에이션 부담을 부각합니다.\n\n## 날짜별 핵심 이슈: 금리·반도체·한국 경기\n\n1. **금리:** [고금리에 저환율…미 국채 투자 ‘좁은 문’이 열렸다](https://news.google.com/rss/articles/CBMijgFBVV95cUxNa0ZNRE1QX0t4VXJsTVZzMk5oTV9UZFhmWmdUajZsNGE5YjF1RXgzS3Y3V0txb3NJTzRWRmlYWmdwMk9qUWNCSXN2bDhvYXYxUmVnTTkwenBsLVM4VFZjZFBuTnpId2dFaXlVZFI3VUVSQTMzZW5ic2tWWnBlSU1NWUZBZHBlQU8tQ3lYX3F3?oc=5)처럼 고금리가 위험자산의 할인율 부담으로 연결되고 있습니다.\n2. **반도체·AI:** 관련 호황 기대는 남아 있지만 주간 연구 의제의 강도는 약화됐습니다. 이는 현재 매수 신호가 아니라 장기 공급망 점검 항목입니다.\n3. **한국 경기:** 8월 선행지수는 전월 대비 **0.1포인트 하락**, 동행지수는 **0.5포인트 상승**해 엇갈렸습니다. 9월 소비자심리는 전월 대비 **2.1포인트**, 경제심리는 **0.5포인트** 개선됐지만, 8월 제조업 가동률지수·소매판매·설비투자·전산업생산은 각각 전월 대비 **-5.3232%, -1.8429%, -9.5238%, -1.33%**였습니다. 실업률은 8월 **2.7%로 0.1%포인트 하락**, 수출금액지수는 전년 동월 대비 **75.8196% 상승**했습니다. 9월 소비자물가 **+2.8789%**, 8월 생산자물가 **+7.9344%**는 방향만으로 호재·악재를 단정할 수 없습니다. 이 월별 자료는 중기 배경이며 오늘 급락의 직접 원인과 동일시할 수 없습니다.\n\n## 반전 확인 조건과 무효화 기준\n\n우선 확인할 것은 외국인 코스피 매도 축소, 미국 장기금리 안정, 코스피 반전 신호 발생입니다. 다수 담당자는 방어론에 동의했지만 VIX와 5일 환율 흐름이 국내 급락을 완전히 확인하지 않는 만큼 확신도는 낮춰야 합니다. **외국인 코스피 수급이 순매수로 전환되고, 누적 하락을 끊는 반전 신호가 확인되면 오늘의 리스크 오프 논지는 무효화됩니다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
