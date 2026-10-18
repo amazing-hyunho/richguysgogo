@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,668.05로 2.05%, KOSDAQ은 794.78로 4.46% 상승했지만 KOSPI 5일·20일 누적 수익률은 각각 -9.371%, -19.759%입니다.",
+      "sources": [
+        "market_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "10월 16일 외국인은 2,692억원 순매수했으나 기관과 개인은 각각 5,126억원, 6,034억원 순매도해 추세적 수급 전환 여부는 추가 확인이 필요합니다.",
+      "sources": [
+        "flow_data",
+        "korean_market_flow_breakdown"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 국면 판단",
+      "majority": "단기 반등에도 20일 누적 하락과 변동성 부담이 커 위험회피 국면이 이어진다는 판단입니다.",
+      "minority": "외국인 KOSPI 매수와 원화 강세를 초기 수급 전환 신호로 볼 수 있다는 의견입니다.",
+      "minority_agents": [
+        "flow",
+        "risk"
+      ],
+      "why_it_matters": "반등 추종 여부와 포트폴리오 위험 노출 확대 시점을 좌우합니다."
+    },
+    {
+      "topic": "반등의 지속 가능성",
+      "majority": "macro·earnings·breadth·liquidity는 실적 상향 신호 부재와 보수적 유동성 환경 때문에 지속성을 낮게 평가했습니다.",
+      "minority": "flow는 외국인 저점 매수와 환율 하락이 기관·개인 매물을 흡수하는 구간이라고 판단했습니다.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "외국인 매수가 하루성 반발인지 중기 자금 유입인지에 따라 반등의 폭과 기간이 달라질 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 급반등, 아직 추세 반전은 아니다\n\nKOSPI는 5,668.05로 2.05%, KOSDAQ은 794.78로 4.46% 상승했다. USD/KRW는 1,334.77로 0.86% 하락해 원화가 강세를 보였고, VIX는 19.99로 5일 평균 16.868을 웃돌았다. 10월 16일 기준 외국인은 2,692억원 순매수한 반면 기관과 개인은 각각 5,126억원, 6,034억원 순매도했다.\n\n그러나 KOSPI의 5일 누적 수익률은 -9.371%, 20일은 -19.759%이며 반전 신호도 확인되지 않았다. 오늘 상승은 낙폭 회복 성격이 강하고, 추세 전환으로 판단하기에는 이르다. macro·breadth 에이전트도 누적 하락을 근거로 중기 약세 의견을 유지했다.\n\n## 외국인 KOSPI 매수와 시장별 온도 차\n\n외국인은 KOSPI에서 3,637억원을 순매수했지만 KOSDAQ에서는 945억원을 순매도했다. 기관은 KOSPI에서 6,815억원을 팔고 KOSDAQ에서 1,689억원을 샀다. 지수 동반 상승에도 주체별 선호가 달랐다는 의미다.\n\nflow 에이전트는 원화 강세와 급락 이후 저점 매수가 외국인 유입의 배경이라고 해석했다. 다만 미국 NASDAQ -2.145%, S&P500 -1.093%, 미 국채 10년물 5.098%는 이를 제약하는 보조 신호다. 핵심 수급은 개선됐지만 해외 위험 신호와 충돌하므로 판단 신뢰도는 중간 수준으로 낮춘다.\n\n## 10월 18일 이슈: 환율·AI·금리\n\n1. **환율과 반도체**: [반도체 호황에 2년 만에 최저 환율…AI 불안이 원화 강세 막나](https://news.google.com/rss/articles/CBMic0FVX3lxTE1NUC0yOEY0R3NIdEhLRDJEWkQwTElSQTVaNmFXTWxyMDkwbS1QaUlhY0F6Nzg4ZGxlUWlBZm1PR2xQQnpBMkNqYzNrZnNfRnphT2Jwak1JS0pZZFBDYkVmQUt3dVcwemVHcTFlTlpONW1YeTQ?oc=5)는 원화 강세와 외국인 매수의 연결고리를 점검하게 한다.\n2. **급락 후 반등**: [코스피, 급락 후 반등 이어갈까…美 빅테크 실적에 쏠리는 눈](https://news.google.com/rss/articles/CBMiWkFVX3lxTE05ajFpRkJYSzRyTWRXTHlwX1A0VU1wWW1ybjJjdmtpY3BDUjFWeWZ2cUY2Y29PcWFpMy1VRm1pUUQ4bllQdGJSX01yc2xBaTZ6aVMyNU9hSENnUQ?oc=5)처럼 다음 확인점은 미국 빅테크 실적이다. earnings 에이전트는 아직 실적 추정치 상향 신호가 없다고 지적했다.\n3. **금리**: 금리 인상 숨고르기 전망은 우호적이지만, 높은 미국 금리와 VIX가 반등의 상단을 제약한다.\n\n## 혼조인 월별 경기와 무효화 조건\n\n8월 선행지수는 전월 대비 0.1p 하락했지만 동행지수는 0.5p 상승했다. 9월 소비자심리는 전월 대비 2.1p, 경제심리는 0.5p 개선됐다. 반면 8월 제조업 가동률지수 -5.3232%, 소매판매 -1.8429%, 설비투자 -9.5238%, 전산업생산 -1.33%로 생산·소비는 모두 전월 대비 부진했다. 9월 실업률은 전월 대비 0.1%p 하락했고 수출금액지수는 전년 동월 대비 89.2225% 상승했다. 이는 중기 배경일 뿐 오늘 반등의 직접 원인은 아니다.\n\n향후 외국인 KOSPI 순매수 지속, VIX의 5일 평균 하회, KOSPI 5일·20일 누적 수익률의 동시 플러스 전환이 확인되면 오늘의 ‘중기 위험회피’ 논지는 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
