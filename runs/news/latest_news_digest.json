@@ -1,18 +1,22 @@
 {
-  "crawled_at": "2026-10-19T15:42:04.789838+00:00",
+  "crawled_at": "2026-10-19T16:42:01.547648+00:00",
   "news_date": "2026-10-20",
-  "total_collected": 10,
+  "total_collected": 11,
   "topic_counts": [
     [
       "반도체/AI",
-      6
+      5
     ],
     [
       "금리/연준",
       1
     ],
     [
-      "중국/신흥국",
+      "인플레이션",
+      2
+    ],
+    [
+      "2차전지/전기차",
       1
     ],
     [
@@ -23,11 +27,11 @@
   "top_articles": [
     {
       "topic": "반도체/AI",
-      "count": 6,
-      "title": "\"그래도 대세는 AI\"…엔비디아·상위 반도체주 집중 투자 ETF 나온다 - 머니투데이",
-      "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBwOTdZaTVXY1ItSHdtcXhiM1dkWXR2OGRJQjhXZ3QtVUNUOTRRdG5EZmVOREdUZFVMLUFrVXlCcWRSWFBvXzhIM3BNWlZIcXpjRUUw?oc=5",
+      "count": 5,
+      "title": "\"엔비디아의 진짜 해자 CUDA에 도전\"…아마존,AI칩 소프트웨어 공개 - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBqVzV5UEY5TFBGQ0FtU2dHM0pOQk5GM3QzSDczX1Q3THdaeWNKY2E0RWdSNkZXZS1qVkJqZllUZFlkLVZ4SHg3X0JRRUc3TmlPVnVUU2VnSWU5Zw?oc=5",
       "summary_lines": [
-        "핵심 이슈: \"그래도 대세는 AI\"…엔비디아·상위 반도체주 집중 투자 ETF 나온다 - 머니투데이",
+        "핵심 이슈: \"엔비디아의 진짜 해자 CUDA에 도전\"…아마존,AI칩 소프트웨어 공개 - 한국경제",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -44,12 +48,23 @@
       ]
     },
     {
-      "topic": "중국/신흥국",
-      "count": 1,
-      "title": "환율(원·달러) 장중 1327.6원 터치…25개월만에 최저 - 경상일보",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Jc0hYSGNSQmJ4N3Vyb1pRVmVKMkN2c3EwM0tOc3NqTFJkUmhUSjhpajNxVEJ2ZHFnLVhiS2ZYX1Nld1NLcDFEQ01GU0wyM2hLeTc4VkFnMl9CYmxkT211ZTdhb2U3NjZPbzlrUw?oc=5",
+      "topic": "인플레이션",
+      "count": 2,
+      "title": "TSX 하락, 인플레이션 재가속에 금리 우려 고조…유가도 후퇴 - Investing.com 한국어",
+      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFByc3IwRlkwY19tYWNpTUZnRVFpOHQwTlhsa1RvakJGdVZXSW1CX0lvdFFJeVFMbXNBak1ZRWNaaDBiaVk3WU5sMXViRWhtdU1PbVRleFpFZ2ttZ3YtczZGMnhrMGx5OFMxaHc?oc=5",
       "summary_lines": [
-        "핵심 이슈: 환율(원·달러) 장중 1327.6원 터치…25개월만에 최저 - 경상일보",
+        "핵심 이슈: TSX 하락, 인플레이션 재가속에 금리 우려 고조…유가도 후퇴 - Investing.com 한국어",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "2차전지/전기차",
+      "count": 1,
+      "title": "판매량 40% 급증… 전기차 부활, 유럽선 시작됐다 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtbjRhdXpncDdHeko1YUVweGxlOTFWbkZSck9ZQUtqSGRJUUlCdkRYMDJDS3pRX0gzdU9VRnoyNUozOE9FcUp1TG0tLU11YTZOSWhmLWs4N1YxNldLbW5rZ2xlLWFPOWpaekVfcWRiRm1pUlhYZlBzRDBzMUUtMzg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 판매량 40% 급증… 전기차 부활, 유럽선 시작됐다 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -69,13 +84,31 @@
   "sector_hot_topics": [
     {
       "sector": "IT/반도체",
-      "total_count": 6,
+      "total_count": 5,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 6,
-          "title": "\"그래도 대세는 AI\"…엔비디아·상위 반도체주 집중 투자 ETF 나온다 - 머니투데이",
-          "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBwOTdZaTVXY1ItSHdtcXhiM1dkWXR2OGRJQjhXZ3QtVUNUOTRRdG5EZmVOREdUZFVMLUFrVXlCcWRSWFBvXzhIM3BNWlZIcXpjRUUw?oc=5"
+          "count": 5,
+          "title": "\"엔비디아의 진짜 해자 CUDA에 도전\"…아마존,AI칩 소프트웨어 공개 - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBqVzV5UEY5TFBGQ0FtU2dHM0pOQk5GM3QzSDczX1Q3THdaeWNKY2E0RWdSNkZXZS1qVkJqZllUZFlkLVZ4SHg3X0JRRUc3TmlPVnVUU2VnSWU5Zw?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "매크로",
+      "total_count": 3,
+      "topics": [
+        {
+          "topic": "인플레이션",
+          "count": 2,
+          "title": "TSX 하락, 인플레이션 재가속에 금리 우려 고조…유가도 후퇴 - Investing.com 한국어",
+          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTFByc3IwRlkwY19tYWNpTUZnRVFpOHQwTlhsa1RvakJGdVZXSW1CX0lvdFFJeVFMbXNBak1ZRWNaaDBiaVk3WU5sMXViRWhtdU1PbVRleFpFZ2ttZ3YtczZGMnhrMGx5OFMxaHc?oc=5"
+        },
+        {
+          "topic": "금리/연준",
+          "count": 1,
+          "title": "국제 금값, 유가 하락에 반등…美 연준 금리 동결 기대·ETF 매수세 뒷받침 - 글로벌이코노믹",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZHhQT2VHQWEyUXljUEZWUmFkLXlaU29YN190UjBVYlZsR3U4dTJaLWE2NVNwNVhZTENJbXN6aldBX3B0Wl9acXpuT2JId1VMUEt1cDlkMHZnRzJFVkhhMTFBSkVPVlVfOXN6NXNCY3M3RHg4cGtiQVJCSHhTeHFZdnhnVFYzSTlP?oc=5"
         }
       ]
     },
@@ -92,26 +125,14 @@
       ]
     },
     {
-      "sector": "매크로",
+      "sector": "2차전지/자동차",
       "total_count": 1,
       "topics": [
         {
-          "topic": "금리/연준",
+          "topic": "2차전지/전기차",
           "count": 1,
-          "title": "국제 금값, 유가 하락에 반등…美 연준 금리 동결 기대·ETF 매수세 뒷받침 - 글로벌이코노믹",
-          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZHhQT2VHQWEyUXljUEZWUmFkLXlaU29YN190UjBVYlZsR3U4dTJaLWE2NVNwNVhZTENJbXN6aldBX3B0Wl9acXpuT2JId1VMUEt1cDlkMHZnRzJFVkhhMTFBSkVPVlVfOXN6NXNCY3M3RHg4cGtiQVJCSHhTeHFZdnhnVFYzSTlP?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "글로벌",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "중국/신흥국",
-          "count": 1,
-          "title": "환율(원·달러) 장중 1327.6원 터치…25개월만에 최저 - 경상일보",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Jc0hYSGNSQmJ4N3Vyb1pRVmVKMkN2c3EwM0tOc3NqTFJkUmhUSjhpajNxVEJ2ZHFnLVhiS2ZYX1Nld1NLcDFEQ01GU0wyM2hLeTc4VkFnMl9CYmxkT211ZTdhb2U3NjZPbzlrUw?oc=5"
+          "title": "판매량 40% 급증… 전기차 부활, 유럽선 시작됐다 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtbjRhdXpncDdHeko1YUVweGxlOTFWbkZSck9ZQUtqSGRJUUlCdkRYMDJDS3pRX0gzdU9VRnoyNUozOE9FcUp1TG0tLU11YTZOSWhmLWs4N1YxNldLbW5rZ2xlLWFPOWpaekVfcWRiRm1pUlhYZlBzRDBzMUUtMzg?oc=5"
         }
       ]
     }
