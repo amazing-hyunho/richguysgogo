@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-10-19T21:42:03.547547+00:00",
+  "crawled_at": "2026-10-19T22:42:34.990993+00:00",
   "news_date": "2026-10-20",
-  "total_collected": 44,
+  "total_collected": 51,
   "topic_counts": [
     [
       "반도체/AI",
@@ -12,16 +12,16 @@
       5
     ],
     [
+      "환율/달러",
+      1
+    ],
+    [
       "인플레이션",
       4
     ],
     [
-      "중국/신흥국",
-      2
-    ],
-    [
-      "2차전지/전기차",
-      4
+      "미국지수",
+      6
     ]
   ],
   "top_articles": [
@@ -48,6 +48,17 @@
       ]
     },
     {
+      "topic": "환율/달러",
+      "count": 1,
+      "title": "[채권/외환] 美 국채 금리·달러 동반 상승…AI주 반등에 시장 분위기 반전 - 뉴스핌",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE93bmZGcjR1R3FKZ2VoM2dqdldzQkRBN0VHMmtEZGlMLVBsc1FZUTVYNHBpcE1hVk1EYkpydDR4bnJlQjRvay1nM2NsVXdjYUp5TUZVenpvRjBoSmRw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: [채권/외환] 美 국채 금리·달러 동반 상승…AI주 반등에 시장 분위기 반전 - 뉴스핌",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "인플레이션",
       "count": 4,
       "title": "오늘 밤 미국 PCE 발표｜10년물 5.2%·연준 추가 인상 갈림길, 이번에는 왜 더 중요할까 - 네이버 프리미엄콘텐츠",
@@ -59,23 +70,12 @@
       ]
     },
     {
-      "topic": "중국/신흥국",
-      "count": 2,
-      "title": "환율(원·달러) 장중 1327.6원 터치…25개월만에 최저 - 경상일보",
-      "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Jc0hYSGNSQmJ4N3Vyb1pRVmVKMkN2c3EwM0tOc3NqTFJkUmhUSjhpajNxVEJ2ZHFnLVhiS2ZYX1Nld1NLcDFEQ01GU0wyM2hLeTc4VkFnMl9CYmxkT211ZTdhb2U3NjZPbzlrUw?oc=5",
+      "topic": "미국지수",
+      "count": 6,
+      "title": "미국증시 나스닥 1.11% 상승·다우 약보합…AI 반도체 반등에도 장 후반 상승폭 반납 - 톱스타뉴스",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9sWlZzeDd3dFF2N2RPV3ktWHNMbmtZZ0M4RTdBZ0FLV3dxOU5ubFU1bkhVbEVrS2NIY3h3aXNwY0JGNXdyR0M2dWpSb04yMEVheXNDZm5fbFJUQmtRZi1qSXZ5ZkZ2NzN4VlZqYmVReFdUQQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: 환율(원·달러) 장중 1327.6원 터치…25개월만에 최저 - 경상일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "2차전지/전기차",
-      "count": 4,
-      "title": "판매량 40% 급증… 전기차 부활, 유럽선 시작됐다 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtbjRhdXpncDdHeko1YUVweGxlOTFWbkZSck9ZQUtqSGRJUUlCdkRYMDJDS3pRX0gzdU9VRnoyNUozOE9FcUp1TG0tLU11YTZOSWhmLWs4N1YxNldLbW5rZ2xlLWFPOWpaekVfcWRiRm1pUlhYZlBzRDBzMUUtMzg?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 판매량 40% 급증… 전기차 부활, 유럽선 시작됐다 - 조선일보",
+        "핵심 이슈: 미국증시 나스닥 1.11% 상승·다우 약보합…AI 반도체 반등에도 장 후반 상승폭 반납 - 톱스타뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -96,7 +96,7 @@
     },
     {
       "sector": "매크로",
-      "total_count": 9,
+      "total_count": 10,
       "topics": [
         {
           "topic": "금리/연준",
@@ -109,30 +109,24 @@
           "count": 4,
           "title": "오늘 밤 미국 PCE 발표｜10년물 5.2%·연준 추가 인상 갈림길, 이번에는 왜 더 중요할까 - 네이버 프리미엄콘텐츠",
           "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5oM3Y5QW1iSFY3VDd3RHUzU1BCLTNNRTg1NnlyX19fQlRjd245NGJGLU1qYlZ4OHJSeU95cWtqT0NKSGxUN1RvNk1ySWFKcWt3QUhZOW5OekZYLWxfQy1MUzZsSHRjTkRTTDk0R1JtYjU5MW1FYkRyUFBnakh2UQ?oc=5"
+        },
+        {
+          "topic": "환율/달러",
+          "count": 1,
+          "title": "[채권/외환] 美 국채 금리·달러 동반 상승…AI주 반등에 시장 분위기 반전 - 뉴스핌",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE93bmZGcjR1R3FKZ2VoM2dqdldzQkRBN0VHMmtEZGlMLVBsc1FZUTVYNHBpcE1hVk1EYkpydDR4bnJlQjRvay1nM2NsVXdjYUp5TUZVenpvRjBoSmRw?oc=5"
         }
       ]
     },
     {
-      "sector": "2차전지/자동차",
-      "total_count": 4,
+      "sector": "지수/시장",
+      "total_count": 6,
       "topics": [
         {
-          "topic": "2차전지/전기차",
-          "count": 4,
-          "title": "판매량 40% 급증… 전기차 부활, 유럽선 시작됐다 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTFAtbjRhdXpncDdHeko1YUVweGxlOTFWbkZSck9ZQUtqSGRJUUlCdkRYMDJDS3pRX0gzdU9VRnoyNUozOE9FcUp1TG0tLU11YTZOSWhmLWs4N1YxNldLbW5rZ2xlLWFPOWpaekVfcWRiRm1pUlhYZlBzRDBzMUUtMzg?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "글로벌",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "중국/신흥국",
-          "count": 2,
-          "title": "환율(원·달러) 장중 1327.6원 터치…25개월만에 최저 - 경상일보",
-          "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5Jc0hYSGNSQmJ4N3Vyb1pRVmVKMkN2c3EwM0tOc3NqTFJkUmhUSjhpajNxVEJ2ZHFnLVhiS2ZYX1Nld1NLcDFEQ01GU0wyM2hLeTc4VkFnMl9CYmxkT211ZTdhb2U3NjZPbzlrUw?oc=5"
+          "topic": "미국지수",
+          "count": 6,
+          "title": "미국증시 나스닥 1.11% 상승·다우 약보합…AI 반도체 반등에도 장 후반 상승폭 반납 - 톱스타뉴스",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE9sWlZzeDd3dFF2N2RPV3ktWHNMbmtZZ0M4RTdBZ0FLV3dxOU5ubFU1bkhVbEVrS2NIY3h3aXNwY0JGNXdyR0M2dWpSb04yMEVheXNDZm5fbFJUQmtRZi1qSXZ5ZkZ2NzN4VlZqYmVReFdUQQ?oc=5"
         }
       ]
     }
