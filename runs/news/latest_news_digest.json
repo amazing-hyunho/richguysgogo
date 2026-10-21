@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-10-21T02:41:53.597633+00:00",
+  "crawled_at": "2026-10-21T03:41:55.151274+00:00",
   "news_date": "2026-10-21",
-  "total_collected": 146,
+  "total_collected": 154,
   "topic_counts": [
     [
       "금리/연준",
@@ -9,7 +9,7 @@
     ],
     [
       "반도체/AI",
-      23
+      24
     ],
     [
       "환율/달러",
@@ -20,8 +20,8 @@
       17
     ],
     [
-      "에너지/원자재",
-      14
+      "미국지수",
+      13
     ]
   ],
   "top_articles": [
@@ -38,7 +38,7 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 23,
+      "count": 24,
       "title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑] - 머니투데이 - 머니투데이",
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE16S0pocDFDNlIwTm8wV3Bpdlc5VkdBaDJGbURoQXR6d3lXN1ljN3J5S1drNENRNzJIQ0NadldWTlhqNXJMd2NxZVNJa3Q1akpjQmlxUHp6NFJmN3ZlelRqSVAtQ0U2eDdm0gFuQVVfeXFMUEFsOGRDanBzREpoa3JxMkxIOUJzaXZLcnJvUVJMNGRWaWlUOVF0X2sxM2llU2I4ZVBUcjgxcTR2LWJITXpHRUIweXJncWFZeEY1VTc2X3BNWnM3LXp2dW5kX3pWNFNIS3p1ZDRlZWc?oc=5",
       "summary_lines": [
@@ -70,18 +70,36 @@
       ]
     },
     {
-      "topic": "에너지/원자재",
-      "count": 14,
-      "title": "국제유가 10일만에 반락…브렌트유 90달러 밑으로 - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1KZkh6RTI0LWphRG9UcnQ5Z0stbHJxY05zQVJma1BWZnNrNldSOUd3aXlSTmh3bG9jd1lYanJwZE1rbWNiaTc1dGlXT2pPalFW?oc=5",
+      "topic": "미국지수",
+      "count": 13,
+      "title": "미국증시, 다우 1%대 상승·나스닥 약보합…중동 긴장 완화 기대에 낙폭 회복, 반도체는 약세 - 톱스타뉴스",
+      "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1hRmxldks2emdkUjhYLWFVTEtmWnZReUQtbGJBalUyQzhzZ2d0LWg5RHZYdnM3b1VzWjliTGwxc2lIZF82VmpNSjZEM25wT1lpM0tqY1JhQ2NpTkVpOWl0MEpEUlNsZGtMRUFvUEc4Zk1mQQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: 국제유가 10일만에 반락…브렌트유 90달러 밑으로 - 매일경제 마켓",
+        "핵심 이슈: 미국증시, 다우 1%대 상승·나스닥 약보합…중동 긴장 완화 기대에 낙폭 회복, 반도체는 약세 - 톱스타뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "지수/시장",
+      "total_count": 30,
+      "topics": [
+        {
+          "topic": "국내지수",
+          "count": 17,
+          "title": "\"내년엔 코스피보다 코스닥…AI 대형주 쉬면 중소형주 뜬다\" - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5zQXJBeURCcURBU0F5QVZNRUh0UXREV0VaN1NoaW4zTmR2TlluWUdSV0VFQUJ2bExzN2xzdWY1WnRhRFRWaXlQaTRzN3FaMkNEOFRLZFl2UkpLZw?oc=5"
+        },
+        {
+          "topic": "미국지수",
+          "count": 13,
+          "title": "미국증시, 다우 1%대 상승·나스닥 약보합…중동 긴장 완화 기대에 낙폭 회복, 반도체는 약세 - 톱스타뉴스",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1hRmxldks2emdkUjhYLWFVTEtmWnZReUQtbGJBalUyQzhzZ2d0LWg5RHZYdnM3b1VzWjliTGwxc2lIZF82VmpNSjZEM25wT1lpM0tqY1JhQ2NpTkVpOWl0MEpEUlNsZGtMRUFvUEc4Zk1mQQ?oc=5"
+        }
+      ]
+    },
     {
       "sector": "매크로",
       "total_count": 24,
@@ -102,37 +120,13 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 23,
+      "total_count": 24,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 23,
+          "count": 24,
           "title": "\"그래도 대세는 AI\"…엔비디아·반도체 집중 투자 ETF[머니똑똑] - 머니투데이 - 머니투데이",
           "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE16S0pocDFDNlIwTm8wV3Bpdlc5VkdBaDJGbURoQXR6d3lXN1ljN3J5S1drNENRNzJIQ0NadldWTlhqNXJMd2NxZVNJa3Q1akpjQmlxUHp6NFJmN3ZlelRqSVAtQ0U2eDdm0gFuQVVfeXFMUEFsOGRDanBzREpoa3JxMkxIOUJzaXZLcnJvUVJMNGRWaWlUOVF0X2sxM2llU2I4ZVBUcjgxcTR2LWJITXpHRUIweXJncWFZeEY1VTc2X3BNWnM3LXp2dW5kX3pWNFNIS3p1ZDRlZWc?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 17,
-      "topics": [
-        {
-          "topic": "국내지수",
-          "count": 17,
-          "title": "\"내년엔 코스피보다 코스닥…AI 대형주 쉬면 중소형주 뜬다\" - 한국경제",
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5zQXJBeURCcURBU0F5QVZNRUh0UXREV0VaN1NoaW4zTmR2TlluWUdSV0VFQUJ2bExzN2xzdWY1WnRhRFRWaXlQaTRzN3FaMkNEOFRLZFl2UkpLZw?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "에너지/소재",
-      "total_count": 14,
-      "topics": [
-        {
-          "topic": "에너지/원자재",
-          "count": 14,
-          "title": "국제유가 10일만에 반락…브렌트유 90달러 밑으로 - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1KZkh6RTI0LWphRG9UcnQ5Z0stbHJxY05zQVJma1BWZnNrNldSOUd3aXlSTmh3bG9jd1lYanJwZE1rbWNiaTc1dGlXT2pPalFW?oc=5"
         }
       ]
     }
