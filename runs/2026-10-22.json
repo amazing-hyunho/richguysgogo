@@ -1,0 +1,667 @@
+{
+  "generated_at": "2026-10-22T00:52:14.831745+00:00",
+  "market_date": "2026-10-22",
+  "snapshot": {
+    "korea_macro_context": {
+      "as_of": "2026-10-22T09:51:33.029197+09:00",
+      "available": 12,
+      "total": 12,
+      "summary": "경기 혼조 · 심리 긍정 · 생산·소비 부정 · 물가·고용·수출 긍정 / 물가는 별도 판단",
+      "groups": [
+        {
+          "name": "경기",
+          "tone": "혼조",
+          "indicators": [
+            "kr_leading",
+            "kr_coincident"
+          ]
+        },
+        {
+          "name": "심리",
+          "tone": "긍정",
+          "indicators": [
+            "kr_consumer_sentiment",
+            "kr_economic_sentiment"
+          ]
+        },
+        {
+          "name": "생산·소비",
+          "tone": "부정",
+          "indicators": [
+            "kr_utilization",
+            "kr_retail",
+            "kr_investment",
+            "kr_production"
+          ]
+        },
+        {
+          "name": "물가·고용·수출",
+          "tone": "긍정 / 물가는 별도 판단",
+          "indicators": [
+            "kr_cpi",
+            "kr_ppi",
+            "kr_unemployment",
+            "kr_export_index"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "id": "kr_leading",
+          "name": "선행지수 순환변동치",
+          "group": "경기",
+          "unit": "지수",
+          "comparison": "delta",
+          "note": "전월 대비 상승은 경기 개선 신호로 해석합니다.",
+          "period": "202608",
+          "value": 104.2,
+          "change": -0.1,
+          "signal": "부정",
+          "change_unit": "p",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_coincident",
+          "name": "동행지수 순환변동치",
+          "group": "경기",
+          "unit": "지수",
+          "comparison": "delta",
+          "note": "전월 대비 상승은 현재 경기 개선 신호로 해석합니다.",
+          "period": "202608",
+          "value": 101.7,
+          "change": 0.5,
+          "signal": "긍정",
+          "change_unit": "p",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_consumer_sentiment",
+          "name": "소비자심리지수",
+          "group": "심리",
+          "unit": "지수",
+          "comparison": "delta",
+          "note": "전월 대비 심리 개선·악화를 표시합니다. 100을 기준으로 한 수준 판단과는 별개입니다.",
+          "period": "202609",
+          "value": 106.6,
+          "change": 2.1,
+          "signal": "긍정",
+          "change_unit": "p",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_economic_sentiment",
+          "name": "경제심리지수",
+          "group": "심리",
+          "unit": "지수",
+          "comparison": "delta",
+          "note": "원계열입니다. 전월 변화에는 계절 요인이 포함될 수 있습니다.",
+          "period": "202609",
+          "value": 99.9,
+          "change": 0.5,
+          "signal": "긍정",
+          "change_unit": "p",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_utilization",
+          "name": "제조업 가동률지수",
+          "group": "생산·소비",
+          "unit": "2020=100",
+          "comparison": "mom",
+          "note": "계절조정 지수이며, 가동률(%) 자체가 아닙니다. 전월 증가를 개선 신호로 표시합니다.",
+          "period": "202608",
+          "value": 99.6,
+          "change": -5.3232,
+          "signal": "부정",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_retail",
+          "name": "소매판매액지수",
+          "group": "생산·소비",
+          "unit": "2020=100",
+          "comparison": "mom",
+          "note": "계절조정 지수. 전월 증가를 소비 개선 신호로 표시합니다.",
+          "period": "202608",
+          "value": 101.2,
+          "change": -1.8429,
+          "signal": "부정",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_investment",
+          "name": "설비투자지수",
+          "group": "생산·소비",
+          "unit": "2020=100",
+          "comparison": "mom",
+          "note": "계절조정 지수. 전월 증가를 투자 개선 신호로 표시합니다.",
+          "period": "202608",
+          "value": 131.1,
+          "change": -9.5238,
+          "signal": "부정",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_production",
+          "name": "전산업생산지수",
+          "group": "생산·소비",
+          "unit": "2020=100",
+          "comparison": "mom",
+          "note": "농림어업 제외·계절조정 지수. 전월 증가를 생산 개선 신호로 표시합니다.",
+          "period": "202608",
+          "value": 118.7,
+          "change": -1.33,
+          "signal": "부정",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_cpi",
+          "name": "소비자물가지수",
+          "group": "물가·고용·수출",
+          "unit": "2020=100",
+          "comparison": "yoy",
+          "note": "전년 동월 대비 물가 상승률을 표시합니다. 물가 변화의 긍정·부정은 경기와 목표 수준에 따라 달라 단정하지 않습니다.",
+          "period": "202609",
+          "value": 120.43,
+          "change": 2.8789,
+          "signal": "맥락 확인",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_ppi",
+          "name": "생산자물가지수",
+          "group": "물가·고용·수출",
+          "unit": "2020=100",
+          "comparison": "yoy",
+          "note": "전년 동월 대비 변화율입니다. 비용·수요 요인이 함께 작용하므로 긍정·부정을 단정하지 않습니다.",
+          "period": "202609",
+          "value": 129.78,
+          "change": 7.6655,
+          "signal": "맥락 확인",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_unemployment",
+          "name": "실업률",
+          "group": "물가·고용·수출",
+          "unit": "%",
+          "comparison": "delta",
+          "note": "계절조정 실업률. 전월 대비 하락을 고용 개선 신호로 표시합니다.",
+          "period": "202609",
+          "value": 2.6,
+          "change": -0.1,
+          "signal": "긍정",
+          "change_unit": "%p",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        },
+        {
+          "id": "kr_export_index",
+          "name": "수출금액지수",
+          "group": "물가·고용·수출",
+          "unit": "2020=100",
+          "comparison": "yoy",
+          "note": "전년 동월 대비 증가를 개선 신호로 표시합니다. 통관 수출총액·수출물량과는 다른 지표입니다.",
+          "period": "202609",
+          "value": 287.41,
+          "change": 89.2225,
+          "signal": "긍정",
+          "change_unit": "%",
+          "collected_at": "2026-10-22T09:50:24.932371+09:00",
+          "source": "한국은행 ECOS"
+        }
+      ],
+      "excluded": [],
+      "guidance": "한국 월별 경제지표는 중기 경기 배경으로 반영하고 일별 시장·수급 신호와 구분한다. 각 근거의 기준월과 비교 기준을 명시하고 미국 지표와 혼동하지 않는다. 제외 지표는 판단 근거로 사용하지 않는다. 경기·생산·심리 지표의 상관관계를 고려해 개별 긍정/부정 개수를 매수·매도 점수로 합산하지 않는다. 물가는 방향만으로 호재·악재를 단정하지 않는다. 서로 상충하는 신호를 모두 설명하며 이 자료만으로 시장 전망이나 현금 비중을 확정하지 않는다."
+    },
+    "market_summary": {
+      "note": "KOSPI -0.13%, USD/KRW 1326.14. Headlines loaded. Flows loaded.",
+      "kospi_change_pct": -0.13,
+      "usdkrw": 1326.143133
+    },
+    "flow_summary": {
+      "note": "외국인 +718억, 기관 -404억, 개인 -265억 | KOSPI(외 +1696, 기관 +31, 개인 -1759) KOSDAQ(외 -978, 기관 -435, 개인 +1494)",
+      "foreign_net": 718.0,
+      "institution_net": -404.0,
+      "retail_net": -265.0
+    },
+    "korean_market_flow": {
+      "date": "2026-10-22",
+      "market": {
+        "KOSPI": {
+          "individual": -1759,
+          "foreign": 1696,
+          "institution": 31
+        },
+        "KOSDAQ": {
+          "individual": 1494,
+          "foreign": -978,
+          "institution": -435
+        }
+      }
+    },
+    "sector_moves": [
+      "n/a",
+      "n/a",
+      "n/a"
+    ],
+    "news_headlines": [
+      "[금리/연준] 한은 금통위, 오늘 기준금리 결정…동결 무게 - 연합뉴스TV",
+      "[반도체/AI] 테슬라, 연 투자 목표 250억→200억달러 낮춰...AI·로봇 전환 기대 이하[마켓무버] - 서울경제",
+      "[환율/달러] IBK증권 \"삼성바이오, 원·달러 환율 하락에도 성장궤도 유지\" - 연합뉴스",
+      "[2차전지/전기차] 중동전쟁 고유가, 전기차 전환 가속…\"금호타이어, 고마진 기대\"[클릭 e종목] - 아시아경제",
+      "[정책/테마] 삼성바이오로직스, 관세 불안 걷히자 고객 문의…증권가 주목한 ‘내년 수주’ - 매일경제 마켓"
+    ],
+    "watchlist": [
+      "SPY",
+      "QQQ",
+      "XLK"
+    ],
+    "markets": {
+      "kr": {
+        "kospi": 5720.16,
+        "kosdaq": 788.18,
+        "kospi_pct": -0.13,
+        "kosdaq_pct": -0.58
+      },
+      "us": {
+        "sp500": 7757.17,
+        "nasdaq": 26702.857,
+        "dow": 52856.09,
+        "sp500_pct": 0.5782767611833716,
+        "nasdaq_pct": 1.052196541311777,
+        "dow_pct": 0.6861681335754332
+      },
+      "fx": {
+        "usdkrw": 1326.143133,
+        "usdkrw_pct": -0.04070494942032863
+      },
+      "volatility": {
+        "vix": 16.68000030517578
+      }
+    },
+    "macro": {
+      "daily": {
+        "us10y": 5.145999908447266,
+        "us2y": 4.063000202178955,
+        "spread_2_10": 1.0829997062683105,
+        "us_3m_yield": 4.063000202178955,
+        "us_2y_yield": 4.77,
+        "us_10y_yield": 5.145999908447266,
+        "spread_10y_2y": 0.37599990844726605,
+        "spread_10y_3m": 1.0829997062683105,
+        "vix": 16.68000030517578,
+        "dxy": 101.6969985961914,
+        "usdkrw": 1325.7900390625,
+        "vix3m": 18.719999313354492,
+        "vix_term_spread": 2.039999008178711,
+        "oil_wti": 98.04000091552734,
+        "russell2000": 2781.020751953125,
+        "oil_brent": 110.0199966430664
+      },
+      "monthly": {
+        "unemployment_rate": 4.2,
+        "cpi_yoy": 4.023310268457836,
+        "core_cpi_yoy": 2.7892023051258708,
+        "pce_yoy": 3.419031824505425,
+        "pmi": null,
+        "retail_sales_mom": 0.7708413925190838,
+        "nfp_change": 29.0,
+        "wage_growth": 37.81,
+        "wage_level": 37.81,
+        "wage_yoy": 3.0245231607629375,
+        "export_yoy": 68.698175
+      },
+      "quarterly": {
+        "real_gdp": 24408.011,
+        "gdp_qoq_annualized": 2.2
+      },
+      "structural": {
+        "fed_funds_rate": 3.75,
+        "real_rate": 2.7959999084472655,
+        "hy_oas": 3.33,
+        "ig_oas": 0.87,
+        "fed_balance_sheet": 6755639.0,
+        "tga_balance": 885823.0,
+        "boj_rate": 0.3
+      }
+    },
+    "phase_two_signals": {
+      "earnings_signal_score": 0.0,
+      "breadth_signal_score": -1.127,
+      "liquidity_signal_score": 4.691,
+      "note": "derived from headlines + markets + macro.daily + macro.structural"
+    },
+    "cumulative_context": {
+      "lookback_days": 20,
+      "sample_count": 20,
+      "kospi_5d_cum_pct": 3.241,
+      "kospi_20d_cum_pct": -22.561,
+      "kosdaq_5d_cum_pct": 3.711,
+      "kospi_abs_move_5d_avg": 2.193,
+      "usdkrw_5d_change_pct": -0.604,
+      "vix_5d_avg": 17.086,
+      "reversal_signal": false,
+      "note": "rolling_20d: kospi20d=-22.56%, vol20d=2.62, reversal=false"
+    }
+  },
+  "stances": [
+    {
+      "agent_name": "macro",
+      "core_claims": [
+        "한국 월별 지표는 경기 혼조, 생산·소비 부진, 심리·고용·수출 개선(2026년 8~9월)으로 상반된 신호가 공존합니다.",
+        "KOSPI는 최근 5일 반등에도 20일 누적 -22%로 약세장이 지속되고 있습니다.",
+        "외국인 순매수와 원화 강세에도 단기 반전 신호는 부족합니다."
+      ],
+      "korean_comment": "중기 지표와 단기 시장 흐름이 엇갈려 신중한 해석이 필요합니다.",
+      "raw_response": "{\n  \"agent_name\": \"MACRO pre-analysis agent\",\n  \"core_claims\": [\n    \"한국 월별 지표는 경기 혼조, 생산·소비 부진, 심리·고용·수출 개선(2026년 8~9월)으로 상반된 신호가 공존합니다.\",\n    \"KOSPI는 최근 5일 반등에도 20일 누적 -22%로 약세장이 지속되고 있습니다.\",\n    \"외국인 순매수와 원화 강세에도 단기 반전 신호는 부족합니다.\"\n  ],\n  \"korean_comment\": \"중기 지표와 단기 시장 흐름이 엇갈려 신중한 해석이 필요합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.korea_macro_context\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.cumulative_context.reversal_signal\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.korea_macro_context",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.cumulative_context.reversal_signal"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "flow",
+      "core_claims": [
+        "외국인 순매수는 KOSPI에 집중, KOSDAQ은 순매도 지속.",
+        "핵심 키워드: 금리/연준, 반도체/AI, 환율/달러, 정책/테마.",
+        "외국인 매수는 고환율 안정과 정책 불확실성 완화에 따른 포트폴리오 리밸런싱 성격, 개인의 KOSDAQ 매수는 단기 반등 추종 성향이 강함."
+      ],
+      "korean_comment": "KOSPI는 외국인 매수 주도, KOSDAQ은 개인이 단기 반등에 베팅하는 수급 구도입니다.",
+      "raw_response": "{\n  \"agent_name\": \"FLOW_pre_analysis_KR\",\n  \"core_claims\": [\n    \"외국인 순매수는 KOSPI에 집중, KOSDAQ은 순매도 지속.\",\n    \"핵심 키워드: 금리/연준, 반도체/AI, 환율/달러, 정책/테마.\",\n    \"외국인 매수는 고환율 안정과 정책 불확실성 완화에 따른 포트폴리오 리밸런싱 성격, 개인의 KOSDAQ 매수는 단기 반등 추종 성향이 강함.\"\n  ],\n  \"korean_comment\": \"KOSPI는 외국인 매수 주도, KOSDAQ은 개인이 단기 반등에 베팅하는 수급 구도입니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.flow_summary.note\",\n    \"snapshot.korean_market_flow\",\n    \"snapshot.market_summary.kospi_change_pct\",\n    \"snapshot.markets.fx.usdkrw\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.usdkrw_5d_change_pct\",\n    \"snapshot.news_headlines\",\n    \"snapshot.macro.daily.us10y\",\n    \"snapshot.macro.daily.dxy\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.flow_summary.note",
+        "snapshot.korean_market_flow",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.markets.fx.usdkrw",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.news_headlines",
+        "snapshot.macro.daily.us10y",
+        "snapshot.macro.daily.dxy"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "sector",
+      "core_claims": [
+        "한국 경기 지표는 혼조이나 심리지표는 개선세를 보임.",
+        "생산·소비 부진과 20일 누적 KOSPI 약세가 부담.",
+        "외국인 순매수와 최근 5일 반등은 단기 긍정 신호."
+      ],
+      "korean_comment": "중기적으로는 불확실성이 크지만 단기 반등세가 관찰됩니다.",
+      "raw_response": "{\n  \"agent_name\": \"SECTOR\",\n  \"core_claims\": [\n    \"한국 경기 지표는 혼조이나 심리지표는 개선세를 보임.\",\n    \"생산·소비 부진과 20일 누적 KOSPI 약세가 부담.\",\n    \"외국인 순매수와 최근 5일 반등은 단기 긍정 신호.\"\n  ],\n  \"korean_comment\": \"중기적으로는 불확실성이 크지만 단기 반등세가 관찰됩니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.korea_macro_context\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.cumulative_context.note\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.korea_macro_context",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.cumulative_context.note"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "risk",
+      "core_claims": [
+        "KOSPI 20일 누적 하락폭이 매우 큼",
+        "외국인 순매수와 최근 5일 반등은 긍정적",
+        "중기 지표 혼조, 단기 반전 신호는 없음"
+      ],
+      "korean_comment": "단기 반등에도 불구하고 중기 위험 신호가 여전히 우세합니다.",
+      "raw_response": "{\n  \"agent_name\": \"RISK_pre_analysis_agent\",\n  \"core_claims\": [\n    \"KOSPI 20일 누적 하락폭이 매우 큼\",\n    \"외국인 순매수와 최근 5일 반등은 긍정적\",\n    \"중기 지표 혼조, 단기 반전 신호는 없음\"\n  ],\n  \"korean_comment\": \"단기 반등에도 불구하고 중기 위험 신호가 여전히 우세합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.reversal_signal\",\n    \"snapshot.flow_summary.note\",\n    \"snapshot.korea_macro_context\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.reversal_signal",
+        "snapshot.flow_summary.note",
+        "snapshot.korea_macro_context"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "earnings",
+      "core_claims": [
+        "실적 모멘텀 신호는 부재하며, 추세 반전 조짐도 없음",
+        "외국인 순매수에도 이익 추정치 상향 근거 부족",
+        "단기 반등에도 중기 실적 전망은 여전히 불확실"
+      ],
+      "korean_comment": "실적 추정치 상향 전환 신호는 아직 확인되지 않습니다.",
+      "raw_response": "{\n  \"agent_name\": \"EARNINGS-REVISION\",\n  \"core_claims\": [\n    \"실적 모멘텀 신호는 부재하며, 추세 반전 조짐도 없음\",\n    \"외국인 순매수에도 이익 추정치 상향 근거 부족\",\n    \"단기 반등에도 중기 실적 전망은 여전히 불확실\"\n  ],\n  \"korean_comment\": \"실적 추정치 상향 전환 신호는 아직 확인되지 않습니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.phase_two_signals.earnings_signal_score\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.reversal_signal\",\n    \"snapshot.flow_summary.foreign_net\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.reversal_signal",
+        "snapshot.flow_summary.foreign_net"
+      ],
+      "confidence": "MED"
+    },
+    {
+      "agent_name": "breadth",
+      "core_claims": [
+        "KOSPI 20일 누적 하락폭이 매우 크다.",
+        "단기 반등에도 시장 내부 확산은 약하다.",
+        "외국인 매수세는 있으나 기술적 약세가 우세하다."
+      ],
+      "korean_comment": "지수 반등에도 확산 약화와 누적 하락이 부담이다.",
+      "raw_response": "{\n  \"agent_name\": \"BREADTH/TECHNICAL\",\n  \"core_claims\": [\n    \"KOSPI 20일 누적 하락폭이 매우 크다.\",\n    \"단기 반등에도 시장 내부 확산은 약하다.\",\n    \"외국인 매수세는 있으나 기술적 약세가 우세하다.\"\n  ],\n  \"korean_comment\": \"지수 반등에도 확산 약화와 누적 하락이 부담이다.\",\n  \"regime_tag\": \"RISK_OFF\",\n  \"evidence_ids\": [\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.phase_two_signals.breadth_signal_score\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.markets.kr.kospi_pct\"\n  ],\n  \"confidence\": \"HIGH\"\n}",
+      "regime_tag": "RISK_OFF",
+      "evidence_ids": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.markets.kr.kospi_pct"
+      ],
+      "confidence": "HIGH"
+    },
+    {
+      "agent_name": "liquidity",
+      "core_claims": [
+        "달러 약세와 외국인 순매수로 유동성 환경은 단기 개선세.",
+        "VIX와 변동성은 안정적이나, 20일 누적 KOSPI 급락은 위험 신호.",
+        "정책·금리 불확실성은 제한적이나, 보수적 접근 필요."
+      ],
+      "korean_comment": "단기 유동성은 개선됐으나 누적 변동성 위험이 상존합니다.",
+      "raw_response": "{\n  \"agent_name\": \"LIQUIDITY/POLICY\",\n  \"core_claims\": [\n    \"달러 약세와 외국인 순매수로 유동성 환경은 단기 개선세.\",\n    \"VIX와 변동성은 안정적이나, 20일 누적 KOSPI 급락은 위험 신호.\",\n    \"정책·금리 불확실성은 제한적이나, 보수적 접근 필요.\"\n  ],\n  \"korean_comment\": \"단기 유동성은 개선됐으나 누적 변동성 위험이 상존합니다.\",\n  \"regime_tag\": \"NEUTRAL\",\n  \"evidence_ids\": [\n    \"snapshot.markets.fx.usdkrw_pct\",\n    \"snapshot.flow_summary.foreign_net\",\n    \"snapshot.cumulative_context.kospi_20d_cum_pct\",\n    \"snapshot.cumulative_context.kospi_5d_cum_pct\",\n    \"snapshot.cumulative_context.vix_5d_avg\",\n    \"snapshot.markets.volatility.vix\",\n    \"snapshot.news_headlines\",\n    \"snapshot.macro.daily.dxy\"\n  ],\n  \"confidence\": \"MED\"\n}",
+      "regime_tag": "NEUTRAL",
+      "evidence_ids": [
+        "snapshot.markets.fx.usdkrw_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.vix_5d_avg",
+        "snapshot.markets.volatility.vix",
+        "snapshot.news_headlines",
+        "snapshot.macro.daily.dxy"
+      ],
+      "confidence": "MED"
+    }
+  ],
+  "debate_round": {
+    "round_index": 1,
+    "facilitator_note": "오늘은 7명 중 5명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
+    "minutes": [
+      {
+        "speaker": "macro",
+        "speaker_label": "매크로 담당자",
+        "summary": "저는 매크로 담당자 입장에서 '중기 지표와 단기 시장 흐름이 엇갈려 신중한 해석이 필요합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+718억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.korea_macro_context",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.cumulative_context.usdkrw_5d_change_pct",
+          "snapshot.cumulative_context.reversal_signal"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "flow",
+        "speaker_label": "수급 담당자",
+        "summary": "저는 수급 담당자 입장에서 'KOSPI는 외국인 매수 주도, KOSDAQ은 개인이 단기 반등에 베팅하는 수급 구도입니다.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=-0.13%입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.flow_summary.note",
+          "snapshot.korean_market_flow",
+          "snapshot.market_summary.kospi_change_pct",
+          "snapshot.markets.fx.usdkrw",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.usdkrw_5d_change_pct",
+          "snapshot.news_headlines"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "sector",
+        "speaker_label": "섹터 담당자",
+        "summary": "저는 섹터 담당자 입장에서 '중기적으로는 불확실성이 크지만 단기 반등세가 관찰됩니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.korea_macro_context",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.flow_summary.note",
+          "snapshot.cumulative_context.note"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "risk",
+        "speaker_label": "리스크 담당자",
+        "summary": "저는 리스크 담당자 입장에서 '단기 반등에도 불구하고 중기 위험 신호가 여전히 우세합니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.reversal_signal",
+          "snapshot.flow_summary.note",
+          "snapshot.korea_macro_context"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "earnings",
+        "speaker_label": "이익모멘텀 담당자",
+        "summary": "저는 이익모멘텀 담당자 입장에서 '실적 추정치 상향 전환 신호는 아직 확인되지 않습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+718억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.phase_two_signals.earnings_signal_score",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.reversal_signal",
+          "snapshot.flow_summary.foreign_net"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      },
+      {
+        "speaker": "breadth",
+        "speaker_label": "브레드스 담당자",
+        "summary": "저는 브레드스 담당자 입장에서 '지수 반등에도 확산 약화와 누적 하락이 부담이다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+718억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.phase_two_signals.breadth_signal_score",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.markets.kr.kospi_pct"
+        ],
+        "internal_regime_tag": "RISK_OFF"
+      },
+      {
+        "speaker": "liquidity",
+        "speaker_label": "유동성 담당자",
+        "summary": "저는 유동성 담당자 입장에서 '단기 유동성은 개선됐으나 누적 변동성 위험이 상존합니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=+718억, vix=16.7입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+        "references": [
+          "snapshot.markets.fx.usdkrw_pct",
+          "snapshot.flow_summary.foreign_net",
+          "snapshot.cumulative_context.kospi_20d_cum_pct",
+          "snapshot.cumulative_context.kospi_5d_cum_pct",
+          "snapshot.cumulative_context.vix_5d_avg",
+          "snapshot.markets.volatility.vix",
+          "snapshot.news_headlines",
+          "snapshot.macro.daily.dxy"
+        ],
+        "internal_regime_tag": "NEUTRAL"
+      }
+    ],
+    "round_conclusion": "의장 정리: 오늘 다수 의견은 중립입니다. 근거는 KOSPI -0.13%, USD/KRW 1326.14(-0.04%), VIX 16.7, 외국인 +718억이고, 뉴스는 금리·변동성·지정학 이슈 중심의 경계 톤입니다. 따라서 중립 비중을 유지하면서 확인된 시그널에서만 선별 대응합니다."
+  },
+  "committee_result": {
+    "consensus": "외국인의 KOSPI 순매수와 원화 안정이 단기 완충 역할을 했지만, 20일 누적 약세와 생산·소비 둔화가 남아 있어 추세 전환을 확인하기 전까지는 중립·선별 대응 국면이다.",
+    "key_points": [
+      {
+        "point": "KOSPI는 5,720.16으로 -0.13%, KOSDAQ은 788.18로 -0.58% 마감했다. 외국인은 전체 +718억원 순매수였으나 KOSPI 매수와 KOSDAQ 매도가 교차했다.",
+        "sources": [
+          "flow_data",
+          "market_data"
+        ]
+      },
+      {
+        "point": "KOSPI는 최근 5일 +3.241% 반등했지만 20일 누적 -22.561%로 중기 약세 부담이 크다. 반전 신호는 false이며, 하루 수급 개선만으로 추세 전환을 단정하기 어렵다.",
+        "sources": [
+          "market_data",
+          "cumulative_context"
+        ]
+      },
+      {
+        "point": "국내 월별 지표는 심리·고용·수출 개선과 생산·소비 위축이 공존한다. 8월 생산·소비 지표 부진은 중기 배경이며, 9월 심리 개선 및 수출 증가가 당일 주가 방향을 보장하지는 않는다.",
+        "sources": [
+          "korea_macro_context",
+          "macro_daily"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "topic": "단기 반등의 추세 전환 여부",
+        "majority": "매크로·수급·섹터·리스크·이익모멘텀·유동성 담당자는 외국인 순매수와 최근 5일 반등을 인정하되, 중립 기조와 추가 확인 필요성을 제시했다.",
+        "minority": "브레드스 담당자는 시장 내부 확산 약화와 20일 누적 하락을 근거로 위험회피 우위를 주장했다.",
+        "minority_agents": [
+          "breadth"
+        ],
+        "why_it_matters": "외국인 수급이 KOSPI에 집중된 반면 KOSDAQ에서는 이탈했고, 반전 신호도 확인되지 않아 반등의 시장 전반 확산 여부가 향후 위험자산 비중 판단을 좌우한다."
+      }
+    ],
+    "ops_guidance": [
+      {
+        "level": "OK",
+        "text": "KOSPI 내 외국인 순매수가 이어지는 대형주 중심으로 분할 접근하되, 당일 수급 지속성 확인을 병행한다."
+      },
+      {
+        "level": "CAUTION",
+        "text": "KOSDAQ은 외국인 -978억원·기관 -435억원 순매도와 개인 +1,494억원 순매수가 맞물려 변동성 확대 가능성을 경계한다."
+      },
+      {
+        "level": "AVOID",
+        "text": "20일 누적 약세와 반전 신호 부재를 무시한 추격 매수 및 금리 결정 전 방향성 집중 베팅은 피한다."
+      }
+    ],
+    "sugeup_narrative": "## 외국인 KOSPI 매수에도 지수는 숨 고르기\n\nKOSPI는 5,720.16으로 -0.13%, KOSDAQ은 788.18로 -0.58% 마감했다. 원·달러 환율은 1,326.14원으로 -0.04% 움직였고, VIX는 16.68로 5일 평균 17.09보다 낮았다. 전체 외국인은 +718억원 순매수였지만 기관은 -404억원, 개인은 -265억원 순매도였다. 표면적으로 위험선호가 훼손된 날은 아니었으나, KOSPI의 최근 5일 +3.241% 반등과 20일 누적 -22.561% 하락을 함께 보면 아직은 급락 뒤 되돌림의 성격을 넘었다고 보기 어렵다. 시스템상 반전 신호도 확인되지 않았다.\n\n## 수급의 초점은 KOSPI, KOSDAQ은 엇갈림\n\n외국인은 KOSPI에서 +1,696억원, 기관은 +31억원을 순매수한 반면 개인은 -1,759억원을 순매도했다. 반대로 KOSDAQ에서는 외국인 -978억원, 기관 -435억원 순매도와 개인 +1,494억원 순매수가 교차했다. 수급 담당자(flow)는 이를 KOSPI 중심의 외국인 매수와 KOSDAQ 단기 반등 추종 수급으로 해석했다. 원화가 소폭 강세를 보인 점은 외국인 수급의 단기 완충 요인이지만, 지수 하락을 막을 정도의 광범위한 위험선호로 확대되지는 않았다. 브레드스 담당자(breadth)가 지적한 시장 내부 확산 약화는 이 해석의 핵심 경계 요인이다.\n\n## 10월 22일: 금리 결정·AI 투자 눈높이·고유가 변수\n\n첫째, 시장은 [한은 금통위의 기준금리 결정과 동결 가능성](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE01d0ExRlBIS2JEWUc5T1VXZGVoemE2cmc2Y2NSMGZISWVWNEYycURiU3hLYzV5TzBOUGtCX2RtN1NZdUlQV002MkQ0VVNGbHdOdi15eXRxY0JjUWZPNHpfbXFSb0xOajA?oc=5)을 대기하며 금리 민감 업종의 방향성 베팅을 제한했다. 둘째, [테슬라의 연간 투자 목표 하향과 AI·로봇 기대 논란](https://news.google.com/rss/articles/CBMiUkFVX3lxTE5hUjFyMGNhWkFSLUszLTl3YlgxbURuMUhGa2pDNXNKUU1NR0hDYVo2b0hMVjBBaE4xcU9VcUxLdTRkaXpKeU44SlN5RFdHbkZpT3fSAVNBVV95cUxPZVA3ZTBITU1kVUJvbi1icHZPMGVQNlNRNUlQazZUUlVzbU4yZkdZVjdpeDNCX213U2RiX2t1czFNUnBPRWNpRlY2dkM5WWJJRFVmSQ?oc=5)는 AI 투자 확산 기대에 대한 단기 눈높이 조정 변수다. 주간 연구 의제상 AI·반도체는 12개월 관찰 주제이나, 이는 당일 매매 신호가 아니라 글로벌 투자 지속성과 국내 관련 수요 전이 여부를 점검할 장기 프레임이다. 셋째, [중동전쟁과 고유가의 전기차 전환 논의](https://news.google.com/rss/articles/CBMiYEFVX3lxTFB5bF9tbnJSQjRJZGFpZ3JDZVE5ZVdLdzVzZDJuTUh0QlU1Ui16M1N2WDNZdE9EVy1feGJlT3NZN0d5QkNWUkpDbTFxTUVQWEF6U19xakpKNk1ZVkJZdk4tXw?oc=5)는 업종별 재료일 뿐, 지수 전반의 즉각적 호재로 일반화하기 어렵다.\n\n## 월별 경기 배경과 다음 확인선\n\n국내 거시의 기준월은 8~9월이다. 8월 동행지수 순환변동치는 전월 대비 +0.5p였지만 선행지수는 -0.1p였다. 같은 8월 제조업 가동률지수 -5.3232%, 소매판매액지수 -1.8429%, 설비투자지수 -9.5238%, 전산업생산지수 -1.33%로 생산·소비는 약했다. 반면 9월 소비자심리지수는 +2.1p, 경제심리지수는 +0.5p, 실업률은 전월 대비 -0.1%p였고 수출금액지수는 전년 동월 대비 +89.2225%였다. 물가는 소비자물가 +2.8789%, 생산자물가 +7.6655%로 방향만으로 호재·악재를 단정할 수 없다. 이는 일별 주가 변동의 직접 설명이 아니라 중기 배경이다.\n\n따라서 외국인의 KOSPI 순매수 지속, KOSDAQ 매도 완화, 금리 결정 이후 환율과 변동성의 안정 여부를 확인할 필요가 있다. 반대로 원화 안정에도 외국인 KOSPI 매수가 순매도로 전환되고 KOSPI의 단기 반등이 훼손되면, 오늘의 ‘중립·선별 대응’ 논지는 무효화되고 위험관리 우선으로 전환해야 한다.",
+    "analysis_status": "complete",
+    "analysis_note": null
+  }
+}
