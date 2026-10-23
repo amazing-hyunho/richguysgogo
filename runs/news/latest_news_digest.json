@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-10-23T20:42:01.887942+00:00",
+  "crawled_at": "2026-10-23T21:41:55.755798+00:00",
   "news_date": "2026-10-24",
-  "total_collected": 20,
+  "total_collected": 28,
   "topic_counts": [
     [
       "반도체/AI",
@@ -16,12 +16,12 @@
       4
     ],
     [
-      "금리/연준",
-      1
+      "미국지수",
+      5
     ],
     [
-      "정책/테마",
-      3
+      "금리/연준",
+      1
     ]
   ],
   "top_articles": [
@@ -59,6 +59,17 @@
       ]
     },
     {
+      "topic": "미국지수",
+      "count": 5,
+      "title": "요즘 미국선 “아직도 AI 돈 안뺐어?”…대신 돈몰리는 ‘국밥’ 어디 - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9JUGhFOHZKclNONTlReU4wQzlGVFpWRjdXVUYwZW1uWkpSQmI3WlNJc2Q1LXVUYmd1UXlLZ3ZCRWFLU3JsRkVCVTF6MGdJUFZuX2c?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 요즘 미국선 “아직도 AI 돈 안뺐어?”…대신 돈몰리는 ‘국밥’ 어디 - 매일경제 마켓",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "금리/연준",
       "count": 1,
       "title": "뉴욕증시, 유가 급등 속 하락 마감…내주 FOMC 주목 - 뉴스핌",
@@ -68,20 +79,21 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "정책/테마",
-      "count": 3,
-      "title": "\"트럼프, 캐나다 관세 일부 철폐 추진...공화당 선거 지원 포석\" - YTN",
-      "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1aYUhpa1RXeFpjRTZJcnp6Ym1oMVhWTzBFRXE0YlBXbUtOZzBDWXFybTIzRGJYTVl6ci1XRE5CM0xTMENVckR1OHNZeGJ6STJpRWJFTjlKaVdvenJDcmc?oc=5",
-      "summary_lines": [
-        "핵심 이슈: \"트럼프, 캐나다 관세 일부 철폐 추진...공화당 선거 지원 포석\" - YTN",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "지수/시장",
+      "total_count": 5,
+      "topics": [
+        {
+          "topic": "미국지수",
+          "count": 5,
+          "title": "요즘 미국선 “아직도 AI 돈 안뺐어?”…대신 돈몰리는 ‘국밥’ 어디 - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9JUGhFOHZKclNONTlReU4wQzlGVFpWRjdXVUYwZW1uWkpSQmI3WlNJc2Q1LXVUYmd1UXlLZ3ZCRWFLU3JsRkVCVTF6MGdJUFZuX2c?oc=5"
+        }
+      ]
+    },
     {
       "sector": "에너지/소재",
       "total_count": 4,
@@ -103,18 +115,6 @@
           "count": 3,
           "title": "17개월 전엔 관세, 지금은 AI…글로벌 신용시장 다시 긴장 - 이데일리",
           "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPbTFZMTBtMzJodzF2R0MzRlBWUi1tNUVrZEpHQ2JxOFZfSHVsMmY2T05BQi1ZYmVGd1dIWUJsTENKX2VBaTF1UEwxblhmcnJWR0VLdEI4dGJGSWt2VzVtWWtkZjVYTVdHQVpHd09IM3gzbEZ4Y0l3eThRXzdBOWNESA?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "정책/테마",
-      "total_count": 3,
-      "topics": [
-        {
-          "topic": "정책/테마",
-          "count": 3,
-          "title": "\"트럼프, 캐나다 관세 일부 철폐 추진...공화당 선거 지원 포석\" - YTN",
-          "link": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE1aYUhpa1RXeFpjRTZJcnp6Ym1oMVhWTzBFRXE0YlBXbUtOZzBDWXFybTIzRGJYTVl6ci1XRE5CM0xTMENVckR1OHNZeGJ6STJpRWJFTjlKaVdvenJDcmc?oc=5"
         }
       ]
     },
