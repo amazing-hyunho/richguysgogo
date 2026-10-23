@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-10-23T18:41:51.901010+00:00",
+  "crawled_at": "2026-10-23T19:41:53.708679+00:00",
   "news_date": "2026-10-24",
-  "total_collected": 9,
+  "total_collected": 14,
   "topic_counts": [
     [
       "반도체/AI",
@@ -12,16 +12,16 @@
       3
     ],
     [
+      "정책/테마",
+      3
+    ],
+    [
       "에너지/원자재",
-      2
+      4
     ],
     [
       "인플레이션",
       2
-    ],
-    [
-      "미국지수",
-      1
     ]
   ],
   "top_articles": [
@@ -48,8 +48,19 @@
       ]
     },
     {
+      "topic": "정책/테마",
+      "count": 3,
+      "title": "WSJ “트럼프 행정부, 공화당 선거 지원 위해 캐나다 관세 일부 철폐 추진” - KBS 뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBlbzRiaF9abHVCNVlaQm5JdnNEQTdYaGdhZmZqTXBwMUVaVERiM3UwbzNURVFHckhaWlB1OS1qcjVJalh1RWJyX1VwRF9zSkRHcmM4OGljbTZMOU0?oc=5",
+      "summary_lines": [
+        "핵심 이슈: WSJ “트럼프 행정부, 공화당 선거 지원 위해 캐나다 관세 일부 철폐 추진” - KBS 뉴스",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "에너지/원자재",
-      "count": 2,
+      "count": 4,
       "title": "\"美 부채 해법은 AI 생산성 혁명…에너지·원자재에 분산 투자할 때\" - 뉴시스",
       "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9hSk5uY1NMMDVCLTh6SlBDdm9QbVRNczI2MjgwWnJOU3VhYkpNY0xRUWZoVHlIdE9zWVJneXBNY19JZjVzRFNNZEZoWW1Lb0UyeC0yLTM3QzN3bTRSQ0xZcdIBeEFVX3lxTE1fczRsSFdtLTNBOEJUdzJNR2hRMzVBR2diREhKWTNUSU9JSWRmSFdnd1hVbV9NZW1RQTFfd09yc0pUcVlfeVAxbndDaUc1UlhIdWpnM0pTVnJCMml5Ymk4Mm1VMXBiWVowcXdwRGhrdENoYTYwdy1qRw?oc=5",
       "summary_lines": [
@@ -68,20 +79,21 @@
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
-    },
-    {
-      "topic": "미국지수",
-      "count": 1,
-      "title": "골드만삭스 “기술주 실적·거시경제 변화에 미국 증시 하락” - Investing.com 한국어",
-      "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBUYUE5TnltWUFWV2h1NmZNdlR5TW1GeWNPaFdGQ3ozNDFHa1ZzdllsaDItWUg1aEFkY1JzN2JWUnUyVlJwQkhNT1Q2WDdsWTl2alcxRjlSNDU5WmJfLU9NT042TnM0ZjdULXh4WGc5RTVFMkd6bFRr?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 골드만삭스 “기술주 실적·거시경제 변화에 미국 증시 하락” - Investing.com 한국어",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "에너지/소재",
+      "total_count": 4,
+      "topics": [
+        {
+          "topic": "에너지/원자재",
+          "count": 4,
+          "title": "\"美 부채 해법은 AI 생산성 혁명…에너지·원자재에 분산 투자할 때\" - 뉴시스",
+          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9hSk5uY1NMMDVCLTh6SlBDdm9QbVRNczI2MjgwWnJOU3VhYkpNY0xRUWZoVHlIdE9zWVJneXBNY19JZjVzRFNNZEZoWW1Lb0UyeC0yLTM3QzN3bTRSQ0xZcdIBeEFVX3lxTE1fczRsSFdtLTNBOEJUdzJNR2hRMzVBR2diREhKWTNUSU9JSWRmSFdnd1hVbV9NZW1RQTFfd09yc0pUcVlfeVAxbndDaUc1UlhIdWpnM0pTVnJCMml5Ymk4Mm1VMXBiWVowcXdwRGhrdENoYTYwdy1qRw?oc=5"
+        }
+      ]
+    },
     {
       "sector": "리스크",
       "total_count": 3,
@@ -95,14 +107,14 @@
       ]
     },
     {
-      "sector": "에너지/소재",
-      "total_count": 2,
+      "sector": "정책/테마",
+      "total_count": 3,
       "topics": [
         {
-          "topic": "에너지/원자재",
-          "count": 2,
-          "title": "\"美 부채 해법은 AI 생산성 혁명…에너지·원자재에 분산 투자할 때\" - 뉴시스",
-          "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9hSk5uY1NMMDVCLTh6SlBDdm9QbVRNczI2MjgwWnJOU3VhYkpNY0xRUWZoVHlIdE9zWVJneXBNY19JZjVzRFNNZEZoWW1Lb0UyeC0yLTM3QzN3bTRSQ0xZcdIBeEFVX3lxTE1fczRsSFdtLTNBOEJUdzJNR2hRMzVBR2diREhKWTNUSU9JSWRmSFdnd1hVbV9NZW1RQTFfd09yc0pUcVlfeVAxbndDaUc1UlhIdWpnM0pTVnJCMml5Ymk4Mm1VMXBiWVowcXdwRGhrdENoYTYwdy1qRw?oc=5"
+          "topic": "정책/테마",
+          "count": 3,
+          "title": "WSJ “트럼프 행정부, 공화당 선거 지원 위해 캐나다 관세 일부 철폐 추진” - KBS 뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBlbzRiaF9abHVCNVlaQm5JdnNEQTdYaGdhZmZqTXBwMUVaVERiM3UwbzNURVFHckhaWlB1OS1qcjVJalh1RWJyX1VwRF9zSkRHcmM4OGljbTZMOU0?oc=5"
         }
       ]
     },
@@ -127,18 +139,6 @@
           "count": 1,
           "title": "\"반도체, 주도주 역할 끝났다\"…전문가 \"AI 투자, 다른 분야도 봐야\" - 뉴시스",
           "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yVFBuLXJRdURONkh4TzE5NnJhQUZBeE1raEMycXBsclBFSERiSWM2SDEyTlQ1U3ZhQ3k1OFctR0FjWGtONmlUeHF4VFdYN0NUNmJGaVdyd2R6YlBVNjNUZNIBeEFVX3lxTE9sWXBlU3lXMWFoWW5rRDRtRVkyTDc3ckstMUxwMzI0VW1FcUtzYVhuXzdoMm1KUTJTQTZoQTJ6aGp5aTNQU3BXcWhDWExSTlplNkhFd3A4NTZKSnRJeHUtOFhrdnUtZXg1NzBaeFdTemlCb0g5cVNVYw?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 1,
-      "topics": [
-        {
-          "topic": "미국지수",
-          "count": 1,
-          "title": "골드만삭스 “기술주 실적·거시경제 변화에 미국 증시 하락” - Investing.com 한국어",
-          "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTFBUYUE5TnltWUFWV2h1NmZNdlR5TW1GeWNPaFdGQ3ozNDFHa1ZzdllsaDItWUg1aEFkY1JzN2JWUnUyVlJwQkhNT1Q2WDdsWTl2alcxRjlSNDU5WmJfLU9NT042TnM0ZjdULXh4WGc5RTVFMkd6bFRr?oc=5"
         }
       ]
     }
