@@ -1,0 +1,195 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "battery-ev-mobility",
+    "name": "배터리·전기차·차세대 이동수단",
+    "thesis": "차세대 배터리의 수명·안전·원가 개선이 전기차 채택과 소재·장비 공급망 변화로 이어지는지 추적한다."
+  },
+  "as_of": "2026-10-18",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 6.56,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 26.25,
+      "net_signal": 26.25,
+      "confidence": 61.25,
+      "evidence_count": 2,
+      "distinct_source_count": 1,
+      "positive_count": 1,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2610-03821v1",
+        "arxiv-2610-05811v2"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2610-03821v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Space Charge Layer and Facile Halide Rearrangement Enable Fast Lithium-Ion Transport at Halide Solid Electrolyte Interfaces",
+      "claim": "할라이드 고체 전해질 계면에서 공간 전하층 형성과 할라이드 프레임워크의 유연한 재배열이 리튬 이온 전도도를 향상시키는 원자 수준의 메커니즘을 규명하여, 고체 전해질의 이온 전도성 개선을 위한 설계 원리를 제시한다.",
+      "event_date": "2026-10-02",
+      "known_at": "2026-10-02",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.03821v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 주로 계산화학, 분광학적 분석 및 시뮬레이션에 기반하며, 실제 전기차용 배터리 셀이나 시스템 수준에서의 성능 개선이나 수명·안전성에 대한 직접적 검증은 이루어지지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "solid-state-batteries",
+        "halide-electrolyte",
+        "li-ion-transport",
+        "interface",
+        "materials",
+        "mechanism"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-05811v2",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Public Battery Field Data",
+      "claim": "실제 운용 환경에서 수집된 다양한 배터리 필드 데이터를 통합·정제하여 공개함으로써, 연구자들이 배터리의 현장 성능, 결함, 안전 문제를 더 잘 진단하고, 제조 품질 개선 및 전기차 등 다양한 응용 분야의 배터리 수명·잔존가치 평가에 활용할 수 있는 기반을 제공한다.",
+      "event_date": "2026-10-05",
+      "known_at": "2026-10-05",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.05811v2",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.55,
+      "signed_signal": 0.0,
+      "limitation": "데이터셋 자체의 수집·정제 및 메타데이터 제공에 초점을 두고 있으며, 데이터 분석을 통한 구체적 배터리 수명·안전성 개선이나 공급망 변화에 대한 실증적 결과는 제시하지 않는다.",
+      "tags": [
+        "weekly-paper",
+        "battery-field-data",
+        "ev",
+        "diagnostics",
+        "lithium-ion",
+        "dataset",
+        "safety"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 26.25점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "논문 단계의 셀 성능은 양산 수율과 자동차 채택을 의미하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

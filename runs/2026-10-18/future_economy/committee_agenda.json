@@ -1,0 +1,195 @@
+{
+  "schema_version": "future-economy-committee-agenda-v1",
+  "as_of": "2026-10-18",
+  "items": [
+    {
+      "research_id": "photonic-interconnects-optoelectronics",
+      "title": "광 I/O·실리콘 포토닉스",
+      "horizon_months": 12,
+      "thesis": "AI 클러스터의 전기식 연결 한계를 광 I/O·실리콘 포토닉스·광전자 3D 집적이 실제 대역폭과 전력 효율 개선으로 해소하는지 추적한다.",
+      "weekly_change": "maintained",
+      "evidence_type_count": 3,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "반도체 장비 시장 확인 점수 94.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 반도체 장비의 시장 확인 점수는 94.0, 상태는 HOLD_EXTENDED입니다.",
+          "event_date": "2026-10-04",
+          "source_url": "https://finance.yahoo.com/",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "Form PF; Reporting Requirements for All Filers and Large Hedge Fund Advisers; Further Extension of Compliance Date",
+          "claim": "미국 연방정부가 Form PF; Reporting Requirements for All Filers and Large Hedge Fund Advisers; Further Extension of Compliance Date 문서를 공식 게재했습니다.",
+          "event_date": "2026-09-03",
+          "source_url": "https://www.federalregister.gov/documents/2026/09/03/2026-18104/form-pf-reporting-requirements-for-all-filers-and-large-hedge-fund-advisers-further-extension-of",
+          "source_name": "Federal Register · Commodity Futures Trading Commission, Securities and Exchange Commission",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "research",
+          "title": "Zero-change foundry compatible silicon photonics MEMS optical switch",
+          "claim": "파운드리 호환 공정으로 제작된 실리콘 포토닉스 MEMS 광 스위치를 실험적으로 구현하여, 30 dB 이상의 소멸비와 1.5 dB 이하 삽입 손실, 매우 낮은 정적 전력 소모를 달성함으로써 대규모 광 회로 스위치의 실현 가능성을 보였다.",
+          "event_date": "2026-08-04",
+          "source_url": "https://arxiv.org/abs/2608.03146v1",
+          "source_name": "arXiv",
+          "direction": "positive"
+        }
+      ],
+      "transmission_chain": [
+        "AI 클러스터의 대역폭·전력 병목",
+        "광 I/O·레이저·변조기·광전자 3D 집적",
+        "한국 반도체 패키징·기판·소재·정밀장비 수요"
+      ],
+      "watch_industries": [
+        "반도체",
+        "반도체 장비·소재",
+        "하드웨어·전자부품"
+      ],
+      "watch_companies": [],
+      "historical_analogues": [],
+      "invalidation_conditions": [
+        "광 링크의 총전력·원가가 전기식 연결 대비 우위를 반복 검증하지 못함",
+        "패키징 수율·열관리·표준화 문제로 데이터센터 채택이 장기 지연"
+      ],
+      "research_score": 46.93
+    },
+    {
+      "research_id": "ai-semiconductor-datacenter",
+      "title": "AI·반도체·데이터센터",
+      "horizon_months": 12,
+      "thesis": "AI 연산 수요의 성능 개선과 비용 하락이 메모리·패키징·전력·냉각 병목으로 전달되는지 추적한다.",
+      "weekly_change": "maintained",
+      "evidence_type_count": 4,
+      "top_evidence": [
+        {
+          "evidence_type": "market",
+          "title": "반도체 장비 시장 확인 점수 94.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 반도체 장비의 시장 확인 점수는 94.0, 상태는 HOLD_EXTENDED입니다.",
+          "event_date": "2026-10-04",
+          "source_url": "https://finance.yahoo.com/",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "research",
+          "title": "FlashBoB: I/O-Efficient Exact Backward-over-Backward for Softmax Attention",
+          "claim": "Transformer의 softmax attention에서 BoB(Backward-over-Backward) 연산의 HBM 트래픽 병목을 완화하는 FlashBoB 알고리즘을 제안, 실제 A100 GPU에서 기존 PyTorch 대비 16배 이상 긴 시퀀스 처리 및 최대 6.3배 속도 향상을 실증하였다.",
+          "event_date": "2026-09-21",
+          "source_url": "https://arxiv.org/abs/2609.24089v1",
+          "source_name": "arXiv",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "규제 강화에 한국 개인투자자들, 레버리지 반도체 ETF 이탈 가속",
+          "claim": "수집된 헤드라인에서 확인된 정책 사건: 규제 강화에 한국 개인투자자들, 레버리지 반도체 ETF 이탈 가속",
+          "event_date": "2026-08-30",
+          "source_url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1aTlpYU3lhemIwblNMbU1sLXJyejZYZUZuTVRONXdKVzJWdzlrN3c5dzg4NmhTT3k2U3RNNE81Z25Nam5ONHJBZ2lLeWVlY3Rhc1hrc1Q4UzhMTzVscllWY280ZzJmWXBiUy1ja3ZTNVQ?oc=5",
+          "source_name": "Investing.com 한국어",
+          "direction": "negative"
+        },
+        {
+          "evidence_type": "corporate",
+          "title": "中 반도체 장비업체 ACM리서치 상하이, 수주잔고 3.5조원…1년 새 88% 급증",
+          "claim": "수집된 헤드라인에서 확인된 기업 행동 사건: 中 반도체 장비업체 ACM리서치 상하이, 수주잔고 3.5조원…1년 새 88% 급증",
+          "event_date": "2026-10-02",
+          "source_url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE1SUUxBQ1oyRG1WWEJlNEdqWWxmbXE3Q3VJa19kaW5mMEN5NlNvS0h2b2lQdDN6ZkNzOU0ydzRrdUhMMjZ5TThfRTBhU1QwQ0h0T3d2MnRFNU5TWjZXUXYyV2k4S1plU25I0gFsQVVfeXFMT3c3NUhYc25rN05jNHZYcVV5ay1qUGh5LXhMRTZiZVpJSzhtRXgyZ2xaU0xaMlFObHBaZXNZUTZOdHc5MzktVm4xemJ2SU56anI2VXJiOUdxVVM2aHdFbnltUzZxQ3ZXR0YzQ1B1?oc=5",
+          "source_name": "KIPOST",
+          "direction": "positive"
+        }
+      ],
+      "transmission_chain": [
+        "글로벌 AI 투자",
+        "연산·메모리·전력 병목",
+        "한국 반도체·장비·부품 수요"
+      ],
+      "watch_industries": [
+        "반도체",
+        "하드웨어·전자부품",
+        "전력기기"
+      ],
+      "watch_companies": [],
+      "historical_analogues": [],
+      "invalidation_conditions": [
+        "AI 인프라 투자가 여러 분기 연속 둔화",
+        "핵심 공급 병목이 구조적 과잉설비로 전환"
+      ],
+      "research_score": 40.42
+    },
+    {
+      "research_id": "bio-health-aging",
+      "title": "바이오·의료·고령화 기술",
+      "horizon_months": 12,
+      "thesis": "AI 기반 신약·진단·고령화 기술의 검증이 임상·허가·생산 수요로 이어지는지 추적한다.",
+      "weekly_change": "strengthened",
+      "evidence_type_count": 4,
+      "top_evidence": [
+        {
+          "evidence_type": "corporate",
+          "title": "삼성바이오로직스 · 단일판매ㆍ공급계약체결",
+          "claim": "삼성바이오로직스가 DART에 단일판매ㆍ공급계약체결 공시를 제출했습니다.",
+          "event_date": "2026-09-10",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20260910800388",
+          "source_name": "금융감독원 DART",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "policy",
+          "title": "Thomas Earley, D.D.S.; Decision and Order",
+          "claim": "미국 연방정부가 Thomas Earley, D.D.S.; Decision and Order 문서를 공식 게재했습니다.",
+          "event_date": "2026-08-28",
+          "source_url": "https://www.federalregister.gov/documents/2026/08/28/2026-17592/thomas-earley-dds-decision-and-order",
+          "source_name": "Federal Register · Justice Department, Drug Enforcement Administration",
+          "direction": "neutral"
+        },
+        {
+          "evidence_type": "research",
+          "title": "Chance-constrained selection of sequential intervention strategies from counterfactual estimates",
+          "claim": "관찰 데이터 기반 counterfactual 예측과 chance-constrained selection을 결합해 디지털 헬스 마이크로랜덤화 임상시험 등에서 누적 자원 초과 위험을 통제하면서도 성과-안전성 균형을 달성할 수 있음을 실제 환경 포함 5개 환경에서 실증하였다.",
+          "event_date": "2026-08-13",
+          "source_url": "https://arxiv.org/abs/2608.13209v1",
+          "source_name": "arXiv",
+          "direction": "positive"
+        },
+        {
+          "evidence_type": "market",
+          "title": "헬스케어·바이오 시장 확인 점수 75.0",
+          "claim": "프로젝트의 객관식 산업 사이클 계산에서 헬스케어·바이오의 시장 확인 점수는 75.0, 상태는 HOLD_EXTENDED입니다.",
+          "event_date": "2026-10-18",
+          "source_url": "https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd",
+          "source_name": "프로젝트 산업 사이클 DB",
+          "direction": "positive"
+        }
+      ],
+      "transmission_chain": [
+        "치료·진단 기술 검증",
+        "임상·허가·보험 적용",
+        "한국 바이오·의료기기·위탁생산 기업"
+      ],
+      "watch_industries": [
+        "바이오",
+        "헬스케어",
+        "의료기기"
+      ],
+      "watch_companies": [
+        {
+          "company_name": "삼성바이오로직스",
+          "stock_code": "207940",
+          "connection_reason": "단일판매ㆍ공급계약체결(자율공시)",
+          "source_url": "https://dart.fss.or.kr/dsaf001/main.do?rcpNo=20261002800830"
+        }
+      ],
+      "historical_analogues": [],
+      "invalidation_conditions": [
+        "핵심 임상 결과 실패",
+        "규제·보험 적용 지연으로 상용화 경로 단절"
+      ],
+      "research_score": 39.01
+    }
+  ],
+  "item_count": 3,
+  "usage_note": "Context for macro/flow review only; never an order or automatic trading instruction."
+}

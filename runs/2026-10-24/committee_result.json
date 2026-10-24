@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "10월 23일 외국인은 1조212억원 순매도했고 기관은 8390억원 순매수했으나, KOSPI 20일 누적 -22.647%와 반전 신호 부재가 방어적 판단을 지지한다.",
+      "sources": [
+        "시장 수급 데이터",
+        "누적 시장 데이터"
+      ]
+    },
+    {
+      "point": "KOSPI는 5550.30으로 0.30% 상승했지만 KOSDAQ은 751.69로 1.62% 하락해 지수 간 온도 차가 컸고, VIX 19.45도 5일 평균 18.72를 웃돌았다.",
+      "sources": [
+        "국내 시장 데이터",
+        "변동성 데이터"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 국면 판정",
+      "majority": "매크로·수급·섹터·이익·브레드스·유동성 담당자는 외국인 매도, 누적 하락, 변동성 상승을 근거로 리스크 오프를 제시했다.",
+      "minority": "리스크 담당자의 내부 태그는 리스크 온이지만 실제 주장은 위험 신호 누적과 생산·소비 부진으로 다수 의견과 사실상 동일하다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "형식상 소수 태그와 실질 의견이 불일치하므로 강세 반론으로 해석해서는 안 되며, 일중 반등의 지속 여부를 별도로 확인해야 한다."
+    },
+    {
+      "topic": "당일 반등의 신뢰도",
+      "majority": "외국인 1조원대 순매도와 KOSDAQ 하락을 감안하면 KOSPI의 0.30% 상승은 기관 방어 성격이 강하다는 판단이다.",
+      "minority": "원화 강세와 기관 순매수, KOSPI 상승은 단기 안정 신호라는 데이터상 반론이 가능하다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "핵심 수급과 보조 안정 신호가 충돌하므로 리스크 오프 결론은 유지하되 확신도는 중간 수준으로 낮춰야 한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 기관 방어와 외국인 이탈이 교차한 장세\n\n10월 23일 KOSPI는 5550.30으로 0.30% 상승했지만 KOSDAQ은 751.69로 1.62% 하락했다. 원·달러 환율은 1324.70원으로 0.13% 내렸고 VIX는 19.45로 5일 평균 18.72를 웃돌았다. 외국인은 1조212억원 순매도한 반면 기관은 8390억원, 개인은 1081억원 순매수했다.\n\n하루 상승만으로 추세 전환을 선언하기 어렵다. KOSPI는 최근 5일 -3.358%, 20일 -22.647%이며 반전 신호도 확인되지 않았다. 다만 원화 강세와 기관 매수는 핵심 약세 신호에 대한 반론이므로, 리스크 오프 판단을 유지하되 확신도는 중간 수준으로 낮춘다.\n\n## 수급의 주도권은 외국인, 지수 방어는 기관\n\n외국인 매도는 KOSPI에서 9811억원으로 집중됐고 KOSDAQ에서도 401억원 순매도였다. 기관은 KOSPI에서 8682억원을 순매수했지만 KOSDAQ에서는 292억원을 순매도했다. 따라서 KOSPI 상승은 광범위한 위험선호보다 대형주 중심 기관 방어에 가깝다. 개인의 KOSDAQ 659억원 순매수도 지수 하락을 막지 못했다.\n\n수급 담당자는 환율 하락에도 외국인 매도가 지속돼 환율만으로 설명되는 자금 이탈은 아니라고 봤다. 브레드스·유동성 담당자도 VIX 상승과 누적 약세를 경계했다. 미국 10년물 금리 4.988%, WTI 103.44달러와 함께 금리·AI 신용·지정학 뉴스가 외국인 위험 축소의 배경으로 작용한 것으로 해석한다.\n\n## 10월 24일 핵심 이슈: 금리·AI·유가\n\n1. **금리와 위험자산:** [연준 FOMC 앞두고 비트코인 변동성 확대](https://news.google.com/rss/articles/CBMiSkFVX3lxTFAwTmM2MkZCR2E0V2lMemNnb2lGM2RUOGZfYVJBZktDSUZlZm1TQjdWOHllRy1ZemFlTUZsdVI0VGxscGQzelBGWkN3?oc=5) 뉴스는 고금리 민감 자산의 경계심을 보여준다.\n2. **AI 투자와 신용시장:** [AI를 둘러싼 글로벌 신용시장 긴장](https://news.google.com/rss/articles/CBMigAFBVV95cUxPbTFZMTBtMzJodzF2R0MzRlBWUi1tNUVrZEpHQ2JxOFZfSHVsMmY2T05BQi1ZYmVGd1dIWUJsTENKX2VBaTF1UEwxblhmcnJWR0VLdEI4dGJGSWt2VzVtWWtkZjVYTVdHQVpHd09IM3gzbEZ4Y0l3eThRXzdBOWNESA?oc=5)이 반도체 투자심리를 제약한다. 광 I/O와 AI 데이터센터는 12개월 연구 의제로 유지되지만 현재 매매 신호는 아니며, 단기 신용 긴장과 충돌한다.\n3. **유가·지정학:** [이란 공습설과 유가 불안](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5NeHg4RDUyNy1QQ1JtWkN4bDYyVGJRcUlfUk5FUVJ4YXFjdnEzTEl3Q0NHX2F2cFBuQm5iMVBHWHBpcHVDNzBpSzl5QXFzU3R2VnVKNzhvUXByUQ?oc=5)는 물가와 금리 경로의 불확실성을 높이는 요인이다.\n\n## 혼조인 한국 지표와 반전 확인 조건\n\n월별 거시는 당일 시장과 구분해야 한다. 8월 동행지수는 전월 대비 0.5포인트 올랐지만 선행지수는 0.1포인트 하락했다. 같은 달 제조업 가동률지수는 전월 대비 5.3232%, 소매판매는 1.8429%, 설비투자는 9.5238%, 전산업생산은 1.33% 감소했다. 반면 9월 소비자심리는 전월 대비 2.1포인트, 경제심리는 0.5포인트 개선됐고 실업률은 2.6%로 0.1%포인트 하락했다. 수출금액지수도 전년 동월 대비 89.2225% 상승했다.\n\n9월 소비자물가의 전년 동월 대비 2.8789%, 생산자물가의 7.6655% 상승은 비용과 수요 맥락을 추가 확인해야 한다. 당분간 외국인 수급, KOSDAQ 동반 회복, VIX의 5일 평균 하회 여부가 핵심이다. **외국인이 순매수로 전환하고 KOSPI·KOSDAQ이 함께 상승하며 VIX가 안정되면 오늘의 리스크 오프 논지는 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
