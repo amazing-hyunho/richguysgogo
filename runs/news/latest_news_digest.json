@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-10-25T15:42:04.302552+00:00",
+  "crawled_at": "2026-10-25T16:42:05.683596+00:00",
   "news_date": "2026-10-26",
-  "total_collected": 8,
+  "total_collected": 9,
   "topic_counts": [
     [
       "인플레이션",
@@ -9,7 +9,11 @@
     ],
     [
       "반도체/AI",
-      2
+      1
+    ],
+    [
+      "미국지수",
+      1
     ],
     [
       "금리/연준",
@@ -18,10 +22,6 @@
     [
       "경기/성장",
       1
-    ],
-    [
-      "2차전지/전기차",
-      2
     ]
   ],
   "top_articles": [
@@ -38,11 +38,22 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 2,
-      "title": "반도체가 만든 경이적 경상흑자…독·일 합계보다 많다 - 중앙일보",
-      "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5rNFRRTGpQR3hUMU5ncEdNWDF4N2ZKWm1rX0xaY3JmUGM2Qm1POGJ5dXQ4QXB3NThRbzIwb3VURm9wZ2FXTl9zR1FNQ1BfXzI4ZXVHQlZ3?oc=5",
+      "count": 1,
+      "title": "삼성 반도체 평택캠퍼스 ‘배후 주거지’로 주목 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSVVEaUxOOFdUMVczYVlfM1ZfZ3N4ZE9IMWNmWUtRTEJTSXVkQm5jcFRObVhnZ0hjY0pLTjJqMk5qVWxudEtJNm8xRjMzWDZRY0wzZlUySVp3Wm5XM1BHa0NQVElUNlpiV1kzOC1IbTg2UVhUT28tVWFsQUJ5c1YwLTNlMl9EMm94?oc=5",
       "summary_lines": [
-        "핵심 이슈: 반도체가 만든 경이적 경상흑자…독·일 합계보다 많다 - 중앙일보",
+        "핵심 이슈: 삼성 반도체 평택캠퍼스 ‘배후 주거지’로 주목 - 조선일보",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
+      "topic": "미국지수",
+      "count": 1,
+      "title": "\"S&P500 3분기 순익, 1년 전보다 30% 증가 전망\" - 연합뉴스TV",
+      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE84ZnFXY0JJdkF3b3NNOWlFZjFEUjhsQjU0TnpDLTRGLTJIXzhVVVd5YmhfWEg4a3A3RndpVkZVVFNkb2VObkdVZ1RnZDF0R1dzUWdINFNwN2JCTkNobWZpOHpkTXJueHc?oc=5",
+      "summary_lines": [
+        "핵심 이슈: \"S&P500 3분기 순익, 1년 전보다 30% 증가 전망\" - 연합뉴스TV",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -65,17 +76,6 @@
       "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9kZVJvdFpDYU42RmJLZEpBemV3TUVRNjB4YUl1dG5DYWZ0dFpZV0Q1RTFtSk1JQXBEX2c3UG5la3pqMUVkb0huQzNmcmd1amFIOHdNamR3?oc=5",
       "summary_lines": [
         "핵심 이슈: [하현옥의 세계경제전망] 프랑스 재정 불안 고조…‘유로존 부채 위기 2.0’ 재현 우려 - 중앙일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "2차전지/전기차",
-      "count": 2,
-      "title": "전기차 시장 회복에도… K배터리 점유율은 하락 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQX3BCam5IMXZXcnFpSV9UZ0FHaTI3aHdnOS1qazRlYlRHdnVKUFpFWVhEcmFWc3JLUWhJQlJ6SjBVY0NoVkU3cmwtUlRqU2ZXY29OT2NNby1LaFFlNUdXU0NBMjh5VTc4SjZJV1daMHJXU3dGd3JUR09ZeWU5WGlkbWRybmNoVUUzS05QZG9GYw?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 전기차 시장 회복에도… K배터리 점유율은 하락 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -108,25 +108,25 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 2,
+      "total_count": 1,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 2,
-          "title": "반도체가 만든 경이적 경상흑자…독·일 합계보다 많다 - 중앙일보",
-          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5rNFRRTGpQR3hUMU5ncEdNWDF4N2ZKWm1rX0xaY3JmUGM2Qm1POGJ5dXQ4QXB3NThRbzIwb3VURm9wZ2FXTl9zR1FNQ1BfXzI4ZXVHQlZ3?oc=5"
+          "count": 1,
+          "title": "삼성 반도체 평택캠퍼스 ‘배후 주거지’로 주목 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOSVVEaUxOOFdUMVczYVlfM1ZfZ3N4ZE9IMWNmWUtRTEJTSXVkQm5jcFRObVhnZ0hjY0pLTjJqMk5qVWxudEtJNm8xRjMzWDZRY0wzZlUySVp3Wm5XM1BHa0NQVElUNlpiV1kzOC1IbTg2UVhUT28tVWFsQUJ5c1YwLTNlMl9EMm94?oc=5"
         }
       ]
     },
     {
-      "sector": "2차전지/자동차",
-      "total_count": 2,
+      "sector": "지수/시장",
+      "total_count": 1,
       "topics": [
         {
-          "topic": "2차전지/전기차",
-          "count": 2,
-          "title": "전기차 시장 회복에도… K배터리 점유율은 하락 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQX3BCam5IMXZXcnFpSV9UZ0FHaTI3aHdnOS1qazRlYlRHdnVKUFpFWVhEcmFWc3JLUWhJQlJ6SjBVY0NoVkU3cmwtUlRqU2ZXY29OT2NNby1LaFFlNUdXU0NBMjh5VTc4SjZJV1daMHJXU3dGd3JUR09ZeWU5WGlkbWRybmNoVUUzS05QZG9GYw?oc=5"
+          "topic": "미국지수",
+          "count": 1,
+          "title": "\"S&P500 3분기 순익, 1년 전보다 30% 증가 전망\" - 연합뉴스TV",
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE84ZnFXY0JJdkF3b3NNOWlFZjFEUjhsQjU0TnpDLTRGLTJIXzhVVVd5YmhfWEg4a3A3RndpVkZVVFNkb2VObkdVZ1RnZDF0R1dzUWdINFNwN2JCTkNobWZpOHpkTXJueHc?oc=5"
         }
       ]
     }
