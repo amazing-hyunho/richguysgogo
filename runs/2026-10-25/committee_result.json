@@ -1,0 +1,61 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "코스피는 5550.30으로 0.30% 올랐지만 외국인은 1조212억원 순매도했고, 기관이 8390억원 순매수하며 지수를 방어했다.",
+      "sources": [
+        "핵심시장데이터",
+        "국내수급데이터"
+      ]
+    },
+    {
+      "point": "코스피 5일 누적 -3.359%, 20일 누적 -22.648%이며 반전 신호도 없어 하루 반등만으로 추세 전환을 판단하기 어렵다.",
+      "sources": [
+        "누적시장데이터"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 국면 판단",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 외국인 매도와 누적 하락을 근거로 위험회피 국면을 제시했다.",
+      "minority": "리스크 담당자는 위험선호 태그를 부여했지만 실제 설명은 반전 신호 부재와 외국인 매도를 강조해 논거와 태그가 충돌한다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "소수 태그를 강세 근거로 해석하기 어렵고, 실질적 위원회 합의는 공격적 확대보다 방어적 대응에 가깝다."
+    },
+    {
+      "topic": "국내 경기 배경과 일별 시장 신호",
+      "majority": "일별 수급과 5일·20일 누적 흐름은 약세이며 생산·소비 지표도 부진하다.",
+      "minority": "9월 소비자·경제 심리 개선과 실업률 하락, 수출금액지수 상승은 중기 경기의 일방적 악화를 제약한다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "월별 개선 신호는 하방을 완충할 수 있지만 10월 23일 수급의 즉각적인 반전을 의미하지 않아 확신도를 낮추는 요인이다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 기관이 지킨 코스피, 외국인은 이탈\n\n10월 23일 코스피는 **5550.30, +0.30%**였지만 코스닥은 **751.69, -1.62%**로 시장 내부 온도 차가 컸다. 원·달러 환율은 **1324.82원, 0.00%**, 변동성지수는 **19.45**로 5일 평균 **18.72**를 웃돌았다. 외국인은 **-1조212억원**, 기관은 **+8390억원**, 개인은 **+1081억원**이었다.\n\n하루 상승에도 코스피는 5일 누적 **-3.359%**, 20일 누적 **-22.648%**이고 반전 신호는 없다. 매크로·수급·섹터·브레드스·유동성 담당자의 위험회피 판단이 우세한 이유다. 다만 코스피 상승과 기관 매수는 낙폭 과대 구간의 완충 신호여서 약세 확신 역시 낮춰야 한다.\n\n## 수급의 중심은 기관 방어, 부담은 코스피 외국인 매도\n\n외국인 매도 중 코스피가 **-9811억원**으로 대부분을 차지했고, 기관은 코스피에서 **+8682억원**을 순매수했다. 코스닥에서는 외국인 **-401억원**, 기관 **-292억원**, 개인 **+659억원**으로 방어력이 더 약했다. 따라서 이날 지수 반등은 광범위한 위험선호 회복보다 기관의 코스피 흡수로 해석하는 편이 타당하다.\n\n수급 담당자는 외국인 매도를 금리·연준, 반도체 규제, 성장 우려가 겹친 포트폴리오 조정으로 판단했다. 미국 10년물 금리 **4.988%**, 서부텍사스유 **103.27**, 미국 주요 지수 하락도 이러한 경계와 맞물린다. 환율이 당일 보합이었다는 점을 고려하면 외국인 매도를 원화 움직임 하나로 설명하기는 어렵다.\n\n## 10월 25일 핵심 이슈: 연준·고유가·AI 규제\n\n1. **연준과 금리**: [美연준, 다음 주 금리 동결하나…시장에선 12월은 추가 인상 전망](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9XMXp6YnVicUpPZ2lnX0NJVUNsUVV4eHJCRllwUlJseFc2ZGgxVlk1MUJkSjE5eEJwcVdpbm5uazZPWTVmakdiR3NNX3hUS092WkNpTm1ISU5UVFhVcU15SWpNeFdTTkk?oc=5)은 동결 가능성과 이후 인상 위험을 동시에 부각한다.\n2. **환율과 유가**: [1320원대로 내려온 환율, FOMC·고유가에 하락세 꺾이나](https://news.google.com/rss/articles/CBMigAFBVV95cUxNQmhJVlNpSTVlNS16Z1NYZEFKX3k5THdRS1poTU1vNXFHVWZLVTNoZ2UxaG8waURZOU9adjJXd01MNFFUQS01aWV4SHZkVkJ4SGl4N04tYnlUbXlVZkRuaE1SMDdjZGNZSm5MYWU2OHNiZTROVFNJOWdOd2xfWGo4WA?oc=5)는 외국인 수급의 다음 변수다.\n3. **반도체·AI**: [美, 중국 AI·첨단 반도체 투자 옥죈다](https://news.google.com/rss/articles/CBMiUkFVX3lxTFBQVTNzSkZUQnFFU3l0VmdyVmNOeUliOEMwaklCYlMxOWN0WS1mMXIzNmxpMGx5NGxUY0pjdUJKaDAzWXZvWHBFSFJHckotVkNrNFHSAVNBVV95cUxORl9MeTRNMktDM0F2MjlCRnprel85ZUFKUWhyWGNxdWJLVlhfLXNJSzdQdlVZLXl1WUMzb3Z1UjRxT3k0WmlHSjM1ckNUTGJ6aWw3UQ?oc=5)는 국내 반도체 심리의 단기 할인 요인이다. 주간 연구 의제의 AI·반도체 및 광 입출력 장기 성장 논리는 유효하지만, 이는 현재 매수 신호가 아니라 투자 지속성과 규제 영향을 확인할 과제다.\n\n## 월별 경기의 충돌과 반전 확인 조건\n\n8월 선행지수 순환변동치는 **104.2로 전월 대비 -0.1포인트**, 반면 동행지수는 **101.7로 +0.5포인트**였다. 같은 달 제조업 가동률지수는 전월 대비 **-5.3232%**, 소매판매 **-1.8429%**, 설비투자 **-9.5238%**, 전산업생산 **-1.33%**로 생산·소비가 약했다.\n\n반대로 9월 소비자심리지수는 전월 대비 **+2.1포인트**, 경제심리지수는 **+0.5포인트**, 계절조정 실업률은 **2.6%로 -0.1%포인트**였다. 수출금액지수도 전년 동월 대비 **+89.2225%**였지만 통관 수출총액과는 다른 지표다. 소비자물가 **+2.8789%**, 생산자물가 **+7.6655%**는 전년 대비 방향만으로 호재·악재를 단정할 수 없다. 이 월별 혼조는 중기 배경이지 당일 수급의 설명이나 오늘의 반등 신호가 아니다.\n\n다음 확인점은 외국인 코스피 수급, 변동성지수의 5일 평균 하회 여부, 연준과 반도체 규제 후속 내용이다. **외국인이 순매수로 전환하고 누적 데이터에서 반전 신호가 함께 확인되면 오늘의 위험회피 중심 논리는 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
