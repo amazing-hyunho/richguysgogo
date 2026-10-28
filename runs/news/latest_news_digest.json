@@ -1,33 +1,44 @@
 {
-  "crawled_at": "2026-10-28T07:42:32.092506+00:00",
+  "crawled_at": "2026-10-28T08:42:53.016439+00:00",
   "news_date": "2026-10-28",
-  "total_collected": 208,
+  "total_collected": 227,
   "topic_counts": [
     [
-      "환율/달러",
-      18
+      "금리/연준",
+      25
     ],
     [
-      "금리/연준",
-      22
+      "환율/달러",
+      21
     ],
     [
       "반도체/AI",
-      18
+      21
     ],
     [
       "인플레이션",
-      14
+      15
     ],
     [
-      "에너지/원자재",
+      "미국지수",
       17
     ]
   ],
   "top_articles": [
     {
+      "topic": "금리/연준",
+      "count": 25,
+      "title": "미 FOMC 앞두고 국고채 금리 일제히 상승…3년물 연 3.799%(종합) - 매일경제 마켓",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1aN0J0cWU3T1Y0Z0tuX2k5U3ZQcDRsSXJvWGpLRGpXeWJtbk9sTDlhX2xGcWpXOGo1bFNCMmpodGQ1RnlMSlZTTWxOWmNVQlhralE?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 미 FOMC 앞두고 국고채 금리 일제히 상승…3년물 연 3.799%(종합) - 매일경제 마켓",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "환율/달러",
-      "count": 18,
+      "count": 21,
       "title": "원/달러 환율, 1,340원대로 상승…달러 매수세에 14원↑ - 연합뉴스 한민족센터",
       "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBzU1JhRGIyVnhYaFJrbHh2ellVYWZncnkzOHlyeHVBbUZsWkFMaEt6QnY5bktlWDJXTERtcTBycXVSby0yczJ0eTJIVzg1QUR4Y1luN1BES29fZHJLYUJuM1U0bzNVQUFOSXdCcFVpMTA0SUNt?oc=5",
       "summary_lines": [
@@ -37,19 +48,8 @@
       ]
     },
     {
-      "topic": "금리/연준",
-      "count": 22,
-      "title": "미국 연준 금리 결정 앞두고 글로벌 금융시장 긴장…인플레이션에 달러 강세 지속 - 시사매거진",
-      "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1zaTZfQ25ENUs2aHNHU3hLMnBablBkVkNPeVFxMHo1MXJwa3ZTaEQ3a1lqVDR2UUtjdVl5eFV5akhOVkdOR2FlVnd2cVZCSUxNM2hSRlBadm04NmhBQ0o2Umhn?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 미국 연준 금리 결정 앞두고 글로벌 금융시장 긴장…인플레이션에 달러 강세 지속 - 시사매거진",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "반도체/AI",
-      "count": 18,
+      "count": 21,
       "title": "엔비디아·AMD, 메타에 40억달러 투자…AI 동맹 강화 - 매일경제",
       "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9vdjBuR19rXzY2ZXBKS2V1WXYwMWNRMGQ4VHlwVkF4N0lmcUpoREtHX3ZXZ3ZYVTU2STQ2NDEzSG5PaER1anJhUnNfbGVVZw?oc=5",
       "summary_lines": [
@@ -60,7 +60,7 @@
     },
     {
       "topic": "인플레이션",
-      "count": 14,
+      "count": 15,
       "title": "금(금값, 금시세) 美 FOMC·PCE 발표 앞두고 금값 향방 주목 - CBC뉴스",
       "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00S2RySEFuVDBNbmx2dE9LNXNiWHdDRjd5UXRVOHRIbjZWcElPaG9iR0VBempaZkd5blR5OTdUMVMtOE5NalRrczNFX2xNcFBicnVKVlk3TFZoTllub3FGcmIzUkdESzd1?oc=5",
       "summary_lines": [
@@ -70,12 +70,12 @@
       ]
     },
     {
-      "topic": "에너지/원자재",
+      "topic": "미국지수",
       "count": 17,
-      "title": "캐나다산 알루미늄에 50% 관세… 포드 원자재 비용 최대 20억달러 증가 전망 - 핀포인트뉴스",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBMeXFvZDZGQUpFS0tFSEhwajJDZHFBMnJXLWVCVnNoMUlUNkJPX0djZE9LTnR2VnJ0dnlPZzhjSlZFWDZsLTN5bUh4RnFhTFV2YlcxcU8tUjVReFJaLUtXX0tHNW5lZVdLX2pXaHdPdGFGTXfSAXdBVV95cUxOUGh6dlZ3S0NsaE8zZ2tCVUtVU1BJZlRldWxCRW5IQnptLUJMUEVGUFRtWHczS3hDMHBCOVE2bWFudXZ0NmZuSm9IZ0ZVeWxMV2tOX3hVNkQ2bWNFQVdHY1NfZEhnRWl2SWltLU1nSTRDeXlDcGZGSQ?oc=5",
+      "title": "S&P500 선물, FOMC·빅테크 실적대기 속 강보합…美 국채금리↑ - 연합인포맥스",
+      "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBJWjFIQlpnV3lQdm00NTBLUXJBa3pjY2JNbXpKRkx2OVlEXzdKa2lHRnlEemdKNEZ5WXh0TmpRd1FlQTQ0SGloTE84eUFRdW1DMWZLOWRVVXZFdnREYXN2SE9nb3VNRzJncmJwWlIwRzE?oc=5",
       "summary_lines": [
-        "핵심 이슈: 캐나다산 알루미늄에 50% 관세… 포드 원자재 비용 최대 20억달러 증가 전망 - 핀포인트뉴스",
+        "핵심 이슈: S&P500 선물, FOMC·빅테크 실적대기 속 강보합…美 국채금리↑ - 연합인포맥스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,23 +84,23 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 54,
+      "total_count": 61,
       "topics": [
         {
           "topic": "금리/연준",
-          "count": 22,
-          "title": "미국 연준 금리 결정 앞두고 글로벌 금융시장 긴장…인플레이션에 달러 강세 지속 - 시사매거진",
-          "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE1zaTZfQ25ENUs2aHNHU3hLMnBablBkVkNPeVFxMHo1MXJwa3ZTaEQ3a1lqVDR2UUtjdVl5eFV5akhOVkdOR2FlVnd2cVZCSUxNM2hSRlBadm04NmhBQ0o2Umhn?oc=5"
+          "count": 25,
+          "title": "미 FOMC 앞두고 국고채 금리 일제히 상승…3년물 연 3.799%(종합) - 매일경제 마켓",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1aN0J0cWU3T1Y0Z0tuX2k5U3ZQcDRsSXJvWGpLRGpXeWJtbk9sTDlhX2xGcWpXOGo1bFNCMmpodGQ1RnlMSlZTTWxOWmNVQlhralE?oc=5"
         },
         {
           "topic": "환율/달러",
-          "count": 18,
+          "count": 21,
           "title": "원/달러 환율, 1,340원대로 상승…달러 매수세에 14원↑ - 연합뉴스 한민족센터",
           "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBzU1JhRGIyVnhYaFJrbHh2ellVYWZncnkzOHlyeHVBbUZsWkFMaEt6QnY5bktlWDJXTERtcTBycXVSby0yczJ0eTJIVzg1QUR4Y1luN1BES29fZHJLYUJuM1U0bzNVQUFOSXdCcFVpMTA0SUNt?oc=5"
         },
         {
           "topic": "인플레이션",
-          "count": 14,
+          "count": 15,
           "title": "금(금값, 금시세) 美 FOMC·PCE 발표 앞두고 금값 향방 주목 - CBC뉴스",
           "link": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE00S2RySEFuVDBNbmx2dE9LNXNiWHdDRjd5UXRVOHRIbjZWcElPaG9iR0VBempaZkd5blR5OTdUMVMtOE5NalRrczNFX2xNcFBicnVKVlk3TFZoTllub3FGcmIzUkdESzd1?oc=5"
         }
@@ -108,25 +108,25 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 18,
+      "total_count": 21,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 18,
+          "count": 21,
           "title": "엔비디아·AMD, 메타에 40억달러 투자…AI 동맹 강화 - 매일경제",
           "link": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9vdjBuR19rXzY2ZXBKS2V1WXYwMWNRMGQ4VHlwVkF4N0lmcUpoREtHX3ZXZ3ZYVTU2STQ2NDEzSG5PaER1anJhUnNfbGVVZw?oc=5"
         }
       ]
     },
     {
-      "sector": "에너지/소재",
+      "sector": "지수/시장",
       "total_count": 17,
       "topics": [
         {
-          "topic": "에너지/원자재",
+          "topic": "미국지수",
           "count": 17,
-          "title": "캐나다산 알루미늄에 50% 관세… 포드 원자재 비용 최대 20억달러 증가 전망 - 핀포인트뉴스",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBMeXFvZDZGQUpFS0tFSEhwajJDZHFBMnJXLWVCVnNoMUlUNkJPX0djZE9LTnR2VnJ0dnlPZzhjSlZFWDZsLTN5bUh4RnFhTFV2YlcxcU8tUjVReFJaLUtXX0tHNW5lZVdLX2pXaHdPdGFGTXfSAXdBVV95cUxOUGh6dlZ3S0NsaE8zZ2tCVUtVU1BJZlRldWxCRW5IQnptLUJMUEVGUFRtWHczS3hDMHBCOVE2bWFudXZ0NmZuSm9IZ0ZVeWxMV2tOX3hVNkQ2bWNFQVdHY1NfZEhnRWl2SWltLU1nSTRDeXlDcGZGSQ?oc=5"
+          "title": "S&P500 선물, FOMC·빅테크 실적대기 속 강보합…美 국채금리↑ - 연합인포맥스",
+          "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBJWjFIQlpnV3lQdm00NTBLUXJBa3pjY2JNbXpKRkx2OVlEXzdKa2lHRnlEemdKNEZ5WXh0TmpRd1FlQTQ0SGloTE84eUFRdW1DMWZLOWRVVXZFdnREYXN2SE9nb3VNRzJncmJwWlIwRzE?oc=5"
         }
       ]
     }
