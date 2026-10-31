@@ -1,22 +1,33 @@
 {
-  "crawled_at": "2026-10-31T19:41:59.286189+00:00",
+  "crawled_at": "2026-10-31T20:41:48.786271+00:00",
   "news_date": "2026-11-01",
   "total_collected": 6,
   "topic_counts": [
+    [
+      "인플레이션",
+      1
+    ],
     [
       "에너지/원자재",
       1
     ],
     [
       "2차전지/전기차",
-      3
-    ],
-    [
-      "정책/테마",
-      2
+      4
     ]
   ],
   "top_articles": [
+    {
+      "topic": "인플레이션",
+      "count": 1,
+      "title": "고성능 감수제 시장 2035년 전망: 고성능 콘크리트 확산으로 PCE 수요 가속 - IndexBox",
+      "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPVU4yM29iWnBNU3pnT3Q5ZXdLcnVobzV3TUk2WlZOckZVM0hMRnlhMjRXX3ZuaFVhU0JJSFBqX3E1bVNJNm1VSjhzalJMeGI1ZG9nMnZ6RkhfMjJVSFJhTmNxOG96bzNMLWVOZ0tacndfbWc4OEQzZ2RkMEZsOUxuWVoxVUh3NmdwMjdlVnNPWVJrRTlFSlB2Z2RDTHV6Y3ZHTTJwWXhOMy1HdHZxWG9mMXRwVUpYVVpIQUpKY2NOZ1hLRklWbHVrcVBjcWVKM3NMMjlB?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 고성능 감수제 시장 2035년 전망: 고성능 콘크리트 확산으로 PCE 수요 가속 - IndexBox",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
     {
       "topic": "에너지/원자재",
       "count": 1,
@@ -30,22 +41,11 @@
     },
     {
       "topic": "2차전지/전기차",
-      "count": 3,
+      "count": 4,
       "title": "가주 전기차 충전 인프라 전국 2위…1위는 어디 - 미주중앙일보",
       "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBEeEc0NEtDQWVpcUlWLUI1eVhGdVF0aDdVQVozQ3BrVDREckFWUzAtbkdiYXpFTmxVR2VMLXI4QzJENHE5WGZCUGQtRW1BajhOcER0RHUxZWNxZWx3ZmxIZ2lB?oc=5",
       "summary_lines": [
         "핵심 이슈: 가주 전기차 충전 인프라 전국 2위…1위는 어디 - 미주중앙일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "정책/테마",
-      "count": 2,
-      "title": "이 대통령 “지금은 견디는 중”…집값 하락 전망 맞을까 - 더스쿠프",
-      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1EMkFkRnJQRGNHTFJscVZLTUZmM2xNWVBuQWczQnU3MlUwNk9JdzJXOWswcjJDa1BnNmR3bUZGcF9lbDJhWHRjdklveldzQVlfMEhQd1Z0RjJMbmJGN3c4V2F4UnNINlVNZ1BPdUtB?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 이 대통령 “지금은 견디는 중”…집값 하락 전망 맞을까 - 더스쿠프",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -54,25 +54,25 @@
   "sector_hot_topics": [
     {
       "sector": "2차전지/자동차",
-      "total_count": 3,
+      "total_count": 4,
       "topics": [
         {
           "topic": "2차전지/전기차",
-          "count": 3,
+          "count": 4,
           "title": "가주 전기차 충전 인프라 전국 2위…1위는 어디 - 미주중앙일보",
           "link": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBEeEc0NEtDQWVpcUlWLUI1eVhGdVF0aDdVQVozQ3BrVDREckFWUzAtbkdiYXpFTmxVR2VMLXI4QzJENHE5WGZCUGQtRW1BajhOcER0RHUxZWNxZWx3ZmxIZ2lB?oc=5"
         }
       ]
     },
     {
-      "sector": "정책/테마",
-      "total_count": 2,
+      "sector": "매크로",
+      "total_count": 1,
       "topics": [
         {
-          "topic": "정책/테마",
-          "count": 2,
-          "title": "이 대통령 “지금은 견디는 중”…집값 하락 전망 맞을까 - 더스쿠프",
-          "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE1EMkFkRnJQRGNHTFJscVZLTUZmM2xNWVBuQWczQnU3MlUwNk9JdzJXOWswcjJDa1BnNmR3bUZGcF9lbDJhWHRjdklveldzQVlfMEhQd1Z0RjJMbmJGN3c4V2F4UnNINlVNZ1BPdUtB?oc=5"
+          "topic": "인플레이션",
+          "count": 1,
+          "title": "고성능 감수제 시장 2035년 전망: 고성능 콘크리트 확산으로 PCE 수요 가속 - IndexBox",
+          "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxPVU4yM29iWnBNU3pnT3Q5ZXdLcnVobzV3TUk2WlZOckZVM0hMRnlhMjRXX3ZuaFVhU0JJSFBqX3E1bVNJNm1VSjhzalJMeGI1ZG9nMnZ6RkhfMjJVSFJhTmNxOG96bzNMLWVOZ0tacndfbWc4OEQzZ2RkMEZsOUxuWVoxVUh3NmdwMjdlVnNPWVJrRTlFSlB2Z2RDTHV6Y3ZHTTJwWXhOMy1HdHZxWG9mMXRwVUpYVVpIQUpKY2NOZ1hLRklWbHVrcVBjcWVKM3NMMjlB?oc=5"
         }
       ]
     },
