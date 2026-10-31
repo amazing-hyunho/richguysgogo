@@ -1,0 +1,103 @@
+{
+  "round_index": 1,
+  "facilitator_note": "오늘은 7명 중 5명이 숫자 지표를 직접 언급했습니다. 분위기는 급하게 베팅하기보다, 근거를 확인하고 천천히 가자는 쪽으로 모였습니다.",
+  "minutes": [
+    {
+      "speaker": "macro",
+      "speaker_label": "매크로 담당자",
+      "summary": "저는 매크로 담당자 입장에서 '중기 불확실성과 단기 위험회피 신호가 동시에 나타납니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-3846억, institution_net=-2298억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.reversal_signal",
+        "snapshot.korea_macro_context",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.markets.volatility.vix"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "flow",
+      "speaker_label": "수급 담당자",
+      "summary": "저는 수급 담당자 입장에서 '고환율·금리 부담에 외국인 매도, 개인이 단기 저점매수로 흡수하는 공급우위 국면.' 의견을 유지합니다. 근거 숫자는 kospi_change_pct=-3.95%, usdkrw=1338.04입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.flow_summary.note",
+        "snapshot.korean_market_flow",
+        "snapshot.market_summary.kospi_change_pct",
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.market_summary.usdkrw",
+        "snapshot.news_headlines"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "sector",
+      "speaker_label": "섹터 담당자",
+      "summary": "저는 섹터 담당자 입장에서 '시장 전반에 걸쳐 약세와 수급 악화가 뚜렷합니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.reversal_signal",
+        "snapshot.flow_summary.note",
+        "snapshot.korea_macro_context"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "risk",
+      "speaker_label": "리스크 담당자",
+      "summary": "저는 리스크 담당자 입장에서 '중기 약세와 수급 악화가 동시에 확인됩니다.' 의견을 유지합니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.note",
+        "snapshot.korea_macro_context"
+      ],
+      "internal_regime_tag": "RISK_ON"
+    },
+    {
+      "speaker": "earnings",
+      "speaker_label": "이익모멘텀 담당자",
+      "summary": "저는 이익모멘텀 담당자 입장에서 '실적 추정치 하향 조정이 불가피한 구간입니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-3846억, institution_net=-2298억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.phase_two_signals.earnings_signal_score",
+        "snapshot.market_summary.kospi_change_pct"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "breadth",
+      "speaker_label": "브레드스 담당자",
+      "summary": "저는 브레드스 담당자 입장에서 '시장 전반의 하락 확산과 약한 반등 신호가 확인됩니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-3846억, institution_net=-2298억입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.cumulative_context.kospi_5d_cum_pct",
+        "snapshot.phase_two_signals.breadth_signal_score",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.flow_summary.institution_net",
+        "snapshot.cumulative_context.reversal_signal"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    },
+    {
+      "speaker": "liquidity",
+      "speaker_label": "유동성 담당자",
+      "summary": "저는 유동성 담당자 입장에서 '유동성 및 정책 민감 지표가 위험회피 신호를 강화하고 있습니다.' 의견을 유지합니다. 근거 숫자는 foreign_net=-3846억, dxy=101.82입니다. 결론은 성급하게 방향 바꾸지 말고, 근거 확인 후 대응하자는 쪽입니다.",
+      "references": [
+        "snapshot.cumulative_context.kospi_20d_cum_pct",
+        "snapshot.flow_summary.foreign_net",
+        "snapshot.markets.fx.usdkrw",
+        "snapshot.cumulative_context.usdkrw_5d_change_pct",
+        "snapshot.cumulative_context.vix_5d_avg",
+        "snapshot.macro.structural.fed_funds_rate",
+        "snapshot.macro.daily.dxy"
+      ],
+      "internal_regime_tag": "RISK_OFF"
+    }
+  ],
+  "round_conclusion": "의장 정리: 오늘 다수 의견은 리스크 오프입니다. 근거는 KOSPI -3.95%, USD/KRW 1338.04(+0.04%), VIX 17.2, 외국인 -3846억이고, 뉴스는 방향성이 엇갈려 단정하기 어렵습니다. 따라서 비중은 방어적으로 유지하고, 변동성 완화 전까지 공격적 확대는 미룹니다."
+}

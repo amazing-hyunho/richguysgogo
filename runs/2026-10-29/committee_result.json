@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 6,064.74로 0.87% 상승했고 외국인은 2,431억원 순매수했으나, 기관은 6,430억원 순매도해 수급의 지속성 확인이 필요하다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "KOSPI는 최근 5일 9.43% 반등했지만 20일 누적 -15.02%이며, KOSDAQ은 754.48로 2.18% 하락해 지수 상승의 시장 전반 확산은 제한적이다.",
+      "sources": [
+        "market_data",
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 반등의 추세 전환 여부",
+      "majority": "매크로·수급·섹터·리스크·이익모멘텀 담당자는 외국인 매수와 KOSPI 반등을 인정하면서도 중립적 대응이 적절하다고 판단했다.",
+      "minority": "브레드스와 유동성 담당자는 KOSDAQ 약세, 중기 하락 이력, 정책 불확실성을 들어 위험회피 국면이 계속된다고 봤다.",
+      "minority_agents": [
+        "breadth",
+        "liquidity"
+      ],
+      "why_it_matters": "상승 지수만으로 위험 선호 회복을 단정하기 어렵고, KOSDAQ 수급 및 기관 매도 완화 여부가 반등의 확산과 지속성을 가를 수 있다."
+    },
+    {
+      "topic": "외국인 순매수의 해석",
+      "majority": "수급 담당자는 환율 하락과 연준·AI 뉴스 환경 속 KOSPI 대형주로 외국인 매수가 집중됐다고 해석했다.",
+      "minority": "유동성 담당자는 연준의 추가 인상 전망과 변동성 부담을 고려하면 외국인 매수만으로 유동성 환경 개선을 확정할 수 없다고 봤다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "외국인 매수가 KOSPI에서만 나타나고 KOSDAQ에서는 1,015억원 순매도로 반전됐다는 점이 시장 폭 확대 여부의 핵심 검증 항목이다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 외국인 매수로 KOSPI 반등, KOSDAQ은 역행\n\nKOSPI는 6,064.74로 0.87% 상승한 반면 KOSDAQ은 754.48로 2.18% 하락했다. 외국인은 양 시장 합산 2,431억원 순매수, 개인은 3,865억원 순매수였고 기관은 6,430억원 순매도였다. 원/달러 환율은 1,340.24원으로 0.53% 하락했고 VIX는 16.91로 최근 5일 평균 18.20보다 낮다. 다만 KOSPI는 최근 5일 9.43% 반등했어도 20일 누적 -15.02%다. 오늘 반등을 중기 하락 국면의 완전한 해소로 보기는 이르다.\n\n## KOSPI 대형주로 쏠린 수급의 의미\n\n수급의 핵심은 외국인 매수가 KOSPI 3,446억원에 집중됐다는 점이다. 개인도 KOSPI에서 2,438억원을 순매수했으나 기관은 6,162억원을 순매도했다. 반대로 KOSDAQ에서는 외국인 1,015억원, 기관 268억원 순매도에 개인 1,427억원 순매수가 맞섰다. 수급 담당자(flow)는 이를 KOSPI 중심의 외국인 매수와 개인의 단기 추격, KOSDAQ 차별화 약세로 진단했다. 환율 하락과 [연준의 금리 동결](https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBIV1N3U3BSYS1kNEExWUlZNkFqOUlQMXRuWENCWE1fbTF2WDlsMi1rUm5BUF9lV1pCWlFPTEVkQWlRWEV2QTZXNmtlNEpFWDZjbnRrby1Ia2E4TFlSVWstVkJxUnQyWFE?oc=5), [AI 투자 확대 기대](https://news.google.com/rss/articles/CBMiWkFVX3lxTE5YUEFKbkg2eFRQZmNxME5xUFJKTWpLUmpma0UxZGVTRTlsalctVnZQa2Q2VnNVQlFsMHV3UGkxdWNGM0ZJOUc1S1hUZE80cUtzMU1mS2lQakxnUQ?oc=5)가 대형주 위험선호를 보조한 것으로 해석할 수 있다. 다만 이는 뉴스·수급 기반의 당일 해석이며, 업종 전반의 확산을 뜻하지는 않는다.\n\n## 금리 동결 뒤 남은 달러·유동성 변수\n\n뉴스는 연준의 기준금리 동결과 함께 추가 인상 전망도 제기했다. 달러인덱스 역시 동결 직후 하락 후 반등했다는 보도가 있어, 당일 원/달러 하락만으로 환율 위험이 사라졌다고 단정할 수 없다. 실제 원/달러 환율은 최근 5일 기준 1.25% 상승했다. 유동성 담당자(liquidity)와 브레드스 담당자(breadth)가 위험회피 의견을 유지한 이유다. VIX가 5일 평균보다 낮아진 점은 단기 긴장 완화 신호지만, KOSDAQ 하락과 기관 매도는 반대 증거다.\n\n## 월별 경기 배경: 수출·고용 회복과 내수 둔화의 충돌\n\n한국 월별 지표는 오늘 장중 움직임과 구분해 중기 배경으로 봐야 한다. 2026년 8월 전산업생산은 전월 대비 1.33%, 소매판매는 1.84%, 설비투자는 9.52%, 제조업 가동률지수는 5.32% 하락했다. 반면 9월 실업률은 2.6%로 전월 대비 0.1%p 낮아졌고 수출금액지수는 전년 동월 대비 89.22% 상승했다. 10월 소비자심리지수는 전월 대비 1.2p 하락했지만 경제심리지수는 0.9p 상승했다. 생산·소비의 부정과 고용·수출의 긍정이 충돌하는 만큼, 수출 회복만으로 내수 둔화를 상쇄했다고 판단할 수 없다. 9월 CPI 2.88%, PPI 7.67% 상승률도 방향만으로 호재·악재를 규정하기 어렵다.\n\n## 다음 확인점과 반증 조건\n\n당분간은 KOSPI 외국인 매수의 연속성, 기관 매도 축소, KOSDAQ의 외국인 수급 전환을 함께 확인하는 전략이 적절하다. 반등 논지는 원/달러 환율 재상승과 외국인 매도 전환이 동시에 나타나거나 KOSPI 반등에도 KOSDAQ 약세와 기관 대량 매도가 지속될 경우 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

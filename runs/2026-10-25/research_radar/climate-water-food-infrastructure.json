@@ -1,0 +1,195 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "climate-water-food-infrastructure",
+    "name": "기후·물·식량·환경 인프라",
+    "thesis": "기후 적응·수처리·식량 기술의 개선이 필수 인프라 투자와 설비 수요로 이어지는지 추적한다."
+  },
+  "as_of": "2026-10-25",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 11.72,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 46.88,
+      "net_signal": 46.88,
+      "confidence": 61.25,
+      "evidence_count": 2,
+      "distinct_source_count": 1,
+      "positive_count": 2,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2610-18311v1",
+        "arxiv-2610-27143v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2610-18311v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "BALLAST: Physics-Aware Moving Target Defense for Industrial Control Systems Using a Digital Twin Safety Oracle",
+      "claim": "물 처리 산업제어시스템(SWaT testbed)에서 디지털 트윈 기반 안전 오라클을 활용한 BALLAST 방어 체계가 기존 이동표적방어(MTD) 대비 공격 탐지 성공률을 85% 감소시키고, 물리적 안전 위반을 완전히 제거하며, 제어 추적 오차도 크게 줄였음을 실험적으로 입증하였다.",
+      "event_date": "2026-10-13",
+      "known_at": "2026-10-13",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.18311v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 SWaT 테스트베드에 한정되어 있으며, 실제 대규모 산업 현장 적용이나 다양한 공격 시나리오에 대한 일반화 가능성은 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "water-treatment",
+        "ics",
+        "digital-twin",
+        "security",
+        "testbed",
+        "climate-water-food-infrastructure"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-27143v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Dynamic Line Ratings Counteract Transmission Investment Needs Driven by Climate Change",
+      "claim": "기후 변화로 인한 송전 용량 감소와 이에 따른 투자 증가를 정량적으로 분석하고, 동적 송전선 등급(DLR) 및 주변 환경 조정 등급(AAR) 도입이 이러한 투자 수요를 대부분 상쇄하며, 송전 인프라 투자 총액을 최대 31%까지 줄일 수 있음을 서부 미국 전력망(WECC) 시스템 모델링을 통해 실증하였다.",
+      "event_date": "2026-10-19",
+      "known_at": "2026-10-19",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.27143v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 시스템이 아닌 시뮬레이션 기반의 모델링 결과에 의존하며, 실제 도입 시의 운영상 제약이나 경제적·정책적 장애 요인은 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "climate-adaptation",
+        "transmission",
+        "investment",
+        "power-system",
+        "simulation",
+        "infrastructure"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 46.88점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "사회적 필요가 크더라도 사업성·예산·발주 시점은 별도 확인이 필요합니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

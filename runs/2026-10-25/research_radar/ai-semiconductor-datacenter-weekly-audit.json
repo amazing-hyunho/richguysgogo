@@ -1,0 +1,29 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "ai-semiconductor-datacenter",
+  "as_of": "2026-10-25",
+  "lookback_days": 28,
+  "candidate_count": 12,
+  "accepted_count": 10,
+  "rejected_count": 2,
+  "accepted_paper_ids": [
+    "2610-03061v1",
+    "2610-04277v1",
+    "2610-05559v1",
+    "2610-06291v1",
+    "2610-10924v1",
+    "2610-14244v1",
+    "2610-14280v1",
+    "2610-14612v1",
+    "2610-28096v1",
+    "2610-29873v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "609bd812f76e1107fa5fe3b93e7b1922902ba52471610c4ba21de7623c69a524",
+  "input_tokens": 5542,
+  "output_tokens": 2095,
+  "report_status": "emerging",
+  "report_score": 9.94,
+  "generated_at": "2026-10-25T07:56:18.917205+00:00"
+}

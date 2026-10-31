@@ -1,0 +1,61 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,702.92로 3.95% 하락했고 외국인 -3,846억원, 기관 -2,298억원의 동반 순매도가 개인 +5,586억원보다 방향성을 주도했습니다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "KOSPI 5일 누적은 +3.076%지만 20일 누적은 -21.534%이고 반전 신호도 없어, 하루 낙폭만으로 추세 전환을 판단하기 어렵습니다.",
+      "sources": [
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 위험 국면",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 외국인·기관 매도와 20일 누적 하락을 근거로 리스크 오프를 제시했습니다.",
+      "minority": "리스크 담당자의 태그는 RISK_ON이지만 실제 주장은 중기 약세와 수급 악화를 강조해 내용상 다수 의견과 가깝습니다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "소수 태그와 서술이 일치하지 않아 이를 강세 신호로 해석할 수 없으며, 국면 판단의 신뢰도를 일부 낮춥니다."
+    },
+    {
+      "topic": "AI·반도체 뉴스의 시장 방어력",
+      "majority": "당일에는 외국인·기관 순매도와 지수 급락이 AI 관련 호재보다 강한 핵심 신호입니다.",
+      "minority": "엔비디아의 네이버 투자 보도와 주간 AI·반도체 연구 의제는 중기 산업 수요의 긍정적 가능성을 제시합니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "중기 연구 의제는 현재 수급이나 매매 신호가 아니므로, 관련 뉴스만으로 시장 전체의 추세 전환을 선언해서는 안 됩니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 10월 30일: 반등 이후 다시 확인된 공급 우위\n\nKOSPI는 5,702.92로 3.95%, KOSDAQ은 732.74로 2.63% 하락했습니다. USD/KRW는 1,338.04로 0.04% 상승했고 VIX는 17.2였습니다. 외국인 -3,846억원, 기관 -2,298억원에 맞서 개인이 +5,586억원을 순매수했지만, 지수 방향은 매도 주체가 결정했습니다.\n\n다만 하루 낙폭만 과장할 필요도 없습니다. KOSPI 5일 누적은 +3.076%인 반면 20일 누적은 -21.534%이고, 반전 신호는 없습니다. 최근 5일 평균 절대 등락률도 3.274%여서 오늘 하락은 높은 변동성 속 중기 약세가 재확인된 성격입니다.\n\n## 외국인·기관 동반 매도의 의미\n\nKOSPI에서 외국인 -3,256억원·기관 -1,942억원, KOSDAQ에서 각각 -590억원·-356억원이었습니다. 개인은 양 시장에서 +4,546억원과 +1,040억원을 흡수했지만 공급 우위를 반전시키지 못했습니다. 수급 담당자는 USD/KRW 1,338.04와 미국 10년물 4.989%를 외국인 매도 부담과 연결했고, 유동성 담당자도 DXY 101.818과 외국인 순매도를 위험회피 근거로 제시했습니다.\n\n다만 환율 상승률은 0.04%에 그쳤고 VIX 17.2는 5일 평균 17.492보다 낮습니다. 따라서 환율·변동성이 급격히 악화됐다고 단정하기보다, 20일 하락 추세와 외국인·기관 매도가 핵심이고 변동성 지표는 보조 확인 신호로 보는 편이 타당합니다.\n\n## 날짜별 핵심 이슈: 금리, 달러, AI\n\n1. **금리·물가:** [미 연준 이어 ECB도 금리 동결…인플레·경기둔화 위험 여전](https://news.google.com/rss/articles/CBMiW0FVX3lxTFA1c01MelNFNHFLWTVjVFpFa01Kd2xJSXpicnV4ZVBoZTcycFJPZF9vTzFvbDJ6UG9ZYlV1QUEzTnlXcG51RUVJd3FodkR3b1NYU3BTM2dUSEYydU3SAWBBVV95cUxQSVRSd2ZwWnRtSDNlZC1PSGxRc09jRmhXNm5oeDExd09oY3p4dzNkZEpoaFM3bTBUOHM2SV9aYWc2a0ZseFZLNUs0Q0gxejl2V1JBenE1V1ctVUJFQmZCOFk?oc=5) 보도와 미국 10년물 4.989%는 성장주 할인율 부담을 남겼습니다.\n2. **환율:** [연준 금리 동결에 달러 강세 압력 완화](https://news.google.com/rss/articles/CBMib0FVX3lxTE8zMTl2Ni1aY0lEeG5fZmd1OGJGOTdYY3M1VlFTZDd0SFY5cDNqaExrcVJDd3RJVmxhbU04Mjd2VFVPeEViYUplWnZQQUpCcno2eW5LRUo3NmxmdEtncFF5UFRWOTVhWkcxREIyb0dzUQ?oc=5) 전망과 달리 USD/KRW는 소폭 상승했습니다. 뉴스 기대와 당일 수급의 충돌입니다.\n3. **AI:** [엔비디아, 네이버 주주된다…다음달 10억 달러 투자](https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBlR2lWMGFhY1pEQnpSTmFmQ2hLX29FVHRTanlmTU5GUGRDZmtoZjFfRzhTdHgxUndFYndsbGZVY1NuRTlxaDRPVnRFRF9HSGdsX3pIQUtKV3FQdGVQelJScmpKUmttdDA?oc=5)는 선택적 모멘텀입니다. 주간 AI·반도체 및 광 I/O 연구 의제와도 관련되지만, 이는 12개월 연구 과제이지 현재 매수 신호는 아닙니다.\n\n## 월별 경기 혼조와 다음 확인 조건\n\n한국 지표는 당일 시장과 분리해야 합니다. 8월 동행지수는 전월 대비 +0.5p였지만 선행지수는 -0.1p였습니다. 같은 달 제조업 가동률지수 -5.3232%, 소매판매 -1.8429%, 설비투자 -9.5238%, 전산업생산 -1.33%로 생산·소비는 약했습니다. 반면 9월 실업률은 전월 대비 -0.1%p, 수출금액지수는 전년 동월 대비 +89.2225%였습니다. 수출 지표는 통관 총액이 아니라는 점도 유의해야 합니다. 10월 소비자심리는 전월 대비 -1.2p, 경제심리는 +0.9p로 엇갈렸습니다. 9월 CPI +2.8789%, PPI +7.6655%는 전년 대비 방향만으로 호재·악재를 단정할 수 없습니다.\n\n결론적으로 방어적 기조를 유지하되 확신은 낮춰야 합니다. **외국인과 기관이 동반 순매수로 전환하고, USD/KRW 및 미국 장기금리가 안정되면서 KOSPI 반전 신호가 확인될 경우 오늘의 리스크 오프 논리는 무효화됩니다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

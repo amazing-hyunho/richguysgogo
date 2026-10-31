@@ -1,0 +1,252 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "photonic-computing-programmable-optics",
+    "name": "광연산·프로그래머블 포토닉스",
+    "thesis": "광행렬연산·광신경망·프로그래머블 광회로가 정확도와 재구성 가능성을 유지하면서 전자식 AI 연산의 전력·지연 병목을 줄이는지 추적한다."
+  },
+  "as_of": "2026-10-25",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 11.72,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 46.88,
+      "net_signal": 46.88,
+      "confidence": 61.25,
+      "evidence_count": 4,
+      "distinct_source_count": 1,
+      "positive_count": 4,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2609-37235v1",
+        "arxiv-2609-37746v1",
+        "arxiv-2610-09081v1",
+        "arxiv-2610-23070v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2609-37235v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Photonic sequential logic circuits for stateful intelligence",
+      "claim": "광학적 순차 논리회로(PSLC)를 설계·구현하여 광 기반 래치, 플립플롭, 시퀀스 디텍터, 카운터 등 상태 저장 및 동적 데이터 처리 기능을 실험적으로 검증하고, 실제 드론 장애물 회피 및 텍스트 생성 등에서 신뢰성 있게 동작함을 보였다.",
+      "event_date": "2026-09-29",
+      "known_at": "2026-09-29",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.37235v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "제시된 시스템은 특정 응용(드론, 텍스트 생성)에 한정되어 있으며, 대규모 광신경망이나 범용 AI 연산 전체에 대한 확장성·성능 비교는 미흡하다.",
+      "tags": [
+        "weekly-paper",
+        "photonic-computing",
+        "sequential-logic",
+        "stateful-intelligence",
+        "hardware-experiment",
+        "optical-circuits",
+        "ai-application"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2609-37746v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Optical Fourier Architecture for Universal Nonlinear Functions",
+      "claim": "2x2 선형 광학 회로와 단일모드 위상 시프터만으로 임의의 유한 푸리에 급수를 정확하게 평가할 수 있는 보편적 광학 아키텍처를 제안하고, 수치적으로 수천 항의 푸리에 급수 함수 합성 가능성을 검증하였다.",
+      "event_date": "2026-09-29",
+      "known_at": "2026-09-29",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2609.37746v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실험은 수치적 검증에 한정되어 있으며, 실제 광학 하드웨어 구현이나 대규모 AI 연산 적용에 대한 실증은 없다.",
+      "tags": [
+        "weekly-paper",
+        "photonic-computing",
+        "optical-fourier",
+        "universal-function",
+        "circuit-design",
+        "numerical-validation"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-09081v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Nonlinear Spectral Computing",
+      "claim": "비선형 슈뢰딩거 방정식 기반의 비선형 푸리에 변환을 이용해 광학적 아날로그 컴퓨팅 플랫폼에서 고차 상호작용 및 모든 3변수 불리언 게이트(3-SAT 포함) 프로그래밍이 가능함을 실험적으로 보였다.",
+      "event_date": "2026-10-06",
+      "known_at": "2026-10-06",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.09081v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실험은 네 개의 입력 토큰 등 제한된 규모에서 수행되었으며, 대규모 광신경망이나 실제 AI 연산에 대한 확장성·정량적 비교는 제시되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "photonic-computing",
+        "nonlinear-optics",
+        "optical-gates",
+        "analog-computing",
+        "boolean-logic",
+        "nonlinear-fourier"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-23070v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Wavelength Diversity Expands the Expressive Power of Optical Computing",
+      "claim": "다중 파장(웨이블랭스) 조명을 활용한 광학 프로세서가 동일한 수의 위상 피처를 가진 단일 파장 대비 100배 이상의 평균 제곱 오차 감소로 비선형 함수 근사 정확도를 크게 향상시킴을 이론·수치·실험적으로 입증하였다.",
+      "event_date": "2026-10-16",
+      "known_at": "2026-10-16",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.23070v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 단일 레이어 회절 프로세서 및 특정 함수 근사에 한정되며, 대규모 광신경망이나 실제 AI 연산 전체에 대한 확장성·범용성은 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "photonic-computing",
+        "optical-neural-networks",
+        "wavelength-diversity",
+        "function-approximation",
+        "diffractive-optics",
+        "hardware-experiment"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 46.88점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "특정 벤치마크의 연산 성능은 범용 워크로드, ADC·DAC 비용, 정밀도, 양산 경제성을 직접 증명하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

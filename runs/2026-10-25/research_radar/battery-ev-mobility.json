@@ -1,0 +1,224 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "battery-ev-mobility",
+    "name": "배터리·전기차·차세대 이동수단",
+    "thesis": "차세대 배터리의 수명·안전·원가 개선이 전기차 채택과 소재·장비 공급망 변화로 이어지는지 추적한다."
+  },
+  "as_of": "2026-10-25",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 7.81,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 31.25,
+      "net_signal": 31.25,
+      "confidence": 61.25,
+      "evidence_count": 3,
+      "distinct_source_count": 1,
+      "positive_count": 2,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2610-05811v3",
+        "arxiv-2610-22394v1",
+        "arxiv-2610-22787v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2610-05811v3",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Public Battery Field Data",
+      "claim": "전기차, 그리드, 경량 이동수단 등 다양한 실제 현장 배터리의 운용 데이터 35종을 통합·정제해 공개함으로써, 실사용 환경에서의 결함·성능·수명 진단 연구와 2차 사용 가치 평가 등에 활용 가능한 공공 데이터 플랫폼을 제공했다.",
+      "event_date": "2026-10-05",
+      "known_at": "2026-10-05",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.05811v3",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.35,
+      "signed_signal": 0.0,
+      "limitation": "논문 자체는 데이터셋 구축·공개에 초점을 두며, 데이터 기반의 구체적 배터리 성능 개선이나 공급망 변화에 대한 실증적 분석은 포함하지 않는다.",
+      "tags": [
+        "weekly-paper",
+        "field-data",
+        "battery-diagnostics",
+        "ev",
+        "data-repository",
+        "fault-detection",
+        "lithium-ion"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-22394v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Visualizing surface-reaction-driven chloride migration and cascading failure in sulfide solid electrolytes",
+      "claim": "염화물 아르기로다이트 고체전해질의 수분 노출 시 표면 반응에 의한 염화물 이온 재배치가 열화 전파의 핵심 경로임을 나노스케일에서 시각화하고, 표면처리로 대규모 염화물 분리를 억제해 150회 사이클 후 초기 용량의 99.9%를 유지하는 등 수분 내성을 개선할 수 있음을 밝혔다.",
+      "event_date": "2026-10-14",
+      "known_at": "2026-10-14",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.22394v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 특정 조성의 고체전해질과 제한된 사이클 조건에서 수행되었으며, 실제 전기차용 대형 셀이나 다양한 환경에서의 장기 신뢰성은 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "solid-state-batteries",
+        "degradation",
+        "chloride-migration",
+        "moisture-stability",
+        "sulfide-electrolyte",
+        "microscopy"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-22787v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Filter-Augmented Reinforcement Learning for Battery Fast Charging with State of Health and Plating-Aware Reward Design",
+      "claim": "상태 추정 노이즈를 고려한 필터-강화학습 기반 보상 설계로 상용 리튬이온 배터리의 SoH 저하와 플레이팅 위험을 줄이면서 기존 CC-CV 충전 대비 최대 21.4% 더 많은 등가 완전 충전 사이클을 달성했다.",
+      "event_date": "2026-10-16",
+      "known_at": "2026-10-16",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.22787v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실험은 상용 LG M50 셀의 전기화학·열화 파라미터를 이용한 고정밀 시뮬레이션 데이터에 한정되며, 실제 차량·현장 적용 및 장기 신뢰성은 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "fast-charging",
+        "reinforcement-learning",
+        "battery-health",
+        "simulation",
+        "lithium-ion",
+        "ev"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 31.25점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "논문 단계의 셀 성능은 양산 수율과 자동차 채택을 의미하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}
