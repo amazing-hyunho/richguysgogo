@@ -1,0 +1,61 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 5730.74(-3.48%), KOSDAQ 724.38(-3.83%)로 동반 급락했고, 외국인은 1조6360억원 순매도해 하락을 주도했습니다.",
+      "sources": [
+        "시장데이터",
+        "수급데이터"
+      ]
+    },
+    {
+      "point": "KOSPI는 5일 누적 1.514% 상승에도 20일 누적 -25.013%이고 반전 신호도 없어, 하루 낙폭만으로 바닥을 단정하기 어렵습니다.",
+      "sources": [
+        "누적시장데이터"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "월별 실물 개선과 일별 시장 위험회피의 충돌",
+      "majority": "외국인 순매도, 지수 급락, VIX 상승을 근거로 단기 위험회피가 우세하다는 판단입니다.",
+      "minority": "9월 생산·소비·투자·수출 개선이 중기 펀더멘털의 완충재가 될 수 있다는 견해입니다.",
+      "minority_agents": [
+        "macro"
+      ],
+      "why_it_matters": "월별 지표는 중기 배경일 뿐 당일 반등 신호가 아니므로, 실물 개선만을 근거로 공격적 매수에 나서면 시차 위험이 큽니다."
+    },
+    {
+      "topic": "원화의 당일 강세와 최근 달러 부담",
+      "majority": "USD/KRW가 1334.51로 당일 0.29% 하락해 환율 측면의 즉각적인 압박은 일부 완화됐습니다.",
+      "minority": "최근 5일 USD/KRW는 0.735% 상승해 누적 기준 달러 부담은 남아 있습니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "하루 환율 하락이 외국인 수급 전환으로 연결되는지 확인해야 위험회피 완화를 판단할 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 급락을 이끈 외국인 매도와 변동성 재상승\n\n제공된 시장 스냅샷에서 KOSPI는 5730.74로 3.48%, KOSDAQ은 724.38로 3.83% 하락했습니다. USD/KRW는 1334.51로 당일 0.29% 내렸지만, VIX는 19.42로 최근 5일 평균 18.32를 웃돌았습니다. 10월 30일 수급은 외국인 -1조6360억원, 기관 +6149억원, 개인 +7677억원입니다. 특히 KOSPI 외국인 순매도가 1조6149억원으로 매도의 대부분을 차지했습니다.\n\n하루 낙폭만 보면 과매도 반론이 가능하지만, KOSPI는 5일 누적 1.514% 상승과 달리 20일 누적 -25.013%이며 반전 신호는 거짓입니다. 최근 5일 평균 절대 등락률도 3.586%여서 단기 가격 변동이 이미 큰 상태입니다.\n\n## 수급의 주도권: 개인·기관 방어보다 외국인 이탈 우위\n\n기관과 개인이 순매수했지만 외국인 매도 규모를 모두 흡수하지 못했습니다. 수급 담당자(flow)는 이를 AI·반도체 변동성, 연준·금리 부담, 글로벌 증시 약세가 결합된 리밸런싱으로 해석했고, 브레드스·유동성 담당자도 약세 확산과 정책 민감도 상승을 강조했습니다. 미국 10년물 금리 4.929%, 나스닥 -2.86%는 이 해석을 보강합니다.\n\n다만 환율은 당일 하락했습니다. 이는 즉각적인 원화 약세 압력이 완화됐다는 반론이지만, USD/KRW의 5일 변화는 +0.735%입니다. 따라서 당일 환율과 누적 흐름이 충돌하며, 외국인 순매수 전환 전까지 수급 안정으로 보기는 어렵습니다.\n\n## 11월 1일 핵심 이슈: 금리·AI·정책\n\n1. **금리와 AI 투자** — [美 연준 \"고금리, AI 투자에도 영향\"…반도체 기댄 韓경제 '시험대'](https://news.google.com/rss/articles/CBMiVEFVX3lxTE5DaDhlZGptU3cwRWNKTkthX1F5cmJTd1hJRGpUc1RWSkhUS25leDRPVkd4ZkQ2Z2JKNkJlMndid091Y2I2ZmEzbHNJVkp1LTBkNEZ0aQ?oc=5)는 고금리가 성장주 투자와 밸류에이션에 동시에 부담이 될 수 있음을 부각합니다.\n2. **AI 반도체의 금융자산화 논쟁** — [AI 반도체는 금융자산이 될 수 있을까?…엔비디아·브로드컴의 도전](https://news.google.com/rss/articles/CBMiaEFVX3lxTFBLN0x0Z2ZJN0Yxc0hNZ1RyREhobkZWYjdxc24xN0wwV2dUWjZqU01VR3liUVhkOHNpdkNxNWZ4NVotN0FTVHdwRVdVbGI0TWUyUlhsOW1FU1NMRlJGUXpYY01TVmd5UDVl0gFuQVVfeXFMT3doYXN1bU8wdDdPVFRJRzFqeWNPRjNRV3l3RWYtTE5JeEV3ZDdDVmNMV1lxenV6NkM5bWZJTU0tZF82V05TUU1FcjltZm5jcWs0UHQyS1VCWFJjWXRLVmRLYU1rSVFsektmTlNUQVE?oc=5)는 AI 관련 자산의 변동성 점검 필요성을 높입니다.\n3. **정책 불확실성** — [美중간선거 D-2, AI 투자·금리에 韓 경제 촉각…관세 부담은 여전](https://news.google.com/rss/articles/CBMiWkFVX3lxTFB1MHRQczd5OXduaXktV0g1VmhFalYyOUtxR3RjQTY3Uy05YzlTek1VQUg2VzFUQkdMNUFJMW9tdHFLUWc4ekRvSjZBQVNWeFo5eFdyeHFtWU5vQQ?oc=5)는 관세와 정책 민감도를 추가 변수로 제시합니다.\n\n## 월별 실물 개선과 다음 확인 조건\n\n한국 월별 지표는 중기 배경이 개선됐음을 보여줍니다. 9월 제조업 가동률지수는 전월 대비 7.992%, 소매판매는 3.5538%, 설비투자는 5.3036%, 전산업생산은 3.0227% 상승했습니다. 수출금액지수도 전년 동월 대비 89.2225% 증가했고 실업률은 전월보다 0.1%포인트 낮은 2.6%였습니다.\n\n그러나 9월 선행지수는 전월보다 0.1포인트 하락한 반면 동행지수는 0.5포인트 상승했고, 10월 소비자심리는 1.2포인트 하락했지만 경제심리는 0.9포인트 올랐습니다. 경기와 심리가 서로 엇갈립니다. 9월 생산자물가는 전년 동월 대비 7.6655% 상승했으나 비용·수요 요인이 혼재하므로 호재나 악재로 단정하지 않습니다. 제외된 소비자물가는 판단 근거로 사용하지 않았으며, 이 월별 자료를 오늘의 시장 움직임과 동일시해서도 안 됩니다.\n\n당분간 핵심 확인점은 외국인 수급, VIX, 미국 장기금리입니다. **외국인이 순매수로 전환하고 VIX가 5일 평균 18.32 아래에서 안정되며 반전 신호가 확인되면, 오늘의 위험회피 중심 논리는 무효화됩니다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
