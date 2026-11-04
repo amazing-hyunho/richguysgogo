@@ -1,18 +1,18 @@
 {
-  "crawled_at": "2026-11-04T22:41:49.027068+00:00",
+  "crawled_at": "2026-11-04T23:41:49.526433+00:00",
   "news_date": "2026-11-05",
-  "total_collected": 56,
+  "total_collected": 75,
   "topic_counts": [
     [
-      "금리/연준",
-      7
-    ],
-    [
       "반도체/AI",
-      6
+      11
     ],
     [
-      "정책/테마",
+      "금리/연준",
+      9
+    ],
+    [
+      "인플레이션",
       5
     ],
     [
@@ -20,14 +20,25 @@
       9
     ],
     [
-      "변동성/리스크",
-      2
+      "국내지수",
+      7
     ]
   ],
   "top_articles": [
     {
+      "topic": "반도체/AI",
+      "count": 11,
+      "title": "반도체 호황에 9월 경상흑자 사상 첫 600억 달러 돌파 - 서울경제",
+      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1UbUoxNDRKemJnZG5LX2V1YVpMcnFMNkIzZEtOUVJLSUhsd1hEdVhheTVGLUdfVXViMXM3RVJkVWFDeVgxSHNVdVRTc3FCTHQ0VnfSAVNBVV95cUxObk0tMWtlRmFBZVRXaG8wakc2VmJYTEt5UE1taUdsX29TMU1Fd1dWRVRoMnZGaWxNSTB6MXlnblNMRUF4QTg5QmJpbFFxVk9VUjFUcw?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 반도체 호황에 9월 경상흑자 사상 첫 600억 달러 돌파 - 서울경제",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "금리/연준",
-      "count": 7,
+      "count": 9,
       "title": "상원 넘어가자 연준 인사도 막막…트럼프 금리 인하 압박 흔들리나 - Chosunbiz",
       "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQaHJIYVlYRExhblNyWUxnaVZ5VUI0aVBYeHFiMHdObkw2ZHZDRkJGNGtSai1oSVdaRE9Kd0tuYXQ3allISHZXdlhEd2xqeEtCNTYyWEtYcGdCUmE2YktyOTVwWWdRYXZoeHZCbHJFNUVJSnBPazI3bWQ5WE5xYWNQOURjdDFPeWZFUkp4YnNObDVnZjVseHl5cDBobUtoUdIBsgFBVV95cUxNRU1paUEwTEFuSzZ5R1VDcURHcWtqRk5fQWdSSzkwaFhUUk50ZTlQbHIxc1gydFZOc2s4YjIyYkIzVnFKdnJReEljVEJsZWVGUzA3Sko0cVZZeTFKemhPZFhIcGNHbjVMdjJjRlh6TVNvZ012OVZkZ3hTaVAzMFlpRGlyeUtxdFl1WXFoekFXRDg4N3U2dTlDSWgweUFOZnRIMXNfWDZQVEpQTVExVUQ5S0NB?oc=5",
       "summary_lines": [
@@ -37,23 +48,12 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 6,
-      "title": "엔비디아, 중국발 102조 원 GPU 주문에도 공급난 심화…AI 반도체 생산능력 한계 드러나 - 제민일보",
-      "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5hNnVIMUUwRmdfcDRkSDZqLVZJY2tqcTRUMXFsbjI3TkQ3a1V3cFdQYzNpRXlRdFV6ZVo3anVCdTRDanJ2cjEzWVAxc1J5SWJpRk1FVzNBZFVrUXVvUlRveW9xQ3pWUVk?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 엔비디아, 중국발 102조 원 GPU 주문에도 공급난 심화…AI 반도체 생산능력 한계 드러나 - 제민일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
-      "topic": "정책/테마",
+      "topic": "인플레이션",
       "count": 5,
-      "title": "美제프리스 “이란 전쟁 끝내고 트럼프 관세 멈출 것”…탄핵엔 선긋기 - 동아일보",
-      "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RZFFNblRON0pQcFpLTllTZjR0aHhkX0JyOWpmOXBvZUhLaGduNlQ4WmVXUUphUmdyTGlrZm9EQXAwaXdmeVFMMm0tbjBlSHRLUW5RVFJFTXBIVXNIcFpsQnJxNDgtMU43N2QtT2ZzVk5UV0XSAWZBVV95cUxPbzFlQmZtOGJFVEVnaXZhTWZwMXNONWdQQUJrY1I5UmZsbjRtMWtaWTBzMkROeXJmRTVvZGJ1UmUzUlJDMTJzYzBWY2RsaXJacDBEbm1Lemt5OFlodzV6UlBQRmRSalE?oc=5",
+      "title": "보츠와나, 2026년 9월 인플레이션 7.8%로 하락 | CPI 보고서 - 뉴스 및 통계 - IndexBox",
+      "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQNVNER3p0V0FxczRVQjdFRllBOTFFOFMxcXRyVURvajdhVE5HMW9yVGYwakl1OHRjdmpiWTdWNFcyTTZPLVhRd1NmVTUwZWhLVUZyVDd3bmd2NXQxcVUxZktBNE96YTdZb21kcW9YdXM2eWRMeGlFRS1oRks3MzZZRFdMTHBKLU9HYTNYSDV2NEY5bnVnM2VfSWZpNWo?oc=5",
       "summary_lines": [
-        "핵심 이슈: 美제프리스 “이란 전쟁 끝내고 트럼프 관세 멈출 것”…탄핵엔 선긋기 - 동아일보",
+        "핵심 이슈: 보츠와나, 2026년 9월 인플레이션 7.8%로 하락 | CPI 보고서 - 뉴스 및 통계 - IndexBox",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -70,18 +70,48 @@
       ]
     },
     {
-      "topic": "변동성/리스크",
-      "count": 2,
-      "title": "[11.5(목) 미장 0시] - VIX 급락·금리 하락에 소비·커… - 주달",
-      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9XeVA1dU5RSjlERm5yZW9CTnFoekFlWmoyV0hvM1I2eWpQdkJicXFZa1RyM3Jnb0J5aDVWdDJEUlBTMTh3N3lTX0QxNTViTzlWWjk0TGpPZXlYVjNjZy1vYUZlRl93ZU1qUE9RMFJUeGw2eEU5LVVPcA?oc=5",
+      "topic": "국내지수",
+      "count": 7,
+      "title": "[마켓뷰] 美증시 올랐지만 반도체주 급락…코스피 방향성 주목 - 연합뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QeC1xR0VMX1NQYWhVMGJ3c3RPd1hobXNHSU1BM0tUY2tpdW1ySlppa3d4RTFIX3prYmRJaWpHSEEzSEFkMEtoYWVBSldHRTQ4VDJfdXNtU3hNeUXSAWBBVV95cUxOS25QQ0oxVDBhd2hURXBNdUhiLThzQzRMdE44NXpYMjJlYWIwdnRHeVR4aFVmdmlhSXg0SXc4OEJ3azhva2xWbTRzRmJCTHFvY2t5aHlSbW9GcDRLd09BYkY?oc=5",
       "summary_lines": [
-        "핵심 이슈: [11.5(목) 미장 0시] - VIX 급락·금리 하락에 소비·커… - 주달",
+        "핵심 이슈: [마켓뷰] 美증시 올랐지만 반도체주 급락…코스피 방향성 주목 - 연합뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     }
   ],
   "sector_hot_topics": [
+    {
+      "sector": "매크로",
+      "total_count": 14,
+      "topics": [
+        {
+          "topic": "금리/연준",
+          "count": 9,
+          "title": "상원 넘어가자 연준 인사도 막막…트럼프 금리 인하 압박 흔들리나 - Chosunbiz",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQaHJIYVlYRExhblNyWUxnaVZ5VUI0aVBYeHFiMHdObkw2ZHZDRkJGNGtSai1oSVdaRE9Kd0tuYXQ3allISHZXdlhEd2xqeEtCNTYyWEtYcGdCUmE2YktyOTVwWWdRYXZoeHZCbHJFNUVJSnBPazI3bWQ5WE5xYWNQOURjdDFPeWZFUkp4YnNObDVnZjVseHl5cDBobUtoUdIBsgFBVV95cUxNRU1paUEwTEFuSzZ5R1VDcURHcWtqRk5fQWdSSzkwaFhUUk50ZTlQbHIxc1gydFZOc2s4YjIyYkIzVnFKdnJReEljVEJsZWVGUzA3Sko0cVZZeTFKemhPZFhIcGNHbjVMdjJjRlh6TVNvZ012OVZkZ3hTaVAzMFlpRGlyeUtxdFl1WXFoekFXRDg4N3U2dTlDSWgweUFOZnRIMXNfWDZQVEpQTVExVUQ5S0NB?oc=5"
+        },
+        {
+          "topic": "인플레이션",
+          "count": 5,
+          "title": "보츠와나, 2026년 9월 인플레이션 7.8%로 하락 | CPI 보고서 - 뉴스 및 통계 - IndexBox",
+          "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQNVNER3p0V0FxczRVQjdFRllBOTFFOFMxcXRyVURvajdhVE5HMW9yVGYwakl1OHRjdmpiWTdWNFcyTTZPLVhRd1NmVTUwZWhLVUZyVDd3bmd2NXQxcVUxZktBNE96YTdZb21kcW9YdXM2eWRMeGlFRS1oRks3MzZZRFdMTHBKLU9HYTNYSDV2NEY5bnVnM2VfSWZpNWo?oc=5"
+        }
+      ]
+    },
+    {
+      "sector": "IT/반도체",
+      "total_count": 11,
+      "topics": [
+        {
+          "topic": "반도체/AI",
+          "count": 11,
+          "title": "반도체 호황에 9월 경상흑자 사상 첫 600억 달러 돌파 - 서울경제",
+          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1UbUoxNDRKemJnZG5LX2V1YVpMcnFMNkIzZEtOUVJLSUhsd1hEdVhheTVGLUdfVXViMXM3RVJkVWFDeVgxSHNVdVRTc3FCTHQ0VnfSAVNBVV95cUxObk0tMWtlRmFBZVRXaG8wakc2VmJYTEt5UE1taUdsX29TMU1Fd1dWRVRoMnZGaWxNSTB6MXlnblNMRUF4QTg5QmJpbFFxVk9VUjFUcw?oc=5"
+        }
+      ]
+    },
     {
       "sector": "에너지/소재",
       "total_count": 9,
@@ -95,50 +125,14 @@
       ]
     },
     {
-      "sector": "매크로",
+      "sector": "지수/시장",
       "total_count": 7,
       "topics": [
         {
-          "topic": "금리/연준",
+          "topic": "국내지수",
           "count": 7,
-          "title": "상원 넘어가자 연준 인사도 막막…트럼프 금리 인하 압박 흔들리나 - Chosunbiz",
-          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQaHJIYVlYRExhblNyWUxnaVZ5VUI0aVBYeHFiMHdObkw2ZHZDRkJGNGtSai1oSVdaRE9Kd0tuYXQ3allISHZXdlhEd2xqeEtCNTYyWEtYcGdCUmE2YktyOTVwWWdRYXZoeHZCbHJFNUVJSnBPazI3bWQ5WE5xYWNQOURjdDFPeWZFUkp4YnNObDVnZjVseHl5cDBobUtoUdIBsgFBVV95cUxNRU1paUEwTEFuSzZ5R1VDcURHcWtqRk5fQWdSSzkwaFhUUk50ZTlQbHIxc1gydFZOc2s4YjIyYkIzVnFKdnJReEljVEJsZWVGUzA3Sko0cVZZeTFKemhPZFhIcGNHbjVMdjJjRlh6TVNvZ012OVZkZ3hTaVAzMFlpRGlyeUtxdFl1WXFoekFXRDg4N3U2dTlDSWgweUFOZnRIMXNfWDZQVEpQTVExVUQ5S0NB?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "IT/반도체",
-      "total_count": 6,
-      "topics": [
-        {
-          "topic": "반도체/AI",
-          "count": 6,
-          "title": "엔비디아, 중국발 102조 원 GPU 주문에도 공급난 심화…AI 반도체 생산능력 한계 드러나 - 제민일보",
-          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5hNnVIMUUwRmdfcDRkSDZqLVZJY2tqcTRUMXFsbjI3TkQ3a1V3cFdQYzNpRXlRdFV6ZVo3anVCdTRDanJ2cjEzWVAxc1J5SWJpRk1FVzNBZFVrUXVvUlRveW9xQ3pWUVk?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "정책/테마",
-      "total_count": 5,
-      "topics": [
-        {
-          "topic": "정책/테마",
-          "count": 5,
-          "title": "美제프리스 “이란 전쟁 끝내고 트럼프 관세 멈출 것”…탄핵엔 선긋기 - 동아일보",
-          "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE1RZFFNblRON0pQcFpLTllTZjR0aHhkX0JyOWpmOXBvZUhLaGduNlQ4WmVXUUphUmdyTGlrZm9EQXAwaXdmeVFMMm0tbjBlSHRLUW5RVFJFTXBIVXNIcFpsQnJxNDgtMU43N2QtT2ZzVk5UV0XSAWZBVV95cUxPbzFlQmZtOGJFVEVnaXZhTWZwMXNONWdQQUJrY1I5UmZsbjRtMWtaWTBzMkROeXJmRTVvZGJ1UmUzUlJDMTJzYzBWY2RsaXJacDBEbm1Lemt5OFlodzV6UlBQRmRSalE?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "리스크",
-      "total_count": 2,
-      "topics": [
-        {
-          "topic": "변동성/리스크",
-          "count": 2,
-          "title": "[11.5(목) 미장 0시] - VIX 급락·금리 하락에 소비·커… - 주달",
-          "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9XeVA1dU5RSjlERm5yZW9CTnFoekFlWmoyV0hvM1I2eWpQdkJicXFZa1RyM3Jnb0J5aDVWdDJEUlBTMTh3N3lTX0QxNTViTzlWWjk0TGpPZXlYVjNjZy1vYUZlRl93ZU1qUE9RMFJUeGw2eEU5LVVPcA?oc=5"
+          "title": "[마켓뷰] 美증시 올랐지만 반도체주 급락…코스피 방향성 주목 - 연합뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QeC1xR0VMX1NQYWhVMGJ3c3RPd1hobXNHSU1BM0tUY2tpdW1ySlppa3d4RTFIX3prYmRJaWpHSEEzSEFkMEtoYWVBSldHRTQ4VDJfdXNtU3hNeUXSAWBBVV95cUxOS25QQ0oxVDBhd2hURXBNdUhiLThzQzRMdE44NXpYMjJlYWIwdnRHeVR4aFVmdmlhSXg0SXc4OEJ3azhva2xWbTRzRmJCTHFvY2t5aHlSbW9GcDRLd09BYkY?oc=5"
         }
       ]
     }
