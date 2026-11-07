@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,651.31로 3.55%, KOSDAQ은 709.48로 3.39% 하락했고 외국인 -5,758억원, 기관 -4,519억원의 동반 매도가 지수 급락을 주도했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "KOSPI 20일 누적 수익률은 -21.953%이고 반전 신호는 없으며, VIX 21.15는 5일 평균 18.848을 웃돌아 위험회피가 이어지고 있다.",
+      "sources": [
+        "cumulative_context",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 국면 판단",
+      "majority": "매크로·수급·섹터·이익·브레드스·유동성 담당자는 외국인 매도, VIX 상승, 반전 신호 부재를 근거로 리스크 오프를 판단했다.",
+      "minority": "리스크 담당자의 내부 태그는 RISK_ON이지만 실제 논평은 급락과 수급 악화를 강조해 내용상 다수 의견과 가깝다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "태그와 논거의 불일치로 확신도를 중간 수준으로 낮추되, 핵심 수급 데이터가 바뀌기 전까지 방어적 결론은 유지해야 한다."
+    },
+    {
+      "topic": "중기 펀더멘털과 당일 가격 신호",
+      "majority": "당일 급락과 외국인·기관 매도는 단기 위험회피를 가리킨다.",
+      "minority": "9월 생산·소비·설비투자·수출 및 고용 지표는 중기 경기의 일부 개선 가능성을 보여준다.",
+      "minority_agents": [
+        "macro",
+        "sector"
+      ],
+      "why_it_matters": "월간 지표를 당일 반등 신호로 오인해서는 안 되지만, 변동성 완화 시 낙폭 회복의 펀더멘털 기반이 될 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 11월 3일: 원화 강세에도 투매성 수급\n\nKOSPI는 **5,651.31(-3.55%)**, KOSDAQ은 **709.48(-3.39%)**로 동반 급락했다. USD/KRW는 **1,332.76원(-0.23%)**으로 하락했지만 주식시장 위험회피를 막지 못했다. VIX는 **21.15**로 5일 평균 **18.848**을 웃돌았다. 외국인 **-5,758억원**, 기관 **-4,519억원**에 맞서 개인이 **+9,945억원**을 순매수했다.\n\n하루 낙폭만으로 판단하기도 어렵다. KOSPI의 5일 누적은 **+0.596%**지만 20일 누적은 **-21.953%**이고, 명시적 반전 신호도 없다. 오늘 변동은 최근 5일 평균 절대 등락률 **3.431%**를 소폭 웃돌아 높은 변동성 국면의 연장으로 해석된다.\n\n## 매도 주체가 말해주는 위험회피의 성격\n\n지배적 수급은 개인의 저가 매수보다 외국인·기관의 동반 이탈이다. KOSPI에서 외국인 **-4,856억원**, 기관 **-3,757억원**, 개인 **+8,155억원**이었고 KOSDAQ에서도 각각 **-902억원**, **-762억원**, **+1,790억원**이었다. 환율 하락에도 외국인 매도가 지속됐다는 점에서 단순 환율 충격보다 고금리와 포트폴리오 위험 축소의 영향이 크다.\n\n수급 담당자는 이를 ‘외국인 매도와 개인 추격매수의 불균형’으로, 유동성 담당자는 VIX 상승을 동반한 정책 민감 위험회피로 평가했다. 미국 10년물 금리 **4.894%**, 실질금리 **2.604%**도 성장주 할인율 부담을 뒷받침한다. 다만 다우가 **+0.41%**이고 USD/KRW가 하락한 점은 핵심 리스크 오프 판단과 충돌하는 보조 신호여서 확신도는 중간 수준이다.\n\n## 날짜별 핵심 이슈: 금리·유가·AI\n\n1. **금리와 물가**: [연준 금리정책의 목표를 둘러싼 논쟁](https://news.google.com/rss/articles/CBMihwFBVV95cUxPbGpTbUlfTmZReTRRYnViUE10RXRycGVJQWxycVo4UE1pcVJoM0xJczJybXk3Z0ZPbmFuUG9HWkZXTU9NeXJNV1ZvVVRKSDVidmRvQThuNkRTYW45S2ViMG9KaUF0Ri1UMnFXS1g1QldCNGREdUpkNzBEeUNEZFVBUGtldXczZUE?oc=5)이 이어지는 가운데 높은 장기금리가 증시 부담이다.\n2. **에너지와 지정학**: [국제유가 급락과 미 국채 변동](https://news.google.com/rss/articles/CBMiaEFVX3lxTE5nYTl4QVhiRmRtMXBrVGp1SzZESWh2aTRXUUI2Rm1ELV9ZWHdybnNabGNfUkhNY0RCOHl4bmVrRFVkMW53N2xsWDVPdHFJd0w4T09xS2s0QTM1Q2VSRlNMSEc4T2t6Zndi0gFuQVVfeXFMT2U4VWxzdVg5ZGJ4aUpfdEhTeTBSbkprd3dkZXZKbXk0bUFZZkhuNTlEMGhTQTZJUmNyNzlRNzQxaWR6WDZmWXphZ2JhMGpzUWNTWlp5MmtpSjNvejVMa19aS1N5dVVfUTNKaXRyY2c?oc=5) 소식에도 현재 WTI는 **96.37달러**다. 비용 부담 완화 기대와 지정학적 불확실성을 함께 점검해야 한다.\n3. **반도체·AI**: [빅테크 AI 시설투자 확대 기대](https://news.google.com/rss/articles/CBMiiAFBVV95cUxOZFBKYlVoR2s5Tmxia2xjdm4xT09paTFnNUgtNmV5LTdQcDN0d01QMHdjeUx6NEhLZndTd21TaUdWVXZjUXl4VWx6UUszUElzdjVab043aTkydS0wTkhpeUR3M3I0czNuUnRHaDFhb2FpeDZQdVd0MTI0bi1fZUZsNTdQaEV4bnBG?oc=5)는 중기 우호 요인이지만 오늘의 광범위한 매도를 상쇄하지 못했다. 광 I/O·실리콘 포토닉스 의제 역시 12개월 연구 과제일 뿐 당일 매매 신호는 아니다.\n\n## 월간 실물 개선과 반전 조건\n\n9월 동행지수는 전월 대비 **+0.5p**였지만 선행지수는 **-0.1p**로 엇갈렸다. 제조업 가동률지수 **+7.992%**, 소매판매 **+3.5538%**, 설비투자 **+5.3036%**, 전산업생산 **+3.0227%**는 모두 전월 대비 개선됐다. 반면 10월 소비자심리는 **-1.2p**, 경제심리는 **+0.9p**로 심리도 혼조다. 9월 생산자물가는 전년 동월 대비 **+7.6655%**지만 비용과 수요 효과가 섞여 있어 방향만으로 악재로 단정할 수 없다.\n\n따라서 월간 개선을 오늘의 반등 근거로 등치하지 말고 외국인·기관 매도 완화와 VIX의 5일 평균 하회 여부를 우선 확인해야 한다. **외국인과 기관이 동반 순매수로 전환하고 반전 신호가 확인되면 오늘의 리스크 오프 논지는 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

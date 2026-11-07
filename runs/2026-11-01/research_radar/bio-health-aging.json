@@ -1,0 +1,253 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "bio-health-aging",
+    "name": "바이오·의료·고령화 기술",
+    "thesis": "AI 기반 신약·진단·고령화 기술의 검증이 임상·허가·생산 수요로 이어지는지 추적한다."
+  },
+  "as_of": "2026-11-01",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 8.44,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 33.75,
+      "net_signal": 33.75,
+      "confidence": 61.25,
+      "evidence_count": 4,
+      "distinct_source_count": 1,
+      "positive_count": 3,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2610-17573v1",
+        "arxiv-2610-31328v1",
+        "arxiv-2610-37338v1",
+        "arxiv-2610-40370v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2610-17573v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Benchmarking Self-Supervised 3D Medical Vision Foundation Models and Transferability Estimation",
+      "claim": "3D 의료 비전 파운데이션 모델 23종을 동일한 14개 다운스트림 과제에서 벤치마킹하고, 사전 파인튜닝 없이 전이 가능성을 추정하는 InsightRank 방법이 일부 과제에서 파인튜닝 비용을 절감할 수 있음을 보였다.",
+      "event_date": "2026-10-13",
+      "known_at": "2026-10-13",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.17573v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.7,
+      "signed_signal": 0.0,
+      "limitation": "실제 임상 적용이나 허가, 생산 수요와의 직접적 연계는 검증되지 않았고, 벤치마크는 공개 데이터와 실험 환경에 한정된다.",
+      "tags": [
+        "weekly-paper",
+        "medical-foundation-model",
+        "benchmark",
+        "transfer-learning",
+        "3d-vision",
+        "self-supervised",
+        "model-selection"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-31328v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Deep Learning for Random Objects in Metric Spaces: Beyond Manifold Assumptions",
+      "claim": "임베딩 가정 없이 metric space 내 임의 객체에 대해 deep learning 기반 회귀 프레임워크를 제안하고, 실제 디지털 헬스 데이터(가속도계, 연속 혈당 모니터링)에서 기존 방법 대비 경쟁력 있는 예측 성능을 보였다.",
+      "event_date": "2026-10-22",
+      "known_at": "2026-10-22",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.31328v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 임상적 의사결정이나 대규모 생산 환경에서의 적용 및 효과는 검증되지 않았으며, 사례 연구는 제한된 데이터에 기반한다.",
+      "tags": [
+        "weekly-paper",
+        "deep-learning",
+        "digital-health",
+        "biomarker",
+        "metric-space",
+        "regression",
+        "non-euclidean"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-37338v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Normative Deviation Modeling for EEG-based Depression Detection",
+      "claim": "EEG 기반 우울증 진단에서 건강한 기준(reference) 모델을 활용한 정규편차 기반 진단법이 다양한 데이터셋과 평가 설정에서 효과적임을 실험적으로 보였다.",
+      "event_date": "2026-10-27",
+      "known_at": "2026-10-27",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.37338v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실험은 공개 EEG 데이터셋에 한정되어 있고, 실제 임상 환경이나 대규모 환자군에서의 검증은 이루어지지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "eeg",
+        "depression",
+        "digital-health",
+        "biomarker",
+        "diagnosis",
+        "normative-modeling"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2610-40370v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "The Athlete as a Scientist of One: Agentic Bayesian Experimental Design for Individualized Physiology from Consumer Wearables",
+      "claim": "EpiCoach라는 에이전트 시스템이 웨어러블 데이터를 활용해 개인 맞춤형 N-of-1 실험을 수행하고, 예측 및 처방 과정을 감사 가능하고 반증 가능한 방식으로 기록하며, 실제 18개월간의 데이터와 3주간의 실시간 실험에서 심박수 예측 등에서 기존 방법보다 우수한 성능을 보였다.",
+      "event_date": "2026-10-29",
+      "known_at": "2026-10-29",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.40370v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "단일 운동선수(산악자전거 선수) 사례에 한정되어 일반화에 한계가 있으며, 장기적 임상적 효과나 대규모 적용에 대한 검증은 이루어지지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "digital-health",
+        "wearable",
+        "n-of-1",
+        "personalization",
+        "bayesian",
+        "auditability"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 33.75점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "전임상·초기 연구 결과는 임상 성공과 규제 승인을 보장하지 않습니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

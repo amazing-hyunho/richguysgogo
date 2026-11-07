@@ -1,0 +1,67 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,771.13pt(+0.53%), KOSDAQ는 725.75pt(+0.19%)로 상승했으나 외국인은 2,323억원 순매도했고 기관은 4,207억원 순매수했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1,334.80원(+0.43%)으로 상승했고 VIX는 19.42로 5일 평균 18.32를 웃돌았다. 미국 나스닥(-2.86%) 약세가 국내 위험선호 회복을 제약한다.",
+      "sources": [
+        "macro_daily",
+        "global_market_data",
+        "news"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "당일 반등의 추세 전환 여부",
+      "majority": "리스크오프 우위: 기관 매수에도 외국인 순매도, 환율 상승, 미국 기술주 조정으로 반등의 수급 질을 보수적으로 평가한다.",
+      "minority": "단기 급락 이후 KOSPI 5일 누적 +5.52% 반등과 국내 생산·소비 개선을 회복 신호로 볼 여지가 있다.",
+      "minority_agents": [
+        "macro",
+        "sector",
+        "risk"
+      ],
+      "why_it_matters": "20일 누적 -21.00%의 중기 하락 흐름 속 반등 지속성과 위험자산 비중 확대 판단이 달라진다."
+    },
+    {
+      "topic": "국내 경기의 시장 방어력",
+      "majority": "월별 실물 개선은 중기 배경일 뿐 당일 수급과 대외 위험을 상쇄하기에는 부족하다.",
+      "minority": "9월 가동률·소매판매·설비투자·전산업생산의 전월 대비 개선과 실업률 하락은 국내 펀더멘털의 완충 요인이다.",
+      "minority_agents": [
+        "macro",
+        "sector",
+        "risk"
+      ],
+      "why_it_matters": "대외 변동성 진정 시 국내 경기 회복이 반등의 폭과 업종 선택을 뒷받침할 수 있는지 점검해야 한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 기관이 지탱한 반등, 외국인은 이탈\n\nKOSPI는 5,771.13pt로 0.53% 상승했고 KOSDAQ는 725.75pt로 0.19% 올랐다. 그러나 상승의 질은 기관 주도였다. 기관은 4,207억원 순매수한 반면 외국인과 개인은 각각 2,323억원, 2,165억원 순매도했다. KOSPI 안에서는 기관 +4,139억원 대 외국인 -1,980억원·개인 -2,485억원으로 대조가 더 뚜렷했다. USD/KRW는 1,334.80원으로 0.43% 상승했고, VIX는 19.42로 최근 5일 평균 18.32보다 높다. 지수 반등과 환율·변동성 신호가 엇갈린 하루였다.\n\n## AI 조정과 환율이 만든 수급의 온도차\n\n수급 담당자 flow는 원화 약세와 미국 기술주 불확실성이 결합한 외국인 매도 우위로 해석했다. 실제 지원 신호인 미국 시장은 S&P500 -1.82%, 나스닥 -2.86%로 약세였다. [AI 투자에 현금 마른 빅테크… 美 반도체주 ‘추락’](https://news.google.com/rss/articles/CBMigwFBVV95cUxQWUNSajk1WjFjX0NWYVlkaEVLZ1VNNy10N2prVTlqWTlFTURtZUFrTXNxS2xzUmZPWkN6NVlfTjRoOXN6OUoySk1MOXFtcjZpelItdnZ6S3JDVGtzNXVmYkVxbmlQUDhYZHFTY0I3THlaZlZfUHVWaEdMZ1Vka2x0MTBkOA?oc=5) 보도와 금리 경계가 위험선호를 누른 것으로 보인다. 다만 이는 뉴스와 당일 수급의 동행 해석이며, 개별 기사의 내용을 매매 원인으로 단정할 수는 없다. 기관 매수가 이를 일부 상쇄했지만, 외국인 매도 전환이 지속되는지 확인이 우선이다.\n\n## 11월 2일 핵심 변수: 연준·달러·기술주\n\n첫째, [미 연준, 금리 동결했지만… 12월엔 다시 올릴까?](https://news.google.com/rss/articles/CBMiakFVX3lxTFBiQy1LU0oyeFJhUGUyN2R1QnZIa0JjSmljNFZ0WEgyYkkwRmg0VkVmVzdVTHRja1ZLSmdIRXI3bHZ1ckZ2UUhHQWc0TzJLbUZ3a0JGNnYtM2VlcHpEQVB5ZkpsYXl3TW44REE?oc=5)라는 금리 경계다. 둘째, [환율, 1330원대 중반서 등락…美 기술주 조정·엔화 강세에 달러 약세](https://news.google.com/rss/articles/CBMiXkFVX3lxTFBwWW95TEY1SU9mRU1pSEstSHJyNFFXRWxVckNrTEZIbU1EbEREcGdPMHJfRUtHOUlGd1h6UU5ZYTdaRjdYdWMwc3BIclNEUFZtd0FhRWRpUDBual90Qmc?oc=5) 이슈와 달리 제공된 원/달러는 당일 상승했다는 점이다. 뉴스의 환율 서술과 실제 당일 가격 신호가 완전히 일치하지 않아, 환율 방향성 단정은 경계해야 한다. 셋째, AI 투자비 부담과 미국 기술주 약세가 국내 성장주 위험선호를 제약하는지 살필 필요가 있다.\n\n## 월별 국내 지표는 완충재, 당일 방향은 아니다\n\n9월 기준 제조업 가동률지수는 전월 대비 7.992%, 소매판매액지수는 3.5538%, 설비투자지수는 5.3036%, 전산업생산지수는 3.0227% 상승했다. 실업률도 2.6%로 전월 대비 0.1%p 하락했고 수출금액지수는 전년 동월 대비 89.2225% 증가했다. 반면 선행지수 순환변동치는 104.1로 전월 대비 0.1p 하락했고, 10월 소비자심리지수도 105.4로 1.2p 하락했다. 따라서 생산·소비의 개선과 경기·심리 혼조가 공존한다. 생산자물가지수는 9월 전년 동월 대비 7.6655% 상승했지만 비용·수요 요인이 함께 반영되므로 방향만으로 호재·악재를 판단하지 않는다.\n\nKOSPI는 최근 5일 +5.52% 반등했으나 20일 누적 -21.00%여서 추세 전환을 선언하기 이르다. 월별 지표는 중기 배경일 뿐 오늘의 반등을 설명하는 신호가 아니다. 향후 외국인 매도 완화, USD/KRW 안정, VIX의 5일 평균 하회 여부가 핵심이다. 반대로 기관 순매수가 약화되는 가운데 외국인 순매도와 원화 약세가 동반 확대되면, 오늘의 ‘기관 방어형 반등’ 가설은 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

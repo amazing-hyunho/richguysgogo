@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 4961.92로 7.84%, KOSDAQ은 633.24로 6.66% 하락했고 VIX는 28.18로 5일 평균 20.54를 크게 웃돌았습니다.",
+      "sources": [
+        "CORE_SIGNALS",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "외국인은 3234억원 순매도한 반면 기관은 2824억원 순매수해 충격을 흡수했지만, 20일 누적 하락률 -27.276%와 반전 신호 부재가 우세합니다.",
+      "sources": [
+        "flow_data",
+        "CORE_SIGNALS"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 국면 분류",
+      "majority": "매크로·수급·섹터·이익·브레드스·유동성 담당자는 리스크 오프를 제시했습니다.",
+      "minority": "리스크 담당자는 분류상 리스크 온을 제시했지만, 실제 주장은 심각한 위험 신호와 방어 필요성을 강조했습니다.",
+      "minority_agents": [
+        "리스크 담당자"
+      ],
+      "why_it_matters": "소수의 분류값과 설명이 충돌하므로 이를 강세 의견으로 해석해서는 안 되며, 실질적인 위원회 합의는 방어적 대응입니다."
+    },
+    {
+      "topic": "기관 매수의 의미",
+      "majority": "외국인 순매도와 높은 변동성, 누적 하락을 근거로 기관 매수만으로 추세 반전을 판단하기 어렵다는 의견입니다.",
+      "minority": "기관의 2824억원 순매수는 단기 가격 충격을 일부 완충할 수 있습니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "기관 매수가 지속되는지보다 외국인 수급 전환과 VIX 안정이 함께 확인돼야 반등의 질을 평가할 수 있습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 11월 6일, AI 충격이 지배한 급락장\n\nKOSPI는 4961.92로 7.84%, KOSDAQ은 633.24로 6.66% 하락했다. 원·달러 환율은 1340.31원으로 당일 0.0147% 내렸지만, 최근 5일 변화는 1.116% 상승이어서 하루 움직임만으로 환율 부담 완화를 선언하기 어렵다. VIX는 28.18로 5일 평균 20.54를 크게 웃돌았다.\n\n하락은 하루짜리 충격에 그치지 않는다. KOSPI는 5일 누적 -13.85%, 20일 누적 -27.276%이며 최근 5일 평균 절대 등락률도 3.914%다. 제공 데이터의 반전 신호 역시 ‘없음’이어서 현재 시장 성격은 고변동성 리스크 오프로 판단한다.\n\n## 외국인 매도와 기관 방어의 비대칭\n\n전체 수급은 외국인 -3234억원, 기관 +2824억원, 개인 -20억원이다. KOSPI에서는 외국인 -2813억원에 기관 +2045억원, 개인 +361억원이 대응했고, KOSDAQ에서는 외국인 -421억원과 개인 -381억원을 기관 +779억원이 흡수했다. 주도권은 기관의 저가 매수보다 외국인의 위험 축소에 있다고 보는 편이 타당하다.\n\n배경에는 [미국 증시의 AI 투매와 나스닥 5.52% 하락](https://news.google.com/rss/articles/CBMid0FVX3lxTE56V3RzdXVKWHUwTTRTcXZNb1FRYkt5MHh0Mm1UMG40N3lhSDdaZkJjbGpyVWtUSlZaeEpFWEItalNIbnJ5WTNDT0xpMl9XS0hSaWY4UjF6UGpCR01hUEVoeWRLWlZMeFpQb2ZyNS1DbUUzX3pMSUZj?oc=5)과 [엔비디아 H200 공급 차질 우려](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE8zbjdDMk83MVlnYW90aFU1WklCT0x1eG9aSzhPdHRxaWFYUDk2Q2FSdjNOdGM3WW03dV9uTllYUTF2d0dNaXc5aFhGMG96VHpWWGsyNENxRkJiZmdiVVZTZTFodVFHYWc?oc=5)가 있다. 수급·섹터·유동성 담당자도 AI 위험과 외국인 매도를 핵심 원인으로 지목했다.\n\n## 금리 경계와 엇갈린 한국 월별 지표\n\n첫째, [미 연준 인사의 추가 금리 인상 발언](https://news.google.com/rss/articles/CBMigAFBVV95cUxPSHpCWEYwYXVXSWJhZjZLTjN2YTFTWk9HVTRramJiWVBYSFFvc25XV3A2M1FkT0VtaXppd0E5SVJZTlplYVFDRWgwa0M4bVoxTDJfNl9od0lNQ3g3OU9hVjFTRzdGYWxERXgyYjB4UVE5djNycG9WZms1cUhiSU9WQw?oc=5)은 미국 10년물 4.837%, 실질금리 2.597% 환경과 함께 성장주 할인율 부담을 높이는 재료다. 둘째, 달러 강보합 뉴스와 달리 원·달러 환율은 당일 소폭 하락했지만 5일 기준으로는 상승해 일간·누적 신호가 충돌한다.\n\n한국 월별 지표는 중기 완충재지만 오늘 급락의 직접 신호는 아니다. 9월 선행지수 순환변동치는 전월 대비 0.1포인트 하락한 반면 동행지수는 0.5포인트 상승했다. 10월 소비자심리는 전월 대비 1.2포인트 하락했지만 경제심리는 0.9포인트 올랐다. 9월 제조업 가동률지수는 전월 대비 7.992%, 소매판매는 3.5538%, 설비투자는 5.3036%, 전산업생산은 3.0227% 증가했다. 반면 10월 소비자물가는 전년 동월 대비 2.8189%, 9월 생산자물가는 7.6655% 상승해 물가 방향만으로 호재나 악재를 단정할 수 없다.\n\n## 반전 확인 전까지 필요한 기준\n\n기관 매수는 완충 요인이지만 공격적 확대의 근거는 아니다. 장기 연구 의제인 광 I/O·실리콘 포토닉스도 AI 인프라 효율화 가능성을 추적하는 12개월 과제일 뿐, 오늘의 매수 신호가 아니다. 오히려 현재 AI 투매와 충돌하므로 실제 수요와 채택 검증이 우선이다.\n\n다음 확인점은 외국인 순매도 종료, VIX의 5일 평균 20.54 이하 안정, 반전 신호 발생 여부다. **외국인 수급이 순매수로 전환되고 VIX가 5일 평균 아래에서 안정되며 반전 신호가 확인되면, 오늘의 리스크 오프 중심 판단은 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

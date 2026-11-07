@@ -1,0 +1,24 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "photonic-computing-programmable-optics",
+  "as_of": "2026-11-01",
+  "lookback_days": 28,
+  "candidate_count": 6,
+  "accepted_count": 5,
+  "rejected_count": 1,
+  "accepted_paper_ids": [
+    "2610-09081v1",
+    "2610-18153v1",
+    "2610-23070v1",
+    "2610-34111v1",
+    "2610-35546v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "7e3f1af32096e8b7bc30971e5860b3606844b4649a84f3a30f10e973c192d83d",
+  "input_tokens": 2764,
+  "output_tokens": 1079,
+  "report_status": "emerging",
+  "report_score": 12.0,
+  "generated_at": "2026-11-01T07:57:01.874254+00:00"
+}
