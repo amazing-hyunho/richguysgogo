@@ -1,0 +1,72 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5059.69로 6.02%, KOSDAQ은 644.27로 5.03% 하락했고, 외국인은 11월 6일 2조7788억원 순매도했습니다.",
+      "sources": [
+        "시장 데이터",
+        "수급 데이터"
+      ]
+    },
+    {
+      "point": "USD/KRW는 1356.68로 0.51% 상승했고 VIX는 25.64로 5일 평균 21.614를 웃돌아 환율·변동성 부담이 동시에 확대됐습니다.",
+      "sources": [
+        "시장 데이터",
+        "누적 시장 데이터",
+        "뉴스"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 체제 판정",
+      "majority": "7명 중 실질적 다수 의견은 단기 위험회피가 우세하다는 판단입니다.",
+      "minority": "리스크 담당자의 내부 체제 태그만 위험선호로 표시됐습니다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "리스크 담당자의 실제 설명은 급락·외국인 매도·높은 VIX를 강조해 다수 결론과 일치하므로, 태그와 서술 간 불일치를 구분해야 합니다."
+    },
+    {
+      "topic": "중기 경기와 단기 시장의 충돌",
+      "majority": "수급·섹터·유동성 담당자는 단기 가격과 외국인 수급 충격이 우세하다고 봤습니다.",
+      "minority": "매크로 담당자는 9~10월 생산·고용·수출 등 중기 지표의 견조함을 함께 강조했습니다.",
+      "minority_agents": [
+        "macro"
+      ],
+      "why_it_matters": "월별 경기 개선은 중기 하방을 완충할 수 있지만, 11월 6일 수급이나 당일 가격 움직임을 직접 설명하거나 반전을 확정하는 신호는 아닙니다."
+    },
+    {
+      "topic": "한국과 미국 주식시장의 온도 차",
+      "majority": "한국 핵심 신호는 KOSPI 급락, 외국인 순매도, 원화 약세로 위험회피를 가리킵니다.",
+      "minority": "미국 보조 신호에서는 S&P500과 나스닥이 각각 0.31%, 1.09% 상승했습니다.",
+      "minority_agents": [
+        "해당 없음"
+      ],
+      "why_it_matters": "미국 기술주 반등이 확인돼도 한국의 환율·수급 악화가 해소되지 않으면 국내 시장의 핵심 체제를 즉시 바꾸기 어렵습니다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 11월 8일, 급락보다 중요한 것은 반전 신호의 부재\n\n제공된 시장 스냅샷에서 KOSPI는 5059.69로 6.02%, KOSDAQ은 644.27로 5.03% 하락했습니다. USD/KRW는 1356.68로 0.51% 상승했고 VIX는 25.64로 5일 평균 21.614를 웃돌았습니다. 11월 6일 기준 외국인은 2조7788억원 순매도한 반면 기관은 1조9161억원, 개인은 3985억원 순매수했습니다.\n\n하루 충격으로만 보기 어렵습니다. KOSPI는 5일 누적 20.288%, 20일 누적 27.827% 하락했고 반전 신호도 거짓으로 표시됐습니다. 다만 미국에서는 S&P500이 0.31%, 나스닥이 1.09% 상승해 보조 신호가 엇갈립니다. 미국 반등보다 국내 환율과 외국인 수급을 우선 봐야 하는 이유입니다.\n\n## 외국인 매도를 기관이 흡수한 비대칭 수급\n\n외국인 순매도 2조7788억원 중 KOSPI가 2조6892억원으로 대부분을 차지했습니다. 기관은 KOSPI에서 1조7092억원을 순매수했지만 지수 급락을 막지는 못했습니다. KOSDAQ에서는 기관이 2069억원을 순매수한 반면 외국인과 개인은 각각 896억원, 1222억원 순매도했습니다.\n\n수급 담당자는 고환율과 글로벌 변동성, AI 불확실성의 복합 영향을 강조했습니다. 실제로 [블루 쓰나미에 AI 불안…환율 1360원 재돌파 촉각](https://news.google.com/rss/articles/CBMigAFBVV95cUxPZGZ4dW0zWnczeTlpNXBuVFRmbTlnMmlHSXR3bUtTaEFDWjRFejdvSzhZWHhsSWZlaUF2Ym9NRUMxcm9Hdmlla01kdnhTSGU5YXVZZEFib0JoZjdvX2pNY0ZNY2VIQkdCaUxmSTh3THVMUW1ic1hmMWlLQmhsU19iWA?oc=5)이라는 환율 경계와 VIX 상승이 동시에 나타났습니다. 기관 매수는 완충재지만, 외국인 매도와 원화 약세가 이어지는 동안 추세 전환 근거로 보기는 어렵습니다.\n\n## 날짜별 핵심 이슈: 환율·물가·공급망\n\n1. **환율과 금리:** USD/KRW 상승에 더해 미국 10년물 금리는 4.859%, 실질금리는 2.629%입니다. [라가르드 ECB 총재, 인플레이션 고공행진 지속](https://news.google.com/rss/articles/CBMiakFVX3lxTE9vd0RpSHZlZ1pjZmVqTTdWb3o0OW40d3E0NzhBSmFWNXdPUGFEWGdyWjJGRnlHY3I3VHRwaVhBOWFaMTc5LTM4MnVwSlFYWEpBVGdKQUlWTWRON21fUXRENC1wN05qb3h4Vnc?oc=5) 보도도 할인율 부담을 환기합니다.\n2. **정책과 공급망:** [자동차 관세 부담 지속 전망](https://news.google.com/rss/articles/CBMiW0FVX3lxTE5lMWVkWnNTV2pnQWFmYUNzRExnZ3c0RndNbGp4UjhJWGlqb3JFbmdOVzFKWURHYWNnVE1xRlNUTzQ3QmsxZVd3a1YxcTR0SkdkaUZXVVJhVzYxd1nSAWBBVV95cUxObU5wSXE0MElEUGZ1Y2t3M3dzcUE2VkE3bkVwVUxBejBVeFA4emJDaTFHU0o0Z3JMTm9DVzNzQ1lZcU92NE5oTlUyXzgyLTVCazE0M2pkR040X1dvYVI1aTA?oc=5)과 원자재·부품 차질 우려는 수출주 변동성을 높이는 요인입니다.\n3. **한국 월별 거시:** 9월 동행지수는 전월 대비 0.5p 상승했지만 선행지수는 0.1p 하락했습니다. 10월 소비자심리는 1.2p 낮아진 반면 경제심리 원계열은 0.9p 올랐습니다. 9월 가동률지수·소매판매·설비투자·전산업생산은 모두 전월 대비 증가했습니다. 10월 CPI는 전년 동월 대비 2.8189%, 9월 PPI는 7.6655% 상승했으나 물가 방향만으로 호재·악재를 단정할 수 없습니다.\n\n## 다음 확인점과 무효화 조건\n\n월별 생산·소비 개선은 중기 완충 요인이지만 오늘의 급락과 동일한 시점의 신호가 아닙니다. 단기적으로는 외국인 순매도 축소, USD/KRW 하락, VIX의 5일 평균 21.614 이하 안정 여부를 함께 확인해야 합니다. 장기 광 I/O·첨단소재 연구 의제도 유효하지만, 현재 수급은 이를 매매 신호로 확인해 주지 않습니다.\n\n오늘의 리스크 오프 판단은 **외국인이 순매수로 전환하고 USD/KRW와 VIX가 동시에 안정되며 반전 신호가 참으로 바뀔 경우** 무효화됩니다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}
