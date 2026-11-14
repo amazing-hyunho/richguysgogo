@@ -1,0 +1,65 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,290.53으로 0.98% 하락했고 외국인은 6,225억원 순매도했다. VIX 19.3은 5일 평균 18.984를 웃돌아 금리·물가 뉴스에 대한 위험회피가 우위다.",
+      "sources": [
+        "flow_data",
+        "market_data",
+        "macro_daily",
+        "news"
+      ]
+    },
+    {
+      "point": "KOSPI는 5일 누적 7.752% 반등했지만 20일 누적 -5.205%로 중기 회복은 미확인이다. 당일 원/달러는 1,334.18원으로 0.06% 상승했으나 5일 기준으로는 0.719% 하락해 환율 신호도 혼재됐다.",
+      "sources": [
+        "market_data",
+        "macro_daily"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 시장 국면",
+      "majority": "매크로·수급·이익모멘텀·브레드스·유동성 담당자는 외국인 매도와 변동성 상승을 근거로 리스크오프를 제시했다.",
+      "minority": "섹터·리스크 담당자는 최근 5일 반등과 국내 실물지표 개선을 감안해 중립적 조정 국면으로 봤다.",
+      "minority_agents": [
+        "sector",
+        "risk"
+      ],
+      "why_it_matters": "5일 반등이 추세 전환인지, 20일 누적 약세 속 기술적 반등인지를 가르는 핵심 쟁점이다."
+    },
+    {
+      "topic": "환율이 외국인 매도의 주된 원인인지 여부",
+      "majority": "수급 담당자는 원/달러의 당일 상승폭이 0.06%에 그친 점을 근거로 환차손 회피보다 글로벌 금리·정책 리스크성 리밸런싱을 우선시했다.",
+      "minority": "유동성 담당자는 달러 및 정책 민감 유동성 환경 자체가 보수적이라는 점을 더 중시했다.",
+      "minority_agents": [
+        "liquidity"
+      ],
+      "why_it_matters": "환율 급등이 동반되지 않은 매도라면 외국인 수급의 지속성은 향후 금리·위험선호 변화에 더 민감할 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 금리 경계가 눌렀던 KOSPI\n\nKOSPI는 5,290.53으로 0.98% 하락한 반면 KOSDAQ은 699.66으로 0.45% 상승했다. 원/달러는 1,334.18원으로 0.06% 올랐고, VIX는 19.3으로 5일 평균 18.984를 상회했다. 제공된 11월 13일 수급에서 외국인은 6,225억원 순매도, 기관은 1,200억원 순매수, 개인은 367억원 순매도였다. 이날 장세는 지수 전체의 방향성보다 미국 물가·금리 재평가에 따른 위험 예산 축소가 중심인 조정으로 판단한다.\n\n## 외국인 매도와 기관의 KOSDAQ 방어\n\n외국인 매도는 KOSPI 5,419억원, KOSDAQ 806억원으로 양 시장에 걸쳤다. 반면 기관 순매수 1,200억원은 KOSDAQ 1,259억원 매수가 대부분이며 KOSPI에서는 59억원 순매도였다. 개인도 KOSPI 145억원 순매수와 달리 KOSDAQ 512억원 순매도로, 광범위한 저가매수는 확인되지 않는다. 수급 담당자(flow)는 원/달러 상승폭이 제한적이었다는 점에서 환율보다 금리·정책 리스크성 리밸런싱을 주된 배경으로 제시했다. 실제 KOSPI는 5일 누적 7.752% 올랐지만 20일 누적 -5.205%여서, 단기 반등 이후 매물 소화라는 리스크·섹터 담당자의 중립 의견도 경계할 필요가 있다.\n\n## 11일 뉴스의 우선순위: 물가, 금리, AI 공급망\n\n첫째, 11월 11일 뉴스 기준으로 [미 물가 쇼크에 연준 ‘빅스텝’ 거론](https://news.google.com/rss/articles/CBMidkFVX3lxTE80bndSNXNmazFIV1NrM1VCM2dkWHhnRkdUdWxMTE5nZHBSWlA1V2l2ZXRHZ2RSTDk1V0E1RVBKbExrUTRybl85UVRMakJqXzdPd2lIX25LVkdlQW1ZS2Z6U0t0RVB2dWFzT0FlY1JiMWhCMkx2OUHSAWZBVV95cUxQcEN6a25iTkRZRm5NSDNWMjhTQ2thcS0tbnVpenB6cmlHLUd3WHpIOGN3RldrTzdQbHBBdjJJam03UXFHTDRUTGVmajNXVGV2T2JvR3hFVXk4LWZFckpZeWxRYVhQTUE?oc=5) 및 [미 CPI 예상 상회와 반도체지수 하락 보도](https://news.google.com/rss/articles/CBMiWkFVX3lxTE9VRWFCNTBtMkRSNWhheW5TMFdzVm1jNnZBV3FEUFJETjA4Q3RVdi13TTd6MWluNF9sTmtDUW5lZWlpSUltZUxKWFNCT29pNlNQZE1qWEh2N0dLUQ?oc=5)가 할인율 부담을 부각했다. 둘째, 환율 관련 보도는 금리 우려 속 원화 강세 사례도 제시해 당일 원/달러 소폭 상승만으로 일방적 외환 불안을 단정하기 어렵다. 셋째, [관세 환경의 AI 공급망 재편](https://news.google.com/rss/articles/CBMiWkFVX3lxTE8xN0F2anBkUUw5empKMEpHVWRKZlBLNFJSbXQ5RHQwSFQyNDdHOVR5MzBheFVSNm1TeEdUeG9NYXB6THNtNUx5V0ZLeXA0NGI1WEhsbUM1ZzR4dw?oc=5)은 중기 테마이나, 주간 연구 의제상 광 I/O·실리콘 포토닉스 논지는 약화된 상태여서 당일 방어 논리로 사용하기는 이르다.\n\n## 월간 실물 개선은 완충재, 물가는 별도 변수\n\n국내 월간 지표는 일별 수급과 분리해 봐야 한다. 9월 가동률지수는 전월 대비 7.992%, 소매판매 3.5538%, 설비투자 5.3036%, 전산업생산 3.0227% 개선했고, 10월 실업률은 2.5%로 전월 대비 0.1%포인트 하락했다. 수출금액지수도 10월 전년 동월 대비 107.6131% 증가했다. 그러나 9월 선행지수는 0.1포인트 하락했고 10월 소비자심리지수도 1.2포인트 하락해 경기·심리는 혼조다. CPI는 10월 전년 동월 대비 2.8189%, PPI는 9월 7.6655% 상승으로 물가 방향은 호재·악재를 단정하지 않는다.\n\n향후 외국인 매도 완화, VIX의 5일 평균 하회, 금리 불안 진정이 동반되는지 확인해야 한다. 반대로 외국인 매도가 확대되고 VIX 상승과 원/달러 상승이 함께 강화되면 오늘의 ‘금리 경계형 조정’이라는 판단은 무효화되며, 방어적 대응을 강화해야 한다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

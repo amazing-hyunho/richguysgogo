@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,241.28로 0.01% 상승에 그친 반면 최근 5일 -7.705%, 20일 -12.309% 누적 하락해 당일 보합만으로 추세 반전을 판단하기 어렵다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "외국인은 684억원 순매도했고 KOSPI에서 828억원을 팔았다. 반면 KOSDAQ에서는 외국인 144억원·기관 262억원 순매수로 시장별 수급은 엇갈렸다.",
+      "sources": [
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 시장 체질",
+      "majority": "매크로·수급·섹터·이익모멘텀·브레드스·유동성 담당자는 누적 낙폭, 외국인 매도, 금리 불확실성을 근거로 리스크오프를 유지했다.",
+      "minority": "리스크 담당자는 당일 KOSPI 보합과 국내 실물지표 개선 가능성을 감안해 중립으로 판단했다.",
+      "minority_agents": [
+        "risk"
+      ],
+      "why_it_matters": "KOSPI의 누적 하락이 큰 만큼 기술적 반등 가능성은 있으나, 외국인 매도가 지속되면 반등의 신뢰도는 낮아진다."
+    },
+    {
+      "topic": "국내 경기와 주식 수급의 괴리",
+      "majority": "중기 실물 개선은 시장 하방을 완화하는 배경일 뿐, 당일 매수 전환 근거는 아니라는 견해가 우세하다.",
+      "minority": "국내 생산·소비·투자·고용 개선이 향후 위험자산 회복의 토대가 될 수 있다는 해석이 가능하다.",
+      "minority_agents": [
+        "macro",
+        "sector"
+      ],
+      "why_it_matters": "월별 지표의 개선이 이익 기대와 외국인 순매수로 연결되는지 확인되기 전까지 실물지표만으로 단기 방향을 확정할 수 없다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 보합 KOSPI와 강한 KOSDAQ의 분화\n\nKOSPI는 5,241.28로 0.01% 상승에 그쳤고, KOSDAQ은 690.24로 3.39% 올랐다. 달러/원은 1,344.79원으로 0.26% 하락했지만, 외국인은 전체 시장에서 684억원 순매도했다. 기관은 15억원 순매수, 개인은 39억원 순매도였다. VIX는 19.46으로 5일 평균 21.45보다 낮아졌으나, KOSPI는 최근 5일 -7.705%, 20일 -12.309%다. 변동성 완화 조짐을 추세 반전으로 확대 해석하기보다, 큰 누적 낙폭 속 시장 간 반등 강도가 갈린 하루로 봐야 한다.\n\n## 외국인 KOSPI 매도, KOSDAQ 매수의 의미\n\n수급의 중심은 KOSPI 외국인 828억원 순매도와 기관 247억원 순매도였다. 개인은 KOSPI에서 367억원을 순매수하며 매물을 일부 흡수했다. 반면 KOSDAQ에서는 외국인 144억원, 기관 262억원이 순매수하고 개인은 406억원을 순매도해 지수 급등을 뒷받침했다. 이는 국내 전반의 위험선호 회복보다는 대형주 매도와 코스닥 매수의 분화에 가깝다. 수급 담당자(flow)는 이를 연준·인플레이션 및 반도체 정책 불확실성에 대응한 포트폴리오 재조정으로 해석했고, 리스크 담당자(risk)는 단기 반등 가능성을 이유로 중립 의견을 냈다.\n\n## 금리·반도체 헤드라인이 만든 경계 심리\n\n첫째, [미 연준 월러의 12월 50bp 인상 검토 보도](https://news.google.com/rss/articles/CBMiVkFVX3lxTE5FQ1JaS0c1LVFidjF3TlJkNkNlVmMtamFMaVZ1YmZHTDRLRHNKRWI4Z1NtcXg1UThFbmIzZnRhVk02TDNMWno5SGc5LUpOZUNiZUZMaGlB?oc=5)와 [미 물가 상회·국채금리 급등 보도](https://news.google.com/rss/articles/CBMiWkFVX3lxTE9jNHgybWo5dGVhZzBFS3gtWExxczlERkE1cG5NdGgzcVZEU0xsZGkzU0dxRGNIQXo0WmlEb0xuRk5EZF9RcWpfTnFYOTRCUi1TQVd3ZGxtUHMyZw?oc=5)은 고금리 장기화 우려를 키우는 단기 변수다. 둘째, [AI칩의 중국 밀반입 관련 보도](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5abEVValJfQ3p1cFRHTGIwWEJwUEpQOXQ2cjJwZC1fWk9xZTQwZFNlOU4wcTdnWjhoTkZkbDJaM1NwVmVlWlNsaHVkZWROUjNyWHdBMEFwODc5dzR0Q3BZNVVENXIzcms?oc=5)와 반도체 정책 이슈는 AI 공급망의 규제 위험을 부각한다. 이는 주간 연구 의제인 광 I/O·실리콘 포토닉스가 ‘약화’ 상태라는 점과도 맞물려, 기술 장기 테마와 당일 매매 판단을 분리할 필요가 있다.\n\n## 월별 실물 개선은 하방 완충, 단기 매수 신호는 아님\n\n한국 월별 지표는 중기적으로 긍정적이다. 2026년 9월 제조업 가동률지수는 전월 대비 7.992%, 소매판매는 3.5538%, 설비투자는 5.3036%, 전산업생산은 3.0227% 상승했고, 실업률은 2.6%로 전월 대비 0.1%포인트 낮아졌다. 다만 같은 9월 선행지수 순환변동치는 0.1포인트 하락했고, 10월 소비자심리지수도 1.2포인트 하락했다. 동행지수는 9월 0.5포인트 상승, 경제심리지수는 10월 0.9포인트 상승해 심리와 경기 신호가 엇갈린다. CPI는 10월 전년 동월 대비 2.8189%, PPI는 9월 7.6655% 상승했으므로 물가 방향만으로 호재·악재를 단정할 수 없다.\n\n당일 핵심 관찰점은 외국인의 KOSPI 순매도 축소·전환, 미국 금리 관련 불확실성 완화, 그리고 KOSPI의 누적 약세 완화 여부다. 이 중 외국인 매도가 확대되거나 금리·반도체 규제 우려가 재점화돼 KOSPI 약세가 이어지면, 국내 실물 개선을 근거로 한 반등 시나리오는 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

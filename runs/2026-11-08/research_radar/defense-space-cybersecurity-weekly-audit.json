@@ -1,0 +1,23 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "defense-space-cybersecurity",
+  "as_of": "2026-11-08",
+  "lookback_days": 28,
+  "candidate_count": 12,
+  "accepted_count": 4,
+  "rejected_count": 8,
+  "accepted_paper_ids": [
+    "2610-41050v1",
+    "2611-00971v1",
+    "2611-08118v1",
+    "2611-08170v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "cde234eaf192c7b3567bb904a431616f06769d469b2e7cab25a5d8cdee671920",
+  "input_tokens": 5148,
+  "output_tokens": 960,
+  "report_status": "emerging",
+  "report_score": 9.14,
+  "generated_at": "2026-11-08T07:57:39.781560+00:00"
+}

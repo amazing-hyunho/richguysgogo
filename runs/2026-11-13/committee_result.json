@@ -1,0 +1,64 @@
+{
+  "consensus": "Committee supports risk-on positioning with disciplined risk controls.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_ON.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI 5,471.52(+2.35%), KOSDAQ 725.44(+4.15%)로 강세였고 외국인 +2,601억원·기관 +1,162억원이 개인 -4,559억원 매도를 흡수했다.",
+      "sources": [
+        "flow_data",
+        "market_data"
+      ]
+    },
+    {
+      "point": "KOSPI 5일 누적 +8.812%와 원/달러 5일 -1.915%는 단기 수급 개선을 뒷받침하지만, KOSPI 20일 누적 -1.574%로 추세 전환을 확정하기는 이르다.",
+      "sources": [
+        "market_data",
+        "flow_data"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 반등의 추세 전환 여부",
+      "majority": "중립: 강한 반등과 수급 개선은 확인됐으나 20일 누적 약세 및 정책 불확실성 때문에 추세 전환 확정은 유보한다.",
+      "minority": "위험선호: 외국인·기관 동반 순매수와 KOSPI·KOSDAQ 강세가 시장 내부 확산을 시사한다.",
+      "minority_agents": [
+        "flow",
+        "sector",
+        "breadth"
+      ],
+      "why_it_matters": "단기 급등 뒤 추격 매수의 기대수익과 변동성 위험을 함께 결정한다."
+    },
+    {
+      "topic": "외국인 매수의 지속성",
+      "majority": "원화의 5일 흐름 안정과 현물 매수는 긍정적이나, 미국 물가·금리 뉴스와 VIX 18.7을 고려하면 지속성 확인이 필요하다.",
+      "minority": "AI·반도체 및 원화 안정이 외국인 매수를 계속 견인할 가능성이 높다.",
+      "minority_agents": [
+        "flow"
+      ],
+      "why_it_matters": "KOSPI 주도 수급이 유지되는지가 지수 반등의 폭과 지속 기간을 좌우한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Lean into confirmed momentum leaders."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Size positions with volatility limits."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid chasing overstretched breakouts."
+    }
+  ],
+  "sugeup_narrative": "## 외국인·기관 동반 매수로 나타난 고베타 반등\n\nKOSPI는 5,471.52로 2.35%, KOSDAQ은 725.44로 4.15% 올랐다. 원/달러는 1,336.60원으로 당일 0.10% 상승했고, VIX는 18.7로 5일 평균 19.768보다 낮다. 수급은 외국인 +2,601억원, 기관 +1,162억원, 개인 -4,559억원이다. KOSPI에서 외국인 +2,183억원·기관 +484억원, KOSDAQ에서 외국인 +418억원·기관 +678억원이 유입돼 양 시장의 상승을 함께 뒷받침했다.\n\n## 개인 차익실현을 흡수한 매수 주체\n\n오늘의 핵심은 개인 매도를 외국인과 기관이 동시에 흡수한 점이다. KOSPI 5일 누적 수익률은 +8.812%이고 원/달러의 5일 변화율은 -1.915%로, 최근 원화 흐름 안정과 위험선호 회복이 외국인 매수 환경에 우호적이었다. 수급 담당자(flow)는 이를 외국인 매수 우위와 개인 차익실현 국면으로 평가했고, 브레드스 담당자(breadth)도 동반 순매수를 시장 확산 신호로 봤다. 다만 KOSPI 20일 누적은 -1.574%이며 반전 신호는 거짓(false)이다. 당일 급등을 중기 추세 전환으로 동일시하기보다 매수 지속성을 확인할 국면이다.\n\n## 11일 뉴스의 금리 경계와 AI 공급망 기대\n\n뉴스 집계일은 11월 11일로 13일 수급과 시차가 있어 당일 가격 변동의 직접 원인으로 단정할 수 없다. 다만 미국 물가 충격과 연준의 큰 폭 인상 가능성을 다룬 [금리 기사](https://news.google.com/rss/articles/CBMidkFVX3lxTE80bndSNXNmazFIV1NrM1VCM2dkWHhnRkdUdWxMTE5nZHBSWlA1V2l2ZXRHZ2RSTDk1V0E1RVBKbExrUTRybl85UVRMakJqXzdPd2lIX25LVkdlQW1ZS2Z6U0t0RVB2dWFzT0FlY1JiMWhCMkx2OUHSAWZBVV95cUxQcEN6a25iTkRZRm5NSDNWMjhTQ2thcS0tbnVpenB6cmlHLUd3WHpIOGN3RldrTzdQbHBBdjJJam03UXFHTDRUTGVmajNXVGV2T2JvR3hFVXk4LWZFckpZeWxRYVhQTUE?oc=5)와 [CPI 예상 상회 기사](https://news.google.com/rss/articles/CBMiWkFVX3lxTE9VRWFCNTBtMkRSNWhheW5TMFdzVm1jNnZBV3FEUFJETjA4Q3RVdi13TTd6MWluNF9sTmtDUW5lZWlpSUltZUxKWFNCT29pNlNQZE1qWEh2N0dLUQ?oc=5)는 금리 민감 자산의 변동성 요인이다. 반면 [AI 공급망 기사](https://news.google.com/rss/articles/CBMiWkFVX3lxTE8xN0F2anBkUUw5empKMEpHVWRKZlBLNFJSbXQ5RHQwSFQyNDdHOVR5MzBheFVSNm1TeEdUeG9NYXB6THNtNUx5V0ZLeXA0NGI1WEhsbUM1ZzR4dw?oc=5)는 반도체·부품의 정책 및 공급망 재편 기대를 유지시키는 배경이다.\n\n## 월간 실물 개선, 그러나 선행·심리는 엇갈림\n\n한국 월별 지표는 일일 주가 신호가 아닌 중기 배경이다. 2026년 9월 생산·소비 그룹에서는 제조업 가동률지수 108.1(전월 대비 +7.992%), 소매판매액지수 104.9(+3.5538%), 설비투자지수 137.0(+5.3036%), 전산업생산지수 122.7(+3.0227%)로 개선됐다. 10월 실업률은 2.5%(전월 대비 -0.1%p), 수출금액지수는 276.25(전년 동월 대비 +107.6131%)였다. 그러나 9월 선행지수 순환변동치는 104.1로 전월 대비 -0.1p, 10월 소비자심리지수는 105.4로 -1.2p여서 경기·심리의 혼조를 남긴다. CPI는 10월 전년 동월 대비 +2.8189%, PPI는 9월 +7.6655%로 물가 방향만으로 호재·악재를 단정할 수 없다.\n\n다음 점검 항목은 외국인 순매수의 연속성, 원/달러의 재상승 여부, 금리·물가 뉴스 이후 변동성이다. 외국인·기관의 동반 매수가 꺾이고 원/달러가 반등하면서 KOSPI가 단기 상승분을 지키지 못하면, 오늘의 단기 위험선호 및 선별 매수 논지는 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

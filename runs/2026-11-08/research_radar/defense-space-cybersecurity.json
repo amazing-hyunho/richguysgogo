@@ -1,0 +1,250 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "defense-space-cybersecurity",
+    "name": "국방·우주·사이버보안",
+    "thesis": "자율 국방·위성·사이버보안 기술의 진전이 정부 예산과 상용 인프라 수요로 이어지는지 추적한다."
+  },
+  "as_of": "2026-11-08",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 9.14,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 36.56,
+      "net_signal": 36.56,
+      "confidence": 61.25,
+      "evidence_count": 4,
+      "distinct_source_count": 1,
+      "positive_count": 3,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2610-41050v1",
+        "arxiv-2611-00971v1",
+        "arxiv-2611-08118v1",
+        "arxiv-2611-08170v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2610-41050v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Closing the Applied Cybersecurity Gap in Critical Infrastructure: A Cyber-to-Physical Security Assessment Framework for Water Systems",
+      "claim": "본 논문은 수자원 인프라(EPANET 기반)에서 사이버 공격이 실제 물리적 서비스 장애로 이어지는 경로를 시뮬레이션 기반으로 평가하는 프레임워크(ACGI, CPPR)를 제시하고, 다양한 공격 시나리오에서 사이버-물리 연계 효과를 정량적으로 분석하였다.",
+      "event_date": "2026-10-29",
+      "known_at": "2026-10-29",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2610.41050v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.55,
+      "signed_signal": 0.0,
+      "limitation": "실제 현장 시스템이 아닌 시뮬레이션 및 합성 데이터 기반 평가에 머물러 있으며, 제어 효과의 현장 교정이나 실전 사고 예측력은 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "cybersecurity",
+        "critical-infrastructure",
+        "water-systems",
+        "simulation",
+        "cyber-physical"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2611-00971v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "E-UDE: A Scientific Machine Learning Model for Malware Propagation Dynamics",
+      "claim": "본 논문은 실제 악성코드 전파 데이터셋(Code Red, Witty Worm)에 대해 해석력과 예측력을 개선한 E-UDE(Enhanced Universal Differential Equation) 기반 동적 전파 모델을 제안하고, 기존 ODE/UDE 대비 예측 정확도와 강인성이 우수함을 실증하였다.",
+      "event_date": "2026-10-31",
+      "known_at": "2026-10-31",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2611.00971v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실제 네트워크 방어 시스템 적용이나 실시간 제어 효과는 검증되지 않았으며, 모델의 해석적 통찰이 실제 방어 정책에 어떻게 연결되는지는 제한적으로 다루어진다.",
+      "tags": [
+        "weekly-paper",
+        "cybersecurity",
+        "malware",
+        "propagation",
+        "modeling",
+        "simulation"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2611-08118v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Cloudy Skies: Early Detection of Jamming Against Iridium LEO Satellite-IoT Links",
+      "claim": "본 논문은 실제 Iridium LEO 위성-IoT 링크에서 다양한 재밍 조건 하에 수집된 데이터셋을 공개하고, 물리계층 기반 이상 탐지(autoencoder 기반)가 기존 GNSS 신호 품질 지표보다 재밍 조기 탐지에 효과적임을 실험적으로 입증하였다.",
+      "event_date": "2026-11-05",
+      "known_at": "2026-11-05",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2611.08118v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실험은 특정 위성 시스템(Iridium)과 제한된 환경(47개 조건, 두 가지 전파 환경)에서만 수행되었으며, 다양한 위성 시스템이나 대규모 실전 환경에 대한 일반화는 검증되지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "satellite",
+        "jamming",
+        "anomaly-detection",
+        "iot",
+        "physical-layer",
+        "experiment"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2611-08170v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "The Promise of Strategic Agentic Scambaiting",
+      "claim": "본 논문은 자율 에이전트 기반 스캠베이팅(사기꾼과의 자동화된 상호작용을 통한 방어)이 AI 기반 사기 공격자와의 경쟁적 환경에서 효과적으로 위협 인텔리전스를 수집하고, 방어자 투자(모방 품질 향상)가 공격자 탐지력 향상보다 전략적으로 유리함을 수리적 모델과 시뮬레이션을 통해 보였다.",
+      "event_date": "2026-11-05",
+      "known_at": "2026-11-05",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2611.08170v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.55,
+      "signed_signal": 0.4125,
+      "limitation": "실제 운영 환경이 아닌 수리적 모델과 시뮬레이션 기반 분석에 한정되어 있으며, 실전 적용이나 장기적 효과에 대한 실증적 검증은 이루어지지 않았다.",
+      "tags": [
+        "weekly-paper",
+        "cybersecurity",
+        "autonomous-defense",
+        "fraud",
+        "agent",
+        "simulation"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 36.56점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "보안·국방 연구는 공개 정보가 제한되므로 예산·조달 자료와의 교차검증이 필요합니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}
