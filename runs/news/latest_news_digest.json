@@ -1,19 +1,19 @@
 {
-  "crawled_at": "2026-11-14T19:41:51.166296+00:00",
+  "crawled_at": "2026-11-14T20:41:48.762880+00:00",
   "news_date": "2026-11-15",
-  "total_collected": 15,
+  "total_collected": 17,
   "topic_counts": [
+    [
+      "환율/달러",
+      2
+    ],
     [
       "금리/연준",
       5
     ],
     [
-      "환율/달러",
-      1
-    ],
-    [
       "반도체/AI",
-      3
+      4
     ],
     [
       "정책/테마",
@@ -26,6 +26,17 @@
   ],
   "top_articles": [
     {
+      "topic": "환율/달러",
+      "count": 2,
+      "title": "강달러에 환율 반등 압력…'반도체 달러'가 막아설까[주간외환전망] - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNRjhFa1RxcHlacXA5cndvOUpCZlRyMjZUY2pqRlRleU1uelVCRUhwblVFRG5lUE9xRHB0Vm9CUnBxVmc3SkZSWFY2bmt0cGNzTkJncTRrT1NNZktpTWQ1dFZEQzB3MnNob20zMGRkS19wUDdjemRUOFBncGlGZG85Wg?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 강달러에 환율 반등 압력…'반도체 달러'가 막아설까[주간외환전망] - 이데일리",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "금리/연준",
       "count": 5,
       "title": "제퍼슨: 인플레이션이 연준 금리 방향의 주요 결정 요인 - IDNFinancials",
@@ -37,19 +48,8 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 1,
-      "title": "美 달러화 3주째 강세…국채금리 급등에 19개월 최고권 - 글로벌이코노믹",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxObkJ6akMzbENyb3RLT0I2UGdJVjRHbjVtbDR1bDctQ1hWRUUyYUJTNE41aWFueHVVc3Y3emVDS2hMN3pxOEU4cHhhRV8yd3ppLXNYOGViNVdWMDRDdUZTdEhCWDZPNHN1bEljUGhXVEdfUTFIb3hSdTFiOGlkVkk3NktCWkh4VF8z?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 美 달러화 3주째 강세…국채금리 급등에 19개월 최고권 - 글로벌이코노믹",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "반도체/AI",
-      "count": 3,
+      "count": 4,
       "title": "美연구소 \"中딥시크·키미, 美제재에도 엔비디아 최첨단칩 훈련\" - 매일경제 마켓",
       "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1fYjNacjFwazNkN0t6VEdyQ0tFNkJwc0I2emVhV0RocmdYRDlkQnNZZW5BeUVmdGgydlBkVDI0ZTNSSmpsWW1nZFk2Z3c0Nm9TOHc?oc=5",
       "summary_lines": [
@@ -84,7 +84,7 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 6,
+      "total_count": 7,
       "topics": [
         {
           "topic": "금리/연준",
@@ -94,19 +94,19 @@
         },
         {
           "topic": "환율/달러",
-          "count": 1,
-          "title": "美 달러화 3주째 강세…국채금리 급등에 19개월 최고권 - 글로벌이코노믹",
-          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxObkJ6akMzbENyb3RLT0I2UGdJVjRHbjVtbDR1bDctQ1hWRUUyYUJTNE41aWFueHVVc3Y3emVDS2hMN3pxOEU4cHhhRV8yd3ppLXNYOGViNVdWMDRDdUZTdEhCWDZPNHN1bEljUGhXVEdfUTFIb3hSdTFiOGlkVkk3NktCWkh4VF8z?oc=5"
+          "count": 2,
+          "title": "강달러에 환율 반등 압력…'반도체 달러'가 막아설까[주간외환전망] - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNRjhFa1RxcHlacXA5cndvOUpCZlRyMjZUY2pqRlRleU1uelVCRUhwblVFRG5lUE9xRHB0Vm9CUnBxVmc3SkZSWFY2bmt0cGNzTkJncTRrT1NNZktpTWQ1dFZEQzB3MnNob20zMGRkS19wUDdjemRUOFBncGlGZG85Wg?oc=5"
         }
       ]
     },
     {
       "sector": "IT/반도체",
-      "total_count": 3,
+      "total_count": 4,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 3,
+          "count": 4,
           "title": "美연구소 \"中딥시크·키미, 美제재에도 엔비디아 최첨단칩 훈련\" - 매일경제 마켓",
           "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1fYjNacjFwazNkN0t6VEdyQ0tFNkJwc0I2emVhV0RocmdYRDlkQnNZZW5BeUVmdGgydlBkVDI0ZTNSSmpsWW1nZFk2Z3c0Nm9TOHc?oc=5"
         }
