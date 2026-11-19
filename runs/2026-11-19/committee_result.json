@@ -1,0 +1,64 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 5,067.44로 1.99% 상승하고 KOSDAQ도 662.81로 1.96% 올랐으나, KOSPI 5일·20일 누적 수익률은 각각 -3.177%, -5.794%로 반등의 추세 전환 확인은 이르다.",
+      "sources": [
+        "market_data",
+        "cumulative_context"
+      ]
+    },
+    {
+      "point": "11월 18일 수급은 기관 +6,720억원이 지수 반등을 지지했지만 외국인 -3,902억원과 개인 -7,384억원 순매도가 동반됐다. VIX 24.56은 5일 평균 22.18보다 높아 위험 선호 회복을 제한한다.",
+      "sources": [
+        "flow_data",
+        "macro_daily",
+        "cumulative_context"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "당일 반등의 추세 전환 여부",
+      "majority": "다수는 최근 20일 누적 하락, 외국인 순매도 및 높은 VIX를 근거로 반등을 방어적으로 해석한다.",
+      "minority": "중기 실물지표의 견조함을 감안하면 단기 수급과 시장 흐름을 즉시 비관 국면으로 단정하기 어렵다는 견해다.",
+      "minority_agents": [
+        "macro",
+        "risk"
+      ],
+      "why_it_matters": "반등이 추세 전환인지 기술적 반발인지에 따라 위험자산 확대 시점과 손절 관리 기준이 달라진다."
+    },
+    {
+      "topic": "환율 안정의 수급 해석",
+      "majority": "원/달러가 1,332.216798원으로 0.15459198222942241% 하락했는데도 외국인 순매도가 이어져, 환율만으로 외국인 수급 개선을 판단하기 어렵다.",
+      "minority": "당일 원화 강세와 기관 순매수는 단기 위험선호 회복의 보조 신호로 볼 여지가 있다.",
+      "minority_agents": [
+        "macro"
+      ],
+      "why_it_matters": "환율 안정이 외국인 매도 완화로 연결되는지 여부가 국내 반등의 지속성을 판별할 핵심 확인 변수다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 1.99% 반등, 그러나 위험회피의 잔상\n\nKOSPI는 5,067.44로 1.99% 상승했고 KOSDAQ도 662.81로 1.96% 올랐다. 원/달러는 1,332.216798원으로 0.15459198222942241% 하락했다. 다만 VIX는 24.56으로 5일 평균 22.18보다 높다. KOSPI의 5일 및 20일 누적 수익률도 각각 -3.177%, -5.794%여서, 이날 상승만으로 하락 추세가 끝났다고 보기는 어렵다. 매크로·리스크 담당자는 중기 여건과 단기 수급을 분리해야 한다고 봤고, 수급·섹터·브레드스·유동성 담당자는 리스크오프 판단을 유지했다.\n\n## 기관 매수가 받쳤지만 외국인·개인 동반 이탈\n\n수급 기준일인 11월 18일 기관은 6,720억원 순매수한 반면, 외국인은 3,902억원, 개인은 7,384억원 순매도했다. 시장별로는 KOSPI에서 기관 +4,926억원, 외국인 -3,405억원, 개인 -6,169억원이었고 KOSDAQ에서는 기관 +1,794억원, 외국인 -497억원, 개인 -1,215억원이었다. 따라서 이날 지수 반등은 기관 매수가 지지한 흐름으로 해석하는 편이 타당하다.\n\n원화가 소폭 강세인데도 외국인 매도가 지속된 점은 환율만으로 수급 개선을 기대하기 어렵다는 신호다. 연준의 추가 긴축 경계가 부각된 [연준 의사록 보니… “금리 더 올려야” 거의 한목소리, 12월 ‘빅스텝’도 거론](https://news.google.com/rss/articles/CBMiiAFBVV95cUxPM3ZveEtXbE1jSTdUcFM4UDZaSzNrVDNDcHUxdnhQVW5lTWZfcTQxYW5sa1JaVGgzLVdQTEl2Qi0wd3lScWo5MjdJRGJJNXU0NjBfUUJ0blBlX1h4TkZhdV96anBlVmZsVXc2Y1lYcmlxTHhsemdzRHdDRXhoOXpqTTBDVzd0VUto?oc=5)라는 뉴스 흐름이 고변동성과 맞물린다. 다만 이는 수급의 가능한 배경일 뿐, 개별 매매의 직접 원인으로 단정할 수는 없다.\n\n## 11월 19일 이슈 우선순위: 연준, 미국 혼조, 반도체 기대\n\n첫째, 인플레이션과 금리다. [美연준 월러 ‘빅스텝’ 언급…“인플레이션 매우 걱정”](https://news.google.com/rss/articles/CBMiZ0FVX3lxTE05RC0wQmowWktmbW41WHgtLVdUZF9lbF9odjh3Ni1nNDFmVkJWc1FORktGalNvaTNpYWM1MEphNzZ3MFZJd09MVkJvNDBrc2RuTXhsWVQ0Z01XOF9MNzVrS3h6N1Z0LXc?oc=5)는 위험자산 할인율 부담을 높이는 재료다. 둘째, 미국 지수는 S&P500 -0.2302286074711177%, 다우 -1.105706093568445%와 나스닥 +0.41721638466476285%가 엇갈렸다. [엔비디아 호실적에도 연준 추가 금리 인상 경계에 혼조](https://news.google.com/rss/articles/CBMidkFVX3lxTE0tWDRMNkoza002NzRIX0wteGJUOTNCeHpQU1V6aTlPYUc3b0dDZ0ZYQkhjZ3hWaUhtX2xiUnhQQ3ZHV1p1Z2JTdjZQNVhkcmxrSWJteEpzbzVKRzZ3bjhTRnBiQmlzNWRtbW55azFZeFZ0TGZQd2c?oc=5)라는 구도와 부합한다. AI·반도체는 장기 연구 의제로는 유효하지만, 당일 수급 개선을 자동으로 보장하지 않는다.\n\n## 월별 실물 개선과 단기 경계의 공존\n\n한국 월별 지표는 일일 시장 움직임과 구분해야 한다. 2026년 9월 제조업 가동률지수는 전월 대비 7.992%, 소매판매액지수는 3.5538%, 설비투자지수는 5.3036%, 전산업생산지수는 3.0227% 상승했다. 10월 실업률은 전월 대비 0.1%포인트 낮아진 2.5%, 수출금액지수는 전년 동월 대비 107.6131% 증가했다. 반면 9월 선행지수 순환변동치는 전월 대비 0.1포인트 하락했고, 10월 소비자심리지수도 1.2포인트 하락했다. 동행지수는 9월 0.5포인트 상승, 경제심리지수는 10월 0.9포인트 상승으로 혼조다. CPI는 10월 전년 동월 대비 2.8189%, PPI는 9월 7.6655% 상승했으므로 물가 방향 자체를 호재나 악재로 단정하지 않는다.\n\n향후에는 외국인 순매도 완화, VIX의 5일 평균 하회, KOSPI의 누적 약세 축소를 함께 확인할 필요가 있다. 반대로 기관 매수가 약화되는 가운데 외국인 순매도가 확대되고 VIX가 높은 수준을 유지하면, 오늘의 반등을 지지한 ‘수급 완충’ 가설은 무효화된다.",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

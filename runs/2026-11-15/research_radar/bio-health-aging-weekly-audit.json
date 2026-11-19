@@ -1,0 +1,25 @@
+{
+  "schema_version": "research-radar-weekly-audit-v1",
+  "prompt_version": "research_radar_paper_interpreter_v2",
+  "theme_id": "bio-health-aging",
+  "as_of": "2026-11-15",
+  "lookback_days": 28,
+  "candidate_count": 7,
+  "accepted_count": 6,
+  "rejected_count": 1,
+  "accepted_paper_ids": [
+    "2610-31328v1",
+    "2610-36019v2",
+    "2610-37338v2",
+    "2610-40370v1",
+    "2611-07937v1",
+    "2611-10764v1"
+  ],
+  "llm_model": "gpt-4.1-2025-04-14",
+  "input_hash": "c37091e6ac6a8e280db6a73be0459d9ece10f834db6059748b42e69f47a0ce91",
+  "input_tokens": 3364,
+  "output_tokens": 1233,
+  "report_status": "emerging",
+  "report_score": 12.65,
+  "generated_at": "2026-11-15T07:58:16.538046+00:00"
+}
