@@ -1,7 +1,7 @@
 {
-  "crawled_at": "2026-11-19T11:41:58.780178+00:00",
+  "crawled_at": "2026-11-19T12:41:57.601014+00:00",
   "news_date": "2026-11-19",
-  "total_collected": 222,
+  "total_collected": 224,
   "topic_counts": [
     [
       "환율/달러",
@@ -9,7 +9,7 @@
     ],
     [
       "금리/연준",
-      15
+      20
     ],
     [
       "인플레이션",
@@ -17,11 +17,11 @@
     ],
     [
       "반도체/AI",
-      23
+      24
     ],
     [
-      "미국지수",
-      20
+      "경기/성장",
+      12
     ]
   ],
   "top_articles": [
@@ -38,11 +38,11 @@
     },
     {
       "topic": "금리/연준",
-      "count": 15,
-      "title": "10월 FOMC서 추가 금리인상 공감대…일부는 '빅스텝' 거론 - 매일경제 마켓",
-      "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1oZUNuV0h6X2RhbG9xNWVRNDUzMmJTcTR6cnd1YVB6akliQWxNaGJZUVFraFllM3haWG9NNDFQSm1DU0JSQ1dXTjV6el9GTl9uM0E?oc=5",
+      "count": 20,
+      "title": "연준 의사록 보니… “금리 더 올려야” 거의 한목소리, 12월 ‘빅스텝’도 거론 - 조선일보",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPM3ZveEtXbE1jSTdUcFM4UDZaSzNrVDNDcHUxdnhQVW5lTWZfcTQxYW5sa1JaVGgzLVdQTEl2Qi0wd3lScWo5MjdJRGJJNXU0NjBfUUJ0blBlX1h4TkZhdV96anBlVmZsVXc2Y1lYcmlxTHhsemdzRHdDRXhoOXpqTTBDVzd0VUto?oc=5",
       "summary_lines": [
-        "핵심 이슈: 10월 FOMC서 추가 금리인상 공감대…일부는 '빅스텝' 거론 - 매일경제 마켓",
+        "핵심 이슈: 연준 의사록 보니… “금리 더 올려야” 거의 한목소리, 12월 ‘빅스텝’도 거론 - 조선일보",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -60,7 +60,7 @@
     },
     {
       "topic": "반도체/AI",
-      "count": 23,
+      "count": 24,
       "title": "엔비디아 5거래일째 하락…AI 투자 경계에 반도체주 희비 - 마켓인",
       "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBDNHZTSFJ0ZFlDV25RUGxtTnk4MkdER05tOG9hSjl3Ull4Uy1zejNfN0ZKQ3o5UXVNTU5Qal9odlN0bGh1cGdvYkt1Yi1leWh0cUt3Vlh1Ulg3dm5lYzllRy1SX3NEb2ZSVUoxWlloZEQ2NEE?oc=5",
       "summary_lines": [
@@ -70,12 +70,12 @@
       ]
     },
     {
-      "topic": "미국지수",
-      "count": 20,
-      "title": "[1119개장체크] 美 증시, 엔비디아 호실적에도 연준 추가 금리 인상 경계에 혼조 - 인포스탁데일리",
-      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0tWDRMNkoza002NzRIX0wteGJUOTNCeHpQU1V6aTlPYUc3b0dDZ0ZYQkhjZ3hWaUhtX2xiUnhQQ3ZHV1p1Z2JTdjZQNVhkcmxrSWJteEpzbzVKRzZ3bjhTRnBiQmlzNWRtbW55azFZeFZ0TGZQd2c?oc=5",
+      "topic": "경기/성장",
+      "count": 12,
+      "title": "'반도체 산유국' 현실 되나…내년 GDP의 3분의 1 육박 전망도 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNYlh6REZsbkFkdkpBSTlFa09DMERmWGYyZEJlVl9SYU05S0JORk0ySUZpTWx4UmZfOWJDbnJTSXV5UEczakpCZGtWcVdXcWZWQTR0bDFFa3NjWFkxR3FyaTdueDh3aHFVa0Vmb255alo3bjNxc1dwRjZMZE9xeEt6MQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: [1119개장체크] 美 증시, 엔비디아 호실적에도 연준 추가 금리 인상 경계에 혼조 - 인포스탁데일리",
+        "핵심 이슈: '반도체 산유국' 현실 되나…내년 GDP의 3분의 1 육박 전망도 - 이데일리",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -84,8 +84,14 @@
   "sector_hot_topics": [
     {
       "sector": "매크로",
-      "total_count": 40,
+      "total_count": 57,
       "topics": [
+        {
+          "topic": "금리/연준",
+          "count": 20,
+          "title": "연준 의사록 보니… “금리 더 올려야” 거의 한목소리, 12월 ‘빅스텝’도 거론 - 조선일보",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPM3ZveEtXbE1jSTdUcFM4UDZaSzNrVDNDcHUxdnhQVW5lTWZfcTQxYW5sa1JaVGgzLVdQTEl2Qi0wd3lScWo5MjdJRGJJNXU0NjBfUUJ0blBlX1h4TkZhdV96anBlVmZsVXc2Y1lYcmlxTHhsemdzRHdDRXhoOXpqTTBDVzd0VUto?oc=5"
+        },
         {
           "topic": "환율/달러",
           "count": 16,
@@ -93,10 +99,10 @@
           "link": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBZanJ0b3FHcHl6T0plTzZ0ZW1RNU1TcHRRV0hfSUQ5bVppeDF0eGFza1RHV19rbnhzWV9MN2Q3dTlOVzhmM21HQTdTano5ZFJTWWlyeFhBVUlyakpUSUo2b9IBeEFVX3lxTE1JN01vVS1WYU1qclE4ekFaOTFCa1pka3hBb2xfaG15bEhremdaWFB3MmRTSFRyaWFKeDFUcHdKYnJfOVpZbzNvX29wUHRJWXRwZFphSlNKWmlQRUZQa0hhbnMyMkUyTjZDdE9YVWtBOXhoZlNlZDJPTA?oc=5"
         },
         {
-          "topic": "금리/연준",
-          "count": 15,
-          "title": "10월 FOMC서 추가 금리인상 공감대…일부는 '빅스텝' 거론 - 매일경제 마켓",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1oZUNuV0h6X2RhbG9xNWVRNDUzMmJTcTR6cnd1YVB6akliQWxNaGJZUVFraFllM3haWG9NNDFQSm1DU0JSQ1dXTjV6el9GTl9uM0E?oc=5"
+          "topic": "경기/성장",
+          "count": 12,
+          "title": "'반도체 산유국' 현실 되나…내년 GDP의 3분의 1 육박 전망도 - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNYlh6REZsbkFkdkpBSTlFa09DMERmWGYyZEJlVl9SYU05S0JORk0ySUZpTWx4UmZfOWJDbnJTSXV5UEczakpCZGtWcVdXcWZWQTR0bDFFa3NjWFkxR3FyaTdueDh3aHFVa0Vmb255alo3bjNxc1dwRjZMZE9xeEt6MQ?oc=5"
         },
         {
           "topic": "인플레이션",
@@ -108,25 +114,13 @@
     },
     {
       "sector": "IT/반도체",
-      "total_count": 23,
+      "total_count": 24,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 23,
+          "count": 24,
           "title": "엔비디아 5거래일째 하락…AI 투자 경계에 반도체주 희비 - 마켓인",
           "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTFBDNHZTSFJ0ZFlDV25RUGxtTnk4MkdER05tOG9hSjl3Ull4Uy1zejNfN0ZKQ3o5UXVNTU5Qal9odlN0bGh1cGdvYkt1Yi1leWh0cUt3Vlh1Ulg3dm5lYzllRy1SX3NEb2ZSVUoxWlloZEQ2NEE?oc=5"
-        }
-      ]
-    },
-    {
-      "sector": "지수/시장",
-      "total_count": 20,
-      "topics": [
-        {
-          "topic": "미국지수",
-          "count": 20,
-          "title": "[1119개장체크] 美 증시, 엔비디아 호실적에도 연준 추가 금리 인상 경계에 혼조 - 인포스탁데일리",
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0tWDRMNkoza002NzRIX0wteGJUOTNCeHpQU1V6aTlPYUc3b0dDZ0ZYQkhjZ3hWaUhtX2xiUnhQQ3ZHV1p1Z2JTdjZQNVhkcmxrSWJteEpzbzVKRzZ3bjhTRnBiQmlzNWRtbW55azFZeFZ0TGZQd2c?oc=5"
         }
       ]
     }
