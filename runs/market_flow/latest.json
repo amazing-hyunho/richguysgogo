@@ -3,39 +3,9 @@
   "trade_type": "KRX",
   "foreign_definition": "9000 + 9001 (Naver display)",
   "unit": "억원 (rounded per market)",
-  "collected_at": "2026-11-19T00:50:31.458518+00:00",
-  "as_of": "2026-11-18",
+  "collected_at": "2026-11-21T00:50:31.820894+00:00",
+  "as_of": "2026-11-20",
   "history": [
-    {
-      "date": "2026-06-24",
-      "market": {
-        "KOSPI": {
-          "individual": 26312,
-          "foreign": -46546,
-          "institution": 19095
-        },
-        "KOSDAQ": {
-          "individual": -3184,
-          "foreign": -321,
-          "institution": 3363
-        }
-      }
-    },
-    {
-      "date": "2026-06-25",
-      "market": {
-        "KOSPI": {
-          "individual": -24136,
-          "foreign": -8754,
-          "institution": 33244
-        },
-        "KOSDAQ": {
-          "individual": 1452,
-          "foreign": 212,
-          "institution": -1707
-        }
-      }
-    },
     {
       "date": "2026-06-26",
       "market": {
@@ -1503,6 +1473,36 @@
           "individual": -1215,
           "foreign": -497,
           "institution": 1794
+        }
+      }
+    },
+    {
+      "date": "2026-11-19",
+      "market": {
+        "KOSPI": {
+          "individual": -560,
+          "foreign": -4086,
+          "institution": 120
+        },
+        "KOSDAQ": {
+          "individual": -64,
+          "foreign": -2162,
+          "institution": 2257
+        }
+      }
+    },
+    {
+      "date": "2026-11-20",
+      "market": {
+        "KOSPI": {
+          "individual": 15381,
+          "foreign": -10956,
+          "institution": -9330
+        },
+        "KOSDAQ": {
+          "individual": 2803,
+          "foreign": -1615,
+          "institution": -1065
         }
       }
     }
