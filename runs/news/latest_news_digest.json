@@ -1,33 +1,44 @@
 {
-  "crawled_at": "2026-11-23T09:42:09.174683+00:00",
+  "crawled_at": "2026-11-23T10:41:57.186984+00:00",
   "news_date": "2026-11-23",
-  "total_collected": 275,
+  "total_collected": 280,
   "topic_counts": [
     [
+      "환율/달러",
+      23
+    ],
+    [
       "금리/연준",
-      14
-    ],
-    [
-      "반도체/AI",
-      27
-    ],
-    [
-      "경기/성장",
       16
     ],
     [
-      "환율/달러",
-      19
+      "경기/성장",
+      25
     ],
     [
-      "인플레이션",
-      15
+      "정책/테마",
+      28
+    ],
+    [
+      "반도체/AI",
+      24
     ]
   ],
   "top_articles": [
     {
+      "topic": "환율/달러",
+      "count": 23,
+      "title": "해외IB들 \"원화 강세\"…반도체 달러 환전이 환율 향방 갈라 - 이데일리",
+      "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPOEtGeWtZZ3hNWEI3Z002NjFaNENmUGkzakhQWTEzOGxhMHFoWmVPd0JqYm8xbEllb2tjNElnd3RJU2ZKR3EyY0JiTHVmdDNUYm5lSDhfWkw5ZDZvM29mSUxTMzYtdjF2UE40eGZ2b0V1bDViU3JmRVJHMGtmSTVyeA?oc=5",
+      "summary_lines": [
+        "핵심 이슈: 해외IB들 \"원화 강세\"…반도체 달러 환전이 환율 향방 갈라 - 이데일리",
+        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
+        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
+      ]
+    },
+    {
       "topic": "금리/연준",
-      "count": 14,
+      "count": 16,
       "title": "한은 11월 기준금리 3.25%로 인상 유력…전문가 14명 전원 ‘인상’ 전망 - www.thedailyeconomy.kr",
       "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1NdFhRanJpYVZueVpONUFvQTk5V0ZSdURCSHUzTjQzelNtWU4xdERldElqVDF5TGtyeHBOOV84RVJCS0FVVGtQLU5ZQ3BVUVdiNDF2bFVwcWU5SWp1N2JleUJ1dTZxTGlZaWpWdllVOXI?oc=5",
       "summary_lines": [
@@ -37,19 +48,8 @@
       ]
     },
     {
-      "topic": "반도체/AI",
-      "count": 27,
-      "title": "엔비디아 반토막, 나스닥 20% 추락… AI 버블은 이미 터졌나 - 조선일보",
-      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNHd1c0x4ZXBBaFN6bUFPRFBrUENsaE1oRi1XOWxSMS1GZmc4Y3VUekRRc0ZmZzBkZ0YyNm9lVWxxWUwxSHB1ZmFZYlZLOUhORW1URGwzQWQtaFZzcWJnQ1N1UDZfR1F1eXM3ZUlsaWVLUTA3TWlQdldsLXdCX3NmYnVCVmhiY1kx?oc=5",
-      "summary_lines": [
-        "핵심 이슈: 엔비디아 반토막, 나스닥 20% 추락… AI 버블은 이미 터졌나 - 조선일보",
-        "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
-        "세부 근거와 수치는 원문 링크를 통해 확인하세요."
-      ]
-    },
-    {
       "topic": "경기/성장",
-      "count": 16,
+      "count": 25,
       "title": "美 물가·성장 지표, 연준의 12월 금리 판단을 바꿀까? - 내외뉴스통신",
       "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE45bUgwQk1UZ1h0ckI1eks2ZkcyNWszdkxqeUwxSGtzRVg3M3ZFMExwbTBWeDlZMzNNMlJkRzEwSTZQQmQzVF9URGRVS1oxeXItMWxLVGRTRHlTYjZfRGwtcUVaVHUwMzlQNHgtYtIBcEFVX3lxTE5vd2JvY3FrSHJ6bnY2RzhZcEx2MVBQV0VGY0dRdkRtWlFlZnhZeVRSUzViMmdHZEVQeWFSRDNsNDgwUjdZZXAtbVZ6U2laOVhVV1J2bmZKd19TUlNaYkZrLWVXbllaeVpZWjBkaWtTT3I?oc=5",
       "summary_lines": [
@@ -59,23 +59,23 @@
       ]
     },
     {
-      "topic": "환율/달러",
-      "count": 19,
-      "title": "[외환+] AI 쇼크에 강달러···원·달러 환율, 2주 만에 1340원대 마감 - 서울파이낸스",
-      "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4wU3VFTGNONHZLYnpQT1czMWlGeFJtQUNxR1RTNG8tRWwzd2xwaEgtWUtTVnVYNFpmWDV2SWtrSk4xc19XdS1DUWhXU2Nxb3VET3ZualNvVEdQLXRXQUJqcGRHejNaYUpSbFE?oc=5",
+      "topic": "정책/테마",
+      "count": 28,
+      "title": "엔비디아發 무역전쟁 경계… 美정부, 수출규제 위반 규명 집중 [AI생태계 덮친 젠슨 황 리스크] - 부산파이낸셜뉴스",
+      "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1GWEEwcnlQWjRGbExhWlFVWTl2djJXdThSU2FmRnNBdDBRQ19QSHhPbU12azJSZHdUdUtTWGpENE55RktEMFJ6OTBVNFV1Y053MnNhNS1lR1J1Z0ps?oc=5",
       "summary_lines": [
-        "핵심 이슈: [외환+] AI 쇼크에 강달러···원·달러 환율, 2주 만에 1340원대 마감 - 서울파이낸스",
+        "핵심 이슈: 엔비디아發 무역전쟁 경계… 美정부, 수출규제 위반 규명 집중 [AI생태계 덮친 젠슨 황 리스크] - 부산파이낸셜뉴스",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
     },
     {
-      "topic": "인플레이션",
-      "count": 15,
-      "title": "주간 전망: AI 관련주 매도세 속 인플레이션 지표와 연준 정책 기대가 시장 좌우할 전망 - www.tmgm.com",
-      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMG82eWpfRmFFY0o5bGpuOWw5QlcyeFNadjJPMGY1dVlxRXp6eTVoQXBBdGtERk9hUlRTZV9RVTV5VVFybXYxMlZoekZFODFmYl93aUd0bDRIR3l5X1ZnVERaSmhtLVB6cTZYQ2JhUjZObXI4TkM0a1c0Qktuel8tZFBwQ05qVEk1SC0tTDViTU85OVNBbzZKRjJnZWIyNWZHNVVJSDN2VENYRFpyVTVwVlRCMzNSeXJPVG15MjhsRWNydzNKYXc?oc=5",
+      "topic": "반도체/AI",
+      "count": 24,
+      "title": "\"내년에도 수출 1조달러 넘어…반도체 비중 첫 50% 돌파\" - 한국경제",
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5mWW9aSUkxcU9CZTYyRlR1VUFxbTVJemozdmZDLVc1SEd3ZEJDME5hX0ZCcmxxZ1NWdlVOVWN6ak9iZS04SG1iekRNeXBuci1HSThRU1JnWHFjQQ?oc=5",
       "summary_lines": [
-        "핵심 이슈: 주간 전망: AI 관련주 매도세 속 인플레이션 지표와 연준 정책 기대가 시장 좌우할 전망 - www.tmgm.com",
+        "핵심 이슈: \"내년에도 수출 1조달러 넘어…반도체 비중 첫 50% 돌파\" - 한국경제",
         "시장 영향 가능성: 관련 자산/섹터 변동성 점검이 필요합니다.",
         "세부 근거와 수치는 원문 링크를 통해 확인하세요."
       ]
@@ -87,40 +87,46 @@
       "total_count": 64,
       "topics": [
         {
-          "topic": "환율/달러",
-          "count": 19,
-          "title": "[외환+] AI 쇼크에 강달러···원·달러 환율, 2주 만에 1340원대 마감 - 서울파이낸스",
-          "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE4wU3VFTGNONHZLYnpQT1czMWlGeFJtQUNxR1RTNG8tRWwzd2xwaEgtWUtTVnVYNFpmWDV2SWtrSk4xc19XdS1DUWhXU2Nxb3VET3ZualNvVEdQLXRXQUJqcGRHejNaYUpSbFE?oc=5"
-        },
-        {
           "topic": "경기/성장",
-          "count": 16,
+          "count": 25,
           "title": "美 물가·성장 지표, 연준의 12월 금리 판단을 바꿀까? - 내외뉴스통신",
           "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE45bUgwQk1UZ1h0ckI1eks2ZkcyNWszdkxqeUwxSGtzRVg3M3ZFMExwbTBWeDlZMzNNMlJkRzEwSTZQQmQzVF9URGRVS1oxeXItMWxLVGRTRHlTYjZfRGwtcUVaVHUwMzlQNHgtYtIBcEFVX3lxTE5vd2JvY3FrSHJ6bnY2RzhZcEx2MVBQV0VGY0dRdkRtWlFlZnhZeVRSUzViMmdHZEVQeWFSRDNsNDgwUjdZZXAtbVZ6U2laOVhVV1J2bmZKd19TUlNaYkZrLWVXbllaeVpZWjBkaWtTT3I?oc=5"
         },
         {
-          "topic": "인플레이션",
-          "count": 15,
-          "title": "주간 전망: AI 관련주 매도세 속 인플레이션 지표와 연준 정책 기대가 시장 좌우할 전망 - www.tmgm.com",
-          "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPMG82eWpfRmFFY0o5bGpuOWw5QlcyeFNadjJPMGY1dVlxRXp6eTVoQXBBdGtERk9hUlRTZV9RVTV5VVFybXYxMlZoekZFODFmYl93aUd0bDRIR3l5X1ZnVERaSmhtLVB6cTZYQ2JhUjZObXI4TkM0a1c0Qktuel8tZFBwQ05qVEk1SC0tTDViTU85OVNBbzZKRjJnZWIyNWZHNVVJSDN2VENYRFpyVTVwVlRCMzNSeXJPVG15MjhsRWNydzNKYXc?oc=5"
+          "topic": "환율/달러",
+          "count": 23,
+          "title": "해외IB들 \"원화 강세\"…반도체 달러 환전이 환율 향방 갈라 - 이데일리",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPOEtGeWtZZ3hNWEI3Z002NjFaNENmUGkzakhQWTEzOGxhMHFoWmVPd0JqYm8xbEllb2tjNElnd3RJU2ZKR3EyY0JiTHVmdDNUYm5lSDhfWkw5ZDZvM29mSUxTMzYtdjF2UE40eGZ2b0V1bDViU3JmRVJHMGtmSTVyeA?oc=5"
         },
         {
           "topic": "금리/연준",
-          "count": 14,
+          "count": 16,
           "title": "한은 11월 기준금리 3.25%로 인상 유력…전문가 14명 전원 ‘인상’ 전망 - www.thedailyeconomy.kr",
           "link": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1NdFhRanJpYVZueVpONUFvQTk5V0ZSdURCSHUzTjQzelNtWU4xdERldElqVDF5TGtyeHBOOV84RVJCS0FVVGtQLU5ZQ3BVUVdiNDF2bFVwcWU5SWp1N2JleUJ1dTZxTGlZaWpWdllVOXI?oc=5"
         }
       ]
     },
     {
+      "sector": "정책/테마",
+      "total_count": 28,
+      "topics": [
+        {
+          "topic": "정책/테마",
+          "count": 28,
+          "title": "엔비디아發 무역전쟁 경계… 美정부, 수출규제 위반 규명 집중 [AI생태계 덮친 젠슨 황 리스크] - 부산파이낸셜뉴스",
+          "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1GWEEwcnlQWjRGbExhWlFVWTl2djJXdThSU2FmRnNBdDBRQ19QSHhPbU12azJSZHdUdUtTWGpENE55RktEMFJ6OTBVNFV1Y053MnNhNS1lR1J1Z0ps?oc=5"
+        }
+      ]
+    },
+    {
       "sector": "IT/반도체",
-      "total_count": 27,
+      "total_count": 24,
       "topics": [
         {
           "topic": "반도체/AI",
-          "count": 27,
-          "title": "엔비디아 반토막, 나스닥 20% 추락… AI 버블은 이미 터졌나 - 조선일보",
-          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPNHd1c0x4ZXBBaFN6bUFPRFBrUENsaE1oRi1XOWxSMS1GZmc4Y3VUekRRc0ZmZzBkZ0YyNm9lVWxxWUwxSHB1ZmFZYlZLOUhORW1URGwzQWQtaFZzcWJnQ1N1UDZfR1F1eXM3ZUlsaWVLUTA3TWlQdldsLXdCX3NmYnVCVmhiY1kx?oc=5"
+          "count": 24,
+          "title": "\"내년에도 수출 1조달러 넘어…반도체 비중 첫 50% 돌파\" - 한국경제",
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5mWW9aSUkxcU9CZTYyRlR1VUFxbTVJemozdmZDLVc1SEd3ZEJDME5hX0ZCcmxxZ1NWdlVOVWN6ak9iZS04SG1iekRNeXBuci1HSThRU1JnWHFjQQ?oc=5"
         }
       ]
     }
