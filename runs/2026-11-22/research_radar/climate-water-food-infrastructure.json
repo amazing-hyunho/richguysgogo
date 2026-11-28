@@ -1,0 +1,224 @@
+{
+  "schema_version": "research-radar-report-v1",
+  "theme": {
+    "theme_id": "climate-water-food-infrastructure",
+    "name": "기후·물·식량·환경 인프라",
+    "thesis": "기후 적응·수처리·식량 기술의 개선이 필수 인프라 투자와 설비 수요로 이어지는지 추적한다."
+  },
+  "as_of": "2026-11-22",
+  "status": "emerging",
+  "status_label": "초기 관찰",
+  "chain_score": 8.75,
+  "confidence": 15.31,
+  "stages": [
+    {
+      "stage": "research_validation",
+      "label": "연구 검증",
+      "score": 35.0,
+      "net_signal": 35.0,
+      "confidence": 61.25,
+      "evidence_count": 3,
+      "distinct_source_count": 1,
+      "positive_count": 2,
+      "neutral_count": 1,
+      "negative_count": 0,
+      "evidence_ids": [
+        "arxiv-2611-00699v1",
+        "arxiv-2611-02124v1",
+        "arxiv-2611-24979v1"
+      ],
+      "passed": false
+    },
+    {
+      "stage": "talent_mobility",
+      "label": "인재 이동·창업",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "capital_formation",
+      "label": "자본 형성",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "infrastructure_bottleneck",
+      "label": "인프라 병목",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    },
+    {
+      "stage": "earnings_confirmation",
+      "label": "상장사 실적 확인",
+      "score": 0.0,
+      "net_signal": 0.0,
+      "confidence": 0.0,
+      "evidence_count": 0,
+      "distinct_source_count": 0,
+      "positive_count": 0,
+      "neutral_count": 0,
+      "negative_count": 0,
+      "evidence_ids": [],
+      "passed": false
+    }
+  ],
+  "public_companies": [],
+  "evidence": [
+    {
+      "evidence_id": "arxiv-2611-00699v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Vision-based Sensing of Urban Environment using Hardware-Software co-design at Scale",
+      "claim": "본 논문은 도시 환경 모니터링을 위한 대규모 비전 기반 센싱 플랫폼(UrbanScapes)을 하드웨어-소프트웨어 공동 설계로 개발하여, 다양한 환경지수를 산출할 수 있는 멀티스펙트럴 거리 수준 데이터 수집 및 프라이버시 보호 기능을 실제 시스템 수준에서 구현하였다.",
+      "event_date": "2026-10-31",
+      "known_at": "2026-10-31",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2611.00699v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "플랫폼의 실제 환경지수 산출 및 도시 인프라 개선 효과에 대한 실증적 결과는 초록에서 직접적으로 제시되지 않는다.",
+      "tags": [
+        "weekly-paper",
+        "urban-sensing",
+        "environmental-infrastructure",
+        "climate-adaptation",
+        "multispectral",
+        "hardware-software",
+        "privacy"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2611-02124v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Metabolic heat and moisture reuse with climate-adaptive control for energy-efficient black soldier fly bioconversion in modular container farms",
+      "claim": "본 논문은 블랙솔저플라이(Black Soldier Fly) 컨테이너 농장에서 기후 적응형 제어와 대사열·수분 재활용을 통해 에너지 효율과 바이오매스 생산량을 개선할 수 있음을 시뮬레이션 기반으로 제시하였다.",
+      "event_date": "2026-11-01",
+      "known_at": "2026-11-01",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2611.02124v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "neutral",
+      "strength": 0.55,
+      "signed_signal": 0.0,
+      "limitation": "모든 결과가 시뮬레이션에 기반하며, 실제 산업 시설 적용 전 실험적 검증이 필요함을 명시한다.",
+      "tags": [
+        "weekly-paper",
+        "food-technology",
+        "climate-adaptation",
+        "energy-efficiency",
+        "simulation",
+        "bioconversion",
+        "hvac"
+      ]
+    },
+    {
+      "evidence_id": "arxiv-2611-24979v1",
+      "stage": "research_validation",
+      "stage_label": "연구 검증",
+      "event_type": "weekly-paper-signal",
+      "title": "Trace2ST: Recovering PLC Structured Text from I/O Traces with LLM Generation and Verification",
+      "claim": "본 논문은 대형 언어 모델(LLM)을 활용하여 수처리 등 산업 플랜트의 PLC 제어 프로그램 소스코드가 없는 상황에서 I/O 트레이스만으로 구조화된 제어 로직을 복원하고, 이를 실제 수처리 테스트베드 데이터에 적용해 복원된 제어법칙이 미측정 데이터와도 높은 일치도를 보이며, 데이터셋 내 유일한 액추에이터 공격도 탐지할 수 있음을 실증하였다.",
+      "event_date": "2026-11-17",
+      "known_at": "2026-11-17",
+      "date_precision": "day",
+      "source_url": "https://arxiv.org/abs/2611.24979v1",
+      "source_name": "arXiv",
+      "source_kind": "academic_preprint",
+      "source_reliability": 0.75,
+      "direction": "positive",
+      "strength": 0.7,
+      "signed_signal": 0.525,
+      "limitation": "실제 산업 현장 전체가 아닌 공개 수처리 테스트베드 데이터에 한정된 검증이며, 복원 정확도는 트레이스가 충분히 다양한 분기를 포함할 때에만 높게 나타난다.",
+      "tags": [
+        "weekly-paper",
+        "plc",
+        "water-treatment",
+        "llm",
+        "control",
+        "trace-recovery",
+        "cybersecurity"
+      ]
+    }
+  ],
+  "excluded_evidence": [],
+  "data_gaps": [
+    "연구 검증: 순신호 35.00점으로 단계 통과 기준에 미달합니다.",
+    "인재 이동·창업: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "자본 형성: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "인프라 병목: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "상장사 실적 확인: 기준일 현재 사용 가능한 근거가 없습니다.",
+    "반증·부정 근거가 없어 낙관 편향을 별도로 점검해야 합니다.",
+    "근거와 연결된 상장사가 없습니다."
+  ],
+  "limitations": [
+    "주간 논문 레이더는 제목·초록만 해석하며 동료평가, 본문 재현성, 상용화를 자동으로 확정하지 않습니다.",
+    "논문 수와 기술 진전은 투자수익이나 기업 실적을 직접 의미하지 않습니다.",
+    "사회적 필요가 크더라도 사업성·예산·발주 시점은 별도 확인이 필요합니다."
+  ],
+  "methodology": {
+    "stage_order": [
+      "research_validation",
+      "talent_mobility",
+      "capital_formation",
+      "infrastructure_bottleneck",
+      "earnings_confirmation"
+    ],
+    "stage_weights": {
+      "research_validation": 0.25,
+      "talent_mobility": 0.15,
+      "capital_formation": 0.2,
+      "infrastructure_bottleneck": 0.2,
+      "earnings_confirmation": 0.2
+    },
+    "stage_score_threshold": 60.0,
+    "stage_confidence_threshold": 50.0,
+    "source_reliability": {
+      "academic_primary": 1.0,
+      "academic_preprint": 0.75,
+      "regulatory_filing": 1.0,
+      "company_filing": 0.95,
+      "company_release": 0.82,
+      "reputable_media": 0.72,
+      "secondary_analysis": 0.55,
+      "other": 0.4
+    },
+    "lookahead_rule": "Include evidence only when known_at <= as_of.",
+    "score_formula": "mean(direction * strength * source_reliability) * 100, floored at 0",
+    "confidence_formula": "source-domain diversity, source quality, and evidence agreement",
+    "company_link_formula": "mean(strength * source_reliability) * directness_weight * 100",
+    "interpretation": "Chain and link scores measure evidence maturity/connection, not expected return or valuation."
+  }
+}

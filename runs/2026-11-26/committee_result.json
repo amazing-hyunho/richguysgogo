@@ -1,0 +1,63 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 4,782.93으로 1.82%, KOSDAQ은 671.46으로 3.20% 상승했고 외국인과 기관이 각각 2,830억원, 1,436억원 순매수했다.",
+      "sources": [
+        "시장 데이터",
+        "수급 데이터"
+      ]
+    },
+    {
+      "point": "당일 반등에도 KOSPI의 5일·20일 누적 수익률은 각각 -6.551%, -20.264%이며 추세 반전 신호는 확인되지 않았다.",
+      "sources": [
+        "누적 시장 데이터"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "시장 체제 판정",
+      "majority": "매크로·이익모멘텀·브레드스·유동성 담당자는 누적 하락과 변동성을 근거로 리스크 오프를 유지했다.",
+      "minority": "수급·섹터 담당자는 중립, 리스크 담당자는 체제 태그상 리스크 온으로 분류했다.",
+      "minority_agents": [
+        "수급 담당자(flow)",
+        "섹터 담당자(sector)",
+        "리스크 담당자(risk)"
+      ],
+      "why_it_matters": "리스크 담당자의 낙관 태그가 실제 보수적 주장과 충돌하고 중립 의견도 있어, 방향성보다 수급 지속 여부를 확인하며 신뢰도를 낮춰야 한다."
+    },
+    {
+      "topic": "외국인 순매수의 지속성",
+      "majority": "다수는 외국인·기관 순매수만으로 추세 반전을 확인할 수 없다고 판단했다.",
+      "minority": "수급 담당자는 외국인 매수를 과도한 낙폭 이후의 저점 반발로 해석하며 단기 지속 가능성을 제시했다.",
+      "minority_agents": [
+        "수급 담당자(flow)"
+      ],
+      "why_it_matters": "외국인 매수가 연속성을 확보하면 반등의 질이 개선되지만, 단발성이라면 개인 매도 물량을 소화한 기술적 반등에 그칠 수 있다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 11월 26일: 강한 반등, 그러나 아직 복구 구간\n\nKOSPI는 4,782.93으로 1.82%, KOSDAQ은 671.46으로 3.20% 상승했다. 달러/원은 1,343.04원으로 0.0246% 올랐고 VIX는 28.29였다. 외국인은 2,830억원, 기관은 1,436억원 순매수한 반면 개인은 4,754억원 순매도했다.\n\n다만 하루 반등을 추세 전환으로 확대 해석하기는 이르다. KOSPI는 최근 5일 -6.551%, 20일 -20.264%이며, 추세 반전 신호도 거짓으로 유지됐다. 당일 상승률 1.82%는 최근 5일 평균 절대 등락률 4.565%보다 작다. VIX도 5일 평균 29.114보다는 낮지만 변동성 부담이 해소됐다고 보기는 어렵다.\n\n## 외국인·기관이 개인 매물을 흡수한 수급\n\nKOSPI에서는 외국인 2,430억원·기관 546억원, KOSDAQ에서는 외국인 400억원·기관 890억원 순매수였다. 양 시장에서 개인은 각각 3,473억원, 1,281억원 순매도했다. 오늘 가격 결정력은 외국인과 기관에 있었지만, 5일간 달러/원이 0.618% 상승한 환경에서 나타난 매수라는 점은 추가 확인이 필요하다.\n\n수급 담당자는 이를 최근 급락 이후 외국인 저점 매수와 개인의 반등 매도로 해석했다. 반면 브레드스·유동성 담당자는 외국인 순매수에도 누적 하락과 변동성 때문에 시장 내부 확산이나 유동성 전환이 확인되지 않았다고 봤다. 의장 판단은 후자에 가깝되, 외국인·기관 동반 매수가 이어지는지는 핵심 관찰 변수다.\n\n## 날짜별 핵심 이슈: PCE·관세·국내 경기의 충돌\n\n1. **미국 물가와 금리:** [美 PCE 물가 3.8%↑…12월 금리인상 무게](https://news.google.com/rss/articles/CBMidEFVX3lxTE1zY25FOTFubWtIRVp6WHlDbWpFUXBEZVU4UUk0SnFXX3pBMW16OWhiMmwtb0lYYy1tdGp6elFWd3BsVHJrVUlMaTQtbXZSRlpjUDI4dTZGZ0VXZnAyWVlpemxrbEVfMzcySXBpM2hid0dfWnZQ?oc=5)가 금리 부담을 키웠다. 미국 10년물 4.848%, 나스닥 -0.622%도 국내 성장주 반등을 제약하는 보조 신호다.\n\n2. **반도체 관세:** [美, 한국 ‘과잉생산 관세’ 근거…호남 반도체 클러스터 짚어](https://news.google.com/rss/articles/CBMiWkFVX3lxTE1wRmlubHlINlhmaXh5Y2NjN2YtWk1GZEdROTlEc2t4cVpic3ZGMW5xMU1MOEttd01WRkZZbVFad25MbF9GcDNzNi1xMkZwYW42ZjFVRzQyaE1XUQ?oc=5)는 AI·반도체 수급에 정책 할인 요인을 남겼다. 주간 연구 의제의 광 I/O·실리콘 포토닉스는 장기 관찰 대상일 뿐 현재 매수 신호가 아니며, 오늘의 관세 위험과 충돌한다.\n\n3. **한국 월별 지표:** 9월 동행지수는 전월 대비 0.5포인트 상승했지만 선행지수는 0.1포인트 하락했다. 같은 달 전산업생산은 전월 대비 3.0227%, 소매판매는 3.5538% 증가했다. 반면 11월 소비자심리는 전월 대비 2.3포인트, 경제심리는 0.9포인트 하락했다. 10월 CPI와 PPI는 전년 동월 대비 각각 2.8189%, 7.2102%였으나 방향만으로 호재·악재를 단정할 수 없다. 이는 중기 배경이며 오늘 반등의 직접 원인과 동일시해서는 안 된다.\n\n## 다음 확인점과 무효화 조건\n\n우선 외국인·기관 동반 순매수의 연속성, 달러/원 안정, VIX의 추가 완화를 확인해야 한다. 반도체 관세 뉴스가 실제 수급을 훼손하는지도 중요하다. **오늘의 ‘리스크 오프 내 기술적 반등’ 판단은 외국인·기관 동반 순매수가 이어지고 추세 반전 신호가 참으로 전환될 경우 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

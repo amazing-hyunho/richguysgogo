@@ -1,0 +1,62 @@
+{
+  "consensus": "Committee adopts a defensive posture and reduces risk exposure.",
+  "key_points": [
+    {
+      "point": "Majority regime tag: RISK_OFF.",
+      "sources": [
+        "regime_tuner"
+      ]
+    },
+    {
+      "point": "KOSPI는 4772.72로 4.66%, KOSDAQ은 644.69로 2.87% 하락했고 외국인과 기관이 각각 7259억원, 1520억원 순매도했다.",
+      "sources": [
+        "시장 데이터",
+        "수급 데이터"
+      ]
+    },
+    {
+      "point": "USD/KRW 1343.04와 VIX 26.36 속에서 AI 반도체 가격·수요 우려가 위험회피와 외국인 매도를 강화했다.",
+      "sources": [
+        "시장 데이터",
+        "뉴스"
+      ]
+    }
+  ],
+  "disagreements": [
+    {
+      "topic": "단기 시장 체제",
+      "majority": "매크로·수급·섹터·이익·브레드스·유동성 담당자는 외국인 매도와 높은 변동성을 근거로 리스크 오프를 제시했다.",
+      "minority": "리스크 담당자의 체제 태그는 리스크 온이지만, 실제 주장은 위험 신호와 반전 부재를 강조해 내용상 다수 의견과 같다.",
+      "minority_agents": [
+        "리스크 담당자"
+      ],
+      "why_it_matters": "표기상 소수 의견을 강세 전환 신호로 해석하면 안 되며, 실질적인 위원회 판단은 방어 우위다."
+    },
+    {
+      "topic": "국내 경기와 일일 시장의 괴리",
+      "majority": "오늘의 핵심 신호는 KOSPI 급락, 외국인·기관 순매도, 환율 상승이므로 단기 위험회피가 우세하다.",
+      "minority": "매크로 담당자는 생산·소비·고용·수출의 월별 개선이 중기 경기 하방을 일부 완충한다고 평가했다.",
+      "minority_agents": [
+        "매크로 담당자"
+      ],
+      "why_it_matters": "월별 실물지표는 중기 배경일 뿐 오늘의 가격·수급 반전을 의미하지 않으므로 시계열을 구분해야 한다."
+    }
+  ],
+  "ops_guidance": [
+    {
+      "level": "OK",
+      "text": "Keep exposure focused on resilience."
+    },
+    {
+      "level": "CAUTION",
+      "text": "Favor defensive positioning."
+    },
+    {
+      "level": "AVOID",
+      "text": "Avoid high-beta risk assets."
+    }
+  ],
+  "sugeup_narrative": "## 11월 25일, 낙폭보다 무거운 수급\n\nKOSPI는 4772.72로 4.66%, KOSDAQ은 644.69로 2.87% 하락했다. USD/KRW는 1343.04로 0.28% 상승했고 VIX는 26.36이었다. 외국인 -7259억원, 기관 -1520억원에 맞서 개인이 +7999억원을 순매수했지만 공급 우위가 분명했다. 시장별로도 KOSPI 외국인 -6398억원·기관 -1361억원, KOSDAQ 외국인 -861억원·기관 -159억원이었다.\n\n하루 충격으로만 보기 어렵다. KOSPI는 5일 누적 -5.48%, 20일 누적 -21.83%이며 최근 5일 일평균 절대 등락률도 4.18%다. VIX 5일 평균은 26.88로 현재와 비슷하고 반전 신호도 확인되지 않았다.\n\n## 외국인과 기관이 주도한 공급 우위\n\n수급 담당자는 환율 상승과 글로벌 AI·반도체 불확실성이 외국인 매도를 함께 자극했다고 진단했다. 원화 약세가 이어지는 가운데 외국인과 기관이 동반 매도했고, 개인의 저가매수만으로는 이를 흡수하지 못했다. 매크로·섹터·브레드스·유동성 담당자도 높은 변동성과 반전 부재를 공통 근거로 리스크 오프에 무게를 뒀다.\n\n미국 시장은 S&P500 -0.50%, NASDAQ -1.48%였지만 DOW는 +0.85%로 엇갈렸다. 이 같은 지원 신호의 혼조는 국내 핵심 수급을 뒤집기보다 확신을 낮추는 요인이다. 미국 10년물 금리 4.904%와 실질금리 2.784%도 성장주 할인율 부담을 점검하게 한다.\n\n## 날짜별 핵심 이슈: AI 가격·금리·성장\n\n1. **AI와 인플레이션:** [美 연준 “AI 반도체 공급 부족에 가격 급등”…금리 인상 변수로](https://news.google.com/rss/articles/CBMiiAFBVV95cUxNeGhMRkg5ZG5NR2dQLTg0VE9kMkhhM1FZZEZhc1BUSXd5MGx0azl6ZXhDampqYkZhQU1PZ2J0enBiZURRYjV6SEg5WGJ1UjhvR20zc2xFM3RiU0w1dEpxXzdGeERZZjFybjBsWnZUbEJJcUZjcmV0OUhkeUdmVnJIM2tRSnRtRGFk?oc=5)는 AI 공급 부족이 물가와 금리 부담으로 전이될 가능성을 부각했다.\n2. **반도체 수요 불확실성:** [엔비디아 반등에도 첩첩산중 AI…美 46개 주 데이터센터 ‘제동’](https://news.google.com/rss/articles/CBMiYEFVX3lxTFBkc2RUcTdFVFFPbHZDWjZZTFlZNmp6czlSbUJYTG10OUpRMWNNX0hLY0Z5OHNKVE1sa2FxemNsS3VQdjNwRFFZd1U0bUhWUUF1enRoZnpVOWVwNkxvTzJJOdIBeEFVX3lxTE52T1JmYXFWTTBtWGkwTEQ1LTFDbEdRTlRhQmJDTFJPVl9zN2JoQnoxRDhiMGRlN3c5VE1KMWphVWdqVVloQUpUOUFhbzJNMGRnRmlsVEQxc2VFb29ZRzY3TTIyMmdGSHN2azlCQXBRTWVNVUpEUXQtbg?oc=5)는 투자 확대 기대와 규제·인프라 제약의 충돌을 보여준다.\n3. **성장 우려:** 금리 인상 시 침체 가능성을 경고한 뉴스는 고금리와 성장 둔화가 동시에 가격에 반영될 위험을 키웠다.\n\n## 국내 월별 지표와 반전 확인 조건\n\n국내 월별 지표는 일일 급락과 구분해야 한다. 9월 동행지수는 전월 대비 0.5포인트 상승했지만 선행지수는 0.1포인트 하락했다. 같은 달 제조업 가동률지수는 전월 대비 7.992%, 소매판매는 3.5538%, 설비투자는 5.3036%, 전산업생산은 3.0227% 증가했다. 반면 11월 소비자심리는 전월 대비 2.3포인트, 경제심리는 0.9포인트 하락했다. 10월 소비자물가는 전년 동월 대비 2.8189%, 생산자물가는 7.2102% 상승했으나 방향만으로 호재·악재를 단정할 수 없다.\n\n따라서 공격적 확대보다 외국인 매도 완화, USD/KRW 안정, VIX 하락을 함께 확인할 필요가 있다. **오늘의 리스크 오프 논리는 외국인·기관 수급이 지속적으로 순매수로 전환되고 환율과 변동성이 동시에 안정되면서 가격 반전 신호가 확인될 경우 무효화된다.**",
+  "analysis_status": "complete",
+  "analysis_note": null
+}

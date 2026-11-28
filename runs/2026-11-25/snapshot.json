@@ -1,0 +1,360 @@
+{
+  "korea_macro_context": {
+    "as_of": "2026-11-25T09:51:43.403907+09:00",
+    "available": 12,
+    "total": 12,
+    "summary": "경기 혼조 · 심리 부정 · 생산·소비 긍정 · 물가·고용·수출 긍정 / 물가는 별도 판단",
+    "groups": [
+      {
+        "name": "경기",
+        "tone": "혼조",
+        "indicators": [
+          "kr_leading",
+          "kr_coincident"
+        ]
+      },
+      {
+        "name": "심리",
+        "tone": "부정",
+        "indicators": [
+          "kr_consumer_sentiment",
+          "kr_economic_sentiment"
+        ]
+      },
+      {
+        "name": "생산·소비",
+        "tone": "긍정",
+        "indicators": [
+          "kr_utilization",
+          "kr_retail",
+          "kr_investment",
+          "kr_production"
+        ]
+      },
+      {
+        "name": "물가·고용·수출",
+        "tone": "긍정 / 물가는 별도 판단",
+        "indicators": [
+          "kr_cpi",
+          "kr_ppi",
+          "kr_unemployment",
+          "kr_export_index"
+        ]
+      }
+    ],
+    "evidence": [
+      {
+        "id": "kr_leading",
+        "name": "선행지수 순환변동치",
+        "group": "경기",
+        "unit": "지수",
+        "comparison": "delta",
+        "note": "전월 대비 상승은 경기 개선 신호로 해석합니다.",
+        "period": "202609",
+        "value": 104.1,
+        "change": -0.1,
+        "signal": "부정",
+        "change_unit": "p",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_coincident",
+        "name": "동행지수 순환변동치",
+        "group": "경기",
+        "unit": "지수",
+        "comparison": "delta",
+        "note": "전월 대비 상승은 현재 경기 개선 신호로 해석합니다.",
+        "period": "202609",
+        "value": 102.2,
+        "change": 0.5,
+        "signal": "긍정",
+        "change_unit": "p",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_consumer_sentiment",
+        "name": "소비자심리지수",
+        "group": "심리",
+        "unit": "지수",
+        "comparison": "delta",
+        "note": "전월 대비 심리 개선·악화를 표시합니다. 100을 기준으로 한 수준 판단과는 별개입니다.",
+        "period": "202611",
+        "value": 103.1,
+        "change": -2.3,
+        "signal": "부정",
+        "change_unit": "p",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_economic_sentiment",
+        "name": "경제심리지수",
+        "group": "심리",
+        "unit": "지수",
+        "comparison": "delta",
+        "note": "원계열입니다. 전월 변화에는 계절 요인이 포함될 수 있습니다.",
+        "period": "202611",
+        "value": 99.9,
+        "change": -0.9,
+        "signal": "부정",
+        "change_unit": "p",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_utilization",
+        "name": "제조업 가동률지수",
+        "group": "생산·소비",
+        "unit": "2020=100",
+        "comparison": "mom",
+        "note": "계절조정 지수이며, 가동률(%) 자체가 아닙니다. 전월 증가를 개선 신호로 표시합니다.",
+        "period": "202609",
+        "value": 108.1,
+        "change": 7.992,
+        "signal": "긍정",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_retail",
+        "name": "소매판매액지수",
+        "group": "생산·소비",
+        "unit": "2020=100",
+        "comparison": "mom",
+        "note": "계절조정 지수. 전월 증가를 소비 개선 신호로 표시합니다.",
+        "period": "202609",
+        "value": 104.9,
+        "change": 3.5538,
+        "signal": "긍정",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_investment",
+        "name": "설비투자지수",
+        "group": "생산·소비",
+        "unit": "2020=100",
+        "comparison": "mom",
+        "note": "계절조정 지수. 전월 증가를 투자 개선 신호로 표시합니다.",
+        "period": "202609",
+        "value": 137.0,
+        "change": 5.3036,
+        "signal": "긍정",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_production",
+        "name": "전산업생산지수",
+        "group": "생산·소비",
+        "unit": "2020=100",
+        "comparison": "mom",
+        "note": "농림어업 제외·계절조정 지수. 전월 증가를 생산 개선 신호로 표시합니다.",
+        "period": "202609",
+        "value": 122.7,
+        "change": 3.0227,
+        "signal": "긍정",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_cpi",
+        "name": "소비자물가지수",
+        "group": "물가·고용·수출",
+        "unit": "2020=100",
+        "comparison": "yoy",
+        "note": "전년 동월 대비 물가 상승률을 표시합니다. 물가 변화의 긍정·부정은 경기와 목표 수준에 따라 달라 단정하지 않습니다.",
+        "period": "202610",
+        "value": 120.73,
+        "change": 2.8189,
+        "signal": "맥락 확인",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_ppi",
+        "name": "생산자물가지수",
+        "group": "물가·고용·수출",
+        "unit": "2020=100",
+        "comparison": "yoy",
+        "note": "전년 동월 대비 변화율입니다. 비용·수요 요인이 함께 작용하므로 긍정·부정을 단정하지 않습니다.",
+        "period": "202610",
+        "value": 129.66,
+        "change": 7.2102,
+        "signal": "맥락 확인",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_unemployment",
+        "name": "실업률",
+        "group": "물가·고용·수출",
+        "unit": "%",
+        "comparison": "delta",
+        "note": "계절조정 실업률. 전월 대비 하락을 고용 개선 신호로 표시합니다.",
+        "period": "202610",
+        "value": 2.5,
+        "change": -0.1,
+        "signal": "긍정",
+        "change_unit": "%p",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      },
+      {
+        "id": "kr_export_index",
+        "name": "수출금액지수",
+        "group": "물가·고용·수출",
+        "unit": "2020=100",
+        "comparison": "yoy",
+        "note": "전년 동월 대비 증가를 개선 신호로 표시합니다. 통관 수출총액·수출물량과는 다른 지표입니다.",
+        "period": "202610",
+        "value": 276.25,
+        "change": 107.6131,
+        "signal": "긍정",
+        "change_unit": "%",
+        "collected_at": "2026-11-25T09:50:30.350442+09:00",
+        "source": "한국은행 ECOS"
+      }
+    ],
+    "excluded": [],
+    "guidance": "한국 월별 경제지표는 중기 경기 배경으로 반영하고 일별 시장·수급 신호와 구분한다. 각 근거의 기준월과 비교 기준을 명시하고 미국 지표와 혼동하지 않는다. 제외 지표는 판단 근거로 사용하지 않는다. 경기·생산·심리 지표의 상관관계를 고려해 개별 긍정/부정 개수를 매수·매도 점수로 합산하지 않는다. 물가는 방향만으로 호재·악재를 단정하지 않는다. 서로 상충하는 신호를 모두 설명하며 이 자료만으로 시장 전망이나 현금 비중을 확정하지 않는다."
+  },
+  "market_summary": {
+    "note": "KOSPI -4.66%, USD/KRW 1343.04. Headlines loaded. Flows loaded.",
+    "kospi_change_pct": -4.66,
+    "usdkrw": 1343.042517
+  },
+  "flow_summary": {
+    "note": "외국인 -7259억, 기관 -1520억, 개인 +7999억 | KOSPI(외 -6398, 기관 -1361, 개인 +7025) KOSDAQ(외 -861, 기관 -159, 개인 +974)",
+    "foreign_net": -7259.0,
+    "institution_net": -1520.0,
+    "retail_net": 7999.0
+  },
+  "korean_market_flow": {
+    "date": "2026-11-25",
+    "market": {
+      "KOSPI": {
+        "individual": 7025,
+        "foreign": -6398,
+        "institution": -1361
+      },
+      "KOSDAQ": {
+        "individual": 974,
+        "foreign": -861,
+        "institution": -159
+      }
+    }
+  },
+  "sector_moves": [
+    "n/a",
+    "n/a",
+    "n/a"
+  ],
+  "news_headlines": [
+    "[인플레이션] 美 연준 “AI 반도체 공급 부족에 가격 급등”…금리 인상 변수로 - 글로벌이코노믹",
+    "[환율/달러] \"영원무역, 원달러 환율 하락에 3Q 실적↓… 목표가↓\"-유진 - 머니투데이 - 머니투데이",
+    "[반도체/AI] 엔비디아 반등에도 첩첩산중 AI…美 46개 주 데이터센터 ‘제동’ - 뉴시스",
+    "[경기/성장] 애크먼 “연준 금리 올리면 내년 침체올수도” - 매일경제",
+    "[미국지수] '젠슨황 효과' 의문에 美증시 반도체지수 8% 급반락 - 연합뉴스 한민족센터"
+  ],
+  "watchlist": [
+    "SPY",
+    "QQQ",
+    "XLK"
+  ],
+  "markets": {
+    "kr": {
+      "kospi": 4772.72,
+      "kosdaq": 644.69,
+      "kospi_pct": -4.66,
+      "kosdaq_pct": -2.87
+    },
+    "us": {
+      "sp500": 7201.09,
+      "nasdaq": 23733.535,
+      "dow": 50018.7,
+      "sp500_pct": -0.4985374117230897,
+      "nasdaq_pct": -1.4779182964702726,
+      "dow_pct": 0.8536895928264173
+    },
+    "fx": {
+      "usdkrw": 1343.042517,
+      "usdkrw_pct": 0.2833537149163497
+    },
+    "volatility": {
+      "vix": 26.360000610351562
+    }
+  },
+  "macro": {
+    "daily": {
+      "us10y": 4.904000282287598,
+      "us2y": 4.168000221252441,
+      "spread_2_10": 0.7360000610351562,
+      "us_3m_yield": 4.168000221252441,
+      "us_2y_yield": 4.63,
+      "us_10y_yield": 4.904000282287598,
+      "spread_10y_2y": 0.27400028228759776,
+      "spread_10y_3m": 0.7360000610351562,
+      "vix": 26.360000610351562,
+      "dxy": 103.8479995727539,
+      "usdkrw": 1344.3800048828125,
+      "vix3m": 25.469999313354492,
+      "vix_term_spread": -0.8900012969970703,
+      "oil_wti": 81.75,
+      "russell2000": 2684.94189453125,
+      "oil_brent": 88.52999877929688
+    },
+    "monthly": {
+      "unemployment_rate": 4.1,
+      "cpi_yoy": 4.080556369412025,
+      "core_cpi_yoy": 2.8696983820494015,
+      "pce_yoy": 3.648874225123633,
+      "pmi": null,
+      "retail_sales_mom": 0.21201735247515785,
+      "nfp_change": 165.0,
+      "wage_growth": 38.0,
+      "wage_level": 38.0,
+      "wage_yoy": 3.1207598371777445,
+      "export_yoy": 83.676052
+    },
+    "quarterly": {
+      "real_gdp": 24611.077,
+      "gdp_qoq_annualized": 3.4
+    },
+    "structural": {
+      "fed_funds_rate": 3.88,
+      "real_rate": 2.7840002822875975,
+      "hy_oas": 3.63,
+      "ig_oas": 0.97,
+      "fed_balance_sheet": 6741452.0,
+      "tga_balance": 892310.0,
+      "boj_rate": 0.3
+    }
+  },
+  "phase_two_signals": {
+    "earnings_signal_score": 0.0,
+    "breadth_signal_score": -3.391,
+    "liquidity_signal_score": -1.2,
+    "note": "derived from headlines + markets + macro.daily + macro.structural"
+  },
+  "cumulative_context": {
+    "lookback_days": 20,
+    "sample_count": 20,
+    "kospi_5d_cum_pct": -5.479,
+    "kospi_20d_cum_pct": -21.826,
+    "kosdaq_5d_cum_pct": -2.059,
+    "kospi_abs_move_5d_avg": 4.18,
+    "usdkrw_5d_change_pct": 0.95,
+    "vix_5d_avg": 26.884,
+    "reversal_signal": false,
+    "note": "rolling_20d: kospi20d=-21.83%, vol20d=3.36, reversal=false"
+  }
+}
